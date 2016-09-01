@@ -65,6 +65,8 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <asp:Label ID="ConvertLB" runat="server" BackColor="#00CC99" BorderColor="#CC33FF" Font-Size="X-Large" Text="已結轉資料" Visible="False"></asp:Label>
+                            <br />
+                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" />
                             <asp:GridView ID="ConvertGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" OnPageIndexChanging="ConvertGV_PageIndexChanging">
                                 <Columns>
                                     <asp:BoundField DataField="style_no" HeaderText="Style No" />

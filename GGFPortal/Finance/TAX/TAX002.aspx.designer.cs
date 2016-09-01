@@ -22,15 +22,6 @@ namespace GGFPortal.Finance.TAX {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TitleLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLB;
-        
-        /// <summary>
         /// TitleLB0 控制項。
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace GGFPortal.Finance.TAX {
         protected global::System.Web.UI.WebControls.Button SearchBT;
         
         /// <summary>
-        /// CheckBoxList1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
-        
-        /// <summary>
         /// ConvertBT 控制項。
         /// </summary>
         /// <remarks>
@@ -110,6 +92,15 @@ namespace GGFPortal.Finance.TAX {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ConvertLB;
+        
+        /// <summary>
+        /// DeleteBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteBT;
         
         /// <summary>
         /// ConvertGV 控制項。

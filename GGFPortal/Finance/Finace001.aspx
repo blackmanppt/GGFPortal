@@ -18,9 +18,12 @@
         </div>
     <div>
     
-        <asp:Label ID="Label1" runat="server" Text="起始日期："></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="起迄日期："></asp:Label>
         <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>
         <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyyMMdd"  />
+~
+            <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
+            <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay"  Format="yyyyMMdd"  />
         <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
     
     </div>
@@ -37,6 +40,7 @@
         <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceDS001TableAdapters.ViewShpcTableAdapter">
             <SelectParameters>
                 <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" />
+                <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
     </div>

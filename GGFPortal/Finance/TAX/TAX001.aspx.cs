@@ -62,7 +62,7 @@ namespace GGFPortal.Finance.TAX
             string strsql = string.Format(@"select  
                                     a.*,
                                     a.foreign_amt*a.exchange_rate as 'NTDPrice',
-                                    b.CheckFlag 
+                                    b.CheckFlag ,b.uid
                                     from acr_trn a left join acr_trn_check b on a.create_timestamp = b.create_timestamp and b.CheckFlag <>'CA'
                                     where a.site='GGF' and a.kind='AR05' and a.transaction_class='09' and a.acr_status ='OP' 
                                     AND DATEPART(MONTH, a.acr_date) ={0} and DATEPART(YEAR, a.acr_date) ={1} 
@@ -136,6 +136,7 @@ namespace GGFPortal.Finance.TAX
             switch (strGV)
             {
                 case "ConvertGV":
+                    DeleteBT.Visible = (bshow) ? true : false;
                     ConvertGV.Visible = (bshow) ? true : false;
                     ConvertLB.Visible = (bshow) ? true : false;
                     break;
@@ -372,6 +373,72 @@ namespace GGFPortal.Finance.TAX
         {
             ConvertGV.PageIndex = e.NewPageIndex;
             DBInit();
+        }
+
+
+        protected void DeleteBT_Click(object sender, EventArgs e)
+        {
+            if(Ds.Tables["SelectedAcr"].Rows.Count>0)
+                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                {
+                    SqlCommand command1 = conn1.CreateCommand();
+                    SqlTransaction transaction1;
+                    conn1.Open();
+                    transaction1 = conn1.BeginTransaction("createOrder");
+
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
+                    ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
+
+                    try
+                    {
+                        string strwhere = "";
+                        for (int i = 0; i < Ds.Tables["SelectedAcr"].Rows.Count; i++)
+                        {
+                            if (i > 0)
+                                strwhere += " , ";
+                            strwhere += " '" + Ds.Tables["SelectedAcr"].Rows[i]["uid"] + "' ";
+
+                        }
+                        command1.CommandText = @"UPDATE [dbo].[acr_trn_check]
+                                                   SET 
+                                                      [CheckFlag] = 'CA'
+                                                      ,[CheckModifyDate] =getdate()
+      
+                                                 WHERE uid in (" + strwhere + ") ";
+
+                        command1.ExecuteNonQuery();
+                        command1.Parameters.Clear();
+                        transaction1.Commit();
+                        DBInit2();//Search Data
+                        DBInit();
+
+                    }
+                    catch (Exception ex1)
+                    {
+                        try
+                        {
+                            Log.ErrorLog(ex1, "Delete Error", "TAX001.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "Delete Error2", "TAX001.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                        }
+
+                    }
+                    finally
+                    {
+
+                        conn1.Close();
+                        conn1.Dispose();
+                        command1.Dispose();
+                    }
+
+                }
         }
     }
 }

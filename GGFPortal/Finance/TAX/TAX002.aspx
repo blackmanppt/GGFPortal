@@ -14,27 +14,35 @@
         .auto-style2 {
             width: 89px;
         }
+        .auto-style3 {
+            width: 80px;
+            text-align: right;
+            height: 20px;
+        }
+        .auto-style4 {
+            width: 89px;
+            height: 20px;
+        }
+        .auto-style5 {
+            height: 20px;
+        }
     </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-        <asp:Label ID="TitleLB" runat="server" BackColor="#00CCFF" Font-Size="XX-Large" Text="應收結轉"></asp:Label>
-    
-    </div>
         <div>
     
         <table style="width:800px; height: 600px;">
             <tr style=" height: 20px">
                 <td colspan="4" style="text-align: center;" >
     
-        <asp:Label ID="TitleLB0" runat="server" BackColor="#00CCFF" Font-Size="XX-Large" Text="應收結轉"></asp:Label>
+        <asp:Label ID="TitleLB0" runat="server" BackColor="#00CCFF" Font-Size="XX-Large" Text="包裝底稿結轉"></asp:Label>
     
                 </td>
             </tr>
             <tr style=" height: 20px">
-                <td class="auto-style1">
+                <td style="text-align: right" >
                     <asp:Label ID="MonthLB" runat="server" Text="結轉月份："></asp:Label>
                 </td>
                 <td class="auto-style2">
@@ -46,16 +54,14 @@
                 </td>
                 <td>&nbsp;</td>
             </tr>
-            <tr style=" height: 20px">
-                <td class="auto-style1">
-                    <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                    </asp:CheckBoxList>
+            <tr>
+                <td class="auto-style3">
                 </td>
-                <td class="auto-style2">&nbsp;</td>
-                <td>
+                <td class="auto-style4"></td>
+                <td class="auto-style5">
                     <asp:Button ID="ConvertBT" runat="server" Text="結轉" OnClick="ConvertBT_Click" />
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style5"></td>
             </tr>
                                     <tr style=" height: 20px">
                 <td class="auto-style1">
@@ -72,16 +78,20 @@
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <asp:Label ID="ConvertLB" runat="server" BackColor="#00CC99" BorderColor="#CC33FF" Font-Size="X-Large" Text="已結轉資料" Visible="False"></asp:Label>
-                            <asp:GridView ID="ConvertGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None">
+                            <br />
+                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" />
+                            <asp:GridView ID="ConvertGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" OnPageIndexChanging="ConvertGV_PageIndexChanging">
                                 <Columns>
-                                    <asp:BoundField DataField="style_no" HeaderText="Style No" />
-                                    <asp:BoundField DataField="cust_po_nbr" HeaderText="客戶PO" />
-                                    <asp:BoundField DataField="exchange_rate" HeaderText="匯率" />
-                                    <asp:BoundField DataField="foreign_amt" HeaderText="原幣金額" />
-                                    <asp:BoundField DataField="NTDPrice" HeaderText="本幣金額" />
-                                    <asp:BoundField DataField="acr_nbr" HeaderText="acr_nbr" />
-                                    <asp:BoundField DataField="reference_no" HeaderText="出貨單號" />
-                                    <asp:BoundField DataField="CheckFlag" HeaderText="CheckFlag" />
+                                    <asp:BoundField DataField="site" HeaderText="公司別" />
+                                    <asp:BoundField DataField="pak_nbr" HeaderText="包裝單號" />
+                                    <asp:BoundField DataField="cabinet_no" HeaderText="櫃號" />
+                                    <asp:BoundField DataField="dta_date" HeaderText="ETA" />
+                                    <asp:BoundField DataField="etd_date" HeaderText="ETD" />
+                                    <asp:BoundField DataField="decl_no" HeaderText="報關號碼" />
+                                    <asp:BoundField DataField="bol_no" HeaderText="提單" />
+                                    <asp:BoundField DataField="vendor_name" HeaderText="代工廠" />
+                                    <asp:BoundField DataField="PkdSelect" HeaderText="已被挑選" />
+                                    
                                     
                                 </Columns>
                                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
@@ -95,17 +105,16 @@
                                 <SortedDescendingHeaderStyle BackColor="#33276A" />
                             </asp:GridView>
                             <asp:Label ID="PackageLB" runat="server" BackColor="#00CCFF" Font-Size="X-Large" Text="未結轉資料" Visible="False"></asp:Label>
-                            <asp:GridView ID="PackageGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                            <asp:GridView ID="PackageGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnPageIndexChanging="PackageGV_PageIndexChanging">
                                 <Columns>
-                                    <asp:CheckBoxField />
-                                    <asp:BoundField DataField="style_no" HeaderText="Style No" />
-                                    <asp:BoundField DataField="cust_po_nbr" HeaderText="客戶PO" />
-                                    <asp:BoundField DataField="exchange_rate" HeaderText="匯率" />
-                                    <asp:BoundField DataField="foreign_amt" HeaderText="原幣金額" />
-                                    <asp:BoundField DataField="NTDPrice" HeaderText="本幣金額" />
-                                    <asp:BoundField DataField="acr_nbr" HeaderText="acr_nbr" />
-                                    <asp:BoundField DataField="reference_no" HeaderText="出貨單號" />
-                                    <asp:BoundField DataField="CheckFlag" HeaderText="CheckFlag" />
+                                    <asp:BoundField DataField="site" HeaderText="公司別" />
+                                    <asp:BoundField DataField="pak_nbr" HeaderText="包裝單號" />
+                                    <asp:BoundField DataField="cabinet_no" HeaderText="櫃號" />
+                                    <asp:BoundField DataField="dta_date" HeaderText="ETA" />
+                                    <asp:BoundField DataField="etd_date" HeaderText="ETD" />
+                                    <asp:BoundField DataField="decl_no" HeaderText="報關號碼" />
+                                    <asp:BoundField DataField="bol_no" HeaderText="提單" />
+                                    <asp:BoundField DataField="vendor_name" HeaderText="代工廠" />
                                 </Columns>
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <FooterStyle BackColor="#CCCCCC" />

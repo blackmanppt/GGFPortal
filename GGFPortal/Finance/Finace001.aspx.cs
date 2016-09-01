@@ -13,6 +13,7 @@ namespace GGFPortal.Finance
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";
+            EndDay.Attributes["readonly"] = "readonly";
             if (IsPostBack)
             {
 
@@ -20,21 +21,15 @@ namespace GGFPortal.Finance
             else
             {
                 Session["F001StartDay"] = DateTime.Now.ToString("yyyyMMdd");
+                Session["F001EndDay"] = "29990101";
             }
         }
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            if (StartDayTB.Text.Length > 0 )
-            {
-                Session["F001StartDay"] = StartDayTB.Text;
-                ReportViewer1.LocalReport.Refresh();
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('日期切換失敗\\請重新選擇');</script>");
-                //ReportViewer1.Visible = false;
-            }
+            Session["F001StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "20000101";
+            Session["F001EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "29990101";
+            ReportViewer1.LocalReport.Refresh();
         }
     }
 }
