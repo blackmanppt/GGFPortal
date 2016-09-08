@@ -28,6 +28,7 @@ namespace GGFPortal.Finance.TAX
             }
             if (DateDDL.Items.Count == 0)
             {
+                POPPanel_ModalPopupExtender.Hide();
                 //int iCountYear = DateTime.Now.Year - 2015;
                 DateTime dtNow = DateTime.Now;
                 //dtNow = DateTime.Parse("2020-12-01"); //測試用
@@ -75,7 +76,7 @@ namespace GGFPortal.Finance.TAX
                 // Create a DataView
                 //已挑選purc_pkm
                 DataView dv = new DataView(Ds.Tables["purc_pkm"]);
-                dv.RowFilter = " CheckFlag = 'NA'";
+                dv.RowFilter = " CheckFlag is not null";
                 if (Ds.Tables.Contains("SelectedPurc_pkm"))
                     Ds.Tables.Remove("SelectedPurc_pkm");
                 if (dv.Count > 0)
@@ -83,14 +84,23 @@ namespace GGFPortal.Finance.TAX
 
                 //未挑選purc_pkm
                 DataView dv2 = new DataView(Ds.Tables["purc_pkm"]);
-                dv2.RowFilter = " CheckFlag <> 'NA' or CheckFlag is null";
-                if (Ds.Tables.Contains("Purc_pkm"))
-                    Ds.Tables.Remove("Purc_pkm");
+                dv2.RowFilter = " CheckFlag is null and PkdSelect = 'N' ";
+                if (Ds.Tables.Contains("PKM"))
+                    Ds.Tables.Remove("PKM");
                 if (dv2.Count > 0)
-                    Ds.Tables.Add(dv2.ToTable("Purc_pkm"));
+                    Ds.Tables.Add(dv2.ToTable("PKM"));
+
+                //已被ACR對應挑選purc_pkm
+                DataView dv3 = new DataView(Ds.Tables["purc_pkm"]);
+                dv3.RowFilter = " PkdSelect = 'Y'";
+                if (Ds.Tables.Contains("purc_pkd_acr"))
+                    Ds.Tables.Remove("purc_pkd_acr");
+                if (dv3.Count > 0)
+                    Ds.Tables.Add(dv3.ToTable("purc_pkd_acr"));
                 if (Ds.Tables.Contains("SelectedPurc_pkm"))
                     if (Ds.Tables["SelectedPurc_pkm"].Rows.Count > 0)
                         Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('已有挑選紀錄');</script>");
+
 
             }
             else
@@ -116,11 +126,11 @@ namespace GGFPortal.Finance.TAX
                     ShowGV("ConvertGV", false);
             else
                 ShowGV("ConvertGV", false);
-            if (Ds.Tables.Contains("Purc_pkm"))
-                if (Ds.Tables["Purc_pkm"].Rows.Count > 0)
+            if (Ds.Tables.Contains("PKM"))
+                if (Ds.Tables["PKM"].Rows.Count > 0)
                 {
                     ShowGV("PackageGV", true);
-                    PackageGV.DataSource = Ds.Tables["Purc_pkm"];
+                    PackageGV.DataSource = Ds.Tables["PKM"];
                     PackageGV.DataBind();
                 }
                 else
@@ -134,7 +144,7 @@ namespace GGFPortal.Finance.TAX
             switch (strGV)
             {
                 case "ConvertGV":
-                    //DeleteBT.Visible = (bshow) ? true : false;
+                    DeleteBT.Visible = (bshow) ? true : false;
                     ConvertGV.Visible = (bshow) ? true : false;
                     ConvertLB.Visible = (bshow) ? true : false;
                     break;
@@ -186,19 +196,19 @@ namespace GGFPortal.Finance.TAX
         }
         protected void ConvertBT_Click(object sender, EventArgs e)
         {
-
+            //POPPanel_ModalPopupExtender.Show();
             //測試
             if (Ds.Tables.Contains("SelectedAcr"))
             {
                 if (Ds.Tables["SelectedAcr"].Rows.Count > 0)
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('已有結轉資料:\\n請洽MIS Stone');</script>");
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('已有結轉資料\\n請先刪除再重新節轉');</script>");
             }
             else
             {
-                if (Ds.Tables.Contains("purc_pkd_for_acr") && Ds.Tables.Contains("purc_pkm_for_acr"))
+                if ( Ds.Tables.Contains("PKM"))
                 {
                     //單頭單身要有資料
-                    if (Ds.Tables["purc_pkd_for_acr"].Rows.Count > 0)
+                    if (Ds.Tables["PKM"].Rows.Count > 0)
                     { 
                         using (SqlConnection conn1 = new SqlConnection(strConnectString))
                         {
@@ -217,7 +227,7 @@ namespace GGFPortal.Finance.TAX
 
 
 
-                                foreach (DataRow pkdDT in Ds.Tables["purc_pkd_for_acr"].Rows)
+                                foreach (DataRow pkdDT in Ds.Tables["PKM"].Rows)
                                 {
                                     string strtimestamp = DateTime.Now.ToString("yyyyMMddHHmmssffffff");
                                     #region 表頭
@@ -239,7 +249,7 @@ namespace GGFPortal.Finance.TAX
                                                         from [dbo].[purc_pkd]
                                                         where [site]=@site and [pak_nbr]=@pak_nbr
                                                                 ";
-                                    command1.Parameters.Add("@create_timestamp", SqlDbType.VarChar).Value = strtimestamp;
+                                    command1.Parameters.Add("@timestamp", SqlDbType.VarChar).Value = strtimestamp;
                                     command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = pkdDT["site"];
                                     command1.Parameters.Add("@pak_nbr", SqlDbType.NVarChar).Value = pkdDT["pak_nbr"];
                                     #endregion
@@ -268,7 +278,7 @@ namespace GGFPortal.Finance.TAX
                                     #region 表身
 
 
-                                    command1.Parameters.Add("@create_timestamp", SqlDbType.VarChar).Value = strtimestamp;
+                                    command1.Parameters.Add("@timestamp", SqlDbType.VarChar).Value = strtimestamp;
                                     command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = pkdDT["site"];
                                     command1.Parameters.Add("@pak_nbr", SqlDbType.NVarChar).Value = pkdDT["pak_nbr"];
 
@@ -438,7 +448,7 @@ namespace GGFPortal.Finance.TAX
                 }
                 else
                 {
-                        
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有結轉資料');</script>");
                 }
                     
             }
@@ -458,68 +468,88 @@ namespace GGFPortal.Finance.TAX
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            
-            if (Ds.Tables["SelectedAcr"].Rows.Count > 0)
-                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            if (Ds.Tables["purc_pkd_acr"].Rows.Count>0)
+            {
+                //已被對應到應付單據
+                purc_pkd_acrGV.DataSource = Ds.Tables["purc_pkd_acr"];
+                purc_pkd_acrGV.DataBind();
+                POPPanel_ModalPopupExtender.Show();
+            }
+            else
+            {
+                //未被對應到應付單據
+                if (Ds.Tables["SelectedPurc_pkm"].Rows.Count > 0)
                 {
-                    SqlCommand command1 = conn1.CreateCommand();
-                    SqlTransaction transaction1;
-                    conn1.Open();
-                    transaction1 = conn1.BeginTransaction("createOrder");
-
-                    command1.Connection = conn1;
-                    command1.Transaction = transaction1;
-                    ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
-
-                    try
+                    using (SqlConnection conn1 = new SqlConnection(strConnectString))
                     {
-                        string strwhere = "";
-                        for (int i = 0; i < Ds.Tables["SelectedAcr"].Rows.Count; i++)
-                        {
-                            if (i > 0)
-                                strwhere += " , ";
-                            strwhere += " '" + Ds.Tables["SelectedAcr"].Rows[i]["uid"] + "' ";
+                        SqlCommand command1 = conn1.CreateCommand();
+                        SqlTransaction transaction1;
+                        conn1.Open();
+                        transaction1 = conn1.BeginTransaction("createOrder");
 
-                        }
-                        command1.CommandText = @"UPDATE [dbo].[acr_trn_check]
-                                                   SET 
-                                                      [CheckFlag] = 'CA'
-                                                      ,[CheckModifyDate] =getdate()
-      
-                                                 WHERE uid in (" + strwhere + ") ";
+                        command1.Connection = conn1;
+                        command1.Transaction = transaction1;
+                        ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
 
-                        command1.ExecuteNonQuery();
-                        command1.Parameters.Clear();
-                        transaction1.Commit();
-                        DBInit2();//Search Data
-                        DBInit();
-
-                    }
-                    catch (Exception ex1)
-                    {
                         try
                         {
-                            Log.ErrorLog(ex1, "Delete Error", "TAX001.aspx");
+                            string strwhere = "";
+                            for (int i = 0; i < Ds.Tables["SelectedPurc_pkm"].Rows.Count; i++)
+                            {
+                                if (i > 0)
+                                    strwhere += " , ";
+                                strwhere += " '" + Ds.Tables["SelectedPurc_pkm"].Rows[i]["uid"] + "' ";
+
+                            }
+                            command1.CommandText = @"UPDATE [dbo].[purc_pkm_for_acr]
+                                                       SET 
+                                                          [CheckFlag] = 'CA'
+                                                          ,[CheckModifyDate] =getdate()
+      
+                                                     WHERE uid in (" + strwhere + ") ";
+
+                            command1.ExecuteNonQuery();
+                            command1.Parameters.Clear();
+                            command1.CommandText = @"UPDATE [dbo].[purc_pkd_for_acr]
+                                                       SET 
+                                                          [CheckFlag] = 'CA'
+                                                          ,[CheckModifyDate] =getdate()
+      
+                                                     WHERE acr_uid in (" + strwhere + ") ";
+
+                            command1.ExecuteNonQuery();
+                            transaction1.Commit();
+                            DBInit2();//Search Data
+                            DBInit();
+
                         }
-                        catch (Exception ex2)
+                        catch (Exception ex1)
                         {
-                            Log.ErrorLog(ex2, "Delete Error2", "TAX001.aspx");
+                            try
+                            {
+                                Log.ErrorLog(ex1, "Delete Error", "TAX001.aspx");
+                            }
+                            catch (Exception ex2)
+                            {
+                                Log.ErrorLog(ex2, "Delete Error2", "TAX001.aspx");
+                            }
+                            finally
+                            {
+                                transaction1.Rollback();
+                            }
+
                         }
                         finally
                         {
-                            transaction1.Rollback();
+
+                            conn1.Close();
+                            conn1.Dispose();
+                            command1.Dispose();
                         }
 
                     }
-                    finally
-                    {
-
-                        conn1.Close();
-                        conn1.Dispose();
-                        command1.Dispose();
-                    }
-
                 }
+            }
         }
         
     }

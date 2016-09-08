@@ -27,7 +27,7 @@
     <form id="form1" runat="server">
         <div  >
             
-            <asp:Label ID="Label1" runat="server" Text="搜尋應付資料" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="搜尋應付資料(含以應負)" Font-Bold="True" Font-Size="X-Large"></asp:Label>
             
         </div>
         <div  >
@@ -67,8 +67,8 @@
         </div>
         <div >
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="None" AllowPaging="True" PageSize="20">
-                <AlternatingRowStyle BackColor="PaleGoldenrod" />
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" AllowPaging="True" PageSize="50" BorderStyle="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="style_no" HeaderText="style_no" SortExpression="style_no" />
                     <asp:BoundField DataField="數量" HeaderText="數量" SortExpression="數量" />
@@ -79,19 +79,22 @@
                     <asp:BoundField DataField="acp_seq" HeaderText="acp_seq" SortExpression="acp_seq" />
                     <asp:BoundField DataField="料品代號" HeaderText="料品代號" SortExpression="料品代號" />
                     <asp:BoundField DataField="立帳幣別" HeaderText="立帳幣別" SortExpression="立帳幣別" />
+                    <asp:BoundField DataField="unit" HeaderText="unit" SortExpression="unit" />
+                    <asp:BoundField DataField="remark40" HeaderText="remark40" SortExpression="remark40" />
                 </Columns>
-                <FooterStyle BackColor="Tan" />
-                <HeaderStyle BackColor="Tan" Font-Bold="True" />
-                <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
-                <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-                <SortedAscendingCellStyle BackColor="#FAFAE7" />
-                <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-                <SortedDescendingCellStyle BackColor="#E1DB9C" />
-                <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" />
+                <SelectedRowStyle BackColor="#CE5D5A" ForeColor="White" Font-Bold="True" />
+                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                <SortedAscendingHeaderStyle BackColor="#848384" />
+                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
-                SelectCommand="select style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit FROM dbo.acp_trnd WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01))) ORDER BY [acp_nbr]">
+                SelectCommand="select style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit,remark40 FROM dbo.acp_trn WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01))) ORDER BY [acp_nbr]">
 
             </asp:SqlDataSource>
 

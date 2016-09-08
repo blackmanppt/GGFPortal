@@ -52,8 +52,8 @@ namespace GGFPortal.Ship.Search
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
                             select style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL 
-                            THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit
-                            FROM dbo.acp_trnd WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01)))
+                            THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit,remark40
+                            FROM dbo.acp_trn WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01)))
                             ";
 
             if (strPur.Length > 0 || strAcp.Length > 0 || strStyleno.Length > 0)

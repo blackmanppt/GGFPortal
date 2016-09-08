@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Finance.TAX {
+namespace GGFPortal.Finance {
     
     
-    public partial class TAX002 {
+    public partial class Finance002 {
         
         /// <summary>
         /// form1 控制項。
@@ -22,49 +22,13 @@ namespace GGFPortal.Finance.TAX {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TitleLB0 控制項。
+        /// TitleLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLB0;
-        
-        /// <summary>
-        /// MonthLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MonthLB;
-        
-        /// <summary>
-        /// DateDDL 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DateDDL;
-        
-        /// <summary>
-        /// SearchBT 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBT;
-        
-        /// <summary>
-        /// ConvertBT 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ConvertBT;
+        protected global::System.Web.UI.WebControls.Label TitleLB;
         
         /// <summary>
         /// ScriptManager1 控制項。
@@ -76,120 +40,201 @@ namespace GGFPortal.Finance.TAX {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UpdatePanel1 控制項。
+        /// SiteLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Label SiteLB;
         
         /// <summary>
-        /// ConvertLB 控制項。
+        /// SiteDDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ConvertLB;
+        protected global::System.Web.UI.WebControls.DropDownList SiteDDL;
         
         /// <summary>
-        /// DeleteBT 控制項。
+        /// ETAETDLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteBT;
+        protected global::System.Web.UI.WebControls.Label ETAETDLB;
         
         /// <summary>
-        /// ConvertGV 控制項。
+        /// RadioButtonList1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ConvertGV;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
-        /// PackageLB 控制項。
+        /// RecDateLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PackageLB;
+        protected global::System.Web.UI.WebControls.Label RecDateLB;
         
         /// <summary>
-        /// PackageGV 控制項。
+        /// StartDayTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PackageGV;
+        protected global::System.Web.UI.WebControls.TextBox StartDayTB;
         
         /// <summary>
-        /// UpdatePanel2 控制項。
+        /// StartDayTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::AjaxControlToolkit.CalendarExtender StartDayTB_CalendarExtender;
         
         /// <summary>
-        /// POPPanel_ModalPopupExtender 控制項。
+        /// EndDayTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender POPPanel_ModalPopupExtender;
+        protected global::System.Web.UI.WebControls.TextBox EndDayTB;
         
         /// <summary>
-        /// Show 控制項。
+        /// EndDayTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Show;
+        protected global::AjaxControlToolkit.CalendarExtender EndDayTB_CalendarExtender;
         
         /// <summary>
-        /// POPPanel 控制項。
+        /// ItemLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel POPPanel;
+        protected global::System.Web.UI.WebControls.Label ItemLB;
         
         /// <summary>
-        /// Label1 控制項。
+        /// RadioButtonList2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
         
         /// <summary>
-        /// purc_pkd_acrGV 控制項。
+        /// NationLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView purc_pkd_acrGV;
+        protected global::System.Web.UI.WebControls.Label NationLB;
         
         /// <summary>
-        /// hide 控制項。
+        /// NationDDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button hide;
+        protected global::System.Web.UI.WebControls.DropDownList NationDDL;
+        
+        /// <summary>
+        /// AcpStatusLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AcpStatusLB;
+        
+        /// <summary>
+        /// RadioButtonList3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList3;
+        
+        /// <summary>
+        /// FactoryLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FactoryLB;
+        
+        /// <summary>
+        /// FactoryDDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList FactoryDDL;
+        
+        /// <summary>
+        /// VendorLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label VendorLB;
+        
+        /// <summary>
+        /// VendorTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox VendorTB;
+        
+        /// <summary>
+        /// SearchBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchBT;
+        
+        /// <summary>
+        /// ExportBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportBT;
+        
+        /// <summary>
+        /// ACPGV 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ACPGV;
     }
 }

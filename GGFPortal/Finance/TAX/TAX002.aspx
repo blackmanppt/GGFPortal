@@ -79,7 +79,7 @@
                         <ContentTemplate>
                             <asp:Label ID="ConvertLB" runat="server" BackColor="#00CC99" BorderColor="#CC33FF" Font-Size="X-Large" Text="已結轉資料" Visible="False"></asp:Label>
                             <br />
-                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" />
+                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" Visible="False" />
                             <asp:GridView ID="ConvertGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" OnPageIndexChanging="ConvertGV_PageIndexChanging">
                                 <Columns>
                                     <asp:BoundField DataField="site" HeaderText="公司別" />
@@ -137,12 +137,12 @@
 
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-                    <ajaxToolkit:ModalPopupExtender ID="POPPanel_ModalPopupExtender" runat="server" TargetControlID="Show" PopupControlID="POPPanel"  CancelControlID="hide">
+                    <ajaxToolkit:ModalPopupExtender ID="POPPanel_ModalPopupExtender" runat="server" TargetControlID="Show" PopupControlID="POPPanel"  CancelControlID="hide" >
                                     </ajaxToolkit:ModalPopupExtender>
-                    <asp:Button ID="Show" runat="server" Text="Show" />
+                    <asp:Button ID="Show" runat="server" Text="Show" Visible="False" />
 
 
-                    <asp:Panel ID="POPPanel" runat="server">
+                    <asp:Panel ID="POPPanel" runat="server" style="display:none" >
                         <table style="width: 600px; height: 400px; background-color: #00FFFF;">
                             <tr>
                                 <td colspan="3">
@@ -155,9 +155,33 @@
 
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
+                                <td colspan="3">
+                                    <asp:GridView ID="purc_pkd_acrGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+                                        <Columns>
+                                    <asp:BoundField DataField="site" HeaderText="公司別" />
+                                    <asp:BoundField DataField="pak_nbr" HeaderText="包裝單號" />
+                                    <asp:BoundField DataField="cabinet_no" HeaderText="櫃號" />
+                                    <asp:BoundField DataField="dta_date" HeaderText="ETA" />
+                                    <asp:BoundField DataField="etd_date" HeaderText="ETD" />
+                                    <asp:BoundField DataField="vendor_name" HeaderText="代工廠" />
+                                    <asp:BoundField DataField="PkdSelect" HeaderText="已被挑選" />
+                                    
+                                    
+                                </Columns>
+                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                        <EditRowStyle BackColor="#999999" />
+                                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                    </asp:GridView>
+                                </td>
+
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>

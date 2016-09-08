@@ -21,7 +21,7 @@ namespace GGFPortal.Finance.TAX
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
             Response.Cache.SetExpires(DateTime.MinValue);
-
+            DeleteBT.Attributes.Add("onclick ", "return confirm( '確定要刪除嗎');");
             if (DateDDL.Items.Count == 0)
             {
                 //int iCountYear = DateTime.Now.Year - 2015;
