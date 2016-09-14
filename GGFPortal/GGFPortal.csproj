@@ -329,6 +329,8 @@
     <Content Include="Finance\Finace001.aspx" />
     <Content Include="Finance\Finance002.aspx" />
     <Content Include="Finance\TAX\TAX002.aspx" />
+    <Content Include="IMG\images.png" />
+    <Content Include="IMG\spotlight001.png" />
     <Content Include="MIS\MIS002.aspx" />
     <Content Include="MIS\MIS001.aspx" />
     <Content Include="MIS\MIS003.aspx" />
@@ -384,6 +386,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="ReferenceCode\Finance002Auto.asmx" />
+    <Content Include="ReferenceCode\test.asmx" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af-ZA.min.js" />
@@ -878,16 +882,16 @@
     <Content Include="scripts\kendo\2014.1.318\kendo.binder.min.js.map" />
     <Content Include="scripts\kendo\2014.1.318\kendo.autocomplete.min.js.map" />
     <Content Include="scripts\kendo\2014.1.318\jquery.min.map" />
-    <Content Include="test\testDataSet.xsc">
-      <DependentUpon>testDataSet.xsd</DependentUpon>
+    <Content Include="test\DataSetTest.xsc">
+      <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
-    <None Include="test\testDataSet.xsd">
+    <None Include="test\DataSetTest.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>testDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetTest.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="test\testDataSet.xss">
-      <DependentUpon>testDataSet.xsd</DependentUpon>
+    <Content Include="test\DataSetTest.xss">
+      <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1000,8 +1004,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ReferenceCode\ConvertToExcel.cs" />
+    <Compile Include="ReferenceCode\Finance002Auto.asmx.cs">
+      <DependentUpon>Finance002Auto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReferenceCode\SQLString.cs" />
     <Compile Include="ReferenceCode\SysLog.cs" />
+    <Compile Include="ReferenceCode\test.asmx.cs">
+      <DependentUpon>test.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReferenceCode\VendorAutoComplete.cs" />
     <Compile Include="SearchIndex.aspx.cs">
       <DependentUpon>SearchIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1037,17 +1050,17 @@
     <Compile Include="test\AutoComplete.aspx.designer.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\DataSetTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="test\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test\testDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>testDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

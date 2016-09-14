@@ -19,5 +19,10 @@ namespace GGFPortal.test
             string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ strConnectString + "');</script>");
         }
+
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            TextBox1.Text = GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
+        }
     }
 }

@@ -27,7 +27,7 @@
     <form id="form1" runat="server">
         <div  >
             
-            <asp:Label ID="Label1" runat="server" Text="搜尋應付資料(含以應負)" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="搜尋應付資料(含已應付)" Font-Bold="True" Font-Size="X-Large"></asp:Label>
             
         </div>
         <div  >

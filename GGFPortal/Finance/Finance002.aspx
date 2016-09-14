@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Finance002.aspx.cs" Inherits="GGFPortal.Finance.Finance002" %>
 
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +38,27 @@
         .auto-style7 {
             text-align: right;
         }
+        .auto-style8 {
+            width: 100px;
+            text-align: right;
+            background-color: #3399FF;
+            height: 30px;
+        }
+        .auto-style9 {
+            width: 180px;
+            height: 30px;
+        }
+        .auto-style10 {
+            width: 102px;
+            text-align: right;
+            background-color: #0099FF;
+            height: 30px;
+        }
+        .auto-style11 {
+            height: 30px;
+        }
     </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -44,13 +66,13 @@
     
         <h1>
             <asp:Label ID="TitleLB" runat="server" Text="應付檢查表"></asp:Label>
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
             </asp:ScriptManager>
         </h1>
     
     </div>
     <div>
-        <table style="width:600px;">
+        <table style="width:600px; border-spacing: 1px; border-collapse: inherit;" border="1">
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="SiteLB" runat="server" Text="公司別："></asp:Label>
@@ -66,7 +88,7 @@
                     <asp:Label ID="ETAETDLB" runat="server" Text="ETA/ETD為0："></asp:Label>
                 </td>
                 <td class="auto-style1">
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
+                    <asp:RadioButtonList ID="ETARBL" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>全部</asp:ListItem>
                         <asp:ListItem>ETA</asp:ListItem>
                         <asp:ListItem>ETD</asp:ListItem>
@@ -78,17 +100,17 @@
                     <asp:Label ID="RecDateLB" runat="server" Text="入庫日期："></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="StartDayTB" runat="server" Width="70px"></asp:TextBox>
-                    <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyyMMdd" />
+                    <asp:TextBox ID="StartDayTB" runat="server" Width="70px" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy-MM-dd" />
                     ~
-                    <asp:TextBox ID="EndDayTB" runat="server" Width="70px"></asp:TextBox>
-                    <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyyMMdd"  />
+                    <asp:TextBox ID="EndDayTB" runat="server" Width="70px" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyy-MM-dd"  />
                 </td>
                 <td class="auto-style6">
                     <asp:Label ID="ItemLB" runat="server" Text="主/副料："></asp:Label>
                 </td>
                 <td>
-                    <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal">
+                    <asp:RadioButtonList ID="ItemRBL" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>全部</asp:ListItem>
                         <asp:ListItem>主料</asp:ListItem>
                         <asp:ListItem>副料</asp:ListItem>
@@ -96,18 +118,18 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">
+                <td class="auto-style8">
                     <asp:Label ID="NationLB" runat="server" Text="產區："></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style9">
                     <asp:DropDownList ID="NationDDL" runat="server">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style6">
+                <td class="auto-style10">
                     <asp:Label ID="AcpStatusLB" runat="server" Text="付款狀態："></asp:Label>
                 </td>
-                <td>
-                    <asp:RadioButtonList ID="RadioButtonList3" runat="server" RepeatDirection="Horizontal">
+                <td class="auto-style11">
+                    <asp:RadioButtonList ID="ACPRBL" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem>全部</asp:ListItem>
                         <asp:ListItem>已付</asp:ListItem>
                         <asp:ListItem>未付</asp:ListItem>
@@ -122,25 +144,49 @@
                     <asp:DropDownList ID="FactoryDDL" runat="server">
                     </asp:DropDownList>
                  </td>
-                <td class="auto-style6">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style6">
+                    <asp:Label ID="PurLB" runat="server" Text="採購單號："></asp:Label>
+                 </td>
+                <td>
+                    <asp:TextBox ID="PurTB" runat="server"></asp:TextBox>
+                    <ajaxToolkit:AutoCompleteExtender ID="PurTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchPurID" TargetControlID="PurTB" >
+                    </ajaxToolkit:AutoCompleteExtender>
+                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">
                     <asp:Label ID="VendorLB" runat="server" Text="供應商代號："></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="VendorTB" runat="server"></asp:TextBox>
+
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" >
+                                <ContentTemplate>
+                                    <asp:TextBox ID="VendorTB" runat="server"></asp:TextBox>
+                                    <ajaxToolkit:AutoCompleteExtender ID="VendorTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="2" ServiceMethod="SearchVendorID" TargetControlID="VendorTB">
+                                    </ajaxToolkit:AutoCompleteExtender>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                    <asp:ImageButton ID="SearchVendorIDBT" runat="server" Height="19px" ImageUrl="~/IMG/images.png" OnClick="SearchVendorIDBT_Click" Width="16px" />
                  </td>
-                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style6">
+                                    
+                                </td>
                 <td class="auto-style7">
                     <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" />
-                    <asp:Button ID="ExportBT" runat="server" OnClick="ExportBT_Click" Text="Export" />
                 </td>
             </tr>
         </table>
     </div>
         <div>
+
+                                
+
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="False" Width="1000px">
+                <LocalReport ReportPath="ReportSource\ReportFinance002.rdlc"  >
+                </LocalReport>
+            </rsweb:ReportViewer>
+
+                                
 
             <asp:GridView ID="ACPGV" runat="server" AllowPaging="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
@@ -154,7 +200,56 @@
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
 
+                                
+
         </div>
+        <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" PopupControlID="SearchVendorIDPanel" TargetControlID="SearchVendorIDBT" CancelControlID="SearchCancel"></ajaxToolkit:ModalPopupExtender>
+        <asp:Panel ID="SearchVendorIDPanel" runat="server" align="center" Height="400px" Width="600px" ScrollBars="Horizontal" BackColor="#33CCFF" style="display:none">
+            <asp:Button ID="ShowBT" runat="server" Text="Button" Visible="false"/>
+                    <table style="width:400px;">
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text="廠商名稱或代號："></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="SearchVendorID2TB" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Button ID="SearchVendorID2" runat="server" OnClick="SearchVendorID2_Click" Text="Search" />
+                                <asp:Button ID="SearchCancel" runat="server" Text="Cancel" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:GridView ID="VendorGV" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="vendor_id" OnSelectedIndexChanging="VendorGV_SelectedIndexChanging">
+                                    <Columns>
+                                        <asp:BoundField DataField="vendor_id" HeaderText="vendor_id" />
+                                        <asp:BoundField DataField="vendor_name" HeaderText="vendor_name" />
+                                    </Columns>
+                                </asp:GridView>
+                
+            </ContentTemplate>
+        </asp:UpdatePanel>
+                                
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+
+        
+
+        
+        <asp:HiddenField ID="hfCustomerId" runat="server" />
+        
     </form>
 
 </body>

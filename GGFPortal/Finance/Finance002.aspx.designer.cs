@@ -67,13 +67,13 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.Label ETAETDLB;
         
         /// <summary>
-        /// RadioButtonList1 控制項。
+        /// ETARBL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList ETARBL;
         
         /// <summary>
         /// RecDateLB 控制項。
@@ -130,13 +130,13 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.Label ItemLB;
         
         /// <summary>
-        /// RadioButtonList2 控制項。
+        /// ItemRBL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+        protected global::System.Web.UI.WebControls.RadioButtonList ItemRBL;
         
         /// <summary>
         /// NationLB 控制項。
@@ -166,13 +166,13 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.Label AcpStatusLB;
         
         /// <summary>
-        /// RadioButtonList3 控制項。
+        /// ACPRBL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList3;
+        protected global::System.Web.UI.WebControls.RadioButtonList ACPRBL;
         
         /// <summary>
         /// FactoryLB 控制項。
@@ -193,6 +193,33 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.DropDownList FactoryDDL;
         
         /// <summary>
+        /// PurLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PurLB;
+        
+        /// <summary>
+        /// PurTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PurTB;
+        
+        /// <summary>
+        /// PurTB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender PurTB_AutoCompleteExtender;
+        
+        /// <summary>
         /// VendorLB 控制項。
         /// </summary>
         /// <remarks>
@@ -200,6 +227,15 @@ namespace GGFPortal.Finance {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label VendorLB;
+        
+        /// <summary>
+        /// UpdatePanel2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
         /// VendorTB 控制項。
@@ -211,6 +247,24 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.TextBox VendorTB;
         
         /// <summary>
+        /// VendorTB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender VendorTB_AutoCompleteExtender;
+        
+        /// <summary>
+        /// SearchVendorIDBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton SearchVendorIDBT;
+        
+        /// <summary>
         /// SearchBT 控制項。
         /// </summary>
         /// <remarks>
@@ -220,13 +274,13 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.Button SearchBT;
         
         /// <summary>
-        /// ExportBT 控制項。
+        /// ReportViewer1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportBT;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
         
         /// <summary>
         /// ACPGV 控制項。
@@ -236,5 +290,95 @@ namespace GGFPortal.Finance {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView ACPGV;
+        
+        /// <summary>
+        /// ModalPopupExtender1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
+        
+        /// <summary>
+        /// SearchVendorIDPanel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel SearchVendorIDPanel;
+        
+        /// <summary>
+        /// ShowBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowBT;
+        
+        /// <summary>
+        /// Label1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// SearchVendorID2TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SearchVendorID2TB;
+        
+        /// <summary>
+        /// SearchVendorID2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchVendorID2;
+        
+        /// <summary>
+        /// SearchCancel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchCancel;
+        
+        /// <summary>
+        /// UpdatePanel1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// VendorGV 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView VendorGV;
+        
+        /// <summary>
+        /// hfCustomerId 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCustomerId;
     }
 }

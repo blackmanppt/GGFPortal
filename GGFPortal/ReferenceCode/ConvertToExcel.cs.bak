@@ -60,7 +60,32 @@ namespace GGFPortal.ReferenceCode
                 {
                     ICell cell = row.CreateCell(j);
                     String columnName = dt.Columns[j].ToString();
+
+                    XSSFCellStyle cs = (XSSFCellStyle)workbook.CreateCellStyle();
+                    XSSFDataFormat format = (XSSFDataFormat)workbook.CreateDataFormat();
                     cell.SetCellValue(dt.Rows[i][columnName].ToString());
+                    switch (dt.Columns[j].DataType.Name)
+                    {
+                        case "DateTime":
+                            cs.SetDataFormat(format.GetFormat("yyyy-mm-dd"));
+                            //cs.DataFormat = format.GetFormat("yyyy-mm-dd");
+                            cell.CellStyle = cs;
+                            
+                            break;
+                        case "Decimal":
+                            //XSSFDataFormat format = (XSSFDataFormat)workbook.CreateDataFormat();
+                            //Format格式為數字
+                            //cs.DataFormat = format.GetFormat("0.0000");
+                            cs.SetDataFormat(format.GetFormat("0.0000"));
+                            ////Format格式為百分比小數兩位
+                            //cs.DataFormat = HSSFDataFormat.GetBuiltinFormat("0.00%");
+
+                            cell.CellStyle = cs;
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
             }
 
