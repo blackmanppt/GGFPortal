@@ -131,7 +131,7 @@ namespace GGFPortal.Finance
             strwhere += " and b.rec_date between '" + strStartDay + "' and '" + strEndDay + "' ";
             strwhere += (NationDDL.SelectedValue.ToString() == "") ? "" : " and e.nation_no ='"+ NationDDL.SelectedValue+"' ";
             strwhere += (FactoryDDL.SelectedValue.ToString() == "") ? "" : " and d.vendor_id ='" + FactoryDDL.SelectedValue + "' ";
-            strwhere += (PurTB.Text.Length > 0) ? "" : " and a.pur_nbr ='"+PurTB.Text+"'";
+            strwhere += (PurTB.Text.Trim().Length > 0) ? " and a.pur_nbr ='" + PurTB.Text + "'" : "" ;
             switch (ETARBL.SelectedValue)
             {
                 case "ETA":
