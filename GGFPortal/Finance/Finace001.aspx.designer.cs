@@ -85,6 +85,24 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.WebControls.Button SearchBT;
         
         /// <summary>
+        /// Label2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// SiteDDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList SiteDDL;
+        
+        /// <summary>
         /// ScriptManager1 控制項。
         /// </summary>
         /// <remarks>

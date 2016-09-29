@@ -22,6 +22,7 @@ namespace GGFPortal.Finance
             {
                 Session["F001StartDay"] = DateTime.Now.ToString("yyyyMMdd");
                 Session["F001EndDay"] = "29990101";
+                Session["F001Site"] = "%";
             }
         }
 
@@ -29,6 +30,18 @@ namespace GGFPortal.Finance
         {
             Session["F001StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "20000101";
             Session["F001EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "29990101";
+            switch (SiteDDL.SelectedIndex)
+            {
+                case 1:
+                    Session["F001Site"] = "GGF";
+                    break;
+                case 2:
+                    Session["F001Site"] = "TCL";
+                    break;
+                default:
+                    Session["F001Site"] = "%";
+                    break;
+            }
             ReportViewer1.LocalReport.Refresh();
         }
     }

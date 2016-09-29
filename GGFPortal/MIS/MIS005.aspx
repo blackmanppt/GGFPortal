@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MIS004.aspx.cs" Inherits="GGFPortal.MIS.MIS004" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MIS005.aspx.cs" Inherits="GGFPortal.MIS.MIS005" %>
 
 <!DOCTYPE html>
 
@@ -37,9 +37,6 @@
         <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" />
         <asp:GridView ID="PhoneGV" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanging="PhoneGV_SelectedIndexChanging">
             <AlternatingRowStyle BackColor="#CCCCCC" />
-            <Columns>
-                <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-            </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />

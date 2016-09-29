@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace GGFPortal.Finance
 {
-    public partial class Finance002 : System.Web.UI.Page
+    public partial class Finance003 : System.Web.UI.Page
     {
         static DataSet Ds = new DataSet();
 
@@ -22,12 +22,12 @@ namespace GGFPortal.Finance
         {
             StartDayTB.Attributes["readonly"] = "readonly";
             EndDayTB.Attributes["readonly"] = "readonly";
-            if (Convert.ToInt32(ACPGV.PageIndex) != 0)
-            {
-                //==如果不加上這行IF判別式，假設當我們看第四頁時， 
-                //==又輸入新的條件，重新作搜尋。「新的」搜尋結果將會直接看見 "第四頁"！這個問題發生在這裡，請看！=== 
-                ACPGV.PageIndex = 0;
-            }
+            //if (Convert.ToInt32(ACPGV.PageIndex) != 0)
+            //{
+            //    //==如果不加上這行IF判別式，假設當我們看第四頁時， 
+            //    //==又輸入新的條件，重新作搜尋。「新的」搜尋結果將會直接看見 "第四頁"！這個問題發生在這裡，請看！=== 
+            //    ACPGV.PageIndex = 0;
+            //}
             if (IsPostBack)
             {
                 if (StartDayTB.Text.Length > 0)
@@ -41,10 +41,10 @@ namespace GGFPortal.Finance
                     //StartDayTB_CalendarExtender.EndDate = Convert.ToDateTime(EndDayTB.Text.Substring(0, 4) + "/" + EndDayTB.Text.Substring(4, 2) + "/" + EndDayTB.Text.Substring(6, 2));
                 }
                 //DbInit();
-                if (SearchVendorID2TB.Text.Length>0)
-                {
+                //if (SearchVendorID2TB.Text.Length>0)
+                //{
                     
-                }
+                //}
                 //ModalPopupExtender1.Show();
             }
             else
@@ -88,15 +88,6 @@ namespace GGFPortal.Finance
         {
             //ACPGV.PageIndex = 0;
             //DbInit();
-            int icheck = 0;
-            icheck += (StartDayTB.Text.Length > 0) ? 1 : 0;
-            icheck += (EndDayTB.Text.Length > 0) ? 1 : 0;
-            icheck += (PurTB.Text.Length > 0) ? 4 : 0;
-            icheck += (StyleNoTB.Text.Length > 0) ? 4 : 0;
-            icheck += (OrdNbrTB.Text.Length > 0) ? 4 : 0;
-            icheck += (StartDayTB.Text.Length > 0) ? 4 : 0;
-
-
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
                 if (Ds.Tables.Contains("ACP"))
@@ -140,11 +131,7 @@ namespace GGFPortal.Finance
             strwhere += " and b.rec_date between '" + strStartDay + "' and '" + strEndDay + "' ";
             strwhere += (NationDDL.SelectedValue.ToString() == "") ? "" : " and e.nation_no ='"+ NationDDL.SelectedValue+"' ";
             strwhere += (FactoryDDL.SelectedValue.ToString() == "") ? "" : " and d.vendor_id ='" + FactoryDDL.SelectedValue + "' ";
-            strwhere += (PurTB.Text.Trim().Length > 0) ? " and a.pur_nbr ='" + PurTB.Text.Trim() + "'" : "" ;
-            strwhere += (StyleNoTB.Text.Trim().Length > 0) ? " and d.cus_item_no ='"+ StyleNoTB.Text.Trim() + "'" : "";
-            strwhere += (OrdNbrTB.Text.Trim().Length > 0) ? " and d.ord_nbr ='" + OrdNbrTB.Text.Trim() + "'" : "";
-            
-
+            strwhere += (PurTB.Text.Trim().Length > 0) ? " and a.pur_nbr ='" + PurTB.Text + "'" : "" ;
             switch (ETARBL.SelectedValue)
             {
                 case "ETA":
@@ -188,7 +175,7 @@ namespace GGFPortal.Finance
                                 ,g.transatn_term as '交易條件'
 								,d.cus_item_no as '款號'
 								,j.request_qty as '請購量'
-								,CEILING(j.sug_pur_qty) as '建議採購量'
+								,j.sug_pur_qty as '建議採購量'
 								,a.uncount_qty as '不計價數量'
                                 ,CONVERT(varchar(10) ,b.rec_date,111) as '入庫日'
                                 ,a.rec_qty as '入庫數量'
@@ -261,7 +248,7 @@ namespace GGFPortal.Finance
                 conn.ConnectionString = strConnectString;
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "select DISTINCT  TOP 10 pur_nbr from purc_receive_detail where rec_detail_status <>'CA' and pur_nbr like '%'+  @SearchText + '%'";
+                    cmd.CommandText = "select DISTINCT  TOP 100 pur_nbr from purc_receive_detail where rec_detail_status <>'CA' and pur_nbr like '%'+  @SearchText + '%'";
                     cmd.Parameters.AddWithValue("@SearchText", prefixText);
                     cmd.Connection = conn;
                     conn.Open();
@@ -279,114 +266,49 @@ namespace GGFPortal.Finance
                 }
             }
         }
-        [System.Web.Services.WebMethod]
-        public static List<string> SearchStyleNo(string prefixText, int count)
-        {
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = strConnectString;
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "select DISTINCT  TOP 10 cus_item_no from ordc_bah1 where bah_status <>'CA'  and cus_item_no like '%'+  @SearchText + '%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
-                    cmd.Connection = conn;
-                    conn.Open();
-                    List<string> StyleNo = new List<string>();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            StyleNo.Add(sdr["cus_item_no"].ToString());
-                        }
-                    }
-                    conn.Close();
-                    return StyleNo;
-                }
-            }
-        }
-        [System.Web.Services.WebMethod]
-        public static List<string> SearchOrdNbr(string prefixText, int count)
-        {
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = strConnectString;
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "select DISTINCT  TOP 10 ord_nbr from ordc_bah1 where bah_status <>'CA'  and ord_nbr like '%'+  @SearchText + '%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
-                    cmd.Connection = conn;
-                    conn.Open();
-                    List<string> OrdNbr = new List<string>();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            OrdNbr.Add(sdr["ord_nbr"].ToString());
-                        }
-                    }
-                    conn.Close();
-                    return OrdNbr;
-                }
-            }
-        }
 
         protected void SearchVendorID2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection Conn = new SqlConnection(strConnectString))
-            {
+            //using (SqlConnection Conn = new SqlConnection(strConnectString))
+            //{
 
-                if(SearchVendorID2.Text.Length>0)
-                {
-                    string strsql = "select DISTINCT  vendor_id,vendor_name from bas_vendor_master ";
-                    string strwhere = " where vendor_id like '%"+ SearchVendorID2TB.Text + "%' or vendor_name like '%" + SearchVendorID2TB.Text + "%'";
-                    DataTable DT = new DataTable();
-                    SqlDataAdapter myAdapter = new SqlDataAdapter(strsql+ strwhere, Conn);
-                    myAdapter.Fill(DT);
-                    if (DT.Rows.Count > 0)
-                    {
-                        VendorGV.DataSource = DT;
-                        VendorGV.DataBind();
-                    }
-                    else
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
-                }
-                else
-                {
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請輸入資料');</script>");
-                }
-            }
-            ModalPopupExtender1.Show();
+            //    if(SearchVendorID2.Text.Length>0)
+            //    {
+            //        string strsql = "select DISTINCT  vendor_id,vendor_name from bas_vendor_master ";
+            //        string strwhere = " where vendor_id like '%"+ SearchVendorID2TB.Text + "%' or vendor_name like '%" + SearchVendorID2TB.Text + "%'";
+            //        DataTable DT = new DataTable();
+            //        SqlDataAdapter myAdapter = new SqlDataAdapter(strsql+ strwhere, Conn);
+            //        myAdapter.Fill(DT);
+            //        if (DT.Rows.Count > 0)
+            //        {
+            //            VendorGV.DataSource = DT;
+            //            VendorGV.DataBind();
+            //        }
+            //        else
+            //            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+            //    }
+            //    else
+            //    {
+            //        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請輸入資料');</script>");
+            //    }
+            //}
+            //ModalPopupExtender1.Show();
         }
 
         protected void VendorGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            ModalPopupExtender1.Hide();
-            //將Ajax的資料丟到其他欄位
-            GridViewRow row = VendorGV.Rows[e.NewSelectedIndex];
-            VendorTB.Text = row.Cells[1].Text;
-            UpdatePanel2.Update();
+            //ModalPopupExtender1.Hide();
+            ////將Ajax的資料丟到其他欄位
+            //GridViewRow row = VendorGV.Rows[e.NewSelectedIndex];
+            //VendorTB.Text = row.Cells[1].Text;
+            //UpdatePanel2.Update();
 
         }
 
-        protected void SearchVendorIDBT_Click(object sender, ImageClickEventArgs e)
-        {
-            ModalPopupExtender1.Show();
-        }
+        //protected void SearchVendorIDBT_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    ModalPopupExtender1.Show();
+        //}
 
-        protected void ClearBT_Click(object sender, EventArgs e)
-        {
-            FactoryDDL.SelectedIndex = -1;
-            NationDDL.SelectedIndex = -1;
-            SiteDDL.SelectedIndex = -1;
-            ACPRBL.SelectedIndex = -1;
-            ETARBL.SelectedIndex = -1;
-            ItemRBL.SelectedIndex = -1;
-            PurTB.Text = "";
-            EndDayTB.Text = "";
-            OrdNbrTB.Text = "";
-            StartDayTB.Text = "";
-            StyleNoTB.Text = "";
-            VendorTB.Text = "";
-        }
     }
 }

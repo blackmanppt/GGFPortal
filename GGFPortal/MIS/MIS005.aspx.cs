@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace GGFPortal.MIS
 {
-    public partial class MIS004 : System.Web.UI.Page
+    public partial class MIS005 : System.Web.UI.Page
     {
         static DataSet Ds = new DataSet();
 
@@ -47,7 +47,7 @@ namespace GGFPortal.MIS
 
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
-                                SELECT uid,[phone] as '分機'
+                                SELECT [phone] as '分機'
                                       ,[name] as '員工姓名'
                                       ,[empolyee_no] as '員工編號'
                                       ,[eng_name] as '英文姓名'
@@ -132,11 +132,11 @@ namespace GGFPortal.MIS
 
                         try
                         {
-                            Log.ErrorLog(ex1, "Insert Error", "MIS004.aspx");
+                            Log.ErrorLog(ex1, "Insert Error", "TAX002.aspx");
                         }
                         catch (Exception ex2)
                         {
-                            Log.ErrorLog(ex2, "Insert Error2", "MIS004.aspx");
+                            Log.ErrorLog(ex2, "Insert Error2", "TAX002.aspx");
                         }
                         finally
                         {

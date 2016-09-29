@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -327,6 +328,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
     <Content Include="Finance\Finace001.aspx" />
+    <Content Include="Finance\Finance003.aspx" />
     <Content Include="Finance\Finance002.aspx" />
     <Content Include="Finance\TAX\TAX002.aspx" />
     <Content Include="IMG\images.png" />
@@ -334,6 +336,7 @@
     <Content Include="MIS\MIS002.aspx" />
     <Content Include="MIS\MIS001.aspx" />
     <Content Include="MIS\MIS003.aspx" />
+    <Content Include="MIS\MIS005.aspx" />
     <Content Include="MIS\MIS004.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -345,18 +348,29 @@
     <Content Include="DataSetSource\MIS001.xsc">
       <DependentUpon>MIS001.xsd</DependentUpon>
     </Content>
-    <Content Include="DataSetSource\FinanceDS001.xsc">
-      <DependentUpon>FinanceDS001.xsd</DependentUpon>
-    </Content>
     <Content Include="Content\kendo\2014.1.318\images\kendoui.woff" />
     <Content Include="Content\kendo\2014.1.318\images\kendoui.ttf" />
-    <None Include="DataSetSource\FinanceDS001.xsd">
+    <Content Include="DataSetSource\FinanceDS002.xsc">
+      <DependentUpon>FinanceDS002.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\FinanceD001.xsc">
+      <DependentUpon>FinanceD001.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\FinanceD001.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FinanceDS0011.Designer.cs</LastGenOutput>
+      <LastGenOutput>FinanceD001.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSetSource\FinanceDS001.xss">
-      <DependentUpon>FinanceDS001.xsd</DependentUpon>
+    <Content Include="DataSetSource\FinanceD001.xss">
+      <DependentUpon>FinanceD001.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\FinanceDS002.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinanceDS002.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\FinanceDS002.xss">
+      <DependentUpon>FinanceDS002.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\MIS001.xsd">
       <SubType>Designer</SubType>
@@ -384,6 +398,17 @@
     </None>
     <Content Include="DataSetSource\TAXDS001.xss">
       <DependentUpon>TAXDS001.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\TEMPDS.xsc">
+      <DependentUpon>TEMPDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\TEMPDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TEMPDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\TEMPDS.xss">
+      <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
@@ -916,10 +941,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSetSource\FinanceDS001.Designer.cs">
+    <Compile Include="DataSetSource\FinanceD001.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FinanceDS001.xsd</DependentUpon>
+      <DependentUpon>FinanceD001.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\FinanceDS002.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceDS002.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\MIS001.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -939,12 +969,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TAXDS001.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\TEMPDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TEMPDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finace001.aspx.cs">
       <DependentUpon>Finace001.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Finance\Finace001.aspx.designer.cs">
       <DependentUpon>Finace001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Finance003.aspx.cs">
+      <DependentUpon>Finance003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance003.aspx.designer.cs">
+      <DependentUpon>Finance003.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance002.aspx.cs">
       <DependentUpon>Finance002.aspx</DependentUpon>
@@ -997,6 +1039,13 @@
     </Compile>
     <Compile Include="MIS\MIS003.aspx.designer.cs">
       <DependentUpon>MIS003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\MIS005.aspx.cs">
+      <DependentUpon>MIS005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS005.aspx.designer.cs">
+      <DependentUpon>MIS005.aspx</DependentUpon>
     </Compile>
     <Compile Include="MIS\MIS004.aspx.cs">
       <DependentUpon>MIS004.aspx</DependentUpon>

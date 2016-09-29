@@ -26,6 +26,14 @@
             <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay"  Format="yyyyMMdd"  />
         <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
     
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="公司別："></asp:Label>
+        <asp:DropDownList ID="SiteDDL" runat="server">
+            <asp:ListItem>全部</asp:ListItem>
+            <asp:ListItem>GGF</asp:ListItem>
+            <asp:ListItem>TCL</asp:ListItem>
+        </asp:DropDownList>
+    
     </div>
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
@@ -37,10 +45,11 @@
                 </DataSources>
             </LocalReport>
         </rsweb:ReportViewer>
-        <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceDS001TableAdapters.ViewShpcTableAdapter">
+        <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcTableAdapter">
             <SelectParameters>
                 <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" />
                 <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
+                <asp:SessionParameter DefaultValue="" Name="site" SessionField="F001Site" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
     </div>

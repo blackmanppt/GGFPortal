@@ -10,7 +10,7 @@
 namespace GGFPortal.MIS {
     
     
-    public partial class MIS004 {
+    public partial class MIS005 {
         
         /// <summary>
         /// form1 控制項。

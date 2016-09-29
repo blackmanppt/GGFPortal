@@ -20,7 +20,9 @@
                         <br />
                         <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MIS/MIS002.aspx">採購單未簽核查詢</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/MIS/MIS004.aspx">分機表</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/MIS/MIS004.aspx">分機表(維護)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/MIS/MIS005.aspx">分機表</asp:HyperLink>
                     </td>
                     <td>
                         <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/test/test.aspx">test</asp:HyperLink>
@@ -47,8 +49,12 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>test</td>
-                    <td>&nbsp;</td>
+                    <td>船務</td>
+                    <td>
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Ship/Search/Search001.aspx">應付資料搜尋</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/Ship/Search/Search002.aspx">應付資料搜尋(含已應付)</asp:HyperLink>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
