@@ -327,10 +327,12 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Finance\Finance004.aspx" />
     <Content Include="Finance\Finace001.aspx" />
     <Content Include="Finance\Finance003.aspx" />
     <Content Include="Finance\Finance002.aspx" />
     <Content Include="Finance\TAX\TAX002.aspx" />
+    <Content Include="Finance\TAX\TAX003.aspx" />
     <Content Include="IMG\images.png" />
     <Content Include="IMG\spotlight001.png" />
     <Content Include="MIS\MIS002.aspx" />
@@ -371,6 +373,17 @@
     </None>
     <Content Include="DataSetSource\FinanceDS002.xss">
       <DependentUpon>FinanceDS002.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\FinanceDS004.xsc">
+      <DependentUpon>FinanceDS004.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\FinanceDS004.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinanceDS004.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\FinanceDS004.xss">
+      <DependentUpon>FinanceDS004.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\MIS001.xsd">
       <SubType>Designer</SubType>
@@ -951,6 +964,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FinanceDS002.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\FinanceDS004.cs">
+      <DependentUpon>FinanceDS004.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\FinanceDS004.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinanceDS004.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\MIS001.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -973,6 +994,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TEMPDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Finance004.aspx.cs">
+      <DependentUpon>Finance004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance004.aspx.designer.cs">
+      <DependentUpon>Finance004.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finace001.aspx.cs">
       <DependentUpon>Finace001.aspx</DependentUpon>
@@ -1008,6 +1036,13 @@
     </Compile>
     <Compile Include="Finance\TAX\TAX002.aspx.designer.cs">
       <DependentUpon>TAX002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX003.aspx.cs">
+      <DependentUpon>TAX003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX003.aspx.designer.cs">
+      <DependentUpon>TAX003.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1129,6 +1164,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\ReportFinance004.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportMIS001.rdlc" />

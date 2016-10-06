@@ -143,8 +143,8 @@ namespace GGFPortal.Finance
             strwhere += (PurTB.Text.Trim().Length > 0) ? " and a.pur_nbr ='" + PurTB.Text.Trim() + "'" : "" ;
             strwhere += (StyleNoTB.Text.Trim().Length > 0) ? " and d.cus_item_no ='"+ StyleNoTB.Text.Trim() + "'" : "";
             strwhere += (OrdNbrTB.Text.Trim().Length > 0) ? " and d.ord_nbr ='" + OrdNbrTB.Text.Trim() + "'" : "";
+            strwhere += (VendorTB.Text.Trim().Length > 0) ? " and c.vendor_id ='" + VendorTB.Text.Trim() + "'" : "";
             
-
             switch (ETARBL.SelectedValue)
             {
                 case "ETA":
@@ -162,7 +162,7 @@ namespace GGFPortal.Finance
                     strwhere += " and c.pur_kind = 'M' ";
                     break;
                 case "副料":
-                    strwhere += " and pur_kind = 'S' ";
+                    strwhere += " and c.pur_kind = 'S' ";
                     break;
                 default:
                     break;
@@ -181,22 +181,22 @@ namespace GGFPortal.Finance
             string sqlstr = @"
                                 select
 								a.site,
+                                a.site,
                                 dbo.F_NationName(e.site,e.nation_no) as '產區'
                                 ,dbo.F_VendorName(d.site,d.vendor_id) as '代工廠'
                                 ,a.rec_nbr as '入庫單號'
                                 ,c.pur_nbr as '採購單號'
                                 ,g.transatn_term as '交易條件'
 								,d.cus_item_no as '款號'
-								,j.request_qty as '請購量'
-								,CEILING(j.sug_pur_qty) as '建議採購量'
+								,h.pur_qty as '採購量'
+                                ,c.vendor_id as '廠商代號'
 								,a.uncount_qty as '不計價數量'
                                 ,CONVERT(varchar(10) ,b.rec_date,111) as '入庫日'
                                 ,a.rec_qty as '入庫數量'
 								,[dbo].[F_RecQty](a.site,a.pur_nbr,a.pur_seq) as '已入庫量'
-								,a.rec_qty-j.request_qty as '差異量'
 								,a.rec_unit as '單位'
-                                ,a.pur_price as '單價'
-                                ,a.rec_qty*a.pur_price as '金額'
+                                ,a.pur_price   as '單價'
+                                ,a.rec_qty*a.pur_price  as '金額'
                                 ,f.employee_name as '業務'
                                 ,case when a.posted_acp='P' then 'Y' else 'N' end  as '是否轉應付'
                                 ,h.overage_allow as '允收上限'
@@ -211,13 +211,12 @@ namespace GGFPortal.Finance
                                 left join purc_purchase_master c on a.site=c.site and a.pur_nbr=c.pur_nbr 
                                 left join ordc_bah1 d on c.site=d.site and c.ord_nbr=d.ord_nbr
                                 left join ordc_bah2 e on d.site=e.site and d.ord_nbr=e.ord_nbr
-                                left join bas_employee f on a.site=f.site and b.receiver=f.employee_no
+                                left join bas_employee f on a.site=f.site and c.buyer=f.employee_no
                                 left join bas_vendor_mgt g on b.vendor_id=g.vendor_id and b.site=g.site
                                 left join purc_purchase_detail h on a.site=h.site and a.pur_nbr=h.pur_nbr and a.pur_seq=h.pur_seq
                                 left join bas_item_master i on h.item_no =i.item_no and h.site=i.site
-								left join purc_request_detail j on h.pur_nbr=j.pur_nbr and h.site=j.site and h.pur_seq=j.pur_seq
                                 where a.rec_detail_status <> 'CA' and b.rec_head_status<>'CA' AND c.pur_head_status<>'CA' and d.bah_status<>'CA'
-								and h.pur_detail_status <> 'CA' and i.item_status <>'CA' and j.req_detail_status<>'CA'
+								and h.pur_detail_status <> 'CA' and i.item_status <>'CA' 
                             ";
 
             sqlstr +=  strwhere + " ";

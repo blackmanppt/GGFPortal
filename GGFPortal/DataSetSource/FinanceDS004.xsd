@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FinanceDS004" targetNamespace="http://tempuri.org/FinanceDS004.xsd" xmlns:mstns="http://tempuri.org/FinanceDS004.xsd" xmlns="http://tempuri.org/FinanceDS004.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FinanceDS004" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FinanceDS004" msprop:Generator_UserDSName="FinanceDS004">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Shpc" msprop:Generator_TableClassName="ShpcDataTable" msprop:Generator_TableVarName="tableShpc" msprop:Generator_TablePropName="Shpc" msprop:Generator_RowDeletingName="ShpcRowDeleting" msprop:Generator_RowChangingName="ShpcRowChanging" msprop:Generator_RowEvHandlerName="ShpcRowChangeEventHandler" msprop:Generator_RowDeletedName="ShpcRowDeleted" msprop:Generator_UserTableName="Shpc" msprop:Generator_RowChangedName="ShpcRowChanged" msprop:Generator_RowEvArgName="ShpcRowChangeEvent" msprop:Generator_RowClassName="ShpcRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="公司別" msprop:Generator_ColumnVarNameInTable="column公司別" msprop:Generator_ColumnPropNameInRow="公司別" msprop:Generator_ColumnPropNameInTable="公司別Column" msprop:Generator_UserColumnName="公司別" type="xs:string" minOccurs="0" />
+              <xs:element name="開航日" msprop:Generator_ColumnVarNameInTable="column開航日" msprop:Generator_ColumnPropNameInRow="開航日" msprop:Generator_ColumnPropNameInTable="開航日Column" msprop:Generator_UserColumnName="開航日" type="xs:string" minOccurs="0" />
+              <xs:element name="客戶" msprop:Generator_ColumnVarNameInTable="column客戶" msprop:Generator_ColumnPropNameInRow="客戶" msprop:Generator_ColumnPropNameInTable="客戶Column" msprop:Generator_UserColumnName="客戶" type="xs:string" minOccurs="0" />
+              <xs:element name="style_no" msprop:Generator_ColumnVarNameInTable="columnstyle_no" msprop:Generator_ColumnPropNameInRow="style_no" msprop:Generator_ColumnPropNameInTable="style_noColumn" msprop:Generator_UserColumnName="style_no" type="xs:string" minOccurs="0" />
+              <xs:element name="工廠" msprop:Generator_ColumnVarNameInTable="column工廠" msprop:Generator_ColumnPropNameInRow="工廠" msprop:Generator_ColumnPropNameInTable="工廠Column" msprop:Generator_UserColumnName="工廠" type="xs:string" minOccurs="0" />
+              <xs:element name="出貨數量" msprop:Generator_ColumnVarNameInTable="column出貨數量" msprop:Generator_ColumnPropNameInRow="出貨數量" msprop:Generator_ColumnPropNameInTable="出貨數量Column" msprop:Generator_UserColumnName="出貨數量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="出貨單價" msprop:Generator_ColumnVarNameInTable="column出貨單價" msprop:Generator_ColumnPropNameInRow="出貨單價" msprop:Generator_ColumnPropNameInTable="出貨單價Column" msprop:Generator_UserColumnName="出貨單價" type="xs:decimal" minOccurs="0" />
+              <xs:element name="訂單總數" msprop:Generator_ColumnVarNameInTable="column訂單總數" msprop:Generator_ColumnPropNameInRow="訂單總數" msprop:Generator_ColumnPropNameInTable="訂單總數Column" msprop:Generator_UserColumnName="訂單總數" type="xs:decimal" minOccurs="0" />
+              <xs:element name="廠商名稱" msprop:Generator_ColumnVarNameInTable="column廠商名稱" msprop:Generator_ColumnPropNameInRow="廠商名稱" msprop:Generator_ColumnPropNameInTable="廠商名稱Column" msprop:Generator_UserColumnName="廠商名稱" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

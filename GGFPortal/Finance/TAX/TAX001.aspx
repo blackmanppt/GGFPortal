@@ -43,7 +43,7 @@
             </tr>
             <tr style=" height: 20px">
                 <td class="auto-style1">
-                    <asp:Button ID="ConvertBT" runat="server" OnClick="ConvertBT_Click" Text="結轉" />
+                    <asp:Button ID="ConvertBT" runat="server" OnClick="ConvertBT_Click" Text="結轉" Visible="False" />
                 </td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>
@@ -66,7 +66,7 @@
                         <ContentTemplate>
                             <asp:Label ID="ConvertLB" runat="server" BackColor="#00CC99" BorderColor="#CC33FF" Font-Size="X-Large" Text="已結轉資料" Visible="False"></asp:Label>
                             <br />
-                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" />
+                            <asp:Button ID="DeleteBT" runat="server" OnClick="DeleteBT_Click" Text="刪除" Visible="False" />
                             <asp:GridView ID="ConvertGV" runat="server" AllowPaging="True" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" OnPageIndexChanging="ConvertGV_PageIndexChanging">
                                 <Columns>
                                     <asp:BoundField DataField="style_no" HeaderText="Style No" />

@@ -33,6 +33,8 @@
                     <td>
                         <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Finance/Finace001.aspx">出貨大表</asp:HyperLink>
                         <br />
+                        <asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="~/Finance/Finance004.aspx">出貨大表(By客戶)</asp:HyperLink>
+                        <br />
                         <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Finance/TAX/TAX001.aspx">進項稅額應收結轉</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Finance/TAX/TAX002.aspx">包裝底稿結轉</asp:HyperLink>

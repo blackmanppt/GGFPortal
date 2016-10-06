@@ -136,13 +136,13 @@ namespace GGFPortal.Finance.TAX
             switch (strGV)
             {
                 case "ConvertGV":
-                    DeleteBT.Visible = (bshow) ? true : false;
-                    ConvertGV.Visible = (bshow) ? true : false;
-                    ConvertLB.Visible = (bshow) ? true : false;
+                    DeleteBT.Visible = bshow;
+                    ConvertGV.Visible = bshow;
+                    ConvertLB.Visible = bshow;
                     break;
                 case "AcrGV":
-                    AcrGV.Visible = (bshow) ? true : false;
-                    AcrLB.Visible = (bshow) ? true : false;
+                    AcrGV.Visible = bshow;
+                    AcrLB.Visible = bshow;
                     break;
                 default:
                     break;
@@ -185,6 +185,20 @@ namespace GGFPortal.Finance.TAX
             Boolean bCheck = false;
             if (string.IsNullOrEmpty(DateDDL.SelectedItem.Text))
                 bCheck = true;
+            if(Ds.Tables.Contains("SelectedAcr"))
+            {
+                if (Ds.Tables["SelectedAcr"].Rows.Count > 0)
+                {
+                    ConvertBT.Visible = true;
+                    DeleteBT.Visible = true;
+                }
+            }
+            else
+            {
+                ConvertBT.Visible = false;
+                DeleteBT.Visible = false;
+
+            }
             return bCheck;
         }
         
@@ -207,7 +221,7 @@ namespace GGFPortal.Finance.TAX
             if (Ds.Tables.Contains("SelectedAcr"))
             {
                 if (Ds.Tables["SelectedAcr"].Rows.Count > 0)
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('已有結轉資料:\\n請洽MIS Stone');</script>");
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('已有結轉資料');</script>");
             }
             else
             {
