@@ -850,6 +850,9 @@
     <Content Include="scripts\kendo\2014.1.318\kendo.view.min.js" />
     <Content Include="scripts\kendo\2014.1.318\kendo.web.min.js" />
     <Content Include="scripts\kendo\2014.1.318\kendo.window.min.js" />
+    <Content Include="Secretary\Secretary004.aspx" />
+    <Content Include="Secretary\Secretary003.aspx" />
+    <Content Include="Secretary\Secretary002.aspx" />
     <Content Include="Secretary\Secretary001.aspx" />
     <Content Include="test\AutoComplete.aspx" />
     <Content Include="test\MVC\ViewPage1.cshtml" />
@@ -1113,6 +1116,27 @@
     </Compile>
     <Compile Include="SearchIndex.aspx.designer.cs">
       <DependentUpon>SearchIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary004.aspx.cs">
+      <DependentUpon>Secretary004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary004.aspx.designer.cs">
+      <DependentUpon>Secretary004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary003.aspx.cs">
+      <DependentUpon>Secretary003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary003.aspx.designer.cs">
+      <DependentUpon>Secretary003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary002.aspx.cs">
+      <DependentUpon>Secretary002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary002.aspx.designer.cs">
+      <DependentUpon>Secretary002.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary001.aspx.cs">
       <DependentUpon>Secretary001.aspx</DependentUpon>

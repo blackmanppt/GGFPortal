@@ -25,10 +25,10 @@
         }
         .auto-style4 {
             height: 20px;
-            width: 180px;
+            width: 386px;
         }
         .auto-style5 {
-            width: 180px;
+            width: 386px;
         }
         .auto-style6 {
             width: 102px;
@@ -36,7 +36,7 @@
             background-color: #0099FF;
         }
         .auto-style7 {
-            text-align: right;
+            text-align: left;
         }
         .auto-style8 {
             width: 100px;
@@ -45,7 +45,7 @@
             height: 30px;
         }
         .auto-style9 {
-            width: 180px;
+            width: 386px;
             height: 30px;
         }
         .auto-style10 {
@@ -72,7 +72,7 @@
     
     </div>
     <div>
-        <table style="width:600px; border-spacing: 1px; border-collapse: inherit;" border="1">
+        <table style="width:800px; border-spacing: 1px; border-collapse: inherit;" border="1">
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="SiteLB" runat="server" Text="公司別："></asp:Label>
@@ -191,8 +191,18 @@
                  </td>
                 <td class="auto-style6">
                                     
+                    <asp:Label ID="Label4" runat="server" Text="入庫單號："></asp:Label>
+                                    
                                 </td>
                 <td class="auto-style7">
+                    <asp:TextBox ID="RecTB" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="auto-style5"></td>
+                <td></td>
+                <td>
                     <asp:Button ID="ClearBT" runat="server" Text="清空資料" OnClick="ClearBT_Click" />
                     <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" />
                 </td>

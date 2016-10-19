@@ -144,6 +144,7 @@ namespace GGFPortal.Finance
             strwhere += (StyleNoTB.Text.Trim().Length > 0) ? " and d.cus_item_no ='"+ StyleNoTB.Text.Trim() + "'" : "";
             strwhere += (OrdNbrTB.Text.Trim().Length > 0) ? " and d.ord_nbr ='" + OrdNbrTB.Text.Trim() + "'" : "";
             strwhere += (VendorTB.Text.Trim().Length > 0) ? " and c.vendor_id ='" + VendorTB.Text.Trim() + "'" : "";
+            strwhere += (RecTB.Text.Trim().Length > 0) ? " and a.rec_nbr ='" + RecTB.Text.Trim() + "'" : "";
             
             switch (ETARBL.SelectedValue)
             {
@@ -181,7 +182,6 @@ namespace GGFPortal.Finance
             string sqlstr = @"
                                 select
 								a.site,
-                                a.site,
                                 dbo.F_NationName(e.site,e.nation_no) as '產區'
                                 ,dbo.F_VendorName(d.site,d.vendor_id) as '代工廠'
                                 ,a.rec_nbr as '入庫單號'
@@ -191,6 +191,7 @@ namespace GGFPortal.Finance
 								,h.pur_qty as '採購量'
                                 ,c.vendor_id as '廠商代號'
 								,a.uncount_qty as '不計價數量'
+                                ,[dbo].[F_RecUncountQty](a.site,a.pur_nbr,a.pur_seq) as '不計價總量'
                                 ,CONVERT(varchar(10) ,b.rec_date,111) as '入庫日'
                                 ,a.rec_qty as '入庫數量'
 								,[dbo].[F_RecQty](a.site,a.pur_nbr,a.pur_seq) as '已入庫量'
@@ -206,6 +207,7 @@ namespace GGFPortal.Finance
 								,a.qty as '庫存'
                                 ,i.item_name as '料號名稱'
                                 ,case when c.pur_kind = 'M' then '主料' when c.pur_kind = 'S' then '副料' else c.pur_kind end as '料號別'
+                                ,j.color_cname,j.color_ename ,i.item_spk as '英文料號'
                                 from purc_receive_detail a 
                                 left join purc_receive_master b on a.site=b.site and a.rec_nbr=b.rec_nbr and a.kind=b.kind 
                                 left join purc_purchase_master c on a.site=c.site and a.pur_nbr=c.pur_nbr 
@@ -215,6 +217,7 @@ namespace GGFPortal.Finance
                                 left join bas_vendor_mgt g on b.vendor_id=g.vendor_id and b.site=g.site
                                 left join purc_purchase_detail h on a.site=h.site and a.pur_nbr=h.pur_nbr and a.pur_seq=h.pur_seq
                                 left join bas_item_master i on h.item_no =i.item_no and h.site=i.site
+                                left join v_color j on h.item_no =j.item_no and h.site=j.site
                                 where a.rec_detail_status <> 'CA' and b.rec_head_status<>'CA' AND c.pur_head_status<>'CA' and d.bah_status<>'CA'
 								and h.pur_detail_status <> 'CA' and i.item_status <>'CA' 
                             ";

@@ -303,6 +303,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column不計價數量;
             
+            private global::System.Data.DataColumn column不計價總量;
+            
             private global::System.Data.DataColumn column入庫數量;
             
             private global::System.Data.DataColumn column已入庫量;
@@ -324,6 +326,10 @@ namespace GGFPortal.DataSetSource {
             private global::System.Data.DataColumn column業務;
             
             private global::System.Data.DataColumn columneta_date;
+            
+            private global::System.Data.DataColumn column中文料號;
+            
+            private global::System.Data.DataColumn column英文料號;
             
             private global::System.Data.DataColumn columnetd_date;
             
@@ -458,6 +464,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 不計價總量Column {
+                get {
+                    return this.column不計價總量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn 入庫數量Column {
                 get {
                     return this.column入庫數量;
@@ -546,6 +560,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 中文料號Column {
+                get {
+                    return this.column中文料號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 英文料號Column {
+                get {
+                    return this.column英文料號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn etd_dateColumn {
                 get {
                     return this.columnetd_date;
@@ -602,6 +632,7 @@ namespace GGFPortal.DataSetSource {
                         string 料號名稱, 
                         decimal 採購量, 
                         decimal 不計價數量, 
+                        decimal 不計價總量, 
                         decimal 入庫數量, 
                         decimal 已入庫量, 
                         string 單位, 
@@ -613,6 +644,8 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime 入庫日, 
                         string 業務, 
                         System.DateTime eta_date, 
+                        string 中文料號, 
+                        string 英文料號, 
                         System.DateTime etd_date) {
                 Finance002Row rowFinance002Row = ((Finance002Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -628,6 +661,7 @@ namespace GGFPortal.DataSetSource {
                         料號名稱,
                         採購量,
                         不計價數量,
+                        不計價總量,
                         入庫數量,
                         已入庫量,
                         單位,
@@ -639,6 +673,8 @@ namespace GGFPortal.DataSetSource {
                         入庫日,
                         業務,
                         eta_date,
+                        中文料號,
+                        英文料號,
                         etd_date};
                 rowFinance002Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFinance002Row);
@@ -674,6 +710,7 @@ namespace GGFPortal.DataSetSource {
                 this.column料號名稱 = base.Columns["料號名稱"];
                 this.column採購量 = base.Columns["採購量"];
                 this.column不計價數量 = base.Columns["不計價數量"];
+                this.column不計價總量 = base.Columns["不計價總量"];
                 this.column入庫數量 = base.Columns["入庫數量"];
                 this.column已入庫量 = base.Columns["已入庫量"];
                 this.column單位 = base.Columns["單位"];
@@ -685,6 +722,8 @@ namespace GGFPortal.DataSetSource {
                 this.column入庫日 = base.Columns["入庫日"];
                 this.column業務 = base.Columns["業務"];
                 this.columneta_date = base.Columns["eta_date"];
+                this.column中文料號 = base.Columns["中文料號"];
+                this.column英文料號 = base.Columns["英文料號"];
                 this.columnetd_date = base.Columns["etd_date"];
             }
             
@@ -715,6 +754,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column採購量);
                 this.column不計價數量 = new global::System.Data.DataColumn("不計價數量", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column不計價數量);
+                this.column不計價總量 = new global::System.Data.DataColumn("不計價總量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column不計價總量);
                 this.column入庫數量 = new global::System.Data.DataColumn("入庫數量", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column入庫數量);
                 this.column已入庫量 = new global::System.Data.DataColumn("已入庫量", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -737,6 +778,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column業務);
                 this.columneta_date = new global::System.Data.DataColumn("eta_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columneta_date);
+                this.column中文料號 = new global::System.Data.DataColumn("中文料號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column中文料號);
+                this.column英文料號 = new global::System.Data.DataColumn("英文料號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column英文料號);
                 this.columnetd_date = new global::System.Data.DataColumn("etd_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnetd_date);
             }
@@ -1073,6 +1118,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 不計價總量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFinance002.不計價總量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Finance002\' 中資料行 \'不計價總量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableFinance002.不計價總量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal 入庫數量 {
                 get {
                     try {
@@ -1249,6 +1310,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 中文料號 {
+                get {
+                    try {
+                        return ((string)(this[this.tableFinance002.中文料號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Finance002\' 中資料行 \'中文料號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableFinance002.中文料號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 英文料號 {
+                get {
+                    try {
+                        return ((string)(this[this.tableFinance002.英文料號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Finance002\' 中資料行 \'英文料號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableFinance002.英文料號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime etd_date {
                 get {
                     try {
@@ -1409,6 +1502,18 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is不計價總量Null() {
+                return this.IsNull(this.tableFinance002.不計價總量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set不計價總量Null() {
+                this[this.tableFinance002.不計價總量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is入庫數量Null() {
                 return this.IsNull(this.tableFinance002.入庫數量Column);
             }
@@ -1537,6 +1642,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Seteta_dateNull() {
                 this[this.tableFinance002.eta_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is中文料號Null() {
+                return this.IsNull(this.tableFinance002.中文料號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set中文料號Null() {
+                this[this.tableFinance002.中文料號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is英文料號Null() {
+                return this.IsNull(this.tableFinance002.英文料號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set英文料號Null() {
+                this[this.tableFinance002.英文料號Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
