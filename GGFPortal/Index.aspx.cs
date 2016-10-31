@@ -16,7 +16,7 @@ namespace GGFPortal
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString() + "');</script>");
         }
     }
 }

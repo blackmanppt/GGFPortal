@@ -24,10 +24,8 @@ namespace GGFPortal.Finance.TAX
             {
                 //int iCountYear = DateTime.Now.Year - 2015;
                 DateTime dtNow = DateTime.Now;
-                dtNow = DateTime.Parse("2020-12-01"); //測試用
+                //dtNow = DateTime.Parse("2020-12-01"); //測試用
                 int iCountMonth = (dtNow.Year - 2015) * 12 + (dtNow.Month - 12);
-
-
                 for (int i = 1; i < iCountMonth; i++)
                 {
                     if (i == 1)
@@ -36,6 +34,18 @@ namespace GGFPortal.Finance.TAX
                     }
                     MonthDDL.Items.Add(DateTime.Now.AddMonths(-i).ToString("yyyyMM"));
                 }
+            }
+            if (IsPostBack)
+            {
+                if (StartDayTB.Text.Length > 0)
+                {
+                    EndDayTB_CalendarExtender.StartDate = Convert.ToDateTime(StartDayTB.Text);
+                }
+                if (EndDayTB.Text.Length > 0)
+                {
+                    StartDayTB_CalendarExtender.EndDate = Convert.ToDateTime(EndDayTB.Text);
+                }
+
             }
         }
 
@@ -86,7 +96,11 @@ namespace GGFPortal.Finance.TAX
         private string selectsql()
         {
             string strwhere = "";
+            string strStartDay, strEndDay;
             strwhere += (string.IsNullOrEmpty(StyleNoTB.Text.Trim())) ? "" : " and style_no = '" + StyleNoTB.Text.Trim() + "' ";
+            strStartDay = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "2014-01-01";
+            strEndDay = (EndDayTB.Text.Length > 0) ? EndDayTB.Text : "2999-01-01";
+            strwhere += " and acr_date between '" + strStartDay + "' and '" + strEndDay + "' ";
             if (MonthDDL.SelectedIndex>0)
             {
                 string date = MonthDDL.SelectedValue.Substring(4) + "/01/" + MonthDDL.SelectedValue.Substring(0, 4);
@@ -214,11 +228,7 @@ namespace GGFPortal.Finance.TAX
                     ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
                     try
                     {
-                        command1.CommandText = @"
-                                                UPDATE [dbo].[acr_trn_check]
-                                                   SET [ticket] = @ticket
-                                                 WHERE uid in ("+ suid.Substring(1) + ")";
-                        command1.Parameters.Add("@uid", SqlDbType.NVarChar).Value = suid.Substring(1);
+                        command1.CommandText =string.Format( @"UPDATE [dbo].[acr_trn_check] SET [ticket] = @ticket WHERE uid in ({0}) ", suid.Substring(1));
                         command1.Parameters.Add("@ticket", SqlDbType.NVarChar).Value = TicketBT.Text.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();

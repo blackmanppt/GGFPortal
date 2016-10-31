@@ -39,9 +39,13 @@
                         <br />
                         <asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Finance/TAX/TAX003.aspx">進項稅額應收發票</asp:HyperLink>
                         <br />
+                        <asp:HyperLink ID="HyperLink17" runat="server" NavigateUrl="~/Finance/TAX/TAX004.aspx">進項稅額結轉</asp:HyperLink>
+                        <br />
                         <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Finance/TAX/TAX002.aspx">包裝底稿結轉</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Finance/Finance002.aspx">應付檢查表</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Finance/Finance005.aspx">AP1查詢程式</asp:HyperLink>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

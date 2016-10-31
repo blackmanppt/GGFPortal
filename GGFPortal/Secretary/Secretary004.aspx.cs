@@ -53,9 +53,13 @@ namespace GGFPortal.Secretary
             {
                 using (SqlConnection Conn = new SqlConnection(strConnectString))
                 {
+                    string strSearch;
+                    strSearch = (SearchTB.Text.Trim().Length > 0) ? SearchTB.Text.Trim() : "";
                     DataTable dt = new DataTable();
                     string sqlstr = selectsql();
                     SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
+                    myAdapter.SelectCommand.Parameters.AddWithValue("Search", strSearch);
+                    myAdapter.SelectCommand.Parameters.AddWithValue("Search1", strSearch);
                     myAdapter.Fill(dt);
                     if (dt.Rows.Count > 0)
                     {
@@ -84,19 +88,19 @@ namespace GGFPortal.Secretary
 
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
-                                select a.*,b.cus_name from (
+                                select * from (
                                 SELECT 
                                 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 
-                                訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name 
+                                訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
                                 FROM ViewOrderQty 
                                 UNION ALL 
                                 SELECT 
                                 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 
-                                工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name 
-                                FROM ViewPreOrderQty ) a left join (select distinct cus_id,cus_name from   bas_cus_master) b on a.客戶名稱=b.cus_id 
+                                工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
+                                FROM ViewPreOrderQty ) a
                             ";
 
-            strwhere = " where 客戶名稱 like '%" + strSearch+ "%' and 訂單月份 like '" + DateDDL.SelectedValue + "'";
+            strwhere = string.Format(" where (ForMGF like @Search or 客戶名稱 like @Search1) and 訂單月份 like '{0}'",  DateDDL.SelectedValue);
             sqlstr += strwhere ;
             return sqlstr;
         }

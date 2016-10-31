@@ -7,26 +7,27 @@ namespace GGFPortal.ReferenceCode
 {
     public class StringConvert
     {
+        //將換行資料放入舉陣內
         public string SplitArray(string strtext, string strwhere, string strType)
         {
             string[] stringSeparators = new string[] { "\r\n" };
             string[] strtextarry = strtext.Split(stringSeparators, StringSplitOptions.None);
             if (strtextarry.Length > 1)
             {
-                string strIn = " and " + strType + " in ( ";
+                string strIn = string.Format(" and {0} in ( ", strType);
                 for (int i = 0; i < strtextarry.Length; i++)
                 {
                     if (strtextarry[i].Trim().Length > 0)
                         if (i == 0)
-                            strIn += " '" + strtextarry[i].Trim() + "' ";
+                            strIn += string.Format(" '{0}' ", strtextarry[i].Trim());
                         else
-                            strIn += " ,'" + strtextarry[i].Trim() + "' ";
+                            strIn += string.Format(" ,'{0}' ", strtextarry[i].Trim());
                 }
                 strIn += " ) ";
                 strwhere += strIn;
             }
             else
-                strwhere += " and " + strType + " = '" + strtext + "' ";
+                strwhere += string.Format(" and {0} = '{1}' ", strType, strtext);
             return strwhere;
         }
         public string GetDateString(string strtext)
@@ -38,6 +39,12 @@ namespace GGFPortal.ReferenceCode
                 rstr = (s.Length < 2) ? rstr + "0" + s : rstr + s;
             }
             return rstr;
+        }
+        public string GetSQLString(string strTableName)
+        {
+            string strSql;
+            strSql = " select * from " + strTableName;
+            return strSql;
         }
     }
 }

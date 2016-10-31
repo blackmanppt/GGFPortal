@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FinanceTempDS" targetNamespace="http://tempuri.org/FinanceTempDS.xsd" xmlns:mstns="http://tempuri.org/FinanceTempDS.xsd" xmlns="http://tempuri.org/FinanceTempDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FinanceTempDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FinanceTempDS" msprop:Generator_UserDSName="FinanceTempDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Finance005" msprop:Generator_TableClassName="Finance005DataTable" msprop:Generator_TableVarName="tableFinance005" msprop:Generator_TablePropName="Finance005" msprop:Generator_RowDeletingName="Finance005RowDeleting" msprop:Generator_RowChangingName="Finance005RowChanging" msprop:Generator_RowEvHandlerName="Finance005RowChangeEventHandler" msprop:Generator_RowDeletedName="Finance005RowDeleted" msprop:Generator_UserTableName="Finance005" msprop:Generator_RowChangedName="Finance005RowChanged" msprop:Generator_RowEvArgName="Finance005RowChangeEvent" msprop:Generator_RowClassName="Finance005Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="會計科目" msprop:Generator_ColumnVarNameInTable="column會計科目" msprop:Generator_ColumnPropNameInRow="會計科目" msprop:Generator_ColumnPropNameInTable="會計科目Column" msprop:Generator_UserColumnName="會計科目" type="xs:string" minOccurs="0" />
+              <xs:element name="借方" msprop:Generator_ColumnVarNameInTable="column借方" msprop:Generator_ColumnPropNameInRow="借方" msprop:Generator_ColumnPropNameInTable="借方Column" msprop:Generator_UserColumnName="借方" type="xs:decimal" minOccurs="0" />
+              <xs:element name="貸方" msprop:Generator_ColumnVarNameInTable="column貸方" msprop:Generator_ColumnPropNameInRow="貸方" msprop:Generator_ColumnPropNameInTable="貸方Column" msprop:Generator_UserColumnName="貸方" type="xs:decimal" minOccurs="0" />
+              <xs:element name="用途" msprop:Generator_ColumnVarNameInTable="column用途" msprop:Generator_ColumnPropNameInRow="用途" msprop:Generator_ColumnPropNameInTable="用途Column" msprop:Generator_UserColumnName="用途" type="xs:string" minOccurs="0" />
+              <xs:element name="備註" msprop:Generator_ColumnVarNameInTable="column備註" msprop:Generator_ColumnPropNameInRow="備註" msprop:Generator_ColumnPropNameInTable="備註Column" msprop:Generator_UserColumnName="備註" type="xs:string" minOccurs="0" />
+              <xs:element name="傳票號碼" msprop:Generator_ColumnVarNameInTable="column傳票號碼" msprop:Generator_ColumnPropNameInRow="傳票號碼" msprop:Generator_ColumnPropNameInTable="傳票號碼Column" msprop:Generator_UserColumnName="傳票號碼" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Finance006" msprop:Generator_TableClassName="Finance006DataTable" msprop:Generator_TableVarName="tableFinance006" msprop:Generator_TablePropName="Finance006" msprop:Generator_RowDeletingName="Finance006RowDeleting" msprop:Generator_RowChangingName="Finance006RowChanging" msprop:Generator_RowEvHandlerName="Finance006RowChangeEventHandler" msprop:Generator_RowDeletedName="Finance006RowDeleted" msprop:Generator_UserTableName="Finance006" msprop:Generator_RowChangedName="Finance006RowChanged" msprop:Generator_RowEvArgName="Finance006RowChangeEvent" msprop:Generator_RowClassName="Finance006Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="_x0030_01" msprop:Generator_ColumnVarNameInTable="column001" msprop:Generator_ColumnPropNameInRow="_001" msprop:Generator_ColumnPropNameInTable="_001Column" msprop:Generator_UserColumnName="001" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
