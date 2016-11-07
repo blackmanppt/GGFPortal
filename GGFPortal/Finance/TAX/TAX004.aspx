@@ -93,38 +93,13 @@
                 <asp:Button ID="Show" runat="server" Text="Show" style="display:none"/>
                 <asp:Panel ID="POPPanel" runat="server" Height="500px" Width="800px" align="center"  ScrollBars="Horizontal" BackColor="#33CCFF" style="">
                     <table style="width:100%;">
-                        <tr>
-                            <td class="auto-style3">
-                                <asp:Label ID="Label3" runat="server" Text="流水號："></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="UidLB" runat="server" Text=""></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style3">
-                                <asp:Label ID="Label4" runat="server" Text="分機："></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="PhoneLB" runat="server" Text=""></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style3">
-                                <asp:Label ID="Label5" runat="server" Text="員工姓名："></asp:Label>
-                            </td>
-                            <td>
-                                &nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
+
                         <tr>
                             <td colspan="3">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                             <ContentTemplate>
-                                <asp:GridView ID="AcrTicketGV" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AutoGenerateColumns="False">
-                                    <AlternatingRowStyle BackColor="#F7F7F7" />
+                                <asp:GridView ID="AcrTicketGV" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" AutoGenerateColumns="False">
+                                    <AlternatingRowStyle BackColor="#DCDCDC" />
                                     <Columns>
                                         <asp:TemplateField>
                                             <HeaderTemplate>
@@ -135,24 +110,26 @@
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" />
                                         </asp:TemplateField>
+                                        <asp:BoundField DataField="id" HeaderText="ID" />
                                         <asp:BoundField DataField="style_no" HeaderText="style_no" />
-                                        <asp:BoundField DataField="CheckCreateDate" HeaderText="時間" />
-                                        <asp:BoundField DataField="acr_seq" HeaderText="類別" />
-                                        <asp:BoundField DataField="acr_nbr" HeaderText="單據號碼" />
-                                        <asp:BoundField DataField="acr_seq" HeaderText="代工廠" />
-                                        <asp:BoundField DataField="acr_date" HeaderText="應收單據日期" />
+                                        <asp:BoundField DataField="nbr" HeaderText="單據號碼" />
+                                        <asp:BoundField DataField="TYPE" HeaderText="類別" />
+                                        <asp:BoundField DataField="DATE" HeaderText="建立時間" DataFormatString="{0:yyyy/MM/dd}" />
+                                        <asp:BoundField DataField="MONEY" HeaderText="銷貨收入" />
+                                        <asp:BoundField DataField="AMT" HeaderText="預收貨款" />
+<%--                                    <asp:BoundField DataField="acr_date" HeaderText="應收單據日期" />
                                         <asp:BoundField DataField="CheckFlag" HeaderText="補入狀態" />
-                                        <asp:BoundField DataField="acr_status" HeaderText="狀態" />
+                                        <asp:BoundField DataField="acr_status" HeaderText="狀態" />--%>
                                     </Columns>
-                                    <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                                    <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                    <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                                    <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                                    <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                                    <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                                    <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                                    <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                                    <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                    <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" BorderStyle="None" />
+                                    <RowStyle BackColor="#EEEEEE" ForeColor="Black" BorderStyle="None" />
+                                    <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#0000A9" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#000065" />
                                 </asp:GridView>
                             </ContentTemplate>
                         </asp:UpdatePanel>

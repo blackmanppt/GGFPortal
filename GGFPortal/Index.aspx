@@ -67,16 +67,20 @@
                     </td>
                     <td>&nbsp;</td>
                 </tr>
+                
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                    <td>業務</td>
+                    <td><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Sales/Sales001.aspx">樣品</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Sales/SALE.aspx">樣品</asp:HyperLink>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
             </table>

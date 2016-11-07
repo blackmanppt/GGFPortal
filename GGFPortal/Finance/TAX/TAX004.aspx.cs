@@ -125,7 +125,7 @@ namespace GGFPortal.Finance.TAX
 
             if (F_SaveCheck())
             {
-
+                //Ds.Tables["AcrTable"].Rows.Count
             }
             else
             {
@@ -134,9 +134,57 @@ namespace GGFPortal.Finance.TAX
         }
         private Boolean F_SaveCheck()
         {
-            Boolean bcheck = false;
+            int icount = AcrTicketGV.Rows.Count;
+            Boolean bCheck = false;
+            if (icount > 0)
+            {
+                int iMainCheck = 0, iSubCheck = 0;
+                Boolean bStyleNoCheck=true;
+                string strStyleNo = "";
+                for (int i = 0; i < icount; i++)
+                {
+                    CheckBox chk = (CheckBox)AcrTicketGV.Rows[i].Cells[0].FindControl("CheckBox1");
+                    chk.Checked = bCheck;
+                    if (chk.Checked)
+                    {
+                        if (i>0)
+                        {
+                            //確認是否有多筆Style
+                            bStyleNoCheck = (strStyleNo == AcrTicketGV.Rows[i].Cells[4].Text) ? true : false;
+                        }
+                        
+                        if (AcrTicketGV.Rows[i].Cells[4].Text== "應收")
+                        {
+                            if (bStyleNoCheck)
+                            {
+                                iMainCheck++;
+                                if (iSubCheck > 0)
+                                    iSubCheck = 0;
+                            }
+                            else
+                            {
+
+                            }
+
+                        }
+                        else
+                        {
+                            if(iMainCheck>0)
+                            {
+                                iSubCheck++;
+                                if (iMainCheck > 0)
+                                    iMainCheck = 0;
+                            }
+                            else
+                                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請聯絡資訊部：請選擇應收資料');</script>");
+
+                        }
+                        strStyleNo = AcrTicketGV.Rows[i].Cells[4].Text;
+                    }
+                }
+            }
             
-            return bcheck;
+            return bCheck;
         }
 
         protected void ACRGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -153,7 +201,7 @@ namespace GGFPortal.Finance.TAX
 
                 if (Ds.Tables.Contains("purc_pkd_check"))
                     Ds.Tables.Remove("purc_pkd_check");
-                Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from purc_pkd_check  where cus_item_no ='"+ strStyleNo + "'", "purc_pkd_check", "TAX004.aspx"));
+                Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from purc_pkd_for_acr  where cus_item_no ='" + strStyleNo + "'", "purc_pkd_check", "TAX004.aspx"));
                 int icheck1 = 0,icheck2=0;
                 icheck1 = (Ds.Tables["acr_trn_check"].Rows.Count > 0) ? 0 : 1;
                 icheck2 = (Ds.Tables["purc_pkd_check"].Rows.Count > 0) ? 0 : 1;
@@ -167,35 +215,40 @@ namespace GGFPortal.Finance.TAX
                     // ColumnName and add to DataTable.    
                     column = new DataColumn();
                     column.DataType = System.Type.GetType("System.Int32");
-                    column.ColumnName = "uid";
+                    column.ColumnName = "id";
                     //column.ReadOnly = true;
                     //column.Unique = true;
                     // Add the Column to the DataColumnCollection.
                     dt.Columns.Add(column);
 
                     column = new DataColumn();
-                    //column.DataType = System.Type.GetType("System.Int32");
+                    column.DataType = System.Type.GetType("System.String");
                     column.ColumnName = "style_no";
                     dt.Columns.Add(column);
-
+                    
                     column = new DataColumn();
-                    //column.DataType = System.Type.GetType("System.Int32");
+                    column.DataType = System.Type.GetType("System.DateTime");
                     column.ColumnName = "DATE";
                     dt.Columns.Add(column);
 
                     column = new DataColumn();
-                    //column.DataType = System.Type.GetType("System.Int32");
+                    column.DataType = System.Type.GetType("System.String");
                     column.ColumnName = "TYPE";
                     dt.Columns.Add(column);
 
                     column = new DataColumn();
-                    //column.DataType = System.Type.GetType("System.Int32");
+                    column.DataType = System.Type.GetType("System.Double");
                     column.ColumnName = "MONEY";
                     dt.Columns.Add(column);
 
                     column = new DataColumn();
-                    //column.DataType = System.Type.GetType("System.Int32");
+                    column.DataType = System.Type.GetType("System.Double");
                     column.ColumnName = "AMT";
+                    dt.Columns.Add(column);
+
+                    column = new DataColumn();
+                    column.DataType = System.Type.GetType("System.String");
+                    column.ColumnName = "nbr";
                     dt.Columns.Add(column);
 
                     for (int i = 0; i < Ds.Tables["acr_trn_check"].Rows.Count; i++)
@@ -204,9 +257,10 @@ namespace GGFPortal.Finance.TAX
                         row["id"] = Ds.Tables["acr_trn_check"].Rows[i]["uid"].ToString();
                         row["style_no"] = Ds.Tables["acr_trn_check"].Rows[i]["style_no"].ToString();
                         row["DATE"] = Ds.Tables["acr_trn_check"].Rows[i]["acr_date"].ToString();
-                        row["TYPE"] = "M";
+                        row["TYPE"] = "應收";
                         row["MONEY"] = Ds.Tables["acr_trn_check"].Rows[i]["foreign_amt"].ToString();
                         //row["AMT"] = Ds.Tables["acr_trn_check"].Rows[i]["uid"].ToString();
+                        row["nbr"] = Ds.Tables["acr_trn_check"].Rows[i]["acr_nbr"].ToString();
                         dt.Rows.Add(row);
                     }
                     for (int i = 0; i < Ds.Tables["purc_pkd_check"].Rows.Count; i++)
@@ -215,14 +269,16 @@ namespace GGFPortal.Finance.TAX
                         row["id"] = Ds.Tables["purc_pkd_check"].Rows[i]["uid"].ToString();
                         row["style_no"] = Ds.Tables["purc_pkd_check"].Rows[i]["cus_item_no"].ToString();
                         row["DATE"] = Ds.Tables["purc_pkd_check"].Rows[i]["create_date"].ToString();
-                        row["TYPE"] = "S";
+                        row["TYPE"] = "包裝";
                         //row["MONEY"] = Ds.Tables["purc_pkd_check"].Rows[i]["uid"].ToString();
                         row["AMT"] = Ds.Tables["purc_pkd_check"].Rows[i]["customs_decleartion_amt"].ToString();
+                        row["nbr"] = Ds.Tables["purc_pkd_check"].Rows[i]["pak_nbr"].ToString()+ Ds.Tables["purc_pkd_check"].Rows[i]["pak_seq"].ToString();
                         dt.Rows.Add(row);
 
                     }
                     POPPanel_ModalPopupExtender.Show();
                     AcrTicketGV.DataSource = dt;
+                    Ds.Tables.Add(dt);
                     AcrTicketGV.DataBind();
 
                 }
@@ -269,8 +325,16 @@ namespace GGFPortal.Finance.TAX
                     chk.Checked = bCheck;
                 }
             }
+            POPPanel_ModalPopupExtender.Show();
 
         }
+        //private int[,] F_GetProcent()
+        //{
+        //    int[,] iCount;
+
+
+        //    return iCount;
+        //}
 
 
     }

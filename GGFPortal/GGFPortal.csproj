@@ -335,6 +335,7 @@
     <Content Include="Finance\TAX\TAX002.aspx" />
     <Content Include="Finance\TAX\TAX003.aspx" />
     <Content Include="Finance\TAX\TAX004.aspx" />
+    <Content Include="Finance\TAX\TAX005.aspx" />
     <Content Include="IMG\images.png" />
     <Content Include="IMG\spotlight001.png" />
     <Content Include="MIS\MIS002.aspx" />
@@ -406,6 +407,17 @@
     <Content Include="DataSetSource\MIS001.xss">
       <DependentUpon>MIS001.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSetSource\SalesTempDS.xsc">
+      <DependentUpon>SalesTempDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\SalesTempDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesTempDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\SalesTempDS.xss">
+      <DependentUpon>SalesTempDS.xsd</DependentUpon>
+    </Content>
     <None Include="DataSetSource\Sercetary.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -440,6 +452,8 @@
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="ReferenceCode\Finance002Auto.asmx" />
     <Content Include="ReferenceCode\test.asmx" />
+    <Content Include="Sales\SALE.aspx" />
+    <Content Include="Sales\Sales001.aspx" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af-ZA.min.js" />
@@ -998,6 +1012,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MIS001.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\SalesTempDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesTempDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\Sercetary.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1079,6 +1098,13 @@
     <Compile Include="Finance\TAX\TAX004.aspx.designer.cs">
       <DependentUpon>TAX004.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\TAX\TAX005.aspx.cs">
+      <DependentUpon>TAX005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX005.aspx.designer.cs">
+      <DependentUpon>TAX005.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1143,6 +1169,20 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReferenceCode\VendorAutoComplete.cs" />
+    <Compile Include="Sales\SALE.aspx.cs">
+      <DependentUpon>SALE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SALE.aspx.designer.cs">
+      <DependentUpon>SALE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales001.aspx.cs">
+      <DependentUpon>Sales001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales001.aspx.designer.cs">
+      <DependentUpon>Sales001.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SearchIndex.aspx.cs">
       <DependentUpon>SearchIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1230,6 +1270,8 @@
     <EmbeddedResource Include="ReportSource\ReportS001.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\ReportSALE.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
