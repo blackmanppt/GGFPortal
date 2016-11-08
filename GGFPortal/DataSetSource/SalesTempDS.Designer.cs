@@ -468,6 +468,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columntel_nbr;
             
+            private global::System.Data.DataColumn columntype_desc;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public samc_reqmDataTable() {
@@ -1119,6 +1121,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn type_descColumn {
+                get {
+                    return this.columntype_desc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1231,7 +1241,8 @@ namespace GGFPortal.DataSetSource {
                         string hotfix, 
                         System.DateTime s_plan_arrival_date, 
                         System.DateTime s_real_arrival_date, 
-                        string tel_nbr) {
+                        string tel_nbr, 
+                        string type_desc) {
                 samc_reqmRow rowsamc_reqmRow = ((samc_reqmRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         site,
@@ -1310,7 +1321,8 @@ namespace GGFPortal.DataSetSource {
                         hotfix,
                         s_plan_arrival_date,
                         s_real_arrival_date,
-                        tel_nbr};
+                        tel_nbr,
+                        type_desc};
                 rowsamc_reqmRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsamc_reqmRow);
                 return rowsamc_reqmRow;
@@ -1419,6 +1431,7 @@ namespace GGFPortal.DataSetSource {
                 this.columns_plan_arrival_date = base.Columns["s_plan_arrival_date"];
                 this.columns_real_arrival_date = base.Columns["s_real_arrival_date"];
                 this.columntel_nbr = base.Columns["tel_nbr"];
+                this.columntype_desc = base.Columns["type_desc"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1578,6 +1591,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columns_real_arrival_date);
                 this.columntel_nbr = new global::System.Data.DataColumn("tel_nbr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntel_nbr);
+                this.columntype_desc = new global::System.Data.DataColumn("type_desc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_desc);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnsite,
                                 this.columnsam_nbr,
@@ -1643,6 +1658,7 @@ namespace GGFPortal.DataSetSource {
                 this.columnsam_type_F.MaxLength = 1;
                 this.columnhotfix.MaxLength = 1;
                 this.columntel_nbr.MaxLength = 10;
+                this.columntype_desc.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3263,6 +3279,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string type_desc {
+                get {
+                    try {
+                        return ((string)(this[this.tablesamc_reqm.type_descColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'samc_reqm\' 中資料行 \'type_desc\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablesamc_reqm.type_descColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Issam_noNull() {
                 return this.IsNull(this.tablesamc_reqm.sam_noColumn);
             }
@@ -4148,6 +4180,18 @@ namespace GGFPortal.DataSetSource {
             public void Settel_nbrNull() {
                 this[this.tablesamc_reqm.tel_nbrColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istype_descNull() {
+                return this.IsNull(this.tablesamc_reqm.type_descColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settype_descNull() {
+                this[this.tablesamc_reqm.type_descColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -4491,6 +4535,7 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             tableMapping.ColumnMappings.Add("s_plan_arrival_date", "s_plan_arrival_date");
             tableMapping.ColumnMappings.Add("s_real_arrival_date", "s_real_arrival_date");
             tableMapping.ColumnMappings.Add("tel_nbr", "tel_nbr");
+            tableMapping.ColumnMappings.Add("type_desc", "type_desc");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4507,17 +4552,53 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select  a.*,b.tel_nbr from samc_reqm a left join bas_employee b on a.site=b.site " +
-                "and a.creator=b.employee_no";
+            this._commandCollection[0].CommandText = "SELECT          c.type_desc, a.site, a.sam_nbr, a.sam_times, a.sam_no, a.version," +
+                " a.sam_date, a.cus_id, a.dept_no, a.item_no, \r\n                            a.typ" +
+                "e_id, a.salesman, a.sam_size, a.assign_qty, a.plan_fin_date, a.emb, a.washing, a" +
+                ".oth_extra, a.finish_date, \r\n                            a.finish_qty, a.place_o" +
+                "rigin, a.currency_id, a.unit_price, a.amount, a.sam_qty, a.sam_cus_qty, a.sam_ta" +
+                "ipei_qty, \r\n                            a.image_path, a.remark60, a.status, a.cl" +
+                "ose_date, a.reason, a.online_date, a.confirm_yn, a.progress_rate, \r\n            " +
+                "                a.sam_class, a.original_sampleo_yn, a.original_edition_yn, a.ori" +
+                "ginal_edition_size, a.ratio_size, \r\n                            a.sample_complet" +
+                "e_1, a.sample_complete_2, a.cus_express_corp, a.cus_assign_account, a.cus_addres" +
+                "s_id, \r\n                            a.cus_addressee, a.cus_address, a.cus_style_" +
+                "no, a.brand_name, a.sam_type, a.proofing_factory, a.filter_creator, \r\n          " +
+                "                  a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_" +
+                "date, a.printing, a.sewing, a.samc_remark60, a.mark, \r\n                         " +
+                "   a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final, a.last_date, a.s" +
+                "amc_fin_date, a.sam_type_A, \r\n                            a.sam_type_B, a.sam_ty" +
+                "pe_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix, a.s_plan_arrival_date," +
+                " \r\n                            a.s_real_arrival_date, b.tel_nbr\r\nFROM           " +
+                "   samc_reqm AS a LEFT OUTER JOIN\r\n                            bas_employee AS b" +
+                " ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN\r\n             " +
+                "               samc_type AS c ON a.site = c.site AND a.type_id = c.type_id\r\nWHER" +
+                "E          (a.plan_fin_date = CONVERT(DATETIME, \'1900-01-01 00:00:00\', 102)) AND" +
+                " (a.progress_rate = N\'2\')  and a.modify_date <>\'103030\'  and a.last_date between" +
+                " @last_dat1 and @last_dat2";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesTempDS.samc_reqmDataTable dataTable) {
+        public virtual int Fill(SalesTempDS.samc_reqmDataTable dataTable, global::System.Nullable<global::System.DateTime> last_dat1, global::System.Nullable<global::System.DateTime> last_dat2) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((last_dat1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(last_dat1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((last_dat2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(last_dat2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4529,8 +4610,20 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesTempDS.samc_reqmDataTable GetData() {
+        public virtual SalesTempDS.samc_reqmDataTable GetData(global::System.Nullable<global::System.DateTime> last_dat1, global::System.Nullable<global::System.DateTime> last_dat2) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((last_dat1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(last_dat1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((last_dat2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(last_dat2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             SalesTempDS.samc_reqmDataTable dataTable = new SalesTempDS.samc_reqmDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

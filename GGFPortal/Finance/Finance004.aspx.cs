@@ -97,7 +97,7 @@ namespace GGFPortal.Finance
                                 dbo.shpc_bat AS b ON a.site = b.site AND a.kind = b.kind AND a.shp_nbr = b.shp_nbr LEFT OUTER JOIN
                                 dbo.ordc_bah1 AS c ON a.ord_nbr = c.ord_nbr AND a.site = c.site LEFT OUTER JOIN
                                 dbo.bas_vendor_master AS d ON c.vendor_id = d.vendor_id AND a.site = d.site
-                                WHERE          (a.head_status = 'CL') 
+                                WHERE          (a.head_status = 'CL') AND (b.detail_status = 'CL')
                             ";
 
             sqlstr += strwhere + " group by a.site, a.shp_nbr,open_date,c.agents,so_nbr,c.cus_item_no,b.cust_po_nbr,d.vendor_name_brief,b.sale_price,a.currency_id,a.exchange_rate,b.add_reduce_item,c.ord_qty,c.ord_nbr";
