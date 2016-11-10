@@ -448,6 +448,7 @@
     <Content Include="DataSetSource\TEMPDS.xss">
       <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="ReferenceCode\Finance002Auto.asmx" />
@@ -1272,6 +1273,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportSALE.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
+    <EmbeddedResource Include="ReportSource\test.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

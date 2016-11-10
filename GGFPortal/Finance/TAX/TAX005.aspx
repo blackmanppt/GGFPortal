@@ -39,7 +39,7 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="SettlementBT" runat="server" Text="結轉" OnClick="SettlementBT_Click" />
+                    <asp:Button ID="SettlementBT" runat="server" Text="結轉" OnClick="SettlementBT_Click" Enabled="False" />
                 </td>
             </tr>
         </table>

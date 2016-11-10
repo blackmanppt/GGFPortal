@@ -43,10 +43,10 @@
                     </td>
                     <td class="auto-style2" style="border-style: solid">
                         <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>
-                        <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy-MM-dd" />
+                        <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy/MM/dd" />
                         ~
             <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
-                        <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay" Format="yyyy-MM-dd" />
+                        <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay" Format="yyyy/MM/dd" />
                     </td>
                     <td>
                         <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
@@ -61,6 +61,7 @@
         </div>
         <div>
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
+                <ServerReport ReportPath="samc" ReportServerUrl="http://192.168.0.131/reportserver" />
                 <LocalReport ReportPath="ReportSource\ReportSALE.rdlc" EnableExternalImages="true">
                     <DataSources>
                         <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
@@ -70,8 +71,8 @@
             <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqmTableAdapter">
                 <SelectParameters>
-                    <asp:SessionParameter Name="last_dat1" SessionField="StartDay" Type="DateTime"/>
-                    <asp:SessionParameter Name="last_dat2" SessionField="EndDay" Type="DateTime"/>
+                    <asp:SessionParameter Name="last_dat1" SessionField="StartDay" Type="DateTime" DefaultValue="1900/01/01"/>
+                    <asp:SessionParameter Name="last_dat2" SessionField="EndDay" Type="DateTime" DefaultValue="2900/01/01"/>
                 </SelectParameters>
             </asp:ObjectDataSource>
             <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcTableAdapter">

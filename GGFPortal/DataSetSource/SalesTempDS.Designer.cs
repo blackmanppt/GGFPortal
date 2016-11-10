@@ -4573,9 +4573,8 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 "   samc_reqm AS a LEFT OUTER JOIN\r\n                            bas_employee AS b" +
                 " ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN\r\n             " +
                 "               samc_type AS c ON a.site = c.site AND a.type_id = c.type_id\r\nWHER" +
-                "E          (a.plan_fin_date = CONVERT(DATETIME, \'1900-01-01 00:00:00\', 102)) AND" +
-                " (a.progress_rate = N\'2\')  and a.modify_date <>\'103030\'  and a.last_date between" +
-                " @last_dat1 and @last_dat2";
+                "E          (a.plan_fin_date = \'1900-01-01\') AND \r\n(a.progress_rate = N\'2\')  and " +
+                "a.modifier <>\'103030\' and a.last_date between @last_dat1 and @last_dat2";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

@@ -20,17 +20,26 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Session["StartDay"] = DateTime.Now;
-                Session["EndDay"] = DateTime.Now.AddYears(3);
-                ////Session["F001Site"] = "%";
-                ReportViewer1.LocalReport.Refresh();
+                //DateTime dtTo = default(DateTime);
+                //if (Session["dtToSelect"] == null)
+                //{
+                //    dtTo = Convert.ToDateTime(Session["dtToSelect"]);
+                //}
+                //else
+                //{
+                //    dtTo = DateTime.MinValue; // or maxvalue or today if you want
+                //}
+                //Session["StartDay"] = DateTime.Now;
+                //Session["EndDay"] = DateTime.Now.AddYears(3);
+                //////Session["F001Site"] = "%";
+                //ReportViewer1.LocalReport.Refresh();
             }
         }
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            //Session["StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "1900-01-01";
-            //Session["EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "2999-12-31";
+            Session["StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "1900/01/01";
+            Session["EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "2999/12/31";
             //switch (SiteDDL.SelectedIndex)
             //{
             //    case 1:
@@ -43,8 +52,7 @@ namespace GGFPortal.Sales
             //        Session["F001Site"] = "%";
             //        break;
             //}
-            Session["StartDay"] = DateTime.Now;
-            Session["EndDay"] = DateTime.Now.AddYears(3);
+
             ReportViewer1.LocalReport.Refresh();
         }
     }

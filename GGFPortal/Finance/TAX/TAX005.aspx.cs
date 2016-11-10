@@ -54,19 +54,54 @@ namespace GGFPortal.Finance.TAX
                     ikey = AddStyleNo(strStyleNo, MonthDDL.SelectedValue);
                     using (SqlConnection Conn = new SqlConnection(strConnectString))
                     {
-                        SqlDataAdapter myAdapter1 = new SqlDataAdapter(" select * from  acr_trn_check where style_no =@strStyleNo", Conn);
+                        SqlDataAdapter myAdapter1 = new SqlDataAdapter(" select * from  acr_trn_check where style_no =@strStyleNo  order by base_amt", Conn);
                         myAdapter1.SelectCommand.Parameters.AddWithValue("strStyleNo", strStyleNo);
                         myAdapter1.Fill(AcrDT);
                         
-                        SqlDataAdapter myAdapter2 = new SqlDataAdapter(" select * from  purc_pkd_for_acr where cus_item_no =@strStyleNo", Conn);
-                        myAdapter1.SelectCommand.Parameters.AddWithValue("strStyleNo", strStyleNo);
+                        SqlDataAdapter myAdapter2 = new SqlDataAdapter(" select * from  purc_pkd_for_acr where cus_item_no =@strStyleNo order by customs_decleartion_amt", Conn);
+                        myAdapter2.SelectCommand.Parameters.AddWithValue("strStyleNo", strStyleNo);
                         myAdapter2.Fill(PkmDT);
                     }
                     if (AcrDT.Rows.Count > 0 && PkmDT.Rows.Count > 0 && ikey>0)
                     {
+                        #region 計算包裝底稿
+                        //object sumObjectAcr, sumObjectPkm;
+                        double dAcr = 0, dPkd = 0 ,dCompare=0;
+                        dAcr = Convert.ToDouble( AcrDT.Compute("Sum(base_amt)", "style_no = '"+strStyleNo+"'"));
+                        dPkd = Convert.ToDouble(PkmDT.Compute("Sum(customs_decleartion_amt)", "cus_item_no = '" + strStyleNo + "'"));
+                        dCompare = dAcr * 0.8;
+                        string strAcrUid = "", strPkmUid = "";
+                        if (dCompare < dPkd)
+                        {
+                            for (int k = 0; k < PkmDT.Rows.Count; k++)
+                            {
+                                //double dCount = 0;
+                                if (dCompare >= dPkd)
+                                {
+                                    strPkmUid += " , " + PkmDT.Rows[i]["uid"];
+                                }
+                                else
+                                {
+                                    dPkd -= Convert.ToDouble(PkmDT.Rows[k]["customs_decleartion_amt"]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int k = 0; k < PkmDT.Rows.Count; k++)
+                            {
+                                strPkmUid += " , " + PkmDT.Rows[k]["uid"];
+                            }
+                        }
+                        #endregion
+
+                        for (int j = 0; j < AcrDT.Rows.Count; j++)
+                        {
+                            strAcrUid += " , " + AcrDT.Rows[j]["uid"];
+                        }
+                        
                         using (SqlConnection conn1 = new SqlConnection(strConnectString))
                         {
-                            
                             SqlCommand command1 = conn1.CreateCommand();
                             SqlTransaction transaction1;
                             conn1.Open();
@@ -76,31 +111,32 @@ namespace GGFPortal.Finance.TAX
                             command1.Transaction = transaction1;
                             try
                             {
-                                for (int j = 0; j < AcrDT.Rows.Count; j++)
-                                {
-                                    command1.CommandText = string.Format(@"UPDATE [dbo].[acr_trn_check] SET [ticket] = @ticket WHERE uid in ({0}) ", strStyleNo.Substring(1));
-                                    //command1.Parameters.Add("@ticket", SqlDbType.NVarChar).Value = TicketBT.Text.Trim();
-                                    command1.ExecuteNonQuery();
-                                    command1.Parameters.Clear();
-                                }
-                                for (int k = 0; k < PkmDT.Rows.Count; k++)
-                                {
-                                    command1.CommandText = string.Format(@"UPDATE [dbo].[acr_trn_check] SET [ticket] = @ticket WHERE uid in ({0}) ", strStyleNo.Substring(1));
-                                    //command1.Parameters.Add("@ticket", SqlDbType.NVarChar).Value = TicketBT.Text.Trim();
-                                    command1.ExecuteNonQuery();
-                                    command1.Parameters.Clear();
-                                }
+                                command1.CommandText = string.Format(@"UPDATE [dbo].[acr_trn_check] SET [AcrTaxID] = @AcrTaxID , CheckFlag ='CL' WHERE uid in ({0}) ", strAcrUid.Substring(2));
+                                command1.Parameters.Add("@AcrTaxID", SqlDbType.Int).Value = ikey;
+                                command1.ExecuteNonQuery();
+                                command1.Parameters.Clear();
+                                
+                                command1.CommandText = string.Format(@"UPDATE [dbo].[purc_pkd_for_acr] SET [AcrTaxID] = @AcrTaxID , CheckFlag ='CL' WHERE uid in ({0}) ", strPkmUid.Substring(2));
+                                command1.Parameters.Add("@AcrTaxID", SqlDbType.Int).Value = ikey;
+                                command1.ExecuteNonQuery();
+                                command1.Parameters.Clear();
+
+                                command1.CommandText = string.Format(@"UPDATE [dbo].[AcrTax] SET [Flag] = 1 , AcrAmt =@AcrAmt ,PkdAmt =@PkdAmt WHERE uid = {0} ", ikey);
+                                command1.Parameters.Add("@AcrAmt", SqlDbType.Float).Value = dAcr;
+                                command1.Parameters.Add("@PkdAmt", SqlDbType.Float).Value = dPkd;
+                                command1.ExecuteNonQuery();
+                                    
                                 transaction1.Commit();
                             }
                             catch (Exception ex1)
                             {
                                 try
                                 {
-                                    Log.ErrorLog(ex1, "Insert Error style no:" + strStyleNo, "TAX003.aspx");
+                                    Log.ErrorLog(ex1, "Insert Error style no:" + strStyleNo, "TAX005.aspx");
                                 }
                                 catch (Exception ex2)
                                 {
-                                    Log.ErrorLog(ex2, "Insert Error2 style no:" + strStyleNo, "TAX003.aspx");
+                                    Log.ErrorLog(ex2, "Insert Error2 style no:" + strStyleNo, "TAX005.aspx");
                                 }
                                 finally
                                 {
@@ -113,8 +149,10 @@ namespace GGFPortal.Finance.TAX
                                 conn1.Close();
                                 conn1.Dispose();
                                 command1.Dispose();
+
                             }
                         }
+                        
                     }
                     else
                     {
@@ -123,8 +161,8 @@ namespace GGFPortal.Finance.TAX
                     }
                 }
             }
+            DB();
 
-            
         }
 
         private string selectsql()
@@ -150,8 +188,15 @@ namespace GGFPortal.Finance.TAX
 
         protected void SearchBT_Click(object sender, EventArgs e)
         {
+            DB();
+        }
+
+        private void DB()
+        {
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
+                if (Ds.Tables.Contains("SelectStyleNo"))
+                    Ds.Tables.Remove("SelectStyleNo");
                 //DataTable dt = new DataTable();
                 string sqlstr = selectsql();
                 SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
@@ -169,6 +214,7 @@ namespace GGFPortal.Finance.TAX
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請聯絡資訊部：應收與包裝底稿都無資料');</script>");
             }
         }
+
         protected void SelectAllBT_Click(object sender, EventArgs e)
         {
             Button bt = (Button)SearchGV.HeaderRow.Cells[0].FindControl("SelectAllBT");
@@ -207,8 +253,8 @@ namespace GGFPortal.Finance.TAX
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.Add("@StyleNo", SqlDbType.NVarChar);
                 cmd.Parameters.Add("@AcrMonthDate", SqlDbType.VarChar);
-                cmd.Parameters["@name"].Value = strStyleNo;
-                cmd.Parameters["@name"].Value = strAcrMonthDate;
+                cmd.Parameters["@StyleNo"].Value = strStyleNo;
+                cmd.Parameters["@AcrMonthDate"].Value = strAcrMonthDate;
                 try
                 {
                     conn.Open();
