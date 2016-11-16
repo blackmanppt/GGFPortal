@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TAXMENU.master.cs" Inherits="GGFPortal.Finance.TAX.TAXMENU" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .buttonClass
+        {
+            padding: 2px 20px;
+            text-decoration: none;
+            border: solid 1px black;
+            background-color: #b0a4a4;
+        }
+        .buttonClass:hover
+        {
+            border: solid 1px Black;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="buttonClass" PostBackUrl="~/Finance/TAX/TAX005.aspx">應收結轉</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="buttonClass">應收資料維護</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton4" runat="server" CssClass="buttonClass">應收發票</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton3" runat="server" CssClass="buttonClass">應收報表</asp:LinkButton>
+
+            
+
+
+        </div>
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

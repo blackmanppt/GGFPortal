@@ -17,12 +17,7 @@
         .auto-style2 {
             width: 317px;
         }
-        .auto-style3 {
-            text-align: right;
-            width: 83px;
-            background-color: #33CCCC;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -39,47 +34,81 @@
                 <tr>
                     <td class="auto-style1" style="border-style: solid">
 
-                        <asp:Label ID="Label1" runat="server" Text="起迄日期："></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="修改日期："></asp:Label>
                     </td>
                     <td class="auto-style2" style="border-style: solid">
-                        <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="StartDayTB" runat="server" AutoPostBack="True"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy/MM/dd" />
                         ~
             <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay" Format="yyyy/MM/dd" />
                     </td>
+                   
+                </tr>
+                <tr>
+                    <td  class="auto-style1">
+                        <asp:Label ID="Label2" runat="server" Text="品牌："></asp:Label>
+                    </td>
                     <td>
+                        <asp:TextBox ID="BrandTB" runat="server"></asp:TextBox>
+                        <ajaxToolkit:AutoCompleteExtender ID="BrandTB_AutoCompleteExtender" runat="server" TargetControlID="BrandTB" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchBrand" >
+                        </ajaxToolkit:AutoCompleteExtender>
+                    </td>
+
+                </tr>
+                                <tr>
+                    <td  class="auto-style1">
+                        <asp:Label ID="Label3" runat="server" Text="樣品種類："></asp:Label>
+                                    </td>
+                    <td>
+                        <asp:DropDownList ID="SamcTypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceSamcType" DataTextField="type_desc" DataValueField="type_id">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSourceSamcType" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [type_id], [type_desc] FROM [samc_type] ORDER BY [type_id]"></asp:SqlDataSource>
+                                    </td>
+
+                </tr>
+                                <tr>
+                    <td>
+                        <asp:DropDownList ID="NewOldDDL" runat="server">
+                            <asp:ListItem Value="2">新增</asp:ListItem>
+                            <asp:ListItem Value="1">全部</asp:ListItem>
+                        </asp:DropDownList>
+                                    </td>
+                    <td style="text-align: right">
+                        <asp:Button ID="CearBT" runat="server" Text="Clear" OnClick="CearBT_Click" />
                         <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
 
-                    </td>
-                </tr>
+                                    </td>
 
+                </tr>
             </table>
+
 
             <br />
 
         </div>
         <div>
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
-                <ServerReport ReportPath="samc" ReportServerUrl="http://192.168.0.131/reportserver" />
-                <LocalReport ReportPath="ReportSource\ReportSALE.rdlc" EnableExternalImages="true">
-                    <DataSources>
-                        <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
-                    </DataSources>
-                </LocalReport>
-            </rsweb:ReportViewer>
-            <asp:ObjectDataSource ID="ObjectDataSource2" runat="server"></asp:ObjectDataSource>
+            
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
+                        <ServerReport ReportPath="samc" ReportServerUrl="http://192.168.0.131/reportserver" />
+                        <LocalReport ReportPath="ReportSource\ReportSALE.rdlc" EnableExternalImages="true">
+                            <DataSources>
+                                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
+                            </DataSources>
+                        </LocalReport>
+                    </rsweb:ReportViewer>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqmTableAdapter">
                 <SelectParameters>
-                    <asp:SessionParameter Name="last_dat1" SessionField="StartDay" Type="DateTime" DefaultValue="1900/01/01"/>
-                    <asp:SessionParameter Name="last_dat2" SessionField="EndDay" Type="DateTime" DefaultValue="2900/01/01"/>
-                </SelectParameters>
-            </asp:ObjectDataSource>
-            <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcTableAdapter">
-                <SelectParameters>
-                    <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" />
-                    <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
-                    <asp:SessionParameter DefaultValue="" Name="site" SessionField="F001Site" Type="String" />
+                    <asp:SessionParameter DefaultValue="2" Name="caicai" SessionField="CaiCai" Type="Decimal" />
+                    <asp:SessionParameter Name="modify_date1" SessionField="StartDay" Type="DateTime" DefaultValue="1900/01/01"/>
+                    <asp:SessionParameter Name="modify_date2" SessionField="EndDay" Type="DateTime" DefaultValue="2900/01/01"/>
+                    <asp:SessionParameter DefaultValue="%" Name="brand_name" SessionField="Brand" Type="String" />
+                    <asp:SessionParameter DefaultValue="%" Name="type_id" SessionField="SamcType" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>

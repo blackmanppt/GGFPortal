@@ -47,9 +47,6 @@
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
-            <TablixColumn>
-              <Width>2.5cm</Width>
-            </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
@@ -587,44 +584,6 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>image path</Value>
-                              <Style>
-                                <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>White</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>#7292cc</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>#4c68a2</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -642,6 +601,7 @@
                               <Value>=Fields!modify_date.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>12pt</FontSize>
                                 <Format>yyyy/MM/dd</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
@@ -675,7 +635,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!sam_nbr.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -718,7 +680,7 @@
                   <CellContents>
                     <Image Name="Image1">
                       <Source>External</Source>
-                      <Value>=iif(len(Fields!image_path.Value)&gt;0, "file:///" &amp; Fields!image_path.Value,"")</Value>
+                      <Value>=iif(len(Fields!image_path.Value)&gt;0, "http://192.168.0.123/GGFPortal/ttt" &amp; Mid( Fields!image_path.Value,3),"")</Value>
                       <Sizing>FitProportional</Sizing>
                       <Style>
                         <Border>
@@ -726,6 +688,7 @@
                         </Border>
                       </Style>
                     </Image>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -738,7 +701,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!brand_name.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -787,7 +752,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!cus_style_no.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -836,7 +803,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!type_desc.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -886,6 +855,7 @@
                             <TextRun>
                               <Value>=Fields!last_date.Value</Value>
                               <Style>
+                                <FontSize>12pt</FontSize>
                                 <Format>yyyy/MM/dd</Format>
                               </Style>
                             </TextRun>
@@ -916,7 +886,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!sam_size.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -965,7 +937,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!sam_qty.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1015,6 +989,7 @@
                             <TextRun>
                               <Value>=Fields!s_plan_arrival_date.Value</Value>
                               <Style>
+                                <FontSize>12pt</FontSize>
                                 <Format>yyyy/MM/dd</Format>
                               </Style>
                             </TextRun>
@@ -1046,6 +1021,7 @@
                             <TextRun>
                               <Value>=Fields!samc_fin_date.Value</Value>
                               <Style>
+                                <FontSize>12pt</FontSize>
                                 <Format>yyyy/MM/dd</Format>
                               </Style>
                             </TextRun>
@@ -1078,6 +1054,7 @@
                             <TextRun>
                               <Value>=Fields!finish_date.Value</Value>
                               <Style>
+                                <FontSize>12pt</FontSize>
                                 <Format>yyyy/MM/dd</Format>
                               </Style>
                             </TextRun>
@@ -1109,7 +1086,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!tel_nbr.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1158,7 +1137,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!remark60.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>12pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1197,63 +1178,12 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="image_path">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!image_path.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>image_path</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>Solid</Style>
-                        </Border>
-                        <TopBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Black</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </RightBorder>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                    <rd:Selected>true</rd:Selected>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
-            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -1282,7 +1212,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>4.2cm</Height>
-        <Width>38.8175cm</Width>
+        <Width>36.3175cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

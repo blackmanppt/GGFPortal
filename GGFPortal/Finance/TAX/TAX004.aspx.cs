@@ -59,7 +59,7 @@ namespace GGFPortal.Finance.TAX
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = @"SELECT distinct top 10 [style_no]
-                                        FROM [dbo].[acr_trn_check] where CheckFlag ='NA'  and style_no like '%'+  @SearchText + '%'";
+                                        FROM [dbo].[acr_trn_check] where CheckFlag <>'CA'  and style_no like '%'+  @SearchText + '%'";
                     cmd.Parameters.AddWithValue("@SearchText", prefixText);
                     cmd.Connection = conn;
                     conn.Open();
@@ -115,7 +115,7 @@ namespace GGFPortal.Finance.TAX
             //                    FROM [dbo].[acr_trn_check] where CheckFlag ='NA' ";
             string sqlstr = @"
                                 select distinct style_no
-                                FROM [dbo].[acr_trn_check] where CheckFlag ='NA' ";
+                                FROM [dbo].[acr_trn_check] where CheckFlag <>'CA' ";
             sqlstr += strwhere;
             return sqlstr;
         }

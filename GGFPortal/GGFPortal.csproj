@@ -336,6 +336,9 @@
     <Content Include="Finance\TAX\TAX003.aspx" />
     <Content Include="Finance\TAX\TAX004.aspx" />
     <Content Include="Finance\TAX\TAX005.aspx" />
+    <Content Include="Finance\TAX\test1.aspx" />
+    <Content Include="Finance\TAX\test2.aspx" />
+    <Content Include="Finance\TAX\test3.aspx" />
     <Content Include="IMG\images.png" />
     <Content Include="IMG\spotlight001.png" />
     <Content Include="MIS\MIS002.aspx" />
@@ -448,6 +451,7 @@
     <Content Include="DataSetSource\TEMPDS.xss">
       <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Content>
+    <Content Include="Finance\TAX\TAXMENU.Master" />
     <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
@@ -1105,6 +1109,34 @@
     </Compile>
     <Compile Include="Finance\TAX\TAX005.aspx.designer.cs">
       <DependentUpon>TAX005.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\TAXMENU.Master.cs">
+      <DependentUpon>TAXMENU.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAXMENU.Master.designer.cs">
+      <DependentUpon>TAXMENU.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\test1.aspx.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\test1.aspx.designer.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\test2.aspx.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\test2.aspx.designer.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\test3.aspx.cs">
+      <DependentUpon>test3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\test3.aspx.designer.cs">
+      <DependentUpon>test3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

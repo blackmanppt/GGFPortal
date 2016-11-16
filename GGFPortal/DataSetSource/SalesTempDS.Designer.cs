@@ -4573,30 +4573,47 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 "   samc_reqm AS a LEFT OUTER JOIN\r\n                            bas_employee AS b" +
                 " ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN\r\n             " +
                 "               samc_type AS c ON a.site = c.site AND a.type_id = c.type_id\r\nWHER" +
-                "E          (a.plan_fin_date = \'1900-01-01\') AND \r\n(a.progress_rate = N\'2\')  and " +
-                "a.modifier <>\'103030\' and a.last_date between @last_dat1 and @last_dat2";
+                "E        \r\n(a.progress_rate = N\'2\')  and ( a.modifier <>\'103030\' or 1=@caicai ) " +
+                "and a.modify_date  between @modify_date1 and @modify_date2\r\nand a.brand_name LIK" +
+                "E @brand_name and a.type_id LIKE @type_id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@last_dat2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "last_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caicai", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modify_date1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "modify_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modify_date2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "modify_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@brand_name", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "brand_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type_id", global::System.Data.SqlDbType.NVarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "type_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesTempDS.samc_reqmDataTable dataTable, global::System.Nullable<global::System.DateTime> last_dat1, global::System.Nullable<global::System.DateTime> last_dat2) {
+        public virtual int Fill(SalesTempDS.samc_reqmDataTable dataTable, decimal caicai, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, string brand_name, string type_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((last_dat1.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(last_dat1.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((last_dat2.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(last_dat2.Value));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(caicai));
+            if ((modify_date1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(modify_date1.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((modify_date2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(modify_date2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((brand_name == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(brand_name));
+            }
+            if ((type_id == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(type_id));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4609,19 +4626,32 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesTempDS.samc_reqmDataTable GetData(global::System.Nullable<global::System.DateTime> last_dat1, global::System.Nullable<global::System.DateTime> last_dat2) {
+        public virtual SalesTempDS.samc_reqmDataTable GetData(decimal caicai, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, string brand_name, string type_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((last_dat1.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(last_dat1.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((last_dat2.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(last_dat2.Value));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(caicai));
+            if ((modify_date1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(modify_date1.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((modify_date2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(modify_date2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((brand_name == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(brand_name));
+            }
+            if ((type_id == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(type_id));
             }
             SalesTempDS.samc_reqmDataTable dataTable = new SalesTempDS.samc_reqmDataTable();
             this.Adapter.Fill(dataTable);

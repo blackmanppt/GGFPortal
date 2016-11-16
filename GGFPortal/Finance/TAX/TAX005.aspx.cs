@@ -78,7 +78,7 @@ namespace GGFPortal.Finance.TAX
                                 //double dCount = 0;
                                 if (dCompare >= dPkd)
                                 {
-                                    strPkmUid += " , " + PkmDT.Rows[i]["uid"];
+                                    strPkmUid += " , " + PkmDT.Rows[k]["uid"];
                                 }
                                 else
                                 {
@@ -125,7 +125,6 @@ namespace GGFPortal.Finance.TAX
                                 command1.Parameters.Add("@AcrAmt", SqlDbType.Float).Value = dAcr;
                                 command1.Parameters.Add("@PkdAmt", SqlDbType.Float).Value = dPkd;
                                 command1.ExecuteNonQuery();
-                                    
                                 transaction1.Commit();
                             }
                             catch (Exception ex1)
@@ -161,7 +160,21 @@ namespace GGFPortal.Finance.TAX
                     }
                 }
             }
-            DB();
+            using (SqlConnection Conn = new SqlConnection(strConnectString))
+            {
+                if (Ds.Tables.Contains("SelectStyleNo"))
+                    Ds.Tables.Remove("SelectStyleNo");
+                //DataTable dt = new DataTable();
+                string sqlstr = selectsql();
+                SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
+                myAdapter.Fill(Ds, "SelectStyleNo");
+            }
+            if (Ds.Tables["SelectStyleNo"].Rows.Count > 0)
+            {
+                SearchGV.DataSource = Ds.Tables["SelectStyleNo"];
+                SearchGV.DataBind();
+                SettlementBT.Enabled = true;
+            }
 
         }
 
@@ -211,7 +224,7 @@ namespace GGFPortal.Finance.TAX
             else
             {
                 SettlementBT.Enabled = false;
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請聯絡資訊部：應收與包裝底稿都無資料');</script>");
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('應收與包裝底稿都無資料');</script>");
             }
         }
 
