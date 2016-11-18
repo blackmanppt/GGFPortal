@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>應收發票補入</title>
+    <title>銷貨發票補入</title>
     <style type="text/css">
         .auto-style2 {
             text-align: right;
@@ -29,7 +29,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
             <h1>
-                <asp:Label ID="Label1" runat="server" Text="應收發票補入：" CssClass="auto-style3"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="銷貨發票補入：" CssClass="auto-style3"></asp:Label>
             </h1>
             <table style="width: 600px;">
                  <tr>

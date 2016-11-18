@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TAXTEMP" targetNamespace="http://tempuri.org/TAXTEMP.xsd" xmlns:mstns="http://tempuri.org/TAXTEMP.xsd" xmlns="http://tempuri.org/TAXTEMP.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TAXTEMP" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TAXTEMP" msprop:Generator_UserDSName="TAXTEMP">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ACR" msprop:Generator_TableClassName="ACRDataTable" msprop:Generator_TableVarName="tableACR" msprop:Generator_TablePropName="ACR" msprop:Generator_RowDeletingName="ACRRowDeleting" msprop:Generator_RowChangingName="ACRRowChanging" msprop:Generator_RowEvHandlerName="ACRRowChangeEventHandler" msprop:Generator_RowDeletedName="ACRRowDeleted" msprop:Generator_UserTableName="ACR" msprop:Generator_RowChangedName="ACRRowChanged" msprop:Generator_RowEvArgName="ACRRowChangeEvent" msprop:Generator_RowClassName="ACRRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="STYLENO" msprop:Generator_ColumnVarNameInTable="columnSTYLENO" msprop:Generator_ColumnPropNameInRow="STYLENO" msprop:Generator_ColumnPropNameInTable="STYLENOColumn" msprop:Generator_UserColumnName="STYLENO" type="xs:string" minOccurs="0" />
+              <xs:element name="ACRDATE" msprop:Generator_ColumnVarNameInTable="columnACRDATE" msprop:Generator_ColumnPropNameInRow="ACRDATE" msprop:Generator_ColumnPropNameInTable="ACRDATEColumn" msprop:Generator_UserColumnName="ACRDATE" type="xs:string" minOccurs="0" />
+              <xs:element name="PONO" msprop:Generator_ColumnVarNameInTable="columnPONO" msprop:Generator_ColumnPropNameInRow="PONO" msprop:Generator_ColumnPropNameInTable="PONOColumn" msprop:Generator_UserColumnName="PONO" type="xs:string" minOccurs="0" />
+              <xs:element name="TICKET1" msprop:Generator_ColumnVarNameInTable="columnTICKET1" msprop:Generator_ColumnPropNameInRow="TICKET1" msprop:Generator_ColumnPropNameInTable="TICKET1Column" msprop:Generator_UserColumnName="TICKET1" type="xs:string" minOccurs="0" />
+              <xs:element name="TICKET2" msprop:Generator_ColumnVarNameInTable="columnTICKET2" msprop:Generator_ColumnPropNameInRow="TICKET2" msprop:Generator_ColumnPropNameInTable="TICKET2Column" msprop:Generator_UserColumnName="TICKET2" type="xs:string" minOccurs="0" />
+              <xs:element name="foreign_amt" msprop:Generator_ColumnVarNameInTable="columnforeign_amt" msprop:Generator_ColumnPropNameInRow="foreign_amt" msprop:Generator_ColumnPropNameInTable="foreign_amtColumn" msprop:Generator_UserColumnName="foreign_amt" type="xs:double" minOccurs="0" />
+              <xs:element name="EXCHANGE" msprop:Generator_ColumnVarNameInTable="columnEXCHANGE" msprop:Generator_ColumnPropNameInRow="EXCHANGE" msprop:Generator_ColumnPropNameInTable="EXCHANGEColumn" msprop:Generator_UserColumnName="EXCHANGE" type="xs:double" minOccurs="0" />
+              <xs:element name="base_amt" msprop:Generator_ColumnVarNameInTable="columnbase_amt" msprop:Generator_ColumnPropNameInRow="base_amt" msprop:Generator_ColumnPropNameInTable="base_amtColumn" msprop:Generator_UserColumnName="base_amt" type="xs:double" minOccurs="0" />
+              <xs:element name="customs_decleartion_amt" msprop:Generator_ColumnVarNameInTable="columncustoms_decleartion_amt" msprop:Generator_ColumnPropNameInRow="customs_decleartion_amt" msprop:Generator_ColumnPropNameInTable="customs_decleartion_amtColumn" msprop:Generator_UserColumnName="customs_decleartion_amt" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

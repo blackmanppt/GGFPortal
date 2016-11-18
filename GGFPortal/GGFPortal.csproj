@@ -332,8 +332,10 @@
     <Content Include="Finance\Finace001.aspx" />
     <Content Include="Finance\Finance003.aspx" />
     <Content Include="Finance\Finance002.aspx" />
+    <Content Include="Finance\TAX\TAX007.aspx" />
     <Content Include="Finance\TAX\TAX002.aspx" />
     <Content Include="Finance\TAX\TAX003.aspx" />
+    <Content Include="Finance\TAX\TAX006.aspx" />
     <Content Include="Finance\TAX\TAX004.aspx" />
     <Content Include="Finance\TAX\TAX005.aspx" />
     <Content Include="Finance\TAX\test1.aspx" />
@@ -442,6 +444,17 @@
     </Content>
     <Content Include="DataSetSource\TEMPDS.xsc">
       <DependentUpon>TEMPDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\TAXTEMP.xsc">
+      <DependentUpon>TAXTEMP.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\TAXTEMP.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TAXTEMP.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\TAXTEMP.xss">
+      <DependentUpon>TAXTEMP.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\TEMPDS.xsd">
       <SubType>Designer</SubType>
@@ -1035,6 +1048,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TAXDS001.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\TAXTEMP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TAXTEMP.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\TEMPDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1075,6 +1093,13 @@
     <Compile Include="Finance\Finance002.aspx.designer.cs">
       <DependentUpon>Finance002.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\TAX\TAX007.aspx.cs">
+      <DependentUpon>TAX007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX007.aspx.designer.cs">
+      <DependentUpon>TAX007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\TAX\TAX001.aspx.cs">
       <DependentUpon>TAX001.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1095,6 +1120,13 @@
     </Compile>
     <Compile Include="Finance\TAX\TAX003.aspx.designer.cs">
       <DependentUpon>TAX003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX006.aspx.cs">
+      <DependentUpon>TAX006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX006.aspx.designer.cs">
+      <DependentUpon>TAX006.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\TAX\TAX004.aspx.cs">
       <DependentUpon>TAX004.aspx</DependentUpon>
@@ -1305,6 +1337,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportSALE.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
     <EmbeddedResource Include="ReportSource\test.rdlc" />
   </ItemGroup>
   <PropertyGroup>

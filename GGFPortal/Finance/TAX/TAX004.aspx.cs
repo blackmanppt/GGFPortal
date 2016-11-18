@@ -6,13 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+//範本
 namespace GGFPortal.Finance.TAX
 {
     public partial class TAX004 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
-        static DataSet Ds=new DataSet();
+        static DataSet Ds = new DataSet();
         ReferenceCode.SearchDataToDataSet GetData = new ReferenceCode.SearchDataToDataSet();
         //ReferenceCode.StringConvert GetSQL = new ReferenceCode.StringConvert();
         protected void Page_Load(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace GGFPortal.Finance.TAX
             if (icount > 0)
             {
                 int iMainCheck = 0, iSubCheck = 0;
-                Boolean bStyleNoCheck=true;
+                Boolean bStyleNoCheck = true;
                 string strStyleNo = "";
                 for (int i = 0; i < icount; i++)
                 {
@@ -147,13 +147,13 @@ namespace GGFPortal.Finance.TAX
                     chk.Checked = bCheck;
                     if (chk.Checked)
                     {
-                        if (i>0)
+                        if (i > 0)
                         {
                             //確認是否有多筆Style
                             bStyleNoCheck = (strStyleNo == AcrTicketGV.Rows[i].Cells[4].Text) ? true : false;
                         }
-                        
-                        if (AcrTicketGV.Rows[i].Cells[4].Text== "應收")
+
+                        if (AcrTicketGV.Rows[i].Cells[4].Text == "應收")
                         {
                             if (bStyleNoCheck)
                             {
@@ -169,7 +169,7 @@ namespace GGFPortal.Finance.TAX
                         }
                         else
                         {
-                            if(iMainCheck>0)
+                            if (iMainCheck > 0)
                             {
                                 iSubCheck++;
                                 if (iMainCheck > 0)
@@ -183,29 +183,29 @@ namespace GGFPortal.Finance.TAX
                     }
                 }
             }
-            
+
             return bCheck;
         }
 
         protected void ACRGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            string strStyleNo= ACRGV.Rows[e.NewSelectedIndex].Cells[1].Text.ToString().Replace("&nbsp;", "");
-            
+            string strStyleNo = ACRGV.Rows[e.NewSelectedIndex].Cells[1].Text.ToString().Replace("&nbsp;", "");
+
             //string strWhere = ;
-            if (string.IsNullOrEmpty(strStyleNo) ==false)
+            if (string.IsNullOrEmpty(strStyleNo) == false)
             {
                 if (Ds.Tables.Contains("acr_trn_check"))
                     Ds.Tables.Remove("acr_trn_check");
 
-                Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from  acr_trn_check where style_no = '" + strStyleNo +"'", "acr_trn_check", "TAX004.aspx"));
+                Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from  acr_trn_check where style_no = '" + strStyleNo + "'", "acr_trn_check", "TAX004.aspx"));
 
                 if (Ds.Tables.Contains("purc_pkd_check"))
                     Ds.Tables.Remove("purc_pkd_check");
                 Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from purc_pkd_for_acr  where cus_item_no ='" + strStyleNo + "'", "purc_pkd_check", "TAX004.aspx"));
-                int icheck1 = 0,icheck2=0;
+                int icheck1 = 0, icheck2 = 0;
                 icheck1 = (Ds.Tables["acr_trn_check"].Rows.Count > 0) ? 0 : 1;
                 icheck2 = (Ds.Tables["purc_pkd_check"].Rows.Count > 0) ? 0 : 1;
-                if (icheck1==0 && icheck2 == 0)
+                if (icheck1 == 0 && icheck2 == 0)
                 {
                     DataTable dt = new DataTable("AcrTable");
                     DataColumn column;
@@ -225,7 +225,7 @@ namespace GGFPortal.Finance.TAX
                     column.DataType = System.Type.GetType("System.String");
                     column.ColumnName = "style_no";
                     dt.Columns.Add(column);
-                    
+
                     column = new DataColumn();
                     column.DataType = System.Type.GetType("System.DateTime");
                     column.ColumnName = "DATE";
@@ -272,7 +272,7 @@ namespace GGFPortal.Finance.TAX
                         row["TYPE"] = "包裝";
                         //row["MONEY"] = Ds.Tables["purc_pkd_check"].Rows[i]["uid"].ToString();
                         row["AMT"] = Ds.Tables["purc_pkd_check"].Rows[i]["customs_decleartion_amt"].ToString();
-                        row["nbr"] = Ds.Tables["purc_pkd_check"].Rows[i]["pak_nbr"].ToString()+ Ds.Tables["purc_pkd_check"].Rows[i]["pak_seq"].ToString();
+                        row["nbr"] = Ds.Tables["purc_pkd_check"].Rows[i]["pak_nbr"].ToString() + Ds.Tables["purc_pkd_check"].Rows[i]["pak_seq"].ToString();
                         dt.Rows.Add(row);
 
                     }

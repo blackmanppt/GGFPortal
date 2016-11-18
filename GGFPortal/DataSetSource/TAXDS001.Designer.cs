@@ -1950,8 +1950,6 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class purc_pkd_for_acrDataTable : global::System.Data.TypedTableBase<purc_pkd_for_acrRow> {
             
-            private global::System.Data.DataColumn columntimestamp;
-            
             private global::System.Data.DataColumn columnsite;
             
             private global::System.Data.DataColumn columnpak_nbr;
@@ -2020,6 +2018,14 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columnvendor_id;
             
+            private global::System.Data.DataColumn columnuid;
+            
+            private global::System.Data.DataColumn columnacr_ticket;
+            
+            private global::System.Data.DataColumn columnAcrTaxID;
+            
+            private global::System.Data.DataColumn columnPreAmt;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public purc_pkd_for_acrDataTable() {
@@ -2051,14 +2057,6 @@ namespace GGFPortal.DataSetSource {
             protected purc_pkd_for_acrDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn timestampColumn {
-                get {
-                    return this.columntimestamp;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2335,6 +2333,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn uidColumn {
+                get {
+                    return this.columnuid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn acr_ticketColumn {
+                get {
+                    return this.columnacr_ticket;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AcrTaxIDColumn {
+                get {
+                    return this.columnAcrTaxID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PreAmtColumn {
+                get {
+                    return this.columnPreAmt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2371,7 +2401,6 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public purc_pkd_for_acrRow Addpurc_pkd_for_acrRow(
-                        string timestamp, 
                         string site, 
                         string pak_nbr, 
                         string pak_seq, 
@@ -2405,10 +2434,12 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime create_date, 
                         string modifier, 
                         System.DateTime modify_date, 
-                        string vendor_id) {
+                        string vendor_id, 
+                        string acr_ticket, 
+                        int AcrTaxID, 
+                        decimal PreAmt) {
                 purc_pkd_for_acrRow rowpurc_pkd_for_acrRow = ((purc_pkd_for_acrRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        timestamp,
                         site,
                         pak_nbr,
                         pak_seq,
@@ -2442,7 +2473,11 @@ namespace GGFPortal.DataSetSource {
                         create_date,
                         modifier,
                         modify_date,
-                        vendor_id};
+                        vendor_id,
+                        null,
+                        acr_ticket,
+                        AcrTaxID,
+                        PreAmt};
                 rowpurc_pkd_for_acrRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpurc_pkd_for_acrRow);
                 return rowpurc_pkd_for_acrRow;
@@ -2450,9 +2485,9 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public purc_pkd_for_acrRow FindBytimestampsitepak_nbrpak_seq(string timestamp, string site, string pak_nbr, string pak_seq) {
+            public purc_pkd_for_acrRow FindByuidsitepak_nbrpak_seq(int uid, string site, string pak_nbr, string pak_seq) {
                 return ((purc_pkd_for_acrRow)(this.Rows.Find(new object[] {
-                            timestamp,
+                            uid,
                             site,
                             pak_nbr,
                             pak_seq})));
@@ -2475,7 +2510,6 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columntimestamp = base.Columns["timestamp"];
                 this.columnsite = base.Columns["site"];
                 this.columnpak_nbr = base.Columns["pak_nbr"];
                 this.columnpak_seq = base.Columns["pak_seq"];
@@ -2510,13 +2544,15 @@ namespace GGFPortal.DataSetSource {
                 this.columnmodifier = base.Columns["modifier"];
                 this.columnmodify_date = base.Columns["modify_date"];
                 this.columnvendor_id = base.Columns["vendor_id"];
+                this.columnuid = base.Columns["uid"];
+                this.columnacr_ticket = base.Columns["acr_ticket"];
+                this.columnAcrTaxID = base.Columns["AcrTaxID"];
+                this.columnPreAmt = base.Columns["PreAmt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columntimestamp = new global::System.Data.DataColumn("timestamp", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntimestamp);
                 this.columnsite = new global::System.Data.DataColumn("site", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsite);
                 this.columnpak_nbr = new global::System.Data.DataColumn("pak_nbr", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2585,13 +2621,19 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnmodify_date);
                 this.columnvendor_id = new global::System.Data.DataColumn("vendor_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvendor_id);
+                this.columnuid = new global::System.Data.DataColumn("uid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuid);
+                this.columnacr_ticket = new global::System.Data.DataColumn("acr_ticket", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnacr_ticket);
+                this.columnAcrTaxID = new global::System.Data.DataColumn("AcrTaxID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAcrTaxID);
+                this.columnPreAmt = new global::System.Data.DataColumn("PreAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPreAmt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columntimestamp,
+                                this.columnuid,
                                 this.columnsite,
                                 this.columnpak_nbr,
                                 this.columnpak_seq}, true));
-                this.columntimestamp.AllowDBNull = false;
-                this.columntimestamp.MaxLength = 20;
                 this.columnsite.AllowDBNull = false;
                 this.columnsite.MaxLength = 4;
                 this.columnpak_nbr.AllowDBNull = false;
@@ -2617,6 +2659,12 @@ namespace GGFPortal.DataSetSource {
                 this.columncreator.MaxLength = 12;
                 this.columnmodifier.MaxLength = 12;
                 this.columnvendor_id.MaxLength = 8;
+                this.columnuid.AutoIncrement = true;
+                this.columnuid.AutoIncrementSeed = -1;
+                this.columnuid.AutoIncrementStep = -1;
+                this.columnuid.AllowDBNull = false;
+                this.columnuid.ReadOnly = true;
+                this.columnacr_ticket.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5491,17 +5539,6 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string timestamp {
-                get {
-                    return ((string)(this[this.tablepurc_pkd_for_acr.timestampColumn]));
-                }
-                set {
-                    this[this.tablepurc_pkd_for_acr.timestampColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string site {
                 get {
                     return ((string)(this[this.tablepurc_pkd_for_acr.siteColumn]));
@@ -6021,6 +6058,65 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int uid {
+                get {
+                    return ((int)(this[this.tablepurc_pkd_for_acr.uidColumn]));
+                }
+                set {
+                    this[this.tablepurc_pkd_for_acr.uidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string acr_ticket {
+                get {
+                    try {
+                        return ((string)(this[this.tablepurc_pkd_for_acr.acr_ticketColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'purc_pkd_for_acr\' 中資料行 \'acr_ticket\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablepurc_pkd_for_acr.acr_ticketColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int AcrTaxID {
+                get {
+                    try {
+                        return ((int)(this[this.tablepurc_pkd_for_acr.AcrTaxIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'purc_pkd_for_acr\' 中資料行 \'AcrTaxID\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablepurc_pkd_for_acr.AcrTaxIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PreAmt {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablepurc_pkd_for_acr.PreAmtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'purc_pkd_for_acr\' 中資料行 \'PreAmt\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablepurc_pkd_for_acr.PreAmtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Iscus_item_noNull() {
                 return this.IsNull(this.tablepurc_pkd_for_acr.cus_item_noColumn);
             }
@@ -6365,6 +6461,42 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setvendor_idNull() {
                 this[this.tablepurc_pkd_for_acr.vendor_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isacr_ticketNull() {
+                return this.IsNull(this.tablepurc_pkd_for_acr.acr_ticketColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setacr_ticketNull() {
+                this[this.tablepurc_pkd_for_acr.acr_ticketColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAcrTaxIDNull() {
+                return this.IsNull(this.tablepurc_pkd_for_acr.AcrTaxIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAcrTaxIDNull() {
+                this[this.tablepurc_pkd_for_acr.AcrTaxIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPreAmtNull() {
+                return this.IsNull(this.tablepurc_pkd_for_acr.PreAmtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPreAmtNull() {
+                this[this.tablepurc_pkd_for_acr.PreAmtColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8806,7 +8938,6 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "purc_pkd_for_acr";
-            tableMapping.ColumnMappings.Add("timestamp", "timestamp");
             tableMapping.ColumnMappings.Add("site", "site");
             tableMapping.ColumnMappings.Add("pak_nbr", "pak_nbr");
             tableMapping.ColumnMappings.Add("pak_seq", "pak_seq");
@@ -8841,27 +8972,32 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
             tableMapping.ColumnMappings.Add("modifier", "modifier");
             tableMapping.ColumnMappings.Add("modify_date", "modify_date");
             tableMapping.ColumnMappings.Add("vendor_id", "vendor_id");
+            tableMapping.ColumnMappings.Add("uid", "uid");
+            tableMapping.ColumnMappings.Add("acr_ticket", "acr_ticket");
+            tableMapping.ColumnMappings.Add("AcrTaxID", "AcrTaxID");
+            tableMapping.ColumnMappings.Add("PreAmt", "PreAmt");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[purc_pkd_for_acr] WHERE (([timestamp] = @Original_timestamp) A" +
-                "ND ([site] = @Original_site) AND ([pak_nbr] = @Original_pak_nbr) AND ([pak_seq] " +
-                "= @Original_pak_seq))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [purc_pkd_for_acr] WHERE (([uid] = @Original_uid) AND ([site] = @Orig" +
+                "inal_site) AND ([pak_nbr] = @Original_pak_nbr) AND ([pak_seq] = @Original_pak_se" +
+                "q))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_site", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "site", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pak_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_nbr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pak_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_seq", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[purc_pkd_for_acr] ([timestamp], [site], [pak_nbr], [pak_seq], [CheckFlag], [CheckCreateDate], [cus_item_no], [rec_nbr], [rec_seq], [stockroom], [rs_type], [uncount_qty], [coint_qty], [item_no], [box_no], [box_qty], [tot_net_wt], [tot_gross_wt], [cube_feet], [rec_unit], [pur_price], [rec_qty], [customs_decleartion_price], [customs_decleartion_amt], [clear_Customs_price], [currency_id], [combine], [pkd_status], [filter_creator], [filter_dept], [creator], [create_date], [modifier], [modify_date], [vendor_id]) VALUES (@timestamp, @site, @pak_nbr, @pak_seq, @CheckFlag, @CheckCreateDate, @cus_item_no, @rec_nbr, @rec_seq, @stockroom, @rs_type, @uncount_qty, @coint_qty, @item_no, @box_no, @box_qty, @tot_net_wt, @tot_gross_wt, @cube_feet, @rec_unit, @pur_price, @rec_qty, @customs_decleartion_price, @customs_decleartion_amt, @clear_Customs_price, @currency_id, @combine, @pkd_status, @filter_creator, @filter_dept, @creator, @create_date, @modifier, @modify_date, @vendor_id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [purc_pkd_for_acr] ([site], [pak_nbr], [pak_seq], [acr_ticket], [CheckFlag], [CheckCreateDate], [AcrTaxID], [cus_item_no], [rec_nbr], [rec_seq], [stockroom], [rs_type], [uncount_qty], [coint_qty], [item_no], [box_no], [box_qty], [tot_net_wt], [tot_gross_wt], [cube_feet], [rec_unit], [pur_price], [rec_qty], [customs_decleartion_price], [customs_decleartion_amt], [clear_Customs_price], [currency_id], [combine], [pkd_status], [filter_creator], [filter_dept], [creator], [create_date], [modifier], [modify_date], [vendor_id], [PreAmt]) VALUES (@site, @pak_nbr, @pak_seq, @acr_ticket, @CheckFlag, @CheckCreateDate, @AcrTaxID, @cus_item_no, @rec_nbr, @rec_seq, @stockroom, @rs_type, @uncount_qty, @coint_qty, @item_no, @box_no, @box_qty, @tot_net_wt, @tot_gross_wt, @cube_feet, @rec_unit, @pur_price, @rec_qty, @customs_decleartion_price, @customs_decleartion_amt, @clear_Customs_price, @currency_id, @combine, @pkd_status, @filter_creator, @filter_dept, @creator, @create_date, @modifier, @modify_date, @vendor_id, @PreAmt)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@timestamp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@site", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "site", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pak_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_nbr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pak_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_seq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@acr_ticket", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "acr_ticket", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckFlag", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckFlag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckCreateDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckCreateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AcrTaxID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AcrTaxID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cus_item_no", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cus_item_no", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rec_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rec_nbr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rec_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rec_seq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8891,16 +9027,18 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modifier", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modifier", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modify_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modify_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vendor_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vendor_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 12, 2, "PreAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[purc_pkd_for_acr] SET [timestamp] = @timestamp, [site] = @site, [pak_nbr] = @pak_nbr, [pak_seq] = @pak_seq, [CheckFlag] = @CheckFlag, [CheckCreateDate] = @CheckCreateDate, [cus_item_no] = @cus_item_no, [rec_nbr] = @rec_nbr, [rec_seq] = @rec_seq, [stockroom] = @stockroom, [rs_type] = @rs_type, [uncount_qty] = @uncount_qty, [coint_qty] = @coint_qty, [item_no] = @item_no, [box_no] = @box_no, [box_qty] = @box_qty, [tot_net_wt] = @tot_net_wt, [tot_gross_wt] = @tot_gross_wt, [cube_feet] = @cube_feet, [rec_unit] = @rec_unit, [pur_price] = @pur_price, [rec_qty] = @rec_qty, [customs_decleartion_price] = @customs_decleartion_price, [customs_decleartion_amt] = @customs_decleartion_amt, [clear_Customs_price] = @clear_Customs_price, [currency_id] = @currency_id, [combine] = @combine, [pkd_status] = @pkd_status, [filter_creator] = @filter_creator, [filter_dept] = @filter_dept, [creator] = @creator, [create_date] = @create_date, [modifier] = @modifier, [modify_date] = @modify_date, [vendor_id] = @vendor_id WHERE (([timestamp] = @Original_timestamp) AND ([site] = @Original_site) AND ([pak_nbr] = @Original_pak_nbr) AND ([pak_seq] = @Original_pak_seq))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [purc_pkd_for_acr] SET [site] = @site, [pak_nbr] = @pak_nbr, [pak_seq] = @pak_seq, [acr_ticket] = @acr_ticket, [CheckFlag] = @CheckFlag, [CheckCreateDate] = @CheckCreateDate, [AcrTaxID] = @AcrTaxID, [cus_item_no] = @cus_item_no, [rec_nbr] = @rec_nbr, [rec_seq] = @rec_seq, [stockroom] = @stockroom, [rs_type] = @rs_type, [uncount_qty] = @uncount_qty, [coint_qty] = @coint_qty, [item_no] = @item_no, [box_no] = @box_no, [box_qty] = @box_qty, [tot_net_wt] = @tot_net_wt, [tot_gross_wt] = @tot_gross_wt, [cube_feet] = @cube_feet, [rec_unit] = @rec_unit, [pur_price] = @pur_price, [rec_qty] = @rec_qty, [customs_decleartion_price] = @customs_decleartion_price, [customs_decleartion_amt] = @customs_decleartion_amt, [clear_Customs_price] = @clear_Customs_price, [currency_id] = @currency_id, [combine] = @combine, [pkd_status] = @pkd_status, [filter_creator] = @filter_creator, [filter_dept] = @filter_dept, [creator] = @creator, [create_date] = @create_date, [modifier] = @modifier, [modify_date] = @modify_date, [vendor_id] = @vendor_id, [PreAmt] = @PreAmt WHERE (([uid] = @Original_uid) AND ([site] = @Original_site) AND ([pak_nbr] = @Original_pak_nbr) AND ([pak_seq] = @Original_pak_seq))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@timestamp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@site", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "site", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pak_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_nbr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pak_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_seq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@acr_ticket", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "acr_ticket", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckFlag", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckFlag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CheckCreateDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CheckCreateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AcrTaxID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AcrTaxID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cus_item_no", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cus_item_no", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rec_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rec_nbr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rec_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rec_seq", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8930,7 +9068,8 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modifier", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modifier", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modify_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "modify_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vendor_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vendor_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_timestamp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "timestamp", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreAmt", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 12, 2, "PreAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_uid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_site", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "site", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pak_nbr", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_nbr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pak_seq", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pak_seq", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8949,7 +9088,11 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT timestamp, site, pak_nbr, pak_seq, CheckFlag, CheckCreateDate, cus_item_no, rec_nbr, rec_seq, stockroom, rs_type, uncount_qty, coint_qty, item_no, box_no, box_qty, tot_net_wt, tot_gross_wt, cube_feet, rec_unit, pur_price, rec_qty, customs_decleartion_price, customs_decleartion_amt, clear_Customs_price, currency_id, combine, pkd_status, filter_creator, filter_dept, creator, create_date, modifier, modify_date, vendor_id FROM dbo.purc_pkd_for_acr";
+            this._commandCollection[0].CommandText = @"SELECT          uid, site, pak_nbr, pak_seq, acr_ticket, CheckFlag, CheckCreateDate, AcrTaxID, cus_item_no, rec_nbr, rec_seq, 
+                            stockroom, rs_type, uncount_qty, coint_qty, item_no, box_no, box_qty, tot_net_wt, tot_gross_wt, cube_feet, rec_unit, 
+                            pur_price, rec_qty, customs_decleartion_price, customs_decleartion_amt, clear_Customs_price, currency_id, 
+                            combine, pkd_status, filter_creator, filter_dept, creator, create_date, modifier, modify_date, vendor_id, PreAmt
+FROM              purc_pkd_for_acr";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9010,13 +9153,8 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_timestamp, string Original_site, string Original_pak_nbr, string Original_pak_seq) {
-            if ((Original_timestamp == null)) {
-                throw new global::System.ArgumentNullException("Original_timestamp");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_timestamp));
-            }
+        public virtual int Delete(int Original_uid, string Original_site, string Original_pak_nbr, string Original_pak_seq) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_uid));
             if ((Original_site == null)) {
                 throw new global::System.ArgumentNullException("Original_site");
             }
@@ -9056,12 +9194,13 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    string timestamp, 
                     string site, 
                     string pak_nbr, 
                     string pak_seq, 
+                    string acr_ticket, 
                     string CheckFlag, 
                     System.DateTime CheckCreateDate, 
+                    global::System.Nullable<int> AcrTaxID, 
                     string cus_item_no, 
                     string rec_nbr, 
                     string rec_seq, 
@@ -9090,30 +9229,31 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
                     global::System.Nullable<global::System.DateTime> create_date, 
                     string modifier, 
                     global::System.Nullable<global::System.DateTime> modify_date, 
-                    string vendor_id) {
-            if ((timestamp == null)) {
-                throw new global::System.ArgumentNullException("timestamp");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(timestamp));
-            }
+                    string vendor_id, 
+                    global::System.Nullable<decimal> PreAmt) {
             if ((site == null)) {
                 throw new global::System.ArgumentNullException("site");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(site));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(site));
             }
             if ((pak_nbr == null)) {
                 throw new global::System.ArgumentNullException("pak_nbr");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(pak_nbr));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(pak_nbr));
             }
             if ((pak_seq == null)) {
                 throw new global::System.ArgumentNullException("pak_seq");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(pak_seq));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(pak_seq));
+            }
+            if ((acr_ticket == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(acr_ticket));
             }
             if ((CheckFlag == null)) {
                 throw new global::System.ArgumentNullException("CheckFlag");
@@ -9122,179 +9262,191 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(CheckFlag));
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(CheckCreateDate));
-            if ((cus_item_no == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((AcrTaxID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(AcrTaxID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(cus_item_no));
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((rec_nbr == null)) {
+            if ((cus_item_no == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(rec_nbr));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(cus_item_no));
             }
-            if ((rec_seq == null)) {
+            if ((rec_nbr == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(rec_seq));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(rec_nbr));
             }
-            if ((stockroom == null)) {
+            if ((rec_seq == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(stockroom));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(rec_seq));
             }
-            if ((rs_type == null)) {
+            if ((stockroom == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(rs_type));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(stockroom));
             }
-            if ((uncount_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(uncount_qty.Value));
-            }
-            else {
+            if ((rs_type == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((coint_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(coint_qty.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(rs_type));
+            }
+            if ((uncount_qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(uncount_qty.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((item_no == null)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((coint_qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(coint_qty.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(item_no));
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((box_no == null)) {
+            if ((item_no == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(box_no));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(item_no));
             }
-            if ((box_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((decimal)(box_qty.Value));
-            }
-            else {
+            if ((box_no == null)) {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((tot_net_wt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((decimal)(tot_net_wt.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(box_no));
+            }
+            if ((box_qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((decimal)(box_qty.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((tot_gross_wt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(tot_gross_wt.Value));
+            if ((tot_net_wt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(tot_net_wt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((cube_feet.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((decimal)(cube_feet.Value));
+            if ((tot_gross_wt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((decimal)(tot_gross_wt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((rec_unit == null)) {
+            if ((cube_feet.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((decimal)(cube_feet.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(rec_unit));
-            }
-            if ((pur_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[20].Value = ((decimal)(pur_price.Value));
-            }
-            else {
+            if ((rec_unit == null)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((rec_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[21].Value = ((decimal)(rec_qty.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(rec_unit));
+            }
+            if ((pur_price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((decimal)(pur_price.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((customs_decleartion_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(customs_decleartion_price.Value));
+            if ((rec_qty.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(rec_qty.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((customs_decleartion_amt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(customs_decleartion_amt.Value));
+            if ((customs_decleartion_price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(customs_decleartion_price.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((clear_Customs_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(clear_Customs_price.Value));
+            if ((customs_decleartion_amt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(customs_decleartion_amt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((currency_id == null)) {
-                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            if ((clear_Customs_price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(clear_Customs_price.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(currency_id));
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((combine == null)) {
+            if ((currency_id == null)) {
                 this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(combine));
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(currency_id));
             }
-            if ((pkd_status == null)) {
+            if ((combine == null)) {
                 this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(pkd_status));
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(combine));
             }
-            if ((filter_creator == null)) {
+            if ((pkd_status == null)) {
                 this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(filter_creator));
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(pkd_status));
             }
-            if ((filter_dept == null)) {
+            if ((filter_creator == null)) {
                 this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(filter_dept));
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(filter_creator));
             }
-            if ((creator == null)) {
+            if ((filter_dept == null)) {
                 this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(creator));
+                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(filter_dept));
             }
-            if ((create_date.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[31].Value = ((System.DateTime)(create_date.Value));
-            }
-            else {
+            if ((creator == null)) {
                 this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((modifier == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(creator));
+            }
+            if ((create_date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((System.DateTime)(create_date.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(modifier));
-            }
-            if ((modify_date.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[33].Value = ((System.DateTime)(modify_date.Value));
-            }
-            else {
+            if ((modifier == null)) {
                 this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            if ((vendor_id == null)) {
-                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(modifier));
+            }
+            if ((modify_date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = ((System.DateTime)(modify_date.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[34].Value = ((string)(vendor_id));
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((vendor_id == null)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((string)(vendor_id));
+            }
+            if ((PreAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((decimal)(PreAmt.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9317,12 +9469,13 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string timestamp, 
                     string site, 
                     string pak_nbr, 
                     string pak_seq, 
+                    string acr_ticket, 
                     string CheckFlag, 
                     System.DateTime CheckCreateDate, 
+                    global::System.Nullable<int> AcrTaxID, 
                     string cus_item_no, 
                     string rec_nbr, 
                     string rec_seq, 
@@ -9352,33 +9505,34 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
                     string modifier, 
                     global::System.Nullable<global::System.DateTime> modify_date, 
                     string vendor_id, 
-                    string Original_timestamp, 
+                    global::System.Nullable<decimal> PreAmt, 
+                    int Original_uid, 
                     string Original_site, 
                     string Original_pak_nbr, 
                     string Original_pak_seq) {
-            if ((timestamp == null)) {
-                throw new global::System.ArgumentNullException("timestamp");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(timestamp));
-            }
             if ((site == null)) {
                 throw new global::System.ArgumentNullException("site");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(site));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(site));
             }
             if ((pak_nbr == null)) {
                 throw new global::System.ArgumentNullException("pak_nbr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(pak_nbr));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(pak_nbr));
             }
             if ((pak_seq == null)) {
                 throw new global::System.ArgumentNullException("pak_seq");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(pak_seq));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(pak_seq));
+            }
+            if ((acr_ticket == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(acr_ticket));
             }
             if ((CheckFlag == null)) {
                 throw new global::System.ArgumentNullException("CheckFlag");
@@ -9387,203 +9541,210 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(CheckFlag));
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(CheckCreateDate));
-            if ((cus_item_no == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((AcrTaxID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(AcrTaxID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(cus_item_no));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((rec_nbr == null)) {
+            if ((cus_item_no == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(rec_nbr));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(cus_item_no));
             }
-            if ((rec_seq == null)) {
+            if ((rec_nbr == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(rec_seq));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(rec_nbr));
             }
-            if ((stockroom == null)) {
+            if ((rec_seq == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(stockroom));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(rec_seq));
             }
-            if ((rs_type == null)) {
+            if ((stockroom == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(rs_type));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(stockroom));
             }
-            if ((uncount_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(uncount_qty.Value));
-            }
-            else {
+            if ((rs_type == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((coint_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(coint_qty.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(rs_type));
+            }
+            if ((uncount_qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(uncount_qty.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((item_no == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((coint_qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(coint_qty.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(item_no));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((box_no == null)) {
+            if ((item_no == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(box_no));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(item_no));
             }
-            if ((box_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(box_qty.Value));
-            }
-            else {
+            if ((box_no == null)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((tot_net_wt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(tot_net_wt.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(box_no));
+            }
+            if ((box_qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(box_qty.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((tot_gross_wt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(tot_gross_wt.Value));
+            if ((tot_net_wt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(tot_net_wt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((cube_feet.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(cube_feet.Value));
+            if ((tot_gross_wt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(tot_gross_wt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((rec_unit == null)) {
+            if ((cube_feet.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(cube_feet.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(rec_unit));
-            }
-            if ((pur_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(pur_price.Value));
-            }
-            else {
+            if ((rec_unit == null)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((rec_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(rec_qty.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(rec_unit));
+            }
+            if ((pur_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(pur_price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((customs_decleartion_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(customs_decleartion_price.Value));
+            if ((rec_qty.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(rec_qty.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((customs_decleartion_amt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(customs_decleartion_amt.Value));
+            if ((customs_decleartion_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(customs_decleartion_price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((clear_Customs_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(clear_Customs_price.Value));
+            if ((customs_decleartion_amt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(customs_decleartion_amt.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((currency_id == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            if ((clear_Customs_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(clear_Customs_price.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(currency_id));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((combine == null)) {
+            if ((currency_id == null)) {
                 this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(combine));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(currency_id));
             }
-            if ((pkd_status == null)) {
+            if ((combine == null)) {
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(pkd_status));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(combine));
             }
-            if ((filter_creator == null)) {
+            if ((pkd_status == null)) {
                 this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(filter_creator));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(pkd_status));
             }
-            if ((filter_dept == null)) {
+            if ((filter_creator == null)) {
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(filter_dept));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(filter_creator));
             }
-            if ((creator == null)) {
+            if ((filter_dept == null)) {
                 this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(creator));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(filter_dept));
             }
-            if ((create_date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((System.DateTime)(create_date.Value));
-            }
-            else {
+            if ((creator == null)) {
                 this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((modifier == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(creator));
+            }
+            if ((create_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((System.DateTime)(create_date.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(modifier));
-            }
-            if ((modify_date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((System.DateTime)(modify_date.Value));
-            }
-            else {
+            if ((modifier == null)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
-            if ((vendor_id == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(modifier));
+            }
+            if ((modify_date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((System.DateTime)(modify_date.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(vendor_id));
-            }
-            if ((Original_timestamp == null)) {
-                throw new global::System.ArgumentNullException("Original_timestamp");
+            if ((vendor_id == null)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_timestamp));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(vendor_id));
             }
+            if ((PreAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(PreAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(Original_uid));
             if ((Original_site == null)) {
                 throw new global::System.ArgumentNullException("Original_site");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_site));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_site));
             }
             if ((Original_pak_nbr == null)) {
                 throw new global::System.ArgumentNullException("Original_pak_nbr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_pak_nbr));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_pak_nbr));
             }
             if ((Original_pak_seq == null)) {
                 throw new global::System.ArgumentNullException("Original_pak_seq");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_pak_seq));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_pak_seq));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9606,8 +9767,10 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    string acr_ticket, 
                     string CheckFlag, 
                     System.DateTime CheckCreateDate, 
+                    global::System.Nullable<int> AcrTaxID, 
                     string cus_item_no, 
                     string rec_nbr, 
                     string rec_seq, 
@@ -9637,11 +9800,12 @@ namespace GGFPortal.DataSetSource.TAXDS001TableAdapters {
                     string modifier, 
                     global::System.Nullable<global::System.DateTime> modify_date, 
                     string vendor_id, 
-                    string Original_timestamp, 
+                    global::System.Nullable<decimal> PreAmt, 
+                    int Original_uid, 
                     string Original_site, 
                     string Original_pak_nbr, 
                     string Original_pak_seq) {
-            return this.Update(Original_timestamp, Original_site, Original_pak_nbr, Original_pak_seq, CheckFlag, CheckCreateDate, cus_item_no, rec_nbr, rec_seq, stockroom, rs_type, uncount_qty, coint_qty, item_no, box_no, box_qty, tot_net_wt, tot_gross_wt, cube_feet, rec_unit, pur_price, rec_qty, customs_decleartion_price, customs_decleartion_amt, clear_Customs_price, currency_id, combine, pkd_status, filter_creator, filter_dept, creator, create_date, modifier, modify_date, vendor_id, Original_timestamp, Original_site, Original_pak_nbr, Original_pak_seq);
+            return this.Update(Original_site, Original_pak_nbr, Original_pak_seq, acr_ticket, CheckFlag, CheckCreateDate, AcrTaxID, cus_item_no, rec_nbr, rec_seq, stockroom, rs_type, uncount_qty, coint_qty, item_no, box_no, box_qty, tot_net_wt, tot_gross_wt, cube_feet, rec_unit, pur_price, rec_qty, customs_decleartion_price, customs_decleartion_amt, clear_Customs_price, currency_id, combine, pkd_status, filter_creator, filter_dept, creator, create_date, modifier, modify_date, vendor_id, PreAmt, Original_uid, Original_site, Original_pak_nbr, Original_pak_seq);
         }
     }
     
