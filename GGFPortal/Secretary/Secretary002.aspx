@@ -29,7 +29,7 @@
             <tr>
                 <td class="auto-style1">
     
-        <asp:Label ID="Label1" runat="server" Text="起迄日期："></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="起訖日期："></asp:Label>
                 </td>
                 <td>
         <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>

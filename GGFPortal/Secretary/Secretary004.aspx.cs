@@ -49,12 +49,12 @@ namespace GGFPortal.Secretary
         }
         private void DbInit()
         {
-            if (SearchTB.Text.Trim().Length>0 && DateDDL.SelectedIndex>0)
-            {
+            //if (SearchTB.Text.Trim().Length>0 && DateDDL.SelectedIndex>0)
+            //{
                 using (SqlConnection Conn = new SqlConnection(strConnectString))
                 {
                     string strSearch;
-                    strSearch = (SearchTB.Text.Trim().Length > 0) ? SearchTB.Text.Trim() : "";
+                    strSearch = (SearchTB.Text.Trim().Length > 0) ? "%" + SearchTB.Text.Trim().ToUpper() + "%" : "%";
                     DataTable dt = new DataTable();
                     string sqlstr = selectsql();
                     SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
@@ -72,11 +72,11 @@ namespace GGFPortal.Secretary
                     }
 
                 }
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請輸入搜尋資料與月份');</script>");
-            }
+            //}
+            //else
+            //{
+            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請輸入搜尋資料與月份');</script>");
+            //}
             
         }
 

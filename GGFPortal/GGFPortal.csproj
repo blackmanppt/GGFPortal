@@ -49,6 +49,10 @@
       <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
@@ -327,6 +331,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Finance\Finance007.aspx" />
     <Content Include="Finance\Finance005.aspx" />
     <Content Include="Finance\Finance004.aspx" />
     <Content Include="Finance\Finace001.aspx" />
@@ -341,6 +346,7 @@
     <Content Include="Finance\TAX\test1.aspx" />
     <Content Include="Finance\TAX\test2.aspx" />
     <Content Include="Finance\TAX\test3.aspx" />
+    <Content Include="IMG\Cancelimages.png" />
     <Content Include="IMG\images.png" />
     <Content Include="IMG\spotlight001.png" />
     <Content Include="MIS\MIS002.aspx" />
@@ -1058,6 +1064,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance007.aspx.cs">
+      <DependentUpon>Finance007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance007.aspx.designer.cs">
+      <DependentUpon>Finance007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance005.aspx.cs">
       <DependentUpon>Finance005.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1330,6 +1343,7 @@
     <EmbeddedResource Include="ReportSource\ReportFinance001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance005.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportFinance006.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportMIS001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportMIS002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportS001.rdlc">
@@ -1339,6 +1353,9 @@
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
     <EmbeddedResource Include="ReportSource\test.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

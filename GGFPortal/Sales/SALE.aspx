@@ -25,7 +25,7 @@
             <h1>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
             </asp:ScriptManager>
-                <asp:Label ID="TitleLB" runat="server" Text="出口大表查詢" Style="color: #6600FF; background-color: #00CC99"></asp:Label>
+                <asp:Label ID="TitleLB" runat="server" Text="打樣單查詢" Style="color: #6600FF; background-color: #00CC99"></asp:Label>
             </h1>
         </div>
         <div>

@@ -20,7 +20,7 @@ namespace GGFPortal.MIS
             else
             {
                 Session["StartDay"] = DateTime.Now;
-                Session["EndDay"] = DateTime.Now.AddDays(44);
+                Session["EndDay"] = DateTime.Now.AddDays(54);
             }
         }
 
@@ -32,7 +32,7 @@ namespace GGFPortal.MIS
                 if (DateTime.TryParseExact(StartDayTB.Text, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsed))
                 {
                     Session["StartDay"] = parsed;
-                    Session["EndDay"] = parsed.AddDays(44);
+                    Session["EndDay"] = parsed.AddDays(54);
                     ReportViewer1.LocalReport.Refresh();
                 }
                 else

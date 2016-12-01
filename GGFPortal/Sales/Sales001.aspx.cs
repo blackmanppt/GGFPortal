@@ -19,6 +19,20 @@ namespace GGFPortal.Sales
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
+            StartDay.Attributes["readonly"] = "readonly";
+            EndDay.Attributes["readonly"] = "readonly";
+
+            if (IsPostBack)
+            {
+                if (StartDay.Text.Length > 0)
+                {
+                    EndDay_CalendarExtender.StartDate = Convert.ToDateTime(StartDay.Text.Substring(0,4) + "-" + StartDay.Text.Substring(4, 2) + "-" + StartDay.Text.Substring(6, 2));
+                }
+                if (EndDay.Text.Length > 0)
+                {
+                    StartDay_CalendarExtender.EndDate = Convert.ToDateTime(EndDay.Text.Substring(0, 4) + "-" + EndDay.Text.Substring(4, 2) + "-" + EndDay.Text.Substring(6, 2));
+                }
+            }
             //if (!IsPostBack)
             //{
             //    this.ReportViewer1.LocalReport.DataSources.Clear();
@@ -43,11 +57,16 @@ namespace GGFPortal.Sales
             {
                 if (Ds.Tables.Contains("Sales001"))
                     Ds.Tables.Remove("Sales001");
-                string sqlstr = selectsql(), strSearch;
-                strSearch = ACCTB.Text.Trim() + "%";
-                SqlDataAdapter myAdapter = new SqlDataAdapter("select image_path as Image,* from samc_reqm ", Conn);
-                //myAdapter.SelectCommand.Parameters.AddWithValue("Search", strSearch);
-                //myAdapter.SelectCommand.Parameters.AddWithValue("Search1", strSearch);
+                string sqlstr = selectsql(), strStartDay,strEndDay,strVendor,strFactory;
+                strStartDay = (string.IsNullOrEmpty(StartDay.Text)) ? "00000000" : StartDay.Text;
+                strEndDay = (string.IsNullOrEmpty(EndDay.Text)) ? "99999999" : EndDay.Text;
+                strVendor = (string.IsNullOrEmpty(VendorTB.Text)) ? "%" : VendorTB.Text;
+                strFactory = (string.IsNullOrEmpty(FactoryDDL.Text)) ? "%" : FactoryDDL.Text;
+                SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
+                myAdapter.SelectCommand.Parameters.AddWithValue("StartDay", strStartDay);
+                myAdapter.SelectCommand.Parameters.AddWithValue("EndDay", strEndDay);
+                myAdapter.SelectCommand.Parameters.AddWithValue("客戶名稱", strVendor);
+                myAdapter.SelectCommand.Parameters.AddWithValue("工廠名稱", strFactory);
                 myAdapter.Fill(Ds, "Sales001");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
             }
@@ -78,10 +97,116 @@ namespace GGFPortal.Sales
         private string selectsql()
         {
             string sqlstr = @"
-                            select ACC_ID as '會計科目',case when DB_AMT is null then 0 else DB_AMT end as  '借方', case when CR_AMT is null then 0 else CR_AMT end as  '貸方',CODE as '用途',REMARK as '備註',ACC_NO as '傳票號碼' from [dbo].[SLIP]
-                            where ACC_NO like'105%' and ACC_NO in ( select  ACC_NO from [dbo].[SLIP] where ACC_ID='1112') and ACC_NO like @Search
+                                select * from (
+                                SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name ,'訂單' as '單別'
+                                FROM ViewOrderQty UNION ALL 
+                                SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name ,'預估單'as '單別'
+                                FROM ViewPreOrderQty 
+                                ) a
+                                where 訂單日期  between @StartDay and @EndDay and 客戶名稱 like @客戶名稱 and 工廠名稱 like @工廠名稱
                             ";
             return sqlstr;
+        }
+        protected void SearchVendorID2_Click(object sender, EventArgs e)
+        {
+            MessageLB.Text = "";
+            if (VendorGV.Rows.Count > 0)
+            {
+                VendorGV.DataSource = null;
+                VendorGV.DataBind();
+                //UpdatePanel1.Update();
+
+            }
+            using (SqlConnection Conn = new SqlConnection(strConnectString))
+            {
+
+                if (SearchVendorID2TB.Text.Length > 0)
+                {
+                    string strsql;
+                    strsql = string.Format("select distinct cus_id,cus_name_brief,cus_name from view_bas_cus_master where cus_id like '%{0}%' or cus_name_brief like '%{0}%' or cus_name  like '%{0}%' ", SearchVendorID2TB.Text.ToUpper() );
+                    DataTable DT = new DataTable();
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(strsql , Conn);
+                    myAdapter.Fill(DT);
+                    if (DT.Rows.Count > 0)
+                    {
+                        VendorGV.DataSource = DT;
+                        VendorGV.DataBind();
+                    }
+                    else
+                        //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+                        MessageLB.Text = "搜尋不到資料";
+                }
+                else
+                {
+                    //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請輸入資料');</script>");
+                    MessageLB.Text = "請輸入資料";
+                }
+            }
+            ModalPopupExtender1.Show();
+        }
+
+
+
+        protected void SearchVendorIDBT_Click(object sender, ImageClickEventArgs e)
+        {
+            
+            //Label4.Text = "客戶名稱或代號：";
+            SearchVendorID2TB.Text = "";
+            if (VendorGV.Rows.Count>0)
+            {
+
+                MessageLB.Text = "";
+                VendorGV.DataSource = null;
+                VendorGV.DataBind();
+                UpdatePanel1.Update();
+                
+            }
+            UpdatePanel3.Update();
+            ModalPopupExtender1.Show();
+        }
+
+        protected void VendorGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            ModalPopupExtender1.Hide();
+            //將Ajax的資料丟到其他欄位
+            GridViewRow row = VendorGV.Rows[e.NewSelectedIndex];
+            VendorTB.Text = row.Cells[1].Text;
+            UpdatePanel2.Update();
+        }
+
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        //AutoComplete
+        public static List<string> SearchVendorID(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = strConnectString;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "select distinct cus_id,cus_name_brief,cus_name from view_bas_cus_master where (cus_id like '%'+  @SearchText + '%' or cus_name_brief like '%'+@SearchText+'%'  or cus_name like '%'+@SearchText+'%') ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> VendorID = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            string item = AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem(sdr["cus_id"].ToString(), sdr["cus_name_brief"].ToString());
+                            VendorID.Add(item);
+                        }
+                    }
+                    conn.Close();
+                    return VendorID;
+                }
+            }
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            StartDay.Text = "";
+            EndDay.Text = "";
         }
     }
 }

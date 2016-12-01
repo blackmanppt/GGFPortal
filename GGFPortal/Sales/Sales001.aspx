@@ -7,6 +7,17 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: left;
+        }
+        .auto-style2 {
+            text-align: center;
+        }
+        .auto-style3 {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,7 +25,7 @@
             <h1>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
         </asp:ScriptManager>
-            <asp:Label ID="TitleLB" runat="server" Text="AP1資料蒐尋" style="color: #6600FF; background-color: #00CC99"></asp:Label>
+            <asp:Label ID="TitleLB" runat="server" Text="訂單量查詢" style="color: #6600FF; background-color: #00CC99"></asp:Label>
             </h1>
         </div>
     <div>
@@ -23,27 +34,53 @@
             <tr>
                 <td class="auto-style1">
     
-        <asp:Label ID="Label1" runat="server" Text="傳票號碼："></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="客戶名稱："></asp:Label>
                 </td>
                 <td>
-
-                    <asp:TextBox ID="ACCTB" runat="server"></asp:TextBox>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:TextBox ID="VendorTB" runat="server"></asp:TextBox>
+                            <ajaxToolkit:AutoCompleteExtender ID="VendorTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="2" ServiceMethod="SearchVendorID" TargetControlID="VendorTB">
+                            </ajaxToolkit:AutoCompleteExtender>
+                            <asp:ImageButton ID="SearchVendorIDBT" runat="server" Height="19px" ImageUrl="~/IMG/images.png" OnClick="SearchVendorIDBT_Click" Width="16px" />
+                            <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" CancelControlID="SearchCancel" PopupControlID="SearchVendorIDPanel" TargetControlID="ShowBT">
+                            </ajaxToolkit:ModalPopupExtender>
+                            <asp:Button ID="ShowBT" runat="server" Text="Button" Visible="true" Style="display:none" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
 
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
-                    &nbsp;</td>
+                    <asp:Label ID="Label2" runat="server" Text="訂單時間："></asp:Label>
+                </td>
                 <td>
-                    &nbsp;</td>
+                    <asp:TextBox ID="StartDay" runat="server" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="StartDay_CalendarExtender" runat="server" TargetControlID="StartDay" Format="yyyyMMdd" />
+                    <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay" Format="yyyyMMdd" />
+                    <asp:ImageButton ID="ImageButton1" runat="server" Height="16px" ImageUrl="~/IMG/Cancelimages.png" OnClick="ImageButton1_Click" Width="16px" />
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
-                    &nbsp;</td>
+                    <asp:Label ID="Label3" runat="server" Text="訂單工廠："></asp:Label>
+                </td>
                 <td>
-                    &nbsp;</td>
+        
+                    <asp:DropDownList ID="FactoryDDL" runat="server" DataSourceID="SqlDataSource1" DataTextField="MappingData" DataValueField="MappingData" AppendDataBoundItems="True">
+                        <asp:ListItem></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="ViewOrderQty" Name="UsingDefine" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+        
+                </td>
                 <td>
         <asp:Button ID="SearchBT" runat="server" OnClick="SearchBT_Click" Text="Search" />
     
@@ -54,179 +91,65 @@
     
     </div>
     <div>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
+
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%" Visible="False">
             <LocalReport ReportPath="ReportSource\ReportSales001.rdlc">
-
-                <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="Sales001" />
-                </DataSources>
-
             </LocalReport>
         </rsweb:ReportViewer>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqmTableAdapter" UpdateMethod="Update">
-            <DeleteParameters>
-                <asp:Parameter Name="Original_site" Type="String" />
-                <asp:Parameter Name="Original_sam_nbr" Type="String" />
-                <asp:Parameter Name="Original_sam_times" Type="String" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="site" Type="String" />
-                <asp:Parameter Name="sam_nbr" Type="String" />
-                <asp:Parameter Name="sam_times" Type="String" />
-                <asp:Parameter Name="sam_no" Type="String" />
-                <asp:Parameter Name="version" Type="String" />
-                <asp:Parameter Name="sam_date" Type="DateTime" />
-                <asp:Parameter Name="cus_id" Type="String" />
-                <asp:Parameter Name="dept_no" Type="String" />
-                <asp:Parameter Name="item_no" Type="String" />
-                <asp:Parameter Name="type_id" Type="String" />
-                <asp:Parameter Name="salesman" Type="String" />
-                <asp:Parameter Name="sam_size" Type="String" />
-                <asp:Parameter Name="assign_qty" Type="Decimal" />
-                <asp:Parameter Name="plan_fin_date" Type="DateTime" />
-                <asp:Parameter Name="emb" Type="String" />
-                <asp:Parameter Name="washing" Type="String" />
-                <asp:Parameter Name="oth_extra" Type="String" />
-                <asp:Parameter Name="finish_date" Type="DateTime" />
-                <asp:Parameter Name="finish_qty" Type="Decimal" />
-                <asp:Parameter Name="place_origin" Type="String" />
-                <asp:Parameter Name="currency_id" Type="String" />
-                <asp:Parameter Name="unit_price" Type="Decimal" />
-                <asp:Parameter Name="amount" Type="Decimal" />
-                <asp:Parameter Name="sam_qty" Type="Decimal" />
-                <asp:Parameter Name="sam_cus_qty" Type="Decimal" />
-                <asp:Parameter Name="sam_taipei_qty" Type="Decimal" />
-                <asp:Parameter Name="image_path" Type="String" />
-                <asp:Parameter Name="remark60" Type="String" />
-                <asp:Parameter Name="status" Type="String" />
-                <asp:Parameter Name="close_date" Type="DateTime" />
-                <asp:Parameter Name="reason" Type="String" />
-                <asp:Parameter Name="online_date" Type="DateTime" />
-                <asp:Parameter Name="confirm_yn" Type="String" />
-                <asp:Parameter Name="progress_rate" Type="String" />
-                <asp:Parameter Name="sam_class" Type="String" />
-                <asp:Parameter Name="p1" Type="String" />
-                <asp:Parameter Name="p4" Type="String" />
-                <asp:Parameter Name="p7" Type="String" />
-                <asp:Parameter Name="ratio_size" Type="String" />
-                <asp:Parameter Name="sample_complete_1" Type="String" />
-                <asp:Parameter Name="sample_complete_2" Type="String" />
-                <asp:Parameter Name="cus_express_corp" Type="String" />
-                <asp:Parameter Name="cus_assign_account" Type="String" />
-                <asp:Parameter Name="cus_address_id" Type="String" />
-                <asp:Parameter Name="cus_addressee" Type="String" />
-                <asp:Parameter Name="cus_address" Type="String" />
-                <asp:Parameter Name="cus_style_no" Type="String" />
-                <asp:Parameter Name="brand_name" Type="String" />
-                <asp:Parameter Name="sam_type" Type="String" />
-                <asp:Parameter Name="proofing_factory" Type="String" />
-                <asp:Parameter Name="filter_creator" Type="String" />
-                <asp:Parameter Name="filter_dept" Type="String" />
-                <asp:Parameter Name="creator" Type="String" />
-                <asp:Parameter Name="create_date" Type="DateTime" />
-                <asp:Parameter Name="modifier" Type="String" />
-                <asp:Parameter Name="modify_date" Type="DateTime" />
-                <asp:Parameter Name="printing" Type="String" />
-                <asp:Parameter Name="sewing" Type="String" />
-                <asp:Parameter Name="samc_remark60" Type="String" />
-                <asp:Parameter Name="mark" Type="String" />
-                <asp:Parameter Name="crp_yn" Type="String" />
-                <asp:Parameter Name="crp_date" Type="DateTime" />
-                <asp:Parameter Name="item_statistic" Type="String" />
-                <asp:Parameter Name="remark_1" Type="String" />
-                <asp:Parameter Name="final" Type="String" />
-                <asp:Parameter Name="last_date" Type="DateTime" />
-                <asp:Parameter Name="samc_fin_date" Type="DateTime" />
-                <asp:Parameter Name="sam_type_A" Type="String" />
-                <asp:Parameter Name="sam_type_B" Type="String" />
-                <asp:Parameter Name="sam_type_C" Type="String" />
-                <asp:Parameter Name="sam_type_D" Type="String" />
-                <asp:Parameter Name="sam_type_E" Type="String" />
-                <asp:Parameter Name="sam_type_F" Type="String" />
-                <asp:Parameter Name="hotfix" Type="String" />
-                <asp:Parameter Name="s_plan_arrival_date" Type="DateTime" />
-                <asp:Parameter Name="s_real_arrival_date" Type="DateTime" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="sam_no" Type="String" />
-                <asp:Parameter Name="version" Type="String" />
-                <asp:Parameter Name="sam_date" Type="DateTime" />
-                <asp:Parameter Name="cus_id" Type="String" />
-                <asp:Parameter Name="dept_no" Type="String" />
-                <asp:Parameter Name="item_no" Type="String" />
-                <asp:Parameter Name="type_id" Type="String" />
-                <asp:Parameter Name="salesman" Type="String" />
-                <asp:Parameter Name="sam_size" Type="String" />
-                <asp:Parameter Name="assign_qty" Type="Decimal" />
-                <asp:Parameter Name="plan_fin_date" Type="DateTime" />
-                <asp:Parameter Name="emb" Type="String" />
-                <asp:Parameter Name="washing" Type="String" />
-                <asp:Parameter Name="oth_extra" Type="String" />
-                <asp:Parameter Name="finish_date" Type="DateTime" />
-                <asp:Parameter Name="finish_qty" Type="Decimal" />
-                <asp:Parameter Name="place_origin" Type="String" />
-                <asp:Parameter Name="currency_id" Type="String" />
-                <asp:Parameter Name="unit_price" Type="Decimal" />
-                <asp:Parameter Name="amount" Type="Decimal" />
-                <asp:Parameter Name="sam_qty" Type="Decimal" />
-                <asp:Parameter Name="sam_cus_qty" Type="Decimal" />
-                <asp:Parameter Name="sam_taipei_qty" Type="Decimal" />
-                <asp:Parameter Name="image_path" Type="String" />
-                <asp:Parameter Name="remark60" Type="String" />
-                <asp:Parameter Name="status" Type="String" />
-                <asp:Parameter Name="close_date" Type="DateTime" />
-                <asp:Parameter Name="reason" Type="String" />
-                <asp:Parameter Name="online_date" Type="DateTime" />
-                <asp:Parameter Name="confirm_yn" Type="String" />
-                <asp:Parameter Name="progress_rate" Type="String" />
-                <asp:Parameter Name="sam_class" Type="String" />
-                <asp:Parameter Name="p1" Type="String" />
-                <asp:Parameter Name="p4" Type="String" />
-                <asp:Parameter Name="p7" Type="String" />
-                <asp:Parameter Name="ratio_size" Type="String" />
-                <asp:Parameter Name="sample_complete_1" Type="String" />
-                <asp:Parameter Name="sample_complete_2" Type="String" />
-                <asp:Parameter Name="cus_express_corp" Type="String" />
-                <asp:Parameter Name="cus_assign_account" Type="String" />
-                <asp:Parameter Name="cus_address_id" Type="String" />
-                <asp:Parameter Name="cus_addressee" Type="String" />
-                <asp:Parameter Name="cus_address" Type="String" />
-                <asp:Parameter Name="cus_style_no" Type="String" />
-                <asp:Parameter Name="brand_name" Type="String" />
-                <asp:Parameter Name="sam_type" Type="String" />
-                <asp:Parameter Name="proofing_factory" Type="String" />
-                <asp:Parameter Name="filter_creator" Type="String" />
-                <asp:Parameter Name="filter_dept" Type="String" />
-                <asp:Parameter Name="creator" Type="String" />
-                <asp:Parameter Name="create_date" Type="DateTime" />
-                <asp:Parameter Name="modifier" Type="String" />
-                <asp:Parameter Name="modify_date" Type="DateTime" />
-                <asp:Parameter Name="printing" Type="String" />
-                <asp:Parameter Name="sewing" Type="String" />
-                <asp:Parameter Name="samc_remark60" Type="String" />
-                <asp:Parameter Name="mark" Type="String" />
-                <asp:Parameter Name="crp_yn" Type="String" />
-                <asp:Parameter Name="crp_date" Type="DateTime" />
-                <asp:Parameter Name="item_statistic" Type="String" />
-                <asp:Parameter Name="remark_1" Type="String" />
-                <asp:Parameter Name="final" Type="String" />
-                <asp:Parameter Name="last_date" Type="DateTime" />
-                <asp:Parameter Name="samc_fin_date" Type="DateTime" />
-                <asp:Parameter Name="sam_type_A" Type="String" />
-                <asp:Parameter Name="sam_type_B" Type="String" />
-                <asp:Parameter Name="sam_type_C" Type="String" />
-                <asp:Parameter Name="sam_type_D" Type="String" />
-                <asp:Parameter Name="sam_type_E" Type="String" />
-                <asp:Parameter Name="sam_type_F" Type="String" />
-                <asp:Parameter Name="hotfix" Type="String" />
-                <asp:Parameter Name="s_plan_arrival_date" Type="DateTime" />
-                <asp:Parameter Name="s_real_arrival_date" Type="DateTime" />
-                <asp:Parameter Name="Original_site" Type="String" />
-                <asp:Parameter Name="Original_sam_nbr" Type="String" />
-                <asp:Parameter Name="Original_sam_times" Type="String" />
-            </UpdateParameters>
-        </asp:ObjectDataSource>
-    </div>
+
+        <asp:Panel ID="SearchVendorIDPanel" runat="server" align="center" Height="400px" Width="600px" ScrollBars="Horizontal" BackColor="#33CCFF" style="display:none">
+                    <table style="width:600px;">
+                        <tr>
+                            <td class="auto-style3">
+                                <asp:Label ID="Label4" runat="server" Text="客戶名稱或代號："></asp:Label>
+                            </td>
+                            <td class="auto-style2">
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <div class="auto-style1">
+                                            <asp:TextBox ID="SearchVendorID2TB" runat="server"></asp:TextBox>
+                                            <br />
+                                            <asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td>
+                                <asp:Button ID="SearchVendorID2" runat="server" OnClick="SearchVendorID2_Click" Text="Search" />
+                                <asp:Button ID="SearchCancel" runat="server" Text="Cancel" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style3">&nbsp;</td>
+                            <td class="auto-style2">       
+                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:GridView ID="VendorGV" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="cus_id" OnSelectedIndexChanging="VendorGV_SelectedIndexChanging" Width="360px">
+                                    <Columns>
+                                        <asp:BoundField DataField="cus_id" HeaderText="客戶代號" />
+                                        <asp:BoundField DataField="cus_name_brief" HeaderText="客戶簡稱" />
+                                        <asp:BoundField DataField="cus_name" HeaderText="客戶名稱" />
+                                    </Columns>
+                                </asp:GridView>
+                
+                                                    </ContentTemplate>
+        </asp:UpdatePanel>
+                                
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style3">&nbsp;</td>
+                            <td class="auto-style2">
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+    
+
+        </div>
     </form>
 </body>
 </html>

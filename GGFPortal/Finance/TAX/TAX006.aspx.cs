@@ -110,7 +110,7 @@ namespace GGFPortal.Finance.TAX
         protected void SaveBT_Click(object sender, EventArgs e)
         {
             int icount = AcrTicketGV.Rows.Count;
-            Boolean bCheck = false;
+            //Boolean bCheck = false;
             if (icount > 0)
             {
                 int iCbcount = 0;
