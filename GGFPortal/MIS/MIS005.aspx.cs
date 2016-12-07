@@ -47,41 +47,41 @@ namespace GGFPortal.MIS
 
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
-                                SELECT [phone] as '分機'
-                                      ,[name] as '員工姓名'
-                                      ,[empolyee_no] as '員工編號'
-                                      ,[eng_name] as '英文姓名'
-                                      ,[email] as 'Email'
-                                      ,[skype_account] as 'Skype'
-                                      ,[location] as '位置'
-                                  FROM [dbo].[GGFPhoneNumber]
+                                select a.employee_no as 員工編號, 
+                                a.employee_name as 姓名, 
+                                a.employee_name_eng as 英文姓名,
+                                a.email_address as Email,
+                                a.tel_nbr as 分機,
+                                b.dept_name as 部門 
+                                from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no
+                                where a.site='GGF' and a.employee_status='A'
                             ";
 
-            strwhere = " where [phone] like '%"+strSearch+ "%' or [name] like '%" + strSearch + "%' or [empolyee_no] like '%" + strSearch + "%' or [eng_name] like '%" + strSearch + "%' or [email] like '%" + strSearch + "%' or [skype_account] like '%" + strSearch + "%' or [location] like '%" + strSearch + "%'";
+            strwhere = " and ( a.[employee_no] like '%" + strSearch+ "%' or a.[employee_name] like '%" + strSearch + "%' or a.[employee_name_eng] like '%" + strSearch + "%' or a.[email_address] like '%" + strSearch + "%' or a.[tel_nbr] like '%" + strSearch + "%' or b.[dept_name] like '%" + strSearch + "%' )";
             sqlstr += strwhere ;
             return sqlstr;
         }
 
-        protected void PhoneGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            //SELECT uid,[phone] as '分機'
-            //                          ,[name] as '員工姓名'
-            //                          ,[empolyee_no] as '員工編號'
-            //                          ,[eng_name] as '英文姓名'
-            //                          ,[email] as 'Email'
-            //                          ,[skype_account] as 'Skype'
-            //                          ,[location] as '位置'
-            //                      FROM[dbo].[GGFPhoneNumber]
-            UidLB.Text= PhoneGV.Rows[e.NewSelectedIndex].Cells[1].Text.ToString();
-            PhoneLB.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[2].Text.ToString();
-            NameTB.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[3].Text.ToString().Replace("&nbsp;", "");
-            NumberBT.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[4].Text.ToString().Replace("&nbsp;", "");
-            EngName.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[5].Text.ToString().Replace("&nbsp;", "");
-            EmailTB.Text= PhoneGV.Rows[e.NewSelectedIndex].Cells[6].Text.ToString().Replace("&nbsp;", "");
-            SkypeBT.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[7].Text.ToString().Replace("&nbsp;", "");
-            LocationDDL.SelectedValue = PhoneGV.Rows[e.NewSelectedIndex].Cells[8].Text.ToString();
-            POPPanel_ModalPopupExtender.Show();
-        }
+        //protected void PhoneGV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        //{
+        //    //SELECT uid,[phone] as '分機'
+        //    //                          ,[name] as '員工姓名'
+        //    //                          ,[empolyee_no] as '員工編號'
+        //    //                          ,[eng_name] as '英文姓名'
+        //    //                          ,[email] as 'Email'
+        //    //                          ,[skype_account] as 'Skype'
+        //    //                          ,[location] as '位置'
+        //    //                      FROM[dbo].[GGFPhoneNumber]
+        //    UidLB.Text= PhoneGV.Rows[e.NewSelectedIndex].Cells[1].Text.ToString();
+        //    PhoneLB.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[2].Text.ToString();
+        //    NameTB.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[3].Text.ToString().Replace("&nbsp;", "");
+        //    NumberBT.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[4].Text.ToString().Replace("&nbsp;", "");
+        //    EngName.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[5].Text.ToString().Replace("&nbsp;", "");
+        //    EmailTB.Text= PhoneGV.Rows[e.NewSelectedIndex].Cells[6].Text.ToString().Replace("&nbsp;", "");
+        //    SkypeBT.Text = PhoneGV.Rows[e.NewSelectedIndex].Cells[7].Text.ToString().Replace("&nbsp;", "");
+        //    LocationDDL.SelectedValue = PhoneGV.Rows[e.NewSelectedIndex].Cells[8].Text.ToString();
+        //    POPPanel_ModalPopupExtender.Show();
+        //}
 
         protected void SaveBT_Click(object sender, EventArgs e)
         {

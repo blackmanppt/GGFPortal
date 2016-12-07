@@ -1344,6 +1344,7 @@
     <EmbeddedResource Include="ReportSource\ReportFinance002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance005.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance006.rdlc" />
+    <EmbeddedResource Include="ReportSource\Reportfinance007.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportMIS001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportMIS002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportS001.rdlc">
@@ -1351,6 +1352,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportSALE.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSales002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
     <EmbeddedResource Include="ReportSource\test.rdlc" />
   </ItemGroup>

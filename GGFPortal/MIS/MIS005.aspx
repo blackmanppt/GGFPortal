@@ -35,7 +35,7 @@
         <asp:Label ID="Label2" runat="server" Text="請輸入相關資訊："></asp:Label>
         <asp:TextBox ID="SearchTB" runat="server"></asp:TextBox>
         <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" />
-        <asp:GridView ID="PhoneGV" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanging="PhoneGV_SelectedIndexChanging">
+        <asp:GridView ID="PhoneGV" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

@@ -278,6 +278,8 @@ namespace GGFPortal.Finance.TAX
                     }
                     POPPanel_ModalPopupExtender.Show();
                     AcrTicketGV.DataSource = dt;
+                    if (Ds.Tables.Contains("AcrTable"))
+                        Ds.Tables.Remove("AcrTable");
                     Ds.Tables.Add(dt);
                     AcrTicketGV.DataBind();
 
