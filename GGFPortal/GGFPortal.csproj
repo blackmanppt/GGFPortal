@@ -57,6 +57,10 @@
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -906,6 +910,8 @@
     <Content Include="Secretary\Secretary002.aspx" />
     <Content Include="Secretary\Secretary001.aspx" />
     <Content Include="test\AutoComplete.aspx" />
+    <Content Include="test\CrystalReportTest1.aspx" />
+    <Content Include="test\ExcelUpload.aspx" />
     <Content Include="test\MVC\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\test2test.pubxml" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
@@ -1247,6 +1253,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReferenceCode\VendorAutoComplete.cs" />
+    <Compile Include="ReportSource\CrystalReportTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportTest.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Sales\SALE.aspx.cs">
       <DependentUpon>SALE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1317,10 +1329,24 @@
     <Compile Include="test\AutoComplete.aspx.designer.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\CrystalReportTest1.aspx.cs">
+      <DependentUpon>CrystalReportTest1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\CrystalReportTest1.aspx.designer.cs">
+      <DependentUpon>CrystalReportTest1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\DataSetTest.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="test\ExcelUpload.aspx.cs">
+      <DependentUpon>ExcelUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\ExcelUpload.aspx.designer.cs">
+      <DependentUpon>ExcelUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
@@ -1332,12 +1358,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ExcelUpLoad\Salse\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\CrystalReportTest.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportTest.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportFinance004.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001.rdlc" />

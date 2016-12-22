@@ -97,7 +97,7 @@ namespace GGFPortal.Finance.TAX
         {
             string strwhere = "";
             string strStartDay, strEndDay;
-            strwhere += (string.IsNullOrEmpty(StyleNoTB.Text.Trim())) ? "" : " and style_no = '" + StyleNoTB.Text.Trim() + "' ";
+            strwhere += (string.IsNullOrEmpty(StyleNoTB.Text.Trim())) ? "" : " and StyleNo like '%" + StyleNoTB.Text.Trim() + "%' ";
             strStartDay = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "201601";
             strEndDay = (EndDayTB.Text.Length > 0) ? EndDayTB.Text : "299901";
             strwhere += string.Format(" and AcrMonthDate between '{0}' and '{1}' ", strStartDay, strEndDay);
@@ -252,10 +252,10 @@ namespace GGFPortal.Finance.TAX
                 if (Ds.Tables.Contains("purc_pkd_check"))
                     Ds.Tables.Remove("purc_pkd_check");
                 Ds.Tables.Add(GetData.SQLToDataSet(strConnectString, "select * from purc_pkd_for_acr  where (AcrTaxID ='" + strAcrId + "' or AcrTaxID is null ) and cus_item_no ='" + strStyleNo + "'", "purc_pkd_check", "TAX004.aspx"));
-                int icheck1 = 0,icheck2=0;
-                icheck1 = (Ds.Tables["acr_trn_check"].Rows.Count > 0) ? 0 : 1;
-                icheck2 = (Ds.Tables["purc_pkd_check"].Rows.Count > 0) ? 0 : 1;
-                if (icheck1==0 && icheck2 == 0)
+                Boolean bcheck1, bcheck2;
+                bcheck1 = (Ds.Tables["acr_trn_check"].Rows.Count > 0) ? true : false;
+                bcheck2 = (Ds.Tables["purc_pkd_check"].Rows.Count > 0) ? true : false;
+                if (bcheck1 && bcheck2)
                 {
                     if (Ds.Tables.Contains("AcrTable"))
                         Ds.Tables.Remove("AcrTable");
@@ -341,11 +341,11 @@ namespace GGFPortal.Finance.TAX
                     AcrTicketGV.DataBind();
 
                 }
-                else if (icheck1 == 1 && icheck2 == 0)
+                else if (bcheck1==false && bcheck2)
                 {
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請聯絡資訊部：應收無資料');</script>");
                 }
-                else if (icheck2 == 1 && icheck1 == 0)
+                else if (bcheck1 && bcheck2==false)
                 {
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請聯絡資訊部：包裝底稿無資料');</script>");
                 }

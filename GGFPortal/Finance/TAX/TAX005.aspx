@@ -16,6 +16,7 @@
     <form id="form1" runat="server">
     <div>
         <div>
+            <asp:Label ID="Label2" runat="server" Text="銷貨稅額沖銷批次作業" style="font-size: xx-large; background-color: #00CCFF"></asp:Label>
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     
