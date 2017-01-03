@@ -335,6 +335,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Sales\Sales002.aspx" />
     <Content Include="Finance\Finance007.aspx" />
     <Content Include="Finance\Finance005.aspx" />
     <Content Include="Finance\Finance004.aspx" />
@@ -482,6 +483,7 @@
     <Content Include="ReferenceCode\test.asmx" />
     <Content Include="Sales\SALE.aspx" />
     <Content Include="Sales\Sales001.aspx" />
+    <Content Include="Sales\WebService.asmx" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af-ZA.min.js" />
@@ -1070,6 +1072,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sales002.aspx.cs">
+      <DependentUpon>Sales002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales002.aspx.designer.cs">
+      <DependentUpon>Sales002.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance007.aspx.cs">
       <DependentUpon>Finance007.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1273,6 +1282,10 @@
     <Compile Include="Sales\Sales001.aspx.designer.cs">
       <DependentUpon>Sales001.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\WebService.asmx.cs">
+      <DependentUpon>WebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SearchIndex.aspx.cs">
       <DependentUpon>SearchIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1383,7 +1396,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportSALE.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
-    <EmbeddedResource Include="ReportSource\ReportSales002.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSalse002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
     <EmbeddedResource Include="ReportSource\test.rdlc" />
   </ItemGroup>

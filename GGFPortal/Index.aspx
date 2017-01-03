@@ -23,6 +23,8 @@
                  <%--       <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/MIS/MIS004.aspx">分機表(維護)</asp:HyperLink>--%>
                         <br />
                         <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/MIS/MIS005.aspx">分機表</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink24" runat="server" NavigateUrl="~/test/ExcelUpload.aspx">Excel上傳</asp:HyperLink>
                     </td>
                     <td>
                         <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/test/test.aspx">test</asp:HyperLink>
@@ -81,6 +83,8 @@
                     <td><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Sales/Sales001.aspx">訂單資料查詢</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Sales/SALE.aspx">樣品</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Sales/Sales002.aspx">業績表</asp:HyperLink>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
