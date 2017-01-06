@@ -86,22 +86,38 @@ namespace GGFPortal.Sales
             }
 
             string sqlstr = @"
-                                SELECT    c.brand AS 品牌,  c.cus_item_no  as StyleNo,e.employee_name as 業務員, 
-                                a.site as 公司別, a.shp_nbr, CASE WHEN open_date IS NULL THEN '' ELSE CONVERT(varchar(8), open_date, 112) 
-                                END AS 出貨日, c.agents AS 客戶代號, CASE WHEN so_nbr IS NULL THEN '' ELSE so_nbr END AS S_O, 
-                                c.cus_item_no AS style_no, b.cust_po_nbr AS PO_NUMBER, d.vendor_name_brief as 產區,SUM( b.shp_qty) AS 出口數量, 
-                                b.sale_price AS FOB, SUM(b.shp_amt) AS 出口金額, a.currency_id AS 幣別, a.exchange_rate AS 匯率, 
-                                b.add_reduce_item AS 加減項,f.pre_qty as 訂單數量
-                                FROM              dbo.shpc_bah AS a LEFT OUTER JOIN
-                                dbo.shpc_bat AS b ON a.site = b.site AND a.kind = b.kind AND a.shp_nbr = b.shp_nbr LEFT OUTER JOIN
-                                dbo.ordc_bah1 AS c ON a.ord_nbr = c.ord_nbr AND a.site = c.site LEFT OUTER JOIN
-                                dbo.bas_vendor_master AS d ON c.vendor_id = d.vendor_id AND a.site = d.site
-                                left join dbo.bas_employee e on c.site=e.site and c.creator=e.employee_no
-                                left join dbo.ordc_bat f on b.ord_nbr=f.ord_nbr and b.ord_seq =f.ord_seq
-                                WHERE          (a.head_status = 'CL') AND (b.detail_status = 'CL')
-                            ";
+            SELECT    c.brand AS 品牌,  c.cus_item_no  as StyleNo,e.employee_name as 業務員, 
+            a.site as 公司別, c.agents AS 客戶代號,
+            c.cus_item_no AS style_no, b.cust_po_nbr AS PO_NUMBER, d.vendor_name_brief as 產區,SUM( b.shp_qty) AS 出口數量, 
+            b.sale_price AS FOB, SUM(b.shp_amt) AS 出口金額, a.currency_id AS 幣別,
+            f.pre_qty as 訂單數量,b.ord_seq,(select top 1 CASE WHEN open_date IS NULL THEN '' ELSE CONVERT(varchar(8), open_date, 112) 
+            END as xx from shpc_bah z where z.ord_nbr=a.ord_nbr) AS 出貨日
+            FROM              dbo.shpc_bah AS a LEFT OUTER JOIN
+            dbo.shpc_bat AS b ON a.site = b.site AND a.kind = b.kind AND a.shp_nbr = b.shp_nbr LEFT OUTER JOIN
+            dbo.ordc_bah1 AS c ON a.ord_nbr = c.ord_nbr AND a.site = c.site LEFT OUTER JOIN
+            dbo.bas_vendor_master AS d ON c.vendor_id = d.vendor_id AND a.site = d.site
+            left join dbo.bas_employee e on c.site=e.site and c.creator=e.employee_no
+            left join dbo.ordc_bat f on b.ord_nbr=f.ord_nbr and b.ord_seq =f.ord_seq
+            WHERE          (a.head_status = 'CL') AND (b.detail_status = 'CL')                            ";
+            /*--
 
-            sqlstr += strwhere + " group by　c.brand, c.cus_item_no , e.employee_name,  a.site, a.shp_nbr,open_date,c.agents,so_nbr,c.cus_item_no,b.cust_po_nbr,d.vendor_name_brief,b.sale_price,a.currency_id,a.exchange_rate,b.add_reduce_item,f.pre_qty,c.ord_nbr";
+            SELECT    c.brand AS 品牌,  c.cus_item_no  as StyleNo,e.employee_name as 業務員, 
+            a.site as 公司別, a.shp_nbr, CASE WHEN open_date IS NULL THEN '' ELSE CONVERT(varchar(8), open_date, 112) 
+            END AS 出貨日, c.agents AS 客戶代號, CASE WHEN so_nbr IS NULL THEN '' ELSE so_nbr END AS S_O, 
+            c.cus_item_no AS style_no, b.cust_po_nbr AS PO_NUMBER, d.vendor_name_brief as 產區,SUM( b.shp_qty) AS 出口數量, 
+            b.sale_price AS FOB, SUM(b.shp_amt) AS 出口金額, a.currency_id AS 幣別, a.exchange_rate AS 匯率, 
+            b.add_reduce_item AS 加減項,f.pre_qty as 訂單數量,b.ord_seq
+            FROM              dbo.shpc_bah AS a LEFT OUTER JOIN
+            dbo.shpc_bat AS b ON a.site = b.site AND a.kind = b.kind AND a.shp_nbr = b.shp_nbr LEFT OUTER JOIN
+            dbo.ordc_bah1 AS c ON a.ord_nbr = c.ord_nbr AND a.site = c.site LEFT OUTER JOIN
+            dbo.bas_vendor_master AS d ON c.vendor_id = d.vendor_id AND a.site = d.site
+            left join dbo.bas_employee e on c.site=e.site and c.creator=e.employee_no
+            left join dbo.ordc_bat f on b.ord_nbr=f.ord_nbr and b.ord_seq =f.ord_seq
+            WHERE          (a.head_status = 'CL') AND (b.detail_status = 'CL')
+            --*/
+            
+            sqlstr += strwhere + "group by c.brand, c.cus_item_no , e.employee_name,  a.site,c.agents,c.cus_item_no,b.cust_po_nbr,d.vendor_name_brief,b.sale_price,a.currency_id,f.pre_qty,c.ord_nbr,b.ord_seq,a.ord_nbr";
+            //sqlstr += strwhere + " group by　c.brand, c.cus_item_no , e.employee_name,  a.site, a.shp_nbr,open_date,c.agents,so_nbr,c.cus_item_no,b.cust_po_nbr,d.vendor_name_brief,b.sale_price,a.currency_id,a.exchange_rate,b.add_reduce_item,f.pre_qty,c.ord_nbr,b.ord_seq";
             return sqlstr;
         }
 

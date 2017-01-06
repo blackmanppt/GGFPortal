@@ -2278,6 +2278,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column產區;
             
+            private global::System.Data.DataColumn columnPO_NUMBER;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Sales002DataTable() {
@@ -2401,6 +2403,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PO_NUMBERColumn {
+                get {
+                    return this.columnPO_NUMBER;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2436,7 +2446,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Sales002Row AddSales002Row(string 公司別, string 客戶代號, string 品牌, string 業務員, string StyleNO, string 出貨日, double FOB, short 訂單數量, short 出口數量, double 出口金額, string 產區) {
+            public Sales002Row AddSales002Row(string 公司別, string 客戶代號, string 品牌, string 業務員, string StyleNO, string 出貨日, double FOB, short 訂單數量, short 出口數量, double 出口金額, string 產區, string PO_NUMBER) {
                 Sales002Row rowSales002Row = ((Sales002Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         公司別,
@@ -2449,7 +2459,8 @@ namespace GGFPortal.DataSetSource {
                         訂單數量,
                         出口數量,
                         出口金額,
-                        產區};
+                        產區,
+                        PO_NUMBER};
                 rowSales002Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSales002Row);
                 return rowSales002Row;
@@ -2483,6 +2494,7 @@ namespace GGFPortal.DataSetSource {
                 this.column出口數量 = base.Columns["出口數量"];
                 this.column出口金額 = base.Columns["出口金額"];
                 this.column產區 = base.Columns["產區"];
+                this.columnPO_NUMBER = base.Columns["PO_NUMBER"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2510,6 +2522,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column出口金額);
                 this.column產區 = new global::System.Data.DataColumn("產區", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column產區);
+                this.columnPO_NUMBER = new global::System.Data.DataColumn("PO_NUMBER", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPO_NUMBER);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5383,6 +5397,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PO_NUMBER {
+                get {
+                    try {
+                        return ((string)(this[this.tableSales002.PO_NUMBERColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Sales002\' 中資料行 \'PO_NUMBER\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableSales002.PO_NUMBERColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is公司別Null() {
                 return this.IsNull(this.tableSales002.公司別Column);
             }
@@ -5511,6 +5541,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set產區Null() {
                 this[this.tableSales002.產區Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPO_NUMBERNull() {
+                return this.IsNull(this.tableSales002.PO_NUMBERColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPO_NUMBERNull() {
+                this[this.tableSales002.PO_NUMBERColumn] = global::System.Convert.DBNull;
             }
         }
         

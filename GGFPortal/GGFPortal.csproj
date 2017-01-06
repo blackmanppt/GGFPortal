@@ -476,6 +476,17 @@
       <DependentUpon>TEMPDS.xsd</DependentUpon>
     </Content>
     <Content Include="Finance\TAX\TAXMENU.Master" />
+    <Content Include="DataSetSource\test.xsc">
+      <DependentUpon>test.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\test.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>test.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\test.xss">
+      <DependentUpon>test.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
@@ -912,7 +923,7 @@
     <Content Include="Secretary\Secretary002.aspx" />
     <Content Include="Secretary\Secretary001.aspx" />
     <Content Include="test\AutoComplete.aspx" />
-    <Content Include="test\CrystalReportTest1.aspx" />
+    <Content Include="test\CrystalReport1.aspx" />
     <Content Include="test\ExcelUpload.aspx" />
     <Content Include="test\MVC\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\test2test.pubxml" />
@@ -1011,11 +1022,31 @@
     <Content Include="Ship\Search\Search002.aspx" />
     <Content Include="Ship\Search\Search001.aspx" />
     <Content Include="test\test.aspx" />
+    <Content Include="test\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrystalReporttest1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReporttest1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="test\CrystalReport1.aspx.cs">
+      <DependentUpon>CrystalReport1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\CrystalReport1.aspx.designer.cs">
+      <DependentUpon>CrystalReport1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetSource\FinanceD001.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1071,6 +1102,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TEMPDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\test.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test.xsd</DependentUpon>
     </Compile>
     <Compile Include="Sales\Sales002.aspx.cs">
       <DependentUpon>Sales002.aspx</DependentUpon>
@@ -1342,12 +1378,17 @@
     <Compile Include="test\AutoComplete.aspx.designer.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test\CrystalReportTest1.aspx.cs">
-      <DependentUpon>CrystalReportTest1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="test\CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="test\CrystalReportTest1.aspx.designer.cs">
-      <DependentUpon>CrystalReportTest1.aspx</DependentUpon>
+    <Compile Include="test\CrystalReport3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport3.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="test\DataSetTest.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1368,13 +1409,29 @@
     <Compile Include="test\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="aspnet_client\" />
     <Folder Include="ExcelUpLoad\Salse\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CrystalReporttest1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1398,7 +1455,14 @@
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSalse002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
-    <EmbeddedResource Include="ReportSource\test.rdlc" />
+    <EmbeddedResource Include="test\CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test\CrystalReport3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
