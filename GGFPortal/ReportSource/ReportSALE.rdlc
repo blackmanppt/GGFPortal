@@ -680,7 +680,7 @@
                   <CellContents>
                     <Image Name="Image1">
                       <Source>External</Source>
-                      <Value>=iif(len(Fields!image_path.Value)&gt;0, "http://192.168.0.123/GGFPortal/ttt" &amp; Mid( Fields!image_path.Value,3),"")</Value>
+                      <Value>=iif(len(Fields!image_path.Value)&gt;0, "http://192.168.0.114/W" &amp; Mid( Fields!image_path.Value,3) ,"")</Value>
                       <Sizing>FitProportional</Sizing>
                       <Style>
                         <Border>
@@ -688,7 +688,6 @@
                         </Border>
                       </Style>
                     </Image>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1223,7 +1222,7 @@
     <Height>3.20226in</Height>
     <Style />
   </Body>
-  <Width>15.28248in</Width>
+  <Width>18.23524in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

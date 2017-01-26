@@ -31,10 +31,52 @@ namespace GGFPortal.test
         {
 
         }
+        public class Column
+        {
+            public int ColumnID { get; set; }
+            public string ColumnName { get; set; }
+
+            public int ColumnType { get; set; }
+        }
+
+
         DataSet Ds = new DataSet("table");
         protected void UploadBT_Click(object sender, EventArgs e)
         {
-            
+
+            List<Column> InsertColumn = new List<Column>();
+            // Type 1：數字 , Type 2：String , Type 3：日期  , Type 5：公式 , Type 6：不需要資料 String, Type 7：不需要資料 int
+            InsertColumn.Add(new Column() { ColumnID = 1, ColumnName = "SheetName", ColumnType = 2 });
+            InsertColumn.Add(new Column() { ColumnID = 2, ColumnName = "Date", ColumnType = 3 });
+            InsertColumn.Add(new Column() { ColumnID = 3, ColumnName = "Dept", ColumnType = 2 });
+            InsertColumn.Add(new Column() { ColumnID = 4, ColumnName = "Customer", ColumnType = 2 });
+            InsertColumn.Add(new Column() { ColumnID = 5, ColumnName = "StyleNo", ColumnType = 2 });
+            InsertColumn.Add(new Column() { ColumnID = 6, ColumnName = "OrderQty", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 7, ColumnName = "TeamProductivity", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 8, ColumnName = "OrderShipDate", ColumnType = 3 });
+            InsertColumn.Add(new Column() { ColumnID = 9, ColumnName = "OnlineDate", ColumnType = 3 });
+            InsertColumn.Add(new Column() { ColumnID = 10, ColumnName = "StandardProductivity", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 11, ColumnName = "Person", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 12, ColumnName = "TotalTime", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 13, ColumnName = "Time", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 14, ColumnName = "Percent", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 15, ColumnName = "GoalProductivity", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 16, ColumnName = "DayProductivity", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 17, ColumnName = "PreProductivity", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 18, ColumnName = "TotalProductivity", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 19, ColumnName = "Difference", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 20, ColumnName = "Efficiency", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 21, ColumnName = "TotalEfficiency", ColumnType = 7 });
+            InsertColumn.Add(new Column() { ColumnID = 22, ColumnName = "ReturnPercent", ColumnType = 1 });
+            InsertColumn.Add(new Column() { ColumnID = 23, ColumnName = "Rmark1", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 24, ColumnName = "Rmark2", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 25, ColumnName = "DayCost1", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 26, ColumnName = "DayCost2", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 27, ColumnName = "DayCost3", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 28, ColumnName = "DayCost4", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 29, ColumnName = "DayCost5", ColumnType = 6 });
+            InsertColumn.Add(new Column() { ColumnID = 30, ColumnName = "DayCost6", ColumnType = 6 });
+
             //== 本範例的資料來源：http://msdn.microsoft.com/zh-tw/ee818993.aspx 
             //== 先把上傳的 Excel資料檔案，讀取到 DataTable裡面。
 
@@ -58,8 +100,7 @@ namespace GGFPortal.test
                 //---- （以上是）上傳 FileUpload的部分，成功運作！
                 //--------------------------------------------------
 
-
-                #region TableTitle
+                #region TableTitle excel排序
                 D_table.Columns.Add("SheetName");
                 D_table.Columns.Add("Date");
                 D_table.Columns.Add("Dept");
@@ -142,12 +183,17 @@ namespace GGFPortal.test
                     //   例如，您可以使用 FileContent 屬性傳回的 Stream 物件，將檔案的內容做為位元組進行讀取並將其以位元組陣列儲存。
                     //-- FileContent 屬性，型別：System.IO.Stream
                     //-- http://msdn.microsoft.com/zh-tw/library/system.web.ui.webcontrols.fileupload.filecontent.aspx
+                    string[] strarry=new string[]{ "0"};
+                    #region intarry
+                    
+                    #endregion
 
                     for (int x = 0; x < workbook.NumberOfSheets; x++)
                     {
                         XSSFSheet u_sheet = (XSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
                         XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
                         IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
+                        Session["Date"]= DateRow.GetCell(19).DateCellValue.ToString("yyyyMMdd");
                         //string strDate = "";
                         //strDate = DateRow.GetCell(19).DateCellValue.ToString("yyyyMMdd");
                         //Session["ExcelDate"]= DateRow.GetCell(19).DateCellValue.ToString("yyyyMMdd");
@@ -170,7 +216,7 @@ namespace GGFPortal.test
                         for (int i = 5; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                         {
                             //--不包含 Excel表頭列的 "其他資料列"
-                            IRow row = (IRow)u_sheet.GetRow(i);             //-- v.1.2.4版修改
+                            IRow row = (IRow)u_sheet.GetRow(i);             
                             DataRow D_dataRow = D_table.NewRow();
                             DataRow D_erroraRow = D_errortable.NewRow();
                             D_dataRow[0] = u_sheet.SheetName.ToString();
@@ -185,37 +231,105 @@ namespace GGFPortal.test
                                     bcheck = false;
                                     break;
                                 }
+                                switch (InsertColumn[j].ColumnType)
+                                {
+                                    // Type 1：Float , Type 2：String , Type 3：日期 , Type 4：int , Type 5：公式 , Type 6：不需要資料 String, Type 7：不需要資料 int
+                                    case 1:
+                                        if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
+                                        {
+                                            //D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
+                                            ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
+                                            try
+                                            {
+                                                D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
+                                                berror = true;
+                                                sError += "第" + (j + 2).ToString() + "欄公式錯誤：" + row.GetCell(j).ToString();
+                                                D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
+                                            }
+
+                                        }
+                                        else
+                                        {
+
+                                            try
+                                            {
+                                                D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "0" : row.GetCell(j).ToString();   //--每一個欄位，都加入同一列 DataRow
+                                            }
+                                            catch (Exception)
+                                            {
+                                                berror = true;
+                                                sError += "第" + (j + 2).ToString() + "欄匯入失敗：";
+                                                D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                                                throw;
+                                            }
+                                        }
+                                        
+                                        break;
+                                    case 2:
+                                        try
+                                        {
+                                            D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).ToString();   //--每一個欄位，都加入同一列 DataRow
+                                        }
+                                        catch (Exception)
+                                        {
+                                            berror = true;
+                                            sError += "第" + (j + 2).ToString() + "欄匯入失敗：";
+                                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                                            throw;
+                                        }
+                                        break;
+                                    case 3:
+                                        try
+                                        {
+                                            D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
+                                            //轉換日期格式
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
+                                            berror = true;
+                                            sError += "第" + (j + 2).ToString() + "欄公式錯誤：";
+                                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                                                                                                                           //throw;
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            //-- 檢查這一格，是否包含公式（Formula）？ 
+                                            if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
+                                            {
+                                                //D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
+                                                ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
+                                                try
+                                                {
+                                                    D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
+                                                    berror = true;
+                                                    sError += "第" + (j + 2).ToString() + "欄公式錯誤：" + row.GetCell(j).ToString();
+                                                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                
+
+                                            }
+                                        }
+                                        break;
+
+                                    default:
+                                        break;
+                                
                                 //-- CellType需要搭配「NPOI.SS.UserModel命名空間」
-                                //-- 檢查這一格，是否包含公式（Formula）？ 
-                                if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
-                                {
-                                    //D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
-                                    ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
-
-                                    try
-                                    {
-                                        D_dataRow[j+1] = row.GetCell(j).NumericCellValue.ToString();
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
-                                        berror = true;
-                                        sError += "第"+(j+2).ToString()+ "欄公式錯誤：" + row.GetCell(j).ToString() ;
-                                        D_dataRow[j+2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
-                                    }
-
-                                }
-                                else
-                                {
-                                    //轉換日期格式
-                                    if (j == 5 || j == 6)
-                                    {
-                                        D_dataRow[j+2] = row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
-                                    }
-                                    else
-                                    {
-                                        D_dataRow[j+2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).ToString();   //--每一個欄位，都加入同一列 DataRow
-                                    }
+                                
                                 }
                             }
                             if (bcheck)
@@ -417,7 +531,6 @@ namespace GGFPortal.test
                                     command1.CommandText = string.Format(@"INSERT INTO [dbo].[Productivity_Line]
                                                    ([uid]
                                                    ,[SheetName]
-                                                   ,[Date]
                                                    ,[Dept]
                                                    ,[Customer]
                                                    ,[StyleNo]
@@ -450,7 +563,6 @@ namespace GGFPortal.test
                                              VALUES
                                                    ({0}
                                                    ,@SheetName
-                                                   ,@Date
                                                    ,@Dept
                                                    ,@Customer
                                                    ,@StyleNo
@@ -482,7 +594,6 @@ namespace GGFPortal.test
                                                    ,'Program')
                                                    ", iIndex);
                                     command1.Parameters.Add("@SheetName", SqlDbType.NVarChar).Value = dt.Rows[i]["SheetName"].ToString();
-                                    command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = dt.Rows[i]["Date"].ToString();
                                     command1.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = dt.Rows[i]["Dept"].ToString();
                                     command1.Parameters.Add("@Customer", SqlDbType.NVarChar).Value = dt.Rows[i]["Customer"].ToString();
                                     command1.Parameters.Add("@StyleNo", SqlDbType.NVarChar).Value = dt.Rows[i]["StyleNo"].ToString();
@@ -517,7 +628,8 @@ namespace GGFPortal.test
                                     command1.Parameters.Clear();
                                 }
                                 //上傳成功更新Head狀態
-                                command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 WHERE uid = {0} ", iIndex);
+                                command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
+                                command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
                                 command1.ExecuteNonQuery();
                                 transaction1.Commit();
                             }

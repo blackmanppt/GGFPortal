@@ -1855,6 +1855,10 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column單別;
             
+            private global::System.Data.DataColumn columnStyleNo;
+            
+            private global::System.Data.DataColumn column未沖數量;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Sales001DataTable() {
@@ -2002,6 +2006,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StyleNoColumn {
+                get {
+                    return this.columnStyleNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 未沖數量Column {
+                get {
+                    return this.column未沖數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2037,7 +2057,23 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Sales001Row AddSales001Row(string 訂單號碼, string 代理商代號, string 代理商名稱, string 客戶名稱, string 訂單日期, string 訂單月份, string 工廠代號, string 工廠名稱, string 地區, decimal 訂單數量, string ForMGF, string salesman, string employee_name, string 單別) {
+            public Sales001Row AddSales001Row(
+                        string 訂單號碼, 
+                        string 代理商代號, 
+                        string 代理商名稱, 
+                        string 客戶名稱, 
+                        string 訂單日期, 
+                        string 訂單月份, 
+                        string 工廠代號, 
+                        string 工廠名稱, 
+                        string 地區, 
+                        decimal 訂單數量, 
+                        string ForMGF, 
+                        string salesman, 
+                        string employee_name, 
+                        string 單別, 
+                        string StyleNo, 
+                        string 未沖數量) {
                 Sales001Row rowSales001Row = ((Sales001Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         訂單號碼,
@@ -2053,7 +2089,9 @@ namespace GGFPortal.DataSetSource {
                         ForMGF,
                         salesman,
                         employee_name,
-                        單別};
+                        單別,
+                        StyleNo,
+                        未沖數量};
                 rowSales001Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSales001Row);
                 return rowSales001Row;
@@ -2090,6 +2128,8 @@ namespace GGFPortal.DataSetSource {
                 this.columnsalesman = base.Columns["salesman"];
                 this.columnemployee_name = base.Columns["employee_name"];
                 this.column單別 = base.Columns["單別"];
+                this.columnStyleNo = base.Columns["StyleNo"];
+                this.column未沖數量 = base.Columns["未沖數量"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2123,6 +2163,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnemployee_name);
                 this.column單別 = new global::System.Data.DataColumn("單別", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column單別);
+                this.columnStyleNo = new global::System.Data.DataColumn("StyleNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStyleNo);
+                this.column未沖數量 = new global::System.Data.DataColumn("未沖數量", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column未沖數量);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5038,6 +5082,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string StyleNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableSales001.StyleNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Sales001\' 中資料行 \'StyleNo\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableSales001.StyleNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 未沖數量 {
+                get {
+                    try {
+                        return ((string)(this[this.tableSales001.未沖數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Sales001\' 中資料行 \'未沖數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableSales001.未沖數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is訂單號碼Null() {
                 return this.IsNull(this.tableSales001.訂單號碼Column);
             }
@@ -5202,6 +5278,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set單別Null() {
                 this[this.tableSales001.單別Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStyleNoNull() {
+                return this.IsNull(this.tableSales001.StyleNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStyleNoNull() {
+                this[this.tableSales001.StyleNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is未沖數量Null() {
+                return this.IsNull(this.tableSales001.未沖數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set未沖數量Null() {
+                this[this.tableSales001.未沖數量Column] = global::System.Convert.DBNull;
             }
         }
         

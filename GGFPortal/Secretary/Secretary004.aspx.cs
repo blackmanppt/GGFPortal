@@ -89,15 +89,43 @@ namespace GGFPortal.Secretary
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
                                 select * from (
-                                SELECT 
-                                訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 
-                                訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
-                                FROM ViewOrderQty 
-                                UNION ALL 
-                                SELECT 
-                                訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 
-                                工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
-                                FROM ViewPreOrderQty ) a
+                                SELECT [訂單號碼]
+                                        ,[代理商代號]
+                                        ,[代理商名稱]
+                                        ,[客戶名稱]
+                                        ,[訂單日期]
+                                        ,[訂單月份]
+                                        ,[工廠代號]
+                                        ,[工廠名稱]
+                                        ,[地區]
+                                        ,[訂單數量]
+                                        ,[ForMGF]
+                                        ,[salesman]
+                                        ,[employee_name]
+                                        ,case when [未沖數量]=0 then '無' else '有' end  as 未沖數量
+	                                    , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
+                                    FROM [dbo].[ViewOrderQty]
+                                    union all
+                                SELECT [訂單號碼]
+                                        ,[代理商代號]
+                                        ,[代理商名稱]
+                                        ,[客戶名稱]
+                                        ,[訂單日期]
+                                        ,[訂單月份]
+                                        ,[工廠代號]
+                                        ,[工廠名稱]
+                                        ,[地區]
+                                        ,[訂單數量]
+                                        ,[ForMGF]
+                                        ,[salesman]
+                                        ,[employee_name]
+	                                    ,'無' as 未沖數量
+	                                    , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
+                                    FROM [dbo].[ViewPreOrderQty]
+
+
+ 
+                                ) a
                             ";
 
             strwhere = string.Format(" where (ForMGF like @Search or 客戶名稱 like @Search1) and 訂單月份 like '{0}'",  DateDDL.SelectedValue);

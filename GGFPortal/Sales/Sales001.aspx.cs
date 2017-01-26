@@ -98,10 +98,43 @@ namespace GGFPortal.Sales
         {
             string sqlstr = @"
                                 select * from (
-                                SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name ,'訂單' as '單別'
-                                FROM ViewOrderQty UNION ALL 
-                                SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, ForMGF, salesman, employee_name ,'預估單'as '單別'
-                                FROM ViewPreOrderQty 
+                                SELECT [訂單號碼]
+                                      ,[代理商代號]
+                                      ,[代理商名稱]
+                                      ,[客戶名稱]
+                                      ,[訂單日期]
+                                      ,[訂單月份]
+                                      ,[工廠代號]
+                                      ,[工廠名稱]
+                                      ,[地區]
+                                      ,[訂單數量]
+                                      ,[ForMGF]
+                                      ,[salesman]
+                                      ,[employee_name]
+                                      ,case when [未沖數量]=0 then '無' else '有' end  as 未沖數量
+	                                  , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
+                                        ,[StyleNo]
+                                    ,'訂單' as 單別
+                                  FROM [dbo].[ViewOrderQty]
+                                  union all
+                                SELECT [訂單號碼]
+                                      ,[代理商代號]
+                                      ,[代理商名稱]
+                                      ,[客戶名稱]
+                                      ,[訂單日期]
+                                      ,[訂單月份]
+                                      ,[工廠代號]
+                                      ,[工廠名稱]
+                                      ,[地區]
+                                      ,[訂單數量]
+                                      ,[ForMGF]
+                                      ,[salesman]
+                                      ,[employee_name]
+	                                  ,'無' as 未沖數量
+	                                  , (select distinct top 1 cus_name from   bas_cus_master where 客戶名稱=cus_id ) as cus_name
+                                        ,[StyleNo]
+                                        ,'預告單' as 單別
+                                  FROM [dbo].[ViewPreOrderQty]
                                 ) a
                                 where 訂單日期  between @StartDay and @EndDay and 客戶名稱 like @客戶名稱 and 工廠名稱 like @工廠名稱
                             ";

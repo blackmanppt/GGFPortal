@@ -335,6 +335,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Finance\Finance008.aspx" />
     <Content Include="Sales\Sales002.aspx" />
     <Content Include="Finance\Finance007.aspx" />
     <Content Include="Finance\Finance005.aspx" />
@@ -488,7 +489,12 @@
       <DependentUpon>test.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
+    <None Include="Properties\PublishProfiles\Localhost.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="ReferenceCode\Finance002Auto.asmx" />
     <Content Include="ReferenceCode\test.asmx" />
@@ -1023,6 +1029,7 @@
     <Content Include="Ship\Search\Search001.aspx" />
     <Content Include="test\test.aspx" />
     <Content Include="test\WebForm1.aspx" />
+    <Content Include="VN\VN001.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1034,6 +1041,19 @@
       <DependentUpon>CrystalReporttest1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Finance\Finance008.aspx.cs">
+      <DependentUpon>Finance008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance008.aspx.designer.cs">
+      <DependentUpon>Finance008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReferenceCode\ExcelColumn.cs" />
     <Compile Include="test\CrystalReport1.aspx.cs">
       <DependentUpon>CrystalReport1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1416,6 +1436,13 @@
     <Compile Include="test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN001.aspx.cs">
+      <DependentUpon>VN001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN001.aspx.designer.cs">
+      <DependentUpon>VN001.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1428,6 +1455,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
