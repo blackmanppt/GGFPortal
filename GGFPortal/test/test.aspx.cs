@@ -24,5 +24,12 @@ namespace GGFPortal.test
         {
             TextBox1.Text = GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string xx = "-1";
+            int zz = 9;
+            Label1.Text = int.TryParse(xx,out zz).ToString();
+        }
     }
 }

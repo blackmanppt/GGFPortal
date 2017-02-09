@@ -1030,6 +1030,7 @@
     <Content Include="test\test.aspx" />
     <Content Include="test\WebForm1.aspx" />
     <Content Include="VN\VN001.aspx" />
+    <Content Include="VN\VN002.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1442,6 +1443,13 @@
     </Compile>
     <Compile Include="VN\VN001.aspx.designer.cs">
       <DependentUpon>VN001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN002.aspx.cs">
+      <DependentUpon>VN002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN002.aspx.designer.cs">
+      <DependentUpon>VN002.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
