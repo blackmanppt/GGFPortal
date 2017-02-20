@@ -17,6 +17,7 @@ namespace GGFPortal.VN
 {
     public partial class VN001 : System.Web.UI.Page
     {
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";
@@ -66,6 +67,8 @@ namespace GGFPortal.VN
             {
                 strwhere = " and x.last_date between '"+DateTime.Now.AddDays(-8).ToString("yyyy-MM-dd")+"' and '"+DateTime.Now.AddMonths(3).ToString("yyyy-MM")+"-01'";
             }
+            if (StyleNoTB.Text.Trim().Length > 0)
+                strwhere += " and  cus_item_no LIKE '%" + StyleNoTB.Text.Trim() + "%' ";
             string sqlstr = @"
                                 select distinct a.agents,b.cus_name,brand,cus_item_no from
                                 ordc_bat x left join 
@@ -115,7 +118,32 @@ namespace GGFPortal.VN
 
         }
 
+        [System.Web.Script.Services.ScriptMethod()]
+        [System.Web.Services.WebMethod]
+        public static List<string> SearchStyleNo(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = strConnectString;
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "select DISTINCT  TOP 10 cus_item_no from ordc_bah1 where bah_status <>'CA'  and cus_item_no like '%'+  @SearchText + '%'";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> StyleNo = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            StyleNo.Add(sdr["cus_item_no"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return StyleNo;
+                }
+            }
+        }
 
-        
     }
 }

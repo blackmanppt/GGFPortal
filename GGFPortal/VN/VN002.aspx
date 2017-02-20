@@ -22,7 +22,7 @@
         <table style="border: 2px solid #000000; width:500px; border-collapse: collapse;border: 2px solid black;"  >
             <tr class="line">
                 <td colspan="3">
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Package"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -33,14 +33,12 @@
                 <td class="line">
 
                     <asp:TextBox ID="SearchTB" runat="server"></asp:TextBox>
-                    <ajaxToolkit:CalendarExtender ID="SearchTB_CalendarExtender" runat="server" Format="yyyy/MM/dd" TargetControlID="SearchTB" />
+                    <ajaxToolkit:CalendarExtender ID="SearchTB_CalendarExtender" runat="server" Format="yyyyMMdd" TargetControlID="SearchTB" />
                     <asp:Button ID="Button1" runat="server" Text="Button" />
                 </td>
                 <td class="line">
 
-                    <asp:Button ID="TeamCodeBT" runat="server" Text="TeamCode" OnClick="TeamCodeBT_Click" />
-
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td  class="line">                   
@@ -55,7 +53,12 @@
             </tr>
             <tr>
                 <td class="line"></td>
-                <td class="line"></td>
+                <td class="line">
+
+                    <asp:Button ID="TeamCodeBT" runat="server" Text="TeamCode" OnClick="TeamCodeBT_Click" />
+
+                    <asp:Button ID="TempExcel" runat="server" Text="TempExcel" />
+                </td>
                 <td class="line">
                     <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" OnClick="UpLoadBT_Click" />
                 </td>
@@ -88,7 +91,6 @@
                     <asp:BoundField DataField="StandardProductivity" HeaderText="1/人8H標準產量" />
                     <asp:BoundField DataField="Person" HeaderText="實際工作人數" />
                     <asp:BoundField DataField="Time" HeaderText="工時" />
-                    <asp:BoundField DataField="Percent" HeaderText="百分比" />
                     <asp:BoundField DataField="GoalProductivity" HeaderText="今日目標產量" />
                     <asp:BoundField DataField="DayProductivity" HeaderText="今日產量" />
                     <asp:BoundField DataField="TotalEfficiency" HeaderText="效率" />

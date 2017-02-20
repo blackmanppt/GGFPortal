@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace GGFPortal.Finance
 {
     public partial class Finance001 : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";
@@ -44,5 +46,6 @@ namespace GGFPortal.Finance
             }
             ReportViewer1.LocalReport.Refresh();
         }
+        
     }
 }

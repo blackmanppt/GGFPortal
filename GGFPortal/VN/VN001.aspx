@@ -9,16 +9,21 @@
 
     <title>Search Style No</title>
     <style type="text/css">
-        .auto-style2 {
-            text-align: left;
-            border: 2px solid black;
-        }
         .auto-style3 {
             text-align: left;
             height: 23px;
             border: 2px solid black;
         }
         .xx{
+            border: 2px solid black;
+        }
+        
+        .auto-style4 {
+            text-align: right;
+        }
+        .auto-style5 {
+            text-align: right;
+            height: 23px;
             border: 2px solid black;
         }
         
@@ -42,7 +47,7 @@
         <div  >
             <table style="border: 2px solid #000000; width:400px; border-collapse: collapse;border: 2px solid black;"  >
                 <tr class="xx">
-                    <td class="auto-style3">
+                    <td class="auto-style5">
                         <asp:Label ID="Label2" runat="server" Text="預計出貨日："></asp:Label>
                     </td>
                     <td class="auto-style3">
@@ -53,8 +58,22 @@
                     <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyy-MM-dd"  />
                     </td>
                     <td class="auto-style3">
+                       
+                    </td>
+                </tr>
+                <tr class="xx">
+                    <td class="auto-style4">
+                        <asp:Label ID="Label3" runat="server" Text="Style No："></asp:Label>
+                    </td>
+                    <td>
+ <asp:TextBox ID="StyleNoTB" runat="server"></asp:TextBox>
+                    <ajaxToolkit:AutoCompleteExtender ID="StyleNoTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo"  TargetControlID="StyleNoTB">
+                    </ajaxToolkit:AutoCompleteExtender>
+                    </td>
+                    <td> 
                         <asp:Button ID="Search" runat="server" Text="Search" />
                         <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" />
+
                     </td>
                 </tr>
                
