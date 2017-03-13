@@ -22,10 +22,11 @@
                             a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_date, a.printing, a.sewing, a.samc_remark60, a.mark, 
                             a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final, a.last_date, a.samc_fin_date, a.sam_type_A, 
                             a.sam_type_B, a.sam_type_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix, a.s_plan_arrival_date, 
-                            a.s_real_arrival_date, b.tel_nbr
+                            a.s_real_arrival_date, b.tel_nbr,d.dept_name,e.item_statistic_name
 FROM              samc_reqm AS a LEFT OUTER JOIN
                             bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
-                            samc_type AS c ON a.site = c.site AND a.type_id = c.type_id
+                            samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no
+							left join bas_item_statistic e on a.site=e.site and a.item_statistic=e.item_statistic
 WHERE        
 (a.progress_rate = N'2')  and ( a.modifier &lt;&gt;'103030' or 1=@caicai ) and a.modify_date  between @modify_date1 and @modify_date2
 and a.brand_name LIKE @brand_name and a.type_id LIKE @type_id</CommandText>
@@ -119,6 +120,8 @@ and a.brand_name LIKE @brand_name and a.type_id LIKE @type_id</CommandText>
               <Mapping SourceColumn="s_real_arrival_date" DataSetColumn="s_real_arrival_date" />
               <Mapping SourceColumn="tel_nbr" DataSetColumn="tel_nbr" />
               <Mapping SourceColumn="type_desc" DataSetColumn="type_desc" />
+              <Mapping SourceColumn="dept_name" DataSetColumn="dept_name" />
+              <Mapping SourceColumn="item_statistic_name" DataSetColumn="item_statistic_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -584,6 +587,20 @@ and a.brand_name LIKE @brand_name and a.type_id LIKE @type_id</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dept_name" msprop:Generator_ColumnVarNameInTable="columndept_name" msprop:Generator_ColumnPropNameInRow="dept_name" msprop:Generator_ColumnPropNameInTable="dept_nameColumn" msprop:Generator_UserColumnName="dept_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="item_statistic_name" msprop:Generator_ColumnVarNameInTable="columnitem_statistic_name" msprop:Generator_ColumnPropNameInRow="item_statistic_name" msprop:Generator_ColumnPropNameInTable="item_statistic_nameColumn" msprop:Generator_UserColumnName="item_statistic_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

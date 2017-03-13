@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Finace001.aspx.cs" Inherits="GGFPortal.Finance.Finance001" uiCulture="Auto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Finance009.aspx.cs" Inherits="GGFPortal.Finance.Finance00９" uiCulture="Auto" %>
 
 <%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
@@ -39,9 +39,9 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
         </asp:ScriptManager>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
-            <LocalReport ReportPath="ReportSource\ReportFinance001.rdlc">
+            <LocalReport ReportPath="ReportSource\ReportFinance001_V2.rdlc">
                 <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="FinaceObjectDataSource" Name="Finace001" />
+                    <rsweb:ReportDataSource DataSourceId="FinaceObjectDataSource" Name="Finance001_V2" />
                 </DataSources>
             </LocalReport>
         </rsweb:ReportViewer>

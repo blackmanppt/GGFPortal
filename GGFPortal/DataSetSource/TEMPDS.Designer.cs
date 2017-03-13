@@ -1290,7 +1290,7 @@ namespace GGFPortal.DataSetSource.TEMPDSTableAdapters {
       ,[幣別]
       ,[匯率]
       ,[加減項]
-  FROM [GGF].[dbo].[ViewShpc]
+  FROM [dbo].[ViewShpc]
 where [開航日] between @StartDay and @EndDay  and site like @site
   GROUP BY
 [site]

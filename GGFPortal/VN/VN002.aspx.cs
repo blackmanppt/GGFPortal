@@ -11,6 +11,7 @@ using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Net;
 
 namespace GGFPortal.VN
 {
@@ -20,22 +21,48 @@ namespace GGFPortal.VN
         
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
         static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        //static string strImportType = "Package";
+        string strArea = "", strImportType="";
         protected void Page_Load(object sender, EventArgs e)
         {
             SearchTB.Attributes["readonly"] = "readonly";
+            strArea = (Request.Params["AREA"] != null)? Request.Params["AREA"] :"";
+            strImportType = (Request.Params["TYPE"] != null) ? Request.Params["TYPE"] : "";
+            if (strArea == "" || strImportType == "")
+                Response.Redirect("VNindex.aspx");
+            AreaLB.Text = strArea;
+            switch (strImportType)
+            {
+                case "Stitch":
+                    TypeLB.Text = "車縫";
+                    break;
+                case "Package":
+                    TypeLB.Text = "包裝";
+                    break;
+                case "Cut":
+                    TypeLB.Text = "裁剪";
+                    break;
+                case "Iron":
+                    TypeLB.Text = "整燙";
+                    break;
+                case "QC":
+                    TypeLB.Text = "品檢";
+                    break;
+                default:
+                    Response.Redirect("VNindex.aspx");
+                    break;
+            }
+
         }
 
         protected void TeamCodeBT_Click(object sender, EventArgs e)
         {
             SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString1"].ConnectionString.ToString());
-            SqlDataAdapter myAdapter = new SqlDataAdapter(@"SELECT [dept_no] ,[dept_name]  FROM[GGF].[dbo].[GGB_dept] 
+            SqlDataAdapter myAdapter = new SqlDataAdapter(@"SELECT [dept_no] ,[dept_name]  FROM [dbo].[GGB_dept] 
                                                     where dept_no like 'A%' or  dept_no like 'C%' or  dept_no like 'D%' 
                                                     or dept_no like 'R%' or  dept_no like 'V%'", Conn);
             DataSet ds = new DataSet();
-
             myAdapter.Fill(ds, "GGB_dept");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
-
-
             GGFPortal.ReferenceCode.ConvertToExcel xx = new ReferenceCode.ConvertToExcel();
             xx.ExcelWithNPOI(ds.Tables["GGB_dept"], @"xlsx");
         }
@@ -43,7 +70,27 @@ namespace GGFPortal.VN
         {
             
             ReferenceCode.Column1 GetExcelDefine = new ReferenceCode.Column1();
-            GetExcelDefine.VNStitchmain();
+            switch(strImportType)
+            {
+                case "Stitch":
+                    GetExcelDefine.VNStitchmain(); //車縫
+                    break;
+                case "Package":
+                    GetExcelDefine.VNPackagemain();//包裝
+                    break;
+                case "Cut":
+                    GetExcelDefine.VNCutmain();//裁剪
+                    break;
+                case "Iron":
+                    GetExcelDefine.VNIronmain();//整燙
+                    break;
+                case "QC":
+                    GetExcelDefine.VNQCmain();//品檢
+                    break;
+                default:
+                    Response.Redirect("VNindex.aspx");
+                    break;
+            }
             #region old
             //int xxx = 1;
             //List <Column> InsertColumn = new List<Column>();
@@ -82,12 +129,12 @@ namespace GGFPortal.VN
             #endregion
 
 
-            String savePath = Server.MapPath(@"~\ExcelUpLoad\Salse\");
+            String savePath = Server.MapPath(@"~\ExcelUpLoad\VN\");
 
             DataTable D_table = new DataTable("Excel");
             D_table = GetExcelDefine.ExcelTable.Copy();
             DataTable D_errortable = new DataTable("Error");
-            if (SearchTB.Text.Length > 0)
+            if (SearchTB.Text.Length > 0 && F_CheckData())
             {
                 if (FileUpload1.HasFile)
                 {
@@ -96,7 +143,7 @@ namespace GGFPortal.VN
                     savePath = savePath + fileName;
                     FileUpload1.SaveAs(savePath);
 
-                    Label1.Text = "上傳成功，檔名---- " + fileName;
+                    Label1.Text = "夾檔成功，檔名---- " + fileName;
                     //--------------------------------------------------
                     //---- （以上是）上傳 FileUpload的部分，成功運作！
                     //--------------------------------------------------
@@ -153,7 +200,7 @@ namespace GGFPortal.VN
 
                             //-- for迴圈的「啟始值」要加一，表示不包含 Excel表頭列
                             // for (int i = (u_sheet.FirstRowNum + 1); i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
-                            for (int i = 5; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                            for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                             {
                                 //--不包含 Excel表頭列的 "其他資料列"
                                 IRow row = (IRow)u_sheet.GetRow(i);
@@ -163,10 +210,11 @@ namespace GGFPortal.VN
                                 D_dataRow[1] = SearchTB.Text;
                                 bool bcheck = true, berror = false;
                                 string sError = "";
-                                for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                for (int j = row.FirstCellNum; j < 29; j++)   //有些EXCEL會沒填資料
                                 {
                                     //沒有Style就不抓
-                                    if (row.GetCell(2)==null)
+                                    if (row.GetCell(2) == null)
                                     {
                                         bcheck = false;
                                         break;
@@ -176,10 +224,10 @@ namespace GGFPortal.VN
                                     {
                                         // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
                                         case 1:
-                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 2:
-                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 3:
                                             try
@@ -191,16 +239,16 @@ namespace GGFPortal.VN
                                             {
                                                 //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
                                                 berror = true;
-                                                sError += "第" + i.ToString() + "行、第" + (j + 2).ToString() + "欄公式錯誤4：";
+                                                sError += "第" + (i - 4).ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "日期格式錯誤。";
                                                 D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                                                                                                                                //throw;
                                             }
                                             break;
                                         case 4:
-                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 6:
-                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             #region string old
                                             ////-- 檢查這一格，是否包含公式（Formula）？ 
                                             //if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
@@ -230,10 +278,10 @@ namespace GGFPortal.VN
                                             #endregion
                                             break;
                                         case 7:
-                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 8:
-                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
 
                                             break;
 
@@ -250,7 +298,7 @@ namespace GGFPortal.VN
                                 {
                                     D_erroraRow[0] = u_sheet.SheetName.ToString();
                                     D_erroraRow[1] = row.GetCell(0).ToString();
-                                    D_erroraRow[2] = sError;
+                                    D_erroraRow[2] = "第" + i.ToString() + "欄" + sError;
                                     D_errortable.Rows.Add(D_erroraRow);
                                 }
                             }
@@ -288,7 +336,7 @@ namespace GGFPortal.VN
                             IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
                             Session["Date"] = SearchTB.Text;
 
-                            for (int i = 5; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                            for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                             {
                                 //--不包含 Excel表頭列的 "其他資料列"
                                 IRow row = (IRow)u_sheet.GetRow(i);
@@ -298,10 +346,11 @@ namespace GGFPortal.VN
                                 D_dataRow[1] = SearchTB.Text;
                                 bool bcheck = true, berror = false;
                                 string sError = "";
-                                for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                for (int j = row.FirstCellNum; j < 29; j++)   //有些EXCEL會沒填資料
                                 {
                                     //沒有Style就不抓
-                                    if (row.GetCell(2)==null)
+                                    if (row.GetCell(2) == null)
                                     {
                                         bcheck = false;
                                         break;
@@ -310,10 +359,10 @@ namespace GGFPortal.VN
                                     {
                                         // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
                                         case 1:
-                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 2:
-                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 3:
                                             try
@@ -325,22 +374,22 @@ namespace GGFPortal.VN
                                             {
                                                 //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
                                                 berror = true;
-                                                sError += "第" + i.ToString() + "行、第" + (j + 2).ToString() + "欄公式錯誤5。";
+                                                sError += "第" + i.ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "錯誤5。";
                                                 D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                                                                                                                                //throw;
                                             }
                                             break;
                                         case 4:
-                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1);
+                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 6:
-                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 7:
-                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         case 8:
-                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0);
+                                            FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
                                             break;
                                         default:
                                             break;
@@ -352,7 +401,7 @@ namespace GGFPortal.VN
                                 {
                                     D_erroraRow[0] = u_sheet.SheetName.ToString();
                                     D_erroraRow[1] = row.GetCell(0).ToString();
-                                    D_erroraRow[2] = sError;
+                                    D_erroraRow[2] = "第" + i.ToString()+ "欄"+ sError;
                                     D_errortable.Rows.Add(D_erroraRow);
                                 }
                             }
@@ -406,49 +455,64 @@ namespace GGFPortal.VN
                 }
             }
             else
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+            {
+                if (F_CheckData() == false)
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
+                else
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+            }
 
         }
-        private static void StringData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x)
+        private static void StringData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, string ColumnName)
         {
             try
             {
-                string strString = "";
-                strString = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).ToString().Trim();   //--每一個欄位，都加入同一列 DataRow
-                D_dataRow[j + 2] = strString;
-                if (j==2)
+                if (x == 1&& row.GetCell(j)==null)
                 {
-                    using (SqlConnection conn = new SqlConnection(strConnectString1))
+                    berror = true;
+                    sError += ColumnName + "必填欄位未填資料。";
+                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+
+                }
+                else
+                { 
+                    string strString = "";
+                    strString = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).ToString().Trim();   //--每一個欄位，都加入同一列 DataRow
+                    D_dataRow[j + 2] = strString;
+                    if (j==2)
                     {
-                        // Create the command and set its properties.
-                        SqlCommand command = new SqlCommand();
-                        command.Connection = conn;
-                        command.CommandText = "select * from ordc_bah1 where bah_status<> 'CA' and cus_item_no = @cus_item_no";
-                        command.CommandType = CommandType.Text;
-
-                        // Add the input parameter and set its properties.
-                        SqlParameter parameter = new SqlParameter();
-                        parameter.ParameterName = "@cus_item_no";
-                        parameter.SqlDbType = SqlDbType.NVarChar;
-                        parameter.Direction = ParameterDirection.Input;
-                        parameter.Value = strString;
-
-                        // Add the parameter to the Parameters collection. 
-                        command.Parameters.Add(parameter);
-
-                        // Open the connection and execute the reader.
-                        conn.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        if (reader.HasRows==false)
+                        using (SqlConnection conn = new SqlConnection(strConnectString1))
                         {
-                            berror = true;
-                            sError += "Style_no("+ strString + ")：沒有資料";
+                            // Create the command and set its properties.
+                            SqlCommand command = new SqlCommand();
+                            command.Connection = conn;
+                            command.CommandText = "select * from ordc_bah1 where bah_status<> 'CA' and cus_item_no = @cus_item_no";
+                            command.CommandType = CommandType.Text;
+
+                            // Add the input parameter and set its properties.
+                            SqlParameter parameter = new SqlParameter();
+                            parameter.ParameterName = "@cus_item_no";
+                            parameter.SqlDbType = SqlDbType.NVarChar;
+                            parameter.Direction = ParameterDirection.Input;
+                            parameter.Value = strString;
+                            
+                            // Add the parameter to the Parameters collection. 
+                            command.Parameters.Add(parameter);
+
+                            // Open the connection and execute the reader.
+                            conn.Open();
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.HasRows==false)
+                            {
+                                berror = true;
+                                sError += "Style_no("+ strString + ")：沒有資料。";
+                            }
+                            reader.Close();
                         }
-                        reader.Close();
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -456,16 +520,16 @@ namespace GGFPortal.VN
                 if (x == 1)
                 {
                     berror = true;
-                    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄匯入失敗。";
+                    sError +=  ColumnName + "欄匯入失敗。";
                 }
-                else
-                    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄匯入失敗(非必要資料不影響匯入)。";
+                //else
+                //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄匯入失敗(非必要資料不影響匯入)。";
                 D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                 //throw;
             }
         }
 
-        private static void IntData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x)
+        private static void IntData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x,string ColumnName)
         {
             //x==1代表需要檢查資料
             if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
@@ -481,10 +545,10 @@ namespace GGFPortal.VN
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤1。";
+                        sError +=  ColumnName + "公式錯誤1。";
                     }
-                    else
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
+                    //else
+                    //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
 
@@ -496,7 +560,14 @@ namespace GGFPortal.VN
                 {
                     int iout = 0;
                     if (string.IsNullOrEmpty(row.GetCell(j).ToString()))
-                        D_dataRow[j + 2] = "0";
+                    {
+                        if (x == 1)
+                        {
+                            berror = true;
+                            sError += ColumnName + "未填資料。";
+                        }
+                        D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
+                    }
                     else
                     {
                         if (int.TryParse(row.GetCell(j).ToString(), out iout) == false)
@@ -504,10 +575,10 @@ namespace GGFPortal.VN
                             if (x == 1)
                             {
                                 berror = true;
-                                sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字：" + row.GetCell(j).ToString();
+                                sError +=  ColumnName + "非數字：" + row.GetCell(j).ToString()+ "。";
                             }
-                            else
-                                sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
+                            //else
+                            //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
                             D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
 
                         }
@@ -521,17 +592,17 @@ namespace GGFPortal.VN
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤2。";
+                        sError +=  ColumnName + "公式錯誤2。";
                     }
-                    else
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
+                    //else
+                    //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                     //throw;
                 }
             }
         }
 
-        private static void FloatData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x)
+        private static void FloatData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, string ColumnName)
         {
             //x==1代表需要檢查資料
             if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
@@ -547,10 +618,10 @@ namespace GGFPortal.VN
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤3。";
+                        sError += ColumnName + "公式錯誤3。";
                     }
-                    else
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
+                    //else 
+                    //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
 
@@ -562,7 +633,14 @@ namespace GGFPortal.VN
                 {
 
                     if (string.IsNullOrEmpty(row.GetCell(j).ToString()))
-                        D_dataRow[j + 2] = "0";
+                    {
+                        if (x == 1)
+                        {
+                            berror = true;
+                            sError +=  ColumnName + "必填欄位未填資料。";
+                        }
+                        D_dataRow[j + 2] = "0" ;  //--每一個欄位，都加入同一列 DataRow
+                    }
                     else
                     {
                         double dout = 0;
@@ -571,10 +649,10 @@ namespace GGFPortal.VN
                             if (x == 1)
                             {
                                 berror = true;
-                                sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字。";
+                                sError +=  ColumnName + "非數字。";
                             }
-                            else
-                                sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
+                            //else
+                            //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
                             D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                         }
                         else
@@ -586,23 +664,23 @@ namespace GGFPortal.VN
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字。";
+                        sError +=  ColumnName + "非數字。";
                     }
-                    else
-                        sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
+                    //else
+                    //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                     //throw;
                 }
             }
         }
         //抓HeadID
-        private int GetExcelIdex(string strArea)
+        private int GetExcelIdex()
         {
             Int32 ProductivityHeadID = 0;
             string sql =
                 @"INSERT INTO [dbo].[Productivity_Head]
                     (FileName,Area,Creator,Team,Date)
-                    VALUES(@FileName,@Area,'Program','Stitch',@Date); 
+                    VALUES(@FileName,@Area,'Program',@Team,@Date); 
                     SELECT CAST(scope_identity() AS int)";
             using (SqlConnection conn = new SqlConnection(strConnectString))
             {
@@ -610,9 +688,11 @@ namespace GGFPortal.VN
                 cmd.Parameters.Add("@Date", SqlDbType.NVarChar);
                 cmd.Parameters.Add("@FileName", SqlDbType.NVarChar);
                 cmd.Parameters.Add("@Area", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@Team", SqlDbType.NVarChar);
                 cmd.Parameters["@Date"].Value = SearchTB.Text;
                 cmd.Parameters["@FileName"].Value = Session["FileName"].ToString();
                 cmd.Parameters["@Area"].Value = strArea;
+                cmd.Parameters["@Team"].Value = strImportType;
                 try
                 {
                     conn.Open();
@@ -628,15 +708,15 @@ namespace GGFPortal.VN
 
         protected void UpLoadBT_Click(object sender, EventArgs e)
         {
-            if(SearchTB.Text.Trim()!="")
+            if(SearchTB.Text.Trim()!=""&&F_CheckData())
             { 
                 if (Session["ExcelError"] == null)
                     if (Session["Excel"] != null)
                     {
                         DataTable dt = (DataTable)Session["Excel"];
-                        Label2.Text = dt.Rows[2][2].ToString();
+                        //TypeLB.Text = dt.Rows[2][2].ToString();
                         int iIndex = 0;
-                        iIndex = GetExcelIdex("VGG");
+                        iIndex = GetExcelIdex();
                         if (iIndex > 0)
                             using (SqlConnection conn1 = new SqlConnection(strConnectString))
                             {
@@ -651,7 +731,7 @@ namespace GGFPortal.VN
                                 {
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
-                                        Label2.Text = i.ToString();
+                                        //TypeLB.Text = i.ToString();
                                         command1.CommandText = string.Format(@"INSERT INTO [dbo].[Productivity_Line]
                                                        ([uid]
                                                        ,[SheetName]
@@ -670,6 +750,7 @@ namespace GGFPortal.VN
                                                        ,[Person]
                                                        ,[TotalTime]
                                                        ,[Time]
+                                                       ,[Percent]
                                                        ,[Difference]
                                                        ,[Efficiency]
                                                        ,[TotalEfficiency]
@@ -702,6 +783,7 @@ namespace GGFPortal.VN
                                                        ,@Person
                                                        ,@TotalTime
                                                        ,@Time
+                                                       ,@Percent
                                                        ,@Difference
                                                        ,@Efficiency
                                                        ,@TotalEfficiency
@@ -733,6 +815,7 @@ namespace GGFPortal.VN
                                         command1.Parameters.Add("@Person", SqlDbType.Float).Value = dt.Rows[i]["Person"].ToString();
                                         command1.Parameters.Add("@TotalTime", SqlDbType.Float).Value = dt.Rows[i]["TotalTime"].ToString();
                                         command1.Parameters.Add("@Time", SqlDbType.Float).Value = dt.Rows[i]["Time"].ToString();
+                                        command1.Parameters.Add("@Percent", SqlDbType.Float).Value = dt.Rows[i]["Percent"].ToString();
                                         command1.Parameters.Add("@Difference", SqlDbType.Int).Value = dt.Rows[i]["Difference"].ToString();
                                         command1.Parameters.Add("@Efficiency", SqlDbType.Float).Value = dt.Rows[i]["Efficiency"].ToString();
                                         command1.Parameters.Add("@TotalEfficiency", SqlDbType.Float).Value = dt.Rows[i]["TotalEfficiency"].ToString();
@@ -769,6 +852,7 @@ namespace GGFPortal.VN
                                     finally
                                     {
                                         transaction1.Rollback();
+                                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
                                     }
                                 }
                                 finally
@@ -777,16 +861,149 @@ namespace GGFPortal.VN
                                     conn1.Dispose();
                                     command1.Dispose();
                                     Session.RemoveAll();
+                                    Label1.Text = "資料上傳成功";
                                 }
                             }
                         else
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('單頭匯入失敗請連絡MIS');</script>");
                     }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+                if(F_CheckData()==false)
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
+                else
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
             }
+        }
+
+        protected void TempExcel_Click(object sender, EventArgs e)
+        {
+            //WebClient wc = new WebClient();
+            //string path = "http://127.0.0.1/FileName.pdf";
+
+            //宣告並建立WebClient物件
+            WebClient wc = new WebClient();
+            byte[] b=null;
+            
+            switch (strImportType)
+            {
+
+                case "Stitch":
+                    //GetExcelDefine.VNStitchmain(); //車縫
+                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample車縫.xlsx"));
+                    break;
+                case "Package":
+                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample包裝.xlsx"));
+                    break;
+                case "Cut":
+                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample採剪.xlsx"));
+                    break;
+                case "Iron":
+                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample包裝.xlsx"));
+                    break;
+                case "QC":
+                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample品檢.xlsx"));
+                    break;
+                default:
+                    Response.Redirect("VNindex.aspx");
+                    break;
+            }
+            //載入要下載的檔案
+            //byte[] b = wc.DownloadData(path);
+
+            //清除Response內的HTML
+            Response.Clear();
+
+            //設定標頭檔資訊 attachment 是本文章的關鍵字
+            Response.AddHeader("Content-Disposition", "attachment;filename="+ strImportType + ".xlsx");
+
+            //開始輸出讀取到的檔案
+            Response.BinaryWrite(b);
+
+            //一定要加入這一行，否則會持續把Web內的HTML文字也輸出。
+            Response.End();
+
+        }
+
+        protected void DeleteBT_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            {
+                SqlCommand command1 = conn1.CreateCommand();
+                SqlTransaction transaction1;
+                conn1.Open();
+                transaction1 = conn1.BeginTransaction("createExcelImport");
+
+                command1.Connection = conn1;
+                command1.Transaction = transaction1;
+                try
+                {
+                    command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2  WHERE Team = @Team and [Date] = @Date");
+                    command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                    command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
+                    command1.ExecuteNonQuery();
+                    transaction1.Commit();
+                    Label1.Text = "刪除完畢，請再次夾檔";
+                }
+                catch (Exception ex1)
+                {
+                    try
+                    {
+                        Log.ErrorLog(ex1, "Delete Error :" , "VN002.aspx");
+                    }
+                    catch (Exception ex2)
+                    {
+                        Log.ErrorLog(ex2, "Delete Error Error:" , "VN002.aspx");
+                    }
+                    finally
+                    {
+                        transaction1.Rollback();
+                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                    }
+                }
+                finally
+                {
+                    conn1.Close();
+                    conn1.Dispose();
+                    command1.Dispose();
+                    Session.RemoveAll();
+                }
+            }
+        }
+
+        public Boolean F_CheckData()
+        {
+            bool bcheck = true;
+            using (SqlConnection conn = new SqlConnection(strConnectString1))
+            {
+                SqlCommand command = new SqlCommand();
+                command.Connection = conn;
+                command.CommandText = @"SELECT [uid]
+                                          ,[Team]
+                                          ,[FileName]
+                                          ,[Date]
+                                          ,[Area]
+                                          ,[Flag]
+                                          ,[CreateDate]
+                                          ,[Creator]
+                                        FROM [dbo].[Productivity_Head]
+                                        where Team = @Team and Date = @Date and Flag = 1";
+                command.CommandType = CommandType.Text;
+                command.Parameters.Add("@Team", SqlDbType.NVarChar).Value =strImportType ;
+                command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    bcheck = false;
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            return bcheck;
         }
         
     }

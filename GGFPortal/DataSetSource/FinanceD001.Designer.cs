@@ -342,6 +342,10 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column加減項;
             
+            private global::System.Data.DataColumn column代理商;
+            
+            private global::System.Data.DataColumn columnopen_date;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ViewShpcDataTable() {
@@ -489,6 +493,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 代理商Column {
+                get {
+                    return this.column代理商;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn open_dateColumn {
+                get {
+                    return this.columnopen_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -524,7 +544,23 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViewShpcRow AddViewShpcRow(string site, string shp_nbr, string 開航日, string 客戶, string S_O, string style_no, string PO_NUMBER, string vendor_name_brief, decimal 出貨數量, decimal 出貨單價, decimal 出貨金額, string 幣別, decimal 匯率, decimal 加減項) {
+            public ViewShpcRow AddViewShpcRow(
+                        string site, 
+                        string shp_nbr, 
+                        string 開航日, 
+                        string 客戶, 
+                        string S_O, 
+                        string style_no, 
+                        string PO_NUMBER, 
+                        string vendor_name_brief, 
+                        decimal 出貨數量, 
+                        decimal 出貨單價, 
+                        decimal 出貨金額, 
+                        string 幣別, 
+                        decimal 匯率, 
+                        decimal 加減項, 
+                        string 代理商, 
+                        System.DateTime open_date) {
                 ViewShpcRow rowViewShpcRow = ((ViewShpcRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         site,
@@ -540,7 +576,9 @@ namespace GGFPortal.DataSetSource {
                         出貨金額,
                         幣別,
                         匯率,
-                        加減項};
+                        加減項,
+                        代理商,
+                        open_date};
                 rowViewShpcRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewShpcRow);
                 return rowViewShpcRow;
@@ -577,6 +615,8 @@ namespace GGFPortal.DataSetSource {
                 this.column幣別 = base.Columns["幣別"];
                 this.column匯率 = base.Columns["匯率"];
                 this.column加減項 = base.Columns["加減項"];
+                this.column代理商 = base.Columns["代理商"];
+                this.columnopen_date = base.Columns["open_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -610,6 +650,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column匯率);
                 this.column加減項 = new global::System.Data.DataColumn("加減項", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column加減項);
+                this.column代理商 = new global::System.Data.DataColumn("代理商", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column代理商);
+                this.columnopen_date = new global::System.Data.DataColumn("open_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnopen_date);
                 this.columnsite.AllowDBNull = false;
                 this.columnsite.MaxLength = 4;
                 this.columnshp_nbr.AllowDBNull = false;
@@ -623,6 +667,7 @@ namespace GGFPortal.DataSetSource {
                 this.column出貨數量.ReadOnly = true;
                 this.column出貨金額.ReadOnly = true;
                 this.column幣別.MaxLength = 4;
+                this.column代理商.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1421,6 +1466,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 代理商 {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewShpc.代理商Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'ViewShpc\' 中資料行 \'代理商\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableViewShpc.代理商Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime open_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewShpc.open_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'ViewShpc\' 中資料行 \'open_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableViewShpc.open_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is開航日Null() {
                 return this.IsNull(this.tableViewShpc.開航日Column);
             }
@@ -1561,6 +1638,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set加減項Null() {
                 this[this.tableViewShpc.加減項Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is代理商Null() {
+                return this.IsNull(this.tableViewShpc.代理商Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set代理商Null() {
+                this[this.tableViewShpc.代理商Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isopen_dateNull() {
+                return this.IsNull(this.tableViewShpc.open_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setopen_dateNull() {
+                this[this.tableViewShpc.open_dateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2144,6 +2245,8 @@ namespace GGFPortal.DataSetSource.FinanceD001TableAdapters {
             tableMapping.ColumnMappings.Add("幣別", "幣別");
             tableMapping.ColumnMappings.Add("匯率", "匯率");
             tableMapping.ColumnMappings.Add("加減項", "加減項");
+            tableMapping.ColumnMappings.Add("代理商", "代理商");
+            tableMapping.ColumnMappings.Add("open_date", "open_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2173,11 +2276,12 @@ namespace GGFPortal.DataSetSource.FinanceD001TableAdapters {
       ,SUM([出貨金額]) AS  '出貨金額'
       ,[幣別]
       ,[匯率]
-      ,[加減項]
-  FROM [GGF].[dbo].[ViewShpc]
+      ,[加減項]      ,[代理商]
+      ,[open_date]
+  FROM [dbo].[ViewShpc]
 where [開航日] between @StartDay and @EndDay  and site like @site
   GROUP BY
-[site]
+[site] 
       ,[shp_nbr]
       ,[開航日]
       ,[客戶]
@@ -2189,7 +2293,8 @@ where [開航日] between @StartDay and @EndDay  and site like @site
       ,[出貨單價]
       ,[幣別]
       ,[匯率]
-      ,[加減項]
+      ,[加減項]      ,[代理商]
+      ,[open_date]
 order by [開航日]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDay", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "開航日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2423,7 +2528,7 @@ order by [開航日]";
       ,[幣別]
       ,[匯率]
       ,[加減項]
-  FROM [GGF].[dbo].[ViewShpc]
+  FROM [dbo].[ViewShpc]
 where [開航日] between @StartDay and @EndDay  and site like @site and [客戶] like @agents
   GROUP BY
 [site]

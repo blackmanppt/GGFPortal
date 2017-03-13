@@ -379,7 +379,9 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Sales\SALE_V2.aspx" />
     <Content Include="Sales\Sales002.aspx" />
     <Content Include="Finance\Finance007.aspx" />
     <Content Include="Finance\Finance005.aspx" />
@@ -532,6 +534,18 @@
     <Content Include="DataSetSource\test.xss">
       <DependentUpon>test.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSetSource\VNDSTemp.xsc">
+      <DependentUpon>VNDSTemp.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\VNDSTemp.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VNDSTemp.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\VNDSTemp.xss">
+      <DependentUpon>VNDSTemp.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\GGF.pubxml" />
     <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
     <None Include="Properties\PublishProfiles\Localhost.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
@@ -1055,6 +1069,11 @@
     <Content Include="test\DataSetTest.xss">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
+    <Content Include="VN\Temp\Excel\Sample包裝.xlsx" />
+    <Content Include="VN\Temp\Excel\Sample品檢.xlsx" />
+    <Content Include="VN\Temp\Excel\Sample採剪.xlsx" />
+    <Content Include="VN\Temp\Excel\Sample整燙.xlsx" />
+    <Content Include="VN\Temp\Excel\Sample車縫.xlsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1075,6 +1094,8 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="VN\VN001.aspx" />
     <Content Include="VN\VN002.aspx" />
+    <Content Include="VN\VN003.aspx" />
+    <Content Include="VN\VNindex.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1085,6 +1106,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReporttest1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VNDSTemp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Finance009.aspx.cs">
+      <DependentUpon>Finance009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance009.aspx.designer.cs">
+      <DependentUpon>Finance009.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance008.aspx.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
@@ -1100,6 +1133,13 @@
     </Compile>
     <Compile Include="ReferenceCode\ExcelColumn.cs" />
     <Compile Include="ReferenceCode\VNExcel.cs" />
+    <Compile Include="Sales\SALE_V2.aspx.cs">
+      <DependentUpon>SALE_V2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SALE_V2.aspx.designer.cs">
+      <DependentUpon>SALE_V2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\CrystalReport1.aspx.cs">
       <DependentUpon>CrystalReport1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1496,12 +1536,27 @@
     <Compile Include="VN\VN002.aspx.designer.cs">
       <DependentUpon>VN002.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN003.aspx.cs">
+      <DependentUpon>VN003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN003.aspx.designer.cs">
+      <DependentUpon>VN003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VNindex.aspx.cs">
+      <DependentUpon>VNindex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VNindex.aspx.designer.cs">
+      <DependentUpon>VNindex.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="aspnet_client\" />
     <Folder Include="ExcelUpLoad\Salse\" />
     <Folder Include="ExcelUpLoad\Template\" />
+    <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -1509,7 +1564,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSALE_V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>

@@ -67,6 +67,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Finance/Finance005.aspx">AP1查詢程式</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Finance/Finance007.aspx">出口大表(BY CATHY)</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Finance/Finance009.aspx">出口大表(BY Ariel)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -118,15 +120,18 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Sales/SALE.aspx">樣品</asp:HyperLink>
                                                 <br />
+                                                <asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Sales/SALE_V2.aspx">樣品_2</asp:HyperLink>
+                                                <br />
                         <asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Sales/Sales002.aspx">業績表</asp:HyperLink>
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">&nbsp;</td>
+                    <td class="auto-style1">越南</td>
                     <td>
-                        &nbsp;</td>
+                        <asp:HyperLink ID="HyperLink27" runat="server" NavigateUrl="~/VN/VNindex.aspx">越南首頁</asp:HyperLink>
+                    </td>
                     <td class="auto-style2">
                         &nbsp;</td>
                     <td>&nbsp;</td>
