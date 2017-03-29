@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VN003.aspx.cs" Inherits="GGFPortal.VN.VN003" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="VN004.aspx.cs" Inherits="GGFPortal.VN.VN004" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -13,7 +13,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <asp:Label ID="TitleLB" runat="server" Text="工時資料餵入查詢" style="font-size: xx-large; font-weight: 700; color: #990099; background-color: #0099FF;"></asp:Label>
+            <asp:Label ID="TitleLB" runat="server" Text="QC" style="font-size: xx-large; font-weight: 700; color: #990099; background-color: #0099FF;"></asp:Label>
         </div>
     <div>
         
@@ -45,25 +45,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label4" runat="server" Text="組別"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td>
-                        <asp:CheckBoxList ID="TeamCB" runat="server" DataSourceID="SqlDataSource1" DataTextField="MappingData" DataValueField="Data" RepeatDirection="Horizontal" AppendDataBoundItems="True">
-                            <asp:ListItem>ALL</asp:ListItem>
-                        </asp:CheckBoxList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="Productivity" Name="UsingDefine" Type="String" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
-                    </td>
+                        &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
     </div>
         <div>
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="600px" Visible="False" Width="90%">
-                <LocalReport ReportPath="ReportSource\VN\ReportVN001.rdlc">
+                <LocalReport ReportPath="ReportSource\VN\ReportVN002.rdlc">
                 </LocalReport>
             </rsweb:ReportViewer>
         </div>

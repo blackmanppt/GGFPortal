@@ -419,6 +419,10 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class StitchDataTable : global::System.Data.TypedTableBase<StitchRow> {
             
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnMappingData;
+            
             private global::System.Data.DataColumn columnDept;
             
             private global::System.Data.DataColumn columnCustomer;
@@ -508,6 +512,22 @@ namespace GGFPortal.DataSetSource {
             protected StitchDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MappingDataColumn {
+                get {
+                    return this.columnMappingData;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -780,6 +800,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public StitchRow AddStitchRow(
+                        string Date, 
+                        string MappingData, 
                         string Dept, 
                         string Customer, 
                         string StyleNo, 
@@ -811,6 +833,8 @@ namespace GGFPortal.DataSetSource {
                         double DayCost7) {
                 StitchRow rowStitchRow = ((StitchRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Date,
+                        MappingData,
                         Dept,
                         Customer,
                         StyleNo,
@@ -862,6 +886,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnDate = base.Columns["Date"];
+                this.columnMappingData = base.Columns["MappingData"];
                 this.columnDept = base.Columns["Dept"];
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnStyleNo = base.Columns["StyleNo"];
@@ -896,6 +922,10 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnMappingData = new global::System.Data.DataColumn("MappingData", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMappingData);
                 this.columnDept = new global::System.Data.DataColumn("Dept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDept);
                 this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1087,6 +1117,10 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PackageDataTable : global::System.Data.TypedTableBase<PackageRow> {
             
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnMappingData;
+            
             private global::System.Data.DataColumn columnDept;
             
             private global::System.Data.DataColumn columnCustomer;
@@ -1176,6 +1210,22 @@ namespace GGFPortal.DataSetSource {
             protected PackageDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MappingDataColumn {
+                get {
+                    return this.columnMappingData;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1448,6 +1498,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PackageRow AddPackageRow(
+                        string Date, 
+                        string MappingData, 
                         string Dept, 
                         string Customer, 
                         string StyleNo, 
@@ -1479,6 +1531,8 @@ namespace GGFPortal.DataSetSource {
                         double DayCost7) {
                 PackageRow rowPackageRow = ((PackageRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Date,
+                        MappingData,
                         Dept,
                         Customer,
                         StyleNo,
@@ -1530,6 +1584,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnDate = base.Columns["Date"];
+                this.columnMappingData = base.Columns["MappingData"];
                 this.columnDept = base.Columns["Dept"];
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnStyleNo = base.Columns["StyleNo"];
@@ -1564,6 +1620,10 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnMappingData = new global::System.Data.DataColumn("MappingData", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMappingData);
                 this.columnDept = new global::System.Data.DataColumn("Dept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDept);
                 this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1755,6 +1815,10 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class QCDataTable : global::System.Data.TypedTableBase<QCRow> {
             
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnMappingData;
+            
             private global::System.Data.DataColumn columnDept;
             
             private global::System.Data.DataColumn columnCustomer;
@@ -1844,6 +1908,22 @@ namespace GGFPortal.DataSetSource {
             protected QCDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MappingDataColumn {
+                get {
+                    return this.columnMappingData;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2116,6 +2196,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public QCRow AddQCRow(
+                        string Date, 
+                        string MappingData, 
                         string Dept, 
                         string Customer, 
                         string StyleNo, 
@@ -2147,6 +2229,8 @@ namespace GGFPortal.DataSetSource {
                         double DayCost7) {
                 QCRow rowQCRow = ((QCRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Date,
+                        MappingData,
                         Dept,
                         Customer,
                         StyleNo,
@@ -2198,6 +2282,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnDate = base.Columns["Date"];
+                this.columnMappingData = base.Columns["MappingData"];
                 this.columnDept = base.Columns["Dept"];
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnStyleNo = base.Columns["StyleNo"];
@@ -2232,6 +2318,10 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnMappingData = new global::System.Data.DataColumn("MappingData", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMappingData);
                 this.columnDept = new global::System.Data.DataColumn("Dept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDept);
                 this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2423,6 +2513,10 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CutDataTable : global::System.Data.TypedTableBase<CutRow> {
             
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnMappingData;
+            
             private global::System.Data.DataColumn columnDept;
             
             private global::System.Data.DataColumn columnCustomer;
@@ -2512,6 +2606,22 @@ namespace GGFPortal.DataSetSource {
             protected CutDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MappingDataColumn {
+                get {
+                    return this.columnMappingData;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2784,6 +2894,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CutRow AddCutRow(
+                        string Date, 
+                        string MappingData, 
                         string Dept, 
                         string Customer, 
                         string StyleNo, 
@@ -2815,6 +2927,8 @@ namespace GGFPortal.DataSetSource {
                         double DayCost7) {
                 CutRow rowCutRow = ((CutRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Date,
+                        MappingData,
                         Dept,
                         Customer,
                         StyleNo,
@@ -2866,6 +2980,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnDate = base.Columns["Date"];
+                this.columnMappingData = base.Columns["MappingData"];
                 this.columnDept = base.Columns["Dept"];
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnStyleNo = base.Columns["StyleNo"];
@@ -2900,6 +3016,10 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnMappingData = new global::System.Data.DataColumn("MappingData", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMappingData);
                 this.columnDept = new global::System.Data.DataColumn("Dept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDept);
                 this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3091,6 +3211,10 @@ namespace GGFPortal.DataSetSource {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class IronDataTable : global::System.Data.TypedTableBase<IronRow> {
             
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnMappingData;
+            
             private global::System.Data.DataColumn columnDept;
             
             private global::System.Data.DataColumn columnCustomer;
@@ -3180,6 +3304,22 @@ namespace GGFPortal.DataSetSource {
             protected IronDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MappingDataColumn {
+                get {
+                    return this.columnMappingData;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3452,6 +3592,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public IronRow AddIronRow(
+                        string Date, 
+                        string MappingData, 
                         string Dept, 
                         string Customer, 
                         string StyleNo, 
@@ -3483,6 +3625,8 @@ namespace GGFPortal.DataSetSource {
                         double DayCost7) {
                 IronRow rowIronRow = ((IronRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        Date,
+                        MappingData,
                         Dept,
                         Customer,
                         StyleNo,
@@ -3534,6 +3678,8 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnDate = base.Columns["Date"];
+                this.columnMappingData = base.Columns["MappingData"];
                 this.columnDept = base.Columns["Dept"];
                 this.columnCustomer = base.Columns["Customer"];
                 this.columnStyleNo = base.Columns["StyleNo"];
@@ -3568,6 +3714,10 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnMappingData = new global::System.Data.DataColumn("MappingData", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMappingData);
                 this.columnDept = new global::System.Data.DataColumn("Dept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDept);
                 this.columnCustomer = new global::System.Data.DataColumn("Customer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3764,6 +3914,38 @@ namespace GGFPortal.DataSetSource {
             internal StitchRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableStitch = ((StitchDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Date {
+                get {
+                    try {
+                        return ((string)(this[this.tableStitch.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Stitch\' 中資料行 \'Date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableStitch.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MappingData {
+                get {
+                    try {
+                        return ((string)(this[this.tableStitch.MappingDataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Stitch\' 中資料行 \'MappingData\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableStitch.MappingDataColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4232,6 +4414,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableStitch.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableStitch.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMappingDataNull() {
+                return this.IsNull(this.tableStitch.MappingDataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMappingDataNull() {
+                this[this.tableStitch.MappingDataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDeptNull() {
                 return this.IsNull(this.tableStitch.DeptColumn);
             }
@@ -4591,6 +4797,38 @@ namespace GGFPortal.DataSetSource {
             internal PackageRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePackage = ((PackageDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Date {
+                get {
+                    try {
+                        return ((string)(this[this.tablePackage.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Package\' 中資料行 \'Date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePackage.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MappingData {
+                get {
+                    try {
+                        return ((string)(this[this.tablePackage.MappingDataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Package\' 中資料行 \'MappingData\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablePackage.MappingDataColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5059,6 +5297,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tablePackage.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateNull() {
+                this[this.tablePackage.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMappingDataNull() {
+                return this.IsNull(this.tablePackage.MappingDataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMappingDataNull() {
+                this[this.tablePackage.MappingDataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDeptNull() {
                 return this.IsNull(this.tablePackage.DeptColumn);
             }
@@ -5418,6 +5680,38 @@ namespace GGFPortal.DataSetSource {
             internal QCRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableQC = ((QCDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Date {
+                get {
+                    try {
+                        return ((string)(this[this.tableQC.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'QC\' 中資料行 \'Date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableQC.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MappingData {
+                get {
+                    try {
+                        return ((string)(this[this.tableQC.MappingDataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'QC\' 中資料行 \'MappingData\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableQC.MappingDataColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5886,6 +6180,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableQC.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableQC.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMappingDataNull() {
+                return this.IsNull(this.tableQC.MappingDataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMappingDataNull() {
+                this[this.tableQC.MappingDataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDeptNull() {
                 return this.IsNull(this.tableQC.DeptColumn);
             }
@@ -6245,6 +6563,38 @@ namespace GGFPortal.DataSetSource {
             internal CutRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableCut = ((CutDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Date {
+                get {
+                    try {
+                        return ((string)(this[this.tableCut.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Cut\' 中資料行 \'Date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCut.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MappingData {
+                get {
+                    try {
+                        return ((string)(this[this.tableCut.MappingDataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Cut\' 中資料行 \'MappingData\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableCut.MappingDataColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6713,6 +7063,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableCut.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableCut.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMappingDataNull() {
+                return this.IsNull(this.tableCut.MappingDataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMappingDataNull() {
+                this[this.tableCut.MappingDataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDeptNull() {
                 return this.IsNull(this.tableCut.DeptColumn);
             }
@@ -7072,6 +7446,38 @@ namespace GGFPortal.DataSetSource {
             internal IronRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableIron = ((IronDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Date {
+                get {
+                    try {
+                        return ((string)(this[this.tableIron.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Iron\' 中資料行 \'Date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableIron.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MappingData {
+                get {
+                    try {
+                        return ((string)(this[this.tableIron.MappingDataColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Iron\' 中資料行 \'MappingData\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableIron.MappingDataColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7536,6 +7942,30 @@ namespace GGFPortal.DataSetSource {
                 set {
                     this[this.tableIron.DayCost7Column] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableIron.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableIron.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMappingDataNull() {
+                return this.IsNull(this.tableIron.MappingDataColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMappingDataNull() {
+                this[this.tableIron.MappingDataColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

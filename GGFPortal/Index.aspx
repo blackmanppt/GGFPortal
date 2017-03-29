@@ -108,6 +108,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/Ship/Search/Search002.aspx">應付資料搜尋(含已應付)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink25" runat="server" NavigateUrl="~/Finance/Finance008.aspx">出口大表(BY CATHY2)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink29" runat="server" NavigateUrl="~/Ship/Search/Search003.aspx">採購入庫狀況</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink30" runat="server" NavigateUrl="~/Ship/Search/Search004.aspx">包裝底稿狀況查詢</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

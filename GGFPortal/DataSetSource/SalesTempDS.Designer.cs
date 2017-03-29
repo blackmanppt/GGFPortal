@@ -6092,7 +6092,8 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 "=d.dept_no\r\n\t\t\t\t\t\t\tleft join bas_item_statistic e on a.site=e.site and a.item_st" +
                 "atistic=e.item_statistic\r\nWHERE        \r\n(a.progress_rate = N\'2\')  and ( a.modif" +
                 "ier <>\'103030\' or 1=@caicai ) and a.modify_date  between @modify_date1 and @modi" +
-                "fy_date2\r\nand a.brand_name LIKE @brand_name and a.type_id LIKE @type_id";
+                "fy_date2\r\nand a.brand_name LIKE @brand_name and a.type_id LIKE @type_id\r\norder b" +
+                "y  a.modify_date desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@caicai", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@modify_date1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "modify_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

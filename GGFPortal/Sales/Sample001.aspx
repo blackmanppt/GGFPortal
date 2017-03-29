@@ -1,0 +1,183 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample001.aspx.cs" Inherits="GGFPortal.Sales.Sample001" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>打樣單</title>
+    
+        <%--<link href="scripts/bootstrap.min.css" rel="stylesheet"/>--%>
+    <style type="text/css">
+        .auto-style1 {
+            width: 72px;
+        }
+    </style>
+    <style type="text/css">
+            .hiddencol
+            {
+                display:none;
+            }
+                .viscol
+    {
+        display:block;
+    }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    <div>
+    
+        <table style="width:800px;">
+            <tr>
+                <td colspan="3">
+                    <asp:Label ID="Label1" runat="server" Text="樣品處理" style="font-size: xx-large; font-weight: 700; background-color: #00CC99;"></asp:Label>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+
+                    </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="StyleNoLB" runat="server" Text="Style No："></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="StyleNoTB" runat="server"></asp:TextBox>
+                    <ajaxToolkit:AutoCompleteExtender ID="StyleNoTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo"  TargetControlID="StyleNoTB">
+                    </ajaxToolkit:AutoCompleteExtender>
+                </td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Search" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    
+    </div>
+        <div>
+
+            <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False" DataKeyNames="site,sam_nbr,sam_times" DataSourceID="SqlDataSource1" AllowPaging="True" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" PageSize="20" OnRowDataBound="GridView1_RowDataBound">
+                <Columns>
+                    <asp:CommandField ButtonType="Button" HeaderText="編輯" SelectText="編輯" ShowSelectButton="True" />
+                    <asp:BoundField DataField="site" HeaderText="site" ReadOnly="True" SortExpression="site" />
+                    <asp:BoundField DataField="sam_nbr" HeaderText="sam_nbr" ReadOnly="True" SortExpression="sam_nbr" />
+                    <asp:BoundField DataField="cus_style_no" HeaderText="cus_style_no" SortExpression="cus_style_no" />
+                    <asp:BoundField DataField="image_path" HeaderText="image_path" SortExpression="image_path"  HeaderStyle-CssClass="hiddencol"   ItemStyle-cssclass="hiddencol" />
+                    <%--
+                    <asp:BoundField DataField="sam_times" HeaderText="sam_times" ReadOnly="True" SortExpression="sam_times" />
+                    <asp:BoundField DataField="sam_no" HeaderText="sam_no" SortExpression="sam_no" />
+                    <asp:BoundField DataField="version" HeaderText="version" SortExpression="version" />
+                    <asp:BoundField DataField="sam_date" HeaderText="sam_date" SortExpression="sam_date" />
+                    <asp:BoundField DataField="cus_id" HeaderText="cus_id" SortExpression="cus_id" />
+                    <asp:BoundField DataField="dept_no" HeaderText="dept_no" SortExpression="dept_no" />
+                    <asp:BoundField DataField="item_no" HeaderText="item_no" SortExpression="item_no" />
+                    <asp:BoundField DataField="type_id" HeaderText="type_id" SortExpression="type_id" />
+                    <asp:BoundField DataField="salesman" HeaderText="salesman" SortExpression="salesman" />
+                    <asp:BoundField DataField="sam_size" HeaderText="sam_size" SortExpression="sam_size" />
+                    <asp:BoundField DataField="assign_qty" HeaderText="assign_qty" SortExpression="assign_qty" />
+                    <asp:BoundField DataField="plan_fin_date" HeaderText="plan_fin_date" SortExpression="plan_fin_date" />
+                    <asp:BoundField DataField="emb" HeaderText="emb" SortExpression="emb" />
+                    <asp:BoundField DataField="washing" HeaderText="washing" SortExpression="washing" />
+                    <asp:BoundField DataField="oth_extra" HeaderText="oth_extra" SortExpression="oth_extra" />
+                    <asp:BoundField DataField="finish_date" HeaderText="finish_date" SortExpression="finish_date" />
+                    <asp:BoundField DataField="finish_qty" HeaderText="finish_qty" SortExpression="finish_qty" />
+                    <asp:BoundField DataField="place_origin" HeaderText="place_origin" SortExpression="place_origin" />
+                    <asp:BoundField DataField="currency_id" HeaderText="currency_id" SortExpression="currency_id" />
+                    <asp:BoundField DataField="unit_price" HeaderText="unit_price" SortExpression="unit_price" />
+                    <asp:BoundField DataField="amount" HeaderText="amount" SortExpression="amount" />
+                    <asp:BoundField DataField="sam_qty" HeaderText="sam_qty" SortExpression="sam_qty" />
+                    <asp:BoundField DataField="sam_cus_qty" HeaderText="sam_cus_qty" SortExpression="sam_cus_qty" />
+                    <asp:BoundField DataField="sam_taipei_qty" HeaderText="sam_taipei_qty" SortExpression="sam_taipei_qty" />
+                    
+                    <asp:BoundField DataField="remark60" HeaderText="remark60" SortExpression="remark60" />
+                    <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
+                    <asp:BoundField DataField="close_date" HeaderText="close_date" SortExpression="close_date" />
+                    <asp:BoundField DataField="reason" HeaderText="reason" SortExpression="reason" />
+                    <asp:BoundField DataField="online_date" HeaderText="online_date" SortExpression="online_date" />
+                    <asp:BoundField DataField="confirm_yn" HeaderText="confirm_yn" SortExpression="confirm_yn" />
+                    <asp:BoundField DataField="progress_rate" HeaderText="progress_rate" SortExpression="progress_rate" />
+                    <asp:BoundField DataField="sam_class" HeaderText="sam_class" SortExpression="sam_class" />
+                    <asp:BoundField DataField="original_sampleo_yn" HeaderText="original_sampleo_yn" SortExpression="original_sampleo_yn" />
+                    <asp:BoundField DataField="original_edition_yn" HeaderText="original_edition_yn" SortExpression="original_edition_yn" />
+                    <asp:BoundField DataField="original_edition_size" HeaderText="original_edition_size" SortExpression="original_edition_size" />
+                    <asp:BoundField DataField="ratio_size" HeaderText="ratio_size" SortExpression="ratio_size" />
+                    <asp:BoundField DataField="sample_complete_1" HeaderText="sample_complete_1" SortExpression="sample_complete_1" />
+                    <asp:BoundField DataField="sample_complete_2" HeaderText="sample_complete_2" SortExpression="sample_complete_2" />
+                    <asp:BoundField DataField="cus_express_corp" HeaderText="cus_express_corp" SortExpression="cus_express_corp" />
+                    <asp:BoundField DataField="cus_assign_account" HeaderText="cus_assign_account" SortExpression="cus_assign_account" />
+                    <asp:BoundField DataField="cus_address_id" HeaderText="cus_address_id" SortExpression="cus_address_id" />
+                    <asp:BoundField DataField="cus_addressee" HeaderText="cus_addressee" SortExpression="cus_addressee" />
+                    <asp:BoundField DataField="cus_address" HeaderText="cus_address" SortExpression="cus_address" />
+                    
+                    <asp:BoundField DataField="brand_name" HeaderText="brand_name" SortExpression="brand_name" />
+                    <asp:BoundField DataField="sam_type" HeaderText="sam_type" SortExpression="sam_type" />
+                    <asp:BoundField DataField="proofing_factory" HeaderText="proofing_factory" SortExpression="proofing_factory" />
+                    <asp:BoundField DataField="filter_creator" HeaderText="filter_creator" SortExpression="filter_creator" />
+                    <asp:BoundField DataField="filter_dept" HeaderText="filter_dept" SortExpression="filter_dept" />
+                    <asp:BoundField DataField="creator" HeaderText="creator" SortExpression="creator" />
+                    <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
+                    <asp:BoundField DataField="modifier" HeaderText="modifier" SortExpression="modifier" />
+                    <asp:BoundField DataField="modify_date" HeaderText="modify_date" SortExpression="modify_date" />
+                    <asp:BoundField DataField="printing" HeaderText="printing" SortExpression="printing" />
+                    <asp:BoundField DataField="sewing" HeaderText="sewing" SortExpression="sewing" />
+                    <asp:BoundField DataField="samc_remark60" HeaderText="samc_remark60" SortExpression="samc_remark60" />
+                    <asp:BoundField DataField="mark" HeaderText="mark" SortExpression="mark" />
+                    <asp:BoundField DataField="crp_yn" HeaderText="crp_yn" SortExpression="crp_yn" />
+                    <asp:BoundField DataField="crp_date" HeaderText="crp_date" SortExpression="crp_date" />
+                    <asp:BoundField DataField="item_statistic" HeaderText="item_statistic" SortExpression="item_statistic" />
+                    <asp:BoundField DataField="remark_1" HeaderText="remark_1" SortExpression="remark_1" />
+                    <asp:BoundField DataField="final" HeaderText="final" SortExpression="final" />
+                    <asp:BoundField DataField="last_date" HeaderText="last_date" SortExpression="last_date" />
+                    <asp:BoundField DataField="samc_fin_date" HeaderText="samc_fin_date" SortExpression="samc_fin_date" />
+                    <asp:BoundField DataField="sam_type_A" HeaderText="sam_type_A" SortExpression="sam_type_A" />
+                    <asp:BoundField DataField="sam_type_B" HeaderText="sam_type_B" SortExpression="sam_type_B" />
+                    <asp:BoundField DataField="sam_type_C" HeaderText="sam_type_C" SortExpression="sam_type_C" />
+                    <asp:BoundField DataField="sam_type_D" HeaderText="sam_type_D" SortExpression="sam_type_D" />
+                    <asp:BoundField DataField="sam_type_E" HeaderText="sam_type_E" SortExpression="sam_type_E" />
+                    <asp:BoundField DataField="sam_type_F" HeaderText="sam_type_F" SortExpression="sam_type_F" />
+                    <asp:BoundField DataField="hotfix" HeaderText="hotfix" SortExpression="hotfix" />
+                    <asp:BoundField DataField="s_plan_arrival_date" HeaderText="s_plan_arrival_date" SortExpression="s_plan_arrival_date" />
+                    <asp:BoundField DataField="s_real_arrival_date" HeaderText="s_real_arrival_date" SortExpression="s_real_arrival_date" />
+                    <asp:BoundField DataField="sam_type_G" HeaderText="sam_type_G" SortExpression="sam_type_G" />
+                    <asp:BoundField DataField="samc_plan_fin_date" HeaderText="samc_plan_fin_date" SortExpression="samc_plan_fin_date" />--%>
+                    <asp:BoundField DataField="original_edition" HeaderText="original_edition" SortExpression="original_edition" />
+                    <asp:TemplateField>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("image_path") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" Height="90px" ImageUrl='<%# Eval("image_path") %>' Width="90px" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
+            </asp:GridView>
+
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [samc_reqm] WHERE (([progress_rate] = @progress_rate) AND ([sam_nbr] LIKE '%' + @sam_nbr + '%') AND ([status] &lt;&gt; @status))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="2" Name="progress_rate" Type="String" />
+                    <asp:ControlParameter ControlID="StyleNoTB" DefaultValue="%" Name="sam_nbr" PropertyName="Text" Type="String" />
+                    <asp:Parameter DefaultValue="CL" Name="status" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
+        </div>
+    </form>
+</body>
+</html>

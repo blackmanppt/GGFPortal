@@ -34,19 +34,19 @@ namespace GGFPortal.VN
             switch (strImportType)
             {
                 case "Stitch":
-                    TypeLB.Text = "車縫";
+                    TypeLB.Text = "May";
                     break;
                 case "Package":
-                    TypeLB.Text = "包裝";
+                    TypeLB.Text = "Đóng gói";
                     break;
                 case "Cut":
-                    TypeLB.Text = "裁剪";
+                    TypeLB.Text = "Cắt";
                     break;
                 case "Iron":
-                    TypeLB.Text = "整燙";
+                    TypeLB.Text = "Là";
                     break;
                 case "QC":
-                    TypeLB.Text = "品檢";
+                    TypeLB.Text = "Kiểm tra chất lượng";
                     break;
                 default:
                     Response.Redirect("VNindex.aspx");
@@ -58,7 +58,7 @@ namespace GGFPortal.VN
         protected void TeamCodeBT_Click(object sender, EventArgs e)
         {
             SqlConnection Conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString1"].ConnectionString.ToString());
-            SqlDataAdapter myAdapter = new SqlDataAdapter(@"SELECT [dept_no] ,[dept_name]  FROM [dbo].[GGB_dept] 
+            SqlDataAdapter myAdapter = new SqlDataAdapter(@"SELECT [dept_no] ,[dept_name] ,remark as Old_dept_no FROM [dbo].[GGB_dept] 
                                                     where dept_no like 'A%' or  dept_no like 'C%' or  dept_no like 'D%' 
                                                     or dept_no like 'R%' or  dept_no like 'V%'", Conn);
             DataSet ds = new DataSet();
@@ -143,7 +143,7 @@ namespace GGFPortal.VN
                     savePath = savePath + fileName;
                     FileUpload1.SaveAs(savePath);
 
-                    Label1.Text = "夾檔成功，檔名---- " + fileName;
+                    Label1.Text = "Kiểm tra tệp tin dữ liệu thành công, tên tệp tin---- " + fileName;
                     //--------------------------------------------------
                     //---- （以上是）上傳 FileUpload的部分，成功運作！
                     //--------------------------------------------------
@@ -298,7 +298,7 @@ namespace GGFPortal.VN
                                 {
                                     D_erroraRow[0] = u_sheet.SheetName.ToString();
                                     D_erroraRow[1] = row.GetCell(0).ToString();
-                                    D_erroraRow[2] = "第" + i.ToString() + "欄" + sError;
+                                    D_erroraRow[2] = "Hàng thứ " + i.ToString() + sError;
                                     D_errortable.Rows.Add(D_erroraRow);
                                 }
                             }
@@ -374,7 +374,7 @@ namespace GGFPortal.VN
                                             {
                                                 //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
                                                 berror = true;
-                                                sError += "第" + i.ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "錯誤5。";
+                                                sError += "Hàng thứ " + i.ToString() + "、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "error5。";
                                                 D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                                                                                                                                //throw;
                                             }
@@ -401,7 +401,7 @@ namespace GGFPortal.VN
                                 {
                                     D_erroraRow[0] = u_sheet.SheetName.ToString();
                                     D_erroraRow[1] = row.GetCell(0).ToString();
-                                    D_erroraRow[2] = "第" + i.ToString()+ "欄"+ sError;
+                                    D_erroraRow[2] = "Hàng thứ " + i.ToString()+ sError;
                                     D_errortable.Rows.Add(D_erroraRow);
                                 }
                             }
@@ -506,7 +506,7 @@ namespace GGFPortal.VN
                             if (reader.HasRows==false)
                             {
                                 berror = true;
-                                sError += "Style_no("+ strString + ")：沒有資料。";
+                                sError += "Style_no("+ strString + ")：Không có tài liệu";
                             }
                             reader.Close();
                         }

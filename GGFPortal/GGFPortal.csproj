@@ -49,6 +49,10 @@
       <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.3.7\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -212,6 +216,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\kendo\2014.1.318\Black\editor.png" />
     <Content Include="Content\kendo\2014.1.318\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2014.1.318\Black\indeterminate.gif" />
@@ -381,6 +389,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Sales\SALE_V2.aspx" />
     <Content Include="Sales\Sales002.aspx" />
     <Content Include="Finance\Finance007.aspx" />
@@ -424,6 +433,10 @@
     <Content Include="DataSetSource\FinanceD001.xsc">
       <DependentUpon>FinanceD001.xsd</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="DataSetSource\FinanceD001.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -545,8 +558,11 @@
     <Content Include="DataSetSource\VNDSTemp.xss">
       <DependentUpon>VNDSTemp.xsd</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\GGF.pubxml" />
-    <None Include="Properties\PublishProfiles\GGFPortal.pubxml" />
     <None Include="Properties\PublishProfiles\Localhost.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -558,7 +574,11 @@
     <Content Include="ReferenceCode\test.asmx" />
     <Content Include="Sales\SALE.aspx" />
     <Content Include="Sales\Sales001.aspx" />
+    <Content Include="Sales\Sample001.aspx" />
+    <Content Include="Sales\Sample002.aspx" />
     <Content Include="Sales\WebService.asmx" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af-ZA.min.js" />
@@ -986,6 +1006,8 @@
     <Content Include="Secretary\Secretary003.aspx" />
     <Content Include="Secretary\Secretary002.aspx" />
     <Content Include="Secretary\Secretary001.aspx" />
+    <Content Include="Ship\Search\Search004.aspx" />
+    <Content Include="Ship\Search\Search003.aspx" />
     <Content Include="test\AutoComplete.aspx" />
     <Content Include="test\CrystalReport1.aspx" />
     <Content Include="test\ExcelUpload.aspx" />
@@ -1094,6 +1116,7 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="VN\VN001.aspx" />
     <Content Include="VN\VN002.aspx" />
+    <Content Include="VN\VN004.aspx" />
     <Content Include="VN\VN003.aspx" />
     <Content Include="VN\VNindex.aspx" />
     <Content Include="Web.config">
@@ -1139,6 +1162,34 @@
     </Compile>
     <Compile Include="Sales\SALE_V2.aspx.designer.cs">
       <DependentUpon>SALE_V2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample001.aspx.cs">
+      <DependentUpon>Sample001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample001.aspx.designer.cs">
+      <DependentUpon>Sample001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample002.aspx.cs">
+      <DependentUpon>Sample002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample002.aspx.designer.cs">
+      <DependentUpon>Sample002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Search\Search004.aspx.cs">
+      <DependentUpon>Search004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Search\Search004.aspx.designer.cs">
+      <DependentUpon>Search004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Search\Search003.aspx.cs">
+      <DependentUpon>Search003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Search\Search003.aspx.designer.cs">
+      <DependentUpon>Search003.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\CrystalReport1.aspx.cs">
       <DependentUpon>CrystalReport1.aspx</DependentUpon>
@@ -1536,6 +1587,13 @@
     <Compile Include="VN\VN002.aspx.designer.cs">
       <DependentUpon>VN002.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN004.aspx.cs">
+      <DependentUpon>VN004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN004.aspx.designer.cs">
+      <DependentUpon>VN004.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VN003.aspx.cs">
       <DependentUpon>VN003.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1568,6 +1626,7 @@
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>

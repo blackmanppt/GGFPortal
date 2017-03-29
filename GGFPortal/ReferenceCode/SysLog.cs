@@ -9,7 +9,7 @@ namespace GGFPortal.ReferenceCode
 {
     public class SysLog
     {
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.AppSettings["GGFConnectionString"];
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         public void ErrorLog(Exception ex, string strFunction,string strProgram)
         {
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
