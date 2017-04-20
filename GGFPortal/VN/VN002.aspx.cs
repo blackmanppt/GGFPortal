@@ -939,7 +939,7 @@ namespace GGFPortal.VN
                 command1.Transaction = transaction1;
                 try
                 {
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2  WHERE Team = @Team and [Date] = @Date");
+                    command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
                     command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
                     command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
                     command1.ExecuteNonQuery();

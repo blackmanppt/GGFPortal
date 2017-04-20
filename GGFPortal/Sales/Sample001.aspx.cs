@@ -25,7 +25,7 @@ namespace GGFPortal.Sales
                 conn.ConnectionString = strConnectString;
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "select DISTINCT  TOP 10 [sam_nbr] from [samc_reqm] where progress_rate = N'2' and status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
+                    cmd.CommandText = "select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where progress_rate = N'2'  and status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
                     cmd.Parameters.AddWithValue("@SearchText", prefixText);
                     cmd.Connection = conn;
                     conn.Open();
@@ -34,7 +34,7 @@ namespace GGFPortal.Sales
                     {
                         while (sdr.Read())
                         {
-                            StyleNo.Add(sdr["sam_nbr"].ToString());
+                            StyleNo.Add(sdr["cus_style_no"].ToString());
                         }
                     }
                     conn.Close();
@@ -46,6 +46,9 @@ namespace GGFPortal.Sales
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             Session["SampleNbr"] = GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
+            Session["SamDay"] = GridView1.Rows[e.NewSelectedIndex].Cells[7].Text.Replace("&nbsp;", "");
+            Session["site"] = GridView1.Rows[e.NewSelectedIndex].Cells[1].Text;
+
             Response.Redirect("Sample002.aspx");
 
         }
@@ -53,13 +56,19 @@ namespace GGFPortal.Sales
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             string strimg="";
-            if( e.Row.RowIndex>0)
+            try
             {
-                if(e.Row.Cells[4].Text.Length > 0 )
-                { 
-                strimg = e.Row.Cells[4].Text;
-                ((Image)e.Row.FindControl("Image1")).ImageUrl = "http://192.168.0.114/W/" +strimg.Substring(3,strimg.Length-3);
-                }
+                if(e.Row.DataItemIndex>-1)
+                    if (e.Row.Cells[4].Text.Replace("&nbsp;","").Length > 0 && e.Row.RowType != DataControlRowType.Header)
+                    {
+                        strimg = e.Row.Cells[4].Text;
+                        ((Image)e.Row.FindControl("Image1")).ImageUrl = "http://192.168.0.114/W/" + strimg.Substring(3, strimg.Length - 3);
+                    }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             
         }

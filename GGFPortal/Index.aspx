@@ -122,9 +122,6 @@ table, td, th {
                     <td class="auto-style1">業務</td>
                     <td><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Sales/Sales001.aspx">訂單資料查詢</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Sales/SALE.aspx">樣品</asp:HyperLink>
-                                                <br />
-                                                <asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Sales/SALE_V2.aspx">樣品_2</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Sales/Sales002.aspx">業績表</asp:HyperLink>
                     </td>
@@ -132,9 +129,35 @@ table, td, th {
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
+                    <th class="auto-style1">
+
+                        <asp:Label ID="Label1" runat="server" Text="打樣室"></asp:Label>
+
+                    </th>
+                    <td>
+                        <asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Sales/SALE.aspx">樣品</asp:HyperLink>
+                                                <br />
+                                                <asp:HyperLink ID="HyperLink28" runat="server" NavigateUrl="~/Sales/SALE_V2.aspx">樣品_2</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink31" runat="server" NavigateUrl="~/Sales/SALE_V3.aspx">樣品_3</asp:HyperLink>
+                                                <br />
+                                                <asp:HyperLink ID="HyperLink32" runat="server" NavigateUrl="~/Sales/SALE_V4.aspx">樣品_4</asp:HyperLink>
+                                                <br />
+                                                <asp:HyperLink ID="HyperLink35" runat="server" NavigateUrl="~/Sales/Sample001.aspx">打樣打版資料上傳</asp:HyperLink>
+                                                </td>
+                    <th  class="auto-style2">
+
+                        &nbsp;</th>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
                     <td class="auto-style1">越南</td>
                     <td>
                         <asp:HyperLink ID="HyperLink27" runat="server" NavigateUrl="~/VN/VNindex.aspx">越南首頁</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink33" runat="server" NavigateUrl="~/VN/VN005.aspx">越南工時匯入紀錄(越文版)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink34" runat="server" NavigateUrl="~/VN/VN006.aspx">越南工時匯入紀錄(中文版含刪除資料功能)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

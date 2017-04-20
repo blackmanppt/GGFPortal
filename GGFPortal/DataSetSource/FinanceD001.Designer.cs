@@ -2295,7 +2295,7 @@ where [開航日] between @StartDay and @EndDay  and site like @site
       ,[匯率]
       ,[加減項]      ,[代理商]
       ,[open_date]
-order by [開航日]";
+order by [開航日]   ,[客戶]   ,[vendor_name_brief]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDay", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "開航日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDay", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "開航日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

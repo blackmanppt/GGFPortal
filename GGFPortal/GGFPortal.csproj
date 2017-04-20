@@ -390,6 +390,8 @@
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Sales\SALE_V4.aspx" />
+    <Content Include="Sales\SALE_V3.aspx" />
     <Content Include="Sales\SALE_V2.aspx" />
     <Content Include="Sales\Sales002.aspx" />
     <Content Include="Finance\Finance007.aspx" />
@@ -1091,6 +1093,8 @@
     <Content Include="test\DataSetTest.xss">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
+    <Content Include="VN\VN006.aspx" />
+    <Content Include="VN\VN005.aspx" />
     <Content Include="VN\Temp\Excel\Sample包裝.xlsx" />
     <Content Include="VN\Temp\Excel\Sample品檢.xlsx" />
     <Content Include="VN\Temp\Excel\Sample採剪.xlsx" />
@@ -1119,6 +1123,8 @@
     <Content Include="VN\VN004.aspx" />
     <Content Include="VN\VN003.aspx" />
     <Content Include="VN\VNindex.aspx" />
+    <Content Include="VN\VNTest.aspx" />
+    <Content Include="VN\VNTimeDelete.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1156,6 +1162,20 @@
     </Compile>
     <Compile Include="ReferenceCode\ExcelColumn.cs" />
     <Compile Include="ReferenceCode\VNExcel.cs" />
+    <Compile Include="Sales\SALE_V4.aspx.cs">
+      <DependentUpon>SALE_V4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SALE_V4.aspx.designer.cs">
+      <DependentUpon>SALE_V4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SALE_V3.aspx.cs">
+      <DependentUpon>SALE_V3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SALE_V3.aspx.designer.cs">
+      <DependentUpon>SALE_V3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\SALE_V2.aspx.cs">
       <DependentUpon>SALE_V2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1455,12 +1475,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReferenceCode\VendorAutoComplete.cs" />
-    <Compile Include="ReportSource\CrystalReportTest.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReportTest.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Sales\SALE.aspx.cs">
       <DependentUpon>SALE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1573,6 +1587,20 @@
     <Compile Include="test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN006.aspx.cs">
+      <DependentUpon>VN006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN006.aspx.designer.cs">
+      <DependentUpon>VN006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN005.aspx.cs">
+      <DependentUpon>VN005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN005.aspx.designer.cs">
+      <DependentUpon>VN005.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VN001.aspx.cs">
       <DependentUpon>VN001.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1608,6 +1636,20 @@
     <Compile Include="VN\VNindex.aspx.designer.cs">
       <DependentUpon>VNindex.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VNTest.aspx.cs">
+      <DependentUpon>VNTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VNTest.aspx.designer.cs">
+      <DependentUpon>VNTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VNTimeDelete.aspx.cs">
+      <DependentUpon>VNTimeDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VNTimeDelete.aspx.designer.cs">
+      <DependentUpon>VNTimeDelete.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1625,6 +1667,8 @@
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSALE_V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSALE_V4.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
@@ -1634,10 +1678,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportSource\CrystalReportTest.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReportTest.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportFinance004.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001.rdlc" />

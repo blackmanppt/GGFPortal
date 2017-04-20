@@ -47,10 +47,10 @@
                     <asp:TextBox ID="StyleNoTB" runat="server"></asp:TextBox>
                     <ajaxToolkit:AutoCompleteExtender ID="StyleNoTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo"  TargetControlID="StyleNoTB">
                     </ajaxToolkit:AutoCompleteExtender>
-                </td>
-                <td>
                     <asp:Button ID="Button1" runat="server" Text="Search" />
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style1">
@@ -67,12 +67,18 @@
             <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False" DataKeyNames="site,sam_nbr,sam_times" DataSourceID="SqlDataSource1" AllowPaging="True" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" PageSize="20" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                     <asp:CommandField ButtonType="Button" HeaderText="編輯" SelectText="編輯" ShowSelectButton="True" />
-                    <asp:BoundField DataField="site" HeaderText="site" ReadOnly="True" SortExpression="site" />
-                    <asp:BoundField DataField="sam_nbr" HeaderText="sam_nbr" ReadOnly="True" SortExpression="sam_nbr" />
-                    <asp:BoundField DataField="cus_style_no" HeaderText="cus_style_no" SortExpression="cus_style_no" />
-                    <asp:BoundField DataField="image_path" HeaderText="image_path" SortExpression="image_path"  HeaderStyle-CssClass="hiddencol"   ItemStyle-cssclass="hiddencol" />
+                    <asp:BoundField DataField="site" HeaderText="公司別" ReadOnly="True" SortExpression="site" />
+                    <asp:BoundField DataField="sam_nbr" HeaderText="樣品單號" ReadOnly="True" SortExpression="sam_nbr" />
+                    <asp:BoundField DataField="cus_style_no" HeaderText="款號" SortExpression="cus_style_no" />
+                    <asp:BoundField DataField="image_path" HeaderText="小圖路徑" SortExpression="image_path"  HeaderStyle-CssClass="hiddencol"   ItemStyle-cssclass="hiddencol" >
+                    
+<HeaderStyle CssClass="hiddencol"></HeaderStyle>
+
+<ItemStyle CssClass="hiddencol"></ItemStyle>
+                    </asp:BoundField>
+                    
                     <%--
-                    <asp:BoundField DataField="sam_times" HeaderText="sam_times" ReadOnly="True" SortExpression="sam_times" />
+                    
                     <asp:BoundField DataField="sam_no" HeaderText="sam_no" SortExpression="sam_no" />
                     <asp:BoundField DataField="version" HeaderText="version" SortExpression="version" />
                     <asp:BoundField DataField="sam_date" HeaderText="sam_date" SortExpression="sam_date" />
@@ -147,9 +153,12 @@
                     <asp:BoundField DataField="s_plan_arrival_date" HeaderText="s_plan_arrival_date" SortExpression="s_plan_arrival_date" />
                     <asp:BoundField DataField="s_real_arrival_date" HeaderText="s_real_arrival_date" SortExpression="s_real_arrival_date" />
                     <asp:BoundField DataField="sam_type_G" HeaderText="sam_type_G" SortExpression="sam_type_G" />
-                    <asp:BoundField DataField="samc_plan_fin_date" HeaderText="samc_plan_fin_date" SortExpression="samc_plan_fin_date" />--%>
-                    <asp:BoundField DataField="original_edition" HeaderText="original_edition" SortExpression="original_edition" />
+                    
+                    <asp:BoundField DataField="original_edition" HeaderText="original_edition" SortExpression="original_edition" />--%>
                     <asp:TemplateField>
+                        <HeaderTemplate>
+                            小圖
+                        </HeaderTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("image_path") %>'></asp:TextBox>
                         </EditItemTemplate>
@@ -157,6 +166,8 @@
                             <asp:Image ID="Image1" runat="server" Height="90px" ImageUrl='<%# Eval("image_path") %>' Width="90px" />
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:BoundField DataField="type_desc" HeaderText="種類" ReadOnly="True" SortExpression="type_desc" />
+                    <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:d}" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -169,7 +180,7 @@
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [samc_reqm] WHERE (([progress_rate] = @progress_rate) AND ([sam_nbr] LIKE '%' + @sam_nbr + '%') AND ([status] &lt;&gt; @status))">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT a.* ,b.[type_desc] FROM [samc_reqm] a left join [samc_type] b on a.site=b.site and a.type_id =b.type_id WHERE (([progress_rate] = @progress_rate) AND ([cus_style_no] LIKE '%' + @sam_nbr + '%') AND ([status] &lt;&gt; @status))">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="2" Name="progress_rate" Type="String" />
                     <asp:ControlParameter ControlID="StyleNoTB" DefaultValue="%" Name="sam_nbr" PropertyName="Text" Type="String" />
