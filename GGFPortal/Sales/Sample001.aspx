@@ -99,7 +99,7 @@
                     <asp:BoundField DataField="currency_id" HeaderText="currency_id" SortExpression="currency_id" />
                     <asp:BoundField DataField="unit_price" HeaderText="unit_price" SortExpression="unit_price" />
                     <asp:BoundField DataField="amount" HeaderText="amount" SortExpression="amount" />
-                    <asp:BoundField DataField="sam_qty" HeaderText="sam_qty" SortExpression="sam_qty" />
+                    
                     <asp:BoundField DataField="sam_cus_qty" HeaderText="sam_cus_qty" SortExpression="sam_cus_qty" />
                     <asp:BoundField DataField="sam_taipei_qty" HeaderText="sam_taipei_qty" SortExpression="sam_taipei_qty" />
                     
@@ -168,6 +168,7 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="type_desc" HeaderText="種類" ReadOnly="True" SortExpression="type_desc" />
                     <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="sam_qty" HeaderText="需求件數" SortExpression="sam_qty" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

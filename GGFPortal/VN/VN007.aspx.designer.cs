@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Finance {
+namespace GGFPortal.VN {
     
     
-    public partial class Finance009 {
+    public partial class VN007 {
         
         /// <summary>
         /// form1 控制項。
@@ -22,15 +22,6 @@ namespace GGFPortal.Finance {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TitleLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLB;
-        
-        /// <summary>
         /// Label1 控制項。
         /// </summary>
         /// <remarks>
@@ -38,6 +29,24 @@ namespace GGFPortal.Finance {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// ScriptManager1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// Label2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// StartDayTB 控制項。
@@ -58,58 +67,76 @@ namespace GGFPortal.Finance {
         protected global::AjaxControlToolkit.CalendarExtender StartDayTB_CalendarExtender;
         
         /// <summary>
-        /// EndDay 控制項。
+        /// EndDayTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDay;
+        protected global::System.Web.UI.WebControls.TextBox EndDayTB;
         
         /// <summary>
-        /// EndDay_CalendarExtender 控制項。
+        /// EndDayTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        protected global::AjaxControlToolkit.CalendarExtender EndDayTB_CalendarExtender;
         
         /// <summary>
-        /// SearchBT 控制項。
+        /// Label4 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBT;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Label2 控制項。
+        /// StyleNoSeachTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox StyleNoSeachTB;
         
         /// <summary>
-        /// SiteDDL 控制項。
+        /// StyleNoSeachTB_AutoCompleteExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SiteDDL;
+        protected global::AjaxControlToolkit.AutoCompleteExtender StyleNoSeachTB_AutoCompleteExtender;
         
         /// <summary>
-        /// ScriptManager1 控制項。
+        /// Search 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Button Search;
+        
+        /// <summary>
+        /// GridView2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+        
+        /// <summary>
+        /// SqlDataSource2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
         /// ReportViewer1 控制項。
@@ -121,12 +148,12 @@ namespace GGFPortal.Finance {
         protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
         
         /// <summary>
-        /// FinaceObjectDataSource 控制項。
+        /// ObjectDataSource1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource FinaceObjectDataSource;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
     }
 }

@@ -387,6 +387,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -564,6 +565,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="DataSetSource\VNTemp.xsc">
+      <DependentUpon>VNTemp.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\VNTemp.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VNTemp.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\VNTemp.xss">
+      <DependentUpon>VNTemp.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\GGF.pubxml" />
     <None Include="Properties\PublishProfiles\Localhost.pubxml" />
     <None Include="Properties\PublishProfiles\TEST2.pubxml" />
@@ -1093,6 +1105,7 @@
     <Content Include="test\DataSetTest.xss">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
+    <Content Include="VN\VN007.aspx" />
     <Content Include="VN\VN006.aspx" />
     <Content Include="VN\VN005.aspx" />
     <Content Include="VN\Temp\Excel\Sample包裝.xlsx" />
@@ -1124,6 +1137,7 @@
     <Content Include="VN\VN003.aspx" />
     <Content Include="VN\VNindex.aspx" />
     <Content Include="VN\VNTest.aspx" />
+    <Content Include="VN\VNTest2.aspx" />
     <Content Include="VN\VNTimeDelete.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1140,6 +1154,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VNDSTemp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\VNTemp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VNTemp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Finance010.aspx.cs">
+      <DependentUpon>Finance010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance010.aspx.designer.cs">
+      <DependentUpon>Finance010.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance009.aspx.cs">
       <DependentUpon>Finance009.aspx</DependentUpon>
@@ -1587,6 +1613,13 @@
     <Compile Include="test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN007.aspx.cs">
+      <DependentUpon>VN007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN007.aspx.designer.cs">
+      <DependentUpon>VN007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VN006.aspx.cs">
       <DependentUpon>VN006.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1643,6 +1676,13 @@
     <Compile Include="VN\VNTest.aspx.designer.cs">
       <DependentUpon>VNTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VNTest2.aspx.cs">
+      <DependentUpon>VNTest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VNTest2.aspx.designer.cs">
+      <DependentUpon>VNTest2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VNTimeDelete.aspx.cs">
       <DependentUpon>VNTimeDelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1666,11 +1706,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportFinance010.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V3.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V4.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>

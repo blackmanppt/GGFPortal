@@ -43,7 +43,8 @@
                 </td>
                 <td class="line">
 
-                    &nbsp;</td>
+                    <asp:Button ID="DeleteBT" runat="server" Text="DeleteData" OnClick="DeleteBT_Click" />
+                </td>
             </tr>
             <tr>
                 <td  class="line">                   
