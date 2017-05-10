@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SALE_V4.aspx.cs" Inherits="GGFPortal.Sales.SALE_V4" UICulture="Auto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SALE_V5.aspx.cs" Inherits="GGFPortal.Sales.SALE_V5" UICulture="Auto" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>打樣收單查詢</title>
     <style type="text/css">
                 #titletable {
             border-collapse: collapse;
@@ -55,7 +55,7 @@
             <h1>
             <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
             </asp:ScriptManager>
-                <asp:Label ID="TitleLB" runat="server" Text="打樣單查詢" Style="color: #6600FF; background-color: #00CC99"></asp:Label>
+                <asp:Label ID="TitleLB" runat="server" Text="打樣收單查詢" Style="color: #6600FF; background-color: #00CC99"></asp:Label>
             </h1>
         </div>
         <div>
@@ -64,7 +64,7 @@
                 <tr>
                     <td class="auto-style1" style="border-style: solid">
 
-                        <asp:Label ID="Label1" runat="server" Text="修改日期：" CssClass="auto-style3"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="收單日期：" CssClass="auto-style3"></asp:Label>
                     </td>
                     <td class="auto-style2" style="border-style: solid">
                         <asp:TextBox ID="StartDayTB" runat="server" AutoPostBack="True"></asp:TextBox>
@@ -117,7 +117,9 @@
                                     <asp:SqlDataSource ID="SqlDataSourceSamcType" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [type_id], [type_desc] FROM [samc_type] ORDER BY [type_id]"></asp:SqlDataSource>
                                     </td>
                                                         <td class="auto-style7"></td>
-                    <td class="auto-style5"></td>
+                    <td class="auto-style5">
+                        <asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" />
+                                    </td>
                 </tr>
                                 <tr>
                     <td class="auto-style1">
@@ -150,26 +152,29 @@
                 <ContentTemplate>
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
                         <ServerReport ReportPath="samc" ReportServerUrl="http://192.168.0.131/reportserver" />
-                        <LocalReport ReportPath="ReportSource\ReportSALE_V4.rdlc" EnableExternalImages="true" DisplayName="Sample">
+                        <LocalReport ReportPath="ReportSource\ReportSALE_V5.rdlc" EnableExternalImages="true" DisplayName="Sample">
                             <DataSources>
-                                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="SamcV4" />
+                                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="SamcV5" />
                             </DataSources>
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqm4TableAdapter">
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqm5TableAdapter">
                 <SelectParameters>
                     <asp:SessionParameter DefaultValue="2" Name="progress_rate" SessionField="Progress_rate" Type="String" />
                     <asp:SessionParameter DefaultValue="2" Name="progress_rate1" SessionField="Prgress_rate1" Type="String" />
                     <asp:SessionParameter Name="modify_date1" SessionField="StartDay" Type="DateTime" DefaultValue="1900/01/01"/>
                     <asp:SessionParameter Name="modify_date2" SessionField="EndDay" Type="DateTime" DefaultValue="2900/01/01"/>
+                    <asp:SessionParameter DefaultValue="2" Name="flag1" SessionField="flag1" Type="Decimal" />
+                    <asp:SessionParameter DefaultValue="2" Name="flag2" SessionField="flag2" Type="Decimal" />
+                    <asp:SessionParameter DefaultValue="1" Name="flag3" SessionField="flag3" Type="Decimal" />
                     <asp:SessionParameter DefaultValue="%" Name="brand_name" SessionField="Brand" Type="String" />
                     <asp:SessionParameter DefaultValue="%" Name="type_id" SessionField="SamcType" Type="String" />
                     <asp:SessionParameter DefaultValue="A" Name="status" SessionField="status" Type="String" />
                     <asp:SessionParameter DefaultValue="2000/01/01" Name="samc_fin_date1" SessionField="samc_fin_date1" Type="DateTime" />
                     <asp:SessionParameter DefaultValue="2999/01/01" Name="samc_fin_date2" SessionField="samc_fin_date2" Type="DateTime" />
-                    <asp:SessionParameter DefaultValue="1" Name="flag1" SessionField="flag1" Type="Decimal" />
+                    <asp:SessionParameter DefaultValue="2" Name="flag4" SessionField="flag4" Type="Decimal" />
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>

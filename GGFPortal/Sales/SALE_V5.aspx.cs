@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace GGFPortal.Sales
 {
-    public partial class SALE_V4 : System.Web.UI.Page
+    public partial class SALE_V5 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
@@ -27,17 +27,40 @@ namespace GGFPortal.Sales
             else
             {
             }
-            DbInit();
+            //DbInit();
 
         }
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            DbInit();
+            if ((StartDayTB.Text.Length>0||EndDay.Text.Length>0)&& ReceiptCB.Checked==true)
+            {
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('收單日期與未收單資料請勿同時點選');</script>");
+            }
+            else
+                DbInit();
         }
 
         private void DbInit()
         {
+            if (StartDayTB.Text.Length > 0 || EndDay.Text.Length > 0)
+            {
+                Session["flag1"] = "1";
+                Session["flag2"] = "2";
+                Session["flag3"] = "2";
+            }
+            else if(ReceiptCB.Checked==true)
+            {
+                Session["flag1"] = "2";
+                Session["flag2"] = "1";
+                Session["flag3"] = "2";
+            }
+            else
+            {
+                Session["flag1"] = "2";
+                Session["flag2"] = "2";
+                Session["flag3"] = "1";
+            }
             Session["StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "1900/01/01";
             Session["EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "2999/12/31";
             Session["Brand"] = (BrandTB.Text.Length > 0) ? BrandTB.Text : "%";
@@ -48,7 +71,7 @@ namespace GGFPortal.Sales
             Session["status"] = (StatusDDL.SelectedValue == "ALL") ? "%" : StatusDDL.SelectedValue;
             Session["samc_fin_date1"] = (StartDayTB0.Text.Length > 0) ? StartDayTB0.Text : "1900/01/01";
             Session["samc_fin_date2"] = (EndDay0.Text.Length > 0) ? EndDay0.Text : "2999/12/31";
-            Session["flag1"] = (StatusDDL.SelectedValue == "CL") ? 2 : 1;
+            Session["flag4"] = (StatusDDL.SelectedValue == "CL") ? 2 : 1;
             ReportViewer1.LocalReport.Refresh();
         }
 
@@ -97,6 +120,7 @@ namespace GGFPortal.Sales
             StartDayTB0.Text = "";
             EndDay0.Text = "";
             FinalDateShow(false);
+            ReceiptCB.Checked = false;
         }
 
         protected void StatusDDL_SelectedIndexChanged(object sender, EventArgs e)

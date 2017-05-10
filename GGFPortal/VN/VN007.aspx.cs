@@ -31,7 +31,7 @@ namespace GGFPortal.VN
             //this.SqlDataSource1.DataBind();
             Session["Date1"] = (StartDayTB.Text == "") ? "19000101" : StartDayTB.Text;
             Session["Date2"] = (EndDayTB.Text == "") ? "29991231" : EndDayTB.Text;
-            Session["Style"] = (StyleNoSeachTB.Text == "") ? "%" : StyleNoSeachTB.Text;
+            Session["StyleNo"] = (StyleNoSeachTB.Text == "") ? "%" : StyleNoSeachTB.Text;
 
             GridView2.DataBind();
             ReportViewer1.LocalReport.Refresh();

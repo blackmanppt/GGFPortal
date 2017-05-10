@@ -141,6 +141,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink31" runat="server" NavigateUrl="~/Sales/SALE_V3.aspx">樣品_3</asp:HyperLink>
                                                 <br />
                                                 <asp:HyperLink ID="HyperLink32" runat="server" NavigateUrl="~/Sales/SALE_V4.aspx">樣品_4</asp:HyperLink>
+                        <br />
+                                                <asp:HyperLink ID="HyperLink37" runat="server" NavigateUrl="~/Sales/SALE_V5.aspx">打樣收單</asp:HyperLink>
                                                 <br />
                                                 <asp:HyperLink ID="HyperLink35" runat="server" NavigateUrl="~/Sales/Sample001.aspx">打樣打版資料上傳</asp:HyperLink>
                                                 </td>

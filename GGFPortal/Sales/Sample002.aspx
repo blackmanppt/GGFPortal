@@ -81,7 +81,7 @@
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="
   select distinct a.employee_no,a.dept_no+b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no
-  where a.dept_no in ('45','38','18','40','41','42','43','44') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+  where a.dept_no in ('45','38','17','18','40','41','42','43','44') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
                     </td>
                     <th class="auto-style4">
                         <asp:Label ID="DateLB" runat="server" Text="處理日期：" Visible="false"></asp:Label>

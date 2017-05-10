@@ -12,7 +12,7 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.50542cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -91,7 +91,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>收單日期</Value>
+                              <Value>日期</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -163,7 +163,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>樣品單</Value>
+                              <Value>樣品小圖</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -949,7 +949,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>4.17188cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -960,7 +960,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!modify_date.Value</Value>
+                              <Value>=Fields!receipt_date.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1770,6 +1770,7 @@
                               <Style>
                                 <FontFamily>Times New Roman</FontFamily>
                                 <FontSize>11pt</FontSize>
+                                <Format>yyyy/MM/dd</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1965,9 +1966,9 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>SamcV4</DataSetName>
-        <Height>1.2cm</Height>
-        <Width>60.71438cm</Width>
+        <DataSetName>SamcV5</DataSetName>
+        <Height>4.77188cm</Height>
+        <Width>61.7198cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2000,7 +2001,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="SamcV4">
+    <DataSet Name="SamcV5">
       <Query>
         <DataSourceName>SalesTempDS</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -2346,14 +2347,18 @@
           <DataField>samc_plan_fin_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="receipt_date">
+          <DataField>receipt_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SalesTempDS</rd:DataSetName>
         <rd:SchemaPath>D:\Program\GGFPortal\GGFPortal\DataSetSource\SalesTempDS.xsd</rd:SchemaPath>
-        <rd:TableName>samc_reqm4</rd:TableName>
+        <rd:TableName>samc_reqm5</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>samc_reqm4TableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>samc_reqm5TableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

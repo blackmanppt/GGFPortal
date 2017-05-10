@@ -10,7 +10,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>採購入庫狀況查詢</title>
+    <title>工時資料餵入查詢表</title>
     <style type="text/css">
         #titletable {
             border-collapse: collapse;
