@@ -15,6 +15,7 @@ namespace GGFPortal.Sales
         {
             FinalDayTB.Attributes["readonly"] = "readonly";
             DateTB.Attributes["readonly"] = "readonly";
+            MarkDateTB.Attributes["readonly"] = "readonly";
             if (Session["Uid"]==null)
                 UpDateBT.Visible = false;
             if (Session["SampleNbr"] ==null)
@@ -69,6 +70,9 @@ namespace GGFPortal.Sales
                                             ,[SampleNo]
                                             ,[Qty]
                                             ,[SampleCreatDate]
+                                            ,[馬克]
+                                            ,[修改馬克]
+                                            ,[馬克完成日]
                                             )
                                         VALUES
                                             (@site
@@ -78,6 +82,9 @@ namespace GGFPortal.Sales
                                             ,@SampleNo
                                             ,@Qty
                                             ,@SampleCreatDate
+                                            ,@馬克
+                                            ,@修改馬克
+                                            ,@馬克完成日
                                             )
                                             ");
                         command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
@@ -87,6 +94,9 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleNo", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@Qty", SqlDbType.Decimal).Value = QtyTB.Text.Trim();
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTime.Now.ToString("yyyyMMdd");
+                        command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
+                        command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
+                        command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
 
@@ -158,12 +168,20 @@ namespace GGFPortal.Sales
                     try
                     {
                         //TypeLB.Text = i.ToString();
-                        command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [SampleType] = @SampleType ,[SampleUser] = @SampleUser,[SampleNo] = @SampleNo,[Qty] = @Qty,[SampleCreatDate] = @SampleCreatDate,[ModifyDate]=GETDATE() WHERE uid = {0} ", Session["Uid"].ToString());
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [SampleType] = @SampleType 
+                                                            ,[SampleUser] = @SampleUser,[SampleNo] = @SampleNo
+                                                            ,[Qty] = @Qty,[SampleCreatDate] = @SampleCreatDate
+                                                            ,馬克 =@馬克,修改馬克=@修改馬克,馬克完成日=@馬克完成日
+                                                            ,[ModifyDate]=GETDATE() 
+                                                            WHERE uid = {0} ", Session["Uid"].ToString());
                         command1.Parameters.Add("@SampleType", SqlDbType.NVarChar).Value = TypeDDL.SelectedValue;
                         command1.Parameters.Add("@SampleUser", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
                         command1.Parameters.Add("@SampleNo", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@Qty", SqlDbType.Decimal).Value = QtyTB.Text.Trim();
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTB.Text;
+                        command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
+                        command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
+                        command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();

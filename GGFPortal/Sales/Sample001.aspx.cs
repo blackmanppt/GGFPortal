@@ -25,7 +25,7 @@ namespace GGFPortal.Sales
                 conn.ConnectionString = strConnectString;
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where progress_rate = N'2'  and status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
+                    cmd.CommandText = "select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where  status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
                     cmd.Parameters.AddWithValue("@SearchText", prefixText);
                     cmd.Connection = conn;
                     conn.Open();

@@ -14,7 +14,7 @@ namespace GGFPortal.Finance.TAX
     {
         static DataSet Ds = new DataSet();
 
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString2"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             //防止上一頁

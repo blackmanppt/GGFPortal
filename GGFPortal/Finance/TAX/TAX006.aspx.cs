@@ -11,7 +11,7 @@ namespace GGFPortal.Finance.TAX
 {
     public partial class TAX006 : System.Web.UI.Page
     {
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString2"].ToString();
         static DataSet Ds=new DataSet();
         ReferenceCode.SearchDataToDataSet GetData = new ReferenceCode.SearchDataToDataSet();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();

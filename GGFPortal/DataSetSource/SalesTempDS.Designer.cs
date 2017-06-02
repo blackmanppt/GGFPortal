@@ -32,6 +32,8 @@ namespace GGFPortal.DataSetSource {
         
         private samc_reqm5DataTable tablesamc_reqm5;
         
+        private View打版發單表DataTable tableView打版發單表;
+        
         private Sales001DataTable tableSales001;
         
         private Sales002DataTable tableSales002;
@@ -75,6 +77,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["samc_reqm5"] != null)) {
                     base.Tables.Add(new samc_reqm5DataTable(ds.Tables["samc_reqm5"]));
+                }
+                if ((ds.Tables["View打版發單表"] != null)) {
+                    base.Tables.Add(new View打版發單表DataTable(ds.Tables["View打版發單表"]));
                 }
                 if ((ds.Tables["Sales001"] != null)) {
                     base.Tables.Add(new Sales001DataTable(ds.Tables["Sales001"]));
@@ -137,6 +142,16 @@ namespace GGFPortal.DataSetSource {
         public samc_reqm5DataTable samc_reqm5 {
             get {
                 return this.tablesamc_reqm5;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public View打版發單表DataTable View打版發單表 {
+            get {
+                return this.tableView打版發單表;
             }
         }
         
@@ -239,6 +254,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["samc_reqm5"] != null)) {
                     base.Tables.Add(new samc_reqm5DataTable(ds.Tables["samc_reqm5"]));
                 }
+                if ((ds.Tables["View打版發單表"] != null)) {
+                    base.Tables.Add(new View打版發單表DataTable(ds.Tables["View打版發單表"]));
+                }
                 if ((ds.Tables["Sales001"] != null)) {
                     base.Tables.Add(new Sales001DataTable(ds.Tables["Sales001"]));
                 }
@@ -302,6 +320,12 @@ namespace GGFPortal.DataSetSource {
                     this.tablesamc_reqm5.InitVars();
                 }
             }
+            this.tableView打版發單表 = ((View打版發單表DataTable)(base.Tables["View打版發單表"]));
+            if ((initTable == true)) {
+                if ((this.tableView打版發單表 != null)) {
+                    this.tableView打版發單表.InitVars();
+                }
+            }
             this.tableSales001 = ((Sales001DataTable)(base.Tables["Sales001"]));
             if ((initTable == true)) {
                 if ((this.tableSales001 != null)) {
@@ -332,6 +356,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.tablesamc_reqm4);
             this.tablesamc_reqm5 = new samc_reqm5DataTable();
             base.Tables.Add(this.tablesamc_reqm5);
+            this.tableView打版發單表 = new View打版發單表DataTable();
+            base.Tables.Add(this.tableView打版發單表);
             this.tableSales001 = new Sales001DataTable();
             base.Tables.Add(this.tableSales001);
             this.tableSales002 = new Sales002DataTable();
@@ -359,6 +385,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializesamc_reqm5() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeView打版發單表() {
             return false;
         }
         
@@ -440,6 +472,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void samc_reqm5RowChangeEventHandler(object sender, samc_reqm5RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void View打版發單表RowChangeEventHandler(object sender, View打版發單表RowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Sales001RowChangeEventHandler(object sender, Sales001RowChangeEvent e);
@@ -6687,6 +6722,436 @@ namespace GGFPortal.DataSetSource {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "samc_reqm5DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class View打版發單表DataTable : global::System.Data.TypedTableBase<View打版發單表Row> {
+            
+            private global::System.Data.DataColumn column發版日期;
+            
+            private global::System.Data.DataColumn column打版師;
+            
+            private global::System.Data.DataColumn column客戶名稱;
+            
+            private global::System.Data.DataColumn column款號;
+            
+            private global::System.Data.DataColumn columnsam_nbr;
+            
+            private global::System.Data.DataColumn column版完成日期;
+            
+            private global::System.Data.DataColumn column創新板;
+            
+            private global::System.Data.DataColumn column修改版;
+            
+            private global::System.Data.DataColumn column核可大貨板;
+            
+            private global::System.Data.DataColumn column馬克;
+            
+            private global::System.Data.DataColumn column修改馬克;
+            
+            private global::System.Data.DataColumn column馬克完成日;
+            
+            private global::System.Data.DataColumn column備註;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表DataTable() {
+                this.TableName = "View打版發單表";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal View打版發單表DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected View打版發單表DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 發版日期Column {
+                get {
+                    return this.column發版日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 打版師Column {
+                get {
+                    return this.column打版師;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶名稱Column {
+                get {
+                    return this.column客戶名稱;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 款號Column {
+                get {
+                    return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_nbrColumn {
+                get {
+                    return this.columnsam_nbr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 版完成日期Column {
+                get {
+                    return this.column版完成日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 創新板Column {
+                get {
+                    return this.column創新板;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 修改版Column {
+                get {
+                    return this.column修改版;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 核可大貨板Column {
+                get {
+                    return this.column核可大貨板;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 馬克Column {
+                get {
+                    return this.column馬克;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 修改馬克Column {
+                get {
+                    return this.column修改馬克;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 馬克完成日Column {
+                get {
+                    return this.column馬克完成日;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 備註Column {
+                get {
+                    return this.column備註;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表Row this[int index] {
+                get {
+                    return ((View打版發單表Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event View打版發單表RowChangeEventHandler View打版發單表RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event View打版發單表RowChangeEventHandler View打版發單表RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event View打版發單表RowChangeEventHandler View打版發單表RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event View打版發單表RowChangeEventHandler View打版發單表RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddView打版發單表Row(View打版發單表Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表Row AddView打版發單表Row(System.DateTime 發版日期, string 打版師, string 客戶名稱, string 款號, string sam_nbr, System.DateTime 版完成日期, string 創新板, string 修改版, string 核可大貨板, string 馬克, string 修改馬克, System.DateTime 馬克完成日, string 備註) {
+                View打版發單表Row rowView打版發單表Row = ((View打版發單表Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        發版日期,
+                        打版師,
+                        客戶名稱,
+                        款號,
+                        sam_nbr,
+                        版完成日期,
+                        創新板,
+                        修改版,
+                        核可大貨板,
+                        馬克,
+                        修改馬克,
+                        馬克完成日,
+                        備註};
+                rowView打版發單表Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowView打版發單表Row);
+                return rowView打版發單表Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                View打版發單表DataTable cln = ((View打版發單表DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new View打版發單表DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.column發版日期 = base.Columns["發版日期"];
+                this.column打版師 = base.Columns["打版師"];
+                this.column客戶名稱 = base.Columns["客戶名稱"];
+                this.column款號 = base.Columns["款號"];
+                this.columnsam_nbr = base.Columns["sam_nbr"];
+                this.column版完成日期 = base.Columns["版完成日期"];
+                this.column創新板 = base.Columns["創新板"];
+                this.column修改版 = base.Columns["修改版"];
+                this.column核可大貨板 = base.Columns["核可大貨板"];
+                this.column馬克 = base.Columns["馬克"];
+                this.column修改馬克 = base.Columns["修改馬克"];
+                this.column馬克完成日 = base.Columns["馬克完成日"];
+                this.column備註 = base.Columns["備註"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.column發版日期 = new global::System.Data.DataColumn("發版日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column發版日期);
+                this.column打版師 = new global::System.Data.DataColumn("打版師", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column打版師);
+                this.column客戶名稱 = new global::System.Data.DataColumn("客戶名稱", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶名稱);
+                this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款號);
+                this.columnsam_nbr = new global::System.Data.DataColumn("sam_nbr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_nbr);
+                this.column版完成日期 = new global::System.Data.DataColumn("版完成日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column版完成日期);
+                this.column創新板 = new global::System.Data.DataColumn("創新板", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column創新板);
+                this.column修改版 = new global::System.Data.DataColumn("修改版", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column修改版);
+                this.column核可大貨板 = new global::System.Data.DataColumn("核可大貨板", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column核可大貨板);
+                this.column馬克 = new global::System.Data.DataColumn("馬克", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column馬克);
+                this.column修改馬克 = new global::System.Data.DataColumn("修改馬克", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column修改馬克);
+                this.column馬克完成日 = new global::System.Data.DataColumn("馬克完成日", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column馬克完成日);
+                this.column備註 = new global::System.Data.DataColumn("備註", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column備註);
+                this.column打版師.MaxLength = 30;
+                this.column客戶名稱.MaxLength = 8;
+                this.column款號.MaxLength = 120;
+                this.columnsam_nbr.AllowDBNull = false;
+                this.columnsam_nbr.MaxLength = 20;
+                this.column創新板.ReadOnly = true;
+                this.column創新板.MaxLength = 1;
+                this.column修改版.ReadOnly = true;
+                this.column修改版.MaxLength = 1;
+                this.column核可大貨板.ReadOnly = true;
+                this.column核可大貨板.MaxLength = 1;
+                this.column馬克.MaxLength = 30;
+                this.column修改馬克.MaxLength = 30;
+                this.column馬克完成日.ReadOnly = true;
+                this.column備註.MaxLength = 60;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表Row NewView打版發單表Row() {
+                return ((View打版發單表Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new View打版發單表Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(View打版發單表Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.View打版發單表RowChanged != null)) {
+                    this.View打版發單表RowChanged(this, new View打版發單表RowChangeEvent(((View打版發單表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.View打版發單表RowChanging != null)) {
+                    this.View打版發單表RowChanging(this, new View打版發單表RowChangeEvent(((View打版發單表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.View打版發單表RowDeleted != null)) {
+                    this.View打版發單表RowDeleted(this, new View打版發單表RowChangeEvent(((View打版發單表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.View打版發單表RowDeleting != null)) {
+                    this.View打版發單表RowDeleting(this, new View打版發單表RowChangeEvent(((View打版發單表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveView打版發單表Row(View打版發單表Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS ds = new SalesTempDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "View打版發單表DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -16840,6 +17305,368 @@ namespace GGFPortal.DataSetSource {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class View打版發單表Row : global::System.Data.DataRow {
+            
+            private View打版發單表DataTable tableView打版發單表;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal View打版發單表Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableView打版發單表 = ((View打版發單表DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 發版日期 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableView打版發單表.發版日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'發版日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.發版日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 打版師 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.打版師Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'打版師\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.打版師Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 客戶名稱 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.客戶名稱Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'客戶名稱\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.客戶名稱Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 款號 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.款號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'款號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.款號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_nbr {
+                get {
+                    return ((string)(this[this.tableView打版發單表.sam_nbrColumn]));
+                }
+                set {
+                    this[this.tableView打版發單表.sam_nbrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 版完成日期 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableView打版發單表.版完成日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'版完成日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.版完成日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 創新板 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.創新板Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'創新板\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.創新板Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 修改版 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.修改版Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'修改版\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.修改版Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 核可大貨板 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.核可大貨板Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'核可大貨板\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.核可大貨板Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 馬克 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.馬克Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'馬克\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.馬克Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 修改馬克 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.修改馬克Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'修改馬克\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.修改馬克Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 馬克完成日 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableView打版發單表.馬克完成日Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'馬克完成日\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.馬克完成日Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 備註 {
+                get {
+                    try {
+                        return ((string)(this[this.tableView打版發單表.備註Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'備註\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.備註Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is發版日期Null() {
+                return this.IsNull(this.tableView打版發單表.發版日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set發版日期Null() {
+                this[this.tableView打版發單表.發版日期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is打版師Null() {
+                return this.IsNull(this.tableView打版發單表.打版師Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set打版師Null() {
+                this[this.tableView打版發單表.打版師Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is客戶名稱Null() {
+                return this.IsNull(this.tableView打版發單表.客戶名稱Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set客戶名稱Null() {
+                this[this.tableView打版發單表.客戶名稱Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is款號Null() {
+                return this.IsNull(this.tableView打版發單表.款號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set款號Null() {
+                this[this.tableView打版發單表.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is版完成日期Null() {
+                return this.IsNull(this.tableView打版發單表.版完成日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set版完成日期Null() {
+                this[this.tableView打版發單表.版完成日期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is創新板Null() {
+                return this.IsNull(this.tableView打版發單表.創新板Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set創新板Null() {
+                this[this.tableView打版發單表.創新板Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is修改版Null() {
+                return this.IsNull(this.tableView打版發單表.修改版Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set修改版Null() {
+                this[this.tableView打版發單表.修改版Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is核可大貨板Null() {
+                return this.IsNull(this.tableView打版發單表.核可大貨板Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set核可大貨板Null() {
+                this[this.tableView打版發單表.核可大貨板Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is馬克Null() {
+                return this.IsNull(this.tableView打版發單表.馬克Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set馬克Null() {
+                this[this.tableView打版發單表.馬克Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is修改馬克Null() {
+                return this.IsNull(this.tableView打版發單表.修改馬克Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set修改馬克Null() {
+                this[this.tableView打版發單表.修改馬克Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is馬克完成日Null() {
+                return this.IsNull(this.tableView打版發單表.馬克完成日Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set馬克完成日Null() {
+                this[this.tableView打版發單表.馬克完成日Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is備註Null() {
+                return this.IsNull(this.tableView打版發單表.備註Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set備註Null() {
+                this[this.tableView打版發單表.備註Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class Sales001Row : global::System.Data.DataRow {
             
             private Sales001DataTable tableSales001;
@@ -17773,6 +18600,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public samc_reqm5Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class View打版發單表RowChangeEvent : global::System.EventArgs {
+            
+            private View打版發單表Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表RowChangeEvent(View打版發單表Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public View打版發單表Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -19211,38 +20072,43 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT          c.type_desc, a.site, a.sam_nbr, a.sam_times, a.sam_no, a.version," +
                 " a.sam_date, a.cus_id, a.dept_no, a.item_no, \r\n                            a.typ" +
-                "e_id, a.salesman, a.sam_size, a.assign_qty, a.plan_fin_date, a.emb, a.washing, a" +
-                ".oth_extra, a.finish_date, \r\n                            a.finish_qty, a.place_o" +
-                "rigin, a.currency_id, a.unit_price, a.amount, a.sam_qty, a.sam_cus_qty, a.sam_ta" +
-                "ipei_qty, \r\n                            a.image_path, a.remark60, a.status, a.cl" +
-                "ose_date, a.reason, a.online_date, a.confirm_yn, a.progress_rate, \r\n            " +
-                "                a.sam_class, a.original_sampleo_yn, a.original_edition_yn, a.ori" +
-                "ginal_edition_size, a.ratio_size, \r\n                            a.sample_complet" +
-                "e_1, a.sample_complete_2, a.cus_express_corp, a.cus_assign_account, a.cus_addres" +
-                "s_id, \r\n                            a.cus_addressee, a.cus_address, a.cus_style_" +
-                "no, a.brand_name, a.sam_type, a.proofing_factory, a.filter_creator, \r\n          " +
-                "                  a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_" +
-                "date, a.printing, a.sewing, a.samc_remark60, a.mark, \r\n                         " +
-                "   a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final, a.last_date, a.s" +
-                "amc_fin_date, a.sam_type_A, \r\n                            a.sam_type_B, a.sam_ty" +
-                "pe_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix, a.s_plan_arrival_date," +
-                " \r\n                            a.s_real_arrival_date, b.tel_nbr,d.dept_name,e.it" +
-                "em_statistic_name,a.reason_remark,a.original_edition,(SELECT distinct cast((n.Ma" +
-                "ppingData +\'_\'+ z.SampleUser )  AS NVARCHAR ) + \',\' from  [GGFRequestSam]  z lef" +
-                "t join Mapping n on z.Flag=n.Data and n.UsingDefine=\'GGFRequestSam\'\r\nwhere sam_n" +
-                "br=a.sam_nbr \r\n                                FOR XML PATH(\'\')) as SampleName,f" +
-                ".reason_name,a.samc_plan_fin_date,receipt_date\r\nFROM              samc_reqm AS a" +
-                " LEFT OUTER JOIN\r\n                            bas_employee AS b ON a.site = b.si" +
-                "te AND a.creator = b.employee_no LEFT OUTER JOIN\r\n                            sa" +
-                "mc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d o" +
-                "n a.site=d.site and a.dept_no=d.dept_no\r\n\t\t\t\t\t\t\tleft join bas_item_statistic e o" +
-                "n a.site=e.site and a.item_statistic=e.item_statistic\r\nleft join bas_reason f on" +
-                " a.site=f.site and a.reason=f.reason and f.sys_id=\'SAMC\'\r\nWHERE        \r\na.progr" +
-                "ess_rate in (@progress_rate,@progress_rate1  )\r\nand ((a.receipt_date  between @m" +
-                "odify_date1 and @modify_date2 and 1=@flag1) or (a.receipt_date  is null and 1=@f" +
-                "lag2)or(1=@flag3))\r\nand a.brand_name LIKE @brand_name and a.type_id LIKE @type_i" +
-                "d\r\nand a.status =@status and (a.close_date between @samc_fin_date1 and @samc_fin" +
-                "_date2 or 1=@flag4)\r\norder by receipt_date desc";
+                "e_id, a.salesman, a.sam_size, a.assign_qty, [dbo].[F_DateToNull](a.plan_fin_date" +
+                ") as \'plan_fin_date\', a.emb, a.washing, a.oth_extra,[dbo].[F_DateToNull](finish_" +
+                "date) as  \'finish_date\',\r\n\t\t\t\t\t\t\t\r\n                            a.finish_qty, a.p" +
+                "lace_origin, a.currency_id, a.unit_price, a.amount, a.sam_qty, a.sam_cus_qty, a." +
+                "sam_taipei_qty, \r\n                            a.image_path, a.remark60, a.status" +
+                ", [dbo].[F_DateToNull](close_date) as \'close_date\', a.reason,[dbo].[F_DateToNull" +
+                "](online_date) as \'online_date\', a.confirm_yn, a.progress_rate, \r\n              " +
+                "              a.sam_class, a.original_sampleo_yn, a.original_edition_yn, a.origi" +
+                "nal_edition_size, a.ratio_size, \r\n                            a.sample_complete_" +
+                "1, a.sample_complete_2, a.cus_express_corp, a.cus_assign_account, a.cus_address_" +
+                "id, \r\n                            a.cus_addressee, a.cus_address, a.cus_style_no" +
+                ", a.brand_name, a.sam_type, a.proofing_factory, a.filter_creator, \r\n            " +
+                "                a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_da" +
+                "te, a.printing, a.sewing, a.samc_remark60, a.mark, \r\n                           " +
+                " a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final,[dbo].[F_DateToNull" +
+                "](last_date) as \'last_date\',[dbo].[F_DateToNull](samc_fin_date) as \'samc_fin_dat" +
+                "e\', a.sam_type_A, \r\n                            a.sam_type_B, a.sam_type_C, a.sa" +
+                "m_type_D, a.sam_type_E, a.sam_type_F, a.hotfix,[dbo].[F_DateToNull](s_plan_arriv" +
+                "al_date) as \'s_plan_arrival_date\', \r\n                            [dbo].[F_DateTo" +
+                "Null](s_real_arrival_date) \'s_real_arrival_date\', b.tel_nbr,d.dept_name,e.item_s" +
+                "tatistic_name,a.reason_remark,a.original_edition,\r\n(SELECT distinct cast((n.Mapp" +
+                "ingData +\'_\'+ z.SampleUser )  AS NVARCHAR ) + \',\' from  [GGFRequestSam]  z left " +
+                "join Mapping n on z.Flag=n.Data and n.UsingDefine=\'GGFRequestSam\'\r\nwhere sam_nbr" +
+                "=a.sam_nbr \r\n                                FOR XML PATH(\'\')) as SampleName,f.r" +
+                "eason_name,[dbo].[F_DateToNull](samc_plan_fin_date) as \'samc_plan_fin_date\', [db" +
+                "o].[F_DateToNull](receipt_date) as \'receipt_date\'\r\nFROM              samc_reqm A" +
+                "S a LEFT OUTER JOIN\r\n                            bas_employee AS b ON a.site = b" +
+                ".site AND a.creator = b.employee_no LEFT OUTER JOIN\r\n                           " +
+                " samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept " +
+                "d on a.site=d.site and a.dept_no=d.dept_no\r\n\t\t\t\t\t\t\tleft join bas_item_statistic " +
+                "e on a.site=e.site and a.item_statistic=e.item_statistic\r\nleft join bas_reason f" +
+                " on a.site=f.site and a.reason=f.reason and f.sys_id=\'SAMC\'\r\nWHERE        \r\na.pr" +
+                "ogress_rate in (@progress_rate,@progress_rate1  )\r\nand ((a.receipt_date  between" +
+                " @modify_date1 and cast( @modify_date2 as datetime) + 1 and 1=@flag1) or (a.rece" +
+                "ipt_date  is null and 1=@flag2)or(1=@flag3))\r\nand a.brand_name LIKE @brand_name " +
+                "and a.type_id LIKE @type_id\r\nand a.status =@status and (a.close_date between @sa" +
+                "mc_fin_date1 and @samc_fin_date2 or 1=@flag4)\r\norder by receipt_date desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate1", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19395,6 +20261,240 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             }
             this.Adapter.SelectCommand.Parameters[12].Value = ((decimal)(flag4));
             SalesTempDS.samc_reqm5DataTable dataTable = new SalesTempDS.samc_reqm5DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class View打版發單表TableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public View打版發單表TableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "View打版發單表";
+            tableMapping.ColumnMappings.Add("發版日期", "發版日期");
+            tableMapping.ColumnMappings.Add("打版師", "打版師");
+            tableMapping.ColumnMappings.Add("客戶名稱", "客戶名稱");
+            tableMapping.ColumnMappings.Add("款號", "款號");
+            tableMapping.ColumnMappings.Add("sam_nbr", "sam_nbr");
+            tableMapping.ColumnMappings.Add("版完成日期", "版完成日期");
+            tableMapping.ColumnMappings.Add("創新板", "創新板");
+            tableMapping.ColumnMappings.Add("修改版", "修改版");
+            tableMapping.ColumnMappings.Add("核可大貨板", "核可大貨板");
+            tableMapping.ColumnMappings.Add("馬克", "馬克");
+            tableMapping.ColumnMappings.Add("修改馬克", "修改馬克");
+            tableMapping.ColumnMappings.Add("馬克完成日", "馬克完成日");
+            tableMapping.ColumnMappings.Add("備註", "備註");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, 版完成日期, 創新板, 修改版, 核可大貨板, 馬克, 修改馬克, 馬" +
+                "克完成日, \r\n                            備註\r\nFROM              View打版發單表\r\nWHERE      " +
+                "    (發版日期 BETWEEN @StarDay AND @EndDay) AND (客戶名稱 LIKE @cus_id) AND (款號 LIKE @st" +
+                "yleno)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StarDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cus_id", global::System.Data.SqlDbType.NVarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "客戶名稱", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@styleno", global::System.Data.SqlDbType.NVarChar, 120, global::System.Data.ParameterDirection.Input, 0, 0, "款號", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(SalesTempDS.View打版發單表DataTable dataTable, global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((StarDay.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StarDay.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((EndDay.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDay.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((cus_id == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(cus_id));
+            }
+            if ((styleno == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(styleno));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SalesTempDS.View打版發單表DataTable GetData(global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((StarDay.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StarDay.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((EndDay.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDay.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((cus_id == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(cus_id));
+            }
+            if ((styleno == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(styleno));
+            }
+            SalesTempDS.View打版發單表DataTable dataTable = new SalesTempDS.View打版發單表DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

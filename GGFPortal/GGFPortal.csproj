@@ -174,6 +174,12 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -185,6 +191,14 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -214,6 +228,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Reporting, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.Reporting.Services.WebApi, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.Reporting.XpsRendering, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.ReportViewer.Html5.WebForms, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -387,6 +405,7 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
+    <Content Include="Content\style.css" />
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
@@ -584,18 +603,21 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="ReferenceCode\Finance002Auto.asmx" />
     <Content Include="ReferenceCode\test.asmx" />
     <Content Include="Sales\SALE.aspx" />
     <Content Include="Sales\Sales001.aspx" />
     <Content Include="Sales\Sample001.aspx" />
     <Content Include="Sales\Sample002.aspx" />
+    <Content Include="Sales\Sample003.aspx" />
     <Content Include="Sales\WebService.asmx" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\jquery-1.9.1.js" />
-    <Content Include="scripts\jquery-1.9.1.min.js" />
+    <None Include="scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="scripts\jquery-3.1.1.js" />
+    <Content Include="scripts\jquery-3.1.1.min.js" />
+    <Content Include="scripts\jquery-3.1.1.slim.js" />
+    <Content Include="scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af-ZA.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.af.min.js" />
     <Content Include="scripts\kendo\2014.1.318\cultures\kendo.culture.am-ET.min.js" />
@@ -1017,6 +1039,7 @@
     <Content Include="scripts\kendo\2014.1.318\kendo.view.min.js" />
     <Content Include="scripts\kendo\2014.1.318\kendo.web.min.js" />
     <Content Include="scripts\kendo\2014.1.318\kendo.window.min.js" />
+    <Content Include="scripts\scripts.js" />
     <Content Include="Secretary\Secretary005.aspx" />
     <Content Include="Secretary\Secretary004.aspx" />
     <Content Include="Secretary\Secretary003.aspx" />
@@ -1024,12 +1047,12 @@
     <Content Include="Secretary\Secretary001.aspx" />
     <Content Include="Ship\Search\Search004.aspx" />
     <Content Include="Ship\Search\Search003.aspx" />
+    <Content Include="test\AJAXTEST.aspx" />
     <Content Include="test\AutoComplete.aspx" />
     <Content Include="test\CrystalReport1.aspx" />
     <Content Include="test\ExcelUpload.aspx" />
     <Content Include="test\MVC\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\test2test.pubxml" />
-    <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="scripts\kendo\2014.1.318\kendo.window.min.js.map" />
     <Content Include="scripts\kendo\2014.1.318\kendo.web.min.js.map" />
     <Content Include="scripts\kendo\2014.1.318\kendo.view.min.js.map" />
@@ -1099,6 +1122,8 @@
     <Content Include="test\DataSetTest.xsc">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
+    <Content Include="scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="scripts\jquery-3.1.1.min.map" />
     <None Include="test\DataSetTest.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1138,6 +1163,7 @@
     <Content Include="VN\VN004.aspx" />
     <Content Include="VN\VN003.aspx" />
     <Content Include="VN\VNindex.aspx" />
+    <Content Include="VN\VNProductivityManagement.aspx" />
     <Content Include="VN\VNTest.aspx" />
     <Content Include="VN\VNTest2.aspx" />
     <Content Include="VN\VNTimeDelete.aspx" />
@@ -1146,6 +1172,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="CrystalReporttest1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1188,6 +1215,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ReferenceCode\DataCheck.cs" />
     <Compile Include="ReferenceCode\ExcelColumn.cs" />
     <Compile Include="ReferenceCode\VNExcel.cs" />
     <Compile Include="Sales\SALE_V5.aspx.cs">
@@ -1232,6 +1260,13 @@
     <Compile Include="Sales\Sample002.aspx.designer.cs">
       <DependentUpon>Sample002.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sample003.aspx.cs">
+      <DependentUpon>Sample003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample003.aspx.designer.cs">
+      <DependentUpon>Sample003.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secretary\Secretary005.aspx.cs">
       <DependentUpon>Secretary005.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1252,6 +1287,13 @@
     </Compile>
     <Compile Include="Ship\Search\Search003.aspx.designer.cs">
       <DependentUpon>Search003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\AJAXTEST.aspx.cs">
+      <DependentUpon>AJAXTEST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\AJAXTEST.aspx.designer.cs">
+      <DependentUpon>AJAXTEST.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\CrystalReport1.aspx.cs">
       <DependentUpon>CrystalReport1.aspx</DependentUpon>
@@ -1685,6 +1727,13 @@
     <Compile Include="VN\VNindex.aspx.designer.cs">
       <DependentUpon>VNindex.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VNProductivityManagement.aspx.cs">
+      <DependentUpon>VNProductivityManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VNProductivityManagement.aspx.designer.cs">
+      <DependentUpon>VNProductivityManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VNTest.aspx.cs">
       <DependentUpon>VNTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1720,6 +1769,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
@@ -1731,6 +1781,7 @@
     <EmbeddedResource Include="ReportSource\ReportSALE_V3.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V5.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V4.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSample003.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />

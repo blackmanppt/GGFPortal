@@ -14,7 +14,7 @@
         }
 
         .auto-style1 {
-            width: 149px;
+            width: 211px;
             border: 1px solid black;
             text-align: right;
         }
@@ -79,9 +79,8 @@
                         <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="employee_no">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="
-  select distinct a.employee_no,a.dept_no+b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no
-  where a.dept_no in ('45','38','17','18','40','41','42','43','44') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
+                            SelectCommand="select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A')  and a.employee_status<>'IA'  order by Name,employee_no"></asp:SqlDataSource>
                     </td>
                     <th class="auto-style4">
                         <asp:Label ID="DateLB" runat="server" Text="處理日期：" Visible="false"></asp:Label>
@@ -117,7 +116,41 @@
                     <td class="auto-style2">
                         <asp:TextBox ID="QtyTB" runat="server"></asp:TextBox>
                     </td>
-                    <td class="auto-style3" colspan="2">
+                    <th class="auto-style4"></th>
+                    <td class="auto-style3"></td>
+                </tr>
+                <tr>
+                    <th class="auto-style1">
+                        <asp:Label ID="Label8" runat="server" Text="放縮馬克："></asp:Label>
+                    </th>
+                    <td class="auto-style2">
+                        <asp:DropDownList ID="MarkDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource4" DataTextField="Name" DataValueField="employee_no">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand=
+  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E01A') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+                    </td>
+                                        <th class="auto-style4">
+                        <asp:Label ID="Label9" runat="server" Text="修改放縮馬克："></asp:Label>
+                    </th>
+                    <td class="auto-style3">
+                        <asp:DropDownList ID="ReMarkDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource5" DataTextField="Name" DataValueField="employee_no">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand=
+  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E01A') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="auto-style1">
+                        <asp:Label ID="Label10" runat="server" Text="馬克完成日："></asp:Label>
+                    </th>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="MarkDateTB" runat="server"></asp:TextBox>
+                        <ajaxToolkit:CalendarExtender ID="MarkDateTB_CalendarExtender" runat="server" TargetControlID="MarkDateTB" Format="yyyyMMdd" />
+                    </td>
+
+                                        <td class="auto-style3" colspan="2">
                         <asp:Button ID="AddBT" runat="server" Text="新增" OnClick="AddBT_Click" />
                         <asp:Button ID="UpDateBT" runat="server" Text="更新" OnClick="UpDateBT_Click1" Visible="False" />
                         <asp:Button ID="CancelBT" runat="server" Text="取消" OnClick="CancelBT_Click" Visible="False" />
@@ -139,6 +172,9 @@
                     <asp:BoundField DataField="SampleUser" HeaderText="處理人員" SortExpression="SampleUser" />
                     <asp:BoundField DataField="Qty" HeaderText="數量" SortExpression="Qty" />
                     <asp:BoundField DataField="SampleCreatDate" HeaderText="建立日期" SortExpression="SampleCreatDate" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="馬克" HeaderText="馬克" SortExpression="馬克" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="修改馬克" HeaderText="修改馬克" SortExpression="修改馬克" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="馬克完成日" HeaderText="馬克完成日" SortExpression="馬克完成日" NullDisplayText="沒有資料" />
                 </Columns>
                 <EmptyDataRowStyle BackColor="#00CC66" />
                 <EmptyDataTemplate>

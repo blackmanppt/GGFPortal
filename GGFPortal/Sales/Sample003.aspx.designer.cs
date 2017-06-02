@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.VN {
+namespace GGFPortal.Sales {
     
     
-    public partial class VN006 {
+    public partial class Sample003 {
         
         /// <summary>
         /// form1 控制項。
@@ -49,58 +49,40 @@ namespace GGFPortal.VN {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// StartDayTB 控制項。
+        /// StartTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StartDayTB;
+        protected global::System.Web.UI.WebControls.TextBox StartTB;
         
         /// <summary>
-        /// StartDayTB_CalendarExtender 控制項。
+        /// StartTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender StartDayTB_CalendarExtender;
+        protected global::AjaxControlToolkit.CalendarExtender StartTB_CalendarExtender;
         
         /// <summary>
-        /// EndDayTB 控制項。
+        /// EndTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDayTB;
+        protected global::System.Web.UI.WebControls.TextBox EndTB;
         
         /// <summary>
-        /// EndDayTB_CalendarExtender 控制項。
+        /// EndTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender EndDayTB_CalendarExtender;
-        
-        /// <summary>
-        /// Export 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Export;
-        
-        /// <summary>
-        /// Search 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Search;
+        protected global::AjaxControlToolkit.CalendarExtender EndTB_CalendarExtender;
         
         /// <summary>
         /// Label3 控制項。
@@ -112,39 +94,75 @@ namespace GGFPortal.VN {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// FlagDDL 控制項。
+        /// CusText 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FlagDDL;
+        protected global::System.Web.UI.WebControls.TextBox CusText;
         
         /// <summary>
-        /// LinkButton1 控制項。
+        /// CusText_AutoCompleteExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::AjaxControlToolkit.AutoCompleteExtender CusText_AutoCompleteExtender;
         
         /// <summary>
-        /// GridView1 控制項。
+        /// Label4 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// SqlDataSource1 控制項。
+        /// StyleTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox StyleTB;
+        
+        /// <summary>
+        /// StyleTB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
+        
+        /// <summary>
+        /// SearchBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchBT;
+        
+        /// <summary>
+        /// ReportViewer1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        
+        /// <summary>
+        /// ObjectDataSource1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
     }
 }

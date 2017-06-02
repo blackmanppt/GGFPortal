@@ -9,6 +9,7 @@ namespace GGFPortal.VN
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
+        ReferenceCode.DataCheck 確認LOCK = new ReferenceCode.DataCheck();
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";
@@ -121,49 +122,57 @@ namespace GGFPortal.VN
             string strDate = "", strTeam = "";
             strDate = (GridView1.Rows[e.RowIndex].Cells[1].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[1].Text;
             strTeam = (GridView1.Rows[e.RowIndex].Cells[2].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[2].Text;
-            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            if (確認LOCK.Check工時Lock("VNN", strDate))
             {
-                SqlCommand command1 = conn1.CreateCommand();
-                SqlTransaction transaction1;
-                conn1.Open();
-                transaction1 = conn1.BeginTransaction("DeleteVNLog");
+                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                {
+                    SqlCommand command1 = conn1.CreateCommand();
+                    SqlTransaction transaction1;
+                    conn1.Open();
+                    transaction1 = conn1.BeginTransaction("DeleteVNLog");
 
-                command1.Connection = conn1;
-                command1.Transaction = transaction1;
-                try
-                {
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()   WHERE uid = {0} ", strid);
-                    //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = strDate;
-                    //command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strTeam;
-                    command1.ExecuteNonQuery();
-                    transaction1.Commit();
-                    //Label1.Text = "刪除完畢，請再次夾檔";
-                    DbInit();
-                }
-                catch (Exception ex1)
-                {
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
                     try
                     {
-                        Log.ErrorLog(ex1, "Delete Error :", "VN006.aspx");
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()   WHERE uid = {0} ", strid);
+                        //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = strDate;
+                        //command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strTeam;
+                        command1.ExecuteNonQuery();
+                        transaction1.Commit();
+                        //Label1.Text = "刪除完畢，請再次夾檔";
+                        DbInit();
                     }
-                    catch (Exception ex2)
+                    catch (Exception ex1)
                     {
-                        Log.ErrorLog(ex2, "Delete Error Error:", "VN006.aspx");
+                        try
+                        {
+                            Log.ErrorLog(ex1, "Delete Error :", "VN006.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "Delete Error Error:", "VN006.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                        }
                     }
                     finally
                     {
-                        transaction1.Rollback();
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                        conn1.Close();
+                        conn1.Dispose();
+                        command1.Dispose();
+                        Session.RemoveAll();
                     }
                 }
-                finally
-                {
-                    conn1.Close();
-                    conn1.Dispose();
-                    command1.Dispose();
-                    Session.RemoveAll();
-                }
             }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('資料已鎖定，請洽管理者');</script>");
+            }
+            
         }
     }
 }

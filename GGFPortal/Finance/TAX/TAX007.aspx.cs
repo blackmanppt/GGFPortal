@@ -17,7 +17,7 @@ namespace GGFPortal.Finance.TAX
     public partial class TAX007 : System.Web.UI.Page
     {
         static DataSet Ds = new DataSet();
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString2"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";

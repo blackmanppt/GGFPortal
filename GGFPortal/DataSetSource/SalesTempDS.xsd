@@ -398,18 +398,20 @@ order by a.modify_date desc</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT          c.type_desc, a.site, a.sam_nbr, a.sam_times, a.sam_no, a.version, a.sam_date, a.cus_id, a.dept_no, a.item_no, 
-                            a.type_id, a.salesman, a.sam_size, a.assign_qty, a.plan_fin_date, a.emb, a.washing, a.oth_extra, a.finish_date, 
+                            a.type_id, a.salesman, a.sam_size, a.assign_qty, [dbo].[F_DateToNull](a.plan_fin_date) as 'plan_fin_date', a.emb, a.washing, a.oth_extra,[dbo].[F_DateToNull](finish_date) as  'finish_date',
+							
                             a.finish_qty, a.place_origin, a.currency_id, a.unit_price, a.amount, a.sam_qty, a.sam_cus_qty, a.sam_taipei_qty, 
-                            a.image_path, a.remark60, a.status, a.close_date, a.reason, a.online_date, a.confirm_yn, a.progress_rate, 
+                            a.image_path, a.remark60, a.status, [dbo].[F_DateToNull](close_date) as 'close_date', a.reason,[dbo].[F_DateToNull](online_date) as 'online_date', a.confirm_yn, a.progress_rate, 
                             a.sam_class, a.original_sampleo_yn, a.original_edition_yn, a.original_edition_size, a.ratio_size, 
                             a.sample_complete_1, a.sample_complete_2, a.cus_express_corp, a.cus_assign_account, a.cus_address_id, 
                             a.cus_addressee, a.cus_address, a.cus_style_no, a.brand_name, a.sam_type, a.proofing_factory, a.filter_creator, 
                             a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_date, a.printing, a.sewing, a.samc_remark60, a.mark, 
-                            a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final, a.last_date, a.samc_fin_date, a.sam_type_A, 
-                            a.sam_type_B, a.sam_type_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix, a.s_plan_arrival_date, 
-                            a.s_real_arrival_date, b.tel_nbr,d.dept_name,e.item_statistic_name,a.reason_remark,a.original_edition,(SELECT distinct cast((n.MappingData +'_'+ z.SampleUser )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.Flag=n.Data and n.UsingDefine='GGFRequestSam'
+                            a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final,[dbo].[F_DateToNull](last_date) as 'last_date',[dbo].[F_DateToNull](samc_fin_date) as 'samc_fin_date', a.sam_type_A, 
+                            a.sam_type_B, a.sam_type_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix,[dbo].[F_DateToNull](s_plan_arrival_date) as 's_plan_arrival_date', 
+                            [dbo].[F_DateToNull](s_real_arrival_date) 's_real_arrival_date', b.tel_nbr,d.dept_name,e.item_statistic_name,a.reason_remark,a.original_edition,
+(SELECT distinct cast((n.MappingData +'_'+ z.SampleUser )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.Flag=n.Data and n.UsingDefine='GGFRequestSam'
 where sam_nbr=a.sam_nbr 
-                                FOR XML PATH('')) as SampleName,f.reason_name,a.samc_plan_fin_date,receipt_date
+                                FOR XML PATH('')) as SampleName,f.reason_name,[dbo].[F_DateToNull](samc_plan_fin_date) as 'samc_plan_fin_date', [dbo].[F_DateToNull](receipt_date) as 'receipt_date'
 FROM              samc_reqm AS a LEFT OUTER JOIN
                             bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
                             samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no
@@ -417,7 +419,7 @@ FROM              samc_reqm AS a LEFT OUTER JOIN
 left join bas_reason f on a.site=f.site and a.reason=f.reason and f.sys_id='SAMC'
 WHERE        
 a.progress_rate in (@progress_rate,@progress_rate1  )
-and ((a.receipt_date  between @modify_date1 and @modify_date2 and 1=@flag1) or (a.receipt_date  is null and 1=@flag2)or(1=@flag3))
+and ((a.receipt_date  between @modify_date1 and cast( @modify_date2 as datetime) + 1 and 1=@flag1) or (a.receipt_date  is null and 1=@flag2)or(1=@flag3))
 and a.brand_name LIKE @brand_name and a.type_id LIKE @type_id
 and a.status =@status and (a.close_date between @samc_fin_date1 and @samc_fin_date2 or 1=@flag4)
 order by receipt_date desc</CommandText>
@@ -530,6 +532,42 @@ order by receipt_date desc</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="View打版發單表TableAdapter" GeneratorDataComponentClassName="View打版發單表TableAdapter" Name="View打版發單表" UserDataComponentName="View打版發單表TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GGFConnectionString (Web.config)" DbObjectName="GGF.dbo.View打版發單表" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, 版完成日期, 創新板, 修改版, 核可大貨板, 馬克, 修改馬克, 馬克完成日, 
+                            備註
+FROM              View打版發單表
+WHERE          (發版日期 BETWEEN @StarDay AND @EndDay) AND (客戶名稱 LIKE @cus_id) AND (款號 LIKE @styleno)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="StarDay" ColumnName="發版日期" DataSourceName="GGF.dbo.View打版發單表" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@StarDay" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="發版日期" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="EndDay" ColumnName="發版日期" DataSourceName="GGF.dbo.View打版發單表" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@EndDay" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="發版日期" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="cus_id" ColumnName="客戶名稱" DataSourceName="GGF.dbo.View打版發單表" DataTypeServer="nvarchar(8)" DbType="String" Direction="Input" ParameterName="@cus_id" Precision="0" ProviderType="NVarChar" Scale="0" Size="8" SourceColumn="客戶名稱" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="styleno" ColumnName="款號" DataSourceName="GGF.dbo.View打版發單表" DataTypeServer="nvarchar(120)" DbType="String" Direction="Input" ParameterName="@styleno" Precision="0" ProviderType="NVarChar" Scale="0" Size="120" SourceColumn="款號" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="發版日期" DataSetColumn="發版日期" />
+              <Mapping SourceColumn="打版師" DataSetColumn="打版師" />
+              <Mapping SourceColumn="客戶名稱" DataSetColumn="客戶名稱" />
+              <Mapping SourceColumn="款號" DataSetColumn="款號" />
+              <Mapping SourceColumn="sam_nbr" DataSetColumn="sam_nbr" />
+              <Mapping SourceColumn="版完成日期" DataSetColumn="版完成日期" />
+              <Mapping SourceColumn="創新板" DataSetColumn="創新板" />
+              <Mapping SourceColumn="修改版" DataSetColumn="修改版" />
+              <Mapping SourceColumn="核可大貨板" DataSetColumn="核可大貨板" />
+              <Mapping SourceColumn="馬克" DataSetColumn="馬克" />
+              <Mapping SourceColumn="修改馬克" DataSetColumn="修改馬克" />
+              <Mapping SourceColumn="馬克完成日" DataSetColumn="馬克完成日" />
+              <Mapping SourceColumn="備註" DataSetColumn="備註" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -538,7 +576,7 @@ order by receipt_date desc</CommandText>
   <xs:element name="SalesTempDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SalesTempDS" msprop:Generator_UserDSName="SalesTempDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Sales001" msprop:Generator_TableClassName="Sales001DataTable" msprop:Generator_TableVarName="tableSales001" msprop:Generator_TablePropName="Sales001" msprop:Generator_RowDeletingName="Sales001RowDeleting" msprop:Generator_RowChangingName="Sales001RowChanging" msprop:Generator_RowEvHandlerName="Sales001RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales001RowDeleted" msprop:Generator_UserTableName="Sales001" msprop:Generator_RowChangedName="Sales001RowChanged" msprop:Generator_RowEvArgName="Sales001RowChangeEvent" msprop:Generator_RowClassName="Sales001Row">
+        <xs:element name="Sales001" msprop:Generator_TableClassName="Sales001DataTable" msprop:Generator_TableVarName="tableSales001" msprop:Generator_RowChangedName="Sales001RowChanged" msprop:Generator_TablePropName="Sales001" msprop:Generator_RowDeletingName="Sales001RowDeleting" msprop:Generator_RowChangingName="Sales001RowChanging" msprop:Generator_RowEvHandlerName="Sales001RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales001RowDeleted" msprop:Generator_RowClassName="Sales001Row" msprop:Generator_UserTableName="Sales001" msprop:Generator_RowEvArgName="Sales001RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="訂單號碼" msprop:Generator_ColumnVarNameInTable="column訂單號碼" msprop:Generator_ColumnPropNameInRow="訂單號碼" msprop:Generator_ColumnPropNameInTable="訂單號碼Column" msprop:Generator_UserColumnName="訂單號碼" type="xs:string" minOccurs="0" />
@@ -560,7 +598,7 @@ order by receipt_date desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm" msprop:Generator_TableClassName="samc_reqmDataTable" msprop:Generator_TableVarName="tablesamc_reqm" msprop:Generator_TablePropName="samc_reqm" msprop:Generator_RowDeletingName="samc_reqmRowDeleting" msprop:Generator_RowChangingName="samc_reqmRowChanging" msprop:Generator_RowEvHandlerName="samc_reqmRowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqmRowDeleted" msprop:Generator_UserTableName="samc_reqm" msprop:Generator_RowChangedName="samc_reqmRowChanged" msprop:Generator_RowEvArgName="samc_reqmRowChangeEvent" msprop:Generator_RowClassName="samc_reqmRow">
+        <xs:element name="samc_reqm" msprop:Generator_TableClassName="samc_reqmDataTable" msprop:Generator_TableVarName="tablesamc_reqm" msprop:Generator_RowChangedName="samc_reqmRowChanged" msprop:Generator_TablePropName="samc_reqm" msprop:Generator_RowDeletingName="samc_reqmRowDeleting" msprop:Generator_RowChangingName="samc_reqmRowChanging" msprop:Generator_RowEvHandlerName="samc_reqmRowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqmRowDeleted" msprop:Generator_RowClassName="samc_reqmRow" msprop:Generator_UserTableName="samc_reqm" msprop:Generator_RowEvArgName="samc_reqmRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -1012,7 +1050,7 @@ order by receipt_date desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Sales002" msprop:Generator_TableClassName="Sales002DataTable" msprop:Generator_TableVarName="tableSales002" msprop:Generator_RowChangedName="Sales002RowChanged" msprop:Generator_TablePropName="Sales002" msprop:Generator_RowDeletingName="Sales002RowDeleting" msprop:Generator_RowChangingName="Sales002RowChanging" msprop:Generator_RowEvHandlerName="Sales002RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales002RowDeleted" msprop:Generator_RowClassName="Sales002Row" msprop:Generator_UserTableName="Sales002" msprop:Generator_RowEvArgName="Sales002RowChangeEvent">
+        <xs:element name="Sales002" msprop:Generator_TableClassName="Sales002DataTable" msprop:Generator_TableVarName="tableSales002" msprop:Generator_TablePropName="Sales002" msprop:Generator_RowDeletingName="Sales002RowDeleting" msprop:Generator_RowChangingName="Sales002RowChanging" msprop:Generator_RowEvHandlerName="Sales002RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales002RowDeleted" msprop:Generator_UserTableName="Sales002" msprop:Generator_RowChangedName="Sales002RowChanged" msprop:Generator_RowEvArgName="Sales002RowChangeEvent" msprop:Generator_RowClassName="Sales002Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="公司別" msprop:Generator_ColumnVarNameInTable="column公司別" msprop:Generator_ColumnPropNameInRow="公司別" msprop:Generator_ColumnPropNameInTable="公司別Column" msprop:Generator_UserColumnName="公司別" type="xs:string" minOccurs="0" />
@@ -1030,7 +1068,7 @@ order by receipt_date desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm1" msprop:Generator_TableClassName="samc_reqm1DataTable" msprop:Generator_TableVarName="tablesamc_reqm1" msprop:Generator_RowChangedName="samc_reqm1RowChanged" msprop:Generator_TablePropName="samc_reqm1" msprop:Generator_RowDeletingName="samc_reqm1RowDeleting" msprop:Generator_RowChangingName="samc_reqm1RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm1RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm1RowDeleted" msprop:Generator_RowClassName="samc_reqm1Row" msprop:Generator_UserTableName="samc_reqm1" msprop:Generator_RowEvArgName="samc_reqm1RowChangeEvent">
+        <xs:element name="samc_reqm1" msprop:Generator_TableClassName="samc_reqm1DataTable" msprop:Generator_TableVarName="tablesamc_reqm1" msprop:Generator_TablePropName="samc_reqm1" msprop:Generator_RowDeletingName="samc_reqm1RowDeleting" msprop:Generator_RowChangingName="samc_reqm1RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm1RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm1RowDeleted" msprop:Generator_UserTableName="samc_reqm1" msprop:Generator_RowChangedName="samc_reqm1RowChanged" msprop:Generator_RowEvArgName="samc_reqm1RowChangeEvent" msprop:Generator_RowClassName="samc_reqm1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -1510,7 +1548,7 @@ order by receipt_date desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm4" msprop:Generator_TableClassName="samc_reqm4DataTable" msprop:Generator_TableVarName="tablesamc_reqm4" msprop:Generator_RowChangedName="samc_reqm4RowChanged" msprop:Generator_TablePropName="samc_reqm4" msprop:Generator_RowDeletingName="samc_reqm4RowDeleting" msprop:Generator_RowChangingName="samc_reqm4RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm4RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm4RowDeleted" msprop:Generator_RowClassName="samc_reqm4Row" msprop:Generator_UserTableName="samc_reqm4" msprop:Generator_RowEvArgName="samc_reqm4RowChangeEvent">
+        <xs:element name="samc_reqm4" msprop:Generator_TableClassName="samc_reqm4DataTable" msprop:Generator_TableVarName="tablesamc_reqm4" msprop:Generator_TablePropName="samc_reqm4" msprop:Generator_RowDeletingName="samc_reqm4RowDeleting" msprop:Generator_RowChangingName="samc_reqm4RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm4RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm4RowDeleted" msprop:Generator_UserTableName="samc_reqm4" msprop:Generator_RowChangedName="samc_reqm4RowChanged" msprop:Generator_RowEvArgName="samc_reqm4RowChangeEvent" msprop:Generator_RowClassName="samc_reqm4Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -1991,7 +2029,7 @@ order by receipt_date desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm5" msprop:Generator_TableClassName="samc_reqm5DataTable" msprop:Generator_TableVarName="tablesamc_reqm5" msprop:Generator_TablePropName="samc_reqm5" msprop:Generator_RowDeletingName="samc_reqm5RowDeleting" msprop:Generator_RowChangingName="samc_reqm5RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm5RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm5RowDeleted" msprop:Generator_UserTableName="samc_reqm5" msprop:Generator_RowChangedName="samc_reqm5RowChanged" msprop:Generator_RowEvArgName="samc_reqm5RowChangeEvent" msprop:Generator_RowClassName="samc_reqm5Row">
+        <xs:element name="samc_reqm5" msprop:Generator_TableClassName="samc_reqm5DataTable" msprop:Generator_TableVarName="tablesamc_reqm5" msprop:Generator_RowChangedName="samc_reqm5RowChanged" msprop:Generator_TablePropName="samc_reqm5" msprop:Generator_RowDeletingName="samc_reqm5RowDeleting" msprop:Generator_RowChangingName="samc_reqm5RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm5RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm5RowDeleted" msprop:Generator_RowClassName="samc_reqm5Row" msprop:Generator_UserTableName="samc_reqm5" msprop:Generator_RowEvArgName="samc_reqm5RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -2470,6 +2508,85 @@ order by receipt_date desc</CommandText>
               </xs:element>
               <xs:element name="samc_plan_fin_date" msprop:Generator_ColumnVarNameInTable="columnsamc_plan_fin_date" msprop:Generator_ColumnPropNameInRow="samc_plan_fin_date" msprop:Generator_ColumnPropNameInTable="samc_plan_fin_dateColumn" msprop:Generator_UserColumnName="samc_plan_fin_date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="receipt_date" msprop:Generator_ColumnVarNameInTable="columnreceipt_date" msprop:Generator_ColumnPropNameInRow="receipt_date" msprop:Generator_ColumnPropNameInTable="receipt_dateColumn" msprop:Generator_UserColumnName="receipt_date" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="View打版發單表" msprop:Generator_TableClassName="View打版發單表DataTable" msprop:Generator_TableVarName="tableView打版發單表" msprop:Generator_TablePropName="View打版發單表" msprop:Generator_RowDeletingName="View打版發單表RowDeleting" msprop:Generator_RowChangingName="View打版發單表RowChanging" msprop:Generator_RowEvHandlerName="View打版發單表RowChangeEventHandler" msprop:Generator_RowDeletedName="View打版發單表RowDeleted" msprop:Generator_UserTableName="View打版發單表" msprop:Generator_RowChangedName="View打版發單表RowChanged" msprop:Generator_RowEvArgName="View打版發單表RowChangeEvent" msprop:Generator_RowClassName="View打版發單表Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="發版日期" msprop:Generator_ColumnVarNameInTable="column發版日期" msprop:Generator_ColumnPropNameInRow="發版日期" msprop:Generator_ColumnPropNameInTable="發版日期Column" msprop:Generator_UserColumnName="發版日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打版師" msprop:Generator_ColumnVarNameInTable="column打版師" msprop:Generator_ColumnPropNameInRow="打版師" msprop:Generator_ColumnPropNameInTable="打版師Column" msprop:Generator_UserColumnName="打版師" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="客戶名稱" msprop:Generator_ColumnVarNameInTable="column客戶名稱" msprop:Generator_ColumnPropNameInRow="客戶名稱" msprop:Generator_ColumnPropNameInTable="客戶名稱Column" msprop:Generator_UserColumnName="客戶名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="款號" msprop:Generator_ColumnVarNameInTable="column款號" msprop:Generator_ColumnPropNameInRow="款號" msprop:Generator_ColumnPropNameInTable="款號Column" msprop:Generator_UserColumnName="款號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sam_nbr" msprop:Generator_ColumnVarNameInTable="columnsam_nbr" msprop:Generator_ColumnPropNameInRow="sam_nbr" msprop:Generator_ColumnPropNameInTable="sam_nbrColumn" msprop:Generator_UserColumnName="sam_nbr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="版完成日期" msprop:Generator_ColumnVarNameInTable="column版完成日期" msprop:Generator_ColumnPropNameInRow="版完成日期" msprop:Generator_ColumnPropNameInTable="版完成日期Column" msprop:Generator_UserColumnName="版完成日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="創新板" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column創新板" msprop:Generator_ColumnPropNameInRow="創新板" msprop:Generator_ColumnPropNameInTable="創新板Column" msprop:Generator_UserColumnName="創新板" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="修改版" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column修改版" msprop:Generator_ColumnPropNameInRow="修改版" msprop:Generator_ColumnPropNameInTable="修改版Column" msprop:Generator_UserColumnName="修改版" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="核可大貨板" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column核可大貨板" msprop:Generator_ColumnPropNameInRow="核可大貨板" msprop:Generator_ColumnPropNameInTable="核可大貨板Column" msprop:Generator_UserColumnName="核可大貨板" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="馬克" msprop:Generator_ColumnVarNameInTable="column馬克" msprop:Generator_ColumnPropNameInRow="馬克" msprop:Generator_ColumnPropNameInTable="馬克Column" msprop:Generator_UserColumnName="馬克" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="修改馬克" msprop:Generator_ColumnVarNameInTable="column修改馬克" msprop:Generator_ColumnPropNameInRow="修改馬克" msprop:Generator_ColumnPropNameInTable="修改馬克Column" msprop:Generator_UserColumnName="修改馬克" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="馬克完成日" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column馬克完成日" msprop:Generator_ColumnPropNameInRow="馬克完成日" msprop:Generator_ColumnPropNameInTable="馬克完成日Column" msprop:Generator_UserColumnName="馬克完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="備註" msprop:Generator_ColumnVarNameInTable="column備註" msprop:Generator_ColumnPropNameInRow="備註" msprop:Generator_ColumnPropNameInTable="備註Column" msprop:Generator_UserColumnName="備註" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

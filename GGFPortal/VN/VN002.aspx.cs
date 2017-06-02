@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.UserModel;
@@ -18,6 +13,7 @@ namespace GGFPortal.VN
     public partial class VN002 : System.Web.UI.Page
     {
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
+        ReferenceCode.DataCheck 確認LOCK = new ReferenceCode.DataCheck();
         
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
         static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
@@ -928,47 +924,54 @@ namespace GGFPortal.VN
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            if (確認LOCK.Check工時Lock("VNN", SearchTB.Text))
             {
-                SqlCommand command1 = conn1.CreateCommand();
-                SqlTransaction transaction1;
-                conn1.Open();
-                transaction1 = conn1.BeginTransaction("createExcelImport");
+                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                {
+                    SqlCommand command1 = conn1.CreateCommand();
+                    SqlTransaction transaction1;
+                    conn1.Open();
+                    transaction1 = conn1.BeginTransaction("createExcelImport");
 
-                command1.Connection = conn1;
-                command1.Transaction = transaction1;
-                try
-                {
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
-                    command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
-                    command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
-                    command1.ExecuteNonQuery();
-                    transaction1.Commit();
-                    Label1.Text = "刪除完畢，請再次夾檔";
-                }
-                catch (Exception ex1)
-                {
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
                     try
                     {
-                        Log.ErrorLog(ex1, "Delete Error :" , "VN002.aspx");
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
+                        command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                        command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
+                        command1.ExecuteNonQuery();
+                        transaction1.Commit();
+                        Label1.Text = "刪除完畢，請再次夾檔";
                     }
-                    catch (Exception ex2)
+                    catch (Exception ex1)
                     {
-                        Log.ErrorLog(ex2, "Delete Error Error:" , "VN002.aspx");
+                        try
+                        {
+                            Log.ErrorLog(ex1, "Delete Error :" , "VN002.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "Delete Error Error:" , "VN002.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                        }
                     }
                     finally
                     {
-                        transaction1.Rollback();
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                        conn1.Close();
+                        conn1.Dispose();
+                        command1.Dispose();
+                        Session.RemoveAll();
                     }
                 }
-                finally
-                {
-                    conn1.Close();
-                    conn1.Dispose();
-                    command1.Dispose();
-                    Session.RemoveAll();
-                }
+            }
+            else
+            {
+                Label1.Text = "資料已鎖定，請洽管理者";
             }
         }
 
