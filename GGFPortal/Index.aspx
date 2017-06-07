@@ -69,6 +69,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Finance/Finance007.aspx">出口大表(BY CATHY)</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Finance/Finance009.aspx">出口大表(BY Ariel)</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink40" runat="server" NavigateUrl="~/Finance/Finance011.aspx">出口大表(BY Carrie)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -145,6 +147,8 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink37" runat="server" NavigateUrl="~/Sales/SALE_V5.aspx">打樣收單</asp:HyperLink>
                                                 <br />
                                                 <asp:HyperLink ID="HyperLink35" runat="server" NavigateUrl="~/Sales/Sample001.aspx">打樣打版資料上傳</asp:HyperLink>
+                                                                        <br />
+                                                <asp:HyperLink ID="HyperLink38" runat="server" NavigateUrl="~/Sales/Sample003.aspx">打版資料查詢</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 
@@ -161,6 +165,9 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink34" runat="server" NavigateUrl="~/VN/VN006.aspx">越南工時匯入紀錄(中文版含刪除資料功能)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink36" runat="server" NavigateUrl="~/VN/VN007.aspx">越南工時匯入明細</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink39" runat="server" NavigateUrl="~/VN/VNProductivityManagement.aspx">越南工時匯入鎖定</asp:HyperLink>
+                        
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

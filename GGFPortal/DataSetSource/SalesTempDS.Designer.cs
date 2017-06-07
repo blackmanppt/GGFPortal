@@ -20416,10 +20416,11 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, 版完成日期, 創新板, 修改版, 核可大貨板, 馬克, 修改馬克, 馬" +
-                "克完成日, \r\n                            備註\r\nFROM              View打版發單表\r\nWHERE      " +
-                "    (發版日期 BETWEEN @StarDay AND @EndDay) AND (客戶名稱 LIKE @cus_id) AND (款號 LIKE @st" +
-                "yleno)";
+            this._commandCollection[0].CommandText = @"SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, [dbo].[F_DateToNull](版完成日期) as 版完成日期, 創新板, 修改版, 核可大貨板, 馬克, 修改馬克, [dbo].[F_DateToNull](馬克完成日) as 馬克完成日, 
+                            備註
+FROM              View打版發單表
+WHERE          (發版日期 BETWEEN @StarDay AND  cast( @EndDay as datetime) + 1 ) AND (客戶名稱 LIKE @cus_id) AND (款號 LIKE @styleno)
+order by 發版日期  desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StarDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

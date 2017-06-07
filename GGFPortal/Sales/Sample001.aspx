@@ -81,7 +81,7 @@
                     
                     <asp:BoundField DataField="sam_no" HeaderText="sam_no" SortExpression="sam_no" />
                     <asp:BoundField DataField="version" HeaderText="version" SortExpression="version" />
-                    <asp:BoundField DataField="sam_date" HeaderText="sam_date" SortExpression="sam_date" />
+                    
                     <asp:BoundField DataField="cus_id" HeaderText="cus_id" SortExpression="cus_id" />
                     <asp:BoundField DataField="dept_no" HeaderText="dept_no" SortExpression="dept_no" />
                     <asp:BoundField DataField="item_no" HeaderText="item_no" SortExpression="item_no" />
@@ -169,6 +169,7 @@
                     <asp:BoundField DataField="type_desc" HeaderText="種類" ReadOnly="True" SortExpression="type_desc" />
                     <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="sam_qty" HeaderText="需求件數" SortExpression="sam_qty" />
+                    <asp:BoundField DataField="sam_date" HeaderText="打樣日期" SortExpression="sam_date" DataFormatString="{0:d}"/>
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

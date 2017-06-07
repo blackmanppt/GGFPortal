@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace GGFPortal.ReferenceCode
@@ -13,6 +11,7 @@ namespace GGFPortal.ReferenceCode
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     public class VendorAutoComplete
     {
+        [ScriptMethod()]
         [WebMethod]
         public IList<string> GetItemList1(string keywordStartsWith)
         {

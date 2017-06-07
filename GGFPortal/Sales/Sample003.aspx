@@ -62,7 +62,7 @@
                     </div>
             </div>--%>
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" Height="432px" style="margin-right: 0px" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="1082px">
-                        <LocalReport ReportPath="ReportSource\ReportSample003.rdlc">
+                        <LocalReport ReportPath="ReportSource\ReportSample003.rdlc" DisplayName="打版查詢">
                             <DataSources>
                                 <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet打版發單" />
                             </DataSources>

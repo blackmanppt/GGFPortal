@@ -22,13 +22,13 @@ namespace GGFPortal.VN {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// DropDownList2 控制項。
+        /// YearDDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList YearDDL;
         
         /// <summary>
         /// MonthDDL 控制項。
@@ -40,13 +40,13 @@ namespace GGFPortal.VN {
         protected global::System.Web.UI.WebControls.DropDownList MonthDDL;
         
         /// <summary>
-        /// VendorDDL 控制項。
+        /// Label1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList VendorDDL;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// SearchBT 控制項。
@@ -56,6 +56,15 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SearchBT;
+        
+        /// <summary>
+        /// ClearBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ClearBT;
         
         /// <summary>
         /// GridView1 控制項。

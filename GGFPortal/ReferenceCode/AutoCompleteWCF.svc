@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GGFPortal.ReferenceCode.AutoCompleteWCF" CodeBehind="AutoCompleteWCF.svc.cs" %>

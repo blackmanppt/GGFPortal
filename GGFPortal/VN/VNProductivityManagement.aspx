@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <h4>年</h4>
 <%--<asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>--%>
-<asp:DropDownList ID="DropDownList2" runat="server" class="form-control"></asp:DropDownList>
+<asp:DropDownList ID="YearDDL" runat="server" class="form-control"></asp:DropDownList>
 						</div> 
                     <h4>月</h4>
                     <div class="form-group">
@@ -48,24 +48,30 @@
                                 <asp:ListItem>12</asp:ListItem>
                             </asp:DropDownList>
 						</div> 
-                    <h4>工廠</h4>
+  <%--                   <h4>工廠</h4>
                     <div class="form-group">
 							<asp:DropDownList ID="VendorDDL" runat="server" class="form-control"></asp:DropDownList>
 						</div> 
-<%--                    <h4>工廠</h4>
+                   <h4>工廠</h4>
                     <div class="form-group">
     <asp:DropDownList ID="DropDownList1" runat="server" class="form-control "  ></asp:DropDownList>
 						</div> --%>
-<asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" />
+                    <div class="form-group">
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+						</div>
+<asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
+                    <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />
 					
 				</div>
 				
 			</nav>
 		</div>
 		<div class="col-md-10">
-    <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" DataKeyNames="uid" DataSourceID="SqlDataSource1" AllowPaging="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" PageSize="25">
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" DataKeyNames="uid" DataSourceID="SqlDataSource1" AllowPaging="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" PageSize="25" OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
         <Columns>
+            <asp:CommandField ButtonType="Button" SelectText="鎖定/解鎖" ShowSelectButton="True" />
             <asp:BoundField DataField="uid" HeaderText="uid" InsertVisible="False" ReadOnly="True" SortExpression="uid" />
+            <asp:BoundField DataField="Flag" HeaderText="Flag" SortExpression="Flag"  />
             <asp:BoundField DataField="VendorId" HeaderText="VendorId" SortExpression="VendorId" />
             <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
             <asp:BoundField DataField="Month" HeaderText="Month" SortExpression="Month" />
@@ -74,13 +80,13 @@
             <asp:BoundField DataField="Day" HeaderText="Day" SortExpression="Day" />
             <asp:BoundField DataField="Hour" HeaderText="Hour" SortExpression="Hour" />
             <asp:BoundField DataField="CREATOR" HeaderText="CREATOR" SortExpression="CREATOR" />
-            <asp:BoundField DataField="CREATEDATE" HeaderText="CREATEDATE" SortExpression="CREATEDATE" />
-            <asp:BoundField DataField="ModifyUser" HeaderText="ModifyUser" SortExpression="ModifyUser" />
-            <asp:BoundField DataField="ModifyDate" HeaderText="ModifyDate" SortExpression="ModifyDate" />
-            <asp:BoundField DataField="Flag" HeaderText="Flag" SortExpression="Flag" />
+            <asp:BoundField DataField="CREATEDATE" HeaderText="CREATEDATE" SortExpression="CREATEDATE"  DataFormatString="{0:d}"/>
+            <asp:BoundField DataField="ModifyUser" HeaderText="ModifyUser" SortExpression="ModifyUser" NullDisplayText="未修改" />
+            <asp:BoundField DataField="ModifyDate" HeaderText="ModifyDate" SortExpression="ModifyDate"  DataFormatString="{0:d}" NullDisplayText="未修改"/>
         </Columns>
             <FooterStyle BackColor="White" ForeColor="#333333" />
         <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+        <PagerSettings Position="Top" />
         <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="White" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
@@ -90,7 +96,14 @@
         <SortedDescendingHeaderStyle BackColor="#275353" />
             </asp:GridView>
 			
-		    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [ProductivityCost]"></asp:SqlDataSource>
+		    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [ProductivityCost] WHERE ([Year] = @Year and ([Month] = @Month or 1=@SearchFlag2) ) or 1=@SearchFlag">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="YearDDL" DefaultValue="2017" Name="Year" PropertyName="SelectedValue" Type="Int32" />
+                    <asp:ControlParameter ControlID="MonthDDL" DefaultValue="1" Name="Month" PropertyName="SelectedValue" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1" Name="SearchFlag" SessionField="SearchFlag" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="2" Name="SearchFlag2" SessionField="SearchFlag2" Type="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
 			
 		</div>
 
