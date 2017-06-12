@@ -149,6 +149,14 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink35" runat="server" NavigateUrl="~/Sales/Sample001.aspx">打樣打版資料上傳</asp:HyperLink>
                                                                         <br />
                                                 <asp:HyperLink ID="HyperLink38" runat="server" NavigateUrl="~/Sales/Sample003.aspx">打版資料查詢</asp:HyperLink>
+                                                                                                <br />
+                                                <asp:HyperLink ID="HyperLink41" runat="server" NavigateUrl="~/Sales/Sample004.aspx">樣品室產量月總表</asp:HyperLink>
+                                                                                                <br />
+                                                <asp:HyperLink ID="HyperLink42" runat="server" NavigateUrl="~/Sales/Sample005.aspx">樣品室產量月總表-客戶</asp:HyperLink>
+                                                                                                <br />
+                                                <asp:HyperLink ID="HyperLink43" runat="server" NavigateUrl="~/Sales/Sample006.aspx">樣品室產量月總表-款式</asp:HyperLink>
+                                                                                                <br />
+                                                <asp:HyperLink ID="HyperLink44" runat="server" NavigateUrl="~/Sales/Sample007.aspx">樣品室產量月總表-處理人員</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 

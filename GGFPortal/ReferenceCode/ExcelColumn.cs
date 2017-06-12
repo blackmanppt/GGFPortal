@@ -61,6 +61,9 @@ namespace GGFPortal.ReferenceCode
             ExcelTable.Columns.Add("DayCost5");
             ExcelTable.Columns.Add("DayCost6");
             ExcelTable.Columns.Add("DayCost7");
+            ExcelTable.Columns.Add("QCQty");
+            ExcelTable.Columns.Add("ErrorQty");
+            ExcelTable.Columns.Add("OnlineDay");
         }
         public void VNPackage()
         {
@@ -98,6 +101,9 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
         public void VNCut()
         {
@@ -135,6 +141,9 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
         public void VNIron()
         {
@@ -173,10 +182,13 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
         public void VNQC()
         {
-            //整燙
+            //QC
             // Type 1：int , Type 2：String , Type 3：日期 , Type 4：float, Type 6：不需要資料 String, Type 7：不需要資料 int , Type 8：float 不需要資料, Type 9:
             int x = 1;
             VNExcel = new List<Column1>();
@@ -211,6 +223,9 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
         public void VNStitch()
         {
@@ -247,6 +262,9 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 4 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
         public void VNStitchmain()
         {
@@ -312,6 +330,9 @@ namespace GGFPortal.ReferenceCode
             VNExcel[IntAdd(ref x)].ChineseName = "今日生產損益";
             VNExcel[IntAdd(ref x)].ChineseName = "CM損益";
             VNExcel[IntAdd(ref x)].ChineseName = "累積損益";
+            VNExcel[IntAdd(ref x)].ChineseName = "QC檢驗數量";
+            VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數";
+            VNExcel[IntAdd(ref x)].ChineseName = "上線天數";
 
         }
     }

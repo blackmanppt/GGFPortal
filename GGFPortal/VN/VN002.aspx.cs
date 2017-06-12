@@ -207,7 +207,7 @@ namespace GGFPortal.VN
                                 bool bcheck = true, berror = false;
                                 string sError = "";
                                 //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                for (int j = row.FirstCellNum; j < 29; j++)   //有些EXCEL會沒填資料
+                                for (int j = row.FirstCellNum; j < 32; j++)   //有些EXCEL會沒填資料
                                 {
                                     //沒有Style就不抓
                                     if (row.GetCell(2) == null)
@@ -343,7 +343,7 @@ namespace GGFPortal.VN
                                 bool bcheck = true, berror = false;
                                 string sError = "";
                                 //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                for (int j = row.FirstCellNum; j < 29; j++)   //有些EXCEL會沒填資料
+                                for (int j = row.FirstCellNum; j < 32; j++)   //有些EXCEL會沒填資料
                                 {
                                     //沒有Style就不抓
                                     if (row.GetCell(2) == null)
@@ -727,6 +727,12 @@ namespace GGFPortal.VN
                                 {
                                     for (int i = 0; i < dt.Rows.Count; i++)
                                     {
+                                        string strInsertColumn="", strInsertData="";
+                                        if (strImportType=="Stitch")
+                                        {
+                                            strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay]";
+                                            strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay";
+                                        }
                                         //TypeLB.Text = i.ToString();
                                         command1.CommandText = string.Format(@"INSERT INTO [dbo].[Productivity_Line]
                                                        ([uid]
@@ -760,9 +766,9 @@ namespace GGFPortal.VN
                                                        ,[DayCost5]
                                                        ,[DayCost6]
                                                        ,[DayCost7]
-                                                       ,[Creator])
+                                                       ,[Creator] {0})
                                                  VALUES
-                                                       ({0}
+                                                       ({1}
                                                        ,@SheetName
                                                        ,@Dept
                                                        ,@Customer
@@ -793,8 +799,8 @@ namespace GGFPortal.VN
                                                        ,@DayCost5
                                                        ,@DayCost6
                                                        ,@DayCost7
-                                                       ,'Program')
-                                                       ", iIndex);
+                                                       ,'Program' {2} )
+                                                       ", strInsertColumn, iIndex, strInsertData);
                                         command1.Parameters.Add("@SheetName", SqlDbType.NVarChar).Value = dt.Rows[i]["SheetName"].ToString();
                                         command1.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = dt.Rows[i]["Dept"].ToString();
                                         command1.Parameters.Add("@Customer", SqlDbType.NVarChar).Value = dt.Rows[i]["Customer"].ToString();
@@ -825,7 +831,12 @@ namespace GGFPortal.VN
                                         command1.Parameters.Add("@DayCost5", SqlDbType.Float).Value = dt.Rows[i]["DayCost5"].ToString();
                                         command1.Parameters.Add("@DayCost6", SqlDbType.Float).Value = dt.Rows[i]["DayCost6"].ToString();
                                         command1.Parameters.Add("@DayCost7", SqlDbType.Float).Value = dt.Rows[i]["DayCost7"].ToString();
-
+                                        if (strImportType == "Stitch")
+                                        {
+                                            command1.Parameters.Add("@QCQty", SqlDbType.Int).Value = dt.Rows[i]["QCQty"].ToString();
+                                            command1.Parameters.Add("@ErrorQty", SqlDbType.Int).Value = dt.Rows[i]["ErrorQty"].ToString();
+                                            command1.Parameters.Add("@OnlineDay", SqlDbType.Int).Value = dt.Rows[i]["OnlineDay"].ToString();
+                                        }
                                         command1.ExecuteNonQuery();
                                         command1.Parameters.Clear();
                                     }

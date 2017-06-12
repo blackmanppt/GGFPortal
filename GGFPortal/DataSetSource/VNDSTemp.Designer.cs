@@ -522,6 +522,12 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column累積損益;
             
+            private global::System.Data.DataColumn columnQC檢驗數量;
+            
+            private global::System.Data.DataColumn column瑕疵數;
+            
+            private global::System.Data.DataColumn column上線天數;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public VNReportDataTable() {
@@ -829,6 +835,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QC檢驗數量Column {
+                get {
+                    return this.columnQC檢驗數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 瑕疵數Column {
+                get {
+                    return this.column瑕疵數;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 上線天數Column {
+                get {
+                    return this.column上線天數;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -898,7 +928,10 @@ namespace GGFPortal.DataSetSource {
                         double 今日工繳收入, 
                         double 今日生產損益, 
                         double CM損益, 
-                        double 累積損益) {
+                        double 累積損益, 
+                        int QC檢驗數量, 
+                        int 瑕疵數, 
+                        int 上線天數) {
                 VNReportRow rowVNReportRow = ((VNReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Team,
@@ -934,7 +967,10 @@ namespace GGFPortal.DataSetSource {
                         今日工繳收入,
                         今日生產損益,
                         CM損益,
-                        累積損益};
+                        累積損益,
+                        QC檢驗數量,
+                        瑕疵數,
+                        上線天數};
                 rowVNReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVNReportRow);
                 return rowVNReportRow;
@@ -991,6 +1027,9 @@ namespace GGFPortal.DataSetSource {
                 this.column今日生產損益 = base.Columns["今日生產損益"];
                 this.columnCM損益 = base.Columns["CM損益"];
                 this.column累積損益 = base.Columns["累積損益"];
+                this.columnQC檢驗數量 = base.Columns["QC檢驗數量"];
+                this.column瑕疵數 = base.Columns["瑕疵數"];
+                this.column上線天數 = base.Columns["上線天數"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1064,6 +1103,12 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnCM損益);
                 this.column累積損益 = new global::System.Data.DataColumn("累積損益", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column累積損益);
+                this.columnQC檢驗數量 = new global::System.Data.DataColumn("QC檢驗數量", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQC檢驗數量);
+                this.column瑕疵數 = new global::System.Data.DataColumn("瑕疵數", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column瑕疵數);
+                this.column上線天數 = new global::System.Data.DataColumn("上線天數", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column上線天數);
                 this.columnTeam.AllowDBNull = false;
                 this.columnTeam.MaxLength = 20;
                 this.columnDate.AllowDBNull = false;
@@ -5234,6 +5279,54 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int QC檢驗數量 {
+                get {
+                    try {
+                        return ((int)(this[this.tableVNReport.QC檢驗數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'VNReport\' 中資料行 \'QC檢驗數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableVNReport.QC檢驗數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 瑕疵數 {
+                get {
+                    try {
+                        return ((int)(this[this.tableVNReport.瑕疵數Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'VNReport\' 中資料行 \'瑕疵數\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableVNReport.瑕疵數Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 上線天數 {
+                get {
+                    try {
+                        return ((int)(this[this.tableVNReport.上線天數Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'VNReport\' 中資料行 \'上線天數\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableVNReport.上線天數Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsModifyDateNull() {
                 return this.IsNull(this.tableVNReport.ModifyDateColumn);
             }
@@ -5590,6 +5683,42 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set累積損益Null() {
                 this[this.tableVNReport.累積損益Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQC檢驗數量Null() {
+                return this.IsNull(this.tableVNReport.QC檢驗數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQC檢驗數量Null() {
+                this[this.tableVNReport.QC檢驗數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is瑕疵數Null() {
+                return this.IsNull(this.tableVNReport.瑕疵數Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set瑕疵數Null() {
+                this[this.tableVNReport.瑕疵數Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is上線天數Null() {
+                return this.IsNull(this.tableVNReport.上線天數Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set上線天數Null() {
+                this[this.tableVNReport.上線天數Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -10371,6 +10500,9 @@ namespace GGFPortal.DataSetSource.VNDSTempTableAdapters {
             tableMapping.ColumnMappings.Add("今日生產損益", "今日生產損益");
             tableMapping.ColumnMappings.Add("CM損益", "CM損益");
             tableMapping.ColumnMappings.Add("累積損益", "累積損益");
+            tableMapping.ColumnMappings.Add("QC檢驗數量", "QC檢驗數量");
+            tableMapping.ColumnMappings.Add("瑕疵數", "瑕疵數");
+            tableMapping.ColumnMappings.Add("上線天數", "上線天數");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10387,41 +10519,18 @@ namespace GGFPortal.DataSetSource.VNDSTempTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"
-
-select Team,Date,Flag,a.CreateDate,ModifyDate,SheetName as 頁簽名稱
-,Dept as 部門
-,Customer as 客戶
-,StyleNo as 款號
-,OrderQty as 訂單量
-,OrderShipDate as 訂單交期
-,OnlineDate as 上線日期
-,StandardProductivity as 標準產量
-,TeamProductivity as 組生產量
-,GoalProductivity as 今日目標產量
-,DayProductivity as 今日產量
-,PreProductivity as 前天累積產量
-,TotalProductivity as 累積產量
-,Person as 實際工作人數
-,Time as 工時
-,TotalTime as 總時數
-,Difference as 差異量
-,Efficiency as 組各別效率
-,TotalEfficiency as 組效率
-,ReturnPercent as 返修率
-,Rmark1 as 責任歸屬及上線天數
-,Rmark2 as 顏色
-,DayCost1 as 今日各組成本
-,DayCost2 as 今日生產成本
-,DayCost3 as 工繳收入
-,DayCost4 as 今日工繳收入
-,DayCost5 as 今日生產損益
-,DayCost6 as CM損益
-,DayCost7 as 累積損益
-from  Productivity_Head a left join Productivity_Line b on a.uid=b.uid
-where Flag=@Flag and Date between @Date1  and @Date2 and b.StyleNo like @StyleNo
-
-";
+            this._commandCollection[0].CommandText = @"SELECT          a.Team, a.Date, a.Flag, a.CreateDate, a.ModifyDate, b.SheetName AS 頁簽名稱, b.Dept AS 部門, b.Customer AS 客戶, 
+                            b.StyleNo AS 款號, b.OrderQty AS 訂單量, b.OrderShipDate AS 訂單交期, b.OnlineDate AS 上線日期, 
+                            b.StandardProductivity AS 標準產量, b.TeamProductivity AS 組生產量, b.GoalProductivity AS 今日目標產量, 
+                            b.DayProductivity AS 今日產量, b.PreProductivity AS 前天累積產量, b.TotalProductivity AS 累積產量, 
+                            b.Person AS 實際工作人數, b.Time AS 工時, b.TotalTime AS 總時數, b.Difference AS 差異量, 
+                            b.Efficiency AS 組各別效率, b.TotalEfficiency AS 組效率, b.ReturnPercent AS 返修率, 
+                            b.Rmark1 AS 責任歸屬及上線天數, b.Rmark2 AS 顏色, b.DayCost1 AS 今日各組成本, b.DayCost2 AS 今日生產成本, 
+                            b.DayCost3 AS 工繳收入, b.DayCost4 AS 今日工繳收入, b.DayCost5 AS 今日生產損益, b.DayCost6 AS CM損益, 
+                            b.DayCost7 AS 累積損益, b.QCQty AS QC檢驗數量, b.ErrorQty AS 瑕疵數, b.OnlineDay AS 上線天數
+FROM              Productivity_Head AS a LEFT OUTER JOIN
+                            Productivity_Line AS b ON a.uid = b.uid
+WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.StyleNo LIKE @StyleNo)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Flag", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Flag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date1", global::System.Data.SqlDbType.NVarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

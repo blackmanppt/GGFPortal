@@ -128,6 +128,9 @@
                     <asp:BoundField DataField="DayCost5" HeaderText="今日生產損益 USD USD Lãi,lỗ" />
                     <asp:BoundField DataField="DayCost6" HeaderText="(CM-COST)/CM 損 益 % lãi lỗ" />
                     <asp:BoundField DataField="DayCost7" HeaderText="累積損益" />
+                    <asp:BoundField DataField="QCQty" HeaderText="QC檢驗數量" />
+                    <asp:BoundField DataField="ErrorQty" HeaderText="瑕疵數" />
+                    <asp:BoundField DataField="OnlineDay" HeaderText="上線天數" />
                 </Columns>
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />

@@ -225,6 +225,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -416,6 +417,10 @@
     <Content Include="Finance\Finance011.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ReferenceCode\AutoCompleteWCF.svc" />
+    <Content Include="Sales\Sample007.aspx" />
+    <Content Include="Sales\Sample006.aspx" />
+    <Content Include="Sales\Sample005.aspx" />
+    <Content Include="Sales\Sample004.aspx" />
     <Content Include="Sales\SALE_V5.aspx" />
     <Content Include="Sales\SALE_V4.aspx" />
     <Content Include="Sales\SALE_V3.aspx" />
@@ -1235,6 +1240,40 @@
     <Compile Include="ReferenceCode\ExcelColumn.cs" />
     <Compile Include="ReferenceCode\VNExcel.cs" />
     <Compile Include="ReferenceCode\資料庫搜尋條件.cs" />
+    <Compile Include="ReportSource\Report1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportSource\Report1.Designer.cs">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample007.aspx.cs">
+      <DependentUpon>Sample007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample007.aspx.designer.cs">
+      <DependentUpon>Sample007.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample006.aspx.cs">
+      <DependentUpon>Sample006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample006.aspx.designer.cs">
+      <DependentUpon>Sample006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample005.aspx.cs">
+      <DependentUpon>Sample005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample005.aspx.designer.cs">
+      <DependentUpon>Sample005.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample004.aspx.cs">
+      <DependentUpon>Sample004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample004.aspx.designer.cs">
+      <DependentUpon>Sample004.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\SALE_V5.aspx.cs">
       <DependentUpon>SALE_V5.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1787,6 +1826,9 @@
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ReportSource\Report1.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
@@ -1800,10 +1842,15 @@
     <EmbeddedResource Include="ReportSource\ReportSALE_V5.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSALE_V4.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSample003.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSample004.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSample005.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSample006.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportSample02_V2.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>

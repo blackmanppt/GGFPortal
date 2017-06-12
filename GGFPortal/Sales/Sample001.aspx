@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>打樣單</title>
+    <title>樣品進度登記</title>
     
         <%--<link href="scripts/bootstrap.min.css" rel="stylesheet"/>--%>
     <style type="text/css">
@@ -32,7 +32,7 @@
         <table style="width:800px;">
             <tr>
                 <td colspan="3">
-                    <asp:Label ID="Label1" runat="server" Text="樣品處理" style="font-size: xx-large; font-weight: 700; background-color: #00CC99;"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="樣品進度登記" style="font-size: xx-large; font-weight: 700; background-color: #00CC99;"></asp:Label>
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
 
