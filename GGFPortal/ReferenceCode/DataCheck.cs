@@ -28,8 +28,8 @@ namespace GGFPortal.ReferenceCode
                                         where VendorId = @VendorId and Year = @Year and Month = @Month and Flag = 1";
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@VendorId", SqlDbType.NVarChar).Value = str代工廠;
-                command.Parameters.Add("@Year", SqlDbType.NVarChar).Value = str月份.Substring(1,4);
-                command.Parameters.Add("@Month", SqlDbType.NVarChar).Value = str月份.Substring(5,2);
+                command.Parameters.Add("@Year", SqlDbType.NVarChar).Value = str月份.Substring(0,4);
+                command.Parameters.Add("@Month", SqlDbType.NVarChar).Value = str月份.Substring(4,2);
                 conn.Open();
                 SqlDataReader reader = command.ExecuteReader();
 

@@ -175,6 +175,7 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
@@ -237,6 +238,10 @@
     <Reference Include="Telerik.Reporting.Services.WebApi, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
     <Reference Include="Telerik.Reporting.XpsRendering, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
     <Reference Include="Telerik.ReportViewer.Html5.WebForms, Version=11.1.17.503, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Web.UI, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET AJAX R2 2017\Bin45\Telerik.Web.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -411,10 +416,21 @@
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite.png" />
     <Content Include="Content\kendo\2014.1.318\Uniform\sprite_2x.png" />
     <Content Include="Content\style.css" />
+    <Content Include="DataSetSource\TestModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSetSource\TestModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestModel.cs</LastGenOutput>
+      <Parameters>&lt;%3fxml version="1.0" encoding="utf-16"%3f&gt;
+&lt;ArrayOfParameterStorage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Parameters>
+    </Content>
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
     <Content Include="Finance\Finance011.aspx" />
+    <Content Include="Finance\TAX\TAX008.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ReferenceCode\AutoCompleteWCF.svc" />
     <Content Include="Sales\Sample007.aspx" />
@@ -1061,6 +1077,7 @@
     <Content Include="test\AJAXTEST.aspx" />
     <Content Include="test\AutoComplete.aspx" />
     <Content Include="test\CrystalReport1.aspx" />
+    <Content Include="test\DefaultCS.aspx" />
     <Content Include="test\ExcelUpload.aspx" />
     <Content Include="test\MVC\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\test2test.pubxml" />
@@ -1143,6 +1160,7 @@
     <Content Include="test\DataSetTest.xss">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
+    <Content Include="test\TelerikWebForm.aspx" />
     <Content Include="VN\VN007.aspx" />
     <Content Include="VN\VN006.aspx" />
     <Content Include="VN\VN005.aspx" />
@@ -1190,6 +1208,16 @@
       <DependentUpon>CrystalReporttest1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataSetSource\TestModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\TestModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1227,6 +1255,13 @@
     </Compile>
     <Compile Include="Finance\Finance011.aspx.designer.cs">
       <DependentUpon>Finance011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX008.aspx.cs">
+      <DependentUpon>TAX008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\TAX\TAX008.aspx.designer.cs">
+      <DependentUpon>TAX008.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1706,12 +1741,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Compile>
+    <Compile Include="test\DefaultCS.aspx.cs">
+      <DependentUpon>DefaultCS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\DefaultCS.aspx.designer.cs">
+      <DependentUpon>DefaultCS.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\ExcelUpload.aspx.cs">
       <DependentUpon>ExcelUpload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\ExcelUpload.aspx.designer.cs">
       <DependentUpon>ExcelUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\TelerikWebForm.aspx.cs">
+      <DependentUpon>TelerikWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\TelerikWebForm.aspx.designer.cs">
+      <DependentUpon>TelerikWebForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
@@ -1819,6 +1868,7 @@
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="Models\" />
+    <Folder Include="ReportSource\Sales\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CrystalReporttest1.rpt">
@@ -1884,6 +1934,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>

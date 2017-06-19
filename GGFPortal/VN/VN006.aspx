@@ -84,7 +84,7 @@
                             <asp:ListItem Value="2">刪除</asp:ListItem>
                         </asp:DropDownList></td>
                     <td>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn-default" PostBackUrl="~/VN/VNProductivityManagement.aspx">LinkButton</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn-default btn" PostBackUrl="~/VN/VNProductivityManagement.aspx">基本資料設定</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
