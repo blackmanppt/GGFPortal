@@ -12,7 +12,7 @@ namespace GGFPortal
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-        Telerik.Reporting.Services.WebApi.ReportsControllerConfiguration.RegisterRoutes(System.Web.Http.GlobalConfiguration.Configuration);
+        //Telerik.Reporting.Services.WebApi.ReportsControllerConfiguration.RegisterRoutes(System.Web.Http.GlobalConfiguration.Configuration);
             //ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.WebForms;
         }
     }
