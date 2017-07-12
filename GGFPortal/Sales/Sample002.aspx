@@ -128,7 +128,7 @@
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand=
-  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E01A') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E010','M01B','N01B') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
                     </td>
                                         <th class="auto-style4">
                         <asp:Label ID="Label9" runat="server" Text="修改放縮馬克："></asp:Label>
@@ -138,7 +138,7 @@
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand=
-  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E01A') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
+  " select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E010','M01B','N01B') and a.employee_status<>'IA'  order by Name,employee_no "></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>

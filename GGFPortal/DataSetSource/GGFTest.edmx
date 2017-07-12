@@ -1,0 +1,1509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TestGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acr_trn">
+          <Key>
+            <PropertyRef Name="create_timestamp" />
+          </Key>
+          <Property Name="create_timestamp" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="site" Type="nvarchar" MaxLength="4" />
+          <Property Name="kind" Type="nvarchar" MaxLength="4" />
+          <Property Name="acr_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="acr_date" Type="datetime" />
+          <Property Name="transaction_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="transaction_class" Type="nvarchar" MaxLength="2" />
+          <Property Name="reverse_code" Type="nvarchar" MaxLength="1" />
+          <Property Name="offset_method" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="cus_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="invoice_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="employee_no" Type="nvarchar" MaxLength="8" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="area_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="pay_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="transatn_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="exchange_rate" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="offset_exchange" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="nvarchar" MaxLength="4" />
+          <Property Name="local_invoice_no" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="tax_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="affect_column" Type="nvarchar" MaxLength="1" />
+          <Property Name="discount_rate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="nvarchar" MaxLength="1" />
+          <Property Name="data_source" Type="nvarchar" MaxLength="1" />
+          <Property Name="acr_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="order_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="order_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="adjust_code" Type="nvarchar" MaxLength="1" />
+          <Property Name="reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="foreign_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="base_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="remark40" Type="nvarchar" MaxLength="300" />
+          <Property Name="reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="unit_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="acr_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="detail_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="iss_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="cash_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_owner" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_city" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_issuer" Type="nvarchar" MaxLength="80" />
+          <Property Name="acr_counter_date" Type="datetime" />
+          <Property Name="acr_due_date" Type="datetime" />
+          <Property Name="note_due_date" Type="datetime" />
+          <Property Name="note_rec_date" Type="datetime" />
+          <Property Name="posted_bal" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_nms" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_ais" Type="nvarchar" MaxLength="1" />
+          <Property Name="acr_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="project_id" Type="nvarchar" MaxLength="10" />
+          <Property Name="adv_tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="account_date" Type="datetime" />
+          <Property Name="team_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="keyin_user" Type="nvarchar" MaxLength="8" />
+          <Property Name="issuer" Type="nvarchar" MaxLength="8" />
+          <Property Name="ord_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="cust_po_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="prod_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_class" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_statistic" Type="nvarchar" MaxLength="8" />
+          <Property Name="style_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="posted_acp" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="acr_trn_check">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="create_timestamp" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_timestamp" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CheckFlag" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CheckModifyDate" Type="datetime" />
+          <Property Name="ticket" Type="nchar" MaxLength="50" />
+          <Property Name="AcrTaxID" Type="int" />
+          <Property Name="site" Type="nvarchar" MaxLength="4" />
+          <Property Name="kind" Type="nvarchar" MaxLength="4" />
+          <Property Name="acr_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="acr_date" Type="datetime" />
+          <Property Name="transaction_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="transaction_class" Type="nvarchar" MaxLength="2" />
+          <Property Name="reverse_code" Type="nvarchar" MaxLength="1" />
+          <Property Name="offset_method" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="cus_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="invoice_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="employee_no" Type="nvarchar" MaxLength="8" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="area_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="pay_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="transatn_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="exchange_rate" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="offset_exchange" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="nvarchar" MaxLength="4" />
+          <Property Name="local_invoice_no" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="tax_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="affect_column" Type="nvarchar" MaxLength="1" />
+          <Property Name="discount_rate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="nvarchar" MaxLength="1" />
+          <Property Name="data_source" Type="nvarchar" MaxLength="1" />
+          <Property Name="acr_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="order_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="order_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="adjust_code" Type="nvarchar" MaxLength="1" />
+          <Property Name="reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="foreign_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="base_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="remark40" Type="nvarchar" MaxLength="300" />
+          <Property Name="reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="unit_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="acr_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="detail_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="iss_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="cash_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_owner" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_city" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_issuer" Type="nvarchar" MaxLength="80" />
+          <Property Name="acr_counter_date" Type="datetime" />
+          <Property Name="acr_due_date" Type="datetime" />
+          <Property Name="note_due_date" Type="datetime" />
+          <Property Name="note_rec_date" Type="datetime" />
+          <Property Name="posted_bal" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_nms" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_ais" Type="nvarchar" MaxLength="1" />
+          <Property Name="acr_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="project_id" Type="nvarchar" MaxLength="10" />
+          <Property Name="adv_tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="account_date" Type="datetime" />
+          <Property Name="team_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="keyin_user" Type="nvarchar" MaxLength="8" />
+          <Property Name="issuer" Type="nvarchar" MaxLength="8" />
+          <Property Name="ord_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="cust_po_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="prod_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_class" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_statistic" Type="nvarchar" MaxLength="8" />
+          <Property Name="style_no" Type="nvarchar" MaxLength="38" />
+        </EntityType>
+        <EntityType Name="acr_trnd">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="acr_nbr" />
+            <PropertyRef Name="acr_seq" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="kind" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="acr_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="acr_seq" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="order_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="transaction_class" Type="nvarchar" MaxLength="2" />
+          <Property Name="adjust_code" Type="nvarchar" MaxLength="1" />
+          <Property Name="reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="detail_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="detail_remark" Type="nvarchar" MaxLength="300" />
+          <Property Name="reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="acr_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="unit_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="note_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_owner" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_city" Type="nvarchar" MaxLength="1" />
+          <Property Name="note_issuer" Type="nvarchar" MaxLength="80" />
+          <Property Name="iss_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="iss_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="cash_main_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_branch_bank" Type="nvarchar" MaxLength="4" />
+          <Property Name="cash_bank_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="note_rec_date" Type="datetime" />
+          <Property Name="note_due_date" Type="datetime" />
+          <Property Name="change_offset_method" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="change_reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="select_balance_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="source_kind" Type="nvarchar" MaxLength="4" />
+          <Property Name="source_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="source_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="project_id" Type="nvarchar" MaxLength="10" />
+          <Property Name="acr_detail_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="invoice_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="adv_tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="rate_amt" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="base_detail_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="base_untax_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cus_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="offset_currency" Type="nvarchar" MaxLength="4" />
+          <Property Name="offset_exchange" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="team_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="detail_tax" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="base_detail_tax" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="detail_untax" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="invoice_date" Type="datetime" />
+          <Property Name="ord_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="cust_po_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="prod_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_class" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_statistic" Type="nvarchar" MaxLength="8" />
+          <Property Name="style_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="accu_exchange" Type="numeric" Precision="10" Scale="5" />
+        </EntityType>
+        <EntityType Name="acr_trnm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="acr_nbr" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="kind" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="acr_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="acr_date" Type="datetime" />
+          <Property Name="transaction_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="cus_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="adv_reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="post_reference_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="post_adv_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="employee_no" Type="nvarchar" MaxLength="8" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="area_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="pay_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="exchange_rate" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="nvarchar" MaxLength="4" />
+          <Property Name="offset_exchange" Type="numeric" Precision="10" Scale="5" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="transatn_term" Type="nvarchar" MaxLength="6" />
+          <Property Name="order_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="invoice_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="local_invoice_no" Type="numeric" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="nvarchar" MaxLength="4" />
+          <Property Name="tax_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="sale_total_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="nvarchar" MaxLength="1" />
+          <Property Name="discount_rate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="acr_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="note_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="bank_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cash_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="return_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="other1_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="other2_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="acr_adv_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="reject_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="acr_due_date" Type="datetime" />
+          <Property Name="affect_column" Type="nvarchar" MaxLength="1" />
+          <Property Name="offset_method" Type="numeric" Precision="2" Scale="0" />
+          <Property Name="data_source" Type="nvarchar" MaxLength="1" />
+          <Property Name="acr_head_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="proc_mask" Type="nvarchar" MaxLength="1" />
+          <Property Name="stax_reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="adv_reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="ptax_reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="base_tax_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="base_tot_amt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="account_date" Type="datetime" />
+          <Property Name="team_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="keyin_user" Type="nvarchar" MaxLength="8" />
+          <Property Name="issuer" Type="nvarchar" MaxLength="8" />
+          <Property Name="invoice_date" Type="datetime" />
+          <Property Name="invoice_flag" Type="nchar" MaxLength="1" />
+          <Property Name="acp_amt" Type="numeric" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="purc_pkd">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+            <PropertyRef Name="pak_seq" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="pak_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pak_seq" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="cus_item_no" Type="nvarchar" MaxLength="100" />
+          <Property Name="rec_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="rec_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="uncount_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="coint_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="box_no" Type="nvarchar" MaxLength="12" />
+          <Property Name="box_qty" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="tot_net_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cube_feet" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="rec_unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="pur_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="rec_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="customs_decleartion_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="customs_decleartion_amt" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="clear_Customs_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="combine" Type="nvarchar" MaxLength="8" />
+          <Property Name="pkd_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="vendor_id" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="purc_pkd_for_acr">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+            <PropertyRef Name="pak_seq" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="pak_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pak_seq" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="acr_ticket" Type="nchar" MaxLength="10" />
+          <Property Name="CheckFlag" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="datetime" Nullable="false" />
+          <Property Name="AcrTaxID" Type="int" />
+          <Property Name="cus_item_no" Type="nvarchar" MaxLength="100" />
+          <Property Name="rec_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="rec_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="uncount_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="coint_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="box_no" Type="nvarchar" MaxLength="12" />
+          <Property Name="box_qty" Type="numeric" Precision="8" Scale="0" />
+          <Property Name="tot_net_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="cube_feet" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="rec_unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="pur_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="rec_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="customs_decleartion_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="customs_decleartion_amt" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="clear_Customs_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="combine" Type="nvarchar" MaxLength="8" />
+          <Property Name="pkd_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="vendor_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="PreAmt" Type="numeric" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="purc_pkm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="pak_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pak_date" Type="datetime" />
+          <Property Name="sono" Type="nvarchar" MaxLength="2" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="pick_port" Type="nvarchar" MaxLength="8" />
+          <Property Name="port_of_destination" Type="nvarchar" MaxLength="8" />
+          <Property Name="owner" Type="nvarchar" MaxLength="8" />
+          <Property Name="sender" Type="nvarchar" MaxLength="20" />
+          <Property Name="addressee" Type="nvarchar" MaxLength="20" />
+          <Property Name="vessel" Type="nvarchar" MaxLength="200" />
+          <Property Name="voyage" Type="nvarchar" MaxLength="200" />
+          <Property Name="cabinet_no" Type="nvarchar" MaxLength="200" />
+          <Property Name="cabinet_type" Type="nvarchar" MaxLength="200" />
+          <Property Name="dta_date" Type="datetime" />
+          <Property Name="etd_date" Type="datetime" />
+          <Property Name="etc_date" Type="datetime" />
+          <Property Name="arrival_date" Type="datetime" />
+          <Property Name="pkm_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="tot_box_qty" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_net_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_cube_feet" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="so_nbr" Type="nvarchar" MaxLength="4" />
+          <Property Name="decl_no" Type="nvarchar" MaxLength="40" />
+          <Property Name="bol_no" Type="nvarchar" MaxLength="40" />
+          <Property Name="ship_cost" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="ins_amt" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="pur_kind" Type="nvarchar" MaxLength="1" />
+          <Property Name="vendor_id" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="purc_pkm_for_acr">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="pak_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pak_date" Type="datetime" />
+          <Property Name="CheckFlag" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="datetime" Nullable="false" />
+          <Property Name="acr_uid" Type="int" />
+          <Property Name="sono" Type="nvarchar" MaxLength="2" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="pick_port" Type="nvarchar" MaxLength="8" />
+          <Property Name="port_of_destination" Type="nvarchar" MaxLength="8" />
+          <Property Name="owner" Type="nvarchar" MaxLength="8" />
+          <Property Name="sender" Type="nvarchar" MaxLength="20" />
+          <Property Name="addressee" Type="nvarchar" MaxLength="20" />
+          <Property Name="vessel" Type="nvarchar" MaxLength="200" />
+          <Property Name="voyage" Type="nvarchar" MaxLength="200" />
+          <Property Name="cabinet_no" Type="nvarchar" MaxLength="200" />
+          <Property Name="cabinet_type" Type="nvarchar" MaxLength="200" />
+          <Property Name="dta_date" Type="datetime" />
+          <Property Name="etd_date" Type="datetime" />
+          <Property Name="etc_date" Type="datetime" />
+          <Property Name="arrival_date" Type="datetime" />
+          <Property Name="pkm_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="tot_box_qty" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_net_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="tot_cube_feet" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="so_nbr" Type="nvarchar" MaxLength="4" />
+          <Property Name="decl_no" Type="nvarchar" MaxLength="40" />
+          <Property Name="bol_no" Type="nvarchar" MaxLength="40" />
+          <Property Name="ship_cost" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="ins_amt" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="pur_kind" Type="nvarchar" MaxLength="1" />
+          <Property Name="vendor_id" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityContainer Name="TestGroupModelStoreContainer">
+          <EntitySet Name="acr_trn" EntityType="Self.acr_trn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acr_trn_check" EntityType="Self.acr_trn_check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acr_trnd" EntityType="Self.acr_trnd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acr_trnm" EntityType="Self.acr_trnm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purc_pkd" EntityType="Self.purc_pkd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purc_pkd_for_acr" EntityType="Self.purc_pkd_for_acr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purc_pkm" EntityType="Self.purc_pkm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purc_pkm_for_acr" EntityType="Self.purc_pkm_for_acr" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestGroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="acr_trn">
+          <Key>
+            <PropertyRef Name="create_timestamp" />
+          </Key>
+          <Property Name="create_timestamp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="acr_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="acr_date" Type="DateTime" Precision="3" />
+          <Property Name="transaction_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transaction_class" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="reverse_code" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="offset_method" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="cus_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="invoice_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="employee_no" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="area_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="pay_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transatn_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="exchange_rate" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="offset_exchange" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="local_invoice_no" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="tax_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="affect_column" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="discount_rate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="data_source" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="acr_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="order_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="order_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="adjust_code" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="foreign_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="base_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="remark40" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="acr_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="detail_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="iss_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cash_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_owner" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_city" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_issuer" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="acr_counter_date" Type="DateTime" Precision="3" />
+          <Property Name="acr_due_date" Type="DateTime" Precision="3" />
+          <Property Name="note_due_date" Type="DateTime" Precision="3" />
+          <Property Name="note_rec_date" Type="DateTime" Precision="3" />
+          <Property Name="posted_bal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_nms" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_ais" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="acr_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="project_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adv_tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="account_date" Type="DateTime" Precision="3" />
+          <Property Name="team_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="keyin_user" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="issuer" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ord_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cust_po_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prod_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_class" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_statistic" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="style_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="posted_acp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="acr_trn_check">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="create_timestamp" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_timestamp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CheckModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ticket" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="AcrTaxID" Type="Int32" />
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="acr_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="acr_date" Type="DateTime" Precision="3" />
+          <Property Name="transaction_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transaction_class" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="reverse_code" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="offset_method" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="cus_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="invoice_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="employee_no" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="area_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="pay_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transatn_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="exchange_rate" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="offset_exchange" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="local_invoice_no" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="tax_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="affect_column" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="discount_rate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="data_source" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="acr_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="order_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="order_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="adjust_code" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="foreign_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="base_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="remark40" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="acr_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="detail_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="iss_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cash_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_owner" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_city" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_issuer" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="acr_counter_date" Type="DateTime" Precision="3" />
+          <Property Name="acr_due_date" Type="DateTime" Precision="3" />
+          <Property Name="note_due_date" Type="DateTime" Precision="3" />
+          <Property Name="note_rec_date" Type="DateTime" Precision="3" />
+          <Property Name="posted_bal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_nms" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_ais" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="acr_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="project_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adv_tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="account_date" Type="DateTime" Precision="3" />
+          <Property Name="team_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="keyin_user" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="issuer" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ord_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cust_po_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prod_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_class" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_statistic" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="style_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="acr_trnd">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="acr_nbr" />
+            <PropertyRef Name="acr_seq" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acr_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acr_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="order_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transaction_class" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="adjust_code" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="detail_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="detail_remark" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="acr_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="unit_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="note_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_owner" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_city" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="note_issuer" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="iss_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="iss_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cash_main_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_branch_bank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cash_bank_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note_rec_date" Type="DateTime" Precision="3" />
+          <Property Name="note_due_date" Type="DateTime" Precision="3" />
+          <Property Name="change_offset_method" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="change_reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="select_balance_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="source_kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="source_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="source_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="project_id" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="acr_detail_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="invoice_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="adv_tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="rate_amt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="base_detail_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="base_untax_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cus_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="offset_currency" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="offset_exchange" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="team_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="detail_tax" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="base_detail_tax" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="detail_untax" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="invoice_date" Type="DateTime" Precision="3" />
+          <Property Name="ord_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cust_po_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prod_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_class" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_statistic" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="style_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="accu_exchange" Type="Decimal" Precision="10" Scale="5" />
+        </EntityType>
+        <EntityType Name="acr_trnm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="acr_nbr" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acr_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acr_date" Type="DateTime" Precision="3" />
+          <Property Name="transaction_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="cus_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="adv_reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="post_reference_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="post_adv_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="employee_no" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="area_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="pay_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="exchange_rate" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="offset_currency" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="offset_exchange" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="transatn_term" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="order_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="invoice_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="local_invoice_no" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="tax_code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="tax_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="sale_total_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cash_flag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="discount_rate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="discount_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="acr_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="note_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="bank_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cash_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="return_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="other1_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="other2_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="acr_adv_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="reject_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="acr_due_date" Type="DateTime" Precision="3" />
+          <Property Name="affect_column" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="offset_method" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="data_source" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="acr_head_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="proc_mask" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="stax_reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="adv_reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ptax_reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="base_tax_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="base_tot_amt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="account_date" Type="DateTime" Precision="3" />
+          <Property Name="team_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="keyin_user" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="issuer" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="invoice_date" Type="DateTime" Precision="3" />
+          <Property Name="invoice_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="acp_amt" Type="Decimal" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="purc_pkd">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+            <PropertyRef Name="pak_seq" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cus_item_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="rec_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="rec_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="uncount_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="coint_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="box_no" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="box_qty" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tot_net_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cube_feet" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="rec_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="pur_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="rec_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="customs_decleartion_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="customs_decleartion_amt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="clear_Customs_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="combine" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="pkd_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="vendor_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="purc_pkd_for_acr">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+            <PropertyRef Name="pak_seq" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acr_ticket" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CheckFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcrTaxID" Type="Int32" />
+          <Property Name="cus_item_no" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="rec_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="rec_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="uncount_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="coint_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="box_no" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="box_qty" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tot_net_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="cube_feet" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="rec_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="pur_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="rec_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="customs_decleartion_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="customs_decleartion_amt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="clear_Customs_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="combine" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="pkd_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="vendor_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PreAmt" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="purc_pkm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_date" Type="DateTime" Precision="3" />
+          <Property Name="sono" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="pick_port" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="port_of_destination" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="owner" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="sender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addressee" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="vessel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="voyage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cabinet_no" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cabinet_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="dta_date" Type="DateTime" Precision="3" />
+          <Property Name="etd_date" Type="DateTime" Precision="3" />
+          <Property Name="etc_date" Type="DateTime" Precision="3" />
+          <Property Name="arrival_date" Type="DateTime" Precision="3" />
+          <Property Name="pkm_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="tot_box_qty" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_net_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_cube_feet" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="so_nbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="decl_no" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="bol_no" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ship_cost" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="ins_amt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="pur_kind" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="purc_pkm_for_acr">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="pak_nbr" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pak_date" Type="DateTime" Precision="3" />
+          <Property Name="CheckFlag" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckCreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="acr_uid" Type="Int32" />
+          <Property Name="sono" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="pick_port" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="port_of_destination" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="owner" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="sender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="addressee" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="vessel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="voyage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cabinet_no" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cabinet_type" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="dta_date" Type="DateTime" Precision="3" />
+          <Property Name="etd_date" Type="DateTime" Precision="3" />
+          <Property Name="etc_date" Type="DateTime" Precision="3" />
+          <Property Name="arrival_date" Type="DateTime" Precision="3" />
+          <Property Name="pkm_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="tot_box_qty" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_net_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_gross_wt" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="tot_cube_feet" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="so_nbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="decl_no" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="bol_no" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ship_cost" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="ins_amt" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="pur_kind" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="vendor_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="TestGroupEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acr_trn" EntityType="Self.acr_trn" />
+          <EntitySet Name="acr_trn_check" EntityType="Self.acr_trn_check" />
+          <EntitySet Name="acr_trnd" EntityType="Self.acr_trnd" />
+          <EntitySet Name="acr_trnm" EntityType="Self.acr_trnm" />
+          <EntitySet Name="purc_pkd" EntityType="Self.purc_pkd" />
+          <EntitySet Name="purc_pkd_for_acr" EntityType="Self.purc_pkd_for_acr" />
+          <EntitySet Name="purc_pkm" EntityType="Self.purc_pkm" />
+          <EntitySet Name="purc_pkm_for_acr" EntityType="Self.purc_pkm_for_acr" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestGroupModelStoreContainer" CdmEntityContainer="TestGroupEntities">
+          <EntitySetMapping Name="acr_trn">
+            <EntityTypeMapping TypeName="TestGroupModel.acr_trn">
+              <MappingFragment StoreEntitySet="acr_trn">
+                <ScalarProperty Name="create_timestamp" ColumnName="create_timestamp" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="acr_nbr" ColumnName="acr_nbr" />
+                <ScalarProperty Name="acr_date" ColumnName="acr_date" />
+                <ScalarProperty Name="transaction_code" ColumnName="transaction_code" />
+                <ScalarProperty Name="transaction_class" ColumnName="transaction_class" />
+                <ScalarProperty Name="reverse_code" ColumnName="reverse_code" />
+                <ScalarProperty Name="offset_method" ColumnName="offset_method" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="invoice_nbr" ColumnName="invoice_nbr" />
+                <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="area_no" ColumnName="area_no" />
+                <ScalarProperty Name="pay_term" ColumnName="pay_term" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="transatn_term" ColumnName="transatn_term" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="exchange_rate" ColumnName="exchange_rate" />
+                <ScalarProperty Name="offset_exchange" ColumnName="offset_exchange" />
+                <ScalarProperty Name="offset_currency" ColumnName="offset_currency" />
+                <ScalarProperty Name="local_invoice_no" ColumnName="local_invoice_no" />
+                <ScalarProperty Name="tax_code" ColumnName="tax_code" />
+                <ScalarProperty Name="tax_amt" ColumnName="tax_amt" />
+                <ScalarProperty Name="affect_column" ColumnName="affect_column" />
+                <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+                <ScalarProperty Name="discount_amt" ColumnName="discount_amt" />
+                <ScalarProperty Name="cash_flag" ColumnName="cash_flag" />
+                <ScalarProperty Name="data_source" ColumnName="data_source" />
+                <ScalarProperty Name="acr_seq" ColumnName="acr_seq" />
+                <ScalarProperty Name="order_nbr" ColumnName="order_nbr" />
+                <ScalarProperty Name="order_seq" ColumnName="order_seq" />
+                <ScalarProperty Name="adjust_code" ColumnName="adjust_code" />
+                <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+                <ScalarProperty Name="foreign_amt" ColumnName="foreign_amt" />
+                <ScalarProperty Name="base_amt" ColumnName="base_amt" />
+                <ScalarProperty Name="remark40" ColumnName="remark40" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="acr_qty" ColumnName="acr_qty" />
+                <ScalarProperty Name="detail_amt" ColumnName="detail_amt" />
+                <ScalarProperty Name="iss_main_bank" ColumnName="iss_main_bank" />
+                <ScalarProperty Name="iss_branch_bank" ColumnName="iss_branch_bank" />
+                <ScalarProperty Name="iss_bank_account" ColumnName="iss_bank_account" />
+                <ScalarProperty Name="cash_main_bank" ColumnName="cash_main_bank" />
+                <ScalarProperty Name="cash_branch_bank" ColumnName="cash_branch_bank" />
+                <ScalarProperty Name="cash_bank_account" ColumnName="cash_bank_account" />
+                <ScalarProperty Name="note_nbr" ColumnName="note_nbr" />
+                <ScalarProperty Name="note_type" ColumnName="note_type" />
+                <ScalarProperty Name="note_owner" ColumnName="note_owner" />
+                <ScalarProperty Name="note_city" ColumnName="note_city" />
+                <ScalarProperty Name="note_issuer" ColumnName="note_issuer" />
+                <ScalarProperty Name="acr_counter_date" ColumnName="acr_counter_date" />
+                <ScalarProperty Name="acr_due_date" ColumnName="acr_due_date" />
+                <ScalarProperty Name="note_due_date" ColumnName="note_due_date" />
+                <ScalarProperty Name="note_rec_date" ColumnName="note_rec_date" />
+                <ScalarProperty Name="posted_bal" ColumnName="posted_bal" />
+                <ScalarProperty Name="posted_nms" ColumnName="posted_nms" />
+                <ScalarProperty Name="posted_ais" ColumnName="posted_ais" />
+                <ScalarProperty Name="acr_status" ColumnName="acr_status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="adv_tax_code" ColumnName="adv_tax_code" />
+                <ScalarProperty Name="account_date" ColumnName="account_date" />
+                <ScalarProperty Name="team_dept" ColumnName="team_dept" />
+                <ScalarProperty Name="keyin_user" ColumnName="keyin_user" />
+                <ScalarProperty Name="issuer" ColumnName="issuer" />
+                <ScalarProperty Name="ord_nbr" ColumnName="ord_nbr" />
+                <ScalarProperty Name="ord_seq" ColumnName="ord_seq" />
+                <ScalarProperty Name="cust_po_nbr" ColumnName="cust_po_nbr" />
+                <ScalarProperty Name="prod_nbr" ColumnName="prod_nbr" />
+                <ScalarProperty Name="ord_class" ColumnName="ord_class" />
+                <ScalarProperty Name="item_statistic" ColumnName="item_statistic" />
+                <ScalarProperty Name="style_no" ColumnName="style_no" />
+                <ScalarProperty Name="posted_acp" ColumnName="posted_acp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acr_trn_check">
+            <EntityTypeMapping TypeName="TestGroupModel.acr_trn_check">
+              <MappingFragment StoreEntitySet="acr_trn_check">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="create_timestamp" ColumnName="create_timestamp" />
+                <ScalarProperty Name="CheckFlag" ColumnName="CheckFlag" />
+                <ScalarProperty Name="CheckCreateDate" ColumnName="CheckCreateDate" />
+                <ScalarProperty Name="CheckModifyDate" ColumnName="CheckModifyDate" />
+                <ScalarProperty Name="ticket" ColumnName="ticket" />
+                <ScalarProperty Name="AcrTaxID" ColumnName="AcrTaxID" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="acr_nbr" ColumnName="acr_nbr" />
+                <ScalarProperty Name="acr_date" ColumnName="acr_date" />
+                <ScalarProperty Name="transaction_code" ColumnName="transaction_code" />
+                <ScalarProperty Name="transaction_class" ColumnName="transaction_class" />
+                <ScalarProperty Name="reverse_code" ColumnName="reverse_code" />
+                <ScalarProperty Name="offset_method" ColumnName="offset_method" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="invoice_nbr" ColumnName="invoice_nbr" />
+                <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="area_no" ColumnName="area_no" />
+                <ScalarProperty Name="pay_term" ColumnName="pay_term" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="transatn_term" ColumnName="transatn_term" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="exchange_rate" ColumnName="exchange_rate" />
+                <ScalarProperty Name="offset_exchange" ColumnName="offset_exchange" />
+                <ScalarProperty Name="offset_currency" ColumnName="offset_currency" />
+                <ScalarProperty Name="local_invoice_no" ColumnName="local_invoice_no" />
+                <ScalarProperty Name="tax_code" ColumnName="tax_code" />
+                <ScalarProperty Name="tax_amt" ColumnName="tax_amt" />
+                <ScalarProperty Name="affect_column" ColumnName="affect_column" />
+                <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+                <ScalarProperty Name="discount_amt" ColumnName="discount_amt" />
+                <ScalarProperty Name="cash_flag" ColumnName="cash_flag" />
+                <ScalarProperty Name="data_source" ColumnName="data_source" />
+                <ScalarProperty Name="acr_seq" ColumnName="acr_seq" />
+                <ScalarProperty Name="order_nbr" ColumnName="order_nbr" />
+                <ScalarProperty Name="order_seq" ColumnName="order_seq" />
+                <ScalarProperty Name="adjust_code" ColumnName="adjust_code" />
+                <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+                <ScalarProperty Name="foreign_amt" ColumnName="foreign_amt" />
+                <ScalarProperty Name="base_amt" ColumnName="base_amt" />
+                <ScalarProperty Name="remark40" ColumnName="remark40" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="acr_qty" ColumnName="acr_qty" />
+                <ScalarProperty Name="detail_amt" ColumnName="detail_amt" />
+                <ScalarProperty Name="iss_main_bank" ColumnName="iss_main_bank" />
+                <ScalarProperty Name="iss_branch_bank" ColumnName="iss_branch_bank" />
+                <ScalarProperty Name="iss_bank_account" ColumnName="iss_bank_account" />
+                <ScalarProperty Name="cash_main_bank" ColumnName="cash_main_bank" />
+                <ScalarProperty Name="cash_branch_bank" ColumnName="cash_branch_bank" />
+                <ScalarProperty Name="cash_bank_account" ColumnName="cash_bank_account" />
+                <ScalarProperty Name="note_nbr" ColumnName="note_nbr" />
+                <ScalarProperty Name="note_type" ColumnName="note_type" />
+                <ScalarProperty Name="note_owner" ColumnName="note_owner" />
+                <ScalarProperty Name="note_city" ColumnName="note_city" />
+                <ScalarProperty Name="note_issuer" ColumnName="note_issuer" />
+                <ScalarProperty Name="acr_counter_date" ColumnName="acr_counter_date" />
+                <ScalarProperty Name="acr_due_date" ColumnName="acr_due_date" />
+                <ScalarProperty Name="note_due_date" ColumnName="note_due_date" />
+                <ScalarProperty Name="note_rec_date" ColumnName="note_rec_date" />
+                <ScalarProperty Name="posted_bal" ColumnName="posted_bal" />
+                <ScalarProperty Name="posted_nms" ColumnName="posted_nms" />
+                <ScalarProperty Name="posted_ais" ColumnName="posted_ais" />
+                <ScalarProperty Name="acr_status" ColumnName="acr_status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="adv_tax_code" ColumnName="adv_tax_code" />
+                <ScalarProperty Name="account_date" ColumnName="account_date" />
+                <ScalarProperty Name="team_dept" ColumnName="team_dept" />
+                <ScalarProperty Name="keyin_user" ColumnName="keyin_user" />
+                <ScalarProperty Name="issuer" ColumnName="issuer" />
+                <ScalarProperty Name="ord_nbr" ColumnName="ord_nbr" />
+                <ScalarProperty Name="ord_seq" ColumnName="ord_seq" />
+                <ScalarProperty Name="cust_po_nbr" ColumnName="cust_po_nbr" />
+                <ScalarProperty Name="prod_nbr" ColumnName="prod_nbr" />
+                <ScalarProperty Name="ord_class" ColumnName="ord_class" />
+                <ScalarProperty Name="item_statistic" ColumnName="item_statistic" />
+                <ScalarProperty Name="style_no" ColumnName="style_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acr_trnd">
+            <EntityTypeMapping TypeName="TestGroupModel.acr_trnd">
+              <MappingFragment StoreEntitySet="acr_trnd">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="acr_nbr" ColumnName="acr_nbr" />
+                <ScalarProperty Name="acr_seq" ColumnName="acr_seq" />
+                <ScalarProperty Name="order_seq" ColumnName="order_seq" />
+                <ScalarProperty Name="transaction_class" ColumnName="transaction_class" />
+                <ScalarProperty Name="adjust_code" ColumnName="adjust_code" />
+                <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+                <ScalarProperty Name="detail_amt" ColumnName="detail_amt" />
+                <ScalarProperty Name="detail_remark" ColumnName="detail_remark" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="acr_qty" ColumnName="acr_qty" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="note_nbr" ColumnName="note_nbr" />
+                <ScalarProperty Name="note_type" ColumnName="note_type" />
+                <ScalarProperty Name="note_owner" ColumnName="note_owner" />
+                <ScalarProperty Name="note_city" ColumnName="note_city" />
+                <ScalarProperty Name="note_issuer" ColumnName="note_issuer" />
+                <ScalarProperty Name="iss_main_bank" ColumnName="iss_main_bank" />
+                <ScalarProperty Name="iss_branch_bank" ColumnName="iss_branch_bank" />
+                <ScalarProperty Name="iss_bank_account" ColumnName="iss_bank_account" />
+                <ScalarProperty Name="cash_main_bank" ColumnName="cash_main_bank" />
+                <ScalarProperty Name="cash_branch_bank" ColumnName="cash_branch_bank" />
+                <ScalarProperty Name="cash_bank_account" ColumnName="cash_bank_account" />
+                <ScalarProperty Name="note_rec_date" ColumnName="note_rec_date" />
+                <ScalarProperty Name="note_due_date" ColumnName="note_due_date" />
+                <ScalarProperty Name="change_offset_method" ColumnName="change_offset_method" />
+                <ScalarProperty Name="change_reference_no" ColumnName="change_reference_no" />
+                <ScalarProperty Name="select_balance_type" ColumnName="select_balance_type" />
+                <ScalarProperty Name="source_kind" ColumnName="source_kind" />
+                <ScalarProperty Name="source_nbr" ColumnName="source_nbr" />
+                <ScalarProperty Name="source_seq" ColumnName="source_seq" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="acr_detail_status" ColumnName="acr_detail_status" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="invoice_nbr" ColumnName="invoice_nbr" />
+                <ScalarProperty Name="adv_tax_code" ColumnName="adv_tax_code" />
+                <ScalarProperty Name="rate_amt" ColumnName="rate_amt" />
+                <ScalarProperty Name="base_detail_amt" ColumnName="base_detail_amt" />
+                <ScalarProperty Name="base_untax_amt" ColumnName="base_untax_amt" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="offset_currency" ColumnName="offset_currency" />
+                <ScalarProperty Name="offset_exchange" ColumnName="offset_exchange" />
+                <ScalarProperty Name="team_dept" ColumnName="team_dept" />
+                <ScalarProperty Name="detail_tax" ColumnName="detail_tax" />
+                <ScalarProperty Name="base_detail_tax" ColumnName="base_detail_tax" />
+                <ScalarProperty Name="detail_untax" ColumnName="detail_untax" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="ord_nbr" ColumnName="ord_nbr" />
+                <ScalarProperty Name="ord_seq" ColumnName="ord_seq" />
+                <ScalarProperty Name="cust_po_nbr" ColumnName="cust_po_nbr" />
+                <ScalarProperty Name="prod_nbr" ColumnName="prod_nbr" />
+                <ScalarProperty Name="ord_class" ColumnName="ord_class" />
+                <ScalarProperty Name="item_statistic" ColumnName="item_statistic" />
+                <ScalarProperty Name="style_no" ColumnName="style_no" />
+                <ScalarProperty Name="accu_exchange" ColumnName="accu_exchange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acr_trnm">
+            <EntityTypeMapping TypeName="TestGroupModel.acr_trnm">
+              <MappingFragment StoreEntitySet="acr_trnm">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="acr_nbr" ColumnName="acr_nbr" />
+                <ScalarProperty Name="acr_date" ColumnName="acr_date" />
+                <ScalarProperty Name="transaction_code" ColumnName="transaction_code" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="adv_reference_no" ColumnName="adv_reference_no" />
+                <ScalarProperty Name="post_reference_no" ColumnName="post_reference_no" />
+                <ScalarProperty Name="post_adv_amt" ColumnName="post_adv_amt" />
+                <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="area_no" ColumnName="area_no" />
+                <ScalarProperty Name="pay_term" ColumnName="pay_term" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="exchange_rate" ColumnName="exchange_rate" />
+                <ScalarProperty Name="offset_currency" ColumnName="offset_currency" />
+                <ScalarProperty Name="offset_exchange" ColumnName="offset_exchange" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="transatn_term" ColumnName="transatn_term" />
+                <ScalarProperty Name="order_nbr" ColumnName="order_nbr" />
+                <ScalarProperty Name="invoice_nbr" ColumnName="invoice_nbr" />
+                <ScalarProperty Name="local_invoice_no" ColumnName="local_invoice_no" />
+                <ScalarProperty Name="tax_code" ColumnName="tax_code" />
+                <ScalarProperty Name="tax_amt" ColumnName="tax_amt" />
+                <ScalarProperty Name="sale_total_amt" ColumnName="sale_total_amt" />
+                <ScalarProperty Name="cash_flag" ColumnName="cash_flag" />
+                <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+                <ScalarProperty Name="discount_amt" ColumnName="discount_amt" />
+                <ScalarProperty Name="acr_amt" ColumnName="acr_amt" />
+                <ScalarProperty Name="note_amt" ColumnName="note_amt" />
+                <ScalarProperty Name="bank_amt" ColumnName="bank_amt" />
+                <ScalarProperty Name="cash_amt" ColumnName="cash_amt" />
+                <ScalarProperty Name="return_amt" ColumnName="return_amt" />
+                <ScalarProperty Name="other1_amt" ColumnName="other1_amt" />
+                <ScalarProperty Name="other2_amt" ColumnName="other2_amt" />
+                <ScalarProperty Name="acr_adv_amt" ColumnName="acr_adv_amt" />
+                <ScalarProperty Name="reject_amt" ColumnName="reject_amt" />
+                <ScalarProperty Name="acr_due_date" ColumnName="acr_due_date" />
+                <ScalarProperty Name="affect_column" ColumnName="affect_column" />
+                <ScalarProperty Name="offset_method" ColumnName="offset_method" />
+                <ScalarProperty Name="data_source" ColumnName="data_source" />
+                <ScalarProperty Name="acr_head_status" ColumnName="acr_head_status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="proc_mask" ColumnName="proc_mask" />
+                <ScalarProperty Name="stax_reason" ColumnName="stax_reason" />
+                <ScalarProperty Name="adv_reason" ColumnName="adv_reason" />
+                <ScalarProperty Name="ptax_reason" ColumnName="ptax_reason" />
+                <ScalarProperty Name="base_tax_amt" ColumnName="base_tax_amt" />
+                <ScalarProperty Name="base_tot_amt" ColumnName="base_tot_amt" />
+                <ScalarProperty Name="account_date" ColumnName="account_date" />
+                <ScalarProperty Name="team_dept" ColumnName="team_dept" />
+                <ScalarProperty Name="keyin_user" ColumnName="keyin_user" />
+                <ScalarProperty Name="issuer" ColumnName="issuer" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="invoice_flag" ColumnName="invoice_flag" />
+                <ScalarProperty Name="acp_amt" ColumnName="acp_amt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purc_pkd">
+            <EntityTypeMapping TypeName="TestGroupModel.purc_pkd">
+              <MappingFragment StoreEntitySet="purc_pkd">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="pak_nbr" ColumnName="pak_nbr" />
+                <ScalarProperty Name="pak_seq" ColumnName="pak_seq" />
+                <ScalarProperty Name="cus_item_no" ColumnName="cus_item_no" />
+                <ScalarProperty Name="rec_nbr" ColumnName="rec_nbr" />
+                <ScalarProperty Name="rec_seq" ColumnName="rec_seq" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="uncount_qty" ColumnName="uncount_qty" />
+                <ScalarProperty Name="coint_qty" ColumnName="coint_qty" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="box_no" ColumnName="box_no" />
+                <ScalarProperty Name="box_qty" ColumnName="box_qty" />
+                <ScalarProperty Name="tot_net_wt" ColumnName="tot_net_wt" />
+                <ScalarProperty Name="tot_gross_wt" ColumnName="tot_gross_wt" />
+                <ScalarProperty Name="cube_feet" ColumnName="cube_feet" />
+                <ScalarProperty Name="rec_unit" ColumnName="rec_unit" />
+                <ScalarProperty Name="pur_price" ColumnName="pur_price" />
+                <ScalarProperty Name="rec_qty" ColumnName="rec_qty" />
+                <ScalarProperty Name="customs_decleartion_price" ColumnName="customs_decleartion_price" />
+                <ScalarProperty Name="customs_decleartion_amt" ColumnName="customs_decleartion_amt" />
+                <ScalarProperty Name="clear_Customs_price" ColumnName="clear_Customs_price" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="combine" ColumnName="combine" />
+                <ScalarProperty Name="pkd_status" ColumnName="pkd_status" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purc_pkd_for_acr">
+            <EntityTypeMapping TypeName="TestGroupModel.purc_pkd_for_acr">
+              <MappingFragment StoreEntitySet="purc_pkd_for_acr">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="pak_nbr" ColumnName="pak_nbr" />
+                <ScalarProperty Name="pak_seq" ColumnName="pak_seq" />
+                <ScalarProperty Name="acr_ticket" ColumnName="acr_ticket" />
+                <ScalarProperty Name="CheckFlag" ColumnName="CheckFlag" />
+                <ScalarProperty Name="CheckCreateDate" ColumnName="CheckCreateDate" />
+                <ScalarProperty Name="AcrTaxID" ColumnName="AcrTaxID" />
+                <ScalarProperty Name="cus_item_no" ColumnName="cus_item_no" />
+                <ScalarProperty Name="rec_nbr" ColumnName="rec_nbr" />
+                <ScalarProperty Name="rec_seq" ColumnName="rec_seq" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="uncount_qty" ColumnName="uncount_qty" />
+                <ScalarProperty Name="coint_qty" ColumnName="coint_qty" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="box_no" ColumnName="box_no" />
+                <ScalarProperty Name="box_qty" ColumnName="box_qty" />
+                <ScalarProperty Name="tot_net_wt" ColumnName="tot_net_wt" />
+                <ScalarProperty Name="tot_gross_wt" ColumnName="tot_gross_wt" />
+                <ScalarProperty Name="cube_feet" ColumnName="cube_feet" />
+                <ScalarProperty Name="rec_unit" ColumnName="rec_unit" />
+                <ScalarProperty Name="pur_price" ColumnName="pur_price" />
+                <ScalarProperty Name="rec_qty" ColumnName="rec_qty" />
+                <ScalarProperty Name="customs_decleartion_price" ColumnName="customs_decleartion_price" />
+                <ScalarProperty Name="customs_decleartion_amt" ColumnName="customs_decleartion_amt" />
+                <ScalarProperty Name="clear_Customs_price" ColumnName="clear_Customs_price" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="combine" ColumnName="combine" />
+                <ScalarProperty Name="pkd_status" ColumnName="pkd_status" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+                <ScalarProperty Name="PreAmt" ColumnName="PreAmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purc_pkm">
+            <EntityTypeMapping TypeName="TestGroupModel.purc_pkm">
+              <MappingFragment StoreEntitySet="purc_pkm">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="pak_nbr" ColumnName="pak_nbr" />
+                <ScalarProperty Name="pak_date" ColumnName="pak_date" />
+                <ScalarProperty Name="sono" ColumnName="sono" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="pick_port" ColumnName="pick_port" />
+                <ScalarProperty Name="port_of_destination" ColumnName="port_of_destination" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="addressee" ColumnName="addressee" />
+                <ScalarProperty Name="vessel" ColumnName="vessel" />
+                <ScalarProperty Name="voyage" ColumnName="voyage" />
+                <ScalarProperty Name="cabinet_no" ColumnName="cabinet_no" />
+                <ScalarProperty Name="cabinet_type" ColumnName="cabinet_type" />
+                <ScalarProperty Name="dta_date" ColumnName="dta_date" />
+                <ScalarProperty Name="etd_date" ColumnName="etd_date" />
+                <ScalarProperty Name="etc_date" ColumnName="etc_date" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="pkm_status" ColumnName="pkm_status" />
+                <ScalarProperty Name="tot_box_qty" ColumnName="tot_box_qty" />
+                <ScalarProperty Name="tot_net_wt" ColumnName="tot_net_wt" />
+                <ScalarProperty Name="tot_gross_wt" ColumnName="tot_gross_wt" />
+                <ScalarProperty Name="tot_cube_feet" ColumnName="tot_cube_feet" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="so_nbr" ColumnName="so_nbr" />
+                <ScalarProperty Name="decl_no" ColumnName="decl_no" />
+                <ScalarProperty Name="bol_no" ColumnName="bol_no" />
+                <ScalarProperty Name="ship_cost" ColumnName="ship_cost" />
+                <ScalarProperty Name="ins_amt" ColumnName="ins_amt" />
+                <ScalarProperty Name="pur_kind" ColumnName="pur_kind" />
+                <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purc_pkm_for_acr">
+            <EntityTypeMapping TypeName="TestGroupModel.purc_pkm_for_acr">
+              <MappingFragment StoreEntitySet="purc_pkm_for_acr">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="pak_nbr" ColumnName="pak_nbr" />
+                <ScalarProperty Name="pak_date" ColumnName="pak_date" />
+                <ScalarProperty Name="CheckFlag" ColumnName="CheckFlag" />
+                <ScalarProperty Name="CheckCreateDate" ColumnName="CheckCreateDate" />
+                <ScalarProperty Name="acr_uid" ColumnName="acr_uid" />
+                <ScalarProperty Name="sono" ColumnName="sono" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="pick_port" ColumnName="pick_port" />
+                <ScalarProperty Name="port_of_destination" ColumnName="port_of_destination" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="addressee" ColumnName="addressee" />
+                <ScalarProperty Name="vessel" ColumnName="vessel" />
+                <ScalarProperty Name="voyage" ColumnName="voyage" />
+                <ScalarProperty Name="cabinet_no" ColumnName="cabinet_no" />
+                <ScalarProperty Name="cabinet_type" ColumnName="cabinet_type" />
+                <ScalarProperty Name="dta_date" ColumnName="dta_date" />
+                <ScalarProperty Name="etd_date" ColumnName="etd_date" />
+                <ScalarProperty Name="etc_date" ColumnName="etc_date" />
+                <ScalarProperty Name="arrival_date" ColumnName="arrival_date" />
+                <ScalarProperty Name="pkm_status" ColumnName="pkm_status" />
+                <ScalarProperty Name="tot_box_qty" ColumnName="tot_box_qty" />
+                <ScalarProperty Name="tot_net_wt" ColumnName="tot_net_wt" />
+                <ScalarProperty Name="tot_gross_wt" ColumnName="tot_gross_wt" />
+                <ScalarProperty Name="tot_cube_feet" ColumnName="tot_cube_feet" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="so_nbr" ColumnName="so_nbr" />
+                <ScalarProperty Name="decl_no" ColumnName="decl_no" />
+                <ScalarProperty Name="bol_no" ColumnName="bol_no" />
+                <ScalarProperty Name="ship_cost" ColumnName="ship_cost" />
+                <ScalarProperty Name="ins_amt" ColumnName="ins_amt" />
+                <ScalarProperty Name="pur_kind" ColumnName="pur_kind" />
+                <ScalarProperty Name="vendor_id" ColumnName="vendor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

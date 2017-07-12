@@ -64,8 +64,9 @@ namespace GGFPortal.VN
         }
         protected void CheckBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock("VNN", SearchTB.Text))
+            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
             {
+                
                 ReferenceCode.Column1 GetExcelDefine = new ReferenceCode.Column1();
                 switch(strImportType)
                 {
@@ -88,6 +89,7 @@ namespace GGFPortal.VN
                         Response.Redirect("VNindex.aspx");
                         break;
                 }
+                
                 #region old
                 //int xxx = 1;
                 //List <Column> InsertColumn = new List<Column>();
@@ -131,6 +133,8 @@ namespace GGFPortal.VN
                 DataTable D_table = new DataTable("Excel");
                 D_table = GetExcelDefine.ExcelTable.Copy();
                 DataTable D_errortable = new DataTable("Error");
+                //實際顯示欄位
+                int Excel欄位數 = D_table.Columns.Count-2;
                 if (SearchTB.Text.Length > 0 && F_CheckData())
                 {
                     if (FileUpload1.HasFile)
@@ -208,7 +212,7 @@ namespace GGFPortal.VN
                                     bool bcheck = true, berror = false;
                                     string sError = "";
                                     //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                    for (int j = row.FirstCellNum; j < 32; j++)   //有些EXCEL會沒填資料
+                                    for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
                                     {
                                         //沒有Style就不抓
                                         if (row.GetCell(2) == null)
@@ -310,6 +314,13 @@ namespace GGFPortal.VN
                             //GridView1.DataBind();
                             ExcelGV.DataSource = D_View2;
                             ExcelGV.DataBind();
+                            //GridView1.DataSource = D_View2;
+                            //GridView1.DataBind();
+                            for (int i = 0; i < Excel欄位數+2; i++)
+                            {
+                                ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].VNName;
+                            }
+                            
                             //--錯誤資料顯示
                             if (D_errortable.Rows.Count > 0)
                             {
@@ -344,7 +355,7 @@ namespace GGFPortal.VN
                                     bool bcheck = true, berror = false;
                                     string sError = "";
                                     //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                    for (int j = row.FirstCellNum; j < 32; j++)   //有些EXCEL會沒填資料
+                                    for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
                                     {
                                         //沒有Style就不抓
                                         if (row.GetCell(2) == null)
@@ -736,6 +747,8 @@ namespace GGFPortal.VN
                                         string strInsertColumn="", strInsertData="";
                                         if (strImportType=="Stitch")
                                         {
+                                            //strInsertColumn = ",[QCQty],[ErrorQty],[ErrorUnreturnQty],[OnlineDay]";
+                                            //strInsertData = ",@QCQty ,@ErrorQty,@ErrorUnreturnQty,@OnlineDay";
                                             strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay]";
                                             strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay";
                                         }
@@ -841,6 +854,7 @@ namespace GGFPortal.VN
                                         {
                                             command1.Parameters.Add("@QCQty", SqlDbType.Int).Value = dt.Rows[i]["QCQty"].ToString();
                                             command1.Parameters.Add("@ErrorQty", SqlDbType.Int).Value = dt.Rows[i]["ErrorQty"].ToString();
+                                            //command1.Parameters.Add("@ErrorUnreturnQty", SqlDbType.Int).Value = dt.Rows[i]["ErrorQty"].ToString();
                                             command1.Parameters.Add("@OnlineDay", SqlDbType.Int).Value = dt.Rows[i]["OnlineDay"].ToString();
                                         }
                                         command1.ExecuteNonQuery();
@@ -941,7 +955,7 @@ namespace GGFPortal.VN
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock("VNN", SearchTB.Text))
+            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
             {
                 using (SqlConnection conn1 = new SqlConnection(strConnectString))
                 {
@@ -1000,7 +1014,7 @@ namespace GGFPortal.VN
         public Boolean F_CheckData()
         {
             bool bcheck = true;
-            if (確認LOCK.Check工時Lock("VNN", SearchTB.Text))
+            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
             { 
                 using (SqlConnection conn = new SqlConnection(strConnectString1))
                 {

@@ -122,7 +122,7 @@ namespace GGFPortal.VN
             string strDate = "", strTeam = "";
             strDate = (GridView1.Rows[e.RowIndex].Cells[1].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[1].Text;
             strTeam = (GridView1.Rows[e.RowIndex].Cells[2].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[2].Text;
-            if (確認LOCK.Check工時Lock("VNN", strDate))
+            if (確認LOCK.Check工時Lock("VGG", strDate))
             {
                 using (SqlConnection conn1 = new SqlConnection(strConnectString))
                 {

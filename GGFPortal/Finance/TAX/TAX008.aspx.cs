@@ -4,6 +4,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
+using GGFPortal.DataSetSource;
+using System.Linq;
+using System.Web.UI.WebControls;
+using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 
 namespace GGFPortal.Finance.TAX
 {
@@ -20,8 +25,9 @@ namespace GGFPortal.Finance.TAX
                 DateTime dtNow = DateTime.Now;
                 //dtNow = DateTime.Parse("2020-12-01"); //測試用
                 int iCountMonth = (DateTime.Now.Year - 2015) * 12 + (DateTime.Now.Month - 12);
-
-
+                string[] strMonth = new string[] { };
+                List<string> sMonth = new List<string>();
+                List<DateTime> dMonth = new List<DateTime>();
                 for (int i = 1; i < iCountMonth; i++)
                 {
                     if (i == 1)
@@ -29,12 +35,35 @@ namespace GGFPortal.Finance.TAX
                         YearDDL.Items.Add("");
                     }
                     YearDDL.Items.Add(DateTime.Now.AddMonths(-i).ToString("yyyyMM"));
+                    sMonth.Add(DateTime.Now.AddMonths(-i).ToString("yyyyMM"));
                 }
+                GGFPortal.DataSetSource.TestGroupEntities xx = new TestGroupEntities();
+                var value = (from x in xx.acr_trn
+                             where x.acr_date != null
+                             select  x.acr_date)
+                            .Distinct().ToList()
+                            
+                            ;
+                //List<string> lp = value.Select(date=>string.Format("yyyyMM",date));
+                
+                var value2 = from y in value
+                             from z in sMonth
+                             where  !y.ToString().Contains(z)
+                             select y;
+
+                List<string> strings = new List<string>() { "2014-01-14" };
+
+                List<DateTime> dates = strings.Select(date => DateTime.Parse(date)).ToList();
+
             }
             //StartDay.Attributes["readonly"] = "readonly";
             //EndDay.Attributes["readonly"] = "readonly";
         }
 
+        protected string convertdate(DateTime dt)
+        {
+            return dt.ToString("yyyyMM");
+        }
         protected void ClearBT_Click(object sender, EventArgs e)
         {
             YearDDL.SelectedValue = "";
