@@ -123,6 +123,10 @@ namespace GGFPortal.Finance.TAX
             //}
             return strsql;
         }
-        
+
+        protected void CloseBT_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

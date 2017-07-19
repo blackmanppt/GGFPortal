@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-10">
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\ReportSample005.rdlc" DisplayName="出口大表">
+                        <LocalReport ReportPath="ReportSource\ReportSample005.rdlc" DisplayName="樣品室產量月總表-客戶">
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </div>

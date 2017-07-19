@@ -15,6 +15,18 @@
     <script src="~/scripts/jquery-3.1.1.min.js"></script>
     <script src="~/scripts/scripts.js"></script>
     
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+            color: #333300;
+            background-color: #0099FF;
+        }
+        .auto-style2 {
+            font-size: large;
+            color: #006600;
+        }
+    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -76,10 +88,10 @@
                 <tr>
                     <th colspan="4"> <h3 class="text-center">應收結轉資料</h3></th>
                 </tr>
-              <tr>
-                <th class="text-center">結轉月份</th>
-                <th class="text-center">結轉款號數量</th>
-                <th class="text-center">結轉時間</th>
+              <tr class="auto-style2">
+                <th class="auto-style1">結轉月份</th>
+                <th class="auto-style1">結轉款號數量</th>
+                <th class="auto-style1">結轉時間</th>
               </tr>
             </thead>
             <tbody>
@@ -96,7 +108,7 @@
               <tr>
                 <td colspan="3" class="text-center">
                                         <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" />
-                    <asp:Button ID="CloseBT" runat="server" Text="結轉" CssClass="btn btn-default" Visible="false" />
+                    <asp:Button ID="CloseBT" runat="server" Text="結轉" CssClass="btn btn-default" Visible="false" OnClick="CloseBT_Click" />
                   </td>
  
               </tr>
