@@ -15,7 +15,8 @@ namespace GGFPortal.Finance.TAX
 
     public partial class TAX008 : System.Web.UI.Page
     {
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["TestGroupConnectionString"].ToString();
+        ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -84,12 +85,25 @@ namespace GGFPortal.Finance.TAX
                 DataTable dt = new DataTable();
                 using (SqlConnection Conn = new SqlConnection(strConnectString))
                 {
-                    SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
+                    SqlDataAdapter myAdapter = new SqlDataAdapter("select * from [ExportTaxRebate] where Flag =1 and RebateDate = @RebateDate ", Conn);
+                    myAdapter.SelectCommand.Parameters.Add("@RebateDate",SqlDbType.NVarChar).Value=YearDDL.SelectedValue;
                     myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
                 }
                 if (dt.Rows.Count > 0)
                 {
+                    DeleteBT.Visible = true;
+                    CloseBT.Visible = false;
+                    var x = from z in dt.AsEnumerable()
+                            group z by z.Field<string>("") into g
+                                                 //where z.Field<DateTime>("OrderDate") > new DateTime(2001, 8, 1)
+                                             select new
+                                             {
+                                                 xx =g.Key,
+                                             };
+                    MonthLB.Text = YearDDL.SelectedValue;
+                    StyleCountLB.Text = x.Count().ToString();
+                     //= x.GroupBy(w=>w.Field<string>("")).ToList().Count<int>();
                     //ReportViewer1.Visible = true;
                     //ReportViewer1.ProcessingMode = ProcessingMode.Local;
                     //ReportDataSource source = new ReportDataSource("Sample006", dt);
@@ -97,36 +111,54 @@ namespace GGFPortal.Finance.TAX
                     //ReportViewer1.LocalReport.DataSources.Add(source);
                     //ReportViewer1.DataBind();
                     //ReportViewer1.LocalReport.Refresh();
+
                 }
                 else
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+                {
+                    DeleteBT.Visible = false;
+                    CloseBT.Visible = true;
+
+                }
+                    //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
             }
         }
 
         private StringBuilder selectsql()
         {
             
-            StringBuilder strsql = new StringBuilder(" select * from [View打樣室處理作業] ");
-
-            //if (!String.IsNullOrEmpty(YearDDL.SelectedValue) || !String.IsNullOrEmpty(MonthDDL.Text)  || !String.IsNullOrEmpty(AreaDDL.SelectedValue) )
-            //{
-            //    strsql.Append(" where 1=1 ");
-            //    if (!String.IsNullOrEmpty(YearDDL.SelectedValue))
-            //    {
-            //        strsql.AppendFormat(" and YEAR([發版日期])  = '{0}' ", YearDDL.SelectedValue);
-            //        if (!String.IsNullOrEmpty(MonthDDL.SelectedValue))
-            //            strsql.AppendFormat(" and MONTH([發版日期])  = '{0}'", MonthDDL.SelectedValue);
-            //    }
-
-            //    if (!String.IsNullOrEmpty(AreaDDL.SelectedValue))
-            //        strsql.AppendFormat(" and [地區]  = '{0}'", AreaDDL.SelectedValue);
-            //}
+            StringBuilder strsql = new StringBuilder(" select * from [ExportTaxRebate] where Flag =1 and RebateDate = @RebateDate");
             return strsql;
         }
 
         protected void CloseBT_Click(object sender, EventArgs e)
         {
 
+        }
+        private int GetTaxIndex()
+        {
+            Int32 TAXId = 0;
+            string sql =
+                @"INSERT INTO [dbo].[ExportTaxRebate]
+                           ([RebateDate])
+                     VALUES
+                           (@RebateDate); 
+                    SELECT CAST(scope_identity() AS int)";
+            using (SqlConnection conn = new SqlConnection(strConnectString))
+            {
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add("@RebateDate", SqlDbType.NVarChar);
+                cmd.Parameters["@RebateDate"].Value = YearDDL.SelectedValue;
+                try
+                {
+                    conn.Open();
+                    TAXId = (Int32)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorLog(ex, "Get ExportTaxRebate uid Error:", "TAX008.aspx");
+                }
+            }
+            return (int)TAXId;
         }
     }
 }

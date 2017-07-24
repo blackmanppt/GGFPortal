@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SalesTempDS2" targetNamespace="http://tempuri.org/SalesTempDS2.xsd" xmlns:mstns="http://tempuri.org/SalesTempDS2.xsd" xmlns="http://tempuri.org/SalesTempDS2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SalesTempDS2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SalesTempDS2" msprop:Generator_UserDSName="SalesTempDS2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="營收資料" msprop:Generator_TableClassName="營收資料DataTable" msprop:Generator_TableVarName="table營收資料" msprop:Generator_RowChangedName="營收資料RowChanged" msprop:Generator_TablePropName="營收資料" msprop:Generator_RowDeletingName="營收資料RowDeleting" msprop:Generator_RowChangingName="營收資料RowChanging" msprop:Generator_RowEvHandlerName="營收資料RowChangeEventHandler" msprop:Generator_RowDeletedName="營收資料RowDeleted" msprop:Generator_RowClassName="營收資料Row" msprop:Generator_UserTableName="營收資料" msprop:Generator_RowEvArgName="營收資料RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="公司" msprop:Generator_ColumnVarNameInTable="column公司" msprop:Generator_ColumnPropNameInRow="公司" msprop:Generator_ColumnPropNameInTable="公司Column" msprop:Generator_UserColumnName="公司" type="xs:string" minOccurs="0" />
+              <xs:element name="訂單號碼" msprop:Generator_ColumnVarNameInTable="column訂單號碼" msprop:Generator_ColumnPropNameInRow="訂單號碼" msprop:Generator_ColumnPropNameInTable="訂單號碼Column" msprop:Generator_UserColumnName="訂單號碼" type="xs:string" minOccurs="0" />
+              <xs:element name="客戶交期" msprop:Generator_ColumnVarNameInTable="column客戶交期" msprop:Generator_ColumnPropNameInRow="客戶交期" msprop:Generator_ColumnPropNameInTable="客戶交期Column" msprop:Generator_UserColumnName="客戶交期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="預估毛利" msprop:Generator_ColumnVarNameInTable="column預估毛利" msprop:Generator_ColumnPropNameInRow="預估毛利" msprop:Generator_ColumnPropNameInTable="預估毛利Column" msprop:Generator_UserColumnName="預估毛利" type="xs:decimal" minOccurs="0" />
+              <xs:element name="預交量" msprop:Generator_ColumnVarNameInTable="column預交量" msprop:Generator_ColumnPropNameInRow="預交量" msprop:Generator_ColumnPropNameInTable="預交量Column" msprop:Generator_UserColumnName="預交量" type="xs:string" minOccurs="0" />
+              <xs:element name="訂單金額" msprop:Generator_ColumnVarNameInTable="column訂單金額" msprop:Generator_ColumnPropNameInRow="訂單金額" msprop:Generator_ColumnPropNameInTable="訂單金額Column" msprop:Generator_UserColumnName="訂單金額" type="xs:string" minOccurs="0" />
+              <xs:element name="交期年月" msprop:Generator_ColumnVarNameInTable="column交期年月" msprop:Generator_ColumnPropNameInRow="交期年月" msprop:Generator_ColumnPropNameInTable="交期年月Column" msprop:Generator_UserColumnName="交期年月" type="xs:string" minOccurs="0" />
+              <xs:element name="營收" msprop:Generator_ColumnVarNameInTable="column營收" msprop:Generator_ColumnPropNameInRow="營收" msprop:Generator_ColumnPropNameInTable="營收Column" msprop:Generator_UserColumnName="營收" type="xs:decimal" minOccurs="0" />
+              <xs:element name="預估毛利金額" msprop:Generator_ColumnVarNameInTable="column預估毛利金額" msprop:Generator_ColumnPropNameInRow="預估毛利金額" msprop:Generator_ColumnPropNameInTable="預估毛利金額Column" msprop:Generator_UserColumnName="預估毛利金額" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

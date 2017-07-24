@@ -43,34 +43,6 @@
                             <h4>結轉時間</h4>
 <asp:DropDownList ID="YearDDL" runat="server" class="form-control"></asp:DropDownList>
 						</div> 
-                    <%--<h4>月</h4>
-                    <div class="form-group">
-							<asp:DropDownList ID="MonthDDL" runat="server" class="form-control">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
-                                <asp:ListItem>7</asp:ListItem>
-                                <asp:ListItem>8</asp:ListItem>
-                                <asp:ListItem>9</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>11</asp:ListItem>
-                                <asp:ListItem>12</asp:ListItem>
-                            </asp:DropDownList>
-						</div> 
-                            <h4>地區</h4>
-                            <div class="form-group">
-                                <asp:DropDownList ID="AreaDDL" runat="server" class="form-control">
-                                    <asp:ListItem></asp:ListItem>
-                                    <asp:ListItem>台北</asp:ListItem>
-                                    <asp:ListItem>宜蘭</asp:ListItem>
-                                    <asp:ListItem>上海</asp:ListItem>
-                                    <asp:ListItem>廣州</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>--%>
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
 

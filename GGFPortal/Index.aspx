@@ -71,6 +71,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Finance/Finance009.aspx">出口大表(BY Ariel)</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink40" runat="server" NavigateUrl="~/Finance/Finance011.aspx">出口大表(BY Carrie)</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink49" runat="server" NavigateUrl="~/Finance/Finance012.aspx">銷貨資料(BY Carrie)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -129,6 +131,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink46" runat="server" NavigateUrl="~/Sales/Sales003.aspx">實際訂單查詢表(部門群組)</asp:HyperLink>
                                                                                                 <br />
                         <asp:HyperLink ID="HyperLink47" runat="server" NavigateUrl="~/Sales/Sales004.aspx">實際訂單查詢表(明細)</asp:HyperLink>
+                                                                                                                        <br />
+                        <asp:HyperLink ID="HyperLink50" runat="server" NavigateUrl="~/Sales/Sales005.aspx">銷貨資料(BOSS)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

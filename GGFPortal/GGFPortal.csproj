@@ -256,10 +256,12 @@
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Finance\Finance012.aspx" />
     <Content Include="Finance\Finance011.aspx" />
     <Content Include="Finance\TAX\TAX008.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ReferenceCode\AutoCompleteWCF.svc" />
+    <Content Include="Sales\Sales005.aspx" />
     <Content Include="Sales\Sales004.aspx" />
     <Content Include="Sales\Sales003.aspx" />
     <Content Include="Sales\Sample007.aspx" />
@@ -379,6 +381,17 @@
     </None>
     <Content Include="DataSetSource\SalesTempDS.xss">
       <DependentUpon>SalesTempDS.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\SalesTempDS2.xsc">
+      <DependentUpon>SalesTempDS2.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\SalesTempDS2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SalesTempDS2.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\SalesTempDS2.xss">
+      <DependentUpon>SalesTempDS2.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\Sercetary.xsd">
       <SubType>Designer</SubType>
@@ -615,6 +628,11 @@
     <Compile Include="DataSetSource\purc_pkm_for_acr.cs">
       <DependentUpon>GGFTest.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\SalesTempDS2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesTempDS2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -646,6 +664,13 @@
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance012.aspx.cs">
+      <DependentUpon>Finance012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance012.aspx.designer.cs">
+      <DependentUpon>Finance012.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance011.aspx.cs">
       <DependentUpon>Finance011.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -673,6 +698,13 @@
     <Compile Include="ReferenceCode\VNExcel.cs" />
     <Compile Include="ReferenceCode\字串處理.cs" />
     <Compile Include="ReferenceCode\資料庫搜尋條件.cs" />
+    <Compile Include="Sales\Sales005.aspx.cs">
+      <DependentUpon>Sales005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales005.aspx.designer.cs">
+      <DependentUpon>Sales005.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales004.aspx.cs">
       <DependentUpon>Sales004.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1321,6 +1353,7 @@
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
@@ -1340,6 +1373,8 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales003.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales003V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales003V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales005.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
