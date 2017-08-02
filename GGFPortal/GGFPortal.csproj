@@ -256,6 +256,8 @@
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Sales\Sample008.aspx" />
+    <Content Include="VN\VN011.aspx" />
     <Content Include="Finance\Finance012.aspx" />
     <Content Include="Finance\Finance011.aspx" />
     <Content Include="Finance\TAX\TAX008.aspx" />
@@ -557,6 +559,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="資料庫連線\GGFlinq.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>GGFlinq.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Finance\TAX\TAX001.aspx" />
@@ -663,6 +670,21 @@
     </Compile>
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="Sales\Sample008.aspx.cs">
+      <DependentUpon>Sample008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample008.aspx.designer.cs">
+      <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN011.aspx.cs">
+      <DependentUpon>VN011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN011.aspx.designer.cs">
+      <DependentUpon>VN011.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance012.aspx.cs">
       <DependentUpon>Finance012.aspx</DependentUpon>
@@ -1337,6 +1359,11 @@
     <Compile Include="VN\VNTimeDelete.aspx.designer.cs">
       <DependentUpon>VNTimeDelete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="資料庫連線\GGFlinq.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGFlinq.dbml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1381,6 +1408,7 @@
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN004.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN005.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN010.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSample02_V2.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">
@@ -1414,6 +1442,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport3.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="資料庫連線\GGFlinq.dbml.layout">
+      <DependentUpon>GGFlinq.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

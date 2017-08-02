@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GGF">
+  <DataContextMoniker Name="/GGFDataContext" />
+  <nestedChildShapes>
+    <classShape Id="39407651-cfbb-4641-900f-4ea8e90e1692" absoluteBounds="1, 1.375, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/GGFDataContext/GGFRequestSam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2d32bbf-890e-4862-b4e7-2d907b257882" absoluteBounds="1.0150000000000001, 1.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f7fd775-0930-4e23-b2ac-1f992d09f8a6" absoluteBounds="4.625, 1.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/GGFDataContext/GGFRequestMark" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dad6a81b-04b8-41b9-8bd4-fd930d8f07ac" absoluteBounds="4.6400000000000006, 2.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

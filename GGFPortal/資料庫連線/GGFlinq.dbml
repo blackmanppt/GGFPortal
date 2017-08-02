@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GGF" Class="GGFDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.0.131;Initial Catalog=GGF;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GGFConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GGFRequestSam" Member="GGFRequestSam">
+    <Type Name="GGFRequestSam">
+      <Column Name="uid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sam_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SampleType" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SampleUser" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SampleNo" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="Qty" Type="System.Decimal" DbType="Decimal(18,1) NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SampleCreatDate" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="CreatDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Flag" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="馬克" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="修改馬克" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="馬克完成日" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GGFRequestMark" Member="GGFRequestMark">
+    <Type Name="GGFRequestMark">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="修改人員" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="工號" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="處理類別" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="建立日期" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="狀態" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="修改日期" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

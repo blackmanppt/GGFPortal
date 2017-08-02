@@ -46,7 +46,7 @@ namespace GGFPortal.ReferenceCode
                 SqlCommand command1 = conn1.CreateCommand();
                 SqlTransaction transaction1;
                 conn1.Open();
-                transaction1 = conn1.BeginTransaction("createOrder");
+                transaction1 = conn1.BeginTransaction("createOrder1");
 
                 command1.Connection = conn1;
                 command1.Transaction = transaction1;

@@ -81,6 +81,7 @@
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
                             SelectCommand="select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A')  and a.employee_status<>'IA'  order by Name,employee_no"></asp:SqlDataSource>
+                        <asp:Label ID="UserLB" runat="server" Text=""></asp:Label>
                     </td>
                     <th class="auto-style4">
                         <asp:Label ID="DateLB" runat="server" Text="處理日期：" Visible="false"></asp:Label>
@@ -117,9 +118,13 @@
                         <asp:TextBox ID="QtyTB" runat="server"></asp:TextBox>
                     </td>
                     <th class="auto-style4"></th>
-                    <td class="auto-style3"></td>
+                    <td class="auto-style3">
+                        <asp:Button ID="AddBT" runat="server" OnClick="AddBT_Click" Text="新增" />
+                        <asp:Button ID="UpDateBT" runat="server" OnClick="UpDateBT_Click1" Text="更新" Visible="False" />
+                        <asp:Button ID="CancelBT" runat="server" OnClick="CancelBT_Click" Text="取消" Visible="False" />
+                    </td>
                 </tr>
-                <tr>
+                <%--<tr>
                     <th class="auto-style1">
                         <asp:Label ID="Label8" runat="server" Text="放縮馬克："></asp:Label>
                     </th>
@@ -151,19 +156,22 @@
                     </td>
 
                                         <td class="auto-style3" colspan="2">
-                        <asp:Button ID="AddBT" runat="server" Text="新增" OnClick="AddBT_Click" />
-                        <asp:Button ID="UpDateBT" runat="server" Text="更新" OnClick="UpDateBT_Click1" Visible="False" />
-                        <asp:Button ID="CancelBT" runat="server" Text="取消" OnClick="CancelBT_Click" Visible="False" />
+
                     </td>
-                </tr>
+                </tr>--%>
             </table>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="uid,sam_nbr" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" Style="background-color: #00CC00" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" OnRowDeleting="GridView1_RowDeleting">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="uid,sam_nbr" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" Style="background-color: #00CC00" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" OnRowDeleting="GridView1_RowDeleting" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                     <asp:CommandField ButtonType="Button" SelectText="編輯" ShowSelectButton="True" />
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
                             <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick="return confirm('是否刪除')" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Button ID="修改馬克" runat="server" CausesValidation="False" CommandName="EditeDetail" Text="修改馬克"  />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="uid" HeaderText="uid" InsertVisible="False" ReadOnly="True" SortExpression="uid" />
@@ -172,9 +180,9 @@
                     <asp:BoundField DataField="SampleUser" HeaderText="處理人員" SortExpression="SampleUser" />
                     <asp:BoundField DataField="Qty" HeaderText="數量" SortExpression="Qty" />
                     <asp:BoundField DataField="SampleCreatDate" HeaderText="建立日期" SortExpression="SampleCreatDate" NullDisplayText="沒有資料" />
-                    <asp:BoundField DataField="馬克" HeaderText="馬克" SortExpression="馬克" NullDisplayText="沒有資料" />
-                    <asp:BoundField DataField="修改馬克" HeaderText="修改馬克" SortExpression="修改馬克" NullDisplayText="沒有資料" />
-                    <asp:BoundField DataField="馬克完成日" HeaderText="馬克完成日" SortExpression="馬克完成日" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="馬克處理次數" HeaderText="馬克處理次數" SortExpression="馬克處理次數" NullDisplayText="沒有資料" />
+<%--                    <asp:BoundField DataField="修改馬克" HeaderText="修改馬克" SortExpression="修改馬克" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="馬克完成日" HeaderText="馬克完成日" SortExpression="馬克完成日" NullDisplayText="沒有資料" />--%>
                 </Columns>
                 <EmptyDataRowStyle BackColor="#00CC66" />
                 <EmptyDataTemplate>
@@ -191,7 +199,7 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#33276A" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [GGFRequestSam]  left join Mapping on [GGFRequestSam].SampleType=Mapping.Data and Mapping.UsingDefine='GGFRequestSam' WHERE Flag = 0 and  ([sam_nbr] = @sam_nbr and site=@site)" DeleteCommand="DELETE FROM GGFRequestSam WHERE (1 = 2)">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT *,(select count(*) from GGFRequestMark x where x.uid=[GGFRequestSam].uid and 狀態=0) as 馬克處理次數 FROM [GGFRequestSam]  left join Mapping on [GGFRequestSam].SampleType=Mapping.Data and Mapping.UsingDefine='GGFRequestSam' WHERE Flag = 0 and  ([sam_nbr] = @sam_nbr and site=@site)" DeleteCommand="DELETE FROM GGFRequestSam WHERE (1 = 2)">
                 <SelectParameters>
                     <asp:SessionParameter Name="sam_nbr" SessionField="SampleNbr" Type="String" />
                     <asp:SessionParameter Name="site" SessionField="Site" Type="String"  />

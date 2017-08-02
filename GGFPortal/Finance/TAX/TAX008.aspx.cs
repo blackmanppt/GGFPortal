@@ -94,15 +94,23 @@ namespace GGFPortal.Finance.TAX
                 {
                     DeleteBT.Visible = true;
                     CloseBT.Visible = false;
-                    var x = from z in dt.AsEnumerable()
-                            group z by z.Field<string>("") into g
-                                                 //where z.Field<DateTime>("OrderDate") > new DateTime(2001, 8, 1)
-                                             select new
-                                             {
-                                                 xx =g.Key,
-                                             };
+                    //var x = from z in dt.AsEnumerable()
+                    //        group z by z.Field<string>("") into g
+                    //                             //where z.Field<DateTime>("OrderDate") > new DateTime(2001, 8, 1)
+                    //                         select new
+                    //                         {
+                    //                             xx =g.Key,
+                    //                         };
+                    
+                    using (SqlConnection Conn = new SqlConnection(strConnectString))
+                    {
+                        SqlDataAdapter myAdapter = new SqlDataAdapter("select * from [ExportTaxRebate] where Flag =1 and RebateDate = @RebateDate ", Conn);
+                        myAdapter.SelectCommand.Parameters.Add("@RebateDate", SqlDbType.NVarChar).Value = YearDDL.SelectedValue;
+                        myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+
+                    }
                     MonthLB.Text = YearDDL.SelectedValue;
-                    StyleCountLB.Text = x.Count().ToString();
+                    //StyleCountLB.Text = x.Count().ToString();
                      //= x.GroupBy(w=>w.Field<string>("")).ToList().Count<int>();
                     //ReportViewer1.Visible = true;
                     //ReportViewer1.ProcessingMode = ProcessingMode.Local;

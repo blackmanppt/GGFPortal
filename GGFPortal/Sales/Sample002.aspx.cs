@@ -4,18 +4,21 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+using GGFPortal.ReferenceCode;
 
 namespace GGFPortal.Sales
 {
     public partial class Sample002 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
-        ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
+        SysLog Log = new SysLog();
+        Get使用者資料 使用者資料 = new Get使用者資料();
         protected void Page_Load(object sender, EventArgs e)
         {
             FinalDayTB.Attributes["readonly"] = "readonly";
             DateTB.Attributes["readonly"] = "readonly";
-            MarkDateTB.Attributes["readonly"] = "readonly";
+            //MarkDateTB.Attributes["readonly"] = "readonly";
             if (Session["Uid"]==null)
                 UpDateBT.Visible = false;
             if (Session["SampleNbr"] ==null)
@@ -41,8 +44,8 @@ namespace GGFPortal.Sales
             {
                 FinalDayTB.Text = Session["SamDay"].ToString();
             }
-
-
+            string xxx = "";
+            xxx=使用者資料.取得電腦名稱();
         }
 
         protected void AddBT_Click(object sender, EventArgs e)
@@ -70,9 +73,7 @@ namespace GGFPortal.Sales
                                             ,[SampleNo]
                                             ,[Qty]
                                             ,[SampleCreatDate]
-                                            ,[馬克]
-                                            ,[修改馬克]
-                                            ,[馬克完成日]
+                                            ,[Creator]
                                             )
                                         VALUES
                                             (@site
@@ -82,9 +83,7 @@ namespace GGFPortal.Sales
                                             ,@SampleNo
                                             ,@Qty
                                             ,@SampleCreatDate
-                                            ,@馬克
-                                            ,@修改馬克
-                                            ,@馬克完成日
+                                            ,@Creator
                                             )
                                             ");
                         command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
@@ -94,9 +93,10 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleNo", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@Qty", SqlDbType.Decimal).Value = QtyTB.Text.Trim();
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTime.Now.ToString("yyyyMMdd");
-                        command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
-                        command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
-                        command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
+                        command1.Parameters.Add("@Creator", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
+                        //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
+                        //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
+                        //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
 
@@ -149,6 +149,7 @@ namespace GGFPortal.Sales
             DateLB.Visible = false;
             DateTB.Text = "";
             DateTB.Visible = false;
+            UserLB.Text = "";
         }
 
         protected void UpDateBT_Click1(object sender, EventArgs e)
@@ -171,7 +172,7 @@ namespace GGFPortal.Sales
                         command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [SampleType] = @SampleType 
                                                             ,[SampleUser] = @SampleUser,[SampleNo] = @SampleNo
                                                             ,[Qty] = @Qty,[SampleCreatDate] = @SampleCreatDate
-                                                            ,馬克 =@馬克,修改馬克=@修改馬克,馬克完成日=@馬克完成日
+                                                            ,[Modifier] = @Modifier
                                                             ,[ModifyDate]=GETDATE() 
                                                             WHERE uid = {0} ", Session["Uid"].ToString());
                         command1.Parameters.Add("@SampleType", SqlDbType.NVarChar).Value = TypeDDL.SelectedValue;
@@ -179,9 +180,10 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleNo", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@Qty", SqlDbType.Decimal).Value = QtyTB.Text.Trim();
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTB.Text;
-                        command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
-                        command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
-                        command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
+                        command1.Parameters.Add("@Modifier", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
+                        //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
+                        //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
+                        //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -220,64 +222,32 @@ namespace GGFPortal.Sales
 
         protected void GridView1_SelectedIndexChanging(object sender, System.Web.UI.WebControls.GridViewSelectEventArgs e)
         {
-            Session["Uid"] = this.GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
-            TypeDDL.SelectedValue = TypeDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[4].Text).Value;
-            UserDDL.SelectedValue= UserDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[5].Text).Value;
-            QtyTB.Text = this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
-            DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+            Session["Uid"] = this.GridView1.Rows[e.NewSelectedIndex].Cells[3].Text;
+            if (UserDDL.Items.Contains(UserDDL.Items.FindByText(GridView1.Rows[e.NewSelectedIndex].Cells[6].Text))==true)
+            {
+                UserDDL.SelectedValue = UserDDL.Items.FindByText(GridView1.Rows[e.NewSelectedIndex].Cells[6].Text).Value;
+                UserLB.Text = "";
+            }
+            else
+            {
+                UserDDL.SelectedValue = "";
+                UserLB.Text = "離職人員";
+            }
+            TypeDDL.SelectedValue = TypeDDL.Items.FindByText(GridView1.Rows[e.NewSelectedIndex].Cells[5].Text).Value;
+            QtyTB.Text = GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+            DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
             DateTB.Visible = true;
             UpDateBT.Visible = true;
             CancelBT.Visible = true;
             DateLB.Visible = true;
             DateTB.Visible = true;
             AddBT.Visible = false;
+            
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            string strid = GridView1.DataKeys[e.RowIndex].Value.ToString();
-            using (SqlConnection conn =new SqlConnection(strConnectString))
-            {
-                conn.Open();
-                SqlCommand command1 = conn.CreateCommand();
-                SqlTransaction transaction1;
-                transaction1 = conn.BeginTransaction("UpdateGGFRequestSam");
-
-                command1.Connection = conn;
-                command1.Transaction = transaction1;
-                try
-                {
-                    //TypeLB.Text = i.ToString();
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [Flag] = 1 ,[ModifyDate]=GETDATE()  WHERE uid = {0} ", strid);
-                    command1.ExecuteNonQuery();
-                    command1.Parameters.Clear();
-                    transaction1.Commit();
-                    ClearData();
-                }
-                catch (Exception ex1)
-                {
-                    try
-                    {
-                        Log.ErrorLog(ex1, "Delete Error :" + Session["SampleNbr"].ToString(), "Sample002.aspx");
-                    }
-                    catch (Exception ex2)
-                    {
-                        Log.ErrorLog(ex2, "Delete Error Error:" + Session["SampleNbr"].ToString(), "Sample002.aspx");
-                    }
-                    finally
-                    {
-                        transaction1.Rollback();
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
-                    }
-                }
-                finally
-                {
-                    conn.Close();
-                    conn.Dispose();
-                    command1.Dispose();
-                }
-
-            }
+            
         }
 
         protected void CancelBT_Click(object sender, EventArgs e)
@@ -376,6 +346,85 @@ namespace GGFPortal.Sales
             else
             {
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇打版預計完成日');</script>");
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            //int x = 0;
+            //if (e.CommandName=="Select")
+            //{
+            //    GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+            //    string strid = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex.ToString();
+            //}
+            if (e.CommandName == "EditeDetail")
+            {
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                string strid = GridView1.DataKeys[row.RowIndex].Values[0].ToString();
+                //Session["uid"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
+                Session["uid"] = strid;
+                Response.Redirect("Sample008.aspx");
+            }
+            else if(e.CommandName=="Delete")
+            {
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                string strid = GridView1.DataKeys[row.RowIndex].Values[0].ToString();
+                //string strid = GridView1.DataKeys[e.RowIndex].Value.ToString();
+
+                using (SqlConnection conn = new SqlConnection(strConnectString))
+                {
+                    conn.Open();
+                    SqlCommand command1 = conn.CreateCommand();
+                    SqlTransaction transaction1;
+                    transaction1 = conn.BeginTransaction("UpdateGGFRequestSam");
+
+                    command1.Connection = conn;
+                    command1.Transaction = transaction1;
+                    try
+                    {
+                        //TypeLB.Text = i.ToString();
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [Flag] = 1 ,[ModifyDate]=GETDATE() ,Modifier=@Modifier  WHERE uid = {0} ", strid);
+                        command1.Parameters.Add("@Modifier", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
+                        command1.ExecuteNonQuery();
+                        command1.Parameters.Clear();
+                        transaction1.Commit();
+                        ClearData();
+                    }
+                    catch (Exception ex1)
+                    {
+                        try
+                        {
+                            Log.ErrorLog(ex1, "Delete Error :" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "Delete Error Error:" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                        }
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                        command1.Dispose();
+                    }
+
+                }
+            }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Button BT = (Button)e.Row.FindControl("修改馬克");
+                if (e.Row.Cells[5].Text != "打版")
+                    BT.Visible = false;
+
             }
         }
     }

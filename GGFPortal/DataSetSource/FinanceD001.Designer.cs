@@ -381,6 +381,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columnopen_date;
             
+            private global::System.Data.DataColumn column客戶StyleNo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ViewShpcDataTable() {
@@ -544,6 +546,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶StyleNoColumn {
+                get {
+                    return this.column客戶StyleNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -595,7 +605,8 @@ namespace GGFPortal.DataSetSource {
                         decimal 匯率, 
                         decimal 加減項, 
                         string 代理商, 
-                        System.DateTime open_date) {
+                        System.DateTime open_date, 
+                        string 客戶StyleNo) {
                 ViewShpcRow rowViewShpcRow = ((ViewShpcRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         site,
@@ -613,7 +624,8 @@ namespace GGFPortal.DataSetSource {
                         匯率,
                         加減項,
                         代理商,
-                        open_date};
+                        open_date,
+                        客戶StyleNo};
                 rowViewShpcRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewShpcRow);
                 return rowViewShpcRow;
@@ -652,6 +664,7 @@ namespace GGFPortal.DataSetSource {
                 this.column加減項 = base.Columns["加減項"];
                 this.column代理商 = base.Columns["代理商"];
                 this.columnopen_date = base.Columns["open_date"];
+                this.column客戶StyleNo = base.Columns["客戶StyleNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -689,6 +702,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column代理商);
                 this.columnopen_date = new global::System.Data.DataColumn("open_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnopen_date);
+                this.column客戶StyleNo = new global::System.Data.DataColumn("客戶StyleNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶StyleNo);
                 this.columnsite.AllowDBNull = false;
                 this.columnsite.MaxLength = 4;
                 this.columnshp_nbr.AllowDBNull = false;
@@ -703,6 +718,7 @@ namespace GGFPortal.DataSetSource {
                 this.column出貨金額.ReadOnly = true;
                 this.column幣別.MaxLength = 4;
                 this.column代理商.MaxLength = 30;
+                this.column客戶StyleNo.MaxLength = 40;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2050,6 +2066,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 客戶StyleNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewShpc.客戶StyleNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'ViewShpc\' 中資料行 \'客戶StyleNo\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableViewShpc.客戶StyleNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is開航日Null() {
                 return this.IsNull(this.tableViewShpc.開航日Column);
             }
@@ -2214,6 +2246,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setopen_dateNull() {
                 this[this.tableViewShpc.open_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is客戶StyleNoNull() {
+                return this.IsNull(this.tableViewShpc.客戶StyleNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set客戶StyleNoNull() {
+                this[this.tableViewShpc.客戶StyleNoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3318,6 +3362,7 @@ namespace GGFPortal.DataSetSource.FinanceD001TableAdapters {
             tableMapping.ColumnMappings.Add("加減項", "加減項");
             tableMapping.ColumnMappings.Add("代理商", "代理商");
             tableMapping.ColumnMappings.Add("open_date", "open_date");
+            tableMapping.ColumnMappings.Add("客戶StyleNo", "客戶StyleNo");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3334,39 +3379,13 @@ namespace GGFPortal.DataSetSource.FinanceD001TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT [site]
-      ,[shp_nbr]
-      ,[開航日]
-      ,[客戶]
-      ,[S_O]
-      ,[style_no]
-      ,[PO_NUMBER]
-      ,[vendor_name_brief]
-      ,sum([出貨數量]) AS '出貨數量'
-      ,[出貨單價]
-      ,SUM([出貨金額]) AS  '出貨金額'
-      ,[幣別]
-      ,[匯率]
-      ,[加減項]      ,[代理商]
-      ,[open_date]
-  FROM [dbo].[ViewShpc]
-where [開航日] between @StartDay and @EndDay  and site like @site
-  GROUP BY
-[site] 
-      ,[shp_nbr]
-      ,[開航日]
-      ,[客戶]
-      ,[S_O]
-      ,[style_no]
-      ,[PO_NUMBER]
-      ,[vendor_name_brief]
-      
-      ,[出貨單價]
-      ,[幣別]
-      ,[匯率]
-      ,[加減項]      ,[代理商]
-      ,[open_date]
-order by [開航日]   ,[客戶]   ,[vendor_name_brief]";
+            this._commandCollection[0].CommandText = @"SELECT          site, shp_nbr, 開航日, 客戶, S_O, style_no, PO_NUMBER, vendor_name_brief, SUM(出貨數量) AS '出貨數量', 
+                            出貨單價, SUM(出貨金額) AS '出貨金額', 幣別, 匯率, 加減項, 代理商, open_date, 客戶StyleNo
+FROM              ViewShpc
+WHERE          (開航日 BETWEEN @StartDay AND @EndDay) AND (site LIKE @site)
+GROUP BY   site, shp_nbr, 開航日, 客戶, S_O, style_no, PO_NUMBER, vendor_name_brief, 出貨單價, 幣別, 匯率, 加減項, 代理商, 
+                            open_date, 客戶StyleNo
+ORDER BY   開航日, 客戶, vendor_name_brief";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDay", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "開航日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDay", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "開航日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

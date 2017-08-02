@@ -35,8 +35,8 @@ namespace GGFPortal.ReferenceCode
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = @"select distinct a.cus_id as Search,b.vendor_name from shpc_bah a left join bas_vendor_master b on a.site=b.site and a.cus_id=b.vendor_id
-                                        where a.cus_id like '%' +  @SearchText + '%' or b.vendor_name like '%'+  @SearchText + '%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
+                                        where upper(a.cus_id) like '%' +  @SearchText + '%' or upper(b.vendor_name) like '%'+  @SearchText + '%'";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
                     cmd.Connection = conn;
                     conn.Open();
                     List<string> SearchCusId = new List<string>();
@@ -61,8 +61,8 @@ namespace GGFPortal.ReferenceCode
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = @"select  distinct top 10  cus_item_no as Search from ordc_bah1 where bah_status<>'CA'
-                                        and cus_item_no like '%' +  @SearchText + '%' ";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
+                                        and upper(cus_item_no) like '%' +  @SearchText + '%' ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
                     cmd.Connection = conn;
                     conn.Open();
                     List<string> SearchCusId = new List<string>();
@@ -78,6 +78,29 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
-
+        [OperationContract]
+        public List<string> SearchVNExcelStyle(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select distinct StyleNo  as Search  from Productivity_Line where  upper(StyleNo) like '%' +  @SearchText + '%' ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
     }
 }
