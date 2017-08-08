@@ -12,7 +12,7 @@ namespace GGFPortal.ReferenceCode
         {
             StringBuilder 多筆資料 = new StringBuilder("");
             string[] strtextarry = SplitEnter(strtext);
-            if (strtextarry.Length > 1)
+            if (strtextarry.Length > 0)
             {
                 for (int i = 0; i < strtextarry.Length; i++)
                 {
@@ -24,6 +24,10 @@ namespace GGFPortal.ReferenceCode
                 }
                 if (多筆資料.Length > 0)
                     多筆資料.Append(")");
+            }
+            else
+            {
+
             }
 
             return 多筆資料;

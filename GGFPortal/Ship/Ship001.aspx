@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>採購單資料查詢</title>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
@@ -30,7 +30,12 @@
 
                             <div class="form-group center-block">
                                 <h4>採購單</h4>
-                                <asp:TextBox ID="PurTB" runat="server" TextMode="MultiLine"  class="form-control col-lg-5" Height="400px"></asp:TextBox>
+                                <asp:TextBox ID="PurTB" runat="server" TextMode="MultiLine"  class="form-control col-lg-5" Height="200px"></asp:TextBox>
+
+                            </div>
+                            <div class="form-group center-block">
+                                <h4>款號</h4>
+                                <asp:TextBox ID="款號TB" runat="server" TextMode="MultiLine"  class="form-control col-lg-5" Height="200px"></asp:TextBox>
 
                             </div>
                            
@@ -47,7 +52,7 @@
                 </div>
                 <div class="col-md-10">
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\ReportFinanceTemp001.rdlc" DisplayName="出口大表">
+                        <LocalReport ReportPath="ReportSource\Ship\ReportShip001.rdlc" DisplayName="採購單">
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </div>

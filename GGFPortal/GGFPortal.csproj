@@ -257,6 +257,8 @@
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
     <Content Include="Sales\Sample008.aspx" />
+    <Content Include="VN\VN013.aspx" />
+    <Content Include="VN\VN012.aspx" />
     <Content Include="VN\VN011.aspx" />
     <Content Include="Finance\Finance012.aspx" />
     <Content Include="Finance\Finance011.aspx" />
@@ -405,6 +407,17 @@
     </Content>
     <Content Include="DataSetSource\TAXDS001.xsc">
       <DependentUpon>TAXDS001.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\ShipTempDS.xsc">
+      <DependentUpon>ShipTempDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\ShipTempDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShipTempDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\ShipTempDS.xss">
+      <DependentUpon>ShipTempDS.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\TAXDS001.xsd">
       <SubType>Designer</SubType>
@@ -640,6 +653,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesTempDS2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\ShipTempDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShipTempDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -678,6 +696,20 @@
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN013.aspx.cs">
+      <DependentUpon>VN013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN013.aspx.designer.cs">
+      <DependentUpon>VN013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN012.aspx.cs">
+      <DependentUpon>VN012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN012.aspx.designer.cs">
+      <DependentUpon>VN012.aspx</DependentUpon>
     </Compile>
     <Compile Include="VN\VN011.aspx.cs">
       <DependentUpon>VN011.aspx</DependentUpon>
@@ -1403,12 +1435,16 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN004.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN005.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN012.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN010.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN013.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN013V2.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSample02_V2.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">

@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Ship {
+namespace GGFPortal.VN {
     
     
-    public partial class Ship001 {
+    public partial class VN013 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,22 +31,58 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// PurTB 控制項。
+        /// StartDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PurTB;
+        protected global::System.Web.UI.WebControls.TextBox StartDay;
         
         /// <summary>
-        /// 款號TB 控制項。
+        /// StartDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 款號TB;
+        protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
+        
+        /// <summary>
+        /// EndDay 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EndDay;
+        
+        /// <summary>
+        /// EndDay_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        
+        /// <summary>
+        /// StyleTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StyleTB;
+        
+        /// <summary>
+        /// StyleTB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
         
         /// <summary>
         /// SearchBT 控制項。

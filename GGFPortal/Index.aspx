@@ -116,6 +116,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink29" runat="server" NavigateUrl="~/Ship/Search/Search003.aspx">採購入庫狀況</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink30" runat="server" NavigateUrl="~/Ship/Search/Search004.aspx">包裝底稿狀況查詢</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink51" runat="server" NavigateUrl="~/Ship/Ship001.aspx">採購單狀況查詢</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -187,6 +189,12 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink39" runat="server" NavigateUrl="~/VN/VNProductivityManagement.aspx">越南工時匯入鎖定</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink48" runat="server" NavigateUrl="~/VN/VN010.aspx">越南款號各組數量</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink52" runat="server" NavigateUrl="~/VN/VN011.aspx">越南明細表(含訂單工繳)</asp:HyperLink>
+                                                                        <br />
+                        <asp:HyperLink ID="HyperLink53" runat="server" NavigateUrl="~/VN/VN012.aspx">越南明細表(秒數)</asp:HyperLink>
+                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink54" runat="server" NavigateUrl="~/VN/VN013.aspx">越南明細表(各組秒數)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

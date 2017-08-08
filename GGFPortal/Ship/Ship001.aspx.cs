@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using GGFPortal.ReferenceCode;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,6 +12,7 @@ namespace GGFPortal.Ship
     public partial class Ship001 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        字串處理 字串處理 = new 字串處理();
         protected void Page_Load(object sender, EventArgs e)
         {
             //StartDay.Attributes["readonly"] = "readonly";
@@ -25,6 +27,8 @@ namespace GGFPortal.Ship
             //StartDay.Text = "";
             //EndDay.Text = "";
             //VendorDDL.SelectedValue = "";
+            PurTB.Text = "";
+            款號TB.Text = "";
         }
 
         protected void SearchBT_Click(object sender, EventArgs e)
@@ -44,7 +48,7 @@ namespace GGFPortal.Ship
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("FinanceTemp001", dt);
+                ReportDataSource source = new ReportDataSource("Ship001", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -57,24 +61,16 @@ namespace GGFPortal.Ship
         private StringBuilder selectsql()
         {
             
-            StringBuilder strsql = new StringBuilder(" select * from [View出口大表] ");
+            StringBuilder strsql = new StringBuilder(" select * from [View採購單] where 三角出 <>'Y' ");
 
-            //if (!String.IsNullOrEmpty(SiteDDL.SelectedValue) || !String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(VendorDDL.SelectedValue) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
-            //{
-            //    strsql.Append(" where 1=1 ");
-            //    if (!String.IsNullOrEmpty(SiteDDL.SelectedValue))
-            //        strsql.AppendFormat(" and [site]  = '{0}' ", SiteDDL.SelectedValue);
-            //    if (!String.IsNullOrEmpty(CusTB.Text))
-            //        strsql.AppendFormat(" and [客戶]  = '{0}'",CusTB.Text);
-            //    if (!String.IsNullOrEmpty(StyleTB.Text))
-            //        strsql.AppendFormat(" and [style_no]  = '{0}'", StyleTB.Text);
-            //    if (!String.IsNullOrEmpty(VendorDDL.SelectedValue))
-            //        strsql.AppendFormat(" and [工廠代號]  = '{0}'", VendorDDL.SelectedValue);
-            //    if (!String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
-            //    {
-            //        strsql.AppendFormat(" and [開航日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text))? StartDay.Text:"20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
-            //    }
-            //}
+            string 款號 ,採購單;
+            採購單 = 字串處理.字串多筆資料搜尋(PurTB.Text).ToString();
+            款號 = 字串處理.字串多筆資料搜尋(款號TB.Text).ToString();
+            if (款號.Length > 0)
+                strsql.AppendFormat(" and 款號 in {0} ", 款號);
+            if (採購單.Length>0)
+                strsql.AppendFormat(" and 採購單 in {0} ", 採購單);
+
             return strsql;
         }
         
