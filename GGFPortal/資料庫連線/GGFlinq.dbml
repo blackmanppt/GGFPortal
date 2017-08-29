@@ -31,4 +31,318 @@
       <Column Name="修改日期" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.shpc_bah" Member="shpc_bah">
+    <Type Name="shpc_bah">
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="kind" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shp_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shp_type" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="shp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="pre_shp_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ord_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="cus_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="ord_cus_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="sale_class" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="in_transit_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="amt_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="invoice_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="invoice_nbr" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="rtn_type" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="lc_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="shp_key" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="shp_year" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="shp_period" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="project_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="area_no" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="dept_no" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="salesman" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="currency_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="exchange_rate" Type="System.Decimal" DbType="Decimal(10,5)" CanBeNull="true" />
+      <Column Name="last_exchange" Type="System.Decimal" DbType="Decimal(10,5)" CanBeNull="true" />
+      <Column Name="discount_rate" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="tax_code" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="local_invoice_no" Type="System.Decimal" DbType="Decimal(1,0)" CanBeNull="true" />
+      <Column Name="ivc_with_car" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="pay_term" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="transatn_term" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="carrier_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="frieght_term" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="shp_addr_id" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="ivc_addr_id" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="ship_cost" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="tot_shp_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="tax_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="base_tot_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="base_tax_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="adv_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="ar_ref_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="remark120" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="shipping_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="contain_ware" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="customs_broker" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="ship_vendor" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="ship_title" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="ship_count" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="port_from" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="port_to" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="nation_no" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="mark_select" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="front_mark" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="side_mark" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="doc_source" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="nbr_source" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="way_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="total_desc" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="custom_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="arrival_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="print_shp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="slip_rec_flag" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="slip_rec_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="so_nbr" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="open_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ins_class" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ord_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="ins_vendor" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="deduct_code" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="ins_rate" Type="System.Decimal" DbType="Decimal(8,4)" CanBeNull="true" />
+      <Column Name="modify_count" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="delivery_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="delivery_class" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="delivery_address_id" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="cus_ven_class" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="check_code" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="shp_grantor" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="confirm_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="special_ctl" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="permit_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="permit_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="posted_acr" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="posted_lcs" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="clm_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="cust_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="declaration" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="manager_approve" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="acc_approve" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="head_status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="prt_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="filter_creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="filter_dept" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modifier" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cabinet_no" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="upload_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="commiss_amount" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="base_commiss_amount" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="commiss_amt" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="commiss_type" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="shp_weight" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="forecast_acp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="trade_cus" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Association Name="shpc_bah_shpc_bat" Member="shpc_bat" ThisKey="site,kind,shp_nbr" OtherKey="site,kind,shp_nbr" Type="shpc_bat" />
+    </Type>
+  </Table>
+  <Table Name="dbo.shpc_bat" Member="shpc_bat">
+    <Type Name="shpc_bat">
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="kind" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shp_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shp_seq" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pre_shp_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="pre_shp_seq" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="ord_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ord_seq" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="ord_rank" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="doc_ctl" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="rs_type" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="item_no" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
+      <Column Name="stockroom" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="stockroom_to" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="lot_nbr" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cus_item_name" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="sales_um" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="pack_unit" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="sale_qty" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="shp_qty" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="rtn_qty" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="aux_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="pack_qty" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="inner_qty" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="std_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="sale_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="shp_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="base_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="ship_cost" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="other_expse" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="discount_rate" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="box_qty" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="net_weight" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="gross_weight" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="cuft_size" Type="System.Decimal" DbType="Decimal(14,4)" CanBeNull="true" />
+      <Column Name="invoice_nbr" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="shp_whence" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="remark150" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="modify_count" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="detail_status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="posted_ivc" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="posted_sal" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="posted_inv" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="post_inv_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="protect_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="filter_creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="filter_dept" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modifier" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cust_po_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="commiss_amount" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="base_commiss_amount" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="add_reduce_item" Type="System.Decimal" DbType="Decimal(12,4)" CanBeNull="true" />
+      <Association Name="shpc_bah_shpc_bat" Member="shpc_bah" ThisKey="site,kind,shp_nbr" OtherKey="site,kind,shp_nbr" Type="shpc_bah" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ordc_bah1" Member="ordc_bah1">
+    <Type Name="ordc_bah1">
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ord_class" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="cus_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="dept_no" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="item_no" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
+      <Column Name="item_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cus_item_no" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="item_statistic" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="item_type" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="salesman" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="unit_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="ord_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="manual_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="ord_unit" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="aux_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="aux_unit" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="season_y" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="season" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="plan_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vendor_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="sam_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="sam_times" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="expand_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="agents" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="estimate_ie" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="actual_ie" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="approved_ie" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="trademark" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="brand" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ingredients" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="adv_amt" Type="System.Decimal" DbType="Decimal(12,3)" CanBeNull="true" />
+      <Column Name="bah_status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="crp_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="close_reason" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="close_rmk" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="filter_dept" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="filter_creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modifier" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="est_gross_pcs" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="real_gross_pcs" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="expense_dozen" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="main_cost" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="sub_cost" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="extra_expense" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="ord_closer" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="close_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="crp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="mps_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="mps_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sub_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sub_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="prod_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="price_main_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="price_sub_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="rough_gross" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="chn_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="chn_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="chn_turn_out" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="chn_turn_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="pre_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="pre_seq" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="copy_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ordc_bat" Member="ordc_bat">
+    <Type Name="ordc_bat">
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ord_seq" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cust_po_nbr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="season" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="item_number" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="hts" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="pack" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="sample_class" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="get_term" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="transatn_term" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="last_place" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="deliver_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="forwarder" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="quota_id" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="unit_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="pre_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="real_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="add_reduce_item" Type="System.Decimal" DbType="Decimal(12,4)" CanBeNull="true" />
+      <Column Name="real_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="ord_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="ord_base_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="shp_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="shp_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="rtn_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="rtn_amt" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="wpk_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="shp_time" Type="System.Decimal" DbType="Decimal(5,0)" CanBeNull="true" />
+      <Column Name="add_export" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="reduce_export" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="cus_brokerage" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="cus_delivery_range" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="cus_delivery_s" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cus_delivery_e" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="finish_modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="qty_modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cancel_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="cancel_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="plan_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="finish_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="confirm_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="color_price_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="bat_status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="close_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="filter_creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="filter_dept" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modifier" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="po_type" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="est_gross_pcs" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="real_gross_pcs" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="main_cost" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="sub_cost" Type="System.Decimal" DbType="Decimal(11,2)" CanBeNull="true" />
+      <Column Name="first_shp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_shp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ivc_qty" Type="System.Decimal" DbType="Decimal(11,3)" CanBeNull="true" />
+      <Column Name="prod_count" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="sample_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="acr_cus" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="shp_base_amt" Type="System.Decimal" DbType="Decimal(14,2)" CanBeNull="true" />
+      <Column Name="rtn_base_amt" Type="System.Decimal" DbType="Decimal(14,2)" CanBeNull="true" />
+      <Column Name="contract_record" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

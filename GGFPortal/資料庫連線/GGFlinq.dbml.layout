@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="GGF">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 22.75" name="GGF">
   <DataContextMoniker Name="/GGFDataContext" />
   <nestedChildShapes>
     <classShape Id="39407651-cfbb-4641-900f-4ea8e90e1692" absoluteBounds="1, 1.375, 2, 3.6939111328124996">
@@ -8,10 +8,41 @@
         <elementListCompartment Id="f2d32bbf-890e-4862-b4e7-2d907b257882" absoluteBounds="1.0150000000000001, 1.835, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6f7fd775-0930-4e23-b2ac-1f992d09f8a6" absoluteBounds="4.625, 1.75, 2, 2.3478011067708335">
+    <classShape Id="6f7fd775-0930-4e23-b2ac-1f992d09f8a6" absoluteBounds="3.125, 1.375, 2, 2.3478011067708335">
       <DataClassMoniker Name="/GGFDataContext/GGFRequestMark" />
       <nestedChildShapes>
-        <elementListCompartment Id="dad6a81b-04b8-41b9-8bd4-fd930d8f07ac" absoluteBounds="4.6400000000000006, 2.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="dad6a81b-04b8-41b9-8bd4-fd930d8f07ac" absoluteBounds="3.1400000000000006, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5b411505-35f2-43bf-bffb-a18730004423" absoluteBounds="5.5, 1.125, 2, 21.385642903645834">
+      <DataClassMoniker Name="/GGFDataContext/shpc_bah" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95fc7cf0-b8e1-4476-a2c6-a2d5200b2161" absoluteBounds="5.515, 1.585, 1.9700000000000002, 20.825642903645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ce3d07ab-7250-468f-ba8d-3ae1568a7264" absoluteBounds="7.75, 1.125, 2, 11.578269856770833">
+      <DataClassMoniker Name="/GGFDataContext/shpc_bat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d9d1429a-02a6-42ef-a8b5-838f13c1162c" absoluteBounds="7.7650000000000006, 1.585, 1.9700000000000002, 11.018269856770832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.5 : 6.91413492838542); (7.75 : 6.91413492838542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/GGFDataContext/shpc_bah/shpc_bah_shpc_bat" />
+      <nodes>
+        <classShapeMoniker Id="5b411505-35f2-43bf-bffb-a18730004423" />
+        <classShapeMoniker Id="ce3d07ab-7250-468f-ba8d-3ae1568a7264" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="13c44ad9-ff63-427f-98e1-0162080b9edd" absoluteBounds="12, 1.125, 2, 13.693585611979167">
+      <DataClassMoniker Name="/GGFDataContext/ordc_bah1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="acec149f-6b53-4a71-b7c8-0fff12529d4d" absoluteBounds="12.015, 1.585, 1.9700000000000002, 13.133585611979166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf0a9c60-c02b-4856-9fd3-3186fa40fb8f" absoluteBounds="9.875, 1.125, 2, 13.5012841796875">
+      <DataClassMoniker Name="/GGFDataContext/ordc_bat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07ba07a8-167a-466a-9a93-18d15477dc2f" absoluteBounds="9.89, 1.585, 1.9700000000000002, 12.9412841796875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

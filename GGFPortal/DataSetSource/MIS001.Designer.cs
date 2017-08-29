@@ -28,6 +28,8 @@ namespace GGFPortal.DataSetSource {
         
         private PurCheckDataTable tablePurCheck;
         
+        private 訂單資料狀態DataTable table訂單資料狀態;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["PurCheck"] != null)) {
                     base.Tables.Add(new PurCheckDataTable(ds.Tables["PurCheck"]));
+                }
+                if ((ds.Tables["訂單資料狀態"] != null)) {
+                    base.Tables.Add(new 訂單資料狀態DataTable(ds.Tables["訂單資料狀態"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace GGFPortal.DataSetSource {
         public PurCheckDataTable PurCheck {
             get {
                 return this.tablePurCheck;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 訂單資料狀態DataTable 訂單資料狀態 {
+            get {
+                return this.table訂單資料狀態;
             }
         }
         
@@ -173,6 +188,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["PurCheck"] != null)) {
                     base.Tables.Add(new PurCheckDataTable(ds.Tables["PurCheck"]));
                 }
+                if ((ds.Tables["訂單資料狀態"] != null)) {
+                    base.Tables.Add(new 訂單資料狀態DataTable(ds.Tables["訂單資料狀態"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace GGFPortal.DataSetSource {
                     this.tablePurCheck.InitVars();
                 }
             }
+            this.table訂單資料狀態 = ((訂單資料狀態DataTable)(base.Tables["訂單資料狀態"]));
+            if ((initTable == true)) {
+                if ((this.table訂單資料狀態 != null)) {
+                    this.table訂單資料狀態.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.tableOrderCheck);
             this.tablePurCheck = new PurCheckDataTable();
             base.Tables.Add(this.tablePurCheck);
+            this.table訂單資料狀態 = new 訂單資料狀態DataTable();
+            base.Tables.Add(this.table訂單資料狀態);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializePurCheck() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerialize訂單資料狀態() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void PurCheckRowChangeEventHandler(object sender, PurCheckRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void 訂單資料狀態RowChangeEventHandler(object sender, 訂單資料狀態RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1139,6 +1174,681 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 訂單資料狀態DataTable : global::System.Data.TypedTableBase<訂單資料狀態Row> {
+            
+            private global::System.Data.DataColumn column公司;
+            
+            private global::System.Data.DataColumn column客戶交期;
+            
+            private global::System.Data.DataColumn column訂單號碼;
+            
+            private global::System.Data.DataColumn column款號;
+            
+            private global::System.Data.DataColumn column客戶代號;
+            
+            private global::System.Data.DataColumn column代工廠;
+            
+            private global::System.Data.DataColumn column預交量;
+            
+            private global::System.Data.DataColumn column單價;
+            
+            private global::System.Data.DataColumn column營收;
+            
+            private global::System.Data.DataColumn column工繳;
+            
+            private global::System.Data.DataColumn column預估工繳金額;
+            
+            private global::System.Data.DataColumn column預估毛利;
+            
+            private global::System.Data.DataColumn column預估毛利金額;
+            
+            private global::System.Data.DataColumn column業務;
+            
+            private global::System.Data.DataColumn column部門;
+            
+            private global::System.Data.DataColumn column交期年月;
+            
+            private global::System.Data.DataColumn column訂單PO;
+            
+            private global::System.Data.DataColumn column訂單狀態代碼;
+            
+            private global::System.Data.DataColumn column訂單地區;
+            
+            private global::System.Data.DataColumn column代工廠地區;
+            
+            private global::System.Data.DataColumn column訂單狀態;
+            
+            private global::System.Data.DataColumn column實際生產數量;
+            
+            private global::System.Data.DataColumn column預估生產數量;
+            
+            private global::System.Data.DataColumn column代工廠名稱;
+            
+            private global::System.Data.DataColumn columncontract_record;
+            
+            private global::System.Data.DataColumn column業務處;
+            
+            private global::System.Data.DataColumn column款式類別;
+            
+            private global::System.Data.DataColumn columnhts;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態DataTable() {
+                this.TableName = "訂單資料狀態";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 訂單資料狀態DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected 訂單資料狀態DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 公司Column {
+                get {
+                    return this.column公司;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶交期Column {
+                get {
+                    return this.column客戶交期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單號碼Column {
+                get {
+                    return this.column訂單號碼;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 款號Column {
+                get {
+                    return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶代號Column {
+                get {
+                    return this.column客戶代號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 代工廠Column {
+                get {
+                    return this.column代工廠;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 預交量Column {
+                get {
+                    return this.column預交量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 單價Column {
+                get {
+                    return this.column單價;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 營收Column {
+                get {
+                    return this.column營收;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 工繳Column {
+                get {
+                    return this.column工繳;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 預估工繳金額Column {
+                get {
+                    return this.column預估工繳金額;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 預估毛利Column {
+                get {
+                    return this.column預估毛利;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 預估毛利金額Column {
+                get {
+                    return this.column預估毛利金額;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 業務Column {
+                get {
+                    return this.column業務;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 部門Column {
+                get {
+                    return this.column部門;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 交期年月Column {
+                get {
+                    return this.column交期年月;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單POColumn {
+                get {
+                    return this.column訂單PO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單狀態代碼Column {
+                get {
+                    return this.column訂單狀態代碼;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單地區Column {
+                get {
+                    return this.column訂單地區;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 代工廠地區Column {
+                get {
+                    return this.column代工廠地區;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單狀態Column {
+                get {
+                    return this.column訂單狀態;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 實際生產數量Column {
+                get {
+                    return this.column實際生產數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 預估生產數量Column {
+                get {
+                    return this.column預估生產數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 代工廠名稱Column {
+                get {
+                    return this.column代工廠名稱;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn contract_recordColumn {
+                get {
+                    return this.columncontract_record;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 業務處Column {
+                get {
+                    return this.column業務處;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 款式類別Column {
+                get {
+                    return this.column款式類別;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn htsColumn {
+                get {
+                    return this.columnhts;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態Row this[int index] {
+                get {
+                    return ((訂單資料狀態Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 訂單資料狀態RowChangeEventHandler 訂單資料狀態RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 訂單資料狀態RowChangeEventHandler 訂單資料狀態RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 訂單資料狀態RowChangeEventHandler 訂單資料狀態RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 訂單資料狀態RowChangeEventHandler 訂單資料狀態RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Add訂單資料狀態Row(訂單資料狀態Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態Row Add訂單資料狀態Row(
+                        string 公司, 
+                        System.DateTime 客戶交期, 
+                        string 訂單號碼, 
+                        string 款號, 
+                        string 客戶代號, 
+                        string 代工廠, 
+                        decimal 預交量, 
+                        decimal 單價, 
+                        decimal 營收, 
+                        decimal 工繳, 
+                        decimal 預估工繳金額, 
+                        decimal 預估毛利, 
+                        decimal 預估毛利金額, 
+                        string 業務, 
+                        string 部門, 
+                        string 交期年月, 
+                        string 訂單PO, 
+                        string 訂單狀態代碼, 
+                        string 訂單地區, 
+                        string 代工廠地區, 
+                        string 訂單狀態, 
+                        string 實際生產數量, 
+                        string 預估生產數量, 
+                        string 代工廠名稱, 
+                        string contract_record, 
+                        string 業務處, 
+                        string 款式類別, 
+                        string hts) {
+                訂單資料狀態Row row訂單資料狀態Row = ((訂單資料狀態Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        公司,
+                        客戶交期,
+                        訂單號碼,
+                        款號,
+                        客戶代號,
+                        代工廠,
+                        預交量,
+                        單價,
+                        營收,
+                        工繳,
+                        預估工繳金額,
+                        預估毛利,
+                        預估毛利金額,
+                        業務,
+                        部門,
+                        交期年月,
+                        訂單PO,
+                        訂單狀態代碼,
+                        訂單地區,
+                        代工廠地區,
+                        訂單狀態,
+                        實際生產數量,
+                        預估生產數量,
+                        代工廠名稱,
+                        contract_record,
+                        業務處,
+                        款式類別,
+                        hts};
+                row訂單資料狀態Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row訂單資料狀態Row);
+                return row訂單資料狀態Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                訂單資料狀態DataTable cln = ((訂單資料狀態DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 訂單資料狀態DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.column公司 = base.Columns["公司"];
+                this.column客戶交期 = base.Columns["客戶交期"];
+                this.column訂單號碼 = base.Columns["訂單號碼"];
+                this.column款號 = base.Columns["款號"];
+                this.column客戶代號 = base.Columns["客戶代號"];
+                this.column代工廠 = base.Columns["代工廠"];
+                this.column預交量 = base.Columns["預交量"];
+                this.column單價 = base.Columns["單價"];
+                this.column營收 = base.Columns["營收"];
+                this.column工繳 = base.Columns["工繳"];
+                this.column預估工繳金額 = base.Columns["預估工繳金額"];
+                this.column預估毛利 = base.Columns["預估毛利"];
+                this.column預估毛利金額 = base.Columns["預估毛利金額"];
+                this.column業務 = base.Columns["業務"];
+                this.column部門 = base.Columns["部門"];
+                this.column交期年月 = base.Columns["交期年月"];
+                this.column訂單PO = base.Columns["訂單PO"];
+                this.column訂單狀態代碼 = base.Columns["訂單狀態代碼"];
+                this.column訂單地區 = base.Columns["訂單地區"];
+                this.column代工廠地區 = base.Columns["代工廠地區"];
+                this.column訂單狀態 = base.Columns["訂單狀態"];
+                this.column實際生產數量 = base.Columns["實際生產數量"];
+                this.column預估生產數量 = base.Columns["預估生產數量"];
+                this.column代工廠名稱 = base.Columns["代工廠名稱"];
+                this.columncontract_record = base.Columns["contract_record"];
+                this.column業務處 = base.Columns["業務處"];
+                this.column款式類別 = base.Columns["款式類別"];
+                this.columnhts = base.Columns["hts"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.column公司 = new global::System.Data.DataColumn("公司", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column公司);
+                this.column客戶交期 = new global::System.Data.DataColumn("客戶交期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶交期);
+                this.column訂單號碼 = new global::System.Data.DataColumn("訂單號碼", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單號碼);
+                this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款號);
+                this.column客戶代號 = new global::System.Data.DataColumn("客戶代號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶代號);
+                this.column代工廠 = new global::System.Data.DataColumn("代工廠", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column代工廠);
+                this.column預交量 = new global::System.Data.DataColumn("預交量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column預交量);
+                this.column單價 = new global::System.Data.DataColumn("單價", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column單價);
+                this.column營收 = new global::System.Data.DataColumn("營收", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column營收);
+                this.column工繳 = new global::System.Data.DataColumn("工繳", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column工繳);
+                this.column預估工繳金額 = new global::System.Data.DataColumn("預估工繳金額", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column預估工繳金額);
+                this.column預估毛利 = new global::System.Data.DataColumn("預估毛利", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column預估毛利);
+                this.column預估毛利金額 = new global::System.Data.DataColumn("預估毛利金額", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column預估毛利金額);
+                this.column業務 = new global::System.Data.DataColumn("業務", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column業務);
+                this.column部門 = new global::System.Data.DataColumn("部門", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column部門);
+                this.column交期年月 = new global::System.Data.DataColumn("交期年月", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column交期年月);
+                this.column訂單PO = new global::System.Data.DataColumn("訂單PO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單PO);
+                this.column訂單狀態代碼 = new global::System.Data.DataColumn("訂單狀態代碼", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單狀態代碼);
+                this.column訂單地區 = new global::System.Data.DataColumn("訂單地區", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單地區);
+                this.column代工廠地區 = new global::System.Data.DataColumn("代工廠地區", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column代工廠地區);
+                this.column訂單狀態 = new global::System.Data.DataColumn("訂單狀態", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單狀態);
+                this.column實際生產數量 = new global::System.Data.DataColumn("實際生產數量", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column實際生產數量);
+                this.column預估生產數量 = new global::System.Data.DataColumn("預估生產數量", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column預估生產數量);
+                this.column代工廠名稱 = new global::System.Data.DataColumn("代工廠名稱", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column代工廠名稱);
+                this.columncontract_record = new global::System.Data.DataColumn("contract_record", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontract_record);
+                this.column業務處 = new global::System.Data.DataColumn("業務處", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column業務處);
+                this.column款式類別 = new global::System.Data.DataColumn("款式類別", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款式類別);
+                this.columnhts = new global::System.Data.DataColumn("hts", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhts);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                                this.column公司,
+                                this.column訂單號碼}, false));
+                this.column公司.AllowDBNull = false;
+                this.column公司.MaxLength = 4;
+                this.column訂單號碼.AllowDBNull = false;
+                this.column訂單號碼.MaxLength = 20;
+                this.column款號.MaxLength = 100;
+                this.column客戶代號.MaxLength = 8;
+                this.column代工廠.MaxLength = 8;
+                this.column預估工繳金額.ReadOnly = true;
+                this.column預估毛利金額.ReadOnly = true;
+                this.column業務.ReadOnly = true;
+                this.column業務.MaxLength = 32;
+                this.column部門.MaxLength = 30;
+                this.column交期年月.ReadOnly = true;
+                this.column交期年月.MaxLength = 6;
+                this.column訂單PO.MaxLength = 20;
+                this.column訂單狀態代碼.MaxLength = 2;
+                this.column訂單地區.MaxLength = 30;
+                this.column代工廠地區.MaxLength = 255;
+                this.column訂單狀態.MaxLength = 200;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態Row New訂單資料狀態Row() {
+                return ((訂單資料狀態Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 訂單資料狀態Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(訂單資料狀態Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.訂單資料狀態RowChanged != null)) {
+                    this.訂單資料狀態RowChanged(this, new 訂單資料狀態RowChangeEvent(((訂單資料狀態Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.訂單資料狀態RowChanging != null)) {
+                    this.訂單資料狀態RowChanging(this, new 訂單資料狀態RowChangeEvent(((訂單資料狀態Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.訂單資料狀態RowDeleted != null)) {
+                    this.訂單資料狀態RowDeleted(this, new 訂單資料狀態RowChangeEvent(((訂單資料狀態Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.訂單資料狀態RowDeleting != null)) {
+                    this.訂單資料狀態RowDeleting(this, new 訂單資料狀態RowChangeEvent(((訂單資料狀態Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Remove訂單資料狀態Row(訂單資料狀態Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MIS001 ds = new MIS001();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "訂單資料狀態DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class OrderCheckRow : global::System.Data.DataRow {
@@ -1807,6 +2517,771 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 訂單資料狀態Row : global::System.Data.DataRow {
+            
+            private 訂單資料狀態DataTable table訂單資料狀態;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 訂單資料狀態Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table訂單資料狀態 = ((訂單資料狀態DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 公司 {
+                get {
+                    return ((string)(this[this.table訂單資料狀態.公司Column]));
+                }
+                set {
+                    this[this.table訂單資料狀態.公司Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 客戶交期 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table訂單資料狀態.客戶交期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'客戶交期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.客戶交期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單號碼 {
+                get {
+                    return ((string)(this[this.table訂單資料狀態.訂單號碼Column]));
+                }
+                set {
+                    this[this.table訂單資料狀態.訂單號碼Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 款號 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.款號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'款號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.款號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 客戶代號 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.客戶代號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'客戶代號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.客戶代號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 代工廠 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.代工廠Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'代工廠\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.代工廠Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 預交量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.預交量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'預交量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.預交量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 單價 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.單價Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'單價\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.單價Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 營收 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.營收Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'營收\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.營收Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 工繳 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.工繳Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'工繳\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.工繳Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 預估工繳金額 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.預估工繳金額Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'預估工繳金額\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.預估工繳金額Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 預估毛利 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.預估毛利Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'預估毛利\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.預估毛利Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 預估毛利金額 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table訂單資料狀態.預估毛利金額Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'預估毛利金額\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.預估毛利金額Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 業務 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.業務Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'業務\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.業務Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 部門 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.部門Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'部門\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.部門Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 交期年月 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.交期年月Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'交期年月\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.交期年月Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單PO {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.訂單POColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'訂單PO\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.訂單POColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單狀態代碼 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.訂單狀態代碼Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'訂單狀態代碼\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.訂單狀態代碼Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單地區 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.訂單地區Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'訂單地區\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.訂單地區Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 代工廠地區 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.代工廠地區Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'代工廠地區\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.代工廠地區Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單狀態 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.訂單狀態Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'訂單狀態\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.訂單狀態Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 實際生產數量 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.實際生產數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'實際生產數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.實際生產數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 預估生產數量 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.預估生產數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'預估生產數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.預估生產數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 代工廠名稱 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.代工廠名稱Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'代工廠名稱\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.代工廠名稱Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string contract_record {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.contract_recordColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'contract_record\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.contract_recordColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 業務處 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.業務處Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'業務處\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.業務處Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 款式類別 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.款式類別Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'款式類別\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.款式類別Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string hts {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單資料狀態.htsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單資料狀態\' 中資料行 \'hts\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單資料狀態.htsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is客戶交期Null() {
+                return this.IsNull(this.table訂單資料狀態.客戶交期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set客戶交期Null() {
+                this[this.table訂單資料狀態.客戶交期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is款號Null() {
+                return this.IsNull(this.table訂單資料狀態.款號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set款號Null() {
+                this[this.table訂單資料狀態.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is客戶代號Null() {
+                return this.IsNull(this.table訂單資料狀態.客戶代號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set客戶代號Null() {
+                this[this.table訂單資料狀態.客戶代號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is代工廠Null() {
+                return this.IsNull(this.table訂單資料狀態.代工廠Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set代工廠Null() {
+                this[this.table訂單資料狀態.代工廠Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is預交量Null() {
+                return this.IsNull(this.table訂單資料狀態.預交量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set預交量Null() {
+                this[this.table訂單資料狀態.預交量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is單價Null() {
+                return this.IsNull(this.table訂單資料狀態.單價Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set單價Null() {
+                this[this.table訂單資料狀態.單價Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is營收Null() {
+                return this.IsNull(this.table訂單資料狀態.營收Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set營收Null() {
+                this[this.table訂單資料狀態.營收Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is工繳Null() {
+                return this.IsNull(this.table訂單資料狀態.工繳Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set工繳Null() {
+                this[this.table訂單資料狀態.工繳Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is預估工繳金額Null() {
+                return this.IsNull(this.table訂單資料狀態.預估工繳金額Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set預估工繳金額Null() {
+                this[this.table訂單資料狀態.預估工繳金額Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is預估毛利Null() {
+                return this.IsNull(this.table訂單資料狀態.預估毛利Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set預估毛利Null() {
+                this[this.table訂單資料狀態.預估毛利Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is預估毛利金額Null() {
+                return this.IsNull(this.table訂單資料狀態.預估毛利金額Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set預估毛利金額Null() {
+                this[this.table訂單資料狀態.預估毛利金額Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is業務Null() {
+                return this.IsNull(this.table訂單資料狀態.業務Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set業務Null() {
+                this[this.table訂單資料狀態.業務Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is部門Null() {
+                return this.IsNull(this.table訂單資料狀態.部門Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set部門Null() {
+                this[this.table訂單資料狀態.部門Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is交期年月Null() {
+                return this.IsNull(this.table訂單資料狀態.交期年月Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set交期年月Null() {
+                this[this.table訂單資料狀態.交期年月Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單PONull() {
+                return this.IsNull(this.table訂單資料狀態.訂單POColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單PONull() {
+                this[this.table訂單資料狀態.訂單POColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單狀態代碼Null() {
+                return this.IsNull(this.table訂單資料狀態.訂單狀態代碼Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單狀態代碼Null() {
+                this[this.table訂單資料狀態.訂單狀態代碼Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單地區Null() {
+                return this.IsNull(this.table訂單資料狀態.訂單地區Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單地區Null() {
+                this[this.table訂單資料狀態.訂單地區Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is代工廠地區Null() {
+                return this.IsNull(this.table訂單資料狀態.代工廠地區Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set代工廠地區Null() {
+                this[this.table訂單資料狀態.代工廠地區Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單狀態Null() {
+                return this.IsNull(this.table訂單資料狀態.訂單狀態Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單狀態Null() {
+                this[this.table訂單資料狀態.訂單狀態Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is實際生產數量Null() {
+                return this.IsNull(this.table訂單資料狀態.實際生產數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set實際生產數量Null() {
+                this[this.table訂單資料狀態.實際生產數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is預估生產數量Null() {
+                return this.IsNull(this.table訂單資料狀態.預估生產數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set預估生產數量Null() {
+                this[this.table訂單資料狀態.預估生產數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is代工廠名稱Null() {
+                return this.IsNull(this.table訂單資料狀態.代工廠名稱Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set代工廠名稱Null() {
+                this[this.table訂單資料狀態.代工廠名稱Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscontract_recordNull() {
+                return this.IsNull(this.table訂單資料狀態.contract_recordColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcontract_recordNull() {
+                this[this.table訂單資料狀態.contract_recordColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is業務處Null() {
+                return this.IsNull(this.table訂單資料狀態.業務處Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set業務處Null() {
+                this[this.table訂單資料狀態.業務處Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is款式類別Null() {
+                return this.IsNull(this.table訂單資料狀態.款式類別Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set款式類別Null() {
+                this[this.table訂單資料狀態.款式類別Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshtsNull() {
+                return this.IsNull(this.table訂單資料狀態.htsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethtsNull() {
+                this[this.table訂單資料狀態.htsColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1860,6 +3335,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PurCheckRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class 訂單資料狀態RowChangeEvent : global::System.EventArgs {
+            
+            private 訂單資料狀態Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態RowChangeEvent(訂單資料狀態Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 訂單資料狀態Row Row {
                 get {
                     return this.eventRow;
                 }

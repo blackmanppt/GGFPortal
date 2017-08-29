@@ -102,5 +102,30 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        [OperationContract]
+        public List<string> SearchSampleNbr(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select  distinct top 10  [sam_nbr] as Search from [samc_reqm] where [status]<>'CA'
+                                        and upper(cus_style_no) like '%' +  @SearchText + '%' or upper(sam_nbr) like '%' +  @SearchText + '%'   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
     }
 }

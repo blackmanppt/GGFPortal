@@ -49,6 +49,15 @@ namespace GGFPortal {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink10;
         
         /// <summary>
+        /// HyperLink57 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink57;
+        
+        /// <summary>
         /// HyperLink6 控制項。
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace GGFPortal {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink49;
+        
+        /// <summary>
+        /// HyperLink56 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink56;
         
         /// <summary>
         /// HyperLink5 控制項。
@@ -290,6 +308,15 @@ namespace GGFPortal {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink51;
+        
+        /// <summary>
+        /// HyperLink58 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink58;
         
         /// <summary>
         /// HyperLink18 控制項。
@@ -443,6 +470,15 @@ namespace GGFPortal {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink44;
+        
+        /// <summary>
+        /// HyperLink55 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink55;
         
         /// <summary>
         /// HyperLink27 控制項。

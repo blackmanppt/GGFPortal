@@ -253,10 +253,30 @@
       <DependentUpon>GGFTest.edmx</DependentUpon>
       <LastGenOutput>GGFTest.cs</LastGenOutput>
     </Content>
+    <Content Include="DataSetSource\MGTModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MGTModel.edmx</DependentUpon>
+      <LastGenOutput>MGTModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSetSource\MGTModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MGTModel.edmx</DependentUpon>
+      <LastGenOutput>MGTModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Finance\Finance013.aspx" />
+    <Content Include="MGT\MGT002.aspx" />
+    <Content Include="MGT\MGT001.aspx" />
+    <Content Include="MIS\MIS006.aspx" />
+    <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="Ship\Ship002.aspx" />
+    <Content Include="test\angulartest.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
     <Content Include="VN\VN011.aspx" />
@@ -366,6 +386,13 @@
     </EntityDeploy>
     <Content Include="DataSetSource\GGFTest.edmx.diagram">
       <DependentUpon>GGFTest.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DataSetSource\MGTModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MGTModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataSetSource\MGTModel.edmx.diagram">
+      <DependentUpon>MGTModel.edmx</DependentUpon>
     </Content>
     <None Include="DataSetSource\MIS001.xsd">
       <SubType>Designer</SubType>
@@ -504,6 +531,7 @@
     <Content Include="Sales\WebService.asmx" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\angular.min.js.map" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="scripts\jquery-3.1.1.min.js" />
@@ -636,6 +664,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GGFTest.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\MGTModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGTModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\MGTModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\MGTModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGTModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\purc_pkd.cs">
       <DependentUpon>GGFTest.tt</DependentUpon>
     </Compile>
@@ -668,6 +711,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VNTemp.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\快遞單.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\快遞單明細.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance010.aspx.cs">
       <DependentUpon>Finance010.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -689,13 +738,62 @@
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance013.aspx.cs">
+      <DependentUpon>Finance013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance013.aspx.designer.cs">
+      <DependentUpon>Finance013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT002.aspx.cs">
+      <DependentUpon>MGT002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT002.aspx.designer.cs">
+      <DependentUpon>MGT002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT001.aspx.cs">
+      <DependentUpon>MGT001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT001.aspx.designer.cs">
+      <DependentUpon>MGT001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\MIS006.aspx.cs">
+      <DependentUpon>MIS006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS006.aspx.designer.cs">
+      <DependentUpon>MIS006.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="Sales\Sample009.aspx.cs">
+      <DependentUpon>Sample009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample009.aspx.designer.cs">
+      <DependentUpon>Sample009.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample008.aspx.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship002.aspx.cs">
+      <DependentUpon>Ship002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship002.aspx.designer.cs">
+      <DependentUpon>Ship002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\angulartest.aspx.cs">
+      <DependentUpon>angulartest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\angulartest.aspx.designer.cs">
+      <DependentUpon>angulartest.aspx</DependentUpon>
     </Compile>
     <Compile Include="VN\VN013.aspx.cs">
       <DependentUpon>VN013.aspx</DependentUpon>
@@ -1404,6 +1502,7 @@
     <Folder Include="ExcelUpLoad\Salse\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
+    <Folder Include="MGT\MGT001\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -1413,6 +1512,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
+    <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
@@ -1435,7 +1536,11 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample009V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />

@@ -235,7 +235,7 @@ namespace GGFPortal.Sales
             }
             TypeDDL.SelectedValue = TypeDDL.Items.FindByText(GridView1.Rows[e.NewSelectedIndex].Cells[5].Text).Value;
             QtyTB.Text = GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
-            DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+            DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
             DateTB.Visible = true;
             UpDateBT.Visible = true;
             CancelBT.Visible = true;

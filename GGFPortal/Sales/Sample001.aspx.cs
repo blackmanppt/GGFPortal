@@ -26,7 +26,7 @@ namespace GGFPortal.Sales
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = "select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where  status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.Trim());
                     cmd.Connection = conn;
                     conn.Open();
                     List<string> StyleNo = new List<string>();
