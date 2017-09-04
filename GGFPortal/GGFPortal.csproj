@@ -649,6 +649,9 @@
     <Compile Include="DataSetSource\acr_trn_check.cs">
       <DependentUpon>GGFTest.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\bas_employee.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\GGFTest.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -700,6 +703,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShipTempDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\view_employee.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1502,7 +1508,7 @@
     <Folder Include="ExcelUpLoad\Salse\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
-    <Folder Include="MGT\MGT001\" />
+    <Folder Include="MGT\MGTFile\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -95,8 +95,11 @@
                                     <ajaxToolkit:CalendarExtender ID="快遞日期TB_CalendarExtender" runat="server" BehaviorID="快遞日期TB_CalendarExtender" TargetControlID="快遞日期TB" Format="yyyy-MM-dd" />
                                 </td>
                                 <td class="text-center">
-                                    <asp:DropDownList ID="快遞廠商DDL" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="MappingData" DataValueField="MappingData">
-                                        <asp:ListItem></asp:ListItem>
+                                    <asp:DropDownList ID="快遞廠商DDL" runat="server" CssClass="form-control" >
+                                        <asp:ListItem>Air</asp:ListItem>
+                                        <asp:ListItem>音速</asp:ListItem>
+                                        <asp:ListItem>捷越</asp:ListItem>
+                                        <asp:ListItem>順豐</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine) ORDER BY [Data]">
                                         <SelectParameters>
@@ -114,7 +117,7 @@
                                 <th class="auto-style1">快遞單檔案</th>
                                                                 <th class=" text-right" style="vertical-align:bottom;"rowspan="2" >                                    
                                     <asp:Button ID="SaveBT" runat="server" Text="儲存" CssClass="btn btn-default" Visible="false" OnClick="SaveBT_Click"/>                                    
-                                    <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" OnClick="DeleteBT_Click"  />
+                                    <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" OnClick="DeleteBT_Click"   OnClientClick="return confirm('是否刪除')"  />
                                     </th>
                             </tr>
                             <tr>
@@ -144,7 +147,7 @@
                                 <ItemTemplate>
                                     <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="編輯" />
                                     <asp:Button ID="NewBT" runat="server" CausesValidation="false" CommandName="新增明細" Text="新增明細" />
-                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除"  OnClientClick="return confirm('是否刪除')" 9 />
+                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除"  OnClientClick="return confirm('是否刪除')"  />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
@@ -164,7 +167,7 @@
                         <SortedDescendingCellStyle BackColor="#D4DFE1" />
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點] FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,111) like @提單日期 and 提單號碼 like @提單號碼">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點] FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,121) like @提單日期 and 提單號碼 like @提單號碼">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="false" Name="IsDeleted" Type="Boolean" />
                             <asp:SessionParameter DefaultValue="%" Name="提單日期" SessionField="提單日期" />
@@ -173,6 +176,25 @@
                         </asp:SqlDataSource>
                         </asp:Panel>
                 </div>
+            </div>
+            <div>
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                                <asp:Panel ID="AlertPanel" runat="server" align="center" Height="100px" Width="600px" BackColor="#0099FF" style="display:none" >
+                                    <div class=" text-center">
+                                        <h3>
+                                            <asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>
+
+                                        </h3>
+                                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-warning" />
+                                    </div>
+                                </asp:Panel>
+                                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                                </ajaxToolkit:ModalPopupExtender>
+                                
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
             </div>
         </div>
         <asp:HiddenField ID="idHF" runat="server" />

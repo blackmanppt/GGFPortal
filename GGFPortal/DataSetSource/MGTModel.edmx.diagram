@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="GGFModelMGT.快遞單" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GGFModelMGT.快遞單明細" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="GGFModelMGT.FK_快遞單明細_快遞單1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GGFModelMGT.view_employee" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GGFModelMGT.bas_employee" Width="1.5" PointX="7" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

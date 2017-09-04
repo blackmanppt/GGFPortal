@@ -27,5 +27,7 @@ namespace GGFPortal.DataSetSource
     
         public virtual DbSet<快遞單> 快遞單 { get; set; }
         public virtual DbSet<快遞單明細> 快遞單明細 { get; set; }
+        public virtual DbSet<view_employee> view_employee { get; set; }
+        public virtual DbSet<bas_employee> bas_employee { get; set; }
     }
 }

@@ -5,6 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GGFModelMGT.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bas_employee">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="employee_no" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="employee_no" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="employee_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="employee_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="email_address" Type="nvarchar" MaxLength="40" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="tel_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="sec_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="mobile_phone" Type="nvarchar" MaxLength="22" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="employee_name_eng" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="快遞單">
           <Key>
             <PropertyRef Name="id" />
@@ -13,8 +33,8 @@
           <Property Name="提單號碼" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="提單日期" Type="datetime" Nullable="false" />
           <Property Name="快遞廠商" Type="nvarchar" MaxLength="50" />
-          <Property Name="快遞單檔案" Type="nvarchar" MaxLength="255" />
-          <Property Name="送件地點" Type="nchar" MaxLength="10" />
+          <Property Name="快遞單檔案" Type="nvarchar" MaxLength="100" />
+          <Property Name="送件地點" Type="nvarchar" MaxLength="255" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
@@ -25,9 +45,9 @@
           </Key>
           <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="提單號碼" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="寄件人" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="寄件人分機" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="寄件人部門" Type="nvarchar" MaxLength="6" />
           <Property Name="收件人" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="客戶名稱" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="明細" Type="nvarchar" MaxLength="255" />
@@ -35,9 +55,22 @@
           <Property Name="責任歸屬" Type="nvarchar" MaxLength="10" />
           <Property Name="付款方式" Type="nvarchar" MaxLength="10" />
           <Property Name="備註" Type="nvarchar" MaxLength="100" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="建立日期" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'GGF.dbo.view_employee' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="view_employee">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="employee_no" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="employee_no" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="employee_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="employee_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="email_address" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -52,8 +85,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="GGFModelMGTStoreContainer">
+          <EntitySet Name="bas_employee" EntityType="Self.bas_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="快遞單" EntityType="Self.快遞單" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="快遞單明細" EntityType="Self.快遞單明細" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="view_employee" EntityType="Self.view_employee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [view_employee].[site] AS [site], 
+    [view_employee].[employee_no] AS [employee_no], 
+    [view_employee].[employee_name] AS [employee_name], 
+    [view_employee].[employee_status] AS [employee_status], 
+    [view_employee].[email_address] AS [email_address]
+    FROM [dbo].[view_employee] AS [view_employee]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_快遞單明細_快遞單1" Association="Self.FK_快遞單明細_快遞單1">
             <End Role="快遞單" EntitySet="快遞單" />
             <End Role="快遞單明細" EntitySet="快遞單明細" />
@@ -71,8 +114,8 @@
           <Property Name="提單號碼" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="提單日期" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="快遞廠商" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="快遞單檔案" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="送件地點" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="快遞單檔案" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="送件地點" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="DateTime" Precision="3" />
@@ -84,7 +127,6 @@
           </Key>
           <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="提單號碼" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="寄件人" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="寄件人分機" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="收件人" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -92,12 +134,13 @@
           <Property Name="明細" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="重量" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="付款方式" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="DateTime" Precision="3" />
           <NavigationProperty Name="快遞單" Relationship="Self.FK_快遞單明細_快遞單1" FromRole="快遞單明細" ToRole="快遞單" />
           <Property Name="責任歸屬" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="備註" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="寄件人部門" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -118,7 +161,40 @@
             <End Role="快遞單" EntitySet="快遞單" />
             <End Role="快遞單明細" EntitySet="快遞單明細" />
           </AssociationSet>
+          <EntitySet Name="view_employee" EntityType="GGFModelMGT.view_employee" />
+          <EntitySet Name="bas_employee" EntityType="GGFModelMGT.bas_employee" />
         </EntityContainer>
+        <EntityType Name="view_employee">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="employee_no" />
+          </Key>
+          <Property Name="site" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="employee_no" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="employee_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="employee_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="email_address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bas_employee">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="employee_no" />
+          </Key>
+          <Property Name="site" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="employee_no" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="employee_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="employee_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="email_address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="tel_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sec_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="mobile_phone" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="employee_name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -143,11 +219,11 @@
           <EntitySetMapping Name="快遞單明細">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單明細">
               <MappingFragment StoreEntitySet="快遞單明細">
+                <ScalarProperty Name="寄件人部門" ColumnName="寄件人部門" />
                 <ScalarProperty Name="備註" ColumnName="備註" />
                 <ScalarProperty Name="責任歸屬" ColumnName="責任歸屬" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="提單號碼" ColumnName="提單號碼" />
                 <ScalarProperty Name="寄件人" ColumnName="寄件人" />
                 <ScalarProperty Name="寄件人分機" ColumnName="寄件人分機" />
                 <ScalarProperty Name="收件人" ColumnName="收件人" />
@@ -158,6 +234,37 @@
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="建立日期" ColumnName="建立日期" />
                 <ScalarProperty Name="修改日期" ColumnName="修改日期" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_employee">
+            <EntityTypeMapping TypeName="GGFModelMGT.view_employee">
+              <MappingFragment StoreEntitySet="view_employee">
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="employee_status" ColumnName="employee_status" />
+                <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+                <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+                <ScalarProperty Name="site" ColumnName="site" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bas_employee">
+            <EntityTypeMapping TypeName="GGFModelMGT.bas_employee">
+              <MappingFragment StoreEntitySet="bas_employee">
+                <ScalarProperty Name="employee_name_eng" ColumnName="employee_name_eng" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="mobile_phone" ColumnName="mobile_phone" />
+                <ScalarProperty Name="sec_dept" ColumnName="sec_dept" />
+                <ScalarProperty Name="tel_nbr" ColumnName="tel_nbr" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="employee_status" ColumnName="employee_status" />
+                <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+                <ScalarProperty Name="employee_no" ColumnName="employee_no" />
+                <ScalarProperty Name="site" ColumnName="site" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

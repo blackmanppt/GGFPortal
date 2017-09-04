@@ -78,13 +78,14 @@
                           <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>=IIF(Sum(Fields!出貨數量.Value)&lt;&gt;Fields!訂單出貨數量.Value,"Red","Transparent")</BackgroundColor>
+                        <BackgroundColor>=IIF(Sum(Fields!出貨數量.Value)&lt;&gt;Fields!預交量.Value,"Red","Transparent")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -292,7 +293,7 @@
                                   <TablixHeader>
                                     <Size>2.5cm</Size>
                                     <CellContents>
-                                      <Textbox Name="Textbox3">
+                                      <Textbox Name="Textbox1">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
@@ -310,7 +311,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>Textbox3</rd:DefaultName>
+                                        <rd:DefaultName>Textbox1</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>#622424</Color>
@@ -585,27 +586,27 @@
                               </TablixHeader>
                               <TablixMembers>
                                 <TablixMember>
-                                  <Group Name="訂單出貨數量">
+                                  <Group Name="預交量">
                                     <GroupExpressions>
-                                      <GroupExpression>=Fields!訂單出貨數量.Value</GroupExpression>
+                                      <GroupExpression>=Fields!預交量.Value</GroupExpression>
                                     </GroupExpressions>
                                   </Group>
                                   <SortExpressions>
                                     <SortExpression>
-                                      <Value>=Fields!訂單出貨數量.Value</Value>
+                                      <Value>=Fields!預交量.Value</Value>
                                     </SortExpression>
                                   </SortExpressions>
                                   <TablixHeader>
                                     <Size>2.5cm</Size>
                                     <CellContents>
-                                      <Textbox Name="訂單出貨數量">
+                                      <Textbox Name="預交量">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Fields!訂單出貨數量.Value</Value>
+                                                <Value>=Fields!預交量.Value</Value>
                                                 <Style>
                                                   <FontFamily>Verdana</FontFamily>
                                                   <FontSize>9pt</FontSize>
@@ -617,7 +618,7 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>訂單出貨數量</rd:DefaultName>
+                                        <rd:DefaultName>預交量</rd:DefaultName>
                                         <Style>
                                           <Border>
                                             <Color>#f6be80</Color>

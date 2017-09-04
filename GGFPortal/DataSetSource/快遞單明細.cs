@@ -16,7 +16,6 @@ namespace GGFPortal.DataSetSource
     {
         public int uid { get; set; }
         public int id { get; set; }
-        public string 提單號碼 { get; set; }
         public string 寄件人 { get; set; }
         public string 寄件人分機 { get; set; }
         public string 收件人 { get; set; }
@@ -29,6 +28,7 @@ namespace GGFPortal.DataSetSource
         public Nullable<System.DateTime> 修改日期 { get; set; }
         public string 責任歸屬 { get; set; }
         public string 備註 { get; set; }
+        public string 寄件人部門 { get; set; }
     
         public virtual 快遞單 快遞單 { get; set; }
     }
