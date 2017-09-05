@@ -275,6 +275,8 @@
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\jQuery.print.js" />
+    <Content Include="scripts\jQuery.print.min.js" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="VN\VN013.aspx" />

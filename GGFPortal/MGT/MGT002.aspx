@@ -8,13 +8,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>快遞單明細</title>
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/scripts/scripts.js"></script>
-
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/jQuery.print.min.js"></script>
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -39,7 +39,16 @@
             margin: 0px auto;
         }
     </style>
-
+    <script type='text/javascript'>
+        //<![CDATA[
+        jQuery(function($) { 'use strict';
+            $("#ele2").find('.print-link').on('click', function() {
+                //Print ele2 with default options
+                $.print("#ele2");
+            });
+        });
+        //]]>
+        </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="The description of my page" />
 </head>
@@ -107,7 +116,10 @@
                                                                 <th class="auto-style1">送件地點</th>
                                 <th class="auto-style1">快遞單檔案</th>
                                                                 <th class=" text-right" style="vertical-align:bottom;"rowspan="2" >                                    
-                                    <asp:Button ID="SaveBT" runat="server" Text="新增明細" CssClass="btn btn-default" OnClick="SaveBT_Click"/>                                    
+                                    <asp:Button ID="SaveBT" runat="server" Text="新增明細" CssClass="btn btn-default" OnClick="SaveBT_Click"/>
+                                                                    <%--<button class="print-link" onclick="jQuery.print()">Print page - jQuery.print()
+            </button> <asp:Button ID="Button1" runat="server" Text="列印圖片" class=" btn btn-default"  OnClientClick="jQuery('#picture').print();"/>--%>
+                         
                                     </th>
                             </tr>
                             <tr>
@@ -115,7 +127,9 @@
                                     <asp:Label ID="送件地點LB" runat="server" Text=""></asp:Label>
                                 </td>
                                 <td class=" text-center">
+                                    <div  id="picture">
                                     <asp:Literal ID="快遞單檔案Literal" runat="server"></asp:Literal>
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -129,7 +143,8 @@
                               <asp:TemplateField ShowHeader="False" ItemStyle-Width="200px">
                                 <ItemTemplate>
                                     <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="編輯" />
-                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除"  OnClientClick="return confirm('是否刪除')" 9 />
+                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除"  OnClientClick="return confirm('是否刪除')"  />
+                                    <asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="列印" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="寄件人" HeaderText="寄件人" SortExpression="寄件人" />
@@ -161,8 +176,7 @@
 
 
                     <div >
-                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                            <ContentTemplate>
+
 
 
                                 <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
@@ -171,12 +185,12 @@
                                         <h3><b>新增明細</b></h3>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-md-3 text-right">
+                                        <div class=" col-md-2 text-right">
                                             <asp:Label ID="寄件人LB" runat="server" Text="寄件人工號：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-4 text-left">
 
-                                            <asp:TextBox ID="寄件人TB" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="寄件人工號TB" runat="server"></asp:TextBox>
                                         </div>
                                         <div class=" col-md-2 text-right">
                                             <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="分機："></asp:Label>
@@ -235,7 +249,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                                  113                                  <h3>
+                                                                               <h3>
                                             <asp:Label ID="EditMessageLB" runat="server" Text=""></asp:Label>
 
                                         </h3>
@@ -246,17 +260,12 @@
                                     <asp:Button ID="更新BT" runat="server" Text="修改" CssClass="btn btn-primary" Visible="false" OnClick="更新BT_Click" />
                                     <asp:Button ID="取消BT" runat="server" Text="取消" CssClass="btn btn-primary" OnClick="取消BT_Click" />
                                 </asp:Panel>
-                                <ajaxToolkit:ModalPopupExtender ID="EditListPanel_ModalPopupExtender" runat="server" BehaviorID="EditListPanel_ModalPopupExtender" TargetControlID="show" PopupControlID="EditListPanel" CancelControlID="取消BT">
+                                <ajaxToolkit:ModalPopupExtender ID="EditListPanel_ModalPopupExtender" runat="server" BehaviorID="EditListPanel_ModalPopupExtender" TargetControlID="show" PopupControlID="EditListPanel" >
                                 </ajaxToolkit:ModalPopupExtender>
 
-
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                            <ContentTemplate>
                                 <asp:Panel ID="SelectPanel" runat="server" align="center" Height="400px" Width="600px" BackColor="#0099FF" Style="display:none">
                                     <div><h3>選擇快遞單</h3></div>
-                                    <div >
+                                    
                                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2" OnRowCommand="GridView1_RowCommand"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
                                         <Columns>
                                             <asp:BoundField DataField="id" HeaderStyle-CssClass="hiddencol" HeaderText="id" InsertVisible="False" ReadOnly="True" ItemStyle-CssClass="hiddencol" SortExpression="id" >
@@ -298,9 +307,7 @@
                                 <ajaxToolkit:ModalPopupExtender ID="SelectPanel_ModalPopupExtender" runat="server" BehaviorID="SelectPanel_ModalPopupExtender" TargetControlID="show2" PopupControlID="SelectPanel" CancelControlID="取消選擇BT">
                                 </ajaxToolkit:ModalPopupExtender>
                                 <asp:Button ID="show2" runat="server" Text="show2" Style="display: none" />
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server"  ChildrenAsTriggers="True">
                             <ContentTemplate>
                                 <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
                                 <asp:Panel ID="AlertPanel" runat="server" align="center" Height="100px" Width="600px" BackColor="#0099FF" style="display:none" >

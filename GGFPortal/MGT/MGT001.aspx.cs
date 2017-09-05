@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.IO;
 
+
 namespace GGFPortal.MGT
 {
 
@@ -127,9 +128,19 @@ namespace GGFPortal.MGT
             var x = db.快遞單.Find(iid);
             if (x !=null)
             {
-                x.IsDeleted = false;
-                db.SaveChanges();
-                idHF.Value = null;
+                try
+                {
+                    x.IsDeleted = true;
+                    x.修改日期 = DateTime.Now;
+                    db.SaveChanges();
+                    idHF.Value = null;
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+
             }
             else
             {
@@ -188,6 +199,7 @@ namespace GGFPortal.MGT
                             新增快遞單.提單日期 = Convert.ToDateTime(快遞日期TB.Text);
                             新增快遞單.快遞廠商 = 快遞廠商DDL.SelectedValue;
                             新增快遞單.提單號碼 = 提單號碼TB.Text;
+                            新增快遞單.IsDeleted = false;
                             新增快遞單.送件地點 = 送件地點TB.Text;
                             if (fileName.Length > 0)
                                 新增快遞單.快遞單檔案 = fileName;
@@ -202,7 +214,7 @@ namespace GGFPortal.MGT
                             修改快遞單.送件地點 = 送件地點TB.Text;
                             if (fileName.Length > 0)
                                 修改快遞單.快遞單檔案 = fileName;
-                            修改快遞單.建立日期 = DateTime.Now;
+                            修改快遞單.修改日期 = DateTime.Now;
                         }
                         conn.SaveChanges();
                         transaction.Commit();
@@ -271,8 +283,10 @@ namespace GGFPortal.MGT
                             int.TryParse(strid, out iid);
                             var 刪除快遞單 = conn.快遞單.Where(o => o.id == iid).FirstOrDefault();
                             刪除快遞單.IsDeleted = true;
+                            刪除快遞單.修改日期 = DateTime.Now;
                             conn.SaveChanges();
                             transaction.Commit();
+                            ACRGV.DataBind();
                         }
                         catch (Exception ex1)
                         {
@@ -292,7 +306,7 @@ namespace GGFPortal.MGT
                         }
                     }
                 }
-                else if (e.CommandName == "新增明細")
+                else if (e.CommandName == "列印")
                 {
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
@@ -301,6 +315,7 @@ namespace GGFPortal.MGT
                     Session["提單號碼"] = ACRGV.Rows[row.RowIndex].Cells[2].Text;
                     Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
                     Response.Redirect("MGT002.aspx");
+                    
                 }
             }
         }

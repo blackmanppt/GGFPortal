@@ -157,15 +157,6 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// UpdatePanel2 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
-        /// <summary>
         /// show 控制項。
         /// </summary>
         /// <remarks>
@@ -193,13 +184,13 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.Label 寄件人LB;
         
         /// <summary>
-        /// 寄件人TB 控制項。
+        /// 寄件人工號TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 寄件人TB;
+        protected global::System.Web.UI.WebControls.TextBox 寄件人工號TB;
         
         /// <summary>
         /// 分機LB 控制項。
@@ -389,15 +380,6 @@ namespace GGFPortal.MGT {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender EditListPanel_ModalPopupExtender;
-        
-        /// <summary>
-        /// UpdatePanel4 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
         
         /// <summary>
         /// SelectPanel 控制項。

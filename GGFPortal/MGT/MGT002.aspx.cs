@@ -10,6 +10,8 @@ using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Printing;
 
 namespace GGFPortal.MGT
 {
@@ -59,12 +61,24 @@ namespace GGFPortal.MGT
                     {
                         s快遞單檔案 = Path.GetExtension(item.快遞單檔案).ToUpper();
                         if (s快遞單檔案 == ".JPG" || s快遞單檔案 == ".JPGE" || s快遞單檔案 == ".GIF" || s快遞單檔案 == ".PNG")
+                        {
                             快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + item.快遞單檔案 + @"' />";
+                            //Literal1.Text = @"<button class='print-link' onclick='jQuery('#picture').print()'>列印圖片</button>";
+                            Button1.Visible = true;
+                            Session["pic"] = @"MGTFile\" + item.快遞單檔案;
+                        }
                         else
+                        {
+                            Button1.Attributes["Style"] = "display:none";
+                            //Button1.Visible = false; 
                             快遞單檔案Literal.Text = @"<a class='btn btn-link' href='MGTFile\" + item.快遞單檔案 + @"' >下載</a>";
+                        }
                     }
+                    else
+                        快遞單檔案Literal.Text = "";
                     idHF.Value = iid.ToString();
                 }
+                Session["id"] = iid.ToString();
                 Show(true);
             }
         }
@@ -109,7 +123,7 @@ namespace GGFPortal.MGT
                     {
                         foreach (var item in c)
                         {
-
+                            HeadDB(item.id);
                         }
                         Show(true);
                     }
@@ -192,8 +206,6 @@ namespace GGFPortal.MGT
                 int iid = 0;
                 if (e.CommandName == "編輯")
                 {
-
-                    //Show(true);
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
                     int.TryParse(strid, out iid);
@@ -202,17 +214,16 @@ namespace GGFPortal.MGT
                         var dset = db.快遞單明細.Where(p => p.uid == iid);
                         foreach (var item in dset)
                         {
-                            寄件人TB.Text = item.寄件人;
+                            寄件人工號TB.Text = item.寄件人工號;
                             分機TB.Text = item.寄件人分機;
                             客戶名稱TB.Text = item.客戶名稱;
                             收件人TB.Text = item.收件人;
                             重量TB.Text = item.重量.ToString();
                             責任歸屬TB.Text = item.責任歸屬;
-                            到付CB.Text = item.付款方式;
+                            到付CB.Checked = (item.付款方式.Length>0)?true:false;
                             備註TB.Text = item.備註;
                             明細TB.Text = item.明細;
                             uidHF.Value = item.uid.ToString();
-
                         }
                     }
                     新增BT.Visible = false;
@@ -231,8 +242,11 @@ namespace GGFPortal.MGT
                             int.TryParse(strid, out iid);
                             var 刪除快遞單 = conn.快遞單明細.Where(o => o.uid == iid).FirstOrDefault();
                             刪除快遞單.IsDeleted = true;
+                            刪除快遞單.修改日期 = DateTime.Now;
                             conn.SaveChanges();
                             transaction.Commit();
+                            ACRGV.DataBind();
+                            ClearEdit();
                         }
                         catch (Exception ex1)
                         {
@@ -256,7 +270,8 @@ namespace GGFPortal.MGT
         }
         protected void 取消BT_Click(object sender, EventArgs e)
         {
-            EditListPanel_ModalPopupExtender.Show();
+            ClearEdit();
+            EditListPanel_ModalPopupExtender.Hide();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -272,29 +287,19 @@ namespace GGFPortal.MGT
                     HeadDB(iid);
 
                 }
-                if (uidHF.Value != null)
-                {
-                    DbInit();
-                }
+                DbInit();
             }
         }
         protected void 新增BT_Click(object sender, EventArgs e)
         {
-            string s結果;
-            s結果= 新增修改();
-            if (s結果.Length>0)
-            {
-                //MessageLB.Text = s結果;
-                AlertPanel_ModalPopupExtender.Show();
-
-            }
+            新增修改();
         }
         protected void 更新BT_Click(object sender, EventArgs e)
         {
             新增修改();
         }
 
-        private string 新增修改()
+        private void 新增修改()
         {
             StringBuilder sbError = new StringBuilder();
             using (var conn = new GGFEntitiesMGT())
@@ -309,7 +314,7 @@ namespace GGFPortal.MGT
                         int.TryParse(uidHF.Value, out iuid);
                         int.TryParse(idHF.Value, out iid);
                         
-                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人TB.Text).FirstOrDefault();
+                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人工號TB.Text).FirstOrDefault();
                         if (iid == 0)
                             sbError.Append("請重選資料<br/>");
                         if (工號資料 == null)
@@ -331,7 +336,7 @@ namespace GGFPortal.MGT
 
                         if (sbError.Length > 0)
                         {
-                            //EditMessageLB.Text =  sbError.ToString();
+                            EditMessageLB.Text =  sbError.ToString();
                             EditListPanel_ModalPopupExtender.Show();
                         }
                         else
@@ -341,11 +346,13 @@ namespace GGFPortal.MGT
                                 var 新增快遞單明細 = new 快遞單明細();
                                 新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
-                                新增快遞單明細.寄件人 = 寄件人TB.Text.Trim();
+                                新增快遞單明細.寄件人工號 = 寄件人工號TB.Text.Trim();
+                                新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
                                 新增快遞單明細.客戶名稱 = 客戶名稱TB.Text.Trim();
                                 新增快遞單明細.寄件人部門 = 工號資料.dept_no;
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
+                                新增快遞單明細.IsDeleted = false;
                                 新增快遞單明細.重量 = d重量;
                                 新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
                                 新增快遞單明細.備註 = 備註TB.Text.Trim();
@@ -357,7 +364,8 @@ namespace GGFPortal.MGT
                                 var 新增快遞單明細 = conn.快遞單明細.Find(iuid);
                                 //新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
-                                新增快遞單明細.寄件人 = 寄件人TB.Text.Trim();
+                                新增快遞單明細.寄件人工號 = 寄件人工號TB.Text.Trim();
+                                新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
                                 新增快遞單明細.寄件人部門 = 工號資料.dept_no;
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
@@ -365,11 +373,13 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
                                 新增快遞單明細.備註 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
+                                新增快遞單明細.修改日期 = DateTime.Now;
 
                             }
                             conn.SaveChanges();
                             transaction.Commit();
                             DbInit();
+                            ClearEdit();
                         }
                     }
                     catch (Exception ex1)
@@ -391,8 +401,46 @@ namespace GGFPortal.MGT
                     }
                 }
             }
-            return (sbError.Length > 0) ? sbError.ToString() : "";
-           
+        }
+        public void ClearEdit()
+        {
+            寄件人工號TB.Text = "";
+            分機TB.Text = "";
+            客戶名稱TB.Text = "";
+            收件人TB.Text = "";
+            重量TB.Text = "";
+            責任歸屬TB.Text = "";
+            到付CB.Checked = false;
+            備註TB.Text = "";
+            明細TB.Text = "";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ////Point location = new Point(0, 0);
+            ////System.Drawing.Image img = System.Drawing.Image.FromFile(Session["pic"]);
+            ////e.Graphics.DrawImage(img, location);
+            //try
+            //{
+            //    StreamReader streamToPrint = new StreamReader(filePath);
+            //    try
+            //    {
+            //        Point location = new Point(0, 0);
+            //        PrintDocument pd = new PrintDocument();
+            //        pd.PrintPage += new PrintPageEventHandler(Session["pic"]);
+                    
+            //        // Print the document.
+            //        pd.Print();
+            //    }
+            //    finally
+            //    {
+            //        streamToPrint.Close();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }
