@@ -341,6 +341,10 @@ FROM              View出口大表</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="地區" msprop:Generator_ColumnVarNameInTable="column地區" msprop:Generator_ColumnPropNameInRow="地區" msprop:Generator_ColumnPropNameInTable="地區Column" msprop:Generator_UserColumnName="地區" type="xs:string" minOccurs="0" />
+              <xs:element name="代工廠名稱" msprop:Generator_ColumnVarNameInTable="column代工廠名稱" msprop:Generator_ColumnPropNameInRow="代工廠名稱" msprop:Generator_ColumnPropNameInTable="代工廠名稱Column" msprop:Generator_UserColumnName="代工廠名稱" type="xs:string" minOccurs="0" />
+              <xs:element name="品牌" msprop:Generator_ColumnVarNameInTable="column品牌" msprop:Generator_ColumnPropNameInRow="品牌" msprop:Generator_ColumnPropNameInTable="品牌Column" msprop:Generator_UserColumnName="品牌" type="xs:string" minOccurs="0" />
+              <xs:element name="代理商代號" msprop:Generator_ColumnVarNameInTable="column代理商代號" msprop:Generator_ColumnPropNameInRow="代理商代號" msprop:Generator_ColumnPropNameInTable="代理商代號Column" msprop:Generator_UserColumnName="代理商代號" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

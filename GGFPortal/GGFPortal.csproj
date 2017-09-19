@@ -266,9 +266,12 @@
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
+    <Content Include="MGT\MGT003.aspx" />
+    <Content Include="MGT\MGT004.aspx" />
     <Content Include="MIS\MIS006.aspx" />
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
@@ -395,6 +398,17 @@
     </EntityDeploy>
     <Content Include="DataSetSource\MGTModel.edmx.diagram">
       <DependentUpon>MGTModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataSetSource\MGTTempDS.xsc">
+      <DependentUpon>MGTTempDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSetSource\MGTTempDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MGTTempDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSetSource\MGTTempDS.xss">
+      <DependentUpon>MGTTempDS.xsd</DependentUpon>
     </Content>
     <None Include="DataSetSource\MIS001.xsd">
       <SubType>Designer</SubType>
@@ -684,6 +698,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MGTModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\MGTTempDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MGTTempDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\purc_pkd.cs">
       <DependentUpon>GGFTest.tt</DependentUpon>
     </Compile>
@@ -746,6 +765,13 @@
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance012V2.aspx.cs">
+      <DependentUpon>Finance012V2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance012V2.aspx.designer.cs">
+      <DependentUpon>Finance012V2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance013.aspx.cs">
       <DependentUpon>Finance013.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -766,6 +792,20 @@
     </Compile>
     <Compile Include="MGT\MGT001.aspx.designer.cs">
       <DependentUpon>MGT001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT003.aspx.cs">
+      <DependentUpon>MGT003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT003.aspx.designer.cs">
+      <DependentUpon>MGT003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT004.aspx.cs">
+      <DependentUpon>MGT004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT004.aspx.designer.cs">
+      <DependentUpon>MGT004.aspx</DependentUpon>
     </Compile>
     <Compile Include="MIS\MIS006.aspx.cs">
       <DependentUpon>MIS006.aspx</DependentUpon>
@@ -1521,11 +1561,13 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance012V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinanceTemp001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportS002.rdlc">
       <SubType>Designer</SubType>

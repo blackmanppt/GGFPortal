@@ -127,5 +127,29 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        [OperationContract]
+        public List<string> 快遞單號(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select  distinct top 10  [提單號碼] as Search from [快遞單] where upper([提單號碼]) like '%' +  @SearchText + '%' and [IsDeleted] = 0   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
     }
 }

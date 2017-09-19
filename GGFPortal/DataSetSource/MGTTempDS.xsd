@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MGTTempDS" targetNamespace="http://tempuri.org/MGTTempDS.xsd" xmlns:mstns="http://tempuri.org/MGTTempDS.xsd" xmlns="http://tempuri.org/MGTTempDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="GGFConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GGFConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.GGFConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MGTTempDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MGTTempDS" msprop:Generator_UserDSName="MGTTempDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="快遞單明細" msprop:Generator_TableClassName="快遞單明細DataTable" msprop:Generator_TableVarName="table快遞單明細" msprop:Generator_TablePropName="快遞單明細" msprop:Generator_RowDeletingName="快遞單明細RowDeleting" msprop:Generator_RowChangingName="快遞單明細RowChanging" msprop:Generator_RowEvHandlerName="快遞單明細RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單明細RowDeleted" msprop:Generator_UserTableName="快遞單明細" msprop:Generator_RowChangedName="快遞單明細RowChanged" msprop:Generator_RowEvArgName="快遞單明細RowChangeEvent" msprop:Generator_RowClassName="快遞單明細Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="uid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnuid" msprop:Generator_ColumnPropNameInRow="uid" msprop:Generator_ColumnPropNameInTable="uidColumn" msprop:Generator_UserColumnName="uid" type="xs:int" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="寄件人" msprop:Generator_ColumnVarNameInTable="column寄件人" msprop:Generator_ColumnPropNameInRow="寄件人" msprop:Generator_ColumnPropNameInTable="寄件人Column" msprop:Generator_UserColumnName="寄件人">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="寄件人工號" msprop:Generator_ColumnVarNameInTable="column寄件人工號" msprop:Generator_ColumnPropNameInRow="寄件人工號" msprop:Generator_ColumnPropNameInTable="寄件人工號Column" msprop:Generator_UserColumnName="寄件人工號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="寄件人分機" msprop:Generator_ColumnVarNameInTable="column寄件人分機" msprop:Generator_ColumnPropNameInRow="寄件人分機" msprop:Generator_ColumnPropNameInTable="寄件人分機Column" msprop:Generator_UserColumnName="寄件人分機">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="寄件人部門" msprop:Generator_ColumnVarNameInTable="column寄件人部門" msprop:Generator_ColumnPropNameInRow="寄件人部門" msprop:Generator_ColumnPropNameInTable="寄件人部門Column" msprop:Generator_UserColumnName="寄件人部門" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="收件人" msprop:Generator_ColumnVarNameInTable="column收件人" msprop:Generator_ColumnPropNameInRow="收件人" msprop:Generator_ColumnPropNameInTable="收件人Column" msprop:Generator_UserColumnName="收件人">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="客戶名稱" msprop:Generator_ColumnVarNameInTable="column客戶名稱" msprop:Generator_ColumnPropNameInRow="客戶名稱" msprop:Generator_ColumnPropNameInTable="客戶名稱Column" msprop:Generator_UserColumnName="客戶名稱">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="明細" msprop:Generator_ColumnVarNameInTable="column明細" msprop:Generator_ColumnPropNameInRow="明細" msprop:Generator_ColumnPropNameInTable="明細Column" msprop:Generator_UserColumnName="明細" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="重量" msprop:Generator_ColumnVarNameInTable="column重量" msprop:Generator_ColumnPropNameInRow="重量" msprop:Generator_ColumnPropNameInTable="重量Column" msprop:Generator_UserColumnName="重量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="責任歸屬" msprop:Generator_ColumnVarNameInTable="column責任歸屬" msprop:Generator_ColumnPropNameInRow="責任歸屬" msprop:Generator_ColumnPropNameInTable="責任歸屬Column" msprop:Generator_UserColumnName="責任歸屬" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="付款方式" msprop:Generator_ColumnVarNameInTable="column付款方式" msprop:Generator_ColumnPropNameInRow="付款方式" msprop:Generator_ColumnPropNameInTable="付款方式Column" msprop:Generator_UserColumnName="付款方式" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="備註" msprop:Generator_ColumnVarNameInTable="column備註" msprop:Generator_ColumnPropNameInRow="備註" msprop:Generator_ColumnPropNameInTable="備註Column" msprop:Generator_UserColumnName="備註" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsDeleted" msprop:Generator_ColumnVarNameInTable="columnIsDeleted" msprop:Generator_ColumnPropNameInRow="IsDeleted" msprop:Generator_ColumnPropNameInTable="IsDeletedColumn" msprop:Generator_UserColumnName="IsDeleted" type="xs:boolean" />
+              <xs:element name="建立日期" msprop:Generator_ColumnVarNameInTable="column建立日期" msprop:Generator_ColumnPropNameInRow="建立日期" msprop:Generator_ColumnPropNameInTable="建立日期Column" msprop:Generator_UserColumnName="建立日期" type="xs:dateTime" />
+              <xs:element name="修改日期" msprop:Generator_ColumnVarNameInTable="column修改日期" msprop:Generator_ColumnPropNameInRow="修改日期" msprop:Generator_ColumnPropNameInTable="修改日期Column" msprop:Generator_UserColumnName="修改日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="流水號" msprop:Generator_ColumnVarNameInTable="column流水號" msprop:Generator_ColumnPropNameInRow="流水號" msprop:Generator_ColumnPropNameInTable="流水號Column" msprop:Generator_UserColumnName="流水號" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint11">
+      <xs:selector xpath=".//mstns:快遞單明細" />
+      <xs:field xpath="mstns:uid" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -18,7 +18,7 @@ namespace GGFPortal.MGT
 
     public partial class MGT002 : System.Web.UI.Page
     {
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["TestGroupConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         GGFEntitiesMGT db = new GGFEntitiesMGT();
         protected void Page_Load(object sender, EventArgs e)
@@ -64,12 +64,12 @@ namespace GGFPortal.MGT
                         {
                             快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + item.快遞單檔案 + @"' />";
                             //Literal1.Text = @"<button class='print-link' onclick='jQuery('#picture').print()'>列印圖片</button>";
-                            Button1.Visible = true;
+                           // Button1.Visible = true;
                             Session["pic"] = @"MGTFile\" + item.快遞單檔案;
                         }
                         else
                         {
-                            Button1.Attributes["Style"] = "display:none";
+                            //Button1.Attributes["Style"] = "display:none";
                             //Button1.Visible = false; 
                             快遞單檔案Literal.Text = @"<a class='btn btn-link' href='MGTFile\" + item.快遞單檔案 + @"' >下載</a>";
                         }
@@ -209,7 +209,7 @@ namespace GGFPortal.MGT
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
                     int.TryParse(strid, out iid);
-                    if (iid>0)
+                    if (iid > 0)
                     {
                         var dset = db.快遞單明細.Where(p => p.uid == iid);
                         foreach (var item in dset)
@@ -220,7 +220,7 @@ namespace GGFPortal.MGT
                             收件人TB.Text = item.收件人;
                             重量TB.Text = item.重量.ToString();
                             責任歸屬TB.Text = item.責任歸屬;
-                            到付CB.Checked = (item.付款方式.Length>0)?true:false;
+                            到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
                             備註TB.Text = item.備註;
                             明細TB.Text = item.明細;
                             uidHF.Value = item.uid.ToString();
@@ -265,9 +265,20 @@ namespace GGFPortal.MGT
                         }
                     }
                 }
+                else if (e.CommandName == "列印")
+                {
+                    GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                    string struid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
+                    Session.RemoveAll();
+                    Session["uid"] = struid;
+                    Session["id"] = ACRGV.Rows[row.RowIndex].Cells[1].Text;
+                    //Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
+                    Response.Redirect("MGT003.aspx");
 
+                }
             }
         }
+        
         protected void 取消BT_Click(object sender, EventArgs e)
         {
             ClearEdit();

@@ -35,7 +35,7 @@
           <Property Name="快遞廠商" Type="nvarchar" MaxLength="50" />
           <Property Name="快遞單檔案" Type="nvarchar" MaxLength="100" />
           <Property Name="送件地點" Type="nvarchar" MaxLength="255" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
         </EntityType>
@@ -52,11 +52,11 @@
           <Property Name="收件人" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="客戶名稱" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="明細" Type="nvarchar" MaxLength="255" />
-          <Property Name="重量" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="重量" Type="decimal" Precision="18" Scale="4" />
           <Property Name="責任歸屬" Type="nvarchar" MaxLength="10" />
           <Property Name="付款方式" Type="nvarchar" MaxLength="10" />
           <Property Name="備註" Type="nvarchar" MaxLength="100" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
         </EntityType>
@@ -133,7 +133,7 @@
           <Property Name="收件人" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="客戶名稱" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="明細" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="重量" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="重量" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="付款方式" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />

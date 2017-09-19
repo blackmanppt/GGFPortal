@@ -17,7 +17,7 @@ namespace GGFPortal.MGT
 
     public partial class MGT001 : System.Web.UI.Page
     {
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["TestGroupConnectionString"].ToString();
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         GGFEntitiesMGT db = new GGFEntitiesMGT();
         protected void Page_Load(object sender, EventArgs e)
@@ -47,14 +47,21 @@ namespace GGFPortal.MGT
 
         protected void SearchBT_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
-            {
+            //if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
+            //{
                 DateTime 快遞時間 = Convert.ToDateTime(快遞時間TB.Text.Trim());
                 string 快遞單號 = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "" : 快遞單號TB.Text.Trim();
                 var c = db.快遞單.Where(p => p.提單日期 == 快遞時間);
                 if (快遞單號!="")
                 {
-                    c = c.Where(p => p.提單號碼.Contains(快遞單號));
+                    if (string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
+                    {
+                        c= db.快遞單.Where(p => p.提單號碼.Contains(快遞單號));
+                    }
+                    else
+                    { 
+                        c = c.Where(p => p.提單號碼.Contains(快遞單號));
+                    }
                 }
                 if (c.Count()>0)
                 {
@@ -72,7 +79,7 @@ namespace GGFPortal.MGT
                             送件地點TB.Text = item.送件地點;
                             idHF.Value = item.id.ToString();
                         }
-                        Show(true);
+                        
                     }
                     Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
                     Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
@@ -83,9 +90,10 @@ namespace GGFPortal.MGT
                     提單號碼TB.Text = 快遞單號TB.Text;
                     Session["提單日期"] = "%";
                     Session["提單號碼"] = "%";
-                    Show(true);
+                    //Show(true);
                 }
-            }
+            Show(true);
+            //}
 
             //DbInit();
         }
@@ -137,8 +145,14 @@ namespace GGFPortal.MGT
                 }
                 catch (Exception ex)
                 {
-
-                    throw;
+                    try
+                    {
+                        Log.ErrorLog(ex, "Delete Error :", "MGT001.aspx");
+                    }
+                    catch (Exception ex2)
+                    {
+                        Log.ErrorLog(ex2, "Delete Error Error:", "MGT001.aspx");
+                    }
                 }
 
             }
@@ -218,7 +232,8 @@ namespace GGFPortal.MGT
                         }
                         conn.SaveChanges();
                         transaction.Commit();
-                        DbInit();
+                        Show(false);
+                        //DbInit();
                     }
                     catch (Exception ex1)
                     {
@@ -306,7 +321,7 @@ namespace GGFPortal.MGT
                         }
                     }
                 }
-                else if (e.CommandName == "列印")
+                else if (e.CommandName == "新增明細")
                 {
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();

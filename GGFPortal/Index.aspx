@@ -207,6 +207,13 @@ table, td, th {
                         &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
+                <tr>
+                    <td class="auto-style1">管理部</td>
+                    <td>
+                        <asp:HyperLink ID="HyperLink59" runat="server" NavigateUrl="~/MGT/MGT001.aspx">新增快遞單</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink60" runat="server" NavigateUrl="~/MGT/MGT002.aspx">新增快遞單明細</asp:HyperLink>
+                    </td>
+                </tr>
             </table>
 
         </div>
