@@ -68,6 +68,7 @@ namespace GGFPortal.ReferenceCode
                 ExcelTable.Columns.Add("ErrorQty");
                 //ExcelTable.Columns.Add("ErrorUnreturnQty");
                 ExcelTable.Columns.Add("OnlineDay");
+                ExcelTable.Columns.Add("ErrorRate");
             }
             
         }
@@ -276,6 +277,7 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
             //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
+            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorRate", ColumnType = 8 });
         }
         public void VNStitchmain()
         {
@@ -352,6 +354,7 @@ namespace GGFPortal.ReferenceCode
                 VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數可返修";
                 //VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數不可返修";
                 VNExcel[IntAdd(ref x)].ChineseName = "上線天數";
+                VNExcel[IntAdd(ref x)].ChineseName = "新舊瑕疵率判定";
             }
         }
         public void VNNameHead(string Team = null)
@@ -394,6 +397,7 @@ namespace GGFPortal.ReferenceCode
                 VNExcel[IntAdd(ref x)].VNName = "瑕疵數可返修hàng lỗi có thể sửa được";
                 //VNExcel[IntAdd(ref x)].VNName = "瑕疵數不可返修hàng lỗi không thể sửa được";
                 VNExcel[IntAdd(ref x)].VNName = "上線天數 Số ngày lên ";
+                VNExcel[IntAdd(ref x)].VNName = "新舊瑕疵率判定";
             }
         }
 

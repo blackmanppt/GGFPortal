@@ -749,8 +749,8 @@ namespace GGFPortal.VN
                                         {
                                             //strInsertColumn = ",[QCQty],[ErrorQty],[ErrorUnreturnQty],[OnlineDay]";
                                             //strInsertData = ",@QCQty ,@ErrorQty,@ErrorUnreturnQty,@OnlineDay";
-                                            strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay]";
-                                            strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay";
+                                            strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay],[ErrorRate]";
+                                            strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay,ErrorRate";
                                         }
                                         //TypeLB.Text = i.ToString();
                                         command1.CommandText = string.Format(@"INSERT INTO [dbo].[Productivity_Line]
@@ -856,6 +856,7 @@ namespace GGFPortal.VN
                                             command1.Parameters.Add("@ErrorQty", SqlDbType.Int).Value = dt.Rows[i]["ErrorQty"].ToString();
                                             //command1.Parameters.Add("@ErrorUnreturnQty", SqlDbType.Int).Value = dt.Rows[i]["ErrorQty"].ToString();
                                             command1.Parameters.Add("@OnlineDay", SqlDbType.Int).Value = dt.Rows[i]["OnlineDay"].ToString();
+                                            command1.Parameters.Add("@ErrorRate", SqlDbType.Int).Value = dt.Rows[i]["ErrorRate"].ToString();
                                         }
                                         command1.ExecuteNonQuery();
                                         command1.Parameters.Clear();

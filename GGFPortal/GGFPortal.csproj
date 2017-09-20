@@ -273,6 +273,7 @@
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
     <Content Include="MIS\MIS006.aspx" />
+    <Content Include="Sales\Sample010.aspx" />
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
     <Content Include="scripts\angular-mocks.js" />
@@ -815,6 +816,13 @@
       <DependentUpon>MIS006.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="Sales\Sample010.aspx.cs">
+      <DependentUpon>Sample010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample010.aspx.designer.cs">
+      <DependentUpon>Sample010.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample009.aspx.cs">
       <DependentUpon>Sample009.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1589,6 +1597,7 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />

@@ -28,6 +28,8 @@ namespace GGFPortal.DataSetSource {
         
         private 打版馬克處理DataTable table打版馬克處理;
         
+        private 打樣收單DataTable table打樣收單;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["打版馬克處理"] != null)) {
                     base.Tables.Add(new 打版馬克處理DataTable(ds.Tables["打版馬克處理"]));
+                }
+                if ((ds.Tables["打樣收單"] != null)) {
+                    base.Tables.Add(new 打樣收單DataTable(ds.Tables["打樣收單"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace GGFPortal.DataSetSource {
         public 打版馬克處理DataTable 打版馬克處理 {
             get {
                 return this.table打版馬克處理;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 打樣收單DataTable 打樣收單 {
+            get {
+                return this.table打樣收單;
             }
         }
         
@@ -173,6 +188,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["打版馬克處理"] != null)) {
                     base.Tables.Add(new 打版馬克處理DataTable(ds.Tables["打版馬克處理"]));
                 }
+                if ((ds.Tables["打樣收單"] != null)) {
+                    base.Tables.Add(new 打樣收單DataTable(ds.Tables["打樣收單"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace GGFPortal.DataSetSource {
                     this.table打版馬克處理.InitVars();
                 }
             }
+            this.table打樣收單 = ((打樣收單DataTable)(base.Tables["打樣收單"]));
+            if ((initTable == true)) {
+                if ((this.table打樣收單 != null)) {
+                    this.table打樣收單.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.table營收資料);
             this.table打版馬克處理 = new 打版馬克處理DataTable();
             base.Tables.Add(this.table打版馬克處理);
+            this.table打樣收單 = new 打樣收單DataTable();
+            base.Tables.Add(this.table打樣收單);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerialize打版馬克處理() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerialize打樣收單() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void 打版馬克處理RowChangeEventHandler(object sender, 打版馬克處理RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void 打樣收單RowChangeEventHandler(object sender, 打樣收單RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1049,6 +1084,1602 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 打樣收單DataTable : global::System.Data.TypedTableBase<打樣收單Row> {
+            
+            private global::System.Data.DataColumn columnsite;
+            
+            private global::System.Data.DataColumn columnsam_nbr;
+            
+            private global::System.Data.DataColumn columnsam_times;
+            
+            private global::System.Data.DataColumn columnsam_no;
+            
+            private global::System.Data.DataColumn columnversion;
+            
+            private global::System.Data.DataColumn columnsam_date;
+            
+            private global::System.Data.DataColumn columncus_id;
+            
+            private global::System.Data.DataColumn columndept_no;
+            
+            private global::System.Data.DataColumn columnitem_no;
+            
+            private global::System.Data.DataColumn columntype_id;
+            
+            private global::System.Data.DataColumn columnsalesman;
+            
+            private global::System.Data.DataColumn columnsam_size;
+            
+            private global::System.Data.DataColumn columnassign_qty;
+            
+            private global::System.Data.DataColumn columnplan_fin_date;
+            
+            private global::System.Data.DataColumn columnemb;
+            
+            private global::System.Data.DataColumn columnwashing;
+            
+            private global::System.Data.DataColumn columnoth_extra;
+            
+            private global::System.Data.DataColumn columnfinish_date;
+            
+            private global::System.Data.DataColumn columnfinish_qty;
+            
+            private global::System.Data.DataColumn columnplace_origin;
+            
+            private global::System.Data.DataColumn columncurrency_id;
+            
+            private global::System.Data.DataColumn columnunit_price;
+            
+            private global::System.Data.DataColumn columnamount;
+            
+            private global::System.Data.DataColumn columnsam_qty;
+            
+            private global::System.Data.DataColumn columnsam_cus_qty;
+            
+            private global::System.Data.DataColumn columnsam_taipei_qty;
+            
+            private global::System.Data.DataColumn columnimage_path;
+            
+            private global::System.Data.DataColumn columnremark60;
+            
+            private global::System.Data.DataColumn columnstatus;
+            
+            private global::System.Data.DataColumn columnclose_date;
+            
+            private global::System.Data.DataColumn columnreason;
+            
+            private global::System.Data.DataColumn columnonline_date;
+            
+            private global::System.Data.DataColumn columnconfirm_yn;
+            
+            private global::System.Data.DataColumn columnprogress_rate;
+            
+            private global::System.Data.DataColumn columnsam_class;
+            
+            private global::System.Data.DataColumn columnoriginal_sampleo_yn;
+            
+            private global::System.Data.DataColumn columnoriginal_edition_yn;
+            
+            private global::System.Data.DataColumn columnoriginal_edition_size;
+            
+            private global::System.Data.DataColumn columnratio_size;
+            
+            private global::System.Data.DataColumn columnsample_complete_1;
+            
+            private global::System.Data.DataColumn columnsample_complete_2;
+            
+            private global::System.Data.DataColumn columncus_express_corp;
+            
+            private global::System.Data.DataColumn columncus_assign_account;
+            
+            private global::System.Data.DataColumn columncus_address_id;
+            
+            private global::System.Data.DataColumn columncus_addressee;
+            
+            private global::System.Data.DataColumn columncus_address;
+            
+            private global::System.Data.DataColumn columncus_style_no;
+            
+            private global::System.Data.DataColumn columnbrand_name;
+            
+            private global::System.Data.DataColumn columnsam_type;
+            
+            private global::System.Data.DataColumn columnproofing_factory;
+            
+            private global::System.Data.DataColumn columnfilter_creator;
+            
+            private global::System.Data.DataColumn columnfilter_dept;
+            
+            private global::System.Data.DataColumn columncreator;
+            
+            private global::System.Data.DataColumn columncreate_date;
+            
+            private global::System.Data.DataColumn columnmodifier;
+            
+            private global::System.Data.DataColumn columnmodify_date;
+            
+            private global::System.Data.DataColumn columnprinting;
+            
+            private global::System.Data.DataColumn columnsewing;
+            
+            private global::System.Data.DataColumn columnsamc_remark60;
+            
+            private global::System.Data.DataColumn columnmark;
+            
+            private global::System.Data.DataColumn columncrp_yn;
+            
+            private global::System.Data.DataColumn columncrp_date;
+            
+            private global::System.Data.DataColumn columnitem_statistic;
+            
+            private global::System.Data.DataColumn columnremark_1;
+            
+            private global::System.Data.DataColumn columnfinal;
+            
+            private global::System.Data.DataColumn columnlast_date;
+            
+            private global::System.Data.DataColumn columnsamc_fin_date;
+            
+            private global::System.Data.DataColumn columnsam_type_A;
+            
+            private global::System.Data.DataColumn columnsam_type_B;
+            
+            private global::System.Data.DataColumn columnsam_type_C;
+            
+            private global::System.Data.DataColumn columnsam_type_D;
+            
+            private global::System.Data.DataColumn columnsam_type_E;
+            
+            private global::System.Data.DataColumn columnsam_type_F;
+            
+            private global::System.Data.DataColumn columnhotfix;
+            
+            private global::System.Data.DataColumn columns_plan_arrival_date;
+            
+            private global::System.Data.DataColumn columns_real_arrival_date;
+            
+            private global::System.Data.DataColumn columntel_nbr;
+            
+            private global::System.Data.DataColumn columntype_desc;
+            
+            private global::System.Data.DataColumn columndept_name;
+            
+            private global::System.Data.DataColumn columnitem_statistic_name;
+            
+            private global::System.Data.DataColumn columnSampleName;
+            
+            private global::System.Data.DataColumn columnreason_remark;
+            
+            private global::System.Data.DataColumn columnoriginal_edition;
+            
+            private global::System.Data.DataColumn columnreason_name;
+            
+            private global::System.Data.DataColumn columnsamc_plan_fin_date;
+            
+            private global::System.Data.DataColumn columnreceipt_date;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單DataTable() {
+                this.TableName = "打樣收單";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 打樣收單DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected 打樣收單DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn siteColumn {
+                get {
+                    return this.columnsite;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_nbrColumn {
+                get {
+                    return this.columnsam_nbr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_timesColumn {
+                get {
+                    return this.columnsam_times;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_noColumn {
+                get {
+                    return this.columnsam_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn versionColumn {
+                get {
+                    return this.columnversion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_dateColumn {
+                get {
+                    return this.columnsam_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_idColumn {
+                get {
+                    return this.columncus_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dept_noColumn {
+                get {
+                    return this.columndept_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn item_noColumn {
+                get {
+                    return this.columnitem_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn type_idColumn {
+                get {
+                    return this.columntype_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn salesmanColumn {
+                get {
+                    return this.columnsalesman;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_sizeColumn {
+                get {
+                    return this.columnsam_size;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn assign_qtyColumn {
+                get {
+                    return this.columnassign_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn plan_fin_dateColumn {
+                get {
+                    return this.columnplan_fin_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn embColumn {
+                get {
+                    return this.columnemb;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn washingColumn {
+                get {
+                    return this.columnwashing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn oth_extraColumn {
+                get {
+                    return this.columnoth_extra;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn finish_dateColumn {
+                get {
+                    return this.columnfinish_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn finish_qtyColumn {
+                get {
+                    return this.columnfinish_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn place_originColumn {
+                get {
+                    return this.columnplace_origin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn currency_idColumn {
+                get {
+                    return this.columncurrency_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn unit_priceColumn {
+                get {
+                    return this.columnunit_price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn amountColumn {
+                get {
+                    return this.columnamount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_qtyColumn {
+                get {
+                    return this.columnsam_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_cus_qtyColumn {
+                get {
+                    return this.columnsam_cus_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_taipei_qtyColumn {
+                get {
+                    return this.columnsam_taipei_qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn image_pathColumn {
+                get {
+                    return this.columnimage_path;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn remark60Column {
+                get {
+                    return this.columnremark60;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn statusColumn {
+                get {
+                    return this.columnstatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn close_dateColumn {
+                get {
+                    return this.columnclose_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn reasonColumn {
+                get {
+                    return this.columnreason;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn online_dateColumn {
+                get {
+                    return this.columnonline_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn confirm_ynColumn {
+                get {
+                    return this.columnconfirm_yn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn progress_rateColumn {
+                get {
+                    return this.columnprogress_rate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_classColumn {
+                get {
+                    return this.columnsam_class;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn original_sampleo_ynColumn {
+                get {
+                    return this.columnoriginal_sampleo_yn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn original_edition_ynColumn {
+                get {
+                    return this.columnoriginal_edition_yn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn original_edition_sizeColumn {
+                get {
+                    return this.columnoriginal_edition_size;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ratio_sizeColumn {
+                get {
+                    return this.columnratio_size;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sample_complete_1Column {
+                get {
+                    return this.columnsample_complete_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sample_complete_2Column {
+                get {
+                    return this.columnsample_complete_2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_express_corpColumn {
+                get {
+                    return this.columncus_express_corp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_assign_accountColumn {
+                get {
+                    return this.columncus_assign_account;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_address_idColumn {
+                get {
+                    return this.columncus_address_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_addresseeColumn {
+                get {
+                    return this.columncus_addressee;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_addressColumn {
+                get {
+                    return this.columncus_address;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn cus_style_noColumn {
+                get {
+                    return this.columncus_style_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn brand_nameColumn {
+                get {
+                    return this.columnbrand_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_typeColumn {
+                get {
+                    return this.columnsam_type;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn proofing_factoryColumn {
+                get {
+                    return this.columnproofing_factory;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn filter_creatorColumn {
+                get {
+                    return this.columnfilter_creator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn filter_deptColumn {
+                get {
+                    return this.columnfilter_dept;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn creatorColumn {
+                get {
+                    return this.columncreator;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn create_dateColumn {
+                get {
+                    return this.columncreate_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn modifierColumn {
+                get {
+                    return this.columnmodifier;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn modify_dateColumn {
+                get {
+                    return this.columnmodify_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn printingColumn {
+                get {
+                    return this.columnprinting;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sewingColumn {
+                get {
+                    return this.columnsewing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn samc_remark60Column {
+                get {
+                    return this.columnsamc_remark60;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn markColumn {
+                get {
+                    return this.columnmark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn crp_ynColumn {
+                get {
+                    return this.columncrp_yn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn crp_dateColumn {
+                get {
+                    return this.columncrp_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn item_statisticColumn {
+                get {
+                    return this.columnitem_statistic;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn remark_1Column {
+                get {
+                    return this.columnremark_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn finalColumn {
+                get {
+                    return this.columnfinal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn last_dateColumn {
+                get {
+                    return this.columnlast_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn samc_fin_dateColumn {
+                get {
+                    return this.columnsamc_fin_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_AColumn {
+                get {
+                    return this.columnsam_type_A;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_BColumn {
+                get {
+                    return this.columnsam_type_B;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_CColumn {
+                get {
+                    return this.columnsam_type_C;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_DColumn {
+                get {
+                    return this.columnsam_type_D;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_EColumn {
+                get {
+                    return this.columnsam_type_E;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sam_type_FColumn {
+                get {
+                    return this.columnsam_type_F;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hotfixColumn {
+                get {
+                    return this.columnhotfix;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn s_plan_arrival_dateColumn {
+                get {
+                    return this.columns_plan_arrival_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn s_real_arrival_dateColumn {
+                get {
+                    return this.columns_real_arrival_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tel_nbrColumn {
+                get {
+                    return this.columntel_nbr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn type_descColumn {
+                get {
+                    return this.columntype_desc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn dept_nameColumn {
+                get {
+                    return this.columndept_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn item_statistic_nameColumn {
+                get {
+                    return this.columnitem_statistic_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SampleNameColumn {
+                get {
+                    return this.columnSampleName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn reason_remarkColumn {
+                get {
+                    return this.columnreason_remark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn original_editionColumn {
+                get {
+                    return this.columnoriginal_edition;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn reason_nameColumn {
+                get {
+                    return this.columnreason_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn samc_plan_fin_dateColumn {
+                get {
+                    return this.columnsamc_plan_fin_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn receipt_dateColumn {
+                get {
+                    return this.columnreceipt_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單Row this[int index] {
+                get {
+                    return ((打樣收單Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 打樣收單RowChangeEventHandler 打樣收單RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 打樣收單RowChangeEventHandler 打樣收單RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 打樣收單RowChangeEventHandler 打樣收單RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 打樣收單RowChangeEventHandler 打樣收單RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Add打樣收單Row(打樣收單Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單Row Add打樣收單Row(
+                        string site, 
+                        string sam_nbr, 
+                        string sam_times, 
+                        string sam_no, 
+                        string version, 
+                        System.DateTime sam_date, 
+                        string cus_id, 
+                        string dept_no, 
+                        string item_no, 
+                        string type_id, 
+                        string salesman, 
+                        string sam_size, 
+                        decimal assign_qty, 
+                        System.DateTime plan_fin_date, 
+                        string emb, 
+                        string washing, 
+                        string oth_extra, 
+                        System.DateTime finish_date, 
+                        decimal finish_qty, 
+                        string place_origin, 
+                        string currency_id, 
+                        decimal unit_price, 
+                        decimal amount, 
+                        decimal sam_qty, 
+                        decimal sam_cus_qty, 
+                        decimal sam_taipei_qty, 
+                        string image_path, 
+                        string remark60, 
+                        string status, 
+                        System.DateTime close_date, 
+                        string reason, 
+                        System.DateTime online_date, 
+                        string confirm_yn, 
+                        string progress_rate, 
+                        string sam_class, 
+                        string original_sampleo_yn, 
+                        string original_edition_yn, 
+                        string original_edition_size, 
+                        string ratio_size, 
+                        string sample_complete_1, 
+                        string sample_complete_2, 
+                        string cus_express_corp, 
+                        string cus_assign_account, 
+                        string cus_address_id, 
+                        string cus_addressee, 
+                        string cus_address, 
+                        string cus_style_no, 
+                        string brand_name, 
+                        string sam_type, 
+                        string proofing_factory, 
+                        string filter_creator, 
+                        string filter_dept, 
+                        string creator, 
+                        System.DateTime create_date, 
+                        string modifier, 
+                        System.DateTime modify_date, 
+                        string printing, 
+                        string sewing, 
+                        string samc_remark60, 
+                        string mark, 
+                        string crp_yn, 
+                        System.DateTime crp_date, 
+                        string item_statistic, 
+                        string remark_1, 
+                        string final, 
+                        System.DateTime last_date, 
+                        System.DateTime samc_fin_date, 
+                        string sam_type_A, 
+                        string sam_type_B, 
+                        string sam_type_C, 
+                        string sam_type_D, 
+                        string sam_type_E, 
+                        string sam_type_F, 
+                        string hotfix, 
+                        System.DateTime s_plan_arrival_date, 
+                        System.DateTime s_real_arrival_date, 
+                        string tel_nbr, 
+                        string type_desc, 
+                        string dept_name, 
+                        string item_statistic_name, 
+                        string SampleName, 
+                        string reason_remark, 
+                        string original_edition, 
+                        string reason_name, 
+                        System.DateTime samc_plan_fin_date, 
+                        System.DateTime receipt_date) {
+                打樣收單Row row打樣收單Row = ((打樣收單Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        site,
+                        sam_nbr,
+                        sam_times,
+                        sam_no,
+                        version,
+                        sam_date,
+                        cus_id,
+                        dept_no,
+                        item_no,
+                        type_id,
+                        salesman,
+                        sam_size,
+                        assign_qty,
+                        plan_fin_date,
+                        emb,
+                        washing,
+                        oth_extra,
+                        finish_date,
+                        finish_qty,
+                        place_origin,
+                        currency_id,
+                        unit_price,
+                        amount,
+                        sam_qty,
+                        sam_cus_qty,
+                        sam_taipei_qty,
+                        image_path,
+                        remark60,
+                        status,
+                        close_date,
+                        reason,
+                        online_date,
+                        confirm_yn,
+                        progress_rate,
+                        sam_class,
+                        original_sampleo_yn,
+                        original_edition_yn,
+                        original_edition_size,
+                        ratio_size,
+                        sample_complete_1,
+                        sample_complete_2,
+                        cus_express_corp,
+                        cus_assign_account,
+                        cus_address_id,
+                        cus_addressee,
+                        cus_address,
+                        cus_style_no,
+                        brand_name,
+                        sam_type,
+                        proofing_factory,
+                        filter_creator,
+                        filter_dept,
+                        creator,
+                        create_date,
+                        modifier,
+                        modify_date,
+                        printing,
+                        sewing,
+                        samc_remark60,
+                        mark,
+                        crp_yn,
+                        crp_date,
+                        item_statistic,
+                        remark_1,
+                        final,
+                        last_date,
+                        samc_fin_date,
+                        sam_type_A,
+                        sam_type_B,
+                        sam_type_C,
+                        sam_type_D,
+                        sam_type_E,
+                        sam_type_F,
+                        hotfix,
+                        s_plan_arrival_date,
+                        s_real_arrival_date,
+                        tel_nbr,
+                        type_desc,
+                        dept_name,
+                        item_statistic_name,
+                        SampleName,
+                        reason_remark,
+                        original_edition,
+                        reason_name,
+                        samc_plan_fin_date,
+                        receipt_date};
+                row打樣收單Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row打樣收單Row);
+                return row打樣收單Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                打樣收單DataTable cln = ((打樣收單DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 打樣收單DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnsite = base.Columns["site"];
+                this.columnsam_nbr = base.Columns["sam_nbr"];
+                this.columnsam_times = base.Columns["sam_times"];
+                this.columnsam_no = base.Columns["sam_no"];
+                this.columnversion = base.Columns["version"];
+                this.columnsam_date = base.Columns["sam_date"];
+                this.columncus_id = base.Columns["cus_id"];
+                this.columndept_no = base.Columns["dept_no"];
+                this.columnitem_no = base.Columns["item_no"];
+                this.columntype_id = base.Columns["type_id"];
+                this.columnsalesman = base.Columns["salesman"];
+                this.columnsam_size = base.Columns["sam_size"];
+                this.columnassign_qty = base.Columns["assign_qty"];
+                this.columnplan_fin_date = base.Columns["plan_fin_date"];
+                this.columnemb = base.Columns["emb"];
+                this.columnwashing = base.Columns["washing"];
+                this.columnoth_extra = base.Columns["oth_extra"];
+                this.columnfinish_date = base.Columns["finish_date"];
+                this.columnfinish_qty = base.Columns["finish_qty"];
+                this.columnplace_origin = base.Columns["place_origin"];
+                this.columncurrency_id = base.Columns["currency_id"];
+                this.columnunit_price = base.Columns["unit_price"];
+                this.columnamount = base.Columns["amount"];
+                this.columnsam_qty = base.Columns["sam_qty"];
+                this.columnsam_cus_qty = base.Columns["sam_cus_qty"];
+                this.columnsam_taipei_qty = base.Columns["sam_taipei_qty"];
+                this.columnimage_path = base.Columns["image_path"];
+                this.columnremark60 = base.Columns["remark60"];
+                this.columnstatus = base.Columns["status"];
+                this.columnclose_date = base.Columns["close_date"];
+                this.columnreason = base.Columns["reason"];
+                this.columnonline_date = base.Columns["online_date"];
+                this.columnconfirm_yn = base.Columns["confirm_yn"];
+                this.columnprogress_rate = base.Columns["progress_rate"];
+                this.columnsam_class = base.Columns["sam_class"];
+                this.columnoriginal_sampleo_yn = base.Columns["original_sampleo_yn"];
+                this.columnoriginal_edition_yn = base.Columns["original_edition_yn"];
+                this.columnoriginal_edition_size = base.Columns["original_edition_size"];
+                this.columnratio_size = base.Columns["ratio_size"];
+                this.columnsample_complete_1 = base.Columns["sample_complete_1"];
+                this.columnsample_complete_2 = base.Columns["sample_complete_2"];
+                this.columncus_express_corp = base.Columns["cus_express_corp"];
+                this.columncus_assign_account = base.Columns["cus_assign_account"];
+                this.columncus_address_id = base.Columns["cus_address_id"];
+                this.columncus_addressee = base.Columns["cus_addressee"];
+                this.columncus_address = base.Columns["cus_address"];
+                this.columncus_style_no = base.Columns["cus_style_no"];
+                this.columnbrand_name = base.Columns["brand_name"];
+                this.columnsam_type = base.Columns["sam_type"];
+                this.columnproofing_factory = base.Columns["proofing_factory"];
+                this.columnfilter_creator = base.Columns["filter_creator"];
+                this.columnfilter_dept = base.Columns["filter_dept"];
+                this.columncreator = base.Columns["creator"];
+                this.columncreate_date = base.Columns["create_date"];
+                this.columnmodifier = base.Columns["modifier"];
+                this.columnmodify_date = base.Columns["modify_date"];
+                this.columnprinting = base.Columns["printing"];
+                this.columnsewing = base.Columns["sewing"];
+                this.columnsamc_remark60 = base.Columns["samc_remark60"];
+                this.columnmark = base.Columns["mark"];
+                this.columncrp_yn = base.Columns["crp_yn"];
+                this.columncrp_date = base.Columns["crp_date"];
+                this.columnitem_statistic = base.Columns["item_statistic"];
+                this.columnremark_1 = base.Columns["remark_1"];
+                this.columnfinal = base.Columns["final"];
+                this.columnlast_date = base.Columns["last_date"];
+                this.columnsamc_fin_date = base.Columns["samc_fin_date"];
+                this.columnsam_type_A = base.Columns["sam_type_A"];
+                this.columnsam_type_B = base.Columns["sam_type_B"];
+                this.columnsam_type_C = base.Columns["sam_type_C"];
+                this.columnsam_type_D = base.Columns["sam_type_D"];
+                this.columnsam_type_E = base.Columns["sam_type_E"];
+                this.columnsam_type_F = base.Columns["sam_type_F"];
+                this.columnhotfix = base.Columns["hotfix"];
+                this.columns_plan_arrival_date = base.Columns["s_plan_arrival_date"];
+                this.columns_real_arrival_date = base.Columns["s_real_arrival_date"];
+                this.columntel_nbr = base.Columns["tel_nbr"];
+                this.columntype_desc = base.Columns["type_desc"];
+                this.columndept_name = base.Columns["dept_name"];
+                this.columnitem_statistic_name = base.Columns["item_statistic_name"];
+                this.columnSampleName = base.Columns["SampleName"];
+                this.columnreason_remark = base.Columns["reason_remark"];
+                this.columnoriginal_edition = base.Columns["original_edition"];
+                this.columnreason_name = base.Columns["reason_name"];
+                this.columnsamc_plan_fin_date = base.Columns["samc_plan_fin_date"];
+                this.columnreceipt_date = base.Columns["receipt_date"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnsite = new global::System.Data.DataColumn("site", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsite);
+                this.columnsam_nbr = new global::System.Data.DataColumn("sam_nbr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_nbr);
+                this.columnsam_times = new global::System.Data.DataColumn("sam_times", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_times);
+                this.columnsam_no = new global::System.Data.DataColumn("sam_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_no);
+                this.columnversion = new global::System.Data.DataColumn("version", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnversion);
+                this.columnsam_date = new global::System.Data.DataColumn("sam_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_date);
+                this.columncus_id = new global::System.Data.DataColumn("cus_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_id);
+                this.columndept_no = new global::System.Data.DataColumn("dept_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndept_no);
+                this.columnitem_no = new global::System.Data.DataColumn("item_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitem_no);
+                this.columntype_id = new global::System.Data.DataColumn("type_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_id);
+                this.columnsalesman = new global::System.Data.DataColumn("salesman", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalesman);
+                this.columnsam_size = new global::System.Data.DataColumn("sam_size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_size);
+                this.columnassign_qty = new global::System.Data.DataColumn("assign_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnassign_qty);
+                this.columnplan_fin_date = new global::System.Data.DataColumn("plan_fin_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplan_fin_date);
+                this.columnemb = new global::System.Data.DataColumn("emb", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemb);
+                this.columnwashing = new global::System.Data.DataColumn("washing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnwashing);
+                this.columnoth_extra = new global::System.Data.DataColumn("oth_extra", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoth_extra);
+                this.columnfinish_date = new global::System.Data.DataColumn("finish_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfinish_date);
+                this.columnfinish_qty = new global::System.Data.DataColumn("finish_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfinish_qty);
+                this.columnplace_origin = new global::System.Data.DataColumn("place_origin", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnplace_origin);
+                this.columncurrency_id = new global::System.Data.DataColumn("currency_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncurrency_id);
+                this.columnunit_price = new global::System.Data.DataColumn("unit_price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunit_price);
+                this.columnamount = new global::System.Data.DataColumn("amount", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnamount);
+                this.columnsam_qty = new global::System.Data.DataColumn("sam_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_qty);
+                this.columnsam_cus_qty = new global::System.Data.DataColumn("sam_cus_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_cus_qty);
+                this.columnsam_taipei_qty = new global::System.Data.DataColumn("sam_taipei_qty", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_taipei_qty);
+                this.columnimage_path = new global::System.Data.DataColumn("image_path", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimage_path);
+                this.columnremark60 = new global::System.Data.DataColumn("remark60", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnremark60);
+                this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus);
+                this.columnclose_date = new global::System.Data.DataColumn("close_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnclose_date);
+                this.columnreason = new global::System.Data.DataColumn("reason", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreason);
+                this.columnonline_date = new global::System.Data.DataColumn("online_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnonline_date);
+                this.columnconfirm_yn = new global::System.Data.DataColumn("confirm_yn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnconfirm_yn);
+                this.columnprogress_rate = new global::System.Data.DataColumn("progress_rate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprogress_rate);
+                this.columnsam_class = new global::System.Data.DataColumn("sam_class", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_class);
+                this.columnoriginal_sampleo_yn = new global::System.Data.DataColumn("original_sampleo_yn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoriginal_sampleo_yn);
+                this.columnoriginal_edition_yn = new global::System.Data.DataColumn("original_edition_yn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoriginal_edition_yn);
+                this.columnoriginal_edition_size = new global::System.Data.DataColumn("original_edition_size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoriginal_edition_size);
+                this.columnratio_size = new global::System.Data.DataColumn("ratio_size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnratio_size);
+                this.columnsample_complete_1 = new global::System.Data.DataColumn("sample_complete_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsample_complete_1);
+                this.columnsample_complete_2 = new global::System.Data.DataColumn("sample_complete_2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsample_complete_2);
+                this.columncus_express_corp = new global::System.Data.DataColumn("cus_express_corp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_express_corp);
+                this.columncus_assign_account = new global::System.Data.DataColumn("cus_assign_account", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_assign_account);
+                this.columncus_address_id = new global::System.Data.DataColumn("cus_address_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_address_id);
+                this.columncus_addressee = new global::System.Data.DataColumn("cus_addressee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_addressee);
+                this.columncus_address = new global::System.Data.DataColumn("cus_address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_address);
+                this.columncus_style_no = new global::System.Data.DataColumn("cus_style_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncus_style_no);
+                this.columnbrand_name = new global::System.Data.DataColumn("brand_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbrand_name);
+                this.columnsam_type = new global::System.Data.DataColumn("sam_type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type);
+                this.columnproofing_factory = new global::System.Data.DataColumn("proofing_factory", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproofing_factory);
+                this.columnfilter_creator = new global::System.Data.DataColumn("filter_creator", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfilter_creator);
+                this.columnfilter_dept = new global::System.Data.DataColumn("filter_dept", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfilter_dept);
+                this.columncreator = new global::System.Data.DataColumn("creator", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreator);
+                this.columncreate_date = new global::System.Data.DataColumn("create_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreate_date);
+                this.columnmodifier = new global::System.Data.DataColumn("modifier", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmodifier);
+                this.columnmodify_date = new global::System.Data.DataColumn("modify_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmodify_date);
+                this.columnprinting = new global::System.Data.DataColumn("printing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprinting);
+                this.columnsewing = new global::System.Data.DataColumn("sewing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsewing);
+                this.columnsamc_remark60 = new global::System.Data.DataColumn("samc_remark60", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsamc_remark60);
+                this.columnmark = new global::System.Data.DataColumn("mark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmark);
+                this.columncrp_yn = new global::System.Data.DataColumn("crp_yn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncrp_yn);
+                this.columncrp_date = new global::System.Data.DataColumn("crp_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncrp_date);
+                this.columnitem_statistic = new global::System.Data.DataColumn("item_statistic", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitem_statistic);
+                this.columnremark_1 = new global::System.Data.DataColumn("remark_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnremark_1);
+                this.columnfinal = new global::System.Data.DataColumn("final", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfinal);
+                this.columnlast_date = new global::System.Data.DataColumn("last_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlast_date);
+                this.columnsamc_fin_date = new global::System.Data.DataColumn("samc_fin_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsamc_fin_date);
+                this.columnsam_type_A = new global::System.Data.DataColumn("sam_type_A", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_A);
+                this.columnsam_type_B = new global::System.Data.DataColumn("sam_type_B", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_B);
+                this.columnsam_type_C = new global::System.Data.DataColumn("sam_type_C", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_C);
+                this.columnsam_type_D = new global::System.Data.DataColumn("sam_type_D", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_D);
+                this.columnsam_type_E = new global::System.Data.DataColumn("sam_type_E", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_E);
+                this.columnsam_type_F = new global::System.Data.DataColumn("sam_type_F", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsam_type_F);
+                this.columnhotfix = new global::System.Data.DataColumn("hotfix", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhotfix);
+                this.columns_plan_arrival_date = new global::System.Data.DataColumn("s_plan_arrival_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columns_plan_arrival_date);
+                this.columns_real_arrival_date = new global::System.Data.DataColumn("s_real_arrival_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columns_real_arrival_date);
+                this.columntel_nbr = new global::System.Data.DataColumn("tel_nbr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel_nbr);
+                this.columntype_desc = new global::System.Data.DataColumn("type_desc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype_desc);
+                this.columndept_name = new global::System.Data.DataColumn("dept_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndept_name);
+                this.columnitem_statistic_name = new global::System.Data.DataColumn("item_statistic_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitem_statistic_name);
+                this.columnSampleName = new global::System.Data.DataColumn("SampleName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSampleName);
+                this.columnreason_remark = new global::System.Data.DataColumn("reason_remark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreason_remark);
+                this.columnoriginal_edition = new global::System.Data.DataColumn("original_edition", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoriginal_edition);
+                this.columnreason_name = new global::System.Data.DataColumn("reason_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreason_name);
+                this.columnsamc_plan_fin_date = new global::System.Data.DataColumn("samc_plan_fin_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsamc_plan_fin_date);
+                this.columnreceipt_date = new global::System.Data.DataColumn("receipt_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnreceipt_date);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                                this.columnsite,
+                                this.columnsam_nbr,
+                                this.columnsam_times}, false));
+                this.columnsite.AllowDBNull = false;
+                this.columnsite.MaxLength = 4;
+                this.columnsam_nbr.AllowDBNull = false;
+                this.columnsam_nbr.MaxLength = 20;
+                this.columnsam_times.AllowDBNull = false;
+                this.columnsam_times.MaxLength = 2;
+                this.columnsam_no.MaxLength = 20;
+                this.columnversion.MaxLength = 2;
+                this.columncus_id.MaxLength = 8;
+                this.columndept_no.MaxLength = 6;
+                this.columnitem_no.MaxLength = 38;
+                this.columntype_id.MaxLength = 4;
+                this.columnsalesman.MaxLength = 8;
+                this.columnsam_size.MaxLength = 20;
+                this.columnemb.MaxLength = 1;
+                this.columnwashing.MaxLength = 1;
+                this.columnoth_extra.MaxLength = 60;
+                this.columnplace_origin.MaxLength = 1;
+                this.columncurrency_id.MaxLength = 4;
+                this.columnimage_path.MaxLength = 255;
+                this.columnremark60.MaxLength = 260;
+                this.columnstatus.MaxLength = 2;
+                this.columnreason.MaxLength = 15;
+                this.columnconfirm_yn.MaxLength = 1;
+                this.columnprogress_rate.MaxLength = 1;
+                this.columnsam_class.MaxLength = 1;
+                this.columnoriginal_sampleo_yn.MaxLength = 1;
+                this.columnoriginal_edition_yn.MaxLength = 1;
+                this.columnoriginal_edition_size.MaxLength = 20;
+                this.columnratio_size.MaxLength = 40;
+                this.columnsample_complete_1.MaxLength = 1;
+                this.columnsample_complete_2.MaxLength = 1;
+                this.columncus_express_corp.MaxLength = 8;
+                this.columncus_assign_account.MaxLength = 20;
+                this.columncus_address_id.MaxLength = 6;
+                this.columncus_addressee.MaxLength = 20;
+                this.columncus_address.MaxLength = 60;
+                this.columncus_style_no.MaxLength = 120;
+                this.columnbrand_name.MaxLength = 30;
+                this.columnsam_type.MaxLength = 1;
+                this.columnproofing_factory.MaxLength = 1;
+                this.columnfilter_creator.MaxLength = 12;
+                this.columnfilter_dept.MaxLength = 6;
+                this.columncreator.MaxLength = 12;
+                this.columnmodifier.MaxLength = 12;
+                this.columnprinting.MaxLength = 1;
+                this.columnsewing.MaxLength = 1;
+                this.columnsamc_remark60.MaxLength = 60;
+                this.columnmark.MaxLength = 1;
+                this.columncrp_yn.MaxLength = 1;
+                this.columnitem_statistic.MaxLength = 8;
+                this.columnremark_1.MaxLength = 60;
+                this.columnfinal.MaxLength = 1;
+                this.columnsam_type_A.MaxLength = 1;
+                this.columnsam_type_B.MaxLength = 1;
+                this.columnsam_type_C.MaxLength = 1;
+                this.columnsam_type_D.MaxLength = 1;
+                this.columnsam_type_E.MaxLength = 1;
+                this.columnsam_type_F.MaxLength = 1;
+                this.columnhotfix.MaxLength = 1;
+                this.columntel_nbr.MaxLength = 10;
+                this.columntype_desc.MaxLength = 20;
+                this.columndept_name.MaxLength = 30;
+                this.columnitem_statistic_name.MaxLength = 40;
+                this.columnSampleName.ReadOnly = true;
+                this.columnSampleName.MaxLength = 2147483647;
+                this.columnreason_remark.MaxLength = 100;
+                this.columnoriginal_edition.MaxLength = 40;
+                this.columnreason_name.MaxLength = 60;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單Row New打樣收單Row() {
+                return ((打樣收單Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 打樣收單Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(打樣收單Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.打樣收單RowChanged != null)) {
+                    this.打樣收單RowChanged(this, new 打樣收單RowChangeEvent(((打樣收單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.打樣收單RowChanging != null)) {
+                    this.打樣收單RowChanging(this, new 打樣收單RowChangeEvent(((打樣收單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.打樣收單RowDeleted != null)) {
+                    this.打樣收單RowDeleted(this, new 打樣收單RowChangeEvent(((打樣收單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.打樣收單RowDeleting != null)) {
+                    this.打樣收單RowDeleting(this, new 打樣收單RowChangeEvent(((打樣收單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Remove打樣收單Row(打樣收單Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS2 ds = new SalesTempDS2();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "打樣收單DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class 營收資料Row : global::System.Data.DataRow {
@@ -1560,6 +3191,2378 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 打樣收單Row : global::System.Data.DataRow {
+            
+            private 打樣收單DataTable table打樣收單;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 打樣收單Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table打樣收單 = ((打樣收單DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string site {
+                get {
+                    return ((string)(this[this.table打樣收單.siteColumn]));
+                }
+                set {
+                    this[this.table打樣收單.siteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_nbr {
+                get {
+                    return ((string)(this[this.table打樣收單.sam_nbrColumn]));
+                }
+                set {
+                    this[this.table打樣收單.sam_nbrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_times {
+                get {
+                    return ((string)(this[this.table打樣收單.sam_timesColumn]));
+                }
+                set {
+                    this[this.table打樣收單.sam_timesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_no {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_no\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string version {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.versionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'version\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.versionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime sam_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.sam_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_id {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_id\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string dept_no {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.dept_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'dept_no\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.dept_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string item_no {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.item_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'item_no\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.item_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string type_id {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.type_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'type_id\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.type_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string salesman {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.salesmanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'salesman\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.salesmanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_size {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_sizeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_size\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_sizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal assign_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.assign_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'assign_qty\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.assign_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime plan_fin_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.plan_fin_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'plan_fin_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.plan_fin_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string emb {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.embColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'emb\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.embColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string washing {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.washingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'washing\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.washingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string oth_extra {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.oth_extraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'oth_extra\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.oth_extraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime finish_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.finish_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'finish_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.finish_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal finish_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.finish_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'finish_qty\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.finish_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string place_origin {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.place_originColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'place_origin\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.place_originColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string currency_id {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.currency_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'currency_id\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.currency_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal unit_price {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.unit_priceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'unit_price\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.unit_priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal amount {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.amountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'amount\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.amountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal sam_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.sam_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_qty\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal sam_cus_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.sam_cus_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_cus_qty\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_cus_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal sam_taipei_qty {
+                get {
+                    try {
+                        return ((decimal)(this[this.table打樣收單.sam_taipei_qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_taipei_qty\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_taipei_qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string image_path {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.image_pathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'image_path\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.image_pathColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string remark60 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.remark60Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'remark60\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.remark60Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string status {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.statusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'status\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.statusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime close_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.close_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'close_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.close_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string reason {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.reasonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'reason\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.reasonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime online_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.online_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'online_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.online_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string confirm_yn {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.confirm_ynColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'confirm_yn\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.confirm_ynColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string progress_rate {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.progress_rateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'progress_rate\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.progress_rateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_class {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_classColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_class\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_classColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string original_sampleo_yn {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.original_sampleo_ynColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'original_sampleo_yn\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.original_sampleo_ynColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string original_edition_yn {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.original_edition_ynColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'original_edition_yn\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.original_edition_ynColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string original_edition_size {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.original_edition_sizeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'original_edition_size\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.original_edition_sizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ratio_size {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.ratio_sizeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'ratio_size\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.ratio_sizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sample_complete_1 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sample_complete_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sample_complete_1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sample_complete_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sample_complete_2 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sample_complete_2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sample_complete_2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sample_complete_2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_express_corp {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_express_corpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_express_corp\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_express_corpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_assign_account {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_assign_accountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_assign_account\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_assign_accountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_address_id {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_address_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_address_id\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_address_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_addressee {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_addresseeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_addressee\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_addresseeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_address {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_address\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_addressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string cus_style_no {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.cus_style_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'cus_style_no\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.cus_style_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string brand_name {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.brand_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'brand_name\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.brand_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_typeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_typeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string proofing_factory {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.proofing_factoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'proofing_factory\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.proofing_factoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string filter_creator {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.filter_creatorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'filter_creator\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.filter_creatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string filter_dept {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.filter_deptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'filter_dept\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.filter_deptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string creator {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.creatorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'creator\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.creatorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime create_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.create_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'create_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.create_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string modifier {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.modifierColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'modifier\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.modifierColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime modify_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.modify_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'modify_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.modify_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string printing {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.printingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'printing\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.printingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sewing {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sewingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sewing\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sewingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string samc_remark60 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.samc_remark60Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'samc_remark60\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.samc_remark60Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string mark {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.markColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'mark\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.markColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string crp_yn {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.crp_ynColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'crp_yn\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.crp_ynColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime crp_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.crp_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'crp_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.crp_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string item_statistic {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.item_statisticColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'item_statistic\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.item_statisticColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string remark_1 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.remark_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'remark_1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.remark_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string final {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.finalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'final\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.finalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime last_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.last_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'last_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.last_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime samc_fin_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.samc_fin_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'samc_fin_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.samc_fin_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_A {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_AColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_A\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_AColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_B {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_BColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_B\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_BColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_C {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_CColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_C\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_CColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_D {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_DColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_D\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_DColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_E {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_EColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_E\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_EColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string sam_type_F {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.sam_type_FColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'sam_type_F\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.sam_type_FColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string hotfix {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.hotfixColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'hotfix\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.hotfixColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime s_plan_arrival_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.s_plan_arrival_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'s_plan_arrival_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.s_plan_arrival_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime s_real_arrival_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.s_real_arrival_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'s_real_arrival_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.s_real_arrival_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string tel_nbr {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.tel_nbrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'tel_nbr\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.tel_nbrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string type_desc {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.type_descColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'type_desc\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.type_descColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string dept_name {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.dept_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'dept_name\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.dept_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string item_statistic_name {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.item_statistic_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'item_statistic_name\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.item_statistic_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SampleName {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.SampleNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'SampleName\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.SampleNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string reason_remark {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.reason_remarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'reason_remark\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.reason_remarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string original_edition {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.original_editionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'original_edition\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.original_editionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string reason_name {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣收單.reason_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'reason_name\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.reason_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime samc_plan_fin_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.samc_plan_fin_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'samc_plan_fin_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.samc_plan_fin_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime receipt_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table打樣收單.receipt_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣收單\' 中資料行 \'receipt_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣收單.receipt_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_noNull() {
+                return this.IsNull(this.table打樣收單.sam_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_noNull() {
+                this[this.table打樣收單.sam_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsversionNull() {
+                return this.IsNull(this.table打樣收單.versionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetversionNull() {
+                this[this.table打樣收單.versionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_dateNull() {
+                return this.IsNull(this.table打樣收單.sam_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_dateNull() {
+                this[this.table打樣收單.sam_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_idNull() {
+                return this.IsNull(this.table打樣收單.cus_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_idNull() {
+                this[this.table打樣收單.cus_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isdept_noNull() {
+                return this.IsNull(this.table打樣收單.dept_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setdept_noNull() {
+                this[this.table打樣收單.dept_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isitem_noNull() {
+                return this.IsNull(this.table打樣收單.item_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setitem_noNull() {
+                this[this.table打樣收單.item_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istype_idNull() {
+                return this.IsNull(this.table打樣收單.type_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settype_idNull() {
+                this[this.table打樣收單.type_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssalesmanNull() {
+                return this.IsNull(this.table打樣收單.salesmanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsalesmanNull() {
+                this[this.table打樣收單.salesmanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_sizeNull() {
+                return this.IsNull(this.table打樣收單.sam_sizeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_sizeNull() {
+                this[this.table打樣收單.sam_sizeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isassign_qtyNull() {
+                return this.IsNull(this.table打樣收單.assign_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setassign_qtyNull() {
+                this[this.table打樣收單.assign_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplan_fin_dateNull() {
+                return this.IsNull(this.table打樣收單.plan_fin_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplan_fin_dateNull() {
+                this[this.table打樣收單.plan_fin_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsembNull() {
+                return this.IsNull(this.table打樣收單.embColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetembNull() {
+                this[this.table打樣收單.embColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IswashingNull() {
+                return this.IsNull(this.table打樣收單.washingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetwashingNull() {
+                this[this.table打樣收單.washingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoth_extraNull() {
+                return this.IsNull(this.table打樣收單.oth_extraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoth_extraNull() {
+                this[this.table打樣收單.oth_extraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfinish_dateNull() {
+                return this.IsNull(this.table打樣收單.finish_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfinish_dateNull() {
+                this[this.table打樣收單.finish_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfinish_qtyNull() {
+                return this.IsNull(this.table打樣收單.finish_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfinish_qtyNull() {
+                this[this.table打樣收單.finish_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isplace_originNull() {
+                return this.IsNull(this.table打樣收單.place_originColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setplace_originNull() {
+                this[this.table打樣收單.place_originColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscurrency_idNull() {
+                return this.IsNull(this.table打樣收單.currency_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcurrency_idNull() {
+                this[this.table打樣收單.currency_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isunit_priceNull() {
+                return this.IsNull(this.table打樣收單.unit_priceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setunit_priceNull() {
+                this[this.table打樣收單.unit_priceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsamountNull() {
+                return this.IsNull(this.table打樣收單.amountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetamountNull() {
+                this[this.table打樣收單.amountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_qtyNull() {
+                return this.IsNull(this.table打樣收單.sam_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_qtyNull() {
+                this[this.table打樣收單.sam_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_cus_qtyNull() {
+                return this.IsNull(this.table打樣收單.sam_cus_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_cus_qtyNull() {
+                this[this.table打樣收單.sam_cus_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_taipei_qtyNull() {
+                return this.IsNull(this.table打樣收單.sam_taipei_qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_taipei_qtyNull() {
+                this[this.table打樣收單.sam_taipei_qtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isimage_pathNull() {
+                return this.IsNull(this.table打樣收單.image_pathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setimage_pathNull() {
+                this[this.table打樣收單.image_pathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isremark60Null() {
+                return this.IsNull(this.table打樣收單.remark60Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setremark60Null() {
+                this[this.table打樣收單.remark60Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstatusNull() {
+                return this.IsNull(this.table打樣收單.statusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstatusNull() {
+                this[this.table打樣收單.statusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isclose_dateNull() {
+                return this.IsNull(this.table打樣收單.close_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setclose_dateNull() {
+                this[this.table打樣收單.close_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsreasonNull() {
+                return this.IsNull(this.table打樣收單.reasonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetreasonNull() {
+                this[this.table打樣收單.reasonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isonline_dateNull() {
+                return this.IsNull(this.table打樣收單.online_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setonline_dateNull() {
+                this[this.table打樣收單.online_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isconfirm_ynNull() {
+                return this.IsNull(this.table打樣收單.confirm_ynColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setconfirm_ynNull() {
+                this[this.table打樣收單.confirm_ynColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isprogress_rateNull() {
+                return this.IsNull(this.table打樣收單.progress_rateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setprogress_rateNull() {
+                this[this.table打樣收單.progress_rateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_classNull() {
+                return this.IsNull(this.table打樣收單.sam_classColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_classNull() {
+                this[this.table打樣收單.sam_classColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoriginal_sampleo_ynNull() {
+                return this.IsNull(this.table打樣收單.original_sampleo_ynColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoriginal_sampleo_ynNull() {
+                this[this.table打樣收單.original_sampleo_ynColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoriginal_edition_ynNull() {
+                return this.IsNull(this.table打樣收單.original_edition_ynColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoriginal_edition_ynNull() {
+                this[this.table打樣收單.original_edition_ynColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoriginal_edition_sizeNull() {
+                return this.IsNull(this.table打樣收單.original_edition_sizeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoriginal_edition_sizeNull() {
+                this[this.table打樣收單.original_edition_sizeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isratio_sizeNull() {
+                return this.IsNull(this.table打樣收單.ratio_sizeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setratio_sizeNull() {
+                this[this.table打樣收單.ratio_sizeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issample_complete_1Null() {
+                return this.IsNull(this.table打樣收單.sample_complete_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsample_complete_1Null() {
+                this[this.table打樣收單.sample_complete_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issample_complete_2Null() {
+                return this.IsNull(this.table打樣收單.sample_complete_2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsample_complete_2Null() {
+                this[this.table打樣收單.sample_complete_2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_express_corpNull() {
+                return this.IsNull(this.table打樣收單.cus_express_corpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_express_corpNull() {
+                this[this.table打樣收單.cus_express_corpColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_assign_accountNull() {
+                return this.IsNull(this.table打樣收單.cus_assign_accountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_assign_accountNull() {
+                this[this.table打樣收單.cus_assign_accountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_address_idNull() {
+                return this.IsNull(this.table打樣收單.cus_address_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_address_idNull() {
+                this[this.table打樣收單.cus_address_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_addresseeNull() {
+                return this.IsNull(this.table打樣收單.cus_addresseeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_addresseeNull() {
+                this[this.table打樣收單.cus_addresseeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_addressNull() {
+                return this.IsNull(this.table打樣收單.cus_addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_addressNull() {
+                this[this.table打樣收單.cus_addressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscus_style_noNull() {
+                return this.IsNull(this.table打樣收單.cus_style_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcus_style_noNull() {
+                this[this.table打樣收單.cus_style_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isbrand_nameNull() {
+                return this.IsNull(this.table打樣收單.brand_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setbrand_nameNull() {
+                this[this.table打樣收單.brand_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_typeNull() {
+                return this.IsNull(this.table打樣收單.sam_typeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_typeNull() {
+                this[this.table打樣收單.sam_typeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isproofing_factoryNull() {
+                return this.IsNull(this.table打樣收單.proofing_factoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setproofing_factoryNull() {
+                this[this.table打樣收單.proofing_factoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfilter_creatorNull() {
+                return this.IsNull(this.table打樣收單.filter_creatorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfilter_creatorNull() {
+                this[this.table打樣收單.filter_creatorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfilter_deptNull() {
+                return this.IsNull(this.table打樣收單.filter_deptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfilter_deptNull() {
+                this[this.table打樣收單.filter_deptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscreatorNull() {
+                return this.IsNull(this.table打樣收單.creatorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcreatorNull() {
+                this[this.table打樣收單.creatorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscreate_dateNull() {
+                return this.IsNull(this.table打樣收單.create_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcreate_dateNull() {
+                this[this.table打樣收單.create_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmodifierNull() {
+                return this.IsNull(this.table打樣收單.modifierColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmodifierNull() {
+                this[this.table打樣收單.modifierColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismodify_dateNull() {
+                return this.IsNull(this.table打樣收單.modify_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmodify_dateNull() {
+                this[this.table打樣收單.modify_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprintingNull() {
+                return this.IsNull(this.table打樣收單.printingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprintingNull() {
+                this[this.table打樣收單.printingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssewingNull() {
+                return this.IsNull(this.table打樣收單.sewingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsewingNull() {
+                this[this.table打樣收單.sewingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issamc_remark60Null() {
+                return this.IsNull(this.table打樣收單.samc_remark60Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsamc_remark60Null() {
+                this[this.table打樣收單.samc_remark60Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmarkNull() {
+                return this.IsNull(this.table打樣收單.markColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmarkNull() {
+                this[this.table打樣收單.markColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscrp_ynNull() {
+                return this.IsNull(this.table打樣收單.crp_ynColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcrp_ynNull() {
+                this[this.table打樣收單.crp_ynColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscrp_dateNull() {
+                return this.IsNull(this.table打樣收單.crp_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcrp_dateNull() {
+                this[this.table打樣收單.crp_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isitem_statisticNull() {
+                return this.IsNull(this.table打樣收單.item_statisticColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setitem_statisticNull() {
+                this[this.table打樣收單.item_statisticColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isremark_1Null() {
+                return this.IsNull(this.table打樣收單.remark_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setremark_1Null() {
+                this[this.table打樣收單.remark_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfinalNull() {
+                return this.IsNull(this.table打樣收單.finalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfinalNull() {
+                this[this.table打樣收單.finalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Islast_dateNull() {
+                return this.IsNull(this.table打樣收單.last_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setlast_dateNull() {
+                this[this.table打樣收單.last_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issamc_fin_dateNull() {
+                return this.IsNull(this.table打樣收單.samc_fin_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsamc_fin_dateNull() {
+                this[this.table打樣收單.samc_fin_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_ANull() {
+                return this.IsNull(this.table打樣收單.sam_type_AColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_ANull() {
+                this[this.table打樣收單.sam_type_AColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_BNull() {
+                return this.IsNull(this.table打樣收單.sam_type_BColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_BNull() {
+                this[this.table打樣收單.sam_type_BColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_CNull() {
+                return this.IsNull(this.table打樣收單.sam_type_CColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_CNull() {
+                this[this.table打樣收單.sam_type_CColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_DNull() {
+                return this.IsNull(this.table打樣收單.sam_type_DColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_DNull() {
+                this[this.table打樣收單.sam_type_DColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_ENull() {
+                return this.IsNull(this.table打樣收單.sam_type_EColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_ENull() {
+                this[this.table打樣收單.sam_type_EColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issam_type_FNull() {
+                return this.IsNull(this.table打樣收單.sam_type_FColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsam_type_FNull() {
+                this[this.table打樣收單.sam_type_FColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IshotfixNull() {
+                return this.IsNull(this.table打樣收單.hotfixColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SethotfixNull() {
+                this[this.table打樣收單.hotfixColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iss_plan_arrival_dateNull() {
+                return this.IsNull(this.table打樣收單.s_plan_arrival_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sets_plan_arrival_dateNull() {
+                this[this.table打樣收單.s_plan_arrival_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iss_real_arrival_dateNull() {
+                return this.IsNull(this.table打樣收單.s_real_arrival_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sets_real_arrival_dateNull() {
+                this[this.table打樣收單.s_real_arrival_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istel_nbrNull() {
+                return this.IsNull(this.table打樣收單.tel_nbrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settel_nbrNull() {
+                this[this.table打樣收單.tel_nbrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istype_descNull() {
+                return this.IsNull(this.table打樣收單.type_descColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settype_descNull() {
+                this[this.table打樣收單.type_descColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isdept_nameNull() {
+                return this.IsNull(this.table打樣收單.dept_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setdept_nameNull() {
+                this[this.table打樣收單.dept_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isitem_statistic_nameNull() {
+                return this.IsNull(this.table打樣收單.item_statistic_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setitem_statistic_nameNull() {
+                this[this.table打樣收單.item_statistic_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSampleNameNull() {
+                return this.IsNull(this.table打樣收單.SampleNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSampleNameNull() {
+                this[this.table打樣收單.SampleNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isreason_remarkNull() {
+                return this.IsNull(this.table打樣收單.reason_remarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setreason_remarkNull() {
+                this[this.table打樣收單.reason_remarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoriginal_editionNull() {
+                return this.IsNull(this.table打樣收單.original_editionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoriginal_editionNull() {
+                this[this.table打樣收單.original_editionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isreason_nameNull() {
+                return this.IsNull(this.table打樣收單.reason_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setreason_nameNull() {
+                this[this.table打樣收單.reason_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Issamc_plan_fin_dateNull() {
+                return this.IsNull(this.table打樣收單.samc_plan_fin_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setsamc_plan_fin_dateNull() {
+                this[this.table打樣收單.samc_plan_fin_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isreceipt_dateNull() {
+                return this.IsNull(this.table打樣收單.receipt_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setreceipt_dateNull() {
+                this[this.table打樣收單.receipt_dateColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1613,6 +5616,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 打版馬克處理Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class 打樣收單RowChangeEvent : global::System.EventArgs {
+            
+            private 打樣收單Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單RowChangeEvent(打樣收單Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 打樣收單Row Row {
                 get {
                     return this.eventRow;
                 }
