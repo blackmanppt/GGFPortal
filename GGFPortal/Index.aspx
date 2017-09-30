@@ -122,7 +122,9 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink51" runat="server" NavigateUrl="~/Ship/Ship001.aspx">採購單狀況查詢</asp:HyperLink>
                                                 <br />
-                        <asp:HyperLink ID="HyperLink58" runat="server" NavigateUrl="~/Ship/Ship002.aspx">採購單狀況查詢</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink58" runat="server" NavigateUrl="~/Ship/Ship002.aspx">客戶訂單轉Excel查詢(查詢多單價) </asp:HyperLink>
+                         <br />
+                        <asp:HyperLink ID="HyperLink61" runat="server" NavigateUrl="~/Ship/Ship003.aspx">客戶訂單轉Excel查詢(多條件查詢) </asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -174,6 +176,9 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink44" runat="server" NavigateUrl="~/Sales/Sample007.aspx">樣品室產量月總表-處理人員</asp:HyperLink>
                                                                                                                         <br />
                                                 <asp:HyperLink ID="HyperLink55" runat="server" NavigateUrl="~/Sales/Sample009.aspx">樣品室產量月總表-馬克處理人員</asp:HyperLink>
+                         <br />
+                                                <asp:HyperLink ID="HyperLink62" runat="server" NavigateUrl="~/Sales/Sample010.aspx">打樣收單查詢(BY 款號)</asp:HyperLink>
+
                                                 </td>
                     <th  class="auto-style2">
 

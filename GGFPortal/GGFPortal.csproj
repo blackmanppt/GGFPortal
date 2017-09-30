@@ -281,6 +281,7 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="VN\VN013.aspx" />
@@ -836,6 +837,13 @@
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship003.aspx.cs">
+      <DependentUpon>Ship003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship003.aspx.designer.cs">
+      <DependentUpon>Ship003.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ship\Ship002.aspx.cs">
       <DependentUpon>Ship002.aspx</DependentUpon>

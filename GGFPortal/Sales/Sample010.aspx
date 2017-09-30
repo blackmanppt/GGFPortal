@@ -23,13 +23,13 @@
             <div class="row">
                 <div class="col-md-2">
                     <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-left">樣品室收單查詢
+                        <h3 class="text-info text-left">樣品室打樣單查詢
                         </h3>
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <div class="form-group">
                             <h4>打樣單款號</h4>
                                 <asp:TextBox ID="StyleTB" runat="server" class="form-control" ></asp:TextBox>
-						        <ajaxToolkit:AutoCompleteExtender ID="StyleTB_AutoCompleteExtender" runat="server" BehaviorID="StyleTB_AutoCompleteExtender" ServiceMethod="SearchSampleNbr" MinimumPrefixLength="1" UseContextKey="True"  ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="StyleTB">
+						        <ajaxToolkit:AutoCompleteExtender ID="StyleTB_AutoCompleteExtender" runat="server" BehaviorID="StyleTB_AutoCompleteExtender" ServiceMethod="SearchSampleStyleNo" MinimumPrefixLength="1" UseContextKey="True"  ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="StyleTB">
                                 </ajaxToolkit:AutoCompleteExtender>
 						</div> 
                             <h4>處理狀態</h4>
