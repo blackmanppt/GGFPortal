@@ -30,6 +30,8 @@ namespace GGFPortal.DataSetSource
         public string 備註 { get; set; }
         public string 寄件人部門 { get; set; }
         public string 寄件人工號 { get; set; }
+        public string email { get; set; }
+        public string 備註二 { get; set; }
     
         public virtual 快遞單 快遞單 { get; set; }
     }

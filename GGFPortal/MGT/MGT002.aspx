@@ -8,13 +8,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>快遞單明細</title>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <script src="../scripts/jQuery.print.min.js"></script>
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -83,7 +82,7 @@
                 <div class="col-md-10">
 
 
-                    <asp:Panel ID="ADDPanel" runat="server" Visible="false">
+                    <asp:Panel ID="ADDPanel" runat="server" Visible="false" >
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -180,7 +179,7 @@
 
 
                                 <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
-                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup" Height="400px" Width="600px" BackColor="#33CCFF" Style="display:none" >
+                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup" Height="400px" Width="600px" BackColor="#33CCFF" Style="display: none" ScrollBars="Horizontal"  >
                                     <div class=" text-center">
                                         <h3><b>新增明細</b></h3>
                                     </div>
@@ -215,11 +214,11 @@
                                     </div>
                                     <div class="row">
                                         <div class=" col-md-2  text-right">
-                                            <asp:Label ID="重量LB" runat="server" Text="重量：" Font-Bold="True"></asp:Label>
+                                            <asp:Label ID="重量LB" runat="server" Text="重量(kg)：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-4 text-left">
                                             <asp:TextBox ID="重量TB" runat="server"></asp:TextBox>
-                                        </div>
+                                            </div>
                                         <div class=" col-md-2 text-right">
                                             <asp:Label ID="責任歸屬LB" runat="server" Text="責任歸屬：" Font-Bold="True"></asp:Label>
                                         </div>
@@ -234,18 +233,20 @@
                                         <div class="col-md-4 text-left">
                                             <asp:CheckBox ID="到付CB" runat="server" />
                                         </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="備註" runat="server" Text="備註：" Font-Bold="True"></asp:Label>
-                                        </div>
-                                        <div class="col-md-4 text-left">
-                                            <asp:TextBox ID="備註TB" runat="server"></asp:TextBox>
-                                        </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-md-2 text-right">
                                             <asp:Label ID="明細LB" runat="server" Text="明細：" Font-Bold="True"></asp:Label></div>
                                         <div class="col-md-10 text-left">
                                             <asp:TextBox ID="明細TB" runat="server" Width="489px"></asp:TextBox></div>
+                                    </div>
+                                    <div class="row">
+                                                                                <div class=" col-md-2 text-right">
+                                            <asp:Label ID="備註" runat="server" Text="備註：" Font-Bold="True"></asp:Label>
+                                        </div>
+                                        <div class="col-md-4 text-left">
+                                            <asp:TextBox ID="備註TB" runat="server" Width="489px" TextMode="MultiLine" Height="84px"></asp:TextBox>
+                                        </div>                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -263,7 +264,7 @@
                                 <ajaxToolkit:ModalPopupExtender ID="EditListPanel_ModalPopupExtender" runat="server" BehaviorID="EditListPanel_ModalPopupExtender" TargetControlID="show" PopupControlID="EditListPanel" >
                                 </ajaxToolkit:ModalPopupExtender>
 
-                                <asp:Panel ID="SelectPanel" runat="server" align="center" Height="400px" Width="600px" BackColor="#0099FF" Style="display:none">
+                                <asp:Panel ID="SelectPanel" runat="server" align="center" Height="400px" Width="600px" BackColor="#0099FF" Style="display:none"   ScrollBars="Vertical">
                                     <div><h3>選擇快遞單</h3></div>
                                     
                                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2" OnRowCommand="GridView1_RowCommand"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
@@ -293,7 +294,7 @@
                                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [快遞單] WHERE ([提單日期] = @提單日期)">
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [快遞單] WHERE ([提單日期] = @提單日期) and [IsDeleted]= 0">
                                         <SelectParameters>
                                             <asp:SessionParameter DefaultValue="2000/1/1" Name="提單日期" SessionField="提單日期" Type="DateTime" />
                                         </SelectParameters>

@@ -102,6 +102,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Secretary/Secretary001.aspx">產區表</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Secretary/Secretary004.aspx">產區表(資料查詢)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Secretary/Secretary006.aspx">產區表資料</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -216,7 +218,13 @@ table, td, th {
                     <td class="auto-style1">管理部</td>
                     <td>
                         <asp:HyperLink ID="HyperLink59" runat="server" NavigateUrl="~/MGT/MGT001.aspx">新增快遞單</asp:HyperLink>
+                        <br />
                         <asp:HyperLink ID="HyperLink60" runat="server" NavigateUrl="~/MGT/MGT002.aspx">新增快遞單明細</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink64" runat="server" NavigateUrl="~/MGT/MGT004.aspx">快遞單資料查詢</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink65" runat="server" NavigateUrl="~/MGT/MGT006.aspx">快遞單資料查詢</asp:HyperLink>
+                        <br />
                     </td>
                 </tr>
             </table>

@@ -8,13 +8,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>快遞單</title>
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/scripts/scripts.js"></script>
-
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/jQuery.print.min.js"></script>
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
     <style type="text/css">
         .auto-style1 {
             text-align: center;
@@ -96,16 +95,16 @@
                                 </td>
                                 <td class="text-center">
                                     <asp:DropDownList ID="快遞廠商DDL" runat="server" CssClass="form-control" >
-                                        <asp:ListItem>Air</asp:ListItem>
-                                        <asp:ListItem>音速</asp:ListItem>
-                                        <asp:ListItem>捷越</asp:ListItem>
+                                        <asp:ListItem>譽得</asp:ListItem>
+                                        <asp:ListItem>峻越</asp:ListItem>
+                                        <asp:ListItem>捷麟</asp:ListItem>
                                         <asp:ListItem>順豐</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine) ORDER BY [Data]">
+<%--                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine) ORDER BY [Data]">
                                         <SelectParameters>
                                             <asp:Parameter DefaultValue="快遞廠商" Name="UsingDefine" Type="String" />
                                         </SelectParameters>
-                                    </asp:SqlDataSource>
+                                    </asp:SqlDataSource>--%>
                                 </td>
                                 <td class="text-center">
                                     <asp:TextBox ID="提單號碼TB" runat="server" CssClass="form-control"></asp:TextBox>
@@ -167,7 +166,7 @@
                         <SortedDescendingCellStyle BackColor="#D4DFE1" />
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點] FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,121) like @提單日期 and 提單號碼 like @提單號碼">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 20 [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點] FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,121) like @提單日期 and 提單號碼 like @提單號碼 order by 提單日期 desc">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="false" Name="IsDeleted" Type="Boolean" />
                             <asp:SessionParameter DefaultValue="%" Name="提單日期" SessionField="提單日期" />

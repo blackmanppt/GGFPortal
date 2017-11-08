@@ -47,7 +47,7 @@ namespace GGFPortal.MGT
 
         private void HeadDB(int iid)
         {
-            var 快遞單資料 = db.快遞單.Where(p => p.id == iid);
+            var 快遞單資料 = db.快遞單.Where(p => p.id == iid&&p.IsDeleted==false);
             string s快遞單檔案 = "";
             if (快遞單資料.Count() > 0)
             {
@@ -107,7 +107,7 @@ namespace GGFPortal.MGT
                 DateTime 快遞時間 = Convert.ToDateTime(快遞時間TB.Text.Trim());
                 string 快遞單號 = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "" : 快遞單號TB.Text.Trim();
                 //var c = db.快遞單.Where(p => p.提單日期.Month == 快遞時間.Month && p.提單日期.Year == 快遞時間.Year && p.提單日期.Day == 快遞時間.Day);
-                var c = db.快遞單.Where(p => p.提單日期== 快遞時間);
+                var c = db.快遞單.Where(p => p.提單日期== 快遞時間 && p.IsDeleted==false);
                 if (快遞單號.Length>0)
                 {
                     c = c.Where(p => p.提單號碼.Contains(快遞單號));
@@ -221,7 +221,7 @@ namespace GGFPortal.MGT
                             重量TB.Text = item.重量.ToString();
                             責任歸屬TB.Text = item.責任歸屬;
                             到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
-                            備註TB.Text = item.備註;
+                            備註TB.Text = item.備註二;
                             明細TB.Text = item.明細;
                             uidHF.Value = item.uid.ToString();
                         }
@@ -273,7 +273,8 @@ namespace GGFPortal.MGT
                     Session["uid"] = struid;
                     Session["id"] = ACRGV.Rows[row.RowIndex].Cells[1].Text;
                     //Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
-                    Response.Redirect("MGT003.aspx");
+                    //Response.Redirect("MGT003.aspx");
+                    Response.Redirect("MGT005.aspx");
 
                 }
             }
@@ -327,24 +328,27 @@ namespace GGFPortal.MGT
                         
                         var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人工號TB.Text).FirstOrDefault();
                         if (iid == 0)
-                            sbError.Append("請重選資料<br/>");
+                            sbError.Append("請重選資料");
                         if (工號資料 == null)
-                        { 
-                            sbError.Append("無工號資料<br/>");
+                        {
+                            sbErrorstring(sbError, "無工號資料");
                         }
                         else
                         {
                             if (工號資料.employee_status == "IA")
-                                sbError.Append("工號已停用<br/>");
+                                sbErrorstring(sbError, "工號已停用");
                         }
                         
                         if (d重量 == 0)
-                            sbError.Append("請輸入重量<br/>");
+                            sbErrorstring(sbError, "請輸入重量");
                         if (string.IsNullOrEmpty(收件人TB.Text.Trim()))
-                            sbError.Append("請輸入收件人<br/>");
+                            sbErrorstring(sbError, "請輸入收件人");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
-                            sbError.Append("請輸入客戶名稱<br/>");
-
+                            sbErrorstring(sbError, "請輸入客戶名稱");
+                        if (string.IsNullOrEmpty(責任歸屬TB.Text))
+                            sbErrorstring(sbError, "請輸入責任歸屬：振大付費塡GG，廠商付費塡廠商名稱");
+                        if (string.IsNullOrEmpty(明細TB.Text))
+                            sbErrorstring(sbError, "請輸明細");
                         if (sbError.Length > 0)
                         {
                             EditMessageLB.Text =  sbError.ToString();
@@ -366,8 +370,9 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.IsDeleted = false;
                                 新增快遞單明細.重量 = d重量;
                                 新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
-                                新增快遞單明細.備註 = 備註TB.Text.Trim();
+                                新增快遞單明細.備註二 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
+                                新增快遞單明細.email = 工號資料.email_address;
                                 conn.快遞單明細.Add(新增快遞單明細);
                             }
                             else
@@ -382,10 +387,10 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
                                 新增快遞單明細.重量 = d重量;
                                 新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
-                                新增快遞單明細.備註 = 備註TB.Text.Trim();
+                                新增快遞單明細.備註二 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
                                 新增快遞單明細.修改日期 = DateTime.Now;
-
+                                新增快遞單明細.email = 工號資料.email_address;
                             }
                             conn.SaveChanges();
                             transaction.Commit();
@@ -413,6 +418,14 @@ namespace GGFPortal.MGT
                 }
             }
         }
+
+        private static void sbErrorstring(StringBuilder sbError,string strerror)
+        {
+            if (sbError.Length>0)
+                sbError.Append("<br/>");
+            sbError.Append(strerror);
+        }
+
         public void ClearEdit()
         {
             寄件人工號TB.Text = "";
@@ -424,6 +437,7 @@ namespace GGFPortal.MGT
             到付CB.Checked = false;
             備註TB.Text = "";
             明細TB.Text = "";
+            uidHF.Value = null;
         }
 
         protected void Button2_Click(object sender, EventArgs e)

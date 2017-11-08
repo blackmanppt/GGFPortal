@@ -67,7 +67,7 @@ namespace GGFPortal.MIS
             if (訂單交期TB.Text.Length>0)
             {
                 DateTime.TryParseExact(訂單交期TB.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsed);
-                parsed2 = parsed.AddDays(54);
+                parsed2 = parsed.AddDays(59);
             }
             else
             {

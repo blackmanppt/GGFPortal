@@ -750,7 +750,7 @@ namespace GGFPortal.VN
                                             //strInsertColumn = ",[QCQty],[ErrorQty],[ErrorUnreturnQty],[OnlineDay]";
                                             //strInsertData = ",@QCQty ,@ErrorQty,@ErrorUnreturnQty,@OnlineDay";
                                             strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay],[ErrorRate]";
-                                            strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay,ErrorRate";
+                                            strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay,@ErrorRate";
                                         }
                                         //TypeLB.Text = i.ToString();
                                         command1.CommandText = string.Format(@"INSERT INTO [dbo].[Productivity_Line]

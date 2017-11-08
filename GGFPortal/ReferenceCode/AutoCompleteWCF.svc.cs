@@ -176,5 +176,29 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        [OperationContract]
+        public List<string> Search訂單客戶(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select  distinct top 10  [cus_id] as Search from [ordc_bah1] where upper([cus_id]) like '%' +  @SearchText + '%'   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
     }
 }

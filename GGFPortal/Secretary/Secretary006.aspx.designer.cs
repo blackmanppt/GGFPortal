@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.MGT {
+namespace GGFPortal.Secretary {
     
     
-    public partial class MGT004 {
+    public partial class Secretary006 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,13 +31,22 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// 提單TB 控制項。
+        /// DateDDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 提單TB;
+        protected global::System.Web.UI.WebControls.DropDownList DateDDL;
+        
+        /// <summary>
+        /// SqlDataSource1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
         /// SearchBT 控制項。

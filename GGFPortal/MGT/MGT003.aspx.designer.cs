@@ -58,6 +58,51 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.Label 快遞編號LB;
         
         /// <summary>
+        /// 寄件人LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 寄件人LB;
+        
+        /// <summary>
+        /// 英文名LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 英文名LB;
+        
+        /// <summary>
+        /// 送件地點LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 送件地點LB;
+        
+        /// <summary>
+        /// 收件人LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 收件人LB;
+        
+        /// <summary>
+        /// 明細LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 明細LB;
+        
+        /// <summary>
         /// 快遞單檔案Literal 控制項。
         /// </summary>
         /// <remarks>

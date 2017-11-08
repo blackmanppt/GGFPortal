@@ -301,24 +301,6 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.CheckBox 到付CB;
         
         /// <summary>
-        /// 備註 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 備註;
-        
-        /// <summary>
-        /// 備註TB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 備註TB;
-        
-        /// <summary>
         /// 明細LB 控制項。
         /// </summary>
         /// <remarks>
@@ -335,6 +317,24 @@ namespace GGFPortal.MGT {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox 明細TB;
+        
+        /// <summary>
+        /// 備註 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 備註;
+        
+        /// <summary>
+        /// 備註TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 備註TB;
         
         /// <summary>
         /// EditMessageLB 控制項。

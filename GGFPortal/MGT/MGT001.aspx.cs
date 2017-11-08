@@ -28,7 +28,6 @@ namespace GGFPortal.MGT
             {
                 if (idHF.Value == null)
                 { 
-                    Show(false);
                     ClearPanel();
                 }
             }
@@ -36,6 +35,7 @@ namespace GGFPortal.MGT
 
         private void ClearPanel()
         {
+            Show(false);
             快遞日期TB.Text = "";
             提單號碼TB.Text = "";
             送件地點TB.Text = "";
@@ -49,50 +49,79 @@ namespace GGFPortal.MGT
         {
             //if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
             //{
-                DateTime 快遞時間 = Convert.ToDateTime(快遞時間TB.Text.Trim());
-                string 快遞單號 = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "" : 快遞單號TB.Text.Trim();
-                var c = db.快遞單.Where(p => p.提單日期 == 快遞時間);
-                if (快遞單號!="")
+            DateTime 快遞時間 = Convert.ToDateTime((!string.IsNullOrEmpty( 快遞時間TB.Text.Trim())? 快遞時間TB.Text.Trim():"2000-01-01"));
+            string 快遞單號 = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "" : 快遞單號TB.Text.Trim();
+            IQueryable<快遞單> c;
+            //var c = db.快遞單.Where(p => p.提單日期 == 快遞時間&&p.IsDeleted==false);
+            
+            if (快遞時間.ToString("yyyy-MM-dd")== "2000-01-01")
+            {
+                if (快遞單號.Length>0)
                 {
-                    if (string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
-                    {
-                        c= db.快遞單.Where(p => p.提單號碼.Contains(快遞單號));
-                    }
-                    else
-                    { 
-                        c = c.Where(p => p.提單號碼.Contains(快遞單號));
-                    }
-                }
-                if (c.Count()>0)
-                {
-                    if (c.Count()>1)
-                    {
-                        Show(false);
-                    }
-                    else
-                    {
-                        foreach (var item in c)
-                        {
-                            快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
-                            快遞廠商DDL.SelectedValue = item.快遞廠商;
-                            提單號碼TB.Text = item.提單號碼;
-                            送件地點TB.Text = item.送件地點;
-                            idHF.Value = item.id.ToString();
-                        }
-                        
-                    }
-                    Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
-                    Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
+                    c = db.快遞單.Where(p => p.提單號碼.Contains(快遞單號) && p.IsDeleted == false);
                 }
                 else
                 {
-                    快遞日期TB.Text = 快遞時間TB.Text;
-                    提單號碼TB.Text = 快遞單號TB.Text;
-                    Session["提單日期"] = "%";
-                    Session["提單號碼"] = "%";
-                    //Show(true);
+                    c = null;
                 }
-            Show(true);
+            }
+            else
+            {
+                if (快遞單號.Length > 0)
+                {
+                    c = db.快遞單.Where(p => p.提單號碼.Contains(快遞單號) && p.提單日期== 快遞時間 && p.IsDeleted == false);
+                }
+                else
+                {
+                    c = db.快遞單.Where(p => p.提單日期 == 快遞時間 && p.IsDeleted == false);
+                }
+            }
+            //if (快遞單號!="")
+            //{
+            //    if (string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
+            //    {
+            //        c= db.快遞單.Where(p => p.提單號碼.Contains(快遞單號));
+            //    }
+            //    else
+            //    { 
+            //        c = c.Where(p => p.提單號碼.Contains(快遞單號));
+            //    }
+
+            //}
+            if (c.Count() > 0)
+            {
+                if (c.Count() > 1)
+                {
+                    Show(false);
+                }
+                else
+                {
+                    foreach (var item in c)
+                    {
+                        快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
+                        快遞廠商DDL.SelectedValue = item.快遞廠商;
+                        提單號碼TB.Text = item.提單號碼;
+                        送件地點TB.Text = item.送件地點;
+                        idHF.Value = item.id.ToString();
+                    }
+                    Show(true);
+                }
+                Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
+                Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
+            }
+            else
+            {
+                //沒查到資料show新增
+                快遞日期TB.Text = 快遞時間TB.Text;
+                提單號碼TB.Text = 快遞單號TB.Text;
+                Session["提單日期"] = "%";
+                Session["提單號碼"] = "%";
+                送件地點TB.Text = "";
+                idHF.Value = null;
+                Show(true);
+                //Show(true);
+            }
+            
             //}
 
             //DbInit();
@@ -239,11 +268,11 @@ namespace GGFPortal.MGT
                     {
                         try
                         {
-                            Log.ErrorLog(ex1, "Delete Error :", "MGT001.aspx");
+                            Log.ErrorLog(ex1, "Insert Error :", "MGT001.aspx");
                         }
                         catch (Exception ex2)
                         {
-                            Log.ErrorLog(ex2, "Delete Error Error:", "MGT001.aspx");
+                            Log.ErrorLog(ex2, "Insert Error Error:", "MGT001.aspx");
                         }
                         finally
                         {
@@ -258,6 +287,10 @@ namespace GGFPortal.MGT
         {
             快遞時間TB.Text = "";
             快遞單號TB.Text = "";
+            Session["提單日期"] = "%";
+            Session["提單號碼"] = "%";
+            DbInit();
+            Show(false);
         }
 
         protected void ACRGV_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -302,6 +335,7 @@ namespace GGFPortal.MGT
                             conn.SaveChanges();
                             transaction.Commit();
                             ACRGV.DataBind();
+                            Show(false);
                         }
                         catch (Exception ex1)
                         {

@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Ship {
+namespace GGFPortal.MGT {
     
     
-    public partial class Ship003 {
+    public partial class MGT006 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,94 +31,58 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// 公司別DDL 控制項。
+        /// StartDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList 公司別DDL;
+        protected global::System.Web.UI.WebControls.TextBox StartDay;
         
         /// <summary>
-        /// StarDayTB 控制項。
+        /// StartDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StarDayTB;
+        protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
         
         /// <summary>
-        /// StarDayTB_CalendarExtender 控制項。
+        /// EndDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender StarDayTB_CalendarExtender;
+        protected global::System.Web.UI.WebControls.TextBox EndDay;
         
         /// <summary>
-        /// EndDayTB 控制項。
+        /// EndDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDayTB;
+        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
         
         /// <summary>
-        /// EndDayTB_CalendarExtender 控制項。
+        /// 快遞廠商DDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender EndDayTB_CalendarExtender;
+        protected global::System.Web.UI.WebControls.DropDownList 快遞廠商DDL;
         
         /// <summary>
-        /// 代工廠DDL 控制項。
+        /// 提單TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList 代工廠DDL;
-        
-        /// <summary>
-        /// SqlDataSource1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
-        /// StyleTB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StyleTB;
-        
-        /// <summary>
-        /// 客戶TB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 客戶TB;
-        
-        /// <summary>
-        /// 客戶TB_AutoCompleteExtender 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender 客戶TB_AutoCompleteExtender;
+        protected global::System.Web.UI.WebControls.TextBox 提單TB;
         
         /// <summary>
         /// SearchBT 控制項。

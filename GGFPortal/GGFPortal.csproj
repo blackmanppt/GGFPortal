@@ -270,6 +270,8 @@
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
+    <Content Include="MGT\MGT006.aspx" />
+    <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
     <Content Include="MIS\MIS006.aspx" />
@@ -281,6 +283,7 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <Content Include="Secretary\Secretary006.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
@@ -795,6 +798,20 @@
     <Compile Include="MGT\MGT001.aspx.designer.cs">
       <DependentUpon>MGT001.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MGT\MGT006.aspx.cs">
+      <DependentUpon>MGT006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT006.aspx.designer.cs">
+      <DependentUpon>MGT006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT005.aspx.cs">
+      <DependentUpon>MGT005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT005.aspx.designer.cs">
+      <DependentUpon>MGT005.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MGT\MGT003.aspx.cs">
       <DependentUpon>MGT003.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -837,6 +854,13 @@
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary006.aspx.cs">
+      <DependentUpon>Secretary006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary006.aspx.designer.cs">
+      <DependentUpon>Secretary006.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ship\Ship003.aspx.cs">
       <DependentUpon>Ship003.aspx</DependentUpon>
@@ -1577,7 +1601,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
@@ -1606,8 +1632,10 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip003.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />

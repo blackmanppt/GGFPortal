@@ -26,6 +26,10 @@ namespace GGFPortal.DataSetSource {
         
         private 快遞單明細DataTable table快遞單明細;
         
+        private 快遞單DataTable table快遞單;
+        
+        private 快遞單總表DataTable table快遞單總表;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +61,12 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["快遞單明細"] != null)) {
                     base.Tables.Add(new 快遞單明細DataTable(ds.Tables["快遞單明細"]));
                 }
+                if ((ds.Tables["快遞單"] != null)) {
+                    base.Tables.Add(new 快遞單DataTable(ds.Tables["快遞單"]));
+                }
+                if ((ds.Tables["快遞單總表"] != null)) {
+                    base.Tables.Add(new 快遞單總表DataTable(ds.Tables["快遞單總表"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +92,26 @@ namespace GGFPortal.DataSetSource {
         public 快遞單明細DataTable 快遞單明細 {
             get {
                 return this.table快遞單明細;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 快遞單DataTable 快遞單 {
+            get {
+                return this.table快遞單;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 快遞單總表DataTable 快遞單總表 {
+            get {
+                return this.table快遞單總表;
             }
         }
         
@@ -155,6 +185,12 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["快遞單明細"] != null)) {
                     base.Tables.Add(new 快遞單明細DataTable(ds.Tables["快遞單明細"]));
                 }
+                if ((ds.Tables["快遞單"] != null)) {
+                    base.Tables.Add(new 快遞單DataTable(ds.Tables["快遞單"]));
+                }
+                if ((ds.Tables["快遞單總表"] != null)) {
+                    base.Tables.Add(new 快遞單總表DataTable(ds.Tables["快遞單總表"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +230,18 @@ namespace GGFPortal.DataSetSource {
                     this.table快遞單明細.InitVars();
                 }
             }
+            this.table快遞單 = ((快遞單DataTable)(base.Tables["快遞單"]));
+            if ((initTable == true)) {
+                if ((this.table快遞單 != null)) {
+                    this.table快遞單.InitVars();
+                }
+            }
+            this.table快遞單總表 = ((快遞單總表DataTable)(base.Tables["快遞單總表"]));
+            if ((initTable == true)) {
+                if ((this.table快遞單總表 != null)) {
+                    this.table快遞單總表.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +254,27 @@ namespace GGFPortal.DataSetSource {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.table快遞單明細 = new 快遞單明細DataTable();
             base.Tables.Add(this.table快遞單明細);
+            this.table快遞單 = new 快遞單DataTable();
+            base.Tables.Add(this.table快遞單);
+            this.table快遞單總表 = new 快遞單總表DataTable();
+            base.Tables.Add(this.table快遞單總表);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerialize快遞單明細() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerialize快遞單() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerialize快遞單總表() {
             return false;
         }
         
@@ -271,6 +335,12 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void 快遞單明細RowChangeEventHandler(object sender, 快遞單明細RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void 快遞單RowChangeEventHandler(object sender, 快遞單RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void 快遞單總表RowChangeEventHandler(object sender, 快遞單總表RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -785,6 +855,873 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 快遞單DataTable : global::System.Data.TypedTableBase<快遞單Row> {
+            
+            private global::System.Data.DataColumn columnid;
+            
+            private global::System.Data.DataColumn column提單號碼;
+            
+            private global::System.Data.DataColumn column提單日期;
+            
+            private global::System.Data.DataColumn column快遞廠商;
+            
+            private global::System.Data.DataColumn column快遞單檔案;
+            
+            private global::System.Data.DataColumn column送件地點;
+            
+            private global::System.Data.DataColumn columnIsDeleted;
+            
+            private global::System.Data.DataColumn column建立日期;
+            
+            private global::System.Data.DataColumn column修改日期;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單DataTable() {
+                this.TableName = "快遞單";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 快遞單DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected 快遞單DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 提單號碼Column {
+                get {
+                    return this.column提單號碼;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 提單日期Column {
+                get {
+                    return this.column提單日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 快遞廠商Column {
+                get {
+                    return this.column快遞廠商;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 快遞單檔案Column {
+                get {
+                    return this.column快遞單檔案;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 送件地點Column {
+                get {
+                    return this.column送件地點;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsDeletedColumn {
+                get {
+                    return this.columnIsDeleted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 建立日期Column {
+                get {
+                    return this.column建立日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 修改日期Column {
+                get {
+                    return this.column修改日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單Row this[int index] {
+                get {
+                    return ((快遞單Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單RowChangeEventHandler 快遞單RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單RowChangeEventHandler 快遞單RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單RowChangeEventHandler 快遞單RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單RowChangeEventHandler 快遞單RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Add快遞單Row(快遞單Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單Row Add快遞單Row(string 提單號碼, System.DateTime 提單日期, string 快遞廠商, string 快遞單檔案, string 送件地點, bool IsDeleted, System.DateTime 建立日期, System.DateTime 修改日期) {
+                快遞單Row row快遞單Row = ((快遞單Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        提單號碼,
+                        提單日期,
+                        快遞廠商,
+                        快遞單檔案,
+                        送件地點,
+                        IsDeleted,
+                        建立日期,
+                        修改日期};
+                row快遞單Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row快遞單Row);
+                return row快遞單Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                快遞單DataTable cln = ((快遞單DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 快遞單DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnid = base.Columns["id"];
+                this.column提單號碼 = base.Columns["提單號碼"];
+                this.column提單日期 = base.Columns["提單日期"];
+                this.column快遞廠商 = base.Columns["快遞廠商"];
+                this.column快遞單檔案 = base.Columns["快遞單檔案"];
+                this.column送件地點 = base.Columns["送件地點"];
+                this.columnIsDeleted = base.Columns["IsDeleted"];
+                this.column建立日期 = base.Columns["建立日期"];
+                this.column修改日期 = base.Columns["修改日期"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.column提單號碼 = new global::System.Data.DataColumn("提單號碼", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column提單號碼);
+                this.column提單日期 = new global::System.Data.DataColumn("提單日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column提單日期);
+                this.column快遞廠商 = new global::System.Data.DataColumn("快遞廠商", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column快遞廠商);
+                this.column快遞單檔案 = new global::System.Data.DataColumn("快遞單檔案", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column快遞單檔案);
+                this.column送件地點 = new global::System.Data.DataColumn("送件地點", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column送件地點);
+                this.columnIsDeleted = new global::System.Data.DataColumn("IsDeleted", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsDeleted);
+                this.column建立日期 = new global::System.Data.DataColumn("建立日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column建立日期);
+                this.column修改日期 = new global::System.Data.DataColumn("修改日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column修改日期);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                                this.columnid}, false));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
+                this.column提單號碼.AllowDBNull = false;
+                this.column提單號碼.MaxLength = 50;
+                this.column提單日期.AllowDBNull = false;
+                this.column快遞廠商.MaxLength = 50;
+                this.column快遞單檔案.MaxLength = 100;
+                this.column送件地點.MaxLength = 255;
+                this.columnIsDeleted.AllowDBNull = false;
+                this.column建立日期.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單Row New快遞單Row() {
+                return ((快遞單Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 快遞單Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(快遞單Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.快遞單RowChanged != null)) {
+                    this.快遞單RowChanged(this, new 快遞單RowChangeEvent(((快遞單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.快遞單RowChanging != null)) {
+                    this.快遞單RowChanging(this, new 快遞單RowChangeEvent(((快遞單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.快遞單RowDeleted != null)) {
+                    this.快遞單RowDeleted(this, new 快遞單RowChangeEvent(((快遞單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.快遞單RowDeleting != null)) {
+                    this.快遞單RowDeleting(this, new 快遞單RowChangeEvent(((快遞單Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Remove快遞單Row(快遞單Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MGTTempDS ds = new MGTTempDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "快遞單DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 快遞單總表DataTable : global::System.Data.TypedTableBase<快遞單總表Row> {
+            
+            private global::System.Data.DataColumn column提單號碼;
+            
+            private global::System.Data.DataColumn column提單日期;
+            
+            private global::System.Data.DataColumn column快遞廠商;
+            
+            private global::System.Data.DataColumn column送件地點;
+            
+            private global::System.Data.DataColumn column寄件人;
+            
+            private global::System.Data.DataColumn column寄件人工號;
+            
+            private global::System.Data.DataColumn column寄件人分機;
+            
+            private global::System.Data.DataColumn column寄件人部門;
+            
+            private global::System.Data.DataColumn column寄件人部門2;
+            
+            private global::System.Data.DataColumn column收件人;
+            
+            private global::System.Data.DataColumn column客戶名稱;
+            
+            private global::System.Data.DataColumn column明細;
+            
+            private global::System.Data.DataColumn column重量;
+            
+            private global::System.Data.DataColumn column責任歸屬;
+            
+            private global::System.Data.DataColumn column付款方式;
+            
+            private global::System.Data.DataColumn column備註;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表DataTable() {
+                this.TableName = "快遞單總表";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 快遞單總表DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected 快遞單總表DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 提單號碼Column {
+                get {
+                    return this.column提單號碼;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 提單日期Column {
+                get {
+                    return this.column提單日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 快遞廠商Column {
+                get {
+                    return this.column快遞廠商;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 送件地點Column {
+                get {
+                    return this.column送件地點;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件人Column {
+                get {
+                    return this.column寄件人;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件人工號Column {
+                get {
+                    return this.column寄件人工號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件人分機Column {
+                get {
+                    return this.column寄件人分機;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件人部門Column {
+                get {
+                    return this.column寄件人部門;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件人部門2Column {
+                get {
+                    return this.column寄件人部門2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 收件人Column {
+                get {
+                    return this.column收件人;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶名稱Column {
+                get {
+                    return this.column客戶名稱;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 明細Column {
+                get {
+                    return this.column明細;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 重量Column {
+                get {
+                    return this.column重量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 責任歸屬Column {
+                get {
+                    return this.column責任歸屬;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 付款方式Column {
+                get {
+                    return this.column付款方式;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 備註Column {
+                get {
+                    return this.column備註;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表Row this[int index] {
+                get {
+                    return ((快遞單總表Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單總表RowChangeEventHandler 快遞單總表RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單總表RowChangeEventHandler 快遞單總表RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單總表RowChangeEventHandler 快遞單總表RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 快遞單總表RowChangeEventHandler 快遞單總表RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Add快遞單總表Row(快遞單總表Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表Row Add快遞單總表Row(
+                        string 提單號碼, 
+                        System.DateTime 提單日期, 
+                        string 快遞廠商, 
+                        string 送件地點, 
+                        string 寄件人, 
+                        string 寄件人工號, 
+                        string 寄件人分機, 
+                        string 寄件人部門, 
+                        string 寄件人部門2, 
+                        string 收件人, 
+                        string 客戶名稱, 
+                        string 明細, 
+                        decimal 重量, 
+                        string 責任歸屬, 
+                        string 付款方式, 
+                        string 備註) {
+                快遞單總表Row row快遞單總表Row = ((快遞單總表Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        提單號碼,
+                        提單日期,
+                        快遞廠商,
+                        送件地點,
+                        寄件人,
+                        寄件人工號,
+                        寄件人分機,
+                        寄件人部門,
+                        寄件人部門2,
+                        收件人,
+                        客戶名稱,
+                        明細,
+                        重量,
+                        責任歸屬,
+                        付款方式,
+                        備註};
+                row快遞單總表Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row快遞單總表Row);
+                return row快遞單總表Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                快遞單總表DataTable cln = ((快遞單總表DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 快遞單總表DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.column提單號碼 = base.Columns["提單號碼"];
+                this.column提單日期 = base.Columns["提單日期"];
+                this.column快遞廠商 = base.Columns["快遞廠商"];
+                this.column送件地點 = base.Columns["送件地點"];
+                this.column寄件人 = base.Columns["寄件人"];
+                this.column寄件人工號 = base.Columns["寄件人工號"];
+                this.column寄件人分機 = base.Columns["寄件人分機"];
+                this.column寄件人部門 = base.Columns["寄件人部門"];
+                this.column寄件人部門2 = base.Columns["寄件人部門2"];
+                this.column收件人 = base.Columns["收件人"];
+                this.column客戶名稱 = base.Columns["客戶名稱"];
+                this.column明細 = base.Columns["明細"];
+                this.column重量 = base.Columns["重量"];
+                this.column責任歸屬 = base.Columns["責任歸屬"];
+                this.column付款方式 = base.Columns["付款方式"];
+                this.column備註 = base.Columns["備註"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.column提單號碼 = new global::System.Data.DataColumn("提單號碼", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column提單號碼);
+                this.column提單日期 = new global::System.Data.DataColumn("提單日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column提單日期);
+                this.column快遞廠商 = new global::System.Data.DataColumn("快遞廠商", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column快遞廠商);
+                this.column送件地點 = new global::System.Data.DataColumn("送件地點", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column送件地點);
+                this.column寄件人 = new global::System.Data.DataColumn("寄件人", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件人);
+                this.column寄件人工號 = new global::System.Data.DataColumn("寄件人工號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件人工號);
+                this.column寄件人分機 = new global::System.Data.DataColumn("寄件人分機", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件人分機);
+                this.column寄件人部門 = new global::System.Data.DataColumn("寄件人部門", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件人部門);
+                this.column寄件人部門2 = new global::System.Data.DataColumn("寄件人部門2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件人部門2);
+                this.column收件人 = new global::System.Data.DataColumn("收件人", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column收件人);
+                this.column客戶名稱 = new global::System.Data.DataColumn("客戶名稱", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶名稱);
+                this.column明細 = new global::System.Data.DataColumn("明細", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column明細);
+                this.column重量 = new global::System.Data.DataColumn("重量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column重量);
+                this.column責任歸屬 = new global::System.Data.DataColumn("責任歸屬", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column責任歸屬);
+                this.column付款方式 = new global::System.Data.DataColumn("付款方式", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column付款方式);
+                this.column備註 = new global::System.Data.DataColumn("備註", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column備註);
+                this.column提單號碼.AllowDBNull = false;
+                this.column提單號碼.MaxLength = 50;
+                this.column提單日期.AllowDBNull = false;
+                this.column快遞廠商.MaxLength = 50;
+                this.column送件地點.MaxLength = 255;
+                this.column寄件人.AllowDBNull = false;
+                this.column寄件人.MaxLength = 20;
+                this.column寄件人工號.MaxLength = 20;
+                this.column寄件人分機.AllowDBNull = false;
+                this.column寄件人分機.MaxLength = 5;
+                this.column寄件人部門.MaxLength = 6;
+                this.column收件人.AllowDBNull = false;
+                this.column收件人.MaxLength = 20;
+                this.column客戶名稱.AllowDBNull = false;
+                this.column客戶名稱.MaxLength = 6;
+                this.column明細.MaxLength = 255;
+                this.column責任歸屬.MaxLength = 10;
+                this.column付款方式.MaxLength = 10;
+                this.column備註.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表Row New快遞單總表Row() {
+                return ((快遞單總表Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 快遞單總表Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(快遞單總表Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.快遞單總表RowChanged != null)) {
+                    this.快遞單總表RowChanged(this, new 快遞單總表RowChangeEvent(((快遞單總表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.快遞單總表RowChanging != null)) {
+                    this.快遞單總表RowChanging(this, new 快遞單總表RowChangeEvent(((快遞單總表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.快遞單總表RowDeleted != null)) {
+                    this.快遞單總表RowDeleted(this, new 快遞單總表RowChangeEvent(((快遞單總表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.快遞單總表RowDeleting != null)) {
+                    this.快遞單總表RowDeleting(this, new 快遞單總表RowChangeEvent(((快遞單總表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Remove快遞單總表Row(快遞單總表Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MGTTempDS ds = new MGTTempDS();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "快遞單總表DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class 快遞單明細Row : global::System.Data.DataRow {
@@ -1140,6 +2077,549 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 快遞單Row : global::System.Data.DataRow {
+            
+            private 快遞單DataTable table快遞單;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 快遞單Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table快遞單 = ((快遞單DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int id {
+                get {
+                    return ((int)(this[this.table快遞單.idColumn]));
+                }
+                set {
+                    this[this.table快遞單.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 提單號碼 {
+                get {
+                    return ((string)(this[this.table快遞單.提單號碼Column]));
+                }
+                set {
+                    this[this.table快遞單.提單號碼Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 提單日期 {
+                get {
+                    return ((global::System.DateTime)(this[this.table快遞單.提單日期Column]));
+                }
+                set {
+                    this[this.table快遞單.提單日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 快遞廠商 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單.快遞廠商Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單\' 中資料行 \'快遞廠商\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單.快遞廠商Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 快遞單檔案 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單.快遞單檔案Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單\' 中資料行 \'快遞單檔案\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單.快遞單檔案Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 送件地點 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單.送件地點Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單\' 中資料行 \'送件地點\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單.送件地點Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDeleted {
+                get {
+                    return ((bool)(this[this.table快遞單.IsDeletedColumn]));
+                }
+                set {
+                    this[this.table快遞單.IsDeletedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 建立日期 {
+                get {
+                    return ((global::System.DateTime)(this[this.table快遞單.建立日期Column]));
+                }
+                set {
+                    this[this.table快遞單.建立日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 修改日期 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table快遞單.修改日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單\' 中資料行 \'修改日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單.修改日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is快遞廠商Null() {
+                return this.IsNull(this.table快遞單.快遞廠商Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set快遞廠商Null() {
+                this[this.table快遞單.快遞廠商Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is快遞單檔案Null() {
+                return this.IsNull(this.table快遞單.快遞單檔案Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set快遞單檔案Null() {
+                this[this.table快遞單.快遞單檔案Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is送件地點Null() {
+                return this.IsNull(this.table快遞單.送件地點Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set送件地點Null() {
+                this[this.table快遞單.送件地點Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is修改日期Null() {
+                return this.IsNull(this.table快遞單.修改日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set修改日期Null() {
+                this[this.table快遞單.修改日期Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 快遞單總表Row : global::System.Data.DataRow {
+            
+            private 快遞單總表DataTable table快遞單總表;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 快遞單總表Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table快遞單總表 = ((快遞單總表DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 提單號碼 {
+                get {
+                    return ((string)(this[this.table快遞單總表.提單號碼Column]));
+                }
+                set {
+                    this[this.table快遞單總表.提單號碼Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 提單日期 {
+                get {
+                    return ((global::System.DateTime)(this[this.table快遞單總表.提單日期Column]));
+                }
+                set {
+                    this[this.table快遞單總表.提單日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 快遞廠商 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.快遞廠商Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'快遞廠商\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.快遞廠商Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 送件地點 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.送件地點Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'送件地點\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.送件地點Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件人 {
+                get {
+                    return ((string)(this[this.table快遞單總表.寄件人Column]));
+                }
+                set {
+                    this[this.table快遞單總表.寄件人Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件人工號 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.寄件人工號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'寄件人工號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.寄件人工號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件人分機 {
+                get {
+                    return ((string)(this[this.table快遞單總表.寄件人分機Column]));
+                }
+                set {
+                    this[this.table快遞單總表.寄件人分機Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件人部門 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.寄件人部門Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'寄件人部門\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.寄件人部門Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件人部門2 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.寄件人部門2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'寄件人部門2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.寄件人部門2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 收件人 {
+                get {
+                    return ((string)(this[this.table快遞單總表.收件人Column]));
+                }
+                set {
+                    this[this.table快遞單總表.收件人Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 客戶名稱 {
+                get {
+                    return ((string)(this[this.table快遞單總表.客戶名稱Column]));
+                }
+                set {
+                    this[this.table快遞單總表.客戶名稱Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 明細 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.明細Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'明細\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.明細Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal 重量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table快遞單總表.重量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'重量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.重量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 責任歸屬 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.責任歸屬Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'責任歸屬\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.責任歸屬Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 付款方式 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.付款方式Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'付款方式\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.付款方式Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 備註 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.備註Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'備註\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.備註Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is快遞廠商Null() {
+                return this.IsNull(this.table快遞單總表.快遞廠商Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set快遞廠商Null() {
+                this[this.table快遞單總表.快遞廠商Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is送件地點Null() {
+                return this.IsNull(this.table快遞單總表.送件地點Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set送件地點Null() {
+                this[this.table快遞單總表.送件地點Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is寄件人工號Null() {
+                return this.IsNull(this.table快遞單總表.寄件人工號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set寄件人工號Null() {
+                this[this.table快遞單總表.寄件人工號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is寄件人部門Null() {
+                return this.IsNull(this.table快遞單總表.寄件人部門Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set寄件人部門Null() {
+                this[this.table快遞單總表.寄件人部門Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is寄件人部門2Null() {
+                return this.IsNull(this.table快遞單總表.寄件人部門2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set寄件人部門2Null() {
+                this[this.table快遞單總表.寄件人部門2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is明細Null() {
+                return this.IsNull(this.table快遞單總表.明細Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set明細Null() {
+                this[this.table快遞單總表.明細Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is重量Null() {
+                return this.IsNull(this.table快遞單總表.重量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set重量Null() {
+                this[this.table快遞單總表.重量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is責任歸屬Null() {
+                return this.IsNull(this.table快遞單總表.責任歸屬Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set責任歸屬Null() {
+                this[this.table快遞單總表.責任歸屬Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is付款方式Null() {
+                return this.IsNull(this.table快遞單總表.付款方式Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set付款方式Null() {
+                this[this.table快遞單總表.付款方式Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is備註Null() {
+                return this.IsNull(this.table快遞單總表.備註Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set備註Null() {
+                this[this.table快遞單總表.備註Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1159,6 +2639,74 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 快遞單明細Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class 快遞單RowChangeEvent : global::System.EventArgs {
+            
+            private 快遞單Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單RowChangeEvent(快遞單Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class 快遞單總表RowChangeEvent : global::System.EventArgs {
+            
+            private 快遞單總表Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表RowChangeEvent(快遞單總表Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 快遞單總表Row Row {
                 get {
                     return this.eventRow;
                 }
