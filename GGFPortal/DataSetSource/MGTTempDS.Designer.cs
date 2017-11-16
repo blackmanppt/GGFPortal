@@ -369,6 +369,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column重量;
             
+            private global::System.Data.DataColumn column原因歸屬;
+            
             private global::System.Data.DataColumn column責任歸屬;
             
             private global::System.Data.DataColumn column付款方式;
@@ -498,6 +500,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 原因歸屬Column {
+                get {
+                    return this.column原因歸屬;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn 責任歸屬Column {
                 get {
                     return this.column責任歸屬;
@@ -599,6 +609,7 @@ namespace GGFPortal.DataSetSource {
                         string 客戶名稱, 
                         string 明細, 
                         decimal 重量, 
+                        string 原因歸屬, 
                         string 責任歸屬, 
                         string 付款方式, 
                         string 備註, 
@@ -618,6 +629,7 @@ namespace GGFPortal.DataSetSource {
                         客戶名稱,
                         明細,
                         重量,
+                        原因歸屬,
                         責任歸屬,
                         付款方式,
                         備註,
@@ -657,6 +669,7 @@ namespace GGFPortal.DataSetSource {
                 this.column客戶名稱 = base.Columns["客戶名稱"];
                 this.column明細 = base.Columns["明細"];
                 this.column重量 = base.Columns["重量"];
+                this.column原因歸屬 = base.Columns["原因歸屬"];
                 this.column責任歸屬 = base.Columns["責任歸屬"];
                 this.column付款方式 = base.Columns["付款方式"];
                 this.column備註 = base.Columns["備註"];
@@ -689,6 +702,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column明細);
                 this.column重量 = new global::System.Data.DataColumn("重量", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column重量);
+                this.column原因歸屬 = new global::System.Data.DataColumn("原因歸屬", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column原因歸屬);
                 this.column責任歸屬 = new global::System.Data.DataColumn("責任歸屬", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column責任歸屬);
                 this.column付款方式 = new global::System.Data.DataColumn("付款方式", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1244,6 +1259,10 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column送件地點;
             
+            private global::System.Data.DataColumn column送件部門;
+            
+            private global::System.Data.DataColumn column原因歸屬;
+            
             private global::System.Data.DataColumn column寄件人;
             
             private global::System.Data.DataColumn column寄件人工號;
@@ -1330,6 +1349,22 @@ namespace GGFPortal.DataSetSource {
             public global::System.Data.DataColumn 送件地點Column {
                 get {
                     return this.column送件地點;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 送件部門Column {
+                get {
+                    return this.column送件部門;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 原因歸屬Column {
+                get {
+                    return this.column原因歸屬;
                 }
             }
             
@@ -1471,6 +1506,8 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime 提單日期, 
                         string 快遞廠商, 
                         string 送件地點, 
+                        string 送件部門, 
+                        string 原因歸屬, 
                         string 寄件人, 
                         string 寄件人工號, 
                         string 寄件人分機, 
@@ -1489,6 +1526,8 @@ namespace GGFPortal.DataSetSource {
                         提單日期,
                         快遞廠商,
                         送件地點,
+                        送件部門,
+                        原因歸屬,
                         寄件人,
                         寄件人工號,
                         寄件人分機,
@@ -1527,6 +1566,8 @@ namespace GGFPortal.DataSetSource {
                 this.column提單日期 = base.Columns["提單日期"];
                 this.column快遞廠商 = base.Columns["快遞廠商"];
                 this.column送件地點 = base.Columns["送件地點"];
+                this.column送件部門 = base.Columns["送件部門"];
+                this.column原因歸屬 = base.Columns["原因歸屬"];
                 this.column寄件人 = base.Columns["寄件人"];
                 this.column寄件人工號 = base.Columns["寄件人工號"];
                 this.column寄件人分機 = base.Columns["寄件人分機"];
@@ -1552,6 +1593,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column快遞廠商);
                 this.column送件地點 = new global::System.Data.DataColumn("送件地點", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column送件地點);
+                this.column送件部門 = new global::System.Data.DataColumn("送件部門", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column送件部門);
+                this.column原因歸屬 = new global::System.Data.DataColumn("原因歸屬", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column原因歸屬);
                 this.column寄件人 = new global::System.Data.DataColumn("寄件人", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column寄件人);
                 this.column寄件人工號 = new global::System.Data.DataColumn("寄件人工號", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1867,6 +1912,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 原因歸屬 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單明細.原因歸屬Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單明細\' 中資料行 \'原因歸屬\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單明細.原因歸屬Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 責任歸屬 {
                 get {
                     try {
@@ -2013,6 +2074,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set重量Null() {
                 this[this.table快遞單明細.重量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is原因歸屬Null() {
+                return this.IsNull(this.table快遞單明細.原因歸屬Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set原因歸屬Null() {
+                this[this.table快遞單明細.原因歸屬Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2328,6 +2401,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 送件部門 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.送件部門Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'送件部門\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.送件部門Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 原因歸屬 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.原因歸屬Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'原因歸屬\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.原因歸屬Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 寄件人 {
                 get {
                     return ((string)(this[this.table快遞單總表.寄件人Column]));
@@ -2520,6 +2625,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set送件地點Null() {
                 this[this.table快遞單總表.送件地點Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is送件部門Null() {
+                return this.IsNull(this.table快遞單總表.送件部門Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set送件部門Null() {
+                this[this.table快遞單總表.送件部門Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is原因歸屬Null() {
+                return this.IsNull(this.table快遞單總表.原因歸屬Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set原因歸屬Null() {
+                this[this.table快遞單總表.原因歸屬Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

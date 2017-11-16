@@ -2597,6 +2597,10 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column代理商代號;
             
+            private global::System.Data.DataColumn column款式類別;
+            
+            private global::System.Data.DataColumn column訂單狀態;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 營收資料DataTable() {
@@ -2792,6 +2796,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 款式類別Column {
+                get {
+                    return this.column款式類別;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單狀態Column {
+                get {
+                    return this.column訂單狀態;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2847,7 +2867,9 @@ namespace GGFPortal.DataSetSource {
                         string 地區, 
                         string 代工廠名稱, 
                         string 品牌, 
-                        string 代理商代號) {
+                        string 代理商代號, 
+                        string 款式類別, 
+                        string 訂單狀態) {
                 營收資料Row row營收資料Row = ((營收資料Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         公司,
@@ -2869,7 +2891,9 @@ namespace GGFPortal.DataSetSource {
                         地區,
                         代工廠名稱,
                         品牌,
-                        代理商代號};
+                        代理商代號,
+                        款式類別,
+                        訂單狀態};
                 row營收資料Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row營收資料Row);
                 return row營收資料Row;
@@ -2912,6 +2936,8 @@ namespace GGFPortal.DataSetSource {
                 this.column代工廠名稱 = base.Columns["代工廠名稱"];
                 this.column品牌 = base.Columns["品牌"];
                 this.column代理商代號 = base.Columns["代理商代號"];
+                this.column款式類別 = base.Columns["款式類別"];
+                this.column訂單狀態 = base.Columns["訂單狀態"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2957,6 +2983,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column品牌);
                 this.column代理商代號 = new global::System.Data.DataColumn("代理商代號", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column代理商代號);
+                this.column款式類別 = new global::System.Data.DataColumn("款式類別", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款式類別);
+                this.column訂單狀態 = new global::System.Data.DataColumn("訂單狀態", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單狀態);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
                                 this.column公司,
                                 this.column訂單號碼}, false));
@@ -6222,6 +6252,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 款式類別 {
+                get {
+                    try {
+                        return ((string)(this[this.table營收資料.款式類別Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'營收資料\' 中資料行 \'款式類別\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table營收資料.款式類別Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 訂單狀態 {
+                get {
+                    try {
+                        return ((string)(this[this.table營收資料.訂單狀態Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'營收資料\' 中資料行 \'訂單狀態\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table營收資料.訂單狀態Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is客戶交期Null() {
                 return this.IsNull(this.table營收資料.客戶交期Column);
             }
@@ -6434,6 +6496,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set代理商代號Null() {
                 this[this.table營收資料.代理商代號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is款式類別Null() {
+                return this.IsNull(this.table營收資料.款式類別Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set款式類別Null() {
+                this[this.table營收資料.款式類別Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單狀態Null() {
+                return this.IsNull(this.table營收資料.訂單狀態Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單狀態Null() {
+                this[this.table營收資料.訂單狀態Column] = global::System.Convert.DBNull;
             }
         }
         

@@ -8,12 +8,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>客戶訂單轉Excel</title>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -65,6 +65,16 @@
                                 </ajaxToolkit:AutoCompleteExtender>
 
                             </div>
+                            <h4>品牌</h4>
+                            <div class="form-group">
+                                <asp:TextBox ID="品牌TB" runat="server" class="form-control"></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender ID="品牌TB_AutoCompleteExtender" runat="server" MinimumPrefixLength="1" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" UseContextKey="True"  TargetControlID="品牌TB"  ServiceMethod="Search訂單品牌">
+                                </ajaxToolkit:AutoCompleteExtender>
+                            </div>
+<%--                            
+                                
+
+                            --%>
 
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />

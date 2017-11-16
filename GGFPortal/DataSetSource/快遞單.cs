@@ -29,6 +29,8 @@ namespace GGFPortal.DataSetSource
         public bool IsDeleted { get; set; }
         public System.DateTime 建立日期 { get; set; }
         public Nullable<System.DateTime> 修改日期 { get; set; }
+        public string 送件部門 { get; set; }
+        public string 地點備註 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<快遞單明細> 快遞單明細 { get; set; }

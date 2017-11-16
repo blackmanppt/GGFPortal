@@ -121,6 +121,24 @@ namespace GGFPortal.Ship {
         protected global::AjaxControlToolkit.AutoCompleteExtender 客戶TB_AutoCompleteExtender;
         
         /// <summary>
+        /// 品牌TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 品牌TB;
+        
+        /// <summary>
+        /// 品牌TB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender 品牌TB_AutoCompleteExtender;
+        
+        /// <summary>
         /// SearchBT 控制項。
         /// </summary>
         /// <remarks>

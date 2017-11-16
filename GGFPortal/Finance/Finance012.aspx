@@ -8,12 +8,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

@@ -34,10 +34,12 @@
           <Property Name="提單日期" Type="datetime" Nullable="false" />
           <Property Name="快遞廠商" Type="nvarchar" MaxLength="50" />
           <Property Name="快遞單檔案" Type="nvarchar" MaxLength="100" />
+          <Property Name="地點備註" Type="nvarchar" MaxLength="255" />
           <Property Name="送件地點" Type="nvarchar" MaxLength="255" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
+          <Property Name="送件部門" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="快遞單明細">
           <Key>
@@ -54,6 +56,7 @@
           <Property Name="明細" Type="nvarchar" MaxLength="255" />
           <Property Name="重量" Type="decimal" Precision="18" Scale="4" />
           <Property Name="責任歸屬" Type="nvarchar" MaxLength="100" />
+          <Property Name="原因歸屬" Type="nvarchar" MaxLength="50" />
           <Property Name="付款方式" Type="nvarchar" MaxLength="100" />
           <Property Name="備註" Type="nvarchar" MaxLength="255" />
           <Property Name="備註二" Type="text" />
@@ -123,6 +126,8 @@
           <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="DateTime" Precision="3" />
           <NavigationProperty Name="快遞單明細" Relationship="Self.FK_快遞單明細_快遞單1" FromRole="快遞單" ToRole="快遞單明細" />
+          <Property Name="送件部門" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="地點備註" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="快遞單明細">
           <Key>
@@ -147,6 +152,7 @@
           <Property Name="寄件人工號" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="備註二" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="原因歸屬" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -210,6 +216,8 @@
           <EntitySetMapping Name="快遞單">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單">
               <MappingFragment StoreEntitySet="快遞單">
+                <ScalarProperty Name="地點備註" ColumnName="地點備註" />
+                <ScalarProperty Name="送件部門" ColumnName="送件部門" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="提單號碼" ColumnName="提單號碼" />
                 <ScalarProperty Name="提單日期" ColumnName="提單日期" />
@@ -225,6 +233,7 @@
           <EntitySetMapping Name="快遞單明細">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單明細">
               <MappingFragment StoreEntitySet="快遞單明細">
+                <ScalarProperty Name="原因歸屬" ColumnName="原因歸屬" />
                 <ScalarProperty Name="備註二" ColumnName="備註二" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="寄件人工號" ColumnName="寄件人工號" />

@@ -32,11 +32,11 @@
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 
 
-<%--                            <h4>快遞日期</h4>
                             <div class="form-group">
-                                <asp:TextBox ID="StartDay" runat="server" class="form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="StartDay_CalendarExtender" runat="server" BehaviorID="StartDay_CalendarExtender" TargetControlID="StartDay" Format="yyyy-MM-dd" />
-                            </div>--%>
+                                <h4>快遞時間</h4>
+                                <asp:TextBox ID="快遞時間TB" CssClass="form-control" runat="server" />
+                                <ajaxToolkit:CalendarExtender ID="快遞時間TB_CalendarExtender" runat="server" BehaviorID="快遞時間TB_CalendarExtender" TargetControlID="快遞時間TB" Format="yyyy-MM-dd" />
+                            </div>
                             <h4>快遞單號</h4>
                             <div class="form-group">
                                 <asp:TextBox ID="提單TB" runat="server" class="form-control"></asp:TextBox>
@@ -60,6 +60,51 @@
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </div>
+                                                <asp:Panel ID="SelectPanel" runat="server" align="center" Height="400px" Width="600px" BackColor="#0099FF" Style="display:none"   ScrollBars="Vertical">
+                                    <div><h3>選擇快遞單</h3></div>
+                                    
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource2" OnRowCommand="GridView1_RowCommand"  BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">
+                                        <Columns>
+                                            <asp:BoundField DataField="id" HeaderStyle-CssClass="hiddencol" HeaderText="id" InsertVisible="False" ReadOnly="True" ItemStyle-CssClass="hiddencol" SortExpression="id" >
+                                            <HeaderStyle CssClass="hiddencol" />
+                                            <ItemStyle CssClass="hiddencol" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField ShowHeader="False">
+                                                <ItemTemplate>
+                                                    <asp:Button ID="SelectBT" runat="server" CausesValidation="false" CommandName="Select" Text="選擇" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
+                                            <asp:BoundField DataField="提單日期" HeaderText="提單日期" SortExpression="提單日期" DataFormatString="{0:yyyy-MM-dd}" />
+                                            <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
+                                            <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
+                                            <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
+                                            <asp:BoundField DataField="建立日期" HeaderText="建立日期" SortExpression="建立日期" DataFormatString="{0:yyyy-MM-dd}" />
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                                        <RowStyle ForeColor="#000066" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [快遞單] WHERE ([提單日期] = @提單日期) and [IsDeleted]= 0">
+                                        <SelectParameters>
+                                            <asp:SessionParameter DefaultValue="2000/1/1" Name="提單日期" SessionField="提單日期" Type="DateTime" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                        
+                                    <div class="row text-center">
+                                        <asp:Button ID="取消選擇BT" runat="server" CssClass="btn btn-success" Text="取消" />
+                                    </div>
+
+                                </asp:Panel>
+                                <ajaxToolkit:ModalPopupExtender ID="SelectPanel_ModalPopupExtender" runat="server" BehaviorID="SelectPanel_ModalPopupExtender" TargetControlID="show2" PopupControlID="SelectPanel" CancelControlID="取消選擇BT">
+                                </ajaxToolkit:ModalPopupExtender>
+                                <asp:Button ID="show2" runat="server" Text="show2" Style="display: none" />
             </div>
         </div>
     </form>

@@ -76,6 +76,15 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.Button ClearBT;
         
         /// <summary>
+        /// AddBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddBT;
+        
+        /// <summary>
         /// ADDPanel 控制項。
         /// </summary>
         /// <remarks>
@@ -121,6 +130,60 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.TextBox 提單號碼TB;
         
         /// <summary>
+        /// 部門DDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList 部門DDL;
+        
+        /// <summary>
+        /// SqlDataSource2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        
+        /// <summary>
+        /// 送件地點DDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList 送件地點DDL;
+        
+        /// <summary>
+        /// 地點備註TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 地點備註TB;
+        
+        /// <summary>
+        /// SqlDataSource3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
+        
+        /// <summary>
+        /// FileUpload1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
         /// SaveBT 控制項。
         /// </summary>
         /// <remarks>
@@ -139,22 +202,13 @@ namespace GGFPortal.MGT {
         protected global::System.Web.UI.WebControls.Button DeleteBT;
         
         /// <summary>
-        /// 送件地點TB 控制項。
+        /// CancelBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 送件地點TB;
-        
-        /// <summary>
-        /// FileUpload1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.Button CancelBT;
         
         /// <summary>
         /// GridPanel 控制項。

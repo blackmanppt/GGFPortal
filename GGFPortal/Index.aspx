@@ -223,7 +223,9 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink64" runat="server" NavigateUrl="~/MGT/MGT004.aspx">快遞單資料查詢</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink65" runat="server" NavigateUrl="~/MGT/MGT006.aspx">快遞單資料查詢</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink65" runat="server" NavigateUrl="~/MGT/MGT006.aspx">快遞單成立資料查詢</asp:HyperLink>
+                        <br />
+                                                <asp:HyperLink ID="HyperLink66" runat="server" NavigateUrl="~/MGT/MGT007.aspx">快遞單成立資料查詢</asp:HyperLink>
                         <br />
                     </td>
                 </tr>

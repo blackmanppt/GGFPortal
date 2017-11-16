@@ -92,13 +92,16 @@ namespace GGFPortal.Ship
             {
                 string 款號;
                 款號 = 字串處理.字串多筆資料搜尋(StyleTB.Text).ToString();
-                strsql.AppendFormat(" and   款號  in {0}", StyleTB.Text.Trim());
+                strsql.AppendFormat(" and   款號  in {0}", 款號);
             }
             if (!string.IsNullOrEmpty(客戶TB.Text.Trim()))
             {
                 strsql.AppendFormat(" and   客戶代號  = '{0}'", 客戶TB.Text.Trim());
             }
-
+            if (!string.IsNullOrEmpty(品牌TB.Text.Trim()))
+            {
+                strsql.AppendFormat(" and   品牌  = '{0}'", 品牌TB.Text.Trim());
+            }
             //strsql.AppendFormat(" and   款號  = '{0}'",StyleTB.Text.Trim());
             if (!string.IsNullOrEmpty(代工廠DDL.SelectedValue))
                 strsql.AppendFormat(" and   代工廠  = '{0}'", 代工廠DDL.SelectedValue);

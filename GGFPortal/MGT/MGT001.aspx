@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <asp:Button ID="SearchBT" runat="server" Text="搜尋" class="btn btn-default" OnClick="SearchBT_Click" />
                                 <asp:Button ID="ClearBT" runat="server" Text="清除搜尋資料" class="btn btn-default" OnClick="ClearBT_Click1"  />
-                               <%-- <asp:Button ID="AddBT" runat="server" Text="新增快遞單" class="btn btn-default"  />--%>
+                                <asp:Button ID="AddBT" runat="server" Text="新增快遞單" class="btn btn-default" OnClick="AddBT_Click"  />
 
 
                             </div>
@@ -114,20 +114,39 @@
                             <tr class="auto-style2">
                                                                 <th class="auto-style1">送件地點</th>
                                 <th class="auto-style1">快遞單檔案</th>
-                                                                <th class=" text-right" style="vertical-align:bottom;"rowspan="2" >                                    
-                                    <asp:Button ID="SaveBT" runat="server" Text="儲存" CssClass="btn btn-default" Visible="false" OnClick="SaveBT_Click"/>                                    
-                                    <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" OnClick="DeleteBT_Click"   OnClientClick="return confirm('是否刪除')"  />
-                                    </th>
+                                                                <td>
+
+                                                                    <asp:DropDownList ID="部門DDL" runat="server" CssClass=" form-control" DataSourceID="SqlDataSource2" DataTextField="Data" DataValueField="Data">
+                                                                    </asp:DropDownList>
+
+                                                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
+                                                                        <SelectParameters>
+                                                                            <asp:Parameter DefaultValue="寄件部門" Name="UsingDefine" Type="String" />
+                                                                        </SelectParameters>
+                                                                    </asp:SqlDataSource>
+
+                                </td>
+                                     
                             </tr>
                             <tr>
                                 <td class=" text-center">
-                                    <asp:TextBox ID="送件地點TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <%--<asp:TextBox ID="送件地點TB" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                                    <asp:DropDownList ID="送件地點DDL" runat="server" CssClass=" form-control" DataSourceID="SqlDataSource3" DataTextField="Data" DataValueField="Data" OnDataBound="送件地點DDL_DataBound"></asp:DropDownList>
+                                    <asp:TextBox ID="地點備註TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
+                                        <SelectParameters>
+                                            <asp:Parameter DefaultValue="寄送地點" Name="UsingDefine" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                 </td>
                                 <td class=" text-center">
-
                                     <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control"  />
-
                                 </td>
+                                <th class=" text-right" style="vertical-align:bottom;" >                                    
+                                    <asp:Button ID="SaveBT" runat="server" Text="儲存" CssClass="btn btn-default" Visible="false" OnClick="SaveBT_Click"/>                                    
+                                    <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" OnClick="DeleteBT_Click"   OnClientClick="return confirm('是否刪除')"  />
+                                    <asp:Button ID="CancelBT" runat="server" Text="取消" CssClass="btn btn-default" OnClick="CancelBT_Click" />                                    
+                                </th>
                             </tr>
 
                          
@@ -150,10 +169,14 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
+                            <asp:BoundField DataField="送件部門" HeaderText="送件部門" SortExpression="送件部門" />
+                            
                             <asp:BoundField DataField="提單日期" DataFormatString="{0:yyyy-MM-dd}" HeaderText="提單日期" SortExpression="提單日期" />
                             <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
                             <asp:BoundField DataField="快遞單檔案" HeaderText="快遞單檔案" SortExpression="快遞單檔案" />
                             <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
+                            <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
+                            
                         </Columns>
                         <EditRowStyle BackColor="#7C6F57" />
                         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -166,7 +189,7 @@
                         <SortedDescendingCellStyle BackColor="#D4DFE1" />
                         <SortedDescendingHeaderStyle BackColor="#15524A" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 20 [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點] FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,121) like @提單日期 and 提單號碼 like @提單號碼 order by 提單日期 desc">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 50 [id], [提單號碼], [提單日期], [快遞廠商], [快遞單檔案], [送件地點],送件部門,地點備註 FROM [快遞單] WHERE ([IsDeleted] = @IsDeleted) and convert(varchar(10), 提單日期,121) like @提單日期 and 提單號碼 like @提單號碼 order by 提單日期 desc">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="false" Name="IsDeleted" Type="Boolean" />
                             <asp:SessionParameter DefaultValue="%" Name="提單日期" SessionField="提單日期" />

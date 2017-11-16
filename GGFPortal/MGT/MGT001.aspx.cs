@@ -38,7 +38,7 @@ namespace GGFPortal.MGT
             Show(false);
             快遞日期TB.Text = "";
             提單號碼TB.Text = "";
-            送件地點TB.Text = "";
+            送件地點DDL.SelectedValue = "其他";
         }
         protected void ClearBT_Click(object sender, EventArgs e)
         {
@@ -96,30 +96,33 @@ namespace GGFPortal.MGT
                 }
                 else
                 {
+                    Show(true);
                     foreach (var item in c)
                     {
                         快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
                         快遞廠商DDL.SelectedValue = item.快遞廠商;
                         提單號碼TB.Text = item.提單號碼;
-                        送件地點TB.Text = item.送件地點;
+                        送件地點DDL.SelectedValue = (string.IsNullOrEmpty(送件地點DDL.Items.FindByValue(item.送件地點).Value))? "其他" : item.送件地點;
+                        部門DDL.SelectedValue = item.送件部門 ?? "業務部";
+                        地點備註TB.Text = item.地點備註 ?? "";
                         idHF.Value = item.id.ToString();
                     }
-                    Show(true);
+                    
                 }
                 Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
                 Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
             }
             else
             {
+                Show(true);
                 //沒查到資料show新增
                 快遞日期TB.Text = 快遞時間TB.Text;
                 提單號碼TB.Text = 快遞單號TB.Text;
+                部門DDL.SelectedValue= "業務部";
                 Session["提單日期"] = "%";
                 Session["提單號碼"] = "%";
-                送件地點TB.Text = "";
+                送件地點DDL.SelectedValue = "其他";
                 idHF.Value = null;
-                Show(true);
-                //Show(true);
             }
             
             //}
@@ -241,11 +244,13 @@ namespace GGFPortal.MGT
                             var 新增快遞單 = new 快遞單();
                             新增快遞單.提單日期 = Convert.ToDateTime(快遞日期TB.Text);
                             新增快遞單.快遞廠商 = 快遞廠商DDL.SelectedValue;
-                            新增快遞單.提單號碼 = 提單號碼TB.Text;
+                            新增快遞單.提單號碼 = 提單號碼TB.Text.Trim();
                             新增快遞單.IsDeleted = false;
-                            新增快遞單.送件地點 = 送件地點TB.Text;
+                            新增快遞單.送件地點 = 送件地點DDL.SelectedValue;
                             if (fileName.Length > 0)
                                 新增快遞單.快遞單檔案 = fileName;
+                            新增快遞單.送件部門 = 部門DDL.SelectedValue??"業務部";
+                            新增快遞單.地點備註 = 地點備註TB.Text.Trim();
                             conn.快遞單.Add(新增快遞單);
                         }
                         else
@@ -253,15 +258,17 @@ namespace GGFPortal.MGT
                             var 修改快遞單 = conn.快遞單.Find(iid);
                             修改快遞單.提單日期 = Convert.ToDateTime(快遞日期TB.Text);
                             修改快遞單.快遞廠商 = 快遞廠商DDL.SelectedValue;
-                            修改快遞單.提單號碼 = 提單號碼TB.Text;
-                            修改快遞單.送件地點 = 送件地點TB.Text;
+                            修改快遞單.提單號碼 = 提單號碼TB.Text.Trim();
+                            修改快遞單.送件地點 = 送件地點DDL.SelectedValue;
                             if (fileName.Length > 0)
                                 修改快遞單.快遞單檔案 = fileName;
+                            修改快遞單.送件部門 = 部門DDL.SelectedValue ?? "業務部";
+                            修改快遞單.地點備註 = 地點備註TB.Text.Trim();
                             修改快遞單.修改日期 = DateTime.Now;
                         }
                         conn.SaveChanges();
                         transaction.Commit();
-                        Show(false);
+                        
                         //DbInit();
                     }
                     catch (Exception ex1)
@@ -279,16 +286,28 @@ namespace GGFPortal.MGT
                             transaction.Rollback();
                         }
                     }
+                    finally
+                    {
+                        ClearData();
+                    }
                 }
             }
         }
 
         protected void ClearBT_Click1(object sender, EventArgs e)
         {
+            ClearData();
+        }
+
+        private void ClearData()
+        {
             快遞時間TB.Text = "";
             快遞單號TB.Text = "";
+            部門DDL.SelectedValue = "業務部";
             Session["提單日期"] = "%";
             Session["提單號碼"] = "%";
+            Session["送件地點"] = null;
+            idHF.Value = null;
             DbInit();
             Show(false);
         }
@@ -303,6 +322,7 @@ namespace GGFPortal.MGT
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
                     int.TryParse(strid, out iid);
+                    Show(true);
                     if (iid>0)
                     {
                         var dset = db.快遞單.Where(p=>p.id==iid);
@@ -311,13 +331,15 @@ namespace GGFPortal.MGT
                             快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
                             快遞廠商DDL.SelectedValue = item.快遞廠商;
                             提單號碼TB.Text = item.提單號碼;
-                            送件地點TB.Text = item.送件地點;
+                            //送件地點DDL.SelectedValue = (string.IsNullOrEmpty(送件地點DDL.Items.FindByValue(item.送件地點).Value)) ? "其他" : item.送件地點;
+                            Session["送件地點"]= item.送件地點;
+                            部門DDL.SelectedValue = item.送件部門 ?? "業務部";
+                            地點備註TB.Text = item.地點備註??"";
                             idHF.Value = item.id.ToString();
                         }
                         Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
                         Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
                     }
-                    Show(true);
                 }
                 else if (e.CommandName == "刪除")
                 {
@@ -362,11 +384,36 @@ namespace GGFPortal.MGT
                     Session.RemoveAll();
                     Session["id"] = strid;
                     Session["提單號碼"] = ACRGV.Rows[row.RowIndex].Cells[2].Text;
-                    Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
+                    Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[4].Text;
                     Response.Redirect("MGT002.aspx");
                     
                 }
             }
+        }
+
+        protected void CancelBT_Click(object sender, EventArgs e)
+        {
+            ClearData();
+        }
+
+        protected void 送件地點DDL_DataBound(object sender, EventArgs e)
+        {
+            if (Session["送件地點"] ==null)
+            {
+                送件地點DDL.SelectedValue = "其他";
+            }
+            else
+            {
+                    送件地點DDL.SelectedIndex = 送件地點DDL.Items.IndexOf(送件地點DDL.Items.FindByValue("其他"));
+            }
+        }
+
+        protected void AddBT_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            Show(true);
+            快遞日期TB.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        
         }
     }
 }

@@ -107,6 +107,7 @@
                                     <asp:Label ID="快遞廠商LB" runat="server" Text=""></asp:Label>
                                   </td>
                                 <td class="text-center">
+                                    <asp:Label ID="部門LB" runat="server" Text="" CssClass=""></asp:Label>
                                     <asp:Label ID="提單號碼LB" runat="server" Text="" CssClass=""></asp:Label>
                                 </td>
 
@@ -179,7 +180,7 @@
 
 
                                 <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
-                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup" Height="400px" Width="600px" BackColor="#33CCFF" Style="display: none" ScrollBars="Horizontal"  >
+                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup" Height="400px" Width="600px" BackColor="#33CCFF" Style="display:none" ScrollBars="Horizontal"  >
                                     <div class=" text-center">
                                         <h3><b>新增明細</b></h3>
                                     </div>
@@ -233,6 +234,19 @@
                                         <div class="col-md-4 text-left">
                                             <asp:CheckBox ID="到付CB" runat="server" />
                                         </div>
+                                        <div class=" col-md-2 text-right">
+                                            <asp:Label ID="Label1" runat="server" Text="原因歸屬：" Font-Bold="True"></asp:Label>
+                                        </div>
+                                        <div class="col-md-4 text-left">
+                                            <asp:DropDownList ID="原因歸屬DDL" runat="server" DataSourceID="SqlDataSource3" DataTextField="Data" DataValueField="MappingData" AppendDataBoundItems="True">
+                                            <asp:ListItem></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
+                                                <SelectParameters>
+                                                    <asp:Parameter DefaultValue="原因歸屬" Name="UsingDefine" Type="String" />
+                                                </SelectParameters>
+                                            </asp:SqlDataSource>
+                                        </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-md-2 text-right">
@@ -282,6 +296,7 @@
                                             <asp:BoundField DataField="提單日期" HeaderText="提單日期" SortExpression="提單日期" DataFormatString="{0:yyyy-MM-dd}" />
                                             <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
                                             <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
+                                            <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
                                             <asp:BoundField DataField="建立日期" HeaderText="建立日期" SortExpression="建立日期" DataFormatString="{0:yyyy-MM-dd}" />
                                         </Columns>
                                         <FooterStyle BackColor="White" ForeColor="#000066" />

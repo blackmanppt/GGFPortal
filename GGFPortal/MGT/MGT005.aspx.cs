@@ -20,16 +20,15 @@ namespace GGFPortal.MGT
                 if (iuid>0&& iid>0)
                 {
                     DataSetSource.GGFEntitiesMGT db = new DataSetSource.GGFEntitiesMGT();
-
                     var 提單列印 = db.快遞單明細.Where(p => p.id == iid&&p.uid<=iuid);
                     快遞編號LB.Text = 提單列印.Count().ToString();
                     var 提單列印明細 = 提單列印.Where(p => p.uid == iuid).FirstOrDefault();
                     快遞廠商LB.Text = 提單列印明細.快遞單.快遞廠商;
                     快遞日期LB.Text = 提單列印明細.快遞單.提單日期.ToString("yyyy-MM-dd");
                     提單號碼LB.Text = 提單列印明細.快遞單.提單號碼;
-                    寄件人LB.Text = 提單列印明細.寄件人;
+                    寄件人LB.Text = 提單列印明細.寄件人+"("+ 提單列印明細.寄件人分機+")";
 
-                    送件地點LB.Text = 提單列印明細.快遞單.送件地點;
+                    送件地點LB.Text = 提單列印明細.快遞單.送件地點+"-"+ 提單列印明細.快遞單.地點備註;
                     收件人LB.Text = 提單列印明細.收件人;
                     明細LB.Text = 提單列印明細.明細;
                     string str備註 = 提單列印明細.備註二??"";

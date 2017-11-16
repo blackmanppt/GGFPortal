@@ -25,6 +25,8 @@ namespace GGFPortal.MGT
         {
             快遞時間TB.Attributes["readonly"] = "readonly";
             //快遞日期TB.Attributes["readonly"] = "readonly";
+            if (Session["提單日期"] != null)
+                Session["提單日期"] = (Session["提單日期"].ToString() == "%") ? "2000/1/1" : Session["提單日期"];
             if (Page.IsPostBack)
             {
                 if (idHF.Value == null)
@@ -56,7 +58,8 @@ namespace GGFPortal.MGT
                     快遞日期LB.Text = item.提單日期.ToString("yyyy-MM-dd");
                     快遞廠商LB.Text = item.快遞廠商;
                     提單號碼LB.Text = item.提單號碼;
-                    送件地點LB.Text = item.送件地點;
+                    送件地點LB.Text = item.送件地點+"-"+item.地點備註;
+                    部門LB.Text = (item.送件部門!=null)? item.送件部門 + ":":"";
                     if (item.快遞單檔案 != null)
                     {
                         s快遞單檔案 = Path.GetExtension(item.快遞單檔案).ToUpper();
@@ -224,6 +227,8 @@ namespace GGFPortal.MGT
                             備註TB.Text = item.備註二;
                             明細TB.Text = item.明細;
                             uidHF.Value = item.uid.ToString();
+                            原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
+
                         }
                     }
                     新增BT.Visible = false;
@@ -339,8 +344,8 @@ namespace GGFPortal.MGT
                                 sbErrorstring(sbError, "工號已停用");
                         }
                         
-                        if (d重量 == 0)
-                            sbErrorstring(sbError, "請輸入重量");
+                        //if (d重量 == 0)
+                        //    sbErrorstring(sbError, "請輸入重量");
                         if (string.IsNullOrEmpty(收件人TB.Text.Trim()))
                             sbErrorstring(sbError, "請輸入收件人");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
@@ -349,6 +354,8 @@ namespace GGFPortal.MGT
                             sbErrorstring(sbError, "請輸入責任歸屬：振大付費塡GG，廠商付費塡廠商名稱");
                         if (string.IsNullOrEmpty(明細TB.Text))
                             sbErrorstring(sbError, "請輸明細");
+                        if (string.IsNullOrEmpty(原因歸屬DDL.SelectedValue))
+                            sbErrorstring(sbError, "請輸原因歸屬");
                         if (sbError.Length > 0)
                         {
                             EditMessageLB.Text =  sbError.ToString();
@@ -373,6 +380,7 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.備註二 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
                                 新增快遞單明細.email = 工號資料.email_address;
+                                新增快遞單明細.原因歸屬 = 原因歸屬DDL.SelectedValue;
                                 conn.快遞單明細.Add(新增快遞單明細);
                             }
                             else
@@ -391,6 +399,7 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
                                 新增快遞單明細.修改日期 = DateTime.Now;
                                 新增快遞單明細.email = 工號資料.email_address;
+                                新增快遞單明細.原因歸屬 = 原因歸屬DDL.SelectedValue;
                             }
                             conn.SaveChanges();
                             transaction.Commit();
@@ -437,6 +446,7 @@ namespace GGFPortal.MGT
             到付CB.Checked = false;
             備註TB.Text = "";
             明細TB.Text = "";
+            原因歸屬DDL.SelectedValue = "";
             uidHF.Value = null;
         }
 
