@@ -31,6 +31,10 @@ namespace GGFPortal.DataSetSource
         public Nullable<System.DateTime> 修改日期 { get; set; }
         public string 送件部門 { get; set; }
         public string 地點備註 { get; set; }
+        public Nullable<bool> 檢貨狀態 { get; set; }
+        public Nullable<System.DateTime> 檢貨時間 { get; set; }
+        public Nullable<bool> 結案狀態 { get; set; }
+        public Nullable<System.DateTime> 結案時間 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<快遞單明細> 快遞單明細 { get; set; }

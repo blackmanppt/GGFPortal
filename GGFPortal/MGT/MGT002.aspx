@@ -133,6 +133,8 @@
                                 </td>
                             </tr>
                         </tbody>
+                        <tr><th class=" text-center" colspan="3" style="background-color:#bec494"><asp:Label ID="MsgLB" runat="server" Text=""></asp:Label></th>
+                            </tr>
                     </table>
                     <asp:GridView ID="ACRGV" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="uid" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" OnRowCommand="ACRGV_RowCommand">
                         <AlternatingRowStyle BackColor="White" />

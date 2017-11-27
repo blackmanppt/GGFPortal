@@ -40,6 +40,10 @@
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
           <Property Name="送件部門" Type="nvarchar" MaxLength="10" />
+          <Property Name="檢貨狀態" Type="bit" />
+          <Property Name="檢貨時間" Type="datetime" />
+          <Property Name="結案狀態" Type="bit" />
+          <Property Name="結案時間" Type="datetime" />
         </EntityType>
         <EntityType Name="快遞單明細">
           <Key>
@@ -128,6 +132,10 @@
           <NavigationProperty Name="快遞單明細" Relationship="Self.FK_快遞單明細_快遞單1" FromRole="快遞單" ToRole="快遞單明細" />
           <Property Name="送件部門" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="地點備註" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="檢貨狀態" Type="Boolean" />
+          <Property Name="檢貨時間" Type="DateTime" Precision="3" />
+          <Property Name="結案狀態" Type="Boolean" />
+          <Property Name="結案時間" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="快遞單明細">
           <Key>
@@ -216,6 +224,10 @@
           <EntitySetMapping Name="快遞單">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單">
               <MappingFragment StoreEntitySet="快遞單">
+                <ScalarProperty Name="結案時間" ColumnName="結案時間" />
+                <ScalarProperty Name="結案狀態" ColumnName="結案狀態" />
+                <ScalarProperty Name="檢貨時間" ColumnName="檢貨時間" />
+                <ScalarProperty Name="檢貨狀態" ColumnName="檢貨狀態" />
                 <ScalarProperty Name="地點備註" ColumnName="地點備註" />
                 <ScalarProperty Name="送件部門" ColumnName="送件部門" />
                 <ScalarProperty Name="id" ColumnName="id" />

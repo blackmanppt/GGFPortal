@@ -1,14 +1,9 @@
-﻿using Microsoft.Reporting.WebForms;
-using System;
+﻿using System;
 using System.Data;
-using System.Data.SqlClient;
-using System.Text;
 using System.Web.UI;
 using GGFPortal.DataSetSource;
 using System.Linq;
 using System.Web.UI.WebControls;
-using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
 using System.IO;
 
 

@@ -31,5 +31,10 @@ namespace GGFPortal.test
             int zz = 9;
             Label1.Text = int.TryParse(xx,out zz).ToString();
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Label1.Text = DateTime.Now.Hour.ToString();
+        }
     }
 }

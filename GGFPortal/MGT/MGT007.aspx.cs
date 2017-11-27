@@ -71,10 +71,13 @@ namespace GGFPortal.MGT
                                           ,[責任歸屬]
                                           ,[付款方式]
                                           ,[備註二] as 備註
-,送件部門
-,原因歸屬
+                                          ,送件部門
+                                          ,原因歸屬
                                           ,[email]
                                           ,c.dept_name as 寄件人部門2
+                                          ,[結案時間]
+                                          ,[檢貨時間]
+                                          ,case when a.[修改日期] is null then a.[建立日期] else a.[修改日期] end as 最後修改時間
                                     FROM [dbo].[快遞單明細] a left join [快遞單] b on a.id=b.id  left join bas_dept c on c.site='GGF' and a.寄件人部門=c.dept_no
                                     where    b.IsDeleted = 0  and a.IsDeleted = 0 and  b.提單日期 between '{0}' and '{1}'"
                                     , (string.IsNullOrEmpty(StartDay.Text))?"2000-01-01": StartDay.Text, (string.IsNullOrEmpty(EndDay.Text)) ? "2099-12-31" : EndDay.Text);

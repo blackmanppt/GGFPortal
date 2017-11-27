@@ -266,10 +266,12 @@
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Finance\Finance014.aspx" />
     <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
+    <Content Include="MGT\MGT008.aspx" />
     <Content Include="MGT\MGT007.aspx" />
     <Content Include="MGT\MGT006.aspx" />
     <Content Include="MGT\MGT005.aspx" />
@@ -771,6 +773,13 @@
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance014.aspx.cs">
+      <DependentUpon>Finance014.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance014.aspx.designer.cs">
+      <DependentUpon>Finance014.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance012V2.aspx.cs">
       <DependentUpon>Finance012V2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -798,6 +807,13 @@
     </Compile>
     <Compile Include="MGT\MGT001.aspx.designer.cs">
       <DependentUpon>MGT001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT008.aspx.cs">
+      <DependentUpon>MGT008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT008.aspx.designer.cs">
+      <DependentUpon>MGT008.aspx</DependentUpon>
     </Compile>
     <Compile Include="MGT\MGT007.aspx.cs">
       <DependentUpon>MGT007.aspx</DependentUpon>
@@ -1608,8 +1624,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V4.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />

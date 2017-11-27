@@ -16,7 +16,7 @@
         <asp:Button ID="Button2" runat="server" Text="test" OnClick="Button2_Click" />
     
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    
+        <asp:Button ID="Button3" runat="server" Text="Button" OnClick="Button3_Click" />
     </div>
         <div>
             test gridview select

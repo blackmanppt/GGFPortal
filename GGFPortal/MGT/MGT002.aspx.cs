@@ -1,17 +1,11 @@
-﻿using Microsoft.Reporting.WebForms;
-using System;
+﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
 using GGFPortal.DataSetSource;
 using System.Linq;
 using System.Web.UI.WebControls;
-using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
 using System.IO;
-using System.Drawing;
-using System.Drawing.Printing;
 
 namespace GGFPortal.MGT
 {
@@ -23,17 +17,26 @@ namespace GGFPortal.MGT
         GGFEntitiesMGT db = new GGFEntitiesMGT();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             快遞時間TB.Attributes["readonly"] = "readonly";
             //快遞日期TB.Attributes["readonly"] = "readonly";
             if (Session["提單日期"] != null)
                 Session["提單日期"] = (Session["提單日期"].ToString() == "%") ? "2000/1/1" : Session["提單日期"];
             if (Page.IsPostBack)
             {
-                if (idHF.Value == null)
-                { 
-                    Show(false);
-                    ClearPanel();
-                }
+                if (!string.IsNullOrEmpty(idHF.Value))
+                    if (F_確認檢貨(int.Parse(idHF.Value)))
+                        MsgLB.Text = "快遞單櫃台已檢貨";
+                //if (string.IsNullOrEmpty(idHF.Value) )
+                //{ 
+                //    Show(false);
+                //    ClearPanel();
+                //}
+                //else //if(idHF.Value!="")
+                //{ 
+                //    if (F_確認檢貨(int.Parse(idHF.Value)))
+                //        MsgLB.Text = "快遞單櫃台已檢貨";
+                //}
             }
             else
             {
@@ -42,9 +45,12 @@ namespace GGFPortal.MGT
                     string sid = Session["id"].ToString();
                     int iid = 0;
                     int.TryParse(sid, out iid);
+                    if (F_確認檢貨(iid))
+                        MsgLB.Text = "快遞單櫃台已檢貨";
                     HeadDB(iid);
                 }
             }
+
         }
 
         private void HeadDB(int iid)
@@ -126,6 +132,8 @@ namespace GGFPortal.MGT
                     {
                         foreach (var item in c)
                         {
+                            if (F_確認檢貨(item.id))
+                                MsgLB.Text = "快遞單櫃台已檢貨";
                             HeadDB(item.id);
                         }
                         Show(true);
@@ -206,15 +214,15 @@ namespace GGFPortal.MGT
         {
             using (var conn = new GGFEntitiesMGT())
             {
-                int iid = 0;
+                int iuid = 0;
                 if (e.CommandName == "編輯")
                 {
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
-                    int.TryParse(strid, out iid);
-                    if (iid > 0)
+                    int.TryParse(strid, out iuid);
+                    if (iuid > 0)
                     {
-                        var dset = db.快遞單明細.Where(p => p.uid == iid);
+                        var dset = db.快遞單明細.Where(p => p.uid == iuid);
                         foreach (var item in dset)
                         {
                             寄件人工號TB.Text = item.寄件人工號;
@@ -244,8 +252,8 @@ namespace GGFPortal.MGT
                         try
                         {
 
-                            int.TryParse(strid, out iid);
-                            var 刪除快遞單 = conn.快遞單明細.Where(o => o.uid == iid).FirstOrDefault();
+                            int.TryParse(strid, out iuid);
+                            var 刪除快遞單 = conn.快遞單明細.Where(o => o.uid == iuid).FirstOrDefault();
                             刪除快遞單.IsDeleted = true;
                             刪除快遞單.修改日期 = DateTime.Now;
                             conn.SaveChanges();
@@ -301,6 +309,8 @@ namespace GGFPortal.MGT
                 int.TryParse(strid, out iid);
                 if (iid > 0)
                 {
+                    if (F_確認檢貨(iid))
+                        MsgLB.Text = "快遞單櫃台已檢貨";
                     HeadDB(iid);
 
                 }
@@ -309,11 +319,27 @@ namespace GGFPortal.MGT
         }
         protected void 新增BT_Click(object sender, EventArgs e)
         {
-            新增修改();
+            int  iid = 0;
+            int.TryParse(idHF.Value, out iid);
+            if (F_確認結案(iid))
+            {
+                MessageLB.Text = "快遞單已結案或超過收件時間，請明日寄送";
+                AlertPanel_ModalPopupExtender.Show();
+            }
+            else
+                新增修改();
         }
         protected void 更新BT_Click(object sender, EventArgs e)
         {
-            新增修改();
+            int iid = 0;
+            int.TryParse(idHF.Value, out iid);
+            if (F_確認結案(iid))
+            {
+                MessageLB.Text = "快遞單已結案或超過收件時間，請明日寄送";
+                AlertPanel_ModalPopupExtender.Show();
+            }
+            else
+                新增修改();
         }
 
         private void 新增修改()
@@ -356,6 +382,8 @@ namespace GGFPortal.MGT
                             sbErrorstring(sbError, "請輸明細");
                         if (string.IsNullOrEmpty(原因歸屬DDL.SelectedValue))
                             sbErrorstring(sbError, "請輸原因歸屬");
+                        if(F_確認結案(iid))
+                            sbErrorstring(sbError, "快遞單已結案，請明天再送");
                         if (sbError.Length > 0)
                         {
                             EditMessageLB.Text =  sbError.ToString();
@@ -450,32 +478,35 @@ namespace GGFPortal.MGT
             uidHF.Value = null;
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        public Boolean F_確認結案(int iid)
         {
-            ////Point location = new Point(0, 0);
-            ////System.Drawing.Image img = System.Drawing.Image.FromFile(Session["pic"]);
-            ////e.Graphics.DrawImage(img, location);
-            //try
-            //{
-            //    StreamReader streamToPrint = new StreamReader(filePath);
-            //    try
-            //    {
-            //        Point location = new Point(0, 0);
-            //        PrintDocument pd = new PrintDocument();
-            //        pd.PrintPage += new PrintPageEventHandler(Session["pic"]);
-                    
-            //        // Print the document.
-            //        pd.Print();
-            //    }
-            //    finally
-            //    {
-            //        streamToPrint.Close();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            bool b是否結案 = false;
+            if (iid > 0)
+            {
+                var 快遞單 = db.快遞單.Where(p => p.id == iid).FirstOrDefault();
+                if (快遞單.結案狀態 != null)
+                {
+                    if(快遞單.結案狀態 == true)
+                        b是否結案 = true;
+                }
+            }
+            if(DateTime.Now.Hour>19)
+                b是否結案 = true;
+            return b是否結案;
+        }
+        public Boolean F_確認檢貨(int iid)
+        {
+            bool b是否檢貨 = false;
+            if (iid>0)
+            {
+                var 快遞單 = db.快遞單.Where(p => p.id == iid).FirstOrDefault();
+                if (快遞單.檢貨狀態!=null)
+                {
+                    if(快遞單.檢貨狀態 == true)
+                        b是否檢貨 = true;
+                }
+            }
+            return b是否檢貨;
         }
     }
 }
