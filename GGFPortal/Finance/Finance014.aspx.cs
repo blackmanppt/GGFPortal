@@ -60,6 +60,7 @@ namespace GGFPortal.Finance
             
             StringBuilder strsql = new StringBuilder(@" select distinct
                                                         [採購單預計交貨日]
+                                                        ,[採購單供應商代號]
                                                         ,[採購單供應商]
                                                         ,[公司]
                                                         ,[訂單號碼]
@@ -81,7 +82,7 @@ namespace GGFPortal.Finance
             //    if (!String.IsNullOrEmpty(StyleTB.Text))
             //        strsql.AppendFormat(" and [style_no]  = '{0}'", StyleTB.Text);
             //}
-            strsql.AppendFormat(" where [採購單預計交貨日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyy-MM-dd"), (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd"));
+            strsql.AppendFormat(" where pur_kind='M' and [採購單預計交貨日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyy-MM-dd"), (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd"));
             if(!string.IsNullOrEmpty(ESStartTB.Text))
                 strsql.AppendFormat(" and [預估毛利]  > '{0}'", ESStartTB.Text);
             if (!string.IsNullOrEmpty(ESEndTB.Text))

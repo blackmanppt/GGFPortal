@@ -111,6 +111,7 @@ namespace GGFPortal.MGT
 
         protected void SearchBT_Click(object sender, EventArgs e)
         {
+            MsgLB.Text = "";
             if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
             {
                 DateTime 快遞時間 = Convert.ToDateTime(快遞時間TB.Text.Trim());
@@ -199,49 +200,67 @@ namespace GGFPortal.MGT
 
         protected void SaveBT_Click(object sender, EventArgs e)
         {
-            新增BT.Visible = true;
-            更新BT.Visible = false;
-            EditListPanel_ModalPopupExtender.Show();
+            int iid = 0;
+            int.TryParse(idHF.Value, out iid);
+            if (F_確認結案(iid))
+            {
+                結案顯示();
+            }
+            else
+            { 
+                新增BT.Visible = true;
+                更新BT.Visible = false;
+                EditListPanel_ModalPopupExtender.Show();
+            }
         }
 
         protected void ClearBT_Click1(object sender, EventArgs e)
         {
             快遞時間TB.Text = "";
             快遞單號TB.Text = "";
+            MsgLB.Text = "";
         }
 
         protected void ACRGV_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             using (var conn = new GGFEntitiesMGT())
             {
-                int iuid = 0;
+                int iuid = 0,iid=0;
+                int.TryParse(idHF.Value, out iid);
                 if (e.CommandName == "編輯")
                 {
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
                     int.TryParse(strid, out iuid);
-                    if (iuid > 0)
-                    {
-                        var dset = db.快遞單明細.Where(p => p.uid == iuid);
-                        foreach (var item in dset)
+                    if (!F_確認結案(iid))
+                    { 
+                        if (iuid > 0)
                         {
-                            寄件人工號TB.Text = item.寄件人工號;
-                            分機TB.Text = item.寄件人分機;
-                            客戶名稱TB.Text = item.客戶名稱;
-                            收件人TB.Text = item.收件人;
-                            重量TB.Text = item.重量.ToString();
-                            責任歸屬TB.Text = item.責任歸屬;
-                            到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
-                            備註TB.Text = item.備註二;
-                            明細TB.Text = item.明細;
-                            uidHF.Value = item.uid.ToString();
-                            原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
+                        
+                            var dset = db.快遞單明細.Where(p => p.uid == iuid);
+                            foreach (var item in dset)
+                            {
+                                寄件人工號TB.Text = item.寄件人工號;
+                                分機TB.Text = item.寄件人分機;
+                                客戶名稱TB.Text = item.客戶名稱;
+                                收件人TB.Text = item.收件人;
+                                重量TB.Text = item.重量.ToString();
+                                責任歸屬TB.Text = item.責任歸屬;
+                                到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
+                                備註TB.Text = item.備註二;
+                                明細TB.Text = item.明細;
+                                uidHF.Value = item.uid.ToString();
+                                原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
 
+                            }
+                            新增BT.Visible = false;
+                            更新BT.Visible = true;
+                            EditListPanel_ModalPopupExtender.Show();
                         }
                     }
-                    新增BT.Visible = false;
-                    更新BT.Visible = true;
-                    EditListPanel_ModalPopupExtender.Show();
+                    else
+                        結案顯示();
+
                 }
                 else if (e.CommandName == "刪除")
                 {
@@ -301,6 +320,7 @@ namespace GGFPortal.MGT
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            MsgLB.Text = "";
             int iid = 0;
             if (e.CommandName=="Select")
             {
@@ -319,27 +339,16 @@ namespace GGFPortal.MGT
         }
         protected void 新增BT_Click(object sender, EventArgs e)
         {
-            int  iid = 0;
-            int.TryParse(idHF.Value, out iid);
-            if (F_確認結案(iid))
-            {
-                MessageLB.Text = "快遞單已結案或超過收件時間，請明日寄送";
-                AlertPanel_ModalPopupExtender.Show();
-            }
-            else
-                新增修改();
+            新增修改();
         }
         protected void 更新BT_Click(object sender, EventArgs e)
         {
-            int iid = 0;
-            int.TryParse(idHF.Value, out iid);
-            if (F_確認結案(iid))
-            {
-                MessageLB.Text = "快遞單已結案或超過收件時間，請明日寄送";
-                AlertPanel_ModalPopupExtender.Show();
-            }
-            else
-                新增修改();
+            新增修改();
+        }
+
+        private void 結案顯示()
+        {
+            MsgLB.Text = "快遞單已結案或超過收件時間，請明日寄送";
         }
 
         private void 新增修改()

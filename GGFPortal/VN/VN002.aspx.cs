@@ -236,7 +236,7 @@ namespace GGFPortal.VN
                                                     D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
                                                     //轉換日期格式
                                                 }
-                                                catch (Exception ex)
+                                                catch 
                                                 {
                                                     //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
                                                     berror = true;
@@ -378,7 +378,7 @@ namespace GGFPortal.VN
                                                     D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
                                                     //轉換日期格式
                                                 }
-                                                catch (Exception ex)
+                                                catch 
                                                 {
                                                     //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
                                                     berror = true;
@@ -527,7 +527,7 @@ namespace GGFPortal.VN
                 }
 
             }
-            catch (Exception ex)
+            catch 
             {
                 //x==1代表需要檢查資料
                 if (x == 1)
@@ -553,7 +553,7 @@ namespace GGFPortal.VN
                 {
                     D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     if (x == 1)
                     {
@@ -600,7 +600,7 @@ namespace GGFPortal.VN
                     }
                     //D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "0" : (int.TryParse( row.GetCell(j).ToString(),out iout)==false)?"0": row.GetCell(j).ToString();   //--每一個欄位，都加入同一列 DataRow
                 }
-                catch (Exception ex)
+                catch 
                 {
                     if (x == 1)
                     {
@@ -626,7 +626,7 @@ namespace GGFPortal.VN
                 {
                     D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     if (x == 1)
                     {
@@ -672,7 +672,7 @@ namespace GGFPortal.VN
                             D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow 
                     }
                 }
-                catch (Exception ex)
+                catch 
                 {
                     if (x == 1)
                     {

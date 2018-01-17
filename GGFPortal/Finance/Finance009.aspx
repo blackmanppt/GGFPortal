@@ -38,21 +38,21 @@
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
         </asp:ScriptManager>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
-            <LocalReport ReportPath="ReportSource\Finance\ReportFinance001_V4.rdlc">
-                <DataSources>
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%" Visible="False">
+            <LocalReport ReportPath="ReportSource\Finance\ReportFinance001_V5.rdlc"　DisplayName="出口大表" >
+<%--                <DataSources>
                     <rsweb:ReportDataSource DataSourceId="FinaceObjectDataSource" Name="Finance001" />
-                </DataSources>
+                </DataSources>--%>
             </LocalReport>
         </rsweb:ReportViewer>
-        <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcArielTableAdapter">
+<%--        <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcArielTableAdapter">
             <SelectParameters>
                 <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" DefaultValue="%" />
                 <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
                 <asp:SessionParameter DefaultValue="" Name="site" SessionField="F001Site" Type="String" />
 
             </SelectParameters>
-        </asp:ObjectDataSource>
+        </asp:ObjectDataSource>--%>
     </div>
     </form>
 

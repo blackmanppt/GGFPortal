@@ -71,6 +71,8 @@
                                     <asp:Button ID="結案BT" runat="server" CausesValidation="false" CommandName="結案" Text="結案" CssClass="btn btn-danger"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="已結案" HeaderText="已結案" SortExpression="已結案" />
+                            <asp:BoundField DataField="已檢貨" HeaderText="已檢貨" SortExpression="已檢貨" />
                             <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
                             <asp:BoundField DataField="提單日期" HeaderText="提單日期" SortExpression="提單日期" DataFormatString="{0:yyyy/MM/dd}" />
                             <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
@@ -80,7 +82,7 @@
                             <asp:BoundField DataField="送件部門" HeaderText="送件部門" SortExpression="送件部門" />
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 40 * FROM [快遞單] WHERE (([IsDeleted] = @IsDeleted) AND ([提單日期] = @提單日期 ) and 提單號碼 like @提單號碼 and 快遞廠商 like @快遞廠商 )">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 40 case when 結案狀態=1 then 'V'else'' end as 已結案,case when 檢貨狀態 = 1 then 'V' else '' end as '已檢貨', * FROM [快遞單] WHERE (([IsDeleted] = @IsDeleted) AND ([提單日期] = @提單日期 ) and 提單號碼 like @提單號碼 and 快遞廠商 like @快遞廠商 )">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="false" Name="IsDeleted" Type="Boolean" />
                             <asp:SessionParameter Name="提單日期" SessionField="Today" Type="DateTime" />

@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.76458cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -61,7 +61,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>訂單日期</Value>
+                              <Value>訂單出貨日期</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -2281,7 +2281,7 @@
           </SortExpression>
         </SortExpressions>
         <Height>2.4cm</Height>
-        <Width>40cm</Width>
+        <Width>40.26458cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2292,7 +2292,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>15.74803in</Width>
+  <Width>15.8522in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

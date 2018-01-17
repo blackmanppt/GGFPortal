@@ -52,7 +52,32 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
-
+        // 在此新增其他作業，並以 [OperationContract] 來標示它們
+        [OperationContract]
+        public List<string> SearchShipAgent(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select distinct a.客戶 as Search from View出口大表 a 
+                                        where upper(a.客戶) like '%' +  @SearchText + '%' ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
         [OperationContract]
         public List<string> SearchOrdStyle(string prefixText, int count)
         {

@@ -30,7 +30,7 @@
 
                             <div class="form-group center-block">
                                 <h4>訂單交期</h4>
-                                <asp:TextBox ID="訂單交期TB" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="訂單交期TB" runat="server" CssClass="form-control"></asp:TextBox>
 
                                 <ajaxToolkit:CalendarExtender ID="訂單交期TB_CalendarExtender" runat="server" BehaviorID="訂單交期TB_CalendarExtender" TargetControlID="訂單交期TB" Format="yyyy-MM-dd" />
 

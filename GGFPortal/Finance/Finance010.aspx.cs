@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace GGFPortal.Finance
 {
@@ -31,7 +24,7 @@ namespace GGFPortal.Finance
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            int x = 1;
+            
             Session["Date1"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "20000101";
             Session["Date2"] = (EndDay.Text.Length > 0) ? EndDay.Text : "29990101";
             Session["site"] = SiteDDL.SelectedValue;

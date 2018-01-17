@@ -3897,6 +3897,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column採購單供應商;
             
+            private global::System.Data.DataColumn column採購單供應商代號;
+            
             private global::System.Data.DataColumn column公司;
             
             private global::System.Data.DataColumn column訂單號碼;
@@ -3971,6 +3973,14 @@ namespace GGFPortal.DataSetSource {
             public global::System.Data.DataColumn 採購單供應商Column {
                 get {
                     return this.column採購單供應商;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 採購單供應商代號Column {
+                get {
+                    return this.column採購單供應商代號;
                 }
             }
             
@@ -4126,6 +4136,7 @@ namespace GGFPortal.DataSetSource {
             public 採購單預估毛利Row Add採購單預估毛利Row(
                         System.DateTime 採購單預計交貨日, 
                         string 採購單供應商, 
+                        string 採購單供應商代號, 
                         string 公司, 
                         string 訂單號碼, 
                         string 款號, 
@@ -4144,6 +4155,7 @@ namespace GGFPortal.DataSetSource {
                 object[] columnValuesArray = new object[] {
                         採購單預計交貨日,
                         採購單供應商,
+                        採購單供應商代號,
                         公司,
                         訂單號碼,
                         款號,
@@ -4182,6 +4194,7 @@ namespace GGFPortal.DataSetSource {
             internal void InitVars() {
                 this.column採購單預計交貨日 = base.Columns["採購單預計交貨日"];
                 this.column採購單供應商 = base.Columns["採購單供應商"];
+                this.column採購單供應商代號 = base.Columns["採購單供應商代號"];
                 this.column公司 = base.Columns["公司"];
                 this.column訂單號碼 = base.Columns["訂單號碼"];
                 this.column款號 = base.Columns["款號"];
@@ -4205,6 +4218,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column採購單預計交貨日);
                 this.column採購單供應商 = new global::System.Data.DataColumn("採購單供應商", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column採購單供應商);
+                this.column採購單供應商代號 = new global::System.Data.DataColumn("採購單供應商代號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column採購單供應商代號);
                 this.column公司 = new global::System.Data.DataColumn("公司", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column公司);
                 this.column訂單號碼 = new global::System.Data.DataColumn("訂單號碼", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4234,6 +4249,7 @@ namespace GGFPortal.DataSetSource {
                 this.column訂單狀態 = new global::System.Data.DataColumn("訂單狀態", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column訂單狀態);
                 this.column採購單供應商.MaxLength = 100;
+                this.column採購單供應商代號.MaxLength = 100;
                 this.column公司.MaxLength = 4;
                 this.column訂單號碼.MaxLength = 20;
                 this.column款號.MaxLength = 100;
@@ -7943,6 +7959,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 採購單供應商代號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購單預估毛利.採購單供應商代號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購單預估毛利\' 中資料行 \'採購單供應商代號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購單預估毛利.採購單供應商代號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 公司 {
                 get {
                     try {
@@ -8187,6 +8219,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set採購單供應商Null() {
                 this[this.table採購單預估毛利.採購單供應商Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is採購單供應商代號Null() {
+                return this.IsNull(this.table採購單預估毛利.採購單供應商代號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set採購單供應商代號Null() {
+                this[this.table採購單預估毛利.採購單供應商代號Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

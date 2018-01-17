@@ -71,7 +71,7 @@ table, td, th {
                                                 <br />
                         <asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Finance/Finance009.aspx">出口大表(BY Ariel)</asp:HyperLink>
                                                 <br />
-                        <asp:HyperLink ID="HyperLink40" runat="server" NavigateUrl="~/Finance/Finance011.aspx">出口大表(BY Carrie)</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink40" runat="server" NavigateUrl="~/Finance/Finance011.aspx">出口大表(BY Carrie)(客戶查詢)</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink49" runat="server" NavigateUrl="~/Finance/Finance012.aspx">銷貨資料(BY Carrie)</asp:HyperLink>
                                                                         <br />
@@ -102,6 +102,12 @@ table, td, th {
                     <td class="auto-style1">秘書</td>
                     <td>
                         <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Secretary/Secretary001.aspx">產區表</asp:HyperLink>
+                        <br />
+                                                <asp:HyperLink ID="HyperLink69" runat="server" NavigateUrl="~/Secretary/Secretary001V2.aspx">產區表(新版)</asp:HyperLink>
+                        <br />
+                                                                        <asp:HyperLink ID="HyperLink71" runat="server" NavigateUrl="~/Secretary/Secretary001V3.aspx">產區表(多資料組合版)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink72" runat="server" NavigateUrl="~/Secretary/Secretary001V4.aspx">產區表(多資料組合版無產量月份顯示)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Secretary/Secretary004.aspx">產區表(資料查詢)</asp:HyperLink>
                         <br />
@@ -146,6 +152,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink47" runat="server" NavigateUrl="~/Sales/Sales004.aspx">實際訂單查詢表(明細)</asp:HyperLink>
                                                                                                                         <br />
                         <asp:HyperLink ID="HyperLink50" runat="server" NavigateUrl="~/Sales/Sales005.aspx">銷貨資料(BOSS)</asp:HyperLink>
+                                                                                                                        <br />
+                        <asp:HyperLink ID="HyperLink70" runat="server" NavigateUrl="~/Sales/Sales006.aspx">出口統計表</asp:HyperLink>
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

@@ -28,7 +28,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -278,6 +278,7 @@
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
     <Content Include="MIS\MIS006.aspx" />
+    <Content Include="Sales\Sales006.aspx" />
     <Content Include="Sales\Sample010.aspx" />
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
@@ -286,10 +287,14 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <Content Include="Secretary\Secretary001V4.aspx" />
+    <Content Include="Secretary\Secretary001V3.aspx" />
+    <Content Include="Secretary\Secretary001V2.aspx" />
     <Content Include="Secretary\Secretary006.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
+    <Content Include="test\WebFormHR.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
     <Content Include="VN\VN011.aspx" />
@@ -858,6 +863,13 @@
       <DependentUpon>MIS006.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="Sales\Sales006.aspx.cs">
+      <DependentUpon>Sales006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales006.aspx.designer.cs">
+      <DependentUpon>Sales006.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample010.aspx.cs">
       <DependentUpon>Sample010.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -878,6 +890,27 @@
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V4.aspx.cs">
+      <DependentUpon>Secretary001V4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V4.aspx.designer.cs">
+      <DependentUpon>Secretary001V4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V3.aspx.cs">
+      <DependentUpon>Secretary001V3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V3.aspx.designer.cs">
+      <DependentUpon>Secretary001V3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V2.aspx.cs">
+      <DependentUpon>Secretary001V2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V2.aspx.designer.cs">
+      <DependentUpon>Secretary001V2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary006.aspx.cs">
       <DependentUpon>Secretary006.aspx</DependentUpon>
@@ -906,6 +939,13 @@
     </Compile>
     <Compile Include="test\angulartest.aspx.designer.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\WebFormHR.aspx.cs">
+      <DependentUpon>WebFormHR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\WebFormHR.aspx.designer.cs">
+      <DependentUpon>WebFormHR.aspx</DependentUpon>
     </Compile>
     <Compile Include="VN\VN013.aspx.cs">
       <DependentUpon>VN013.aspx</DependentUpon>
@@ -1624,7 +1664,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V3.rdlc" />
-    <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V4.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V5.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
@@ -1633,12 +1673,19 @@
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT007.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportS001V3.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales006.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance001_V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance008.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance009.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinance010.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012V2.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportFinanceTemp001.rdlc" />
+    <EmbeddedResource Include="ReportSource\ReportS001V2.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\ReportS002.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1660,6 +1707,9 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportS001V4.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
@@ -1667,6 +1717,7 @@
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN004V2.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN004.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN005.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN012.rdlc" />

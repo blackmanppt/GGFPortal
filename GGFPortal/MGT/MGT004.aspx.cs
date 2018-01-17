@@ -1,10 +1,7 @@
-﻿using GGFPortal.DataSetSource;
-using Microsoft.Reporting.WebForms;
+﻿using Microsoft.Reporting.WebForms;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,7 +12,7 @@ namespace GGFPortal.MGT
     public partial class MGT004 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
-        GGFEntitiesMGT db = new GGFEntitiesMGT();
+        //GGFEntitiesMGT db = new GGFEntitiesMGT();
         protected void Page_Load(object sender, EventArgs e)
         {
             快遞時間TB.Attributes["readonly"] = "readonly";

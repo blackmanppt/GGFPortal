@@ -8,12 +8,18 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>工時資料查詢</title>
+    <%--    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />--%>
+        <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -57,7 +63,7 @@
                 </div>
                 <div class="col-md-10">
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\VN\ReportVN004.rdlc" DisplayName="訂單資料">
+                        <LocalReport ReportPath="ReportSource\VN\ReportVN004V2.rdlc" DisplayName="訂單資料">
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </div>
