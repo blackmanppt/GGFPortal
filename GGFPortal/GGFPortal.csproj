@@ -266,6 +266,7 @@
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
+    <Content Include="Finance\Finance015.aspx" />
     <Content Include="Finance\Finance014.aspx" />
     <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
@@ -277,6 +278,7 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
     <Content Include="Sales\Sales006.aspx" />
     <Content Include="Sales\Sample010.aspx" />
@@ -287,10 +289,12 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <Content Include="Secretary\Secretary007.aspx" />
     <Content Include="Secretary\Secretary001V4.aspx" />
     <Content Include="Secretary\Secretary001V3.aspx" />
     <Content Include="Secretary\Secretary001V2.aspx" />
     <Content Include="Secretary\Secretary006.aspx" />
+    <Content Include="Ship\Ship004.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
@@ -778,6 +782,13 @@
     <Compile Include="Finance\Finance008.aspx.designer.cs">
       <DependentUpon>Finance008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance015.aspx.cs">
+      <DependentUpon>Finance015.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance015.aspx.designer.cs">
+      <DependentUpon>Finance015.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Finance\Finance014.aspx.cs">
       <DependentUpon>Finance014.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -855,6 +866,13 @@
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\MIS007.aspx.cs">
+      <DependentUpon>MIS007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS007.aspx.designer.cs">
+      <DependentUpon>MIS007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\MIS006.aspx.cs">
       <DependentUpon>MIS006.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -891,6 +909,13 @@
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Secretary\Secretary007.aspx.cs">
+      <DependentUpon>Secretary007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary007.aspx.designer.cs">
+      <DependentUpon>Secretary007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secretary\Secretary001V4.aspx.cs">
       <DependentUpon>Secretary001V4.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -918,6 +943,13 @@
     </Compile>
     <Compile Include="Secretary\Secretary006.aspx.designer.cs">
       <DependentUpon>Secretary006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship004.aspx.cs">
+      <DependentUpon>Ship004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship004.aspx.designer.cs">
+      <DependentUpon>Ship004.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ship\Ship003.aspx.cs">
       <DependentUpon>Ship003.aspx</DependentUpon>
@@ -1668,6 +1700,7 @@
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance015.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
@@ -1711,9 +1744,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary007.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip003.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip004.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />

@@ -77,7 +77,9 @@ table, td, th {
                                                                         <br />
                         <asp:HyperLink ID="HyperLink56" runat="server" NavigateUrl="~/Finance/Finance013.aspx">出貨短出資料對照</asp:HyperLink>
                          <br />
-                        <asp:HyperLink ID="HyperLink68" runat="server" NavigateUrl="~/Finance/Finance014.aspx">預計到貨毛利查詢</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink68" runat="server" NavigateUrl="~/Finance/Finance014.aspx">預計到貨毛利-查詢</asp:HyperLink>
+                                                 <br />
+                        <asp:HyperLink ID="HyperLink74" runat="server" NavigateUrl="~/Finance/Finance015.aspx">文件實際上傳日-查詢</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -112,6 +114,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Secretary/Secretary004.aspx">產區表(資料查詢)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Secretary/Secretary006.aspx">產區表資料</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink73" runat="server" NavigateUrl="~/Secretary/Secretary007.aspx">工時IE對應表</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -135,6 +139,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink58" runat="server" NavigateUrl="~/Ship/Ship002.aspx">客戶訂單轉Excel查詢(查詢多單價) </asp:HyperLink>
                          <br />
                         <asp:HyperLink ID="HyperLink61" runat="server" NavigateUrl="~/Ship/Ship003.aspx">客戶訂單轉Excel查詢(多條件查詢) </asp:HyperLink>
+                         <br />
+                        <asp:HyperLink ID="HyperLink75" runat="server" NavigateUrl="~/Ship/Ship004.aspx">櫃號相關資料-查詢 </asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

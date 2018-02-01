@@ -126,5 +126,11 @@ namespace GGFPortal.Secretary
             else
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
         }
+
+        protected void ClearBT_Click(object sender, EventArgs e)
+        {
+            StartDay.Text = "";
+            EndDay.Text = "";
+        }
     }
 }

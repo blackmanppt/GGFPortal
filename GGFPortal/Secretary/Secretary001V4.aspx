@@ -23,6 +23,7 @@
             <asp:TextBox ID="StartDay" runat="server" AutoPostBack="True"></asp:TextBox>
             <ajaxToolkit:CalendarExtender ID="StartDay_CalendarExtender" runat="server" TargetControlID="StartDay"  Format="yyyyMMdd"  />
             <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
+            <asp:Button ID="ClearBT" runat="server" Text="Clear" OnClick="ClearBT_Click" />
             <br />
             <asp:Label ID="EndLB" runat="server" Text="結束日期："></asp:Label>
             <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
@@ -32,7 +33,7 @@
     
         
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="700px" Width="90%" Visible="False">
-            <LocalReport ReportPath="ReportSource\Secretary\ReportS001V4.rdlc">
+            <LocalReport ReportPath="ReportSource\Secretary\ReportS001V4.rdlc" DisplayName="產區表">
 <%--                <DataSources>
                     <rsweb:ReportDataSource DataSourceId="Sercetary001ObjectDataSource" Name="Sercretary001" />
                 </DataSources>--%>

@@ -51,6 +51,8 @@ namespace GGFPortal.Finance
             {
                 using (SqlConnection Conn = new SqlConnection(strConnectString))
                 {
+                    FactoryDDL.Items.Clear();
+                    NationDDL.Items.Clear();
                     SqlDataAdapter myAdapter = new SqlDataAdapter(" select distinct a.vendor_id,b.vendor_name from ordc_bah1 a left join bas_vendor_master b on a.vendor_id=b.vendor_id ", Conn);
                     myAdapter.Fill(Ds, "Factory");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
                     myAdapter.SelectCommand.CommandText = "select distinct a.nation_no,b.nation_name from ordc_bah2 a left join bas_nation b on a.nation_no=b.nation_no where b.nation_name is not null";

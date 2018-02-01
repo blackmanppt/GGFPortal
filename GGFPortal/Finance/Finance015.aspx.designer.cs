@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Secretary {
+namespace GGFPortal.Finance {
     
     
-    public partial class Secretary001V4 {
+    public partial class Finance015 {
         
         /// <summary>
         /// form1 控制項。
@@ -22,15 +22,6 @@ namespace GGFPortal.Secretary {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TitleLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLB;
-        
-        /// <summary>
         /// ScriptManager1 控制項。
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace GGFPortal.Secretary {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// StartLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StartLB;
         
         /// <summary>
         /// StartDay 控制項。
@@ -67,6 +49,69 @@ namespace GGFPortal.Secretary {
         protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
         
         /// <summary>
+        /// EndDay 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EndDay;
+        
+        /// <summary>
+        /// EndDay_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        
+        /// <summary>
+        /// UploadDateTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UploadDateTB;
+        
+        /// <summary>
+        /// UploadDateTB_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender UploadDateTB_CalendarExtender;
+        
+        /// <summary>
+        /// 文件上傳CB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox 文件上傳CB;
+        
+        /// <summary>
+        /// StyleTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StyleTB;
+        
+        /// <summary>
+        /// StyleTB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
+        
+        /// <summary>
         /// SearchBT 控制項。
         /// </summary>
         /// <remarks>
@@ -85,31 +130,22 @@ namespace GGFPortal.Secretary {
         protected global::System.Web.UI.WebControls.Button ClearBT;
         
         /// <summary>
-        /// EndLB 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EndLB;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// EndDay 控制項。
+        /// 搜尋BT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDay;
-        
-        /// <summary>
-        /// EndDay_CalendarExtender 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        protected global::System.Web.UI.WebControls.Button 搜尋BT;
         
         /// <summary>
         /// ReportViewer1 控制項。

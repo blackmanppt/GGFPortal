@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MGT008.aspx.cs" Inherits="GGFPortal.MGT.MGT008" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MIS007.aspx.cs" Inherits="GGFPortal.MIS.MIS007" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>快遞單明細表-每日查詢</title>
+    <title>採購單核准</title>
     <script src="../scripts/jquery-3.1.1.min.js"></script>
     <script src="../scripts/scripts.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
@@ -15,6 +15,69 @@
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
+    <style type="text/css">
+        .checkbox
+        {
+            padding-left: 20px;
+        }
+        .checkbox label
+        {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            padding-left: 5px;
+        }
+        .checkbox label::before
+        {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            left: 0;
+            margin-left: -20px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            background-color: #fff;
+            -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+            transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+        }
+        .checkbox label::after
+        {
+            display: inline-block;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 0;
+            top: 0;
+            margin-left: -20px;
+            padding-left: 3px;
+            padding-top: 1px;
+            font-size: 11px;
+            color: #555555;
+        }
+        .checkbox input[type="checkbox"]
+        {
+            opacity: 0;
+            z-index: 1;
+        }
+        .checkbox input[type="checkbox"]:checked + label::after
+        {
+            font-family: "FontAwesome";
+            content: "\f00c";
+        }
+         
+        .checkbox-primary input[type="checkbox"]:checked + label::before
+        {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+        .checkbox-primary input[type="checkbox"]:checked + label::after
+        {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +87,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-left">快遞單明細表-查詢
+                        <h3 class="text-info text-left">採購單核准
 			 
 
                         </h3>
@@ -67,9 +130,15 @@
                             
 <%--                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id"/>--%>
                             <asp:TemplateField ShowHeader="False" ItemStyle-Width="145px" >
+                                <HeaderTemplate>
+                                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass=" glyphicon glyphicon-ok" />
+                                    <asp:Button ID="Button1" runat="server" Text="Button"  CssClass="btn btn-primary"/>
+                                </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:Button ID="檢貨BT" runat="server" CausesValidation="false" CommandName="檢貨" Text="檢貨" CssClass="btn btn-default"/>
-                                    <asp:Button ID="結案BT" runat="server" CausesValidation="false" CommandName="結案" Text="結案" CssClass="btn btn-danger"/>
+
+<%--                                    <asp:Button ID="檢貨BT" runat="server" CausesValidation="false" CommandName="檢貨" Text="檢貨" CssClass="btn btn-default"/>
+                                    <asp:Button ID="結案BT" runat="server" CausesValidation="false" CommandName="結案" Text="結案" CssClass="btn btn-danger"/>--%>
+                                    <asp:CheckBox ID="UpdateCB" runat="server" CssClass="styled" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="已結案" HeaderText="已結案" SortExpression="已結案" />
@@ -83,7 +152,7 @@
                             <asp:BoundField DataField="送件部門" HeaderText="送件部門" SortExpression="送件部門" />
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 40 case when 結案狀態=1 then 'V'else'' end as 已結案,case when 檢貨狀態 = 1 then 'V' else '' end as '已檢貨', * FROM [快遞單] WHERE (([IsDeleted] = @IsDeleted) AND ([提單日期] = @提單日期 ) and 提單號碼 like @提單號碼 and 快遞廠商 like @快遞廠商 )">
+<%--                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 40 case when 結案狀態=1 then 'V'else'' end as 已結案,case when 檢貨狀態 = 1 then 'V' else '' end as '已檢貨', * FROM [快遞單] WHERE (([IsDeleted] = @IsDeleted) AND ([提單日期] = @提單日期 ) and 提單號碼 like @提單號碼 and 快遞廠商 like @快遞廠商 )">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="false" Name="IsDeleted" Type="Boolean" />
                             <asp:SessionParameter Name="提單日期" SessionField="Today" Type="DateTime" />
@@ -91,7 +160,7 @@
                             <asp:SessionParameter Name="快遞廠商" SessionField="快遞商" Type="String" DefaultValue="%" />
                             
                         </SelectParameters>
-                    </asp:SqlDataSource>
+                    </asp:SqlDataSource>--%>
                 </div>
             </div>
         </div>

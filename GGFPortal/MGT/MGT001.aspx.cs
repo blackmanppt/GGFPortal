@@ -42,13 +42,13 @@ namespace GGFPortal.MGT
 
         protected void SearchBT_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
-            //{
+
             DateTime 快遞時間 = Convert.ToDateTime((!string.IsNullOrEmpty( 快遞時間TB.Text.Trim())? 快遞時間TB.Text.Trim():"2000-01-01"));
             string 快遞單號 = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "" : 快遞單號TB.Text.Trim();
             IQueryable<快遞單> c;
             //var c = db.快遞單.Where(p => p.提單日期 == 快遞時間&&p.IsDeleted==false);
-            
+            //if (!string.IsNullOrEmpty(快遞時間TB.Text.Trim()))
+            //{
             if (快遞時間.ToString("yyyy-MM-dd")== "2000-01-01")
             {
                 if (快遞單號.Length>0)
@@ -83,7 +83,7 @@ namespace GGFPortal.MGT
             //    }
 
             //}
-            if (c.Count() > 0)
+            if (c !=null)
             {
                 if (c.Count() > 1)
                 {
@@ -91,18 +91,23 @@ namespace GGFPortal.MGT
                 }
                 else
                 {
-                    Show(true);
-                    foreach (var item in c)
-                    {
-                        快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
-                        快遞廠商DDL.SelectedValue = item.快遞廠商;
-                        提單號碼TB.Text = item.提單號碼;
-                        送件地點DDL.SelectedValue = (string.IsNullOrEmpty(送件地點DDL.Items.FindByValue(item.送件地點).Value))? "其他" : item.送件地點;
-                        部門DDL.SelectedValue = item.送件部門 ?? "業務部";
-                        地點備註TB.Text = item.地點備註 ?? "";
-                        idHF.Value = item.id.ToString();
+                    if (c.Count() == 1)
+                    { 
+                        Show(true);
+                        foreach (var item in c)
+                        {
+                            快遞日期TB.Text = item.提單日期.ToString("yyyy-MM-dd");
+                            快遞廠商DDL.SelectedValue = item.快遞廠商;
+                            提單號碼TB.Text = item.提單號碼;
+                            送件地點DDL.SelectedValue = (string.IsNullOrEmpty(送件地點DDL.Items.FindByValue(item.送件地點).Value))? "其他" : item.送件地點;
+                            部門DDL.SelectedValue = item.送件部門 ?? "業務部";
+                            地點備註TB.Text = item.地點備註 ?? "";
+                            idHF.Value = item.id.ToString();
+                        }
                     }
-                    
+                    else
+                        Show(false);
+
                 }
                 Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
                 Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();
