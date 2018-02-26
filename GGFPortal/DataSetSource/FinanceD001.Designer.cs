@@ -880,6 +880,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column加減項;
             
+            private global::System.Data.DataColumn column品牌;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ViewShpc1DataTable() {
@@ -1027,6 +1029,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 品牌Column {
+                get {
+                    return this.column品牌;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1062,7 +1072,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViewShpc1Row AddViewShpc1Row(string site, string shp_nbr, string 開航日, string 客戶, string S_O, string style_no, string PO_NUMBER, string vendor_name_brief, decimal 出貨數量, decimal 出貨單價, decimal 出貨金額, string 幣別, decimal 匯率, decimal 加減項) {
+            public ViewShpc1Row AddViewShpc1Row(string site, string shp_nbr, string 開航日, string 客戶, string S_O, string style_no, string PO_NUMBER, string vendor_name_brief, decimal 出貨數量, decimal 出貨單價, decimal 出貨金額, string 幣別, decimal 匯率, decimal 加減項, string 品牌) {
                 ViewShpc1Row rowViewShpc1Row = ((ViewShpc1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         site,
@@ -1078,7 +1088,8 @@ namespace GGFPortal.DataSetSource {
                         出貨金額,
                         幣別,
                         匯率,
-                        加減項};
+                        加減項,
+                        品牌};
                 rowViewShpc1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewShpc1Row);
                 return rowViewShpc1Row;
@@ -1115,6 +1126,7 @@ namespace GGFPortal.DataSetSource {
                 this.column幣別 = base.Columns["幣別"];
                 this.column匯率 = base.Columns["匯率"];
                 this.column加減項 = base.Columns["加減項"];
+                this.column品牌 = base.Columns["品牌"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1148,6 +1160,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column匯率);
                 this.column加減項 = new global::System.Data.DataColumn("加減項", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column加減項);
+                this.column品牌 = new global::System.Data.DataColumn("品牌", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column品牌);
                 this.columnsite.AllowDBNull = false;
                 this.columnsite.MaxLength = 4;
                 this.columnshp_nbr.AllowDBNull = false;
@@ -1161,6 +1175,7 @@ namespace GGFPortal.DataSetSource {
                 this.column出貨數量.ReadOnly = true;
                 this.column出貨金額.ReadOnly = true;
                 this.column幣別.MaxLength = 4;
+                this.column品牌.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2491,6 +2506,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 品牌 {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewShpc1.品牌Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'ViewShpc1\' 中資料行 \'品牌\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableViewShpc1.品牌Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is開航日Null() {
                 return this.IsNull(this.tableViewShpc1.開航日Column);
             }
@@ -2631,6 +2662,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set加減項Null() {
                 this[this.tableViewShpc1.加減項Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is品牌Null() {
+                return this.IsNull(this.tableViewShpc1.品牌Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set品牌Null() {
+                this[this.tableViewShpc1.品牌Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -3588,6 +3631,7 @@ ORDER BY   開航日, 客戶, vendor_name_brief";
             tableMapping.ColumnMappings.Add("幣別", "幣別");
             tableMapping.ColumnMappings.Add("匯率", "匯率");
             tableMapping.ColumnMappings.Add("加減項", "加減項");
+            tableMapping.ColumnMappings.Add("品牌", "品牌");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3618,6 +3662,7 @@ ORDER BY   開航日, 客戶, vendor_name_brief";
       ,[幣別]
       ,[匯率]
       ,[加減項]
+,[品牌]
   FROM [dbo].[ViewShpc]
 where [開航日] between @StartDay and @EndDay  and site like @site and [客戶] like @agents
   GROUP BY
@@ -3629,7 +3674,7 @@ where [開航日] between @StartDay and @EndDay  and site like @site and [客戶
       ,[style_no]
       ,[PO_NUMBER]
       ,[vendor_name_brief]
-      
+      ,[品牌]
       ,[出貨單價]
       ,[幣別]
       ,[匯率]

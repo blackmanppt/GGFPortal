@@ -69,7 +69,9 @@ namespace GGFPortal.Finance
                                                         ,[代工廠]
                                                         ,[預估毛利]
                                                         ,[業務]
-                                                        ,[部門]                
+                                                        ,[部門]
+                                                        ,[訂單數量]                
+                                                        ,[採購單狀態]                
                                                         from [View採購單預估毛利] ");
 
             //if (!String.IsNullOrEmpty(SiteDDL.SelectedValue) || !String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(VendorDDL.SelectedValue) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
@@ -83,10 +85,23 @@ namespace GGFPortal.Finance
             //        strsql.AppendFormat(" and [style_no]  = '{0}'", StyleTB.Text);
             //}
             strsql.AppendFormat(" where pur_kind='M' and [採購單預計交貨日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyy-MM-dd"), (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd"));
-            if(!string.IsNullOrEmpty(ESStartTB.Text))
-                strsql.AppendFormat(" and [預估毛利]  > '{0}'", ESStartTB.Text);
-            if (!string.IsNullOrEmpty(ESEndTB.Text))
-                strsql.AppendFormat(" and [預估毛利]  < '{0}'", ESEndTB.Text);
+            switch (件數RBL.SelectedValue)
+            {
+                case "10000以下":
+                    strsql.AppendFormat(" and [訂單數量] <10000 and [預估毛利]  < 7 ", ESStartTB.Text);
+                    break;
+                case "10000以上":
+                    strsql.AppendFormat(" and [訂單數量] >10000 and [預估毛利]  < 6 ", ESStartTB.Text);
+                    break;
+
+                default:
+                    if (!string.IsNullOrEmpty(ESStartTB.Text))
+                        strsql.AppendFormat(" and [預估毛利]  > {0} ", ESStartTB.Text);
+                    if (!string.IsNullOrEmpty(ESEndTB.Text))
+                        strsql.AppendFormat(" and [預估毛利]  < {0} ", ESEndTB.Text);
+                    break;
+            }
+
             return strsql;
         }
         

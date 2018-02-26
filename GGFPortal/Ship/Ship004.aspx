@@ -8,12 +8,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>櫃號相關資料-查詢</title>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,8 +32,6 @@
                             <div class="form-group">
                                 <asp:TextBox ID="StartDay" runat="server" class="form-control"></asp:TextBox>
                                 <ajaxToolkit:CalendarExtender ID="StartDay_CalendarExtender" runat="server" BehaviorID="StartDay_CalendarExtender" TargetControlID="StartDay" Format="yyyy-MM-dd" />
-                            </div>
-                            <div class="form-group">
                                 <asp:TextBox ID="EndDay" runat="server" class="form-control"></asp:TextBox>
                                 <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" BehaviorID="EndDay_CalendarExtender" TargetControlID="EndDay"  Format="yyyy-MM-dd" />
                             </div>
@@ -66,7 +65,7 @@
                 </div>
                 <div class="col-md-10">
                     <div class="row">
-                        <asp:Button ID="搜尋BT" runat="server" Text="搜尋" CssClass="btn btn-default" OnClick="搜尋BT_Click" />
+                        <asp:Button ID="搜尋BT" runat="server" Text="搜尋" CssClass="btn btn-default" OnClick="搜尋BT_Click" Visible="False" />
                             <asp:GridView ID="櫃號GV" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False">
                                 <AlternatingRowStyle BackColor="#CCCCCC" />
                                 <Columns>

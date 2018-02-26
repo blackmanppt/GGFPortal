@@ -43,6 +43,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/MIS/MIS005.aspx">分機表</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink57" runat="server" NavigateUrl="~/MIS/MIS006.aspx">訂單簽核查詢(新版)</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink76" runat="server" NavigateUrl="~/MIS/MIS007.aspx">採購單核准</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         測試區：</td>
@@ -160,6 +162,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink50" runat="server" NavigateUrl="~/Sales/Sales005.aspx">銷貨資料(BOSS)</asp:HyperLink>
                                                                                                                         <br />
                         <asp:HyperLink ID="HyperLink70" runat="server" NavigateUrl="~/Sales/Sales006.aspx">出口統計表</asp:HyperLink>
+                                                                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink77" runat="server" NavigateUrl="~/Sales/Sales007.aspx">訂單預估毛利成本(Sales)</asp:HyperLink>
+                                                                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink78" runat="server" NavigateUrl="~/Sales/Sales008.aspx">訂單小圖</asp:HyperLink>                        
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

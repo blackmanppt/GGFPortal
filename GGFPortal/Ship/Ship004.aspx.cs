@@ -30,7 +30,9 @@ namespace GGFPortal.Ship
             EndDay.Text = "";
             ETDStartDay.Text = "";
             ETDEndDay.Text = "";
+            顯示直送CB.Checked = false;
             櫃號TB.Text = "";
+            款號TB.Text = "";
 
         }
 
@@ -44,6 +46,7 @@ namespace GGFPortal.Ship
 
             if (櫃號GV.Rows.Count > 0)
             {
+                
                 StringBuilder sb = new StringBuilder();
                 CheckBox CHK = (CheckBox)(櫃號GV.HeaderRow.Cells[0].FindControl("全部搜尋CB"));
                 if(!CHK.Checked)
@@ -63,7 +66,7 @@ namespace GGFPortal.Ship
                         sb.Append("and 櫃號 in (");
                         for (int i = 0; i < L櫃號.Count; i++)
                         {
-                            sb.AppendFormat(" {0} '{1}' ",(i>1)?",":"", L櫃號[i]);
+                            sb.AppendFormat(" {0} '{1}' ",(i>0)?",":"", L櫃號[i]);
                         }
                         sb.Append(")");
                     }
@@ -98,6 +101,7 @@ namespace GGFPortal.Ship
                         Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
                 }
             }
+
         }
         protected void GridDB()
         {
@@ -105,6 +109,7 @@ namespace GGFPortal.Ship
 
             if (搜尋確認())
             {
+                搜尋BT.Visible = true;
                 DataTable dt = new DataTable();
                 using (SqlConnection Conn = new SqlConnection(strConnectString))
                 {
@@ -118,6 +123,10 @@ namespace GGFPortal.Ship
                 }
                 else
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+            }
+            else
+            {
+                搜尋BT.Visible = false;
             }
         }
 
@@ -172,35 +181,21 @@ namespace GGFPortal.Ship
                     if(!string.IsNullOrEmpty(櫃號TB.Text))
                         strsql.AppendFormat(" and [櫃號]  in {0} ", 字串處理.字串多筆資料搜尋(櫃號TB.Text).ToString());
                     //款號
-                    if (!string.IsNullOrEmpty(櫃號TB.Text))
+                    if (!string.IsNullOrEmpty(款號TB.Text))
                         strsql.AppendFormat(" and [款號]  in {0} ", 字串處理.字串多筆資料搜尋(款號TB.Text).ToString());
                     //排除直送資料
                     if (!顯示直送CB.Checked)
                         strsql.Append(" and [櫃號] not in  ('越南直送','宜蘭直送','廠商直送','染缸費')");
                     break;
                 case "搜尋採購單資料":
-                    strsql.Append(@" SELECT [款號]
-                                          ,[ETA]
-                                          ,[ETD]
-                                          ,[櫃號]
-                                          ,[工廠名稱]
-                                          ,[客戶代號]
-                                          ,[品牌]
-                                          ,[採購人員]
+                    strsql.Append(@" SELECT *
                                       FROM [GGF].[dbo].[View入庫櫃號查詢] where 1 = 1");
 
                     if (!顯示直送CB.Checked)
                         strsql.Append(" and [櫃號] not in  ('越南直送','宜蘭直送','廠商直送','染缸費')");
                     break;
                 case "搜尋全部資料":
-                    strsql.Append(@" SELECT [款號]
-                                          ,[ETA]
-                                          ,[ETD]
-                                          ,[櫃號]
-                                          ,[工廠名稱]
-                                          ,[客戶代號]
-                                          ,[品牌]
-                                          ,[採購人員]
+                    strsql.Append(@" SELECT *
                                       FROM [GGF].[dbo].[View入庫櫃號查詢] where 1 = 1");
                     //eta
                     if (!string.IsNullOrEmpty(StartDay.Text) || !string.IsNullOrEmpty(EndDay.Text))

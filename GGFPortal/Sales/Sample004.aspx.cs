@@ -91,6 +91,11 @@ namespace GGFPortal.Sales
 
                 if (!String.IsNullOrEmpty(AreaDDL.SelectedValue))
                     strsql.AppendFormat(" and [地區]  = '{0}'", AreaDDL.SelectedValue);
+                if (!string.IsNullOrEmpty(TypeDDL.SelectedValue))
+                {
+                    strsql.AppendFormat(" and [SampleType]  = '{0}'", TypeDDL.SelectedValue);
+                    //command1.Parameters.Add("@SampleType", SqlDbType.NVarChar).Value = TypeDDL.SelectedValue;
+                }
             }
             return strsql;
         }

@@ -95,25 +95,13 @@
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 
 
-                            <h4>快遞日期</h4>
+                            <h4>採購單號</h4>
                             <div class="form-group">
-                                <asp:TextBox ID="StartDay" runat="server" class="form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="StartDay_CalendarExtender" runat="server" BehaviorID="StartDay_CalendarExtender" TargetControlID="StartDay" Format="yyyy-MM-dd" />
+                                <asp:TextBox ID="採購單TB" runat="server" CssClass="form-control" Height="100px" TextMode="MultiLine" ></asp:TextBox>
                             </div>
-                            <h4>快遞廠商</h4>
-                            <div class="form-group">                                
-                                    <asp:DropDownList ID="快遞廠商DDL" runat="server" CssClass="form-control" >
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>譽得</asp:ListItem>
-                                        <asp:ListItem>峻越</asp:ListItem>
-                                        <asp:ListItem>捷麟</asp:ListItem>
-                                        <asp:ListItem>順豐</asp:ListItem>
-                                        <asp:ListItem>馬島-DHL</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            <h4>快遞單號</h4>
+                            <h4>款號</h4>
                             <div class="form-group">
-                                <asp:TextBox ID="提單TB" runat="server" class="form-control"></asp:TextBox>
+                                <asp:TextBox ID="款號TB" runat="server" class="form-control"  Height="100px" TextMode="MultiLine"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
@@ -125,32 +113,38 @@
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <asp:GridView ID="確認GV" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" OnRowCommand="確認GV_RowCommand">
+                    <%--<asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>--%>
+                    <asp:GridView ID="確認GV" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False"  BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                        <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             
 <%--                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id"/>--%>
                             <asp:TemplateField ShowHeader="False" ItemStyle-Width="145px" >
                                 <HeaderTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server" CssClass=" glyphicon glyphicon-ok" />
-                                    <asp:Button ID="Button1" runat="server" Text="Button"  CssClass="btn btn-primary"/>
+                                    <asp:CheckBox ID="全部更新CB" runat="server" CssClass=" glyphicon " Text="全部核准" />
+                                    <asp:Button ID="UpDateBT" runat="server" Text="採購單核准" ForeColor="#003300" OnClick="UpDateBT_Click" CssClass="btn btn-group-sm" />
                                 </HeaderTemplate>
                                 <ItemTemplate>
-
-<%--                                    <asp:Button ID="檢貨BT" runat="server" CausesValidation="false" CommandName="檢貨" Text="檢貨" CssClass="btn btn-default"/>
-                                    <asp:Button ID="結案BT" runat="server" CausesValidation="false" CommandName="結案" Text="結案" CssClass="btn btn-danger"/>--%>
                                     <asp:CheckBox ID="UpdateCB" runat="server" CssClass="styled" />
                                 </ItemTemplate>
+
+<ItemStyle Width="145px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="已結案" HeaderText="已結案" SortExpression="已結案" />
-                            <asp:BoundField DataField="已檢貨" HeaderText="已檢貨" SortExpression="已檢貨" />
-                            <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
-                            <asp:BoundField DataField="提單日期" HeaderText="提單日期" SortExpression="提單日期" DataFormatString="{0:yyyy/MM/dd}" />
-                            <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
-                            <%--<asp:BoundField DataField="快遞單檔案" HeaderText="快遞單檔案" SortExpression="快遞單檔案" />--%>
-                            <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
-                            <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
-                            <asp:BoundField DataField="送件部門" HeaderText="送件部門" SortExpression="送件部門" />
+                            <asp:BoundField DataField="採購單號碼" HeaderText="採購單號碼" SortExpression="採購單號碼" />
+                            <asp:BoundField DataField="主副料" HeaderText="主副料" SortExpression="主副料" />
+                            <asp:BoundField DataField="訂單號碼" HeaderText="訂單號碼" SortExpression="訂單號碼" />
+                            <asp:BoundField DataField="款號" HeaderText="款號" SortExpression="款號" />
+                            <asp:BoundField DataField="採購單狀態" HeaderText="採購單狀態" SortExpression="採購單狀態" />
                         </Columns>
+                        <FooterStyle BackColor="#CCCC99" />
+                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" Font-Size="Medium" ForeColor="White" />
+                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                        <RowStyle BackColor="#F7F7DE" />
+                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                        <SortedAscendingHeaderStyle BackColor="#848384" />
+                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                        <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
 <%--                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT top 40 case when 結案狀態=1 then 'V'else'' end as 已結案,case when 檢貨狀態 = 1 then 'V' else '' end as '已檢貨', * FROM [快遞單] WHERE (([IsDeleted] = @IsDeleted) AND ([提單日期] = @提單日期 ) and 提單號碼 like @提單號碼 and 快遞廠商 like @快遞廠商 )">
                         <SelectParameters>
@@ -161,6 +155,23 @@
                             
                         </SelectParameters>
                     </asp:SqlDataSource>--%>
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server"  ChildrenAsTriggers="True">
+                            <ContentTemplate>
+                                <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                                <asp:Panel ID="AlertPanel" runat="server" align="center" Height="100px" Width="600px" BackColor="#0099FF" style="display:none" >
+                                    <div class=" text-center">
+                                        <h3>
+                                            <asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>
+
+                                        </h3>
+                                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-warning" />
+                                    </div>
+                                </asp:Panel>
+                                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                                </ajaxToolkit:ModalPopupExtender>
+                                
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                 </div>
             </div>
         </div>
