@@ -8177,6 +8177,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column地區;
             
+            private global::System.Data.DataColumn column打樣處理;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 樣室處理作業DataTable() {
@@ -8348,6 +8350,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 打樣處理Column {
+                get {
+                    return this.column打樣處理;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8400,7 +8410,8 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime 預計完日, 
                         System.DateTime 需求日, 
                         string 處理人員, 
-                        string 地區) {
+                        string 地區, 
+                        string 打樣處理) {
                 樣室處理作業Row row樣室處理作業Row = ((樣室處理作業Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         發版日期,
@@ -8419,7 +8430,8 @@ namespace GGFPortal.DataSetSource {
                         預計完日,
                         需求日,
                         處理人員,
-                        地區};
+                        地區,
+                        打樣處理};
                 row樣室處理作業Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row樣室處理作業Row);
                 return row樣室處理作業Row;
@@ -8459,6 +8471,7 @@ namespace GGFPortal.DataSetSource {
                 this.column需求日 = base.Columns["需求日"];
                 this.column處理人員 = base.Columns["處理人員"];
                 this.column地區 = base.Columns["地區"];
+                this.column打樣處理 = base.Columns["打樣處理"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8498,6 +8511,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column處理人員);
                 this.column地區 = new global::System.Data.DataColumn("地區", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column地區);
+                this.column打樣處理 = new global::System.Data.DataColumn("打樣處理", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column打樣處理);
                 this.column處理人員工號.MaxLength = 8;
                 this.column客戶名稱.MaxLength = 8;
                 this.column款號.MaxLength = 120;
@@ -19976,6 +19991,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 打樣處理 {
+                get {
+                    try {
+                        return ((string)(this[this.table樣室處理作業.打樣處理Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'樣室處理作業\' 中資料行 \'打樣處理\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table樣室處理作業.打樣處理Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is發版日期Null() {
                 return this.IsNull(this.table樣室處理作業.發版日期Column);
             }
@@ -20164,6 +20195,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set地區Null() {
                 this[this.table樣室處理作業.地區Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is打樣處理Null() {
+                return this.IsNull(this.table樣室處理作業.打樣處理Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set打樣處理Null() {
+                this[this.table樣室處理作業.打樣處理Column] = global::System.Convert.DBNull;
             }
         }
         

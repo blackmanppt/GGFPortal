@@ -28,6 +28,7 @@
             <asp:Label ID="EndLB" runat="server" Text="結束日期："></asp:Label>
             <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
             <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay"  Format="yyyyMMdd"  />
+            <asp:CheckBox ID="跨年度資料CB" Text="跨年度資料查詢" runat="server" />
         </div>
     <div>
     

@@ -206,6 +206,11 @@ namespace GGFPortal.MGT
             }
             else
             {
+                //idHF.Value = null;
+                //快遞單號TB.Text = "";
+                //快遞日期TB.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                //快遞時間TB.Text = "";
+
                 ADDPanel.Visible = false;
                 SaveBT.Visible = false;
                 DeleteBT.Visible = false;
@@ -303,6 +308,9 @@ namespace GGFPortal.MGT
         {
             快遞時間TB.Text = "";
             快遞單號TB.Text = "";
+            提單號碼TB.Text = "";
+            地點備註TB.Text = "";
+            送件地點DDL.SelectedValue = "其他";
             部門DDL.SelectedValue = "業務部";
             Session["提單日期"] = "%";
             Session["提單號碼"] = "%";

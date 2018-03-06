@@ -58,9 +58,9 @@
                                     <asp:ListItem>廣州</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <h4>地區</h4>
+                            <h4>打樣處理</h4>
                             <div class="form-group">
-                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data" CssClass="form-control">
+                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="MappingData" CssClass="form-control">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="select Data,MappingData from Mapping where UsingDefine='GGFRequestSam'"></asp:SqlDataSource>

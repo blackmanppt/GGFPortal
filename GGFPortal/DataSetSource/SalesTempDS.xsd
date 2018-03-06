@@ -577,7 +577,7 @@ order by 發版日期  desc</CommandText>
   <xs:element name="SalesTempDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SalesTempDS" msprop:Generator_UserDSName="SalesTempDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Sales001" msprop:Generator_TableClassName="Sales001DataTable" msprop:Generator_TableVarName="tableSales001" msprop:Generator_TablePropName="Sales001" msprop:Generator_RowDeletingName="Sales001RowDeleting" msprop:Generator_RowChangingName="Sales001RowChanging" msprop:Generator_RowEvHandlerName="Sales001RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales001RowDeleted" msprop:Generator_UserTableName="Sales001" msprop:Generator_RowChangedName="Sales001RowChanged" msprop:Generator_RowEvArgName="Sales001RowChangeEvent" msprop:Generator_RowClassName="Sales001Row">
+        <xs:element name="Sales001" msprop:Generator_TableClassName="Sales001DataTable" msprop:Generator_TableVarName="tableSales001" msprop:Generator_RowChangedName="Sales001RowChanged" msprop:Generator_TablePropName="Sales001" msprop:Generator_RowDeletingName="Sales001RowDeleting" msprop:Generator_RowChangingName="Sales001RowChanging" msprop:Generator_RowEvHandlerName="Sales001RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales001RowDeleted" msprop:Generator_RowClassName="Sales001Row" msprop:Generator_UserTableName="Sales001" msprop:Generator_RowEvArgName="Sales001RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="訂單號碼" msprop:Generator_ColumnVarNameInTable="column訂單號碼" msprop:Generator_ColumnPropNameInRow="訂單號碼" msprop:Generator_ColumnPropNameInTable="訂單號碼Column" msprop:Generator_UserColumnName="訂單號碼" type="xs:string" minOccurs="0" />
@@ -599,7 +599,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm" msprop:Generator_TableClassName="samc_reqmDataTable" msprop:Generator_TableVarName="tablesamc_reqm" msprop:Generator_TablePropName="samc_reqm" msprop:Generator_RowDeletingName="samc_reqmRowDeleting" msprop:Generator_RowChangingName="samc_reqmRowChanging" msprop:Generator_RowEvHandlerName="samc_reqmRowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqmRowDeleted" msprop:Generator_UserTableName="samc_reqm" msprop:Generator_RowChangedName="samc_reqmRowChanged" msprop:Generator_RowEvArgName="samc_reqmRowChangeEvent" msprop:Generator_RowClassName="samc_reqmRow">
+        <xs:element name="samc_reqm" msprop:Generator_TableClassName="samc_reqmDataTable" msprop:Generator_TableVarName="tablesamc_reqm" msprop:Generator_RowChangedName="samc_reqmRowChanged" msprop:Generator_TablePropName="samc_reqm" msprop:Generator_RowDeletingName="samc_reqmRowDeleting" msprop:Generator_RowChangingName="samc_reqmRowChanging" msprop:Generator_RowEvHandlerName="samc_reqmRowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqmRowDeleted" msprop:Generator_RowClassName="samc_reqmRow" msprop:Generator_UserTableName="samc_reqm" msprop:Generator_RowEvArgName="samc_reqmRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -1051,7 +1051,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Sales002" msprop:Generator_TableClassName="Sales002DataTable" msprop:Generator_TableVarName="tableSales002" msprop:Generator_RowChangedName="Sales002RowChanged" msprop:Generator_TablePropName="Sales002" msprop:Generator_RowDeletingName="Sales002RowDeleting" msprop:Generator_RowChangingName="Sales002RowChanging" msprop:Generator_RowEvHandlerName="Sales002RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales002RowDeleted" msprop:Generator_RowClassName="Sales002Row" msprop:Generator_UserTableName="Sales002" msprop:Generator_RowEvArgName="Sales002RowChangeEvent">
+        <xs:element name="Sales002" msprop:Generator_TableClassName="Sales002DataTable" msprop:Generator_TableVarName="tableSales002" msprop:Generator_TablePropName="Sales002" msprop:Generator_RowDeletingName="Sales002RowDeleting" msprop:Generator_RowChangingName="Sales002RowChanging" msprop:Generator_RowEvHandlerName="Sales002RowChangeEventHandler" msprop:Generator_RowDeletedName="Sales002RowDeleted" msprop:Generator_UserTableName="Sales002" msprop:Generator_RowChangedName="Sales002RowChanged" msprop:Generator_RowEvArgName="Sales002RowChangeEvent" msprop:Generator_RowClassName="Sales002Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="公司別" msprop:Generator_ColumnVarNameInTable="column公司別" msprop:Generator_ColumnPropNameInRow="公司別" msprop:Generator_ColumnPropNameInTable="公司別Column" msprop:Generator_UserColumnName="公司別" type="xs:string" minOccurs="0" />
@@ -1069,7 +1069,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm1" msprop:Generator_TableClassName="samc_reqm1DataTable" msprop:Generator_TableVarName="tablesamc_reqm1" msprop:Generator_RowChangedName="samc_reqm1RowChanged" msprop:Generator_TablePropName="samc_reqm1" msprop:Generator_RowDeletingName="samc_reqm1RowDeleting" msprop:Generator_RowChangingName="samc_reqm1RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm1RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm1RowDeleted" msprop:Generator_RowClassName="samc_reqm1Row" msprop:Generator_UserTableName="samc_reqm1" msprop:Generator_RowEvArgName="samc_reqm1RowChangeEvent">
+        <xs:element name="samc_reqm1" msprop:Generator_TableClassName="samc_reqm1DataTable" msprop:Generator_TableVarName="tablesamc_reqm1" msprop:Generator_TablePropName="samc_reqm1" msprop:Generator_RowDeletingName="samc_reqm1RowDeleting" msprop:Generator_RowChangingName="samc_reqm1RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm1RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm1RowDeleted" msprop:Generator_UserTableName="samc_reqm1" msprop:Generator_RowChangedName="samc_reqm1RowChanged" msprop:Generator_RowEvArgName="samc_reqm1RowChangeEvent" msprop:Generator_RowClassName="samc_reqm1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -1549,7 +1549,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm4" msprop:Generator_TableClassName="samc_reqm4DataTable" msprop:Generator_TableVarName="tablesamc_reqm4" msprop:Generator_RowChangedName="samc_reqm4RowChanged" msprop:Generator_TablePropName="samc_reqm4" msprop:Generator_RowDeletingName="samc_reqm4RowDeleting" msprop:Generator_RowChangingName="samc_reqm4RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm4RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm4RowDeleted" msprop:Generator_RowClassName="samc_reqm4Row" msprop:Generator_UserTableName="samc_reqm4" msprop:Generator_RowEvArgName="samc_reqm4RowChangeEvent">
+        <xs:element name="samc_reqm4" msprop:Generator_TableClassName="samc_reqm4DataTable" msprop:Generator_TableVarName="tablesamc_reqm4" msprop:Generator_TablePropName="samc_reqm4" msprop:Generator_RowDeletingName="samc_reqm4RowDeleting" msprop:Generator_RowChangingName="samc_reqm4RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm4RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm4RowDeleted" msprop:Generator_UserTableName="samc_reqm4" msprop:Generator_RowChangedName="samc_reqm4RowChanged" msprop:Generator_RowEvArgName="samc_reqm4RowChangeEvent" msprop:Generator_RowClassName="samc_reqm4Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -2030,7 +2030,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="samc_reqm5" msprop:Generator_TableClassName="samc_reqm5DataTable" msprop:Generator_TableVarName="tablesamc_reqm5" msprop:Generator_TablePropName="samc_reqm5" msprop:Generator_RowDeletingName="samc_reqm5RowDeleting" msprop:Generator_RowChangingName="samc_reqm5RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm5RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm5RowDeleted" msprop:Generator_UserTableName="samc_reqm5" msprop:Generator_RowChangedName="samc_reqm5RowChanged" msprop:Generator_RowEvArgName="samc_reqm5RowChangeEvent" msprop:Generator_RowClassName="samc_reqm5Row">
+        <xs:element name="samc_reqm5" msprop:Generator_TableClassName="samc_reqm5DataTable" msprop:Generator_TableVarName="tablesamc_reqm5" msprop:Generator_RowChangedName="samc_reqm5RowChanged" msprop:Generator_TablePropName="samc_reqm5" msprop:Generator_RowDeletingName="samc_reqm5RowDeleting" msprop:Generator_RowChangingName="samc_reqm5RowChanging" msprop:Generator_RowEvHandlerName="samc_reqm5RowChangeEventHandler" msprop:Generator_RowDeletedName="samc_reqm5RowDeleted" msprop:Generator_RowClassName="samc_reqm5Row" msprop:Generator_UserTableName="samc_reqm5" msprop:Generator_RowEvArgName="samc_reqm5RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -2512,7 +2512,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="View打版發單表" msprop:Generator_TableClassName="View打版發單表DataTable" msprop:Generator_TableVarName="tableView打版發單表" msprop:Generator_RowChangedName="View打版發單表RowChanged" msprop:Generator_TablePropName="View打版發單表" msprop:Generator_RowDeletingName="View打版發單表RowDeleting" msprop:Generator_RowChangingName="View打版發單表RowChanging" msprop:Generator_RowEvHandlerName="View打版發單表RowChangeEventHandler" msprop:Generator_RowDeletedName="View打版發單表RowDeleted" msprop:Generator_RowClassName="View打版發單表Row" msprop:Generator_UserTableName="View打版發單表" msprop:Generator_RowEvArgName="View打版發單表RowChangeEvent">
+        <xs:element name="View打版發單表" msprop:Generator_TableClassName="View打版發單表DataTable" msprop:Generator_TableVarName="tableView打版發單表" msprop:Generator_TablePropName="View打版發單表" msprop:Generator_RowDeletingName="View打版發單表RowDeleting" msprop:Generator_RowChangingName="View打版發單表RowChanging" msprop:Generator_RowEvHandlerName="View打版發單表RowChangeEventHandler" msprop:Generator_RowDeletedName="View打版發單表RowDeleted" msprop:Generator_UserTableName="View打版發單表" msprop:Generator_RowChangedName="View打版發單表RowChanged" msprop:Generator_RowEvArgName="View打版發單表RowChangeEvent" msprop:Generator_RowClassName="View打版發單表Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="發版日期" msprop:Generator_ColumnVarNameInTable="column發版日期" msprop:Generator_ColumnPropNameInRow="發版日期" msprop:Generator_ColumnPropNameInTable="發版日期Column" msprop:Generator_UserColumnName="發版日期" type="xs:dateTime" minOccurs="0" />
@@ -2591,7 +2591,7 @@ order by 發版日期  desc</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="樣室處理作業" msprop:Generator_TableClassName="樣室處理作業DataTable" msprop:Generator_TableVarName="table樣室處理作業" msprop:Generator_TablePropName="樣室處理作業" msprop:Generator_RowDeletingName="樣室處理作業RowDeleting" msprop:Generator_RowChangingName="樣室處理作業RowChanging" msprop:Generator_RowEvHandlerName="樣室處理作業RowChangeEventHandler" msprop:Generator_RowDeletedName="樣室處理作業RowDeleted" msprop:Generator_UserTableName="樣室處理作業" msprop:Generator_RowChangedName="樣室處理作業RowChanged" msprop:Generator_RowEvArgName="樣室處理作業RowChangeEvent" msprop:Generator_RowClassName="樣室處理作業Row">
+        <xs:element name="樣室處理作業" msprop:Generator_TableClassName="樣室處理作業DataTable" msprop:Generator_TableVarName="table樣室處理作業" msprop:Generator_RowChangedName="樣室處理作業RowChanged" msprop:Generator_TablePropName="樣室處理作業" msprop:Generator_RowDeletingName="樣室處理作業RowDeleting" msprop:Generator_RowChangingName="樣室處理作業RowChanging" msprop:Generator_RowEvHandlerName="樣室處理作業RowChangeEventHandler" msprop:Generator_RowDeletedName="樣室處理作業RowDeleted" msprop:Generator_RowClassName="樣室處理作業Row" msprop:Generator_UserTableName="樣室處理作業" msprop:Generator_RowEvArgName="樣室處理作業RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="發版日期" msprop:Generator_ColumnVarNameInTable="column發版日期" msprop:Generator_ColumnPropNameInRow="發版日期" msprop:Generator_ColumnPropNameInTable="發版日期Column" msprop:Generator_UserColumnName="發版日期" type="xs:dateTime" minOccurs="0" />
@@ -2665,10 +2665,11 @@ order by 發版日期  desc</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="打樣處理" msprop:Generator_ColumnVarNameInTable="column打樣處理" msprop:Generator_ColumnPropNameInRow="打樣處理" msprop:Generator_ColumnPropNameInTable="打樣處理Column" msprop:Generator_UserColumnName="打樣處理" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="訂單資料" msprop:Generator_TableClassName="訂單資料DataTable" msprop:Generator_TableVarName="table訂單資料" msprop:Generator_RowChangedName="訂單資料RowChanged" msprop:Generator_TablePropName="訂單資料" msprop:Generator_RowDeletingName="訂單資料RowDeleting" msprop:Generator_RowChangingName="訂單資料RowChanging" msprop:Generator_RowEvHandlerName="訂單資料RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單資料RowDeleted" msprop:Generator_RowClassName="訂單資料Row" msprop:Generator_UserTableName="訂單資料" msprop:Generator_RowEvArgName="訂單資料RowChangeEvent">
+        <xs:element name="訂單資料" msprop:Generator_TableClassName="訂單資料DataTable" msprop:Generator_TableVarName="table訂單資料" msprop:Generator_TablePropName="訂單資料" msprop:Generator_RowDeletingName="訂單資料RowDeleting" msprop:Generator_RowChangingName="訂單資料RowChanging" msprop:Generator_RowEvHandlerName="訂單資料RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單資料RowDeleted" msprop:Generator_UserTableName="訂單資料" msprop:Generator_RowChangedName="訂單資料RowChanged" msprop:Generator_RowEvArgName="訂單資料RowChangeEvent" msprop:Generator_RowClassName="訂單資料Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="公司別" msprop:Generator_ColumnVarNameInTable="column公司別" msprop:Generator_ColumnPropNameInRow="公司別" msprop:Generator_ColumnPropNameInTable="公司別Column" msprop:Generator_UserColumnName="公司別">

@@ -4662,7 +4662,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>Sercretary001</DataSetName>
+        <DataSetName>Sercretary001V2</DataSetName>
         <Filters>
           <Filter>
             <FilterExpression>=Fields!客戶名稱.Value</FilterExpression>
@@ -5004,6 +5004,78 @@
         <rd:DataSetName>Sercetary</rd:DataSetName>
         <rd:SchemaPath>D:\Program\GGFPortal\GGFPortal\DataSetSource\Sercetary.xsd</rd:SchemaPath>
         <rd:TableName>AllLastYearOder</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Sercretary001V2">
+      <Query>
+        <DataSourceName>Sercetary</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="訂單號碼">
+          <DataField>訂單號碼</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="代理商代號">
+          <DataField>代理商代號</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="代理商名稱">
+          <DataField>代理商名稱</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="客戶名稱">
+          <DataField>客戶名稱</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="訂單日期">
+          <DataField>訂單日期</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="訂單月份">
+          <DataField>訂單月份</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="工廠代號">
+          <DataField>工廠代號</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="工廠名稱">
+          <DataField>工廠名稱</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="地區">
+          <DataField>地區</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="訂單數量">
+          <DataField>訂單數量</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ForMGF">
+          <DataField>ForMGF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="salesman">
+          <DataField>salesman</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="employee_name">
+          <DataField>employee_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderBy">
+          <DataField>OrderBy</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Sercetary</rd:DataSetName>
+        <rd:SchemaPath>D:\Program\GGFPortal\GGFPortal\DataSetSource\Sercetary.xsd</rd:SchemaPath>
+        <rd:TableName>AllNewOrder</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

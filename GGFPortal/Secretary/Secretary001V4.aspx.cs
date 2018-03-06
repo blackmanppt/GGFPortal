@@ -67,25 +67,83 @@ namespace GGFPortal.Secretary
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
                                                     ForMGF, salesman, employee_name,OrderBy FROM ViewPreOrderQty 
                                                                         ) a ");
-            StringBuilder sbstr1 = new StringBuilder(sbstring.ToString()), sbstr2= new StringBuilder(sbstring.ToString()), sbstr3 = new StringBuilder(sbstring.ToString());
-            sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00");
+            StringBuilder sbstr1 = new StringBuilder(sbstring.ToString()), sbstr2= new StringBuilder(sbstring.ToString()), sbstr3 = new StringBuilder(sbstring.ToString()), sbstr4 = new StringBuilder(sbstring.ToString());
+            //sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00");
+            sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ?
+                StartDay.Text : DateTime.Now.ToString("yyyyMM") + "00",
+                (!string.IsNullOrEmpty(EndDay.Text)) ?
+                    EndDay.Text :
+                    (!string.IsNullOrEmpty(StartDay.Text)) ?
+                        Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddMonths(7).ToString("yyyyMM") + "00" : 
+                        DateTime.Now.AddMonths(7).ToString("yyyyMM") + "00"
+                );
             //sbstr2.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime( StartDay.Text.Substring(0,4)+"/"+ StartDay.Text.Substring(4, 2)+ "/" + StartDay.Text.Substring(6, 2)).AddMonths(-7).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-7).ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddMonths(-1).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "00");
             sbstr2.AppendFormat(" where left(訂單日期,4) between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddYears(-1).ToString("yyyy") : DateTime.Now.AddYears(-1).ToString("yyyy"), (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddYears(1).ToString("yyyy") : DateTime.Now.AddYears(1).ToString("yyyy"));
             sbstr3.AppendFormat(" where 訂單日期 like '{0}' ", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddYears(-1).ToString("yyyy")+"%" : DateTime.Now.AddYears(-1).ToString("yyyy") + "%");
-            DataTable dt = new DataTable(), dt2 = new DataTable(), dt3 = new DataTable();
+            //跨年度不抓兩年資料
+            string str結束日期 = "";
+            if (!跨年度資料CB.Checked)
+            {
+                if (!string.IsNullOrEmpty(StartDay.Text))
+                {
+                    if (!string.IsNullOrEmpty(EndDay.Text))
+                    {
+                        if (StartDay.Text.Substring(0, 4)!= EndDay.Text.Substring(0, 4))
+                        {
+                            str結束日期 = StartDay.Text.Substring(0, 4) + "1231";
+                        }
+                    }
+                    else
+                    {
+                        str結束日期 =(Convert.ToInt16( StartDay.Text.Substring(4, 2))>7)? StartDay.Text.Substring(0, 4) + "1231" : 
+                            Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddMonths(7).ToString("yyyyMM") + "00";
+                    }
+                }
+                else
+                { 
+                    if (!string.IsNullOrEmpty(EndDay.Text))
+                        str結束日期 =  EndDay.Text;
+                    else
+                        str結束日期 = (DateTime.Now.Month > 7) ? 
+                            DateTime.Now.Year.ToString("yyyy") + "1231" 
+                            :
+                            DateTime.Now.AddMonths(7).ToString("yyyyMM") + "00";
+                }
+            }
+            else
+            {
+                str結束日期 = (string.IsNullOrEmpty(EndDay.Text) ) ? 
+                    (string.IsNullOrEmpty(StartDay.Text))?
+                        DateTime.Now.AddMonths(7).ToString("yyyyMM")+"00": 
+                            Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddMonths(7).ToString("yyyyMM") + "00": 
+                        EndDay.Text;
+            }
+            sbstr4.AppendFormat(" where 訂單日期 between '{0}' and '{1}'",
+                (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text.Substring(0, 4) + "0000" : DateTime.Now.ToString("yyyy") + "0000",
+                str結束日期);
+
+            //sbstr4.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", 
+            //    (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text.Substring(0,4)+"0000" : DateTime.Now.ToString("yyyy") + "0000", 
+            //    (跨年度資料CB.Checked)?
+            //    (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00"
+            //    :
+            //    (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00" ) ;
+            DataTable dt = new DataTable(), dt2 = new DataTable(), dt3 = new DataTable(), dt4 = new DataTable();
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
                 TimeSpan ts月份;
                 DateTime dt開始月份=DateTime.Now, dt結束月份;
                 int i月數 = 6;
-                if (!string.IsNullOrEmpty(StartDay.Text)&& !string.IsNullOrEmpty(EndDay.Text))
+
+                dt開始月份 =(!string.IsNullOrEmpty(StartDay.Text))? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)):DateTime.Now;
+                if (!string.IsNullOrEmpty(EndDay.Text))
                 {
-                    dt開始月份 = Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2));
                     dt結束月份 = Convert.ToDateTime(EndDay.Text.Substring(0, 4) + "/" + EndDay.Text.Substring(4, 2) + "/" + EndDay.Text.Substring(6, 2));
                     ts月份 = dt結束月份 - dt開始月份;
                     i月數 = 12 * (dt結束月份.Year - dt開始月份.Year) + (dt結束月份.Month - dt開始月份.Month);
                 }
-
+                else
+                    i月數 = 6;
                 //新增月份自動填入
                 sbstr1.AppendFormat(@" union all
                                     select '' 訂單年度,'' 訂單月,'' 訂單號碼,'' 代理商代號,'' 代理商名稱,'' 客戶名稱,'' 訂單日期,
@@ -108,6 +166,9 @@ namespace GGFPortal.Secretary
 
                 SqlDataAdapter myAdapter3 = new SqlDataAdapter(sbstr3.ToString(), Conn);
                 myAdapter3.Fill(dt3);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+
+                SqlDataAdapter myAdapter4 = new SqlDataAdapter(sbstr4.ToString(), Conn);
+                myAdapter4.Fill(dt4);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
             }
             if (dt.Rows.Count > 0)
             {
@@ -116,10 +177,12 @@ namespace GGFPortal.Secretary
                 ReportDataSource source = new ReportDataSource("Sercretary001", dt);
                 ReportDataSource source2 = new ReportDataSource("SercretaryOldOrder", dt2);
                 ReportDataSource source3 = new ReportDataSource("SercretaryLastYearOrder", dt3);
+                ReportDataSource source4 = new ReportDataSource("Sercretary001V2", dt4);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.LocalReport.DataSources.Add(source2);
                 ReportViewer1.LocalReport.DataSources.Add(source3);
+                ReportViewer1.LocalReport.DataSources.Add(source4);
                 ReportViewer1.DataBind();
                 ReportViewer1.LocalReport.Refresh();
             }

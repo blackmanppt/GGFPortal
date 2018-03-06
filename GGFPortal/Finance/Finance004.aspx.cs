@@ -1,15 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 
 namespace GGFPortal.Finance
@@ -33,18 +27,18 @@ namespace GGFPortal.Finance
         {
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
-                if (Ds.Tables.Contains("Shpc"))
-                    Ds.Tables.Remove("Shpc");
+                if (Ds.Tables.Contains("Shpc1"))
+                    Ds.Tables.Remove("Shpc1");
                 string sqlstr = selectsql();
                 SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
-                myAdapter.Fill(Ds, "Shpc");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+                myAdapter.Fill(Ds, "Shpc1");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
             }
-            if (Ds.Tables["Shpc"].Rows.Count > 0)
+            if (Ds.Tables["Shpc1"].Rows.Count > 0)
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("Finance004", Ds.Tables["Shpc"]);
+                ReportDataSource source = new ReportDataSource("Finance004", Ds.Tables["Shpc1"]);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();

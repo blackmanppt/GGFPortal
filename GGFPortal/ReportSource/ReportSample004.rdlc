@@ -690,6 +690,10 @@
           <DataField>地區</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="打樣處理">
+          <DataField>打樣處理</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SalesTempDS</rd:DataSetName>
