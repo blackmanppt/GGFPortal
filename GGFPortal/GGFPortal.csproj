@@ -300,6 +300,7 @@
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
+    <Content Include="test\pictureplay.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
@@ -987,6 +988,13 @@
     </Compile>
     <Compile Include="test\angulartest.aspx.designer.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\pictureplay.aspx.cs">
+      <DependentUpon>pictureplay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\pictureplay.aspx.designer.cs">
+      <DependentUpon>pictureplay.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\WebFormHR.aspx.cs">
       <DependentUpon>WebFormHR.aspx</DependentUpon>
