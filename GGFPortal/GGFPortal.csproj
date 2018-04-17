@@ -66,6 +66,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Highcharts.Web.Mvc, Version=6.0.6673.4178, Culture=neutral, PublicKeyToken=90b74bd27a557bd3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Highsoft.Highcharts.6.0.6673.4178\lib\net40\Highcharts.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Highstock.Web.Mvc, Version=6.0.6673.4434, Culture=neutral, PublicKeyToken=90b74bd27a557bd3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Highsoft.Highstock.6.0.6673.4434\lib\net40\Highstock.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
@@ -243,6 +251,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Controls\HighchartsControl.ascx" />
+    <Content Include="DataSetSource\GGFCube.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GGFCube.edmx</DependentUpon>
+      <LastGenOutput>GGFCube.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSetSource\GGFCube.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GGFCube.edmx</DependentUpon>
+      <LastGenOutput>GGFCube.cs</LastGenOutput>
+    </Content>
     <Content Include="DataSetSource\GGFTest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GGFTest.edmx</DependentUpon>
@@ -278,6 +297,7 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MIS\MIS008.aspx" />
     <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
     <Content Include="Sales\Sales008.aspx" />
@@ -289,18 +309,252 @@
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\cldr.js" />
+    <Content Include="scripts\cldr\event.js" />
+    <Content Include="scripts\cldr\supplemental.js" />
+    <Content Include="scripts\cldr\unresolved.js" />
+    <Content Include="scripts\code\css\highcharts.css" />
+    <Content Include="scripts\code\highcharts-3d.js" />
+    <Content Include="scripts\code\highcharts-3d.src.js" />
+    <Content Include="scripts\code\highcharts-more.js" />
+    <Content Include="scripts\code\highcharts-more.src.js" />
+    <Content Include="scripts\code\highcharts.js" />
+    <Content Include="scripts\code\highcharts.src.js" />
+    <Content Include="scripts\code\js\highcharts-3d.js" />
+    <Content Include="scripts\code\js\highcharts-3d.src.js" />
+    <Content Include="scripts\code\js\highcharts-more.js" />
+    <Content Include="scripts\code\js\highcharts-more.src.js" />
+    <Content Include="scripts\code\js\highcharts.js" />
+    <Content Include="scripts\code\js\highcharts.src.js" />
+    <Content Include="scripts\code\js\modules\accessibility.js" />
+    <Content Include="scripts\code\js\modules\accessibility.src.js" />
+    <Content Include="scripts\code\js\modules\annotations.js" />
+    <Content Include="scripts\code\js\modules\annotations.src.js" />
+    <Content Include="scripts\code\js\modules\boost-canvas.js" />
+    <Content Include="scripts\code\js\modules\boost-canvas.src.js" />
+    <Content Include="scripts\code\js\modules\boost.js" />
+    <Content Include="scripts\code\js\modules\boost.src.js" />
+    <Content Include="scripts\code\js\modules\broken-axis.js" />
+    <Content Include="scripts\code\js\modules\broken-axis.src.js" />
+    <Content Include="scripts\code\js\modules\bullet.js" />
+    <Content Include="scripts\code\js\modules\bullet.src.js" />
+    <Content Include="scripts\code\js\modules\data.js" />
+    <Content Include="scripts\code\js\modules\data.src.js" />
+    <Content Include="scripts\code\js\modules\drag-panes.js" />
+    <Content Include="scripts\code\js\modules\drag-panes.src.js" />
+    <Content Include="scripts\code\js\modules\drilldown.js" />
+    <Content Include="scripts\code\js\modules\drilldown.src.js" />
+    <Content Include="scripts\code\js\modules\export-data.js" />
+    <Content Include="scripts\code\js\modules\export-data.src.js" />
+    <Content Include="scripts\code\js\modules\exporting.js" />
+    <Content Include="scripts\code\js\modules\exporting.src.js" />
+    <Content Include="scripts\code\js\modules\funnel.js" />
+    <Content Include="scripts\code\js\modules\funnel.src.js" />
+    <Content Include="scripts\code\js\modules\gantt.js" />
+    <Content Include="scripts\code\js\modules\gantt.src.js" />
+    <Content Include="scripts\code\js\modules\grid-axis.js" />
+    <Content Include="scripts\code\js\modules\grid-axis.src.js" />
+    <Content Include="scripts\code\js\modules\heatmap.js" />
+    <Content Include="scripts\code\js\modules\heatmap.src.js" />
+    <Content Include="scripts\code\js\modules\histogram-bellcurve.js" />
+    <Content Include="scripts\code\js\modules\histogram-bellcurve.src.js" />
+    <Content Include="scripts\code\js\modules\item-series.js" />
+    <Content Include="scripts\code\js\modules\item-series.src.js" />
+    <Content Include="scripts\code\js\modules\no-data-to-display.js" />
+    <Content Include="scripts\code\js\modules\no-data-to-display.src.js" />
+    <Content Include="scripts\code\js\modules\offline-exporting.js" />
+    <Content Include="scripts\code\js\modules\offline-exporting.src.js" />
+    <Content Include="scripts\code\js\modules\oldie.js" />
+    <Content Include="scripts\code\js\modules\oldie.src.js" />
+    <Content Include="scripts\code\js\modules\overlapping-datalabels.js" />
+    <Content Include="scripts\code\js\modules\overlapping-datalabels.src.js" />
+    <Content Include="scripts\code\js\modules\parallel-coordinates.js" />
+    <Content Include="scripts\code\js\modules\parallel-coordinates.src.js" />
+    <Content Include="scripts\code\js\modules\pareto.js" />
+    <Content Include="scripts\code\js\modules\pareto.src.js" />
+    <Content Include="scripts\code\js\modules\sankey.js" />
+    <Content Include="scripts\code\js\modules\sankey.src.js" />
+    <Content Include="scripts\code\js\modules\series-label.js" />
+    <Content Include="scripts\code\js\modules\series-label.src.js" />
+    <Content Include="scripts\code\js\modules\solid-gauge.js" />
+    <Content Include="scripts\code\js\modules\solid-gauge.src.js" />
+    <Content Include="scripts\code\js\modules\static-scale.js" />
+    <Content Include="scripts\code\js\modules\static-scale.src.js" />
+    <Content Include="scripts\code\js\modules\stock.js" />
+    <Content Include="scripts\code\js\modules\stock.src.js" />
+    <Content Include="scripts\code\js\modules\streamgraph.js" />
+    <Content Include="scripts\code\js\modules\streamgraph.src.js" />
+    <Content Include="scripts\code\js\modules\sunburst.js" />
+    <Content Include="scripts\code\js\modules\sunburst.src.js" />
+    <Content Include="scripts\code\js\modules\tilemap.js" />
+    <Content Include="scripts\code\js\modules\tilemap.src.js" />
+    <Content Include="scripts\code\js\modules\treemap.js" />
+    <Content Include="scripts\code\js\modules\treemap.src.js" />
+    <Content Include="scripts\code\js\modules\variable-pie.js" />
+    <Content Include="scripts\code\js\modules\variable-pie.src.js" />
+    <Content Include="scripts\code\js\modules\variwide.js" />
+    <Content Include="scripts\code\js\modules\variwide.src.js" />
+    <Content Include="scripts\code\js\modules\vector.js" />
+    <Content Include="scripts\code\js\modules\vector.src.js" />
+    <Content Include="scripts\code\js\modules\windbarb.js" />
+    <Content Include="scripts\code\js\modules\windbarb.src.js" />
+    <Content Include="scripts\code\js\modules\wordcloud.js" />
+    <Content Include="scripts\code\js\modules\wordcloud.src.js" />
+    <Content Include="scripts\code\js\modules\xrange.js" />
+    <Content Include="scripts\code\js\modules\xrange.src.js" />
+    <Content Include="scripts\code\js\themes\avocado.js" />
+    <Content Include="scripts\code\js\themes\avocado.src.js" />
+    <Content Include="scripts\code\js\themes\dark-blue.js" />
+    <Content Include="scripts\code\js\themes\dark-blue.src.js" />
+    <Content Include="scripts\code\js\themes\dark-green.js" />
+    <Content Include="scripts\code\js\themes\dark-green.src.js" />
+    <Content Include="scripts\code\js\themes\dark-unica.js" />
+    <Content Include="scripts\code\js\themes\dark-unica.src.js" />
+    <Content Include="scripts\code\js\themes\gray.js" />
+    <Content Include="scripts\code\js\themes\gray.src.js" />
+    <Content Include="scripts\code\js\themes\grid-light.js" />
+    <Content Include="scripts\code\js\themes\grid-light.src.js" />
+    <Content Include="scripts\code\js\themes\grid.js" />
+    <Content Include="scripts\code\js\themes\grid.src.js" />
+    <Content Include="scripts\code\js\themes\sand-signika.js" />
+    <Content Include="scripts\code\js\themes\sand-signika.src.js" />
+    <Content Include="scripts\code\js\themes\skies.js" />
+    <Content Include="scripts\code\js\themes\skies.src.js" />
+    <Content Include="scripts\code\js\themes\sunset.js" />
+    <Content Include="scripts\code\js\themes\sunset.src.js" />
+    <Content Include="scripts\code\lib\canvg.js" />
+    <Content Include="scripts\code\lib\canvg.src.js" />
+    <Content Include="scripts\code\lib\jspdf.js" />
+    <Content Include="scripts\code\lib\jspdf.src.js" />
+    <Content Include="scripts\code\lib\rgbcolor.js" />
+    <Content Include="scripts\code\lib\rgbcolor.src.js" />
+    <Content Include="scripts\code\lib\svg2pdf.js" />
+    <Content Include="scripts\code\lib\svg2pdf.src.js" />
+    <Content Include="scripts\code\modules\accessibility.js" />
+    <Content Include="scripts\code\modules\accessibility.src.js" />
+    <Content Include="scripts\code\modules\annotations.js" />
+    <Content Include="scripts\code\modules\annotations.src.js" />
+    <Content Include="scripts\code\modules\boost-canvas.js" />
+    <Content Include="scripts\code\modules\boost-canvas.src.js" />
+    <Content Include="scripts\code\modules\boost.js" />
+    <Content Include="scripts\code\modules\boost.src.js" />
+    <Content Include="scripts\code\modules\broken-axis.js" />
+    <Content Include="scripts\code\modules\broken-axis.src.js" />
+    <Content Include="scripts\code\modules\bullet.js" />
+    <Content Include="scripts\code\modules\bullet.src.js" />
+    <Content Include="scripts\code\modules\data.js" />
+    <Content Include="scripts\code\modules\data.src.js" />
+    <Content Include="scripts\code\modules\drag-panes.js" />
+    <Content Include="scripts\code\modules\drag-panes.src.js" />
+    <Content Include="scripts\code\modules\drilldown.js" />
+    <Content Include="scripts\code\modules\drilldown.src.js" />
+    <Content Include="scripts\code\modules\export-data.js" />
+    <Content Include="scripts\code\modules\export-data.src.js" />
+    <Content Include="scripts\code\modules\exporting.js" />
+    <Content Include="scripts\code\modules\exporting.src.js" />
+    <Content Include="scripts\code\modules\funnel.js" />
+    <Content Include="scripts\code\modules\funnel.src.js" />
+    <Content Include="scripts\code\modules\gantt.js" />
+    <Content Include="scripts\code\modules\gantt.src.js" />
+    <Content Include="scripts\code\modules\grid-axis.js" />
+    <Content Include="scripts\code\modules\grid-axis.src.js" />
+    <Content Include="scripts\code\modules\heatmap.js" />
+    <Content Include="scripts\code\modules\heatmap.src.js" />
+    <Content Include="scripts\code\modules\histogram-bellcurve.js" />
+    <Content Include="scripts\code\modules\histogram-bellcurve.src.js" />
+    <Content Include="scripts\code\modules\item-series.js" />
+    <Content Include="scripts\code\modules\item-series.src.js" />
+    <Content Include="scripts\code\modules\no-data-to-display.js" />
+    <Content Include="scripts\code\modules\no-data-to-display.src.js" />
+    <Content Include="scripts\code\modules\offline-exporting.js" />
+    <Content Include="scripts\code\modules\offline-exporting.src.js" />
+    <Content Include="scripts\code\modules\oldie.js" />
+    <Content Include="scripts\code\modules\oldie.src.js" />
+    <Content Include="scripts\code\modules\overlapping-datalabels.js" />
+    <Content Include="scripts\code\modules\overlapping-datalabels.src.js" />
+    <Content Include="scripts\code\modules\parallel-coordinates.js" />
+    <Content Include="scripts\code\modules\parallel-coordinates.src.js" />
+    <Content Include="scripts\code\modules\pareto.js" />
+    <Content Include="scripts\code\modules\pareto.src.js" />
+    <Content Include="scripts\code\modules\sankey.js" />
+    <Content Include="scripts\code\modules\sankey.src.js" />
+    <Content Include="scripts\code\modules\series-label.js" />
+    <Content Include="scripts\code\modules\series-label.src.js" />
+    <Content Include="scripts\code\modules\solid-gauge.js" />
+    <Content Include="scripts\code\modules\solid-gauge.src.js" />
+    <Content Include="scripts\code\modules\static-scale.js" />
+    <Content Include="scripts\code\modules\static-scale.src.js" />
+    <Content Include="scripts\code\modules\stock.js" />
+    <Content Include="scripts\code\modules\stock.src.js" />
+    <Content Include="scripts\code\modules\streamgraph.js" />
+    <Content Include="scripts\code\modules\streamgraph.src.js" />
+    <Content Include="scripts\code\modules\sunburst.js" />
+    <Content Include="scripts\code\modules\sunburst.src.js" />
+    <Content Include="scripts\code\modules\tilemap.js" />
+    <Content Include="scripts\code\modules\tilemap.src.js" />
+    <Content Include="scripts\code\modules\treemap.js" />
+    <Content Include="scripts\code\modules\treemap.src.js" />
+    <Content Include="scripts\code\modules\variable-pie.js" />
+    <Content Include="scripts\code\modules\variable-pie.src.js" />
+    <Content Include="scripts\code\modules\variwide.js" />
+    <Content Include="scripts\code\modules\variwide.src.js" />
+    <Content Include="scripts\code\modules\vector.js" />
+    <Content Include="scripts\code\modules\vector.src.js" />
+    <Content Include="scripts\code\modules\windbarb.js" />
+    <Content Include="scripts\code\modules\windbarb.src.js" />
+    <Content Include="scripts\code\modules\wordcloud.js" />
+    <Content Include="scripts\code\modules\wordcloud.src.js" />
+    <Content Include="scripts\code\modules\xrange.js" />
+    <Content Include="scripts\code\modules\xrange.src.js" />
+    <Content Include="scripts\code\themes\avocado.js" />
+    <Content Include="scripts\code\themes\avocado.src.js" />
+    <Content Include="scripts\code\themes\dark-blue.js" />
+    <Content Include="scripts\code\themes\dark-blue.src.js" />
+    <Content Include="scripts\code\themes\dark-green.js" />
+    <Content Include="scripts\code\themes\dark-green.src.js" />
+    <Content Include="scripts\code\themes\dark-unica.js" />
+    <Content Include="scripts\code\themes\dark-unica.src.js" />
+    <Content Include="scripts\code\themes\gray.js" />
+    <Content Include="scripts\code\themes\gray.src.js" />
+    <Content Include="scripts\code\themes\grid-light.js" />
+    <Content Include="scripts\code\themes\grid-light.src.js" />
+    <Content Include="scripts\code\themes\grid.js" />
+    <Content Include="scripts\code\themes\grid.src.js" />
+    <Content Include="scripts\code\themes\sand-signika.js" />
+    <Content Include="scripts\code\themes\sand-signika.src.js" />
+    <Content Include="scripts\code\themes\skies.js" />
+    <Content Include="scripts\code\themes\skies.src.js" />
+    <Content Include="scripts\code\themes\sunset.js" />
+    <Content Include="scripts\code\themes\sunset.src.js" />
+    <Content Include="scripts\globalize.js" />
+    <Content Include="scripts\globalize\currency.js" />
+    <Content Include="scripts\globalize\date.js" />
+    <Content Include="scripts\globalize\message.js" />
+    <Content Include="scripts\globalize\number.js" />
+    <Content Include="scripts\globalize\plural.js" />
+    <Content Include="scripts\globalize\relative-time.js" />
+    <Content Include="scripts\globalize\unit.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <Content Include="scripts\jszip.js" />
+    <Content Include="scripts\jszip.min.js" />
     <Content Include="Secretary\Secretary007.aspx" />
     <Content Include="Secretary\Secretary001V4.aspx" />
     <Content Include="Secretary\Secretary001V3.aspx" />
     <Content Include="Secretary\Secretary001V2.aspx" />
     <Content Include="Secretary\Secretary006.aspx" />
+    <Content Include="Ship\Ship005.aspx" />
     <Content Include="Ship\Ship004.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="test\angulartest.aspx" />
+    <Content Include="test\DevExtreme.aspx" />
+    <Content Include="test\HighChart-column-basic.aspx" />
+    <Content Include="test\HighChart.aspx" />
+    <Content Include="test\HighChart.html" />
+    <Content Include="test\Jsontest.aspx" />
     <Content Include="test\pictureplay.aspx" />
+    <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
@@ -421,6 +675,13 @@
     </Content>
     <Content Include="DataSetSource\MGTTempDS.xsc">
       <DependentUpon>MGTTempDS.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DataSetSource\GGFCube.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GGFCube.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataSetSource\GGFCube.edmx.diagram">
+      <DependentUpon>GGFCube.edmx</DependentUpon>
     </Content>
     <None Include="DataSetSource\MGTTempDS.xsd">
       <SubType>Designer</SubType>
@@ -568,6 +829,109 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\code\css\highcharts.scss" />
+    <Content Include="scripts\code\highcharts-3d.js.map" />
+    <Content Include="scripts\code\highcharts-more.js.map" />
+    <Content Include="scripts\code\highcharts.js.map" />
+    <Content Include="scripts\code\js\highcharts-3d.js.map" />
+    <Content Include="scripts\code\js\highcharts-more.js.map" />
+    <Content Include="scripts\code\js\highcharts.js.map" />
+    <Content Include="scripts\code\js\modules\accessibility.js.map" />
+    <Content Include="scripts\code\js\modules\annotations.js.map" />
+    <Content Include="scripts\code\js\modules\boost-canvas.js.map" />
+    <Content Include="scripts\code\js\modules\boost.js.map" />
+    <Content Include="scripts\code\js\modules\broken-axis.js.map" />
+    <Content Include="scripts\code\js\modules\bullet.js.map" />
+    <Content Include="scripts\code\js\modules\data.js.map" />
+    <Content Include="scripts\code\js\modules\drag-panes.js.map" />
+    <Content Include="scripts\code\js\modules\drilldown.js.map" />
+    <Content Include="scripts\code\js\modules\export-data.js.map" />
+    <Content Include="scripts\code\js\modules\exporting.js.map" />
+    <Content Include="scripts\code\js\modules\funnel.js.map" />
+    <Content Include="scripts\code\js\modules\gantt.js.map" />
+    <Content Include="scripts\code\js\modules\grid-axis.js.map" />
+    <Content Include="scripts\code\js\modules\heatmap.js.map" />
+    <Content Include="scripts\code\js\modules\histogram-bellcurve.js.map" />
+    <Content Include="scripts\code\js\modules\item-series.js.map" />
+    <Content Include="scripts\code\js\modules\no-data-to-display.js.map" />
+    <Content Include="scripts\code\js\modules\offline-exporting.js.map" />
+    <Content Include="scripts\code\js\modules\oldie.js.map" />
+    <Content Include="scripts\code\js\modules\overlapping-datalabels.js.map" />
+    <Content Include="scripts\code\js\modules\parallel-coordinates.js.map" />
+    <Content Include="scripts\code\js\modules\pareto.js.map" />
+    <Content Include="scripts\code\js\modules\sankey.js.map" />
+    <Content Include="scripts\code\js\modules\series-label.js.map" />
+    <Content Include="scripts\code\js\modules\solid-gauge.js.map" />
+    <Content Include="scripts\code\js\modules\static-scale.js.map" />
+    <Content Include="scripts\code\js\modules\stock.js.map" />
+    <Content Include="scripts\code\js\modules\streamgraph.js.map" />
+    <Content Include="scripts\code\js\modules\sunburst.js.map" />
+    <Content Include="scripts\code\js\modules\tilemap.js.map" />
+    <Content Include="scripts\code\js\modules\treemap.js.map" />
+    <Content Include="scripts\code\js\modules\variable-pie.js.map" />
+    <Content Include="scripts\code\js\modules\variwide.js.map" />
+    <Content Include="scripts\code\js\modules\vector.js.map" />
+    <Content Include="scripts\code\js\modules\windbarb.js.map" />
+    <Content Include="scripts\code\js\modules\wordcloud.js.map" />
+    <Content Include="scripts\code\js\modules\xrange.js.map" />
+    <Content Include="scripts\code\js\themes\avocado.js.map" />
+    <Content Include="scripts\code\js\themes\dark-blue.js.map" />
+    <Content Include="scripts\code\js\themes\dark-green.js.map" />
+    <Content Include="scripts\code\js\themes\dark-unica.js.map" />
+    <Content Include="scripts\code\js\themes\gray.js.map" />
+    <Content Include="scripts\code\js\themes\grid-light.js.map" />
+    <Content Include="scripts\code\js\themes\grid.js.map" />
+    <Content Include="scripts\code\js\themes\sand-signika.js.map" />
+    <Content Include="scripts\code\js\themes\skies.js.map" />
+    <Content Include="scripts\code\js\themes\sunset.js.map" />
+    <Content Include="scripts\code\modules\accessibility.js.map" />
+    <Content Include="scripts\code\modules\annotations.js.map" />
+    <Content Include="scripts\code\modules\boost-canvas.js.map" />
+    <Content Include="scripts\code\modules\boost.js.map" />
+    <Content Include="scripts\code\modules\broken-axis.js.map" />
+    <Content Include="scripts\code\modules\bullet.js.map" />
+    <Content Include="scripts\code\modules\data.js.map" />
+    <Content Include="scripts\code\modules\drag-panes.js.map" />
+    <Content Include="scripts\code\modules\drilldown.js.map" />
+    <Content Include="scripts\code\modules\export-data.js.map" />
+    <Content Include="scripts\code\modules\exporting.js.map" />
+    <Content Include="scripts\code\modules\funnel.js.map" />
+    <Content Include="scripts\code\modules\gantt.js.map" />
+    <Content Include="scripts\code\modules\grid-axis.js.map" />
+    <Content Include="scripts\code\modules\heatmap.js.map" />
+    <Content Include="scripts\code\modules\histogram-bellcurve.js.map" />
+    <Content Include="scripts\code\modules\item-series.js.map" />
+    <Content Include="scripts\code\modules\no-data-to-display.js.map" />
+    <Content Include="scripts\code\modules\offline-exporting.js.map" />
+    <Content Include="scripts\code\modules\oldie.js.map" />
+    <Content Include="scripts\code\modules\overlapping-datalabels.js.map" />
+    <Content Include="scripts\code\modules\parallel-coordinates.js.map" />
+    <Content Include="scripts\code\modules\pareto.js.map" />
+    <Content Include="scripts\code\modules\sankey.js.map" />
+    <Content Include="scripts\code\modules\series-label.js.map" />
+    <Content Include="scripts\code\modules\solid-gauge.js.map" />
+    <Content Include="scripts\code\modules\static-scale.js.map" />
+    <Content Include="scripts\code\modules\stock.js.map" />
+    <Content Include="scripts\code\modules\streamgraph.js.map" />
+    <Content Include="scripts\code\modules\sunburst.js.map" />
+    <Content Include="scripts\code\modules\tilemap.js.map" />
+    <Content Include="scripts\code\modules\treemap.js.map" />
+    <Content Include="scripts\code\modules\variable-pie.js.map" />
+    <Content Include="scripts\code\modules\variwide.js.map" />
+    <Content Include="scripts\code\modules\vector.js.map" />
+    <Content Include="scripts\code\modules\windbarb.js.map" />
+    <Content Include="scripts\code\modules\wordcloud.js.map" />
+    <Content Include="scripts\code\modules\xrange.js.map" />
+    <Content Include="scripts\code\themes\avocado.js.map" />
+    <Content Include="scripts\code\themes\dark-blue.js.map" />
+    <Content Include="scripts\code\themes\dark-green.js.map" />
+    <Content Include="scripts\code\themes\dark-unica.js.map" />
+    <Content Include="scripts\code\themes\gray.js.map" />
+    <Content Include="scripts\code\themes\grid-light.js.map" />
+    <Content Include="scripts\code\themes\grid.js.map" />
+    <Content Include="scripts\code\themes\sand-signika.js.map" />
+    <Content Include="scripts\code\themes\skies.js.map" />
+    <Content Include="scripts\code\themes\sunset.js.map" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="scripts\jquery-3.1.1.min.js" />
@@ -667,6 +1031,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HighchartsControl.ascx.cs">
+      <DependentUpon>HighchartsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\HighchartsControl.ascx.designer.cs">
+      <DependentUpon>HighchartsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CrystalReporttest1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -687,6 +1058,24 @@
     </Compile>
     <Compile Include="DataSetSource\bas_employee.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\Coretest.cs">
+      <DependentUpon>GGFCube.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\GGFCube.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGFCube.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\GGFCube.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGFCube.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\GGFCube.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGFCube.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\GGFTest.Context.cs">
       <AutoGen>True</AutoGen>
@@ -757,6 +1146,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VNTemp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\WebTable.cs">
+      <DependentUpon>GGFCube.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\WebURL.cs">
+      <DependentUpon>GGFCube.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\快遞單.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
@@ -869,6 +1264,13 @@
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\MIS008.aspx.cs">
+      <DependentUpon>MIS008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS008.aspx.designer.cs">
+      <DependentUpon>MIS008.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\MIS007.aspx.cs">
       <DependentUpon>MIS007.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -961,6 +1363,13 @@
     <Compile Include="Secretary\Secretary006.aspx.designer.cs">
       <DependentUpon>Secretary006.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ship\Ship005.aspx.cs">
+      <DependentUpon>Ship005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship005.aspx.designer.cs">
+      <DependentUpon>Ship005.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ship\Ship004.aspx.cs">
       <DependentUpon>Ship004.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -989,12 +1398,47 @@
     <Compile Include="test\angulartest.aspx.designer.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\DevExtreme.aspx.cs">
+      <DependentUpon>DevExtreme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\DevExtreme.aspx.designer.cs">
+      <DependentUpon>DevExtreme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\HighChart-column-basic.aspx.cs">
+      <DependentUpon>HighChart-column-basic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\HighChart-column-basic.aspx.designer.cs">
+      <DependentUpon>HighChart-column-basic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\HighChart.aspx.cs">
+      <DependentUpon>HighChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\HighChart.aspx.designer.cs">
+      <DependentUpon>HighChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\Jsontest.aspx.cs">
+      <DependentUpon>Jsontest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\Jsontest.aspx.designer.cs">
+      <DependentUpon>Jsontest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\pictureplay.aspx.cs">
       <DependentUpon>pictureplay.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\pictureplay.aspx.designer.cs">
       <DependentUpon>pictureplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\WEBapitest.aspx.cs">
+      <DependentUpon>WEBapitest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\WEBapitest.aspx.designer.cs">
+      <DependentUpon>WEBapitest.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\WebFormHR.aspx.cs">
       <DependentUpon>WebFormHR.aspx</DependentUpon>
@@ -1697,6 +2141,7 @@
     <Compile Include="VN\VNTimeDelete.aspx.designer.cs">
       <DependentUpon>VNTimeDelete.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WEBAPI\APITest.cs" />
     <Compile Include="資料庫連線\GGFlinq.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1775,6 +2220,8 @@
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip003.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip004.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip005.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip005BOSS.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />

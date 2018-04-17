@@ -143,7 +143,11 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink61" runat="server" NavigateUrl="~/Ship/Ship003.aspx">客戶訂單轉Excel查詢(多條件查詢) </asp:HyperLink>
                          <br />
                         <asp:HyperLink ID="HyperLink75" runat="server" NavigateUrl="~/Ship/Ship004.aspx">櫃號相關資料-查詢 </asp:HyperLink>
+                                                 <br />
+                        <asp:HyperLink ID="HyperLink79" runat="server" NavigateUrl="~/Ship/Ship005.aspx">出口大表(BOSS/設計師) </asp:HyperLink>
+
                     </td>
+
                     <td class="auto-style2">
                         &nbsp;</td>
                     <td>&nbsp;</td>

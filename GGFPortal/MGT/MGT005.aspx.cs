@@ -33,7 +33,7 @@ namespace GGFPortal.MGT
                     明細LB.Text = 提單列印明細.明細;
                     string str備註 = 提單列印明細.備註二??"";
                     if (str備註.IndexOf("\r\n") > 0)
-                        str備註.Replace("\r\n", "<br/>");
+                        str備註=str備註.Replace("\r\n", "<br/>");
                     備註LB.Text = str備註;
                     英文名LB.Text = (string.IsNullOrEmpty(提單列印明細.email))?"": 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
                     快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + 提單列印明細.快遞單.快遞單檔案 + @"' />";

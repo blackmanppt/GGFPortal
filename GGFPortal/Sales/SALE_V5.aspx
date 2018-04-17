@@ -162,8 +162,8 @@
             </asp:UpdatePanel>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.SalesTempDSTableAdapters.samc_reqm5TableAdapter">
                 <SelectParameters>
-                    <asp:SessionParameter DefaultValue="2" Name="progress_rate" SessionField="Progress_rate" Type="String" />
-                    <asp:SessionParameter DefaultValue="2" Name="progress_rate1" SessionField="Prgress_rate1" Type="String" />
+                    <asp:SessionParameter DefaultValue="2" Name="progress_rate" SessionField="progress_rate" Type="String" />
+                    <asp:SessionParameter DefaultValue="2" Name="progress_rate1" SessionField="progress_rate1" Type="String" />
                     <asp:SessionParameter Name="modify_date1" SessionField="StartDay" Type="DateTime" DefaultValue="1900/01/01"/>
                     <asp:SessionParameter Name="modify_date2" SessionField="EndDay" Type="DateTime" DefaultValue="2900/01/01"/>
                     <asp:SessionParameter DefaultValue="2" Name="flag1" SessionField="flag1" Type="Decimal" />

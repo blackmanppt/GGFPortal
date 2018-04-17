@@ -53,7 +53,7 @@ namespace GGFPortal.Ship.Search
             strPur = (PurSearchTB.Text.Trim().Length > 0) ? PurSearchTB.Text.Trim() : "";
             strStyleno = (StyleNoSeachTB.Text.Trim().Length > 0) ? StyleNoSeachTB.Text.Trim() : "";
             string sqlstr = @"
-                                select x.site,x.cus_item_no,x.pur_nbr,x.exchange_rate,x.org_item_no,y.item_name,x.pur_unit,x.pur_price,sum(x.pur_qty) as 採購數量,sum(x.rqty) as 入庫數量,case when x.chn_yn='Y' then '是' else '否' end as 是否轉三角 from (
+                                select TOP 1000 x.site,x.cus_item_no,x.pur_nbr,x.exchange_rate,x.org_item_no,y.item_name,x.pur_unit,x.pur_price,sum(x.pur_qty) as 採購數量,sum(x.rqty) as 入庫數量,case when x.chn_yn='Y' then '是' else '否' end as 是否轉三角 from (
                                 select a.site, a.cus_item_no,b.pur_nbr,c.pur_seq,b.exchange_rate,c.org_item_no, c.pur_qty ,c.pur_unit,c.pur_price
                                 , sum(d.rec_qty) as rqty,b.chn_yn
                                 from ordc_bah1 a left join purc_purchase_master b on a.site=b.site and a.ord_nbr=b.ord_nbr
