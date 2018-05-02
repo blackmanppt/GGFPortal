@@ -41,6 +41,12 @@
                                 <asp:TextBox ID="EndDay" runat="server" class="form-control"></asp:TextBox>
                                 <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" BehaviorID="EndDay_CalendarExtender" TargetControlID="EndDay" Format="yyyyMMdd" />
                             </div>
+                            <h4>工段</h4>
+                            <asp:CheckBox ID="StitchCB" runat="server"  Text="車縫" Checked="true"/>
+                            <asp:CheckBox ID="PackageCB" runat="server" Text="包裝" />
+                            <asp:CheckBox ID="IronCB" runat="server" Text="整燙" />
+                            <asp:CheckBox ID="QCCB" runat="server" Text="QC" />
+                            <asp:CheckBox ID="CutCB" runat="server" Text="裁剪" />
 <%--                            <h4>快遞廠商</h4>
                             <div class="form-group">                                
                                     <asp:DropDownList ID="快遞廠商DDL" runat="server" CssClass="form-control" >

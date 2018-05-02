@@ -10,7 +10,7 @@
 namespace GGFPortal.Secretary {
     
     
-    public partial class Secretary007 {
+    public partial class Secretary008 {
         
         /// <summary>
         /// form1 控制項。
@@ -67,49 +67,58 @@ namespace GGFPortal.Secretary {
         protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
         
         /// <summary>
-        /// StitchCB 控制項。
+        /// CusTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox StitchCB;
+        protected global::System.Web.UI.WebControls.TextBox CusTB;
         
         /// <summary>
-        /// PackageCB 控制項。
+        /// CusTB_AutoCompleteExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox PackageCB;
+        protected global::AjaxControlToolkit.AutoCompleteExtender CusTB_AutoCompleteExtender;
         
         /// <summary>
-        /// IronCB 控制項。
+        /// StyleTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox IronCB;
+        protected global::System.Web.UI.WebControls.TextBox StyleTB;
         
         /// <summary>
-        /// QCCB 控制項。
+        /// StyleTB_AutoCompleteExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox QCCB;
+        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
         
         /// <summary>
-        /// CutCB 控制項。
+        /// VendorDDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CutCB;
+        protected global::System.Web.UI.WebControls.DropDownList VendorDDL;
+        
+        /// <summary>
+        /// SqlDataSource1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
         /// SearchBT 控制項。

@@ -16,15 +16,16 @@ namespace GGFPortal.Sales
             //StartTB.Attributes["readonly"] = "readonly";
             //EndTB.Attributes["readonly"] = "readonly";
             DateTime dtNow = DateTime.Now;
+            int icount = (dtNow.Year- 2017)*12+dtNow.Month;
             if (StartDDL.Items.Count == 0)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < icount; i++)
                 {
                     if (i == 0)
                     {
                         StartDDL.Items.Add("");
                     }
-                    StartDDL.Items.Add(dtNow.AddMonths(i).ToString("yyyyMM"));
+                    StartDDL.Items.Add(dtNow.AddMonths(-i).ToString("yyyyMM"));
                 }
             }
             if (EndDDL.Items.Count == 0)

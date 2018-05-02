@@ -11,7 +11,7 @@ using System.Web.UI;
 namespace GGFPortal.Secretary
 {
 
-    public partial class Secretary007 : System.Web.UI.Page
+    public partial class Secretary008 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         GGFEntitiesMGT db = new GGFEntitiesMGT();
@@ -24,11 +24,12 @@ namespace GGFPortal.Secretary
         protected void ClearBT_Click(object sender, EventArgs e)
         {
             //SiteDDL.SelectedValue = "";
-            //CusTB.Text = "";
-            //提單TB.Text = "";
+            CusTB.Text = "";
+            StyleTB.Text = "";
             StartDay.Text = "";
             EndDay.Text = "";
-            //快遞廠商DDL.SelectedValue = "";
+            VendorDDL.SelectedValue = "";
+
         }
 
         protected void SearchBT_Click(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace GGFPortal.Secretary
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("工時資料", dt);
+                ReportDataSource source = new ReportDataSource("訂單明細", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -59,28 +60,12 @@ namespace GGFPortal.Secretary
 
         private StringBuilder selectsql()
         {
-            StringBuilder strsql = new StringBuilder();
-            strsql.AppendFormat(@"select a.*,b.[actual_ie],b.[image_path] from [dbo].[View工時資料] a left join [dbo].[View訂單資料2] b on a.款號=b.[cus_item_no]
-                                    where    工作時間 between '{0}' and '{1}'"
-                                    , (string.IsNullOrEmpty(StartDay.Text))?"20000101": StartDay.Text, (string.IsNullOrEmpty(EndDay.Text)) ? "20991231" : EndDay.Text);
-            if(StitchCB.Checked==true||CutCB.Checked==true||IronCB.Checked==true||PackageCB.Checked==true||QCCB.Checked==true)
-            {
-                strsql.AppendFormat(" and Team in ('{0}','{1}','{2}','{3}','{4}')"
-                    , (StitchCB.Checked == true) ? "Stitch" : ""
-                    , (CutCB.Checked == true) ? "Cut" : ""
-                    , (IronCB.Checked == true) ? "Iron" : ""
-                    , (PackageCB.Checked == true) ? "Package" : ""
-                    , (QCCB.Checked == true) ? "QC" :"");
+            StringBuilder strsql = new StringBuilder(@"select * from [dbo].[View訂單明細表] where   1=1");
+            strsql.AppendFormat(@" and 出貨日期 between '{0}' and '{1}'",(string.IsNullOrEmpty(StartDay.Text))?"2000-01-01":StartDay.Text, (string.IsNullOrEmpty(EndDay.Text)) ? "2099-01-01" : EndDay.Text);
+            strsql.AppendFormat(@" and 客戶代號 like '{0}'",(string.IsNullOrEmpty(CusTB.Text))?"%":CusTB.Text);
+            strsql.AppendFormat(@" and 款號 like '{0}'", (string.IsNullOrEmpty(StyleTB.Text)) ? "%" : StyleTB.Text);
+            strsql.AppendFormat(@" and [代工廠] like '{0}' ", (string.IsNullOrEmpty(VendorDDL.SelectedValue)) ? "%" : VendorDDL.SelectedValue);
 
-            }
-            //if (!string.IsNullOrEmpty(提單TB.Text.Trim()))
-            //{
-            //    strsql.AppendFormat(" and UPPER(b.[提單號碼]) = '{0}'", 提單TB.Text.Trim().ToUpper());
-            //}
-            //if (快遞廠商DDL.SelectedValue!="")
-            //{
-            //    strsql.AppendFormat(" and UPPER(b.[快遞廠商]) = '{0}'", 快遞廠商DDL.SelectedValue);
-            //}
             return strsql;
         }
         

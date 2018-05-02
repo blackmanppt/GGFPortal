@@ -538,6 +538,7 @@
     <Content Include="scripts\jQuery.print.min.js" />
     <Content Include="scripts\jszip.js" />
     <Content Include="scripts\jszip.min.js" />
+    <Content Include="Secretary\Secretary008.aspx" />
     <Content Include="Secretary\Secretary007.aspx" />
     <Content Include="Secretary\Secretary001V4.aspx" />
     <Content Include="Secretary\Secretary001V3.aspx" />
@@ -1327,6 +1328,13 @@
     </Compile>
     <Compile Include="Sales\Sample008.aspx.designer.cs">
       <DependentUpon>Sample008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary008.aspx.cs">
+      <DependentUpon>Secretary008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary008.aspx.designer.cs">
+      <DependentUpon>Secretary008.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary007.aspx.cs">
       <DependentUpon>Secretary007.aspx</DependentUpon>
@@ -2216,6 +2224,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary007.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary008.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip003.rdlc" />

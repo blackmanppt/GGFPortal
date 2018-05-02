@@ -50,6 +50,7 @@ namespace GGFPortal.MGT
                                 快遞單結案.檢貨時間 = DateTime.Now;
                                 conn.SaveChanges();
                                 transaction.Commit();
+                                確認GV.DataBind();
                                 //ACRGV.DataBind();
                             }
                             catch (Exception ex1)
@@ -80,10 +81,11 @@ namespace GGFPortal.MGT
                         {
                             int.TryParse(strid, out iid);
                             var 快遞單結案 = conn.快遞單.Where(o => o.id == iid).FirstOrDefault();
-                            快遞單結案.結案狀態 = true;
+                            快遞單結案.結案狀態 = (快遞單結案.結案狀態 == true)?false:true;
                             快遞單結案.結案時間 = DateTime.Now;
                             conn.SaveChanges();
                             transaction.Commit();
+                            確認GV.DataBind();
                             //ACRGV.DataBind();
                         }
                         catch (Exception ex1)
