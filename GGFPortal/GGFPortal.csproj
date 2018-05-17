@@ -297,6 +297,7 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MIS\MIS009.aspx" />
     <Content Include="MIS\MIS008.aspx" />
     <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
@@ -557,6 +558,7 @@
     <Content Include="test\pictureplay.aspx" />
     <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
+    <Content Include="test\xmlconvertexcel.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
     <Content Include="VN\VN011.aspx" />
@@ -1265,6 +1267,13 @@
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\MIS009.aspx.cs">
+      <DependentUpon>MIS009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS009.aspx.designer.cs">
+      <DependentUpon>MIS009.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\MIS008.aspx.cs">
       <DependentUpon>MIS008.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1454,6 +1463,13 @@
     </Compile>
     <Compile Include="test\WebFormHR.aspx.designer.cs">
       <DependentUpon>WebFormHR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\xmlconvertexcel.aspx.cs">
+      <DependentUpon>xmlconvertexcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\xmlconvertexcel.aspx.designer.cs">
+      <DependentUpon>xmlconvertexcel.aspx</DependentUpon>
     </Compile>
     <Compile Include="VN\VN013.aspx.cs">
       <DependentUpon>VN013.aspx</DependentUpon>
@@ -2183,6 +2199,7 @@
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT007.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
+    <EmbeddedResource Include="ReportSource\MIS\ReportMIS009.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportS001V3.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -2285,6 +2302,35 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

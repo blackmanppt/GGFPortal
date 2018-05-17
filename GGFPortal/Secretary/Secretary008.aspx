@@ -44,7 +44,7 @@
                             <h4>客戶</h4>
                             <div class="form-group">
                                 <asp:TextBox ID="CusTB" runat="server" class="form-control"></asp:TextBox>
-                                <ajaxToolkit:AutoCompleteExtender ID="CusTB_AutoCompleteExtender" runat="server"  ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="CusTB" ServiceMethod="SearchShipCus" MinimumPrefixLength="1" UseContextKey="True" >
+                                <ajaxToolkit:AutoCompleteExtender ID="CusTB_AutoCompleteExtender" runat="server"  ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="CusTB" ServiceMethod="Search訂單客戶品牌" MinimumPrefixLength="1" UseContextKey="True" >
                                 </ajaxToolkit:AutoCompleteExtender>
                             </div>
                             <h4>款號</h4>

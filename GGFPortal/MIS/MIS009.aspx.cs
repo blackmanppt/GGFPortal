@@ -1,32 +1,36 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using GGFPortal.ReferenceCode;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Text;
 using System.Web.UI;
 
-namespace GGFPortal.Sales
+namespace GGFPortal.MIS
 {
 
-    public partial class Sales007 : System.Web.UI.Page
+    public partial class MIS009 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        字串處理 字串處理 = new 字串處理();
         protected void Page_Load(object sender, EventArgs e)
         {
             //StartDay.Attributes["readonly"] = "readonly";
-            //EndDay.Attributes["readonly"] = "readonly";
+            //訂單交期TB.Attributes["readonly"] = "readonly";
         }
 
         protected void ClearBT_Click(object sender, EventArgs e)
         {
-
+            //SiteDDL.SelectedValue = "";
+            //CusTB.Text = "";
             //StyleTB.Text = "";
             //StartDay.Text = "";
             //EndDay.Text = "";
-            //ESStartTB.Text = "";
-            //ESEndTB.Text = "";
-            客戶TB.Text = "";
-
+            //VendorDDL.SelectedValue = "";
+            //訂單交期TB.Text = "";
+            //款號TB.Text = "";
+            廠商名稱TB.Text = "";
         }
 
         protected void SearchBT_Click(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace GGFPortal.Sales
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("營收資料", dt);
+                ReportDataSource source = new ReportDataSource("廠商交易條件", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -59,15 +63,8 @@ namespace GGFPortal.Sales
         private StringBuilder selectsql()
         {
             
-            StringBuilder strsql = new StringBuilder(" select * from [View營收資料總平均單價] ");
-
-            strsql.AppendFormat(" where [季節年度]  = '{0}' and 季節 = '{1}' ", YearDDL.SelectedValue, SeasonDDL.SelectedValue);
-            //if(!string.IsNullOrEmpty(ESStartTB.Text))
-            //    strsql.AppendFormat(" and [預估毛利]  > '{0}'", ESStartTB.Text);
-            //if (!string.IsNullOrEmpty(ESEndTB.Text))
-            //    strsql.AppendFormat(" and [預估毛利]  < '{0}'", ESEndTB.Text);
-            if (!string.IsNullOrEmpty(客戶TB.Text))
-                strsql.AppendFormat(" and [客戶代號]  = '{0}'", 客戶TB.Text);
+            StringBuilder strsql = new StringBuilder(" select * from [View廠商付款條件] ");
+            strsql.AppendFormat("where 廠商名稱 like '%{0}%' or 廠商簡稱 like '%{0}%' ", 廠商名稱TB.Text);
             return strsql;
         }
         

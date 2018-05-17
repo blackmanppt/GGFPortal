@@ -55,8 +55,8 @@
                             </div>
                             <h4>客戶</h4>
                             <div class="form-group">
-                                <asp:TextBox ID="品牌TB" runat="server" CssClass="form-control" ></asp:TextBox>
-                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="品牌TB_AutoCompleteExtender" TargetControlID="品牌TB" ID="品牌TB_AutoCompleteExtender" ServiceMethod="Search訂單客戶品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
+                                <asp:TextBox ID="客戶TB" runat="server" CssClass="form-control" ></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="客戶TB_AutoCompleteExtender" TargetControlID="客戶TB" ID="客戶TB_AutoCompleteExtender" ServiceMethod="Search訂單客戶品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
                             </div>
 
                             <div class="form-group">

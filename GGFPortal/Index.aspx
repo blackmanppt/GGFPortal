@@ -45,6 +45,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink57" runat="server" NavigateUrl="~/MIS/MIS006.aspx">訂單簽核查詢(新版)</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink76" runat="server" NavigateUrl="~/MIS/MIS007.aspx">採購單核准</asp:HyperLink>
+                                                                        <br />
+                        <asp:HyperLink ID="HyperLink81" runat="server" NavigateUrl="~/MIS/MIS009.aspx">廠商交易資料查詢</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         測試區：</td>

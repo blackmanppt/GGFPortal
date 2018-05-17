@@ -777,12 +777,163 @@ FROM              View出口大表</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="廠商交易條件" msprop:Generator_TableClassName="廠商交易條件DataTable" msprop:Generator_TableVarName="table廠商交易條件" msprop:Generator_RowChangedName="廠商交易條件RowChanged" msprop:Generator_TablePropName="廠商交易條件" msprop:Generator_RowDeletingName="廠商交易條件RowDeleting" msprop:Generator_RowChangingName="廠商交易條件RowChanging" msprop:Generator_RowEvHandlerName="廠商交易條件RowChangeEventHandler" msprop:Generator_RowDeletedName="廠商交易條件RowDeleted" msprop:Generator_RowClassName="廠商交易條件Row" msprop:Generator_UserTableName="廠商交易條件" msprop:Generator_RowEvArgName="廠商交易條件RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="公司別" msprop:Generator_ColumnVarNameInTable="column公司別" msprop:Generator_ColumnPropNameInRow="公司別" msprop:Generator_ColumnPropNameInTable="公司別Column" msprop:Generator_UserColumnName="公司別">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="廠商代號" msprop:Generator_ColumnVarNameInTable="column廠商代號" msprop:Generator_ColumnPropNameInRow="廠商代號" msprop:Generator_ColumnPropNameInTable="廠商代號Column" msprop:Generator_UserColumnName="廠商代號">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="廠商名稱" msprop:Generator_ColumnVarNameInTable="column廠商名稱" msprop:Generator_ColumnPropNameInRow="廠商名稱" msprop:Generator_ColumnPropNameInTable="廠商名稱Column" msprop:Generator_UserColumnName="廠商名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="廠商簡稱" msprop:Generator_ColumnVarNameInTable="column廠商簡稱" msprop:Generator_ColumnPropNameInRow="廠商簡稱" msprop:Generator_ColumnPropNameInTable="廠商簡稱Column" msprop:Generator_UserColumnName="廠商簡稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="統一編號" msprop:Generator_ColumnVarNameInTable="column統一編號" msprop:Generator_ColumnPropNameInRow="統一編號" msprop:Generator_ColumnPropNameInTable="統一編號Column" msprop:Generator_UserColumnName="統一編號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="地址" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column地址" msprop:Generator_ColumnPropNameInRow="地址" msprop:Generator_ColumnPropNameInTable="地址Column" msprop:Generator_UserColumnName="地址" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="180" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="地址2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column地址2" msprop:Generator_ColumnPropNameInRow="地址2" msprop:Generator_ColumnPropNameInTable="地址2Column" msprop:Generator_UserColumnName="地址2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="180" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dept_no" msprop:Generator_ColumnVarNameInTable="columndept_no" msprop:Generator_ColumnPropNameInRow="dept_no" msprop:Generator_ColumnPropNameInTable="dept_noColumn" msprop:Generator_UserColumnName="dept_no" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="buyer" msprop:Generator_ColumnVarNameInTable="columnbuyer" msprop:Generator_ColumnPropNameInRow="buyer" msprop:Generator_ColumnPropNameInTable="buyerColumn" msprop:Generator_UserColumnName="buyer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="負責人" msprop:Generator_ColumnVarNameInTable="column負責人" msprop:Generator_ColumnPropNameInRow="負責人" msprop:Generator_ColumnPropNameInTable="負責人Column" msprop:Generator_UserColumnName="負責人" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="boss_tel" msprop:Generator_ColumnVarNameInTable="columnboss_tel" msprop:Generator_ColumnPropNameInRow="boss_tel" msprop:Generator_ColumnPropNameInTable="boss_telColumn" msprop:Generator_UserColumnName="boss_tel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="carrier_id" msprop:Generator_ColumnVarNameInTable="columncarrier_id" msprop:Generator_ColumnPropNameInRow="carrier_id" msprop:Generator_ColumnPropNameInTable="carrier_idColumn" msprop:Generator_UserColumnName="carrier_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="國家" msprop:Generator_ColumnVarNameInTable="column國家" msprop:Generator_ColumnPropNameInRow="國家" msprop:Generator_ColumnPropNameInTable="國家Column" msprop:Generator_UserColumnName="國家" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="英文名稱" msprop:Generator_ColumnVarNameInTable="column英文名稱" msprop:Generator_ColumnPropNameInRow="英文名稱" msprop:Generator_ColumnPropNameInTable="英文名稱Column" msprop:Generator_UserColumnName="英文名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="remark60_1" msprop:Generator_ColumnVarNameInTable="columnremark60_1" msprop:Generator_ColumnPropNameInRow="remark60_1" msprop:Generator_ColumnPropNameInTable="remark60_1Column" msprop:Generator_UserColumnName="remark60_1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="remark60_2" msprop:Generator_ColumnVarNameInTable="columnremark60_2" msprop:Generator_ColumnPropNameInRow="remark60_2" msprop:Generator_ColumnPropNameInTable="remark60_2Column" msprop:Generator_UserColumnName="remark60_2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="付款代號" msprop:Generator_ColumnVarNameInTable="column付款代號" msprop:Generator_ColumnPropNameInRow="付款代號" msprop:Generator_ColumnPropNameInTable="付款代號Column" msprop:Generator_UserColumnName="付款代號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="付款名稱" msprop:Generator_ColumnVarNameInTable="column付款名稱" msprop:Generator_ColumnPropNameInRow="付款名稱" msprop:Generator_ColumnPropNameInTable="付款名稱Column" msprop:Generator_UserColumnName="付款名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="交易代號" msprop:Generator_ColumnVarNameInTable="column交易代號" msprop:Generator_ColumnPropNameInRow="交易代號" msprop:Generator_ColumnPropNameInTable="交易代號Column" msprop:Generator_UserColumnName="交易代號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="交易名稱" msprop:Generator_ColumnVarNameInTable="column交易名稱" msprop:Generator_ColumnPropNameInRow="交易名稱" msprop:Generator_ColumnPropNameInTable="交易名稱Column" msprop:Generator_UserColumnName="交易名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint11">
       <xs:selector xpath=".//mstns:營收資料" />
       <xs:field xpath="mstns:公司" />
       <xs:field xpath="mstns:訂單號碼" />
+    </xs:unique>
+    <xs:unique name="廠商交易條件_Constraint11" msdata:ConstraintName="Constraint11">
+      <xs:selector xpath=".//mstns:廠商交易條件" />
+      <xs:field xpath="mstns:公司別" />
+      <xs:field xpath="mstns:廠商代號" />
     </xs:unique>
   </xs:element>
 </xs:schema>

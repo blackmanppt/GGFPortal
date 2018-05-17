@@ -27,8 +27,9 @@ namespace GGFPortal.Sales
                     if (i == 1)
                     {
                         YearDDL.Items.Add("");
+                        YearDDL.Items.Add(DateTime.Now.ToString("yyyy"));
                     }
-                    YearDDL.Items.Add(DateTime.Now.AddMonths(-i).ToString("yyyy"));
+                    YearDDL.Items.Add(DateTime.Now.AddYears(-i).ToString("yyyy"));
                 }
             }
             //StartDay.Attributes["readonly"] = "readonly";

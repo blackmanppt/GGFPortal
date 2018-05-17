@@ -21,14 +21,14 @@ namespace GGFPortal.Sales
                 //dtNow = DateTime.Parse("2020-12-01"); //測試用
                 int iCountMonth = (DateTime.Now.Year - 2015);
 
-
                 for (int i = 1; i < iCountMonth; i++)
                 {
                     if (i == 1)
                     {
                         YearDDL.Items.Add("");
+                        YearDDL.Items.Add(DateTime.Now.ToString("yyyy"));
                     }
-                    YearDDL.Items.Add(DateTime.Now.AddMonths(-i).ToString("yyyy"));
+                    YearDDL.Items.Add(DateTime.Now.AddYears(-i).ToString("yyyy"));
                 }
             }
             //StartDay.Attributes["readonly"] = "readonly";
