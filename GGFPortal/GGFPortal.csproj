@@ -301,6 +301,9 @@
     <Content Include="MIS\MIS008.aspx" />
     <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
+    <Content Include="Sales\IMG\Screenshot_9.png" />
+    <Content Include="Sales\Sales010.aspx" />
+    <Content Include="Sales\Sales009.aspx" />
     <Content Include="Sales\Sales008.aspx" />
     <Content Include="Sales\Sales007.aspx" />
     <Content Include="Sales\Sales006.aspx" />
@@ -1296,6 +1299,20 @@
       <DependentUpon>MIS006.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="Sales\Sales010.aspx.cs">
+      <DependentUpon>Sales010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales010.aspx.designer.cs">
+      <DependentUpon>Sales010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales009.aspx.cs">
+      <DependentUpon>Sales009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales009.aspx.designer.cs">
+      <DependentUpon>Sales009.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales008.aspx.cs">
       <DependentUpon>Sales008.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2176,7 +2193,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="aspnet_client\" />
     <Folder Include="Controllers\" />
-    <Folder Include="ExcelUpLoad\Salse\" />
+    <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="MGT\MGTFile\" />
@@ -2231,6 +2248,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales003V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales010.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />

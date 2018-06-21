@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Web.UI.WebControls;
 using System.Xml;
-using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace GGFPortal.test
@@ -62,69 +56,128 @@ namespace GGFPortal.test
             ds.ReadXml(savePath);
             //建立DataTable並將DataSet中的第0個Table資料給DataTable
             DataTable dt = ds.Tables["ColorSize"];
+            //轉換數量類型
+            dt.Columns.Add("數量", typeof(int), "Convert(Quantity,'System.Int32')");
             DataTable dt1 = ds.Tables["PrePack"];
             DataTable dt2 = ds.Tables["Shipment"];
             DataTable dt3 = ds.Tables["Item"];
-            //回傳DataTable
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            //回傳DataTable
-            GridView2.DataSource = dt1;
-            GridView2.DataBind();
-            //回傳DataTable
-            GridView3.DataSource = dt2;
-            GridView3.DataBind();
 
-            GridView4.DataSource = dt3;
-            GridView4.DataBind();
+            DataTable dtColor = new DataTable(), dtSize = new DataTable();
+            dtColor = dt.DefaultView.ToTable(true, new string[] { "Color" });
+            dtSize = dt.DefaultView.ToTable(true, new string[] { "Size" });
 
-            //DataTable TempTable = new DataTable();
-            //TempTable.Columns.Add("");
-            //DataRow row;
-            //for (int i = 0; i < dt2.Rows.Count; i++)
-            //{
-            //    row = TempTable.NewRow();
-            //    row["ShipmentNo"] = i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentDeliveryDate"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
-            //    row["ShipmentBuyerOrderNo"] = "ParentItem " + i;
+            DataTable TempTable = new DataTable();
+            TempTable.Columns.Add("Style");
+            TempTable.Columns.Add("UnitPrice");
+            TempTable.Columns.Add("ShipmentDeliveryDate");
+            TempTable.Columns.Add("Color");
+            if (dtSize.Rows.Count>0)
+                for (int iSizeCount = 0; iSizeCount < dtSize.Rows.Count; iSizeCount++)
+                {
+                    TempTable.Columns.Add(dtSize.Rows[iSizeCount][0].ToString());
+                }
+            for (int po資料筆數 = 0; po資料筆數 < dt3.Rows.Count; po資料筆數++)
+            {
+                for (int i顏色數量 = 0; i顏色數量 < dtColor.Rows.Count; i顏色數量++)
+                {
+                    DataRow row;
+                    row = TempTable.NewRow();
+                    row["Style"] = dt3.Rows[po資料筆數]["ItemBuyerOrderNo"];
+                    row["UnitPrice"] = dt3.Rows[po資料筆數]["ItemUnitPriceTotal"];
+                    row["ShipmentDeliveryDate"] = dt2.Rows[po資料筆數]["ShipmentDeliveryDate"];
+                    row["Color"] = dtColor.Rows[i顏色數量][0];
+                    for (int iSizeCount = 0; iSizeCount < dtSize.Rows.Count; iSizeCount++)
+                    {
+                        object obtest;
+                        obtest = dt.Compute("sum(數量)", "Color = '" + dtColor.Rows[i顏色數量][0].ToString() + "' and Size = '" + dtSize.Rows[iSizeCount][0] + "'");
+                        row[dtSize.Rows[iSizeCount][0].ToString()] = obtest.ToString();
+                    }
+                    TempTable.Rows.Add(row);
+                }
+                if(TempTable.Columns.Count>0)
+                    for (int i = 0; i < TempTable.Columns.Count; i++)
+                    {
+                        if(TempTable.Columns[i].ColumnName.IndexOf(" (")>0)
+                        {
+                            TempTable.Columns[i].ColumnName = TempTable.Columns[i].ColumnName.Substring(0, TempTable.Columns[i].ColumnName.IndexOf(" ("));
+                        }
+                    }
+                DataTable temptable2 = TempTable;
+                GridView5.DataSource = temptable2;
+                GridView5.DataBind();
 
-            //    for (int j = 0; j < dt1.Rows.Count; j++)
-            //    {
-
-            //    }
-            //    TempTable.Rows.Add(row);
-            //}
-            
-            Label1.Text = "";
-
-
-
-
+            }
 
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            string savePath = Server.MapPath(@"~\ExcelUpLoad\VN\test.xml");
-            XElement po = XElement.Load(savePath);
-            IEnumerable<XElement> childElements =
-                    from el in po.Elements()
-                    select el;
-            StringBuilder sb = new StringBuilder();
-            foreach (XElement el in childElements)
-            { 
-                sb.AppendFormat("Name: {0}" , el.Name);
+
+            string savePath = Server.MapPath(@"~\ExcelUpLoad\Salse\SIZE\");
+            string tempFolder = System.IO.Path.GetTempPath(); // Get folder 
+            string FileName = FileUpload1.FileName.ToString(); // Get xml file name
+            savePath = savePath + FileName;
+            FileUpload1.SaveAs(savePath);
+            //string savePath = Server.MapPath(@"~\ExcelUpLoad\VN\test.xml");
+            //string FileName = FileUpload1.FileName.ToString(); // Get xml file name
+            //savePath = savePath + FileName;
+
+            DataSet ds = new DataSet();
+            //透過DataSet的ReadXml方法來讀取Xmlreader資料
+            ds.ReadXml(savePath);
+            //建立DataTable並將DataSet中的第0個Table資料給DataTable
+            DataTable dt = ds.Tables["ColorSize"];
+            //轉換數量類型
+            dt.Columns.Add("數量", typeof(int), "Convert(Quantity,'System.Int32')");
+            DataTable dt1 = ds.Tables["PrePack"];
+            DataTable dt2 = ds.Tables["Shipment"];
+            DataTable dt3 = ds.Tables["Item"];
+
+            DataTable dtColor = new DataTable(), dtSize = new DataTable();
+            dtColor = dt.DefaultView.ToTable(true, new string[] { "Color" });
+            dtSize = dt.DefaultView.ToTable(true, new string[] { "Size" });
+
+            DataTable TempTable = new DataTable();
+            TempTable.Columns.Add("Style");
+            TempTable.Columns.Add("UnitPrice");
+            TempTable.Columns.Add("ShipmentDeliveryDate");
+            TempTable.Columns.Add("Color");
+            if (dtSize.Rows.Count > 0)
+                for (int iSizeCount = 0; iSizeCount < dtSize.Rows.Count; iSizeCount++)
+                {
+                    TempTable.Columns.Add(dtSize.Rows[iSizeCount][0].ToString());
+                }
+
+            for (int po資料筆數 = 0; po資料筆數 < dt3.Rows.Count; po資料筆數++)
+            {
+                for (int i顏色數量 = 0; i顏色數量 < dtColor.Rows.Count; i顏色數量++)
+                {
+                    DataRow row;
+                    row = TempTable.NewRow();
+                    row["Style"] = dt3.Rows[po資料筆數]["ItemBuyerOrderNo"];
+                    row["UnitPrice"] = dt3.Rows[po資料筆數]["ItemUnitPriceTotal"];
+                    row["ShipmentDeliveryDate"] = dt2.Rows[po資料筆數]["ShipmentDeliveryDate"];
+                    row["Color"] = dtColor.Rows[i顏色數量][0];
+                    for (int iSizeCount = 0; iSizeCount < dtSize.Rows.Count; iSizeCount++)
+                    {
+                        object obtest;
+                        obtest = dt.Compute("sum(數量)", "Color = '" + dtColor.Rows[i顏色數量][0].ToString() + "' and Size = '" + dtSize.Rows[iSizeCount][0] + "'");
+                        row[dtSize.Rows[iSizeCount][0].ToString()] = obtest.ToString();
+                    }
+                    TempTable.Rows.Add(row);
+                }
+                if (TempTable.Columns.Count > 0)
+                    for (int i = 0; i < TempTable.Columns.Count; i++)
+                    {
+                        if (TempTable.Columns[i].ColumnName.IndexOf(" (") > 0)
+                        {
+                            //刪除多餘尺寸說明
+                            TempTable.Columns[i].ColumnName = TempTable.Columns[i].ColumnName.Substring(0, TempTable.Columns[i].ColumnName.IndexOf(" ("));
+                        }
+                    }
             }
-            Label1.Text = sb.ToString();
+            ReferenceCode.ConvertToExcel xx = new ReferenceCode.ConvertToExcel();
+            xx.ExcelWithNPOI(TempTable, @"xlsx");
         }
 
         protected void Button4_Click(object sender, EventArgs e)

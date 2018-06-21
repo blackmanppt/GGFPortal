@@ -174,6 +174,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink77" runat="server" NavigateUrl="~/Sales/Sales007.aspx">訂單預估毛利成本(Sales)</asp:HyperLink>
                                                                                                                                                 <br />
                         <asp:HyperLink ID="HyperLink78" runat="server" NavigateUrl="~/Sales/Sales008.aspx">訂單小圖</asp:HyperLink>                        
+                                                                                                                                                                        <br />
+                        <asp:HyperLink ID="HyperLink82" runat="server" NavigateUrl="~/Sales/Sales010.aspx">採購料號查詢</asp:HyperLink>                        
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

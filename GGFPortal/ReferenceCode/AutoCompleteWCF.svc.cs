@@ -249,6 +249,12 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        /// <summary>
+        /// 實際搜尋客戶品牌
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [OperationContract]
         public List<string> Search訂單客戶品牌(string prefixText, int count)
         {

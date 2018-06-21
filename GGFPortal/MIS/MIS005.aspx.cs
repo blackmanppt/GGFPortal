@@ -43,7 +43,7 @@ namespace GGFPortal.MIS
         {
             string strSearch;
             string strwhere = "";
-            strSearch = (SearchTB.Text.Trim().Length > 0) ? SearchTB.Text.Trim() : "";
+            strSearch = (SearchTB.Text.Trim().Length > 0) ? SearchTB.Text.Trim().ToUpper() : "";
 
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
             string sqlstr = @"
@@ -57,7 +57,7 @@ namespace GGFPortal.MIS
                                 where a.site='GGF' and a.employee_status='A'
                             ";
 
-            strwhere = " and ( a.[employee_no] like '%" + strSearch+ "%' or a.[employee_name] like '%" + strSearch + "%' or a.[employee_name_eng] like '%" + strSearch + "%' or a.[email_address] like '%" + strSearch + "%' or a.[tel_nbr] like '%" + strSearch + "%' or b.[dept_name] like '%" + strSearch + "%' )";
+            strwhere = " and ( upper(a.[employee_no]) like '%" + strSearch+ "%' or upper(a.[employee_name]) like '%" + strSearch + "%' or upper(a.[employee_name_eng]) like '%" + strSearch + "%' or upper(a.[email_address]) like '%" + strSearch + "%' or upper(a.[tel_nbr]) like '%" + strSearch + "%' or upper(b.[dept_name]) like '%" + strSearch + "%' )";
             sqlstr += strwhere ;
             return sqlstr;
         }
