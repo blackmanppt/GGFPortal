@@ -16,6 +16,9 @@ namespace GGFPortal.Finance
             StartDay.Attributes["readonly"] = "readonly";
             EndDay.Attributes["readonly"] = "readonly";
             UploadDateTB.Attributes["readonly"] = "readonly";
+            UploadEndDateTB.Attributes["readonly"] = "readonly";
+            AcrStartDateTB.Attributes["readonly"] = "readonly";
+            AcrEndDateTB.Attributes["readonly"] = "readonly";
         }
 
         protected void ClearBT_Click(object sender, EventArgs e)
@@ -26,6 +29,9 @@ namespace GGFPortal.Finance
             EndDay.Text = "";
             StyleTB.Text = "";
             UploadDateTB.Text = "";
+            UploadEndDateTB.Text = "";
+            AcrEndDateTB.Text = "";
+            AcrStartDateTB.Text = "";
             文件上傳CB.Checked = false;
 
         }
@@ -100,8 +106,14 @@ namespace GGFPortal.Finance
             }
             else
             {
-                if (!string.IsNullOrEmpty(UploadDateTB.Text))
-                    strsql.AppendFormat(" and [實際上傳日]  = '{0}'", UploadDateTB.Text);
+                if (!string.IsNullOrEmpty(UploadDateTB.Text)&&string.IsNullOrEmpty(UploadEndDateTB.Text))
+                    strsql.AppendFormat(" and [實際上傳日]  = '{0}'", (!string.IsNullOrEmpty(UploadDateTB.Text))?UploadDateTB.Text:"2000-01-01");
+                else if (!string.IsNullOrEmpty(UploadDateTB.Text) && !string.IsNullOrEmpty(UploadEndDateTB.Text))
+                    strsql.AppendFormat(" and [實際上傳日]  between '{0}' and '{1}' ", (!string.IsNullOrEmpty(UploadDateTB.Text)) ? UploadDateTB.Text : "2000-01-01", (!string.IsNullOrEmpty(UploadEndDateTB.Text)) ? UploadEndDateTB.Text : "2099-01-01");
+            }
+            if(!string.IsNullOrEmpty(AcrEndDateTB.Text)||!string.IsNullOrEmpty(AcrStartDateTB.Text))
+            {
+                strsql.AppendFormat(@" and [預計收款日] between '{0}' and '{1}' ", (!string.IsNullOrEmpty(AcrStartDateTB.Text)) ? AcrStartDateTB.Text : "2000-01-01", (!string.IsNullOrEmpty(AcrEndDateTB.Text)) ? AcrEndDateTB.Text : "2099-01-01");
             }
             return strsql;
         }

@@ -82,6 +82,21 @@
           <Property Name="employee_status" Type="nvarchar" MaxLength="2" />
           <Property Name="email_address" Type="nvarchar" MaxLength="40" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'GGF.dbo.View員工基本資料' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="View員工基本資料">
+          <Key>
+            <PropertyRef Name="員工代號" />
+            <PropertyRef Name="狀態" />
+          </Key>
+          <Property Name="員工代號" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="名字" Type="nvarchar" MaxLength="20" />
+          <Property Name="英文名字" Type="nvarchar" MaxLength="50" />
+          <Property Name="部門名稱" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="40" />
+          <Property Name="分機" Type="nvarchar" MaxLength="10" />
+          <Property Name="狀態" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
           <End Role="快遞單明細" Type="Self.快遞單明細" Multiplicity="*" />
@@ -106,6 +121,17 @@
     [view_employee].[employee_status] AS [employee_status], 
     [view_employee].[email_address] AS [email_address]
     FROM [dbo].[view_employee] AS [view_employee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View員工基本資料" EntityType="Self.View員工基本資料" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View員工基本資料].[員工代號] AS [員工代號], 
+    [View員工基本資料].[名字] AS [名字], 
+    [View員工基本資料].[英文名字] AS [英文名字], 
+    [View員工基本資料].[部門名稱] AS [部門名稱], 
+    [View員工基本資料].[Email] AS [Email], 
+    [View員工基本資料].[分機] AS [分機], 
+    [View員工基本資料].[狀態] AS [狀態]
+    FROM [dbo].[View員工基本資料] AS [View員工基本資料]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_快遞單明細_快遞單1" Association="Self.FK_快遞單明細_快遞單1">
             <End Role="快遞單" EntitySet="快遞單" />
@@ -183,6 +209,7 @@
           </AssociationSet>
           <EntitySet Name="view_employee" EntityType="GGFModelMGT.view_employee" />
           <EntitySet Name="bas_employee" EntityType="GGFModelMGT.bas_employee" />
+          <EntitySet Name="View員工基本資料" EntityType="GGFModelMGT.View員工基本資料" />
         </EntityContainer>
         <EntityType Name="view_employee">
           <Key>
@@ -214,6 +241,19 @@
           <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="modify_date" Type="DateTime" Precision="3" />
           <Property Name="employee_name_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View員工基本資料">
+          <Key>
+            <PropertyRef Name="員工代號" />
+            <PropertyRef Name="狀態" />
+          </Key>
+          <Property Name="員工代號" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="名字" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="英文名字" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="部門名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="分機" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="狀態" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -295,6 +335,19 @@
                 <ScalarProperty Name="employee_name" ColumnName="employee_name" />
                 <ScalarProperty Name="employee_no" ColumnName="employee_no" />
                 <ScalarProperty Name="site" ColumnName="site" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View員工基本資料">
+            <EntityTypeMapping TypeName="GGFModelMGT.View員工基本資料">
+              <MappingFragment StoreEntitySet="View員工基本資料">
+                <ScalarProperty Name="狀態" ColumnName="狀態" />
+                <ScalarProperty Name="分機" ColumnName="分機" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="部門名稱" ColumnName="部門名稱" />
+                <ScalarProperty Name="英文名字" ColumnName="英文名字" />
+                <ScalarProperty Name="名字" ColumnName="名字" />
+                <ScalarProperty Name="員工代號" ColumnName="員工代號" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

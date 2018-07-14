@@ -10,6 +10,7 @@
         <AssociationConnector Association="GGFModelMGT.FK_快遞單明細_快遞單1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="GGFModelMGT.view_employee" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="GGFModelMGT.bas_employee" Width="1.5" PointX="7" PointY="1.375" />
+        <EntityTypeShape EntityType="GGFModelMGT.View員工基本資料" Width="1.5" PointX="9" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

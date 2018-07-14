@@ -301,6 +301,10 @@
     <Content Include="MIS\MIS008.aspx" />
     <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
+    <Content Include="MIS\site\070914021691.html" />
+    <Content Include="MIS\site\site4F.aspx" />
+    <Content Include="MIS\site\site5F.aspx" />
+    <Content Include="MIS\stylesheet.css" />
     <Content Include="Sales\IMG\Screenshot_9.png" />
     <Content Include="Sales\Sales010.aspx" />
     <Content Include="Sales\Sales009.aspx" />
@@ -559,6 +563,8 @@
     <Content Include="test\HighChart.html" />
     <Content Include="test\Jsontest.aspx" />
     <Content Include="test\pictureplay.aspx" />
+    <Content Include="test\sitetest\062911555236.html" />
+    <Content Include="test\sitetest\tabletest.aspx" />
     <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="test\xmlconvertexcel.aspx" />
@@ -1143,6 +1149,9 @@
     <Compile Include="DataSetSource\view_employee.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\View員工基本資料.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1297,6 +1306,17 @@
     </Compile>
     <Compile Include="MIS\MIS006.aspx.designer.cs">
       <DependentUpon>MIS006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\site\site4F.aspx.cs">
+      <DependentUpon>site4F.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\site\site4F.aspx.designer.cs">
+      <DependentUpon>site4F.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\site\site5F.aspx.cs">
+      <DependentUpon>site5F.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
     <Compile Include="Sales\Sales010.aspx.cs">
@@ -1466,6 +1486,13 @@
     </Compile>
     <Compile Include="test\pictureplay.aspx.designer.cs">
       <DependentUpon>pictureplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\sitetest\tabletest.aspx.cs">
+      <DependentUpon>tabletest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\sitetest\tabletest.aspx.designer.cs">
+      <DependentUpon>tabletest.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\WEBapitest.aspx.cs">
       <DependentUpon>WEBapitest.aspx</DependentUpon>
@@ -2197,7 +2224,10 @@
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="MGT\MGTFile\" />
+    <Folder Include="MIS\site\070914021691_files\" />
+    <Folder Include="MIS\site\files\" />
     <Folder Include="Models\" />
+    <Folder Include="test\sitetest\062911555236_files\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CrystalReporttest1.rpt">

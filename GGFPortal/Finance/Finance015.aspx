@@ -41,7 +41,16 @@
                             <div class="form-group">
                                 <asp:TextBox ID="UploadDateTB" runat="server" class="form-control"></asp:TextBox>
                                 <ajaxToolkit:CalendarExtender runat="server" TargetControlID="UploadDateTB" ID="UploadDateTB_CalendarExtender"   Format="yyyy-MM-dd"  ></ajaxToolkit:CalendarExtender>
+                                <asp:TextBox ID="UploadEndDateTB" runat="server" class="form-control"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="UploadEndDateTB_CalendarExtender" TargetControlID="UploadEndDateTB" ID="UploadEndDateTB_CalendarExtender"  Format="yyyy-MM-dd" ></ajaxToolkit:CalendarExtender>
                                 <asp:CheckBox ID="文件上傳CB" runat="server" CssClass="form-control" AutoPostBack="True" OnCheckedChanged="文件上傳CB_CheckedChanged" Text="文件未上傳" />
+                            </div>
+                            <h4>預計收款日</h4>
+                            <div class="form-group">
+                                <asp:TextBox ID="AcrStartDateTB" runat="server" class="form-control"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="AcrStartDateTB_CalendarExtender" TargetControlID="AcrStartDateTB" ID="AcrStartDateTB_CalendarExtender" Format="yyyy-MM-dd"></ajaxToolkit:CalendarExtender>
+                                <asp:TextBox ID="AcrEndDateTB" runat="server" class="form-control"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="AcrEndDateTB_CalendarExtender" TargetControlID="AcrEndDateTB" ID="AcrEndDateTB_CalendarExtender" Format="yyyy-MM-dd"></ajaxToolkit:CalendarExtender>
                             </div>
                             <h4>款號</h4>
                             <div class="form-group">
