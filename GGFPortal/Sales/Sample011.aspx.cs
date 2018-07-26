@@ -8,37 +8,21 @@ using System.Web.UI;
 namespace GGFPortal.Sales
 {
 
-    public partial class Sample007 : System.Web.UI.Page
+    public partial class Sample011 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (YearDDL.Items.Count == 0)
-            {
-                //int iCountYear = DateTime.Now.Year - 2015;
-                DateTime dtNow = DateTime.Now;
-                //dtNow = DateTime.Parse("2020-12-01"); //測試用
-                int iCountMonth = (DateTime.Now.Year - 2015);
 
-                for (int i = 1; i < iCountMonth; i++)
-                {
-                    if (i == 1)
-                    {
-                        YearDDL.Items.Add("");
-                        YearDDL.Items.Add(DateTime.Now.ToString("yyyy"));
-                    }
-                    YearDDL.Items.Add(DateTime.Now.AddYears(-i).ToString("yyyy"));
-                }
-            }
-            //StartDay.Attributes["readonly"] = "readonly";
-            //EndDay.Attributes["readonly"] = "readonly";
+            StartDayTB.Attributes["readonly"] = "readonly";
+            EndDayTB.Attributes["readonly"] = "readonly";
         }
 
         protected void ClearBT_Click(object sender, EventArgs e)
         {
-            YearDDL.SelectedValue = "";
-            MonthDDL.SelectedValue = "";
+            StartDayTB.Text = "";
+            EndDayTB.Text = "";
             AreaDDL.SelectedValue = "";
         }
 
@@ -48,8 +32,8 @@ namespace GGFPortal.Sales
         }
         protected void DbInit()
         {
-            if (!String.IsNullOrEmpty(MonthDDL.SelectedValue) && String.IsNullOrEmpty(YearDDL.SelectedValue))
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('未選擇年度');</script>");
+            if (!String.IsNullOrEmpty(StartDayTB.Text) && String.IsNullOrEmpty(EndDayTB.Text))
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('未選擇起迄時間');</script>");
             else
             {
                 DataTable dt = new DataTable();
@@ -63,7 +47,7 @@ namespace GGFPortal.Sales
                 {
                     ReportViewer1.Visible = true;
                     ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                    ReportDataSource source = new ReportDataSource("Sample007", dt);
+                    ReportDataSource source = new ReportDataSource("打樣單明細表", dt);
                     ReportViewer1.LocalReport.DataSources.Clear();
                     ReportViewer1.LocalReport.DataSources.Add(source);
                     ReportViewer1.DataBind();
@@ -77,10 +61,11 @@ namespace GGFPortal.Sales
         private StringBuilder selectsql()
         {
             
-            StringBuilder strsql = new StringBuilder(" select * from [View打樣室處理作業] where ");
+            StringBuilder strsql = new StringBuilder(" select * from [View打樣室處理作業明細] where ");
 
-            if (!String.IsNullOrEmpty(YearDDL.SelectedValue) || !String.IsNullOrEmpty(MonthDDL.Text)  || !String.IsNullOrEmpty(AreaDDL.SelectedValue) )
+            if (!String.IsNullOrEmpty(StartDayTB.Text) || !String.IsNullOrEmpty(EndDayTB.Text)  || !String.IsNullOrEmpty(AreaDDL.SelectedValue) )
             {
+
                 if(人員DDL.SelectedValue=="全部")
                 {
                     strsql.AppendFormat(" ( 處理人員 like '%車縫%' or  處理人員 like '%裁剪人%')");
@@ -89,14 +74,17 @@ namespace GGFPortal.Sales
                 {
                     strsql.AppendFormat("  處理人員 like '%{0}%' ",人員DDL.SelectedValue);
                 }
+                strsql.AppendFormat(" and ( 打樣處理日期 between '{0}' and '{1}')",
+                    (!string.IsNullOrEmpty(StartDayTB.Text))? StartDayTB.Text:"20000101",
+                    (!string.IsNullOrEmpty(EndDayTB.Text)) ? EndDayTB.Text : "20999999"
+                    );
 
-                
-                if (!String.IsNullOrEmpty(YearDDL.SelectedValue))
-                {
-                    strsql.AppendFormat(" and YEAR([發版日期])  = '{0}' ", YearDDL.SelectedValue);
-                    if (!String.IsNullOrEmpty(MonthDDL.SelectedValue))
-                        strsql.AppendFormat(" and MONTH([發版日期])  = '{0}'", MonthDDL.SelectedValue);
-                }
+                //if (!String.IsNullOrEmpty(StartDayTB.Text))
+                //{
+                //    strsql.AppendFormat(" and YEAR([發版日期])  = '{0}' ", YearDDL.SelectedValue);
+                //    if (!String.IsNullOrEmpty(MonthDDL.SelectedValue))
+                //        strsql.AppendFormat(" and MONTH([發版日期])  = '{0}'", MonthDDL.SelectedValue);
+                //}
 
                 if (!String.IsNullOrEmpty(AreaDDL.SelectedValue))
                     strsql.AppendFormat(" and [地區]  = '{0}'", AreaDDL.SelectedValue);

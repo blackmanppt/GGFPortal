@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample007.aspx.cs" Inherits="GGFPortal.Sales.Sample007" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample011.aspx.cs" Inherits="GGFPortal.Sales.Sample011" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>樣品室產量月總表-處理人員</title>
+    <title>樣品室產量月總表-處理人員(打版日期)</title>
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
@@ -23,30 +23,19 @@
             <div class="row">
                 <div class="col-md-2">
                     <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-left">樣品室產量月總表-處理人員
+                        <h3 class="text-info text-left">樣品室產量月總表-處理人員(打版日期)
                         </h3>
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                            <h4>日期</h4>
                             <div class="form-group">
-                            <h4>年</h4>
-<asp:DropDownList ID="YearDDL" runat="server" class="form-control"></asp:DropDownList>
-						</div> 
-                    <h4>月</h4>
+                                <asp:TextBox ID="StartDayTB" runat="server" CssClass="form-control"></asp:TextBox>
+                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="StartDayTB_CalendarExtender" TargetControlID="StartDayTB" ID="StartDayTB_CalendarExtender" Format="yyyyMMdd"></ajaxToolkit:CalendarExtender>
+                                <asp:TextBox ID="EndDayTB" runat="server" CssClass="form-control"></asp:TextBox>
+
+                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="EndDayTB_CalendarExtender" TargetControlID="EndDayTB" ID="EndDayTB_CalendarExtender" Format="yyyyMMdd"></ajaxToolkit:CalendarExtender>
+                            </div> 
                     <div class="form-group">
-							<asp:DropDownList ID="MonthDDL" runat="server" class="form-control">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
-                                <asp:ListItem>7</asp:ListItem>
-                                <asp:ListItem>8</asp:ListItem>
-                                <asp:ListItem>9</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>11</asp:ListItem>
-                                <asp:ListItem>12</asp:ListItem>
-                            </asp:DropDownList>
+
 						</div> 
                             <h4>地區</h4>
                             <div class="form-group">
@@ -78,7 +67,7 @@
                 </div>
                 <div class="col-md-10">
                     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\Sample\ReportSample007.rdlc" DisplayName="樣品室產量月總表-處理人員">
+                        <LocalReport ReportPath="ReportSource\Sample\ReportSample011V2.rdlc" DisplayName="樣品室產量月總表-處理人員">
                         </LocalReport>
                     </rsweb:ReportViewer>
                 </div>

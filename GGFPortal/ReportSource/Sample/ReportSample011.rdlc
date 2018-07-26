@@ -8,14 +8,14 @@
             <TablixCornerRow>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox9">
+                  <Textbox Name="Textbox13">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>發版日期</Value>
+                            <Value>打樣處理日期</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
                               <FontSize>11pt</FontSize>
@@ -27,13 +27,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox9</rd:DefaultName>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -44,7 +44,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox1">
+                  <Textbox Name="Textbox11">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -63,13 +63,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox1</rd:DefaultName>
+                    <rd:DefaultName>Textbox11</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -80,7 +80,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox7">
+                  <Textbox Name="Textbox9">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -99,13 +99,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox7</rd:DefaultName>
+                    <rd:DefaultName>Textbox9</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -116,7 +116,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox5">
+                  <Textbox Name="Textbox7">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -135,13 +135,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox5</rd:DefaultName>
+                    <rd:DefaultName>Textbox7</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -152,7 +152,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox3">
+                  <Textbox Name="Textbox5">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -171,13 +171,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox3</rd:DefaultName>
+                    <rd:DefaultName>Textbox5</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -188,7 +188,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox2">
+                  <Textbox Name="Textbox3">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -207,13 +207,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox2</rd:DefaultName>
+                    <rd:DefaultName>Textbox3</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#949ca4</Color>
+                        <Color>#4e648a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#7c8692</BackgroundColor>
+                      <BackgroundColor>#384c70</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -241,7 +241,9 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="數量">
-                      <CanGrow>true</CanGrow>
+                      <ToggleImage>
+                        <InitialState>true</InitialState>
+                      </ToggleImage>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -273,8 +275,10 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox29">
-                      <CanGrow>true</CanGrow>
+                    <Textbox Name="Textbox48">
+                      <ToggleImage>
+                        <InitialState>true</InitialState>
+                      </ToggleImage>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -283,7 +287,7 @@
                               <Value>=Sum(Fields!數量.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontWeight>Normal</FontWeight>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -291,13 +295,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <rd:DefaultName>Textbox48</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>#8ca2ba</Color>
+                          <Color>#8a9a9a</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>#748caa</BackgroundColor>
+                        <BackgroundColor>#728586</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -313,7 +317,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox15">
+                    <Textbox Name="Textbox21">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -323,7 +327,7 @@
                               <Value>=Sum(Fields!數量.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontWeight>Normal</FontWeight>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -331,13 +335,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <rd:DefaultName>Textbox21</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>#8ca2ba</Color>
+                          <Color>#8a9a9a</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>#748caa</BackgroundColor>
+                        <BackgroundColor>#728586</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -348,7 +352,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox33">
+                    <Textbox Name="Textbox54">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -358,7 +362,7 @@
                               <Value>=Sum(Fields!數量.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontWeight>Normal</FontWeight>
+                                <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
                             </TextRun>
@@ -366,13 +370,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox33</rd:DefaultName>
+                      <rd:DefaultName>Textbox54</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>#8ca2ba</Color>
+                          <Color>#8a9a9a</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <BackgroundColor>#748caa</BackgroundColor>
+                        <BackgroundColor>#728586</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -411,8 +415,8 @@
                             <Value>=Fields!樣衣種類.Value</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
-                              <FontWeight>Normal</FontWeight>
-                              <Color>#333333</Color>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -422,10 +426,10 @@
                     <rd:DefaultName>樣衣種類</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#aab6c4</Color>
+                        <Color>#aab292</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#96a4b2</BackgroundColor>
+                      <BackgroundColor>#949a7e</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -442,7 +446,7 @@
               <TablixHeader>
                 <Size>0.6cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox28">
+                  <Textbox Name="Textbox47">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -452,7 +456,7 @@
                             <Value>總計</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
-                              <FontWeight>Normal</FontWeight>
+                              <FontWeight>Bold</FontWeight>
                               <Color>White</Color>
                             </Style>
                           </TextRun>
@@ -460,13 +464,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox28</rd:DefaultName>
+                    <rd:DefaultName>Textbox47</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#8ca2ba</Color>
+                        <Color>#8a9a9a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#748caa</BackgroundColor>
+                      <BackgroundColor>#728586</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -481,45 +485,46 @@
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <Group Name="發版日期">
+              <Group Name="打樣處理日期">
                 <GroupExpressions>
-                  <GroupExpression>=Fields!發版日期.Value</GroupExpression>
+                  <GroupExpression>=Fields!打樣處理日期.Value</GroupExpression>
                 </GroupExpressions>
               </Group>
               <SortExpressions>
                 <SortExpression>
-                  <Value>=Fields!發版日期.Value</Value>
+                  <Value>=Fields!打樣處理日期.Value</Value>
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>3.135cm</Size>
                 <CellContents>
-                  <Textbox Name="發版日期">
-                    <CanGrow>true</CanGrow>
+                  <Textbox Name="打樣處理日期">
+                    <ToggleImage>
+                      <InitialState>true</InitialState>
+                    </ToggleImage>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!發版日期.Value</Value>
+                            <Value>=Fields!打樣處理日期.Value</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
-                              <FontWeight>Normal</FontWeight>
-                              <Format>yyyy/MM/dd</Format>
-                              <Color>#333333</Color>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
                             </Style>
                           </TextRun>
                         </TextRuns>
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>發版日期</rd:DefaultName>
+                    <rd:DefaultName>打樣處理日期</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#aab6c4</Color>
+                        <Color>#aab292</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#96a4b2</BackgroundColor>
+                      <BackgroundColor>#949a7e</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -544,7 +549,9 @@
                     <Size>2.5cm</Size>
                     <CellContents>
                       <Textbox Name="打樣單號">
-                        <CanGrow>true</CanGrow>
+                        <ToggleImage>
+                          <InitialState>true</InitialState>
+                        </ToggleImage>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
@@ -553,8 +560,8 @@
                                 <Value>=Fields!打樣單號.Value</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
-                                  <FontWeight>Normal</FontWeight>
-                                  <Color>#333333</Color>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -564,10 +571,10 @@
                         <rd:DefaultName>打樣單號</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Color>#aab6c4</Color>
+                            <Color>#b8c09e</Color>
                             <Style>Solid</Style>
                           </Border>
-                          <BackgroundColor>#96a4b2</BackgroundColor>
+                          <BackgroundColor>#aab292</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -592,7 +599,9 @@
                         <Size>2.5cm</Size>
                         <CellContents>
                           <Textbox Name="客戶名稱">
-                            <CanGrow>true</CanGrow>
+                            <ToggleImage>
+                              <InitialState>true</InitialState>
+                            </ToggleImage>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
@@ -601,8 +610,8 @@
                                     <Value>=Fields!客戶名稱.Value</Value>
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
-                                      <FontWeight>Normal</FontWeight>
-                                      <Color>#333333</Color>
+                                      <FontWeight>Bold</FontWeight>
+                                      <Color>White</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
@@ -612,10 +621,10 @@
                             <rd:DefaultName>客戶名稱</rd:DefaultName>
                             <Style>
                               <Border>
-                                <Color>#bec8ce</Color>
+                                <Color>#d0d6be</Color>
                                 <Style>Solid</Style>
                               </Border>
-                              <BackgroundColor>#aab6c4</BackgroundColor>
+                              <BackgroundColor>#b8c09e</BackgroundColor>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -640,7 +649,9 @@
                             <Size>2.5cm</Size>
                             <CellContents>
                               <Textbox Name="款號">
-                                <CanGrow>true</CanGrow>
+                                <ToggleImage>
+                                  <InitialState>true</InitialState>
+                                </ToggleImage>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
@@ -649,8 +660,8 @@
                                         <Value>=Fields!款號.Value</Value>
                                         <Style>
                                           <FontFamily>Tahoma</FontFamily>
-                                          <FontWeight>Normal</FontWeight>
-                                          <Color>#333333</Color>
+                                          <FontWeight>Bold</FontWeight>
+                                          <Color>White</Color>
                                         </Style>
                                       </TextRun>
                                     </TextRuns>
@@ -660,10 +671,10 @@
                                 <rd:DefaultName>款號</rd:DefaultName>
                                 <Style>
                                   <Border>
-                                    <Color>#c8d8e4</Color>
+                                    <Color>#d0d6be</Color>
                                     <Style>Solid</Style>
                                   </Border>
-                                  <BackgroundColor>#bec8ce</BackgroundColor>
+                                  <BackgroundColor>#b8c09e</BackgroundColor>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -688,7 +699,9 @@
                                 <Size>2.5cm</Size>
                                 <CellContents>
                                   <Textbox Name="處理人員">
-                                    <CanGrow>true</CanGrow>
+                                    <ToggleImage>
+                                      <InitialState>true</InitialState>
+                                    </ToggleImage>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
                                       <Paragraph>
@@ -697,8 +710,8 @@
                                             <Value>=Fields!處理人員.Value</Value>
                                             <Style>
                                               <FontFamily>Tahoma</FontFamily>
-                                              <FontWeight>Normal</FontWeight>
-                                              <Color>#333333</Color>
+                                              <FontWeight>Bold</FontWeight>
+                                              <Color>White</Color>
                                             </Style>
                                           </TextRun>
                                         </TextRuns>
@@ -708,10 +721,10 @@
                                     <rd:DefaultName>處理人員</rd:DefaultName>
                                     <Style>
                                       <Border>
-                                        <Color>#c8d8e4</Color>
+                                        <Color>#d0d6be</Color>
                                         <Style>Solid</Style>
                                       </Border>
-                                      <BackgroundColor>#bec8ce</BackgroundColor>
+                                      <BackgroundColor>#b8c09e</BackgroundColor>
                                       <PaddingLeft>2pt</PaddingLeft>
                                       <PaddingRight>2pt</PaddingRight>
                                       <PaddingTop>2pt</PaddingTop>
@@ -736,7 +749,9 @@
                                     <Size>2.5cm</Size>
                                     <CellContents>
                                       <Textbox Name="打樣處理">
-                                        <CanGrow>true</CanGrow>
+                                        <ToggleImage>
+                                          <InitialState>true</InitialState>
+                                        </ToggleImage>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
                                           <Paragraph>
@@ -745,8 +760,8 @@
                                                 <Value>=Fields!打樣處理.Value</Value>
                                                 <Style>
                                                   <FontFamily>Tahoma</FontFamily>
-                                                  <FontWeight>Normal</FontWeight>
-                                                  <Color>#333333</Color>
+                                                  <FontWeight>Bold</FontWeight>
+                                                  <Color>White</Color>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -756,10 +771,10 @@
                                         <rd:DefaultName>打樣處理</rd:DefaultName>
                                         <Style>
                                           <Border>
-                                            <Color>#c8d8e4</Color>
+                                            <Color>#d0d6be</Color>
                                             <Style>Solid</Style>
                                           </Border>
-                                          <BackgroundColor>#bec8ce</BackgroundColor>
+                                          <BackgroundColor>#b8c09e</BackgroundColor>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
                                           <PaddingTop>2pt</PaddingTop>
@@ -771,22 +786,42 @@
                                   <TablixMembers>
                                     <TablixMember />
                                   </TablixMembers>
+                                  <Visibility>
+                                    <Hidden>true</Hidden>
+                                    <ToggleItem>處理人員</ToggleItem>
+                                  </Visibility>
                                 </TablixMember>
                               </TablixMembers>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                                <ToggleItem>款號</ToggleItem>
+                              </Visibility>
                             </TablixMember>
                           </TablixMembers>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                            <ToggleItem>客戶名稱</ToggleItem>
+                          </Visibility>
                         </TablixMember>
                       </TablixMembers>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                        <ToggleItem>打樣單號</ToggleItem>
+                      </Visibility>
                     </TablixMember>
                   </TablixMembers>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                    <ToggleItem>打樣處理日期</ToggleItem>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>2.5cm</Size>
+                <Size>3.135cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox11">
+                  <Textbox Name="Textbox15">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -796,7 +831,7 @@
                             <Value>總計</Value>
                             <Style>
                               <FontFamily>Tahoma</FontFamily>
-                              <FontWeight>Normal</FontWeight>
+                              <FontWeight>Bold</FontWeight>
                               <Color>White</Color>
                             </Style>
                           </TextRun>
@@ -804,13 +839,13 @@
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox11</rd:DefaultName>
+                    <rd:DefaultName>Textbox15</rd:DefaultName>
                     <Style>
                       <Border>
-                        <Color>#8ca2ba</Color>
+                        <Color>#8a9a9a</Color>
                         <Style>Solid</Style>
                       </Border>
-                      <BackgroundColor>#748caa</BackgroundColor>
+                      <BackgroundColor>#728586</BackgroundColor>
                       <PaddingLeft>2pt</PaddingLeft>
                       <PaddingRight>2pt</PaddingRight>
                       <PaddingTop>2pt</PaddingTop>
@@ -824,7 +859,7 @@
                   <TablixHeader>
                     <Size>2.5cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox4">
+                      <Textbox Name="Textbox16">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -834,7 +869,7 @@
                                 <Value />
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
-                                  <FontWeight>Normal</FontWeight>
+                                  <FontWeight>Bold</FontWeight>
                                   <Color>White</Color>
                                 </Style>
                               </TextRun>
@@ -842,13 +877,13 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox4</rd:DefaultName>
+                        <rd:DefaultName>Textbox16</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Color>#8ca2ba</Color>
+                            <Color>#8a9a9a</Color>
                             <Style>Solid</Style>
                           </Border>
-                          <BackgroundColor>#748caa</BackgroundColor>
+                          <BackgroundColor>#728586</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -862,7 +897,7 @@
                       <TablixHeader>
                         <Size>2.5cm</Size>
                         <CellContents>
-                          <Textbox Name="Textbox12">
+                          <Textbox Name="Textbox17">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -872,7 +907,7 @@
                                     <Value />
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
-                                      <FontWeight>Normal</FontWeight>
+                                      <FontWeight>Bold</FontWeight>
                                       <Color>White</Color>
                                     </Style>
                                   </TextRun>
@@ -880,13 +915,13 @@
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Textbox12</rd:DefaultName>
+                            <rd:DefaultName>Textbox17</rd:DefaultName>
                             <Style>
                               <Border>
-                                <Color>#8ca2ba</Color>
+                                <Color>#8a9a9a</Color>
                                 <Style>Solid</Style>
                               </Border>
-                              <BackgroundColor>#748caa</BackgroundColor>
+                              <BackgroundColor>#728586</BackgroundColor>
                               <PaddingLeft>2pt</PaddingLeft>
                               <PaddingRight>2pt</PaddingRight>
                               <PaddingTop>2pt</PaddingTop>
@@ -900,7 +935,7 @@
                           <TablixHeader>
                             <Size>2.5cm</Size>
                             <CellContents>
-                              <Textbox Name="Textbox13">
+                              <Textbox Name="Textbox18">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
@@ -910,7 +945,7 @@
                                         <Value />
                                         <Style>
                                           <FontFamily>Tahoma</FontFamily>
-                                          <FontWeight>Normal</FontWeight>
+                                          <FontWeight>Bold</FontWeight>
                                           <Color>White</Color>
                                         </Style>
                                       </TextRun>
@@ -918,13 +953,13 @@
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>Textbox13</rd:DefaultName>
+                                <rd:DefaultName>Textbox18</rd:DefaultName>
                                 <Style>
                                   <Border>
-                                    <Color>#8ca2ba</Color>
+                                    <Color>#8a9a9a</Color>
                                     <Style>Solid</Style>
                                   </Border>
-                                  <BackgroundColor>#748caa</BackgroundColor>
+                                  <BackgroundColor>#728586</BackgroundColor>
                                   <PaddingLeft>2pt</PaddingLeft>
                                   <PaddingRight>2pt</PaddingRight>
                                   <PaddingTop>2pt</PaddingTop>
@@ -938,7 +973,7 @@
                               <TablixHeader>
                                 <Size>2.5cm</Size>
                                 <CellContents>
-                                  <Textbox Name="Textbox14">
+                                  <Textbox Name="Textbox19">
                                     <CanGrow>true</CanGrow>
                                     <KeepTogether>true</KeepTogether>
                                     <Paragraphs>
@@ -948,7 +983,7 @@
                                             <Value />
                                             <Style>
                                               <FontFamily>Tahoma</FontFamily>
-                                              <FontWeight>Normal</FontWeight>
+                                              <FontWeight>Bold</FontWeight>
                                               <Color>White</Color>
                                             </Style>
                                           </TextRun>
@@ -956,13 +991,13 @@
                                         <Style />
                                       </Paragraph>
                                     </Paragraphs>
-                                    <rd:DefaultName>Textbox14</rd:DefaultName>
+                                    <rd:DefaultName>Textbox19</rd:DefaultName>
                                     <Style>
                                       <Border>
-                                        <Color>#8ca2ba</Color>
+                                        <Color>#8a9a9a</Color>
                                         <Style>Solid</Style>
                                       </Border>
-                                      <BackgroundColor>#748caa</BackgroundColor>
+                                      <BackgroundColor>#728586</BackgroundColor>
                                       <PaddingLeft>2pt</PaddingLeft>
                                       <PaddingRight>2pt</PaddingRight>
                                       <PaddingTop>2pt</PaddingTop>
@@ -976,7 +1011,7 @@
                                   <TablixHeader>
                                     <Size>2.5cm</Size>
                                     <CellContents>
-                                      <Textbox Name="Textbox8">
+                                      <Textbox Name="Textbox20">
                                         <CanGrow>true</CanGrow>
                                         <KeepTogether>true</KeepTogether>
                                         <Paragraphs>
@@ -986,7 +1021,7 @@
                                                 <Value />
                                                 <Style>
                                                   <FontFamily>Tahoma</FontFamily>
-                                                  <FontWeight>Normal</FontWeight>
+                                                  <FontWeight>Bold</FontWeight>
                                                   <Color>White</Color>
                                                 </Style>
                                               </TextRun>
@@ -994,13 +1029,13 @@
                                             <Style />
                                           </Paragraph>
                                         </Paragraphs>
-                                        <rd:DefaultName>Textbox8</rd:DefaultName>
+                                        <rd:DefaultName>Textbox20</rd:DefaultName>
                                         <Style>
                                           <Border>
-                                            <Color>#8ca2ba</Color>
+                                            <Color>#8a9a9a</Color>
                                             <Style>Solid</Style>
                                           </Border>
-                                          <BackgroundColor>#748caa</BackgroundColor>
+                                          <BackgroundColor>#728586</BackgroundColor>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
                                           <PaddingTop>2pt</PaddingTop>
@@ -1023,9 +1058,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>Sample004</DataSetName>
+        <FixedColumnHeaders>true</FixedColumnHeaders>
+        <DataSetName>打樣單明細表</DataSetName>
         <Height>1.8cm</Height>
-        <Width>20cm</Width>
+        <Width>20.635cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1036,7 +1072,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>7.87402in</Width>
+  <Width>8.12402in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -1054,11 +1090,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8b620fdd-de51-4134-b068-2a74f2f384a0</rd:DataSourceID>
+      <rd:DataSourceID>1c2b6835-4961-4ddc-959b-67a4567c169d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="Sample004">
+    <DataSet Name="打樣單明細表">
       <Query>
         <DataSourceName>SalesTempDS</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -1136,6 +1172,10 @@
           <DataField>打樣處理</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="打樣處理日期">
+          <DataField>打樣處理日期</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SalesTempDS</rd:DataSetName>
@@ -1148,5 +1188,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>301000a4-2e7c-4bdb-b211-5e06060643de</rd:ReportID>
+  <rd:ReportID>d34bd131-e831-475f-b004-857001753373</rd:ReportID>
 </Report>

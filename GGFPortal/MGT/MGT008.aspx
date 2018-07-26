@@ -45,7 +45,9 @@
                                         <asp:ListItem>峻越</asp:ListItem>
                                         <asp:ListItem>捷麟</asp:ListItem>
                                         <asp:ListItem>順豐</asp:ListItem>
-                                        <asp:ListItem>馬島-DHL</asp:ListItem>
+                                        <asp:ListItem>船務-馬島-DHL</asp:ListItem>
+                                        <asp:ListItem>DHL</asp:ListItem>
+                                        <asp:ListItem>FedEx</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             <h4>快遞單號</h4>

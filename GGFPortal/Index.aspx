@@ -212,6 +212,8 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink55" runat="server" NavigateUrl="~/Sales/Sample009.aspx">樣品室產量月總表-馬克處理人員</asp:HyperLink>
                          <br />
                                                 <asp:HyperLink ID="HyperLink62" runat="server" NavigateUrl="~/Sales/Sample010.aspx">打樣收單查詢(BY 款號)</asp:HyperLink>
+                        <br />
+                                                <asp:HyperLink ID="HyperLink83" runat="server" NavigateUrl="~/Sales/Sample011.aspx">樣品室產量月總表-處理人員(打版日期)</asp:HyperLink>
 
                                                 </td>
                     <th  class="auto-style2">
@@ -241,6 +243,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink53" runat="server" NavigateUrl="~/VN/VN012.aspx">越南明細表(秒數)</asp:HyperLink>
                                                                                                 <br />
                         <asp:HyperLink ID="HyperLink54" runat="server" NavigateUrl="~/VN/VN013.aspx">越南明細表(各組秒數)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink84" runat="server" NavigateUrl="~/VN/VN014.aspx">訂單主料到廠日(有小圖)</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

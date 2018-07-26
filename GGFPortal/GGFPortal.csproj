@@ -311,6 +311,7 @@
     <Content Include="Sales\Sales008.aspx" />
     <Content Include="Sales\Sales007.aspx" />
     <Content Include="Sales\Sales006.aspx" />
+    <Content Include="Sales\Sample011.aspx" />
     <Content Include="Sales\Sample010.aspx" />
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
@@ -568,6 +569,7 @@
     <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="test\xmlconvertexcel.aspx" />
+    <Content Include="VN\VN014.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
     <Content Include="VN\VN011.aspx" />
@@ -1354,6 +1356,13 @@
     <Compile Include="Sales\Sales006.aspx.designer.cs">
       <DependentUpon>Sales006.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sample011.aspx.cs">
+      <DependentUpon>Sample011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample011.aspx.designer.cs">
+      <DependentUpon>Sample011.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample010.aspx.cs">
       <DependentUpon>Sample010.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1514,6 +1523,13 @@
     </Compile>
     <Compile Include="test\xmlconvertexcel.aspx.designer.cs">
       <DependentUpon>xmlconvertexcel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VN\VN014.aspx.cs">
+      <DependentUpon>VN014.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN014.aspx.designer.cs">
+      <DependentUpon>VN014.aspx</DependentUpon>
     </Compile>
     <Compile Include="VN\VN013.aspx.cs">
       <DependentUpon>VN013.aspx</DependentUpon>
@@ -2284,6 +2300,8 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample011.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample011V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportS001V4.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -2306,6 +2324,8 @@
     <EmbeddedResource Include="ReportSource\VN\ReportVN010.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN013.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN013V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN014.rdlc" />
+    <EmbeddedResource Include="ReportSource\VN\ReportVN014V2.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSample02_V2.rdlc" />
     <EmbeddedResource Include="test\CrystalReport1.rpt">

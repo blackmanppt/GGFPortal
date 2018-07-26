@@ -10,7 +10,7 @@
 namespace GGFPortal.Sales {
     
     
-    public partial class Sample007 {
+    public partial class Sample011 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,22 +31,40 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// YearDDL 控制項。
+        /// StartDayTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList YearDDL;
+        protected global::System.Web.UI.WebControls.TextBox StartDayTB;
         
         /// <summary>
-        /// MonthDDL 控制項。
+        /// StartDayTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList MonthDDL;
+        protected global::AjaxControlToolkit.CalendarExtender StartDayTB_CalendarExtender;
+        
+        /// <summary>
+        /// EndDayTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EndDayTB;
+        
+        /// <summary>
+        /// EndDayTB_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender EndDayTB_CalendarExtender;
         
         /// <summary>
         /// AreaDDL 控制項。

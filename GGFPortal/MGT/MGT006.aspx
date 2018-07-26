@@ -49,7 +49,9 @@
                                         <asp:ListItem>峻越</asp:ListItem>
                                         <asp:ListItem>捷麟</asp:ListItem>
                                         <asp:ListItem>順豐</asp:ListItem>
-                                        <asp:ListItem>馬島-DHL</asp:ListItem>
+                                        <asp:ListItem>船務-馬島-DHL</asp:ListItem>
+                                        <asp:ListItem>DHL</asp:ListItem>
+                                        <asp:ListItem>FedEx</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             <h4>快遞單號</h4>
@@ -61,12 +63,8 @@
                             <div class="form-group">
                                 <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
                                 <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />
-
                             </div>
-
-
                         </div>
-
                     </nav>
                 </div>
                 <div class="col-md-10">
