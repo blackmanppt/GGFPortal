@@ -282,6 +282,17 @@
       <DependentUpon>MGTModel.edmx</DependentUpon>
       <LastGenOutput>MGTModel.cs</LastGenOutput>
     </Content>
+    <Content Include="DataSetSource\MISModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MISModel.edmx</DependentUpon>
+      <LastGenOutput>MISModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSetSource\MISModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MISModel.edmx</DependentUpon>
+      <LastGenOutput>MISModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Default.aspx" />
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
@@ -297,14 +308,24 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MIS\MIS010.aspx" />
     <Content Include="MIS\MIS009.aspx" />
     <Content Include="MIS\MIS008.aspx" />
     <Content Include="MIS\MIS007.aspx" />
     <Content Include="MIS\MIS006.aspx" />
+    <Content Include="MIS\site\site12F.aspx" />
+    <Content Include="MIS\site\files\group12F.png" />
+    <Content Include="MIS\site\files\image004.png" />
+    <Content Include="MIS\site\files\line_台北_亞細亞6樓-版室_0.png" />
+    <Content Include="MIS\site\site10.aspx" />
     <Content Include="MIS\site\070914021691.html" />
+    <Content Include="MIS\site\files\cellsDrawing_台北_9樓-會計_船務_0.png" />
     <Content Include="MIS\site\site4F.aspx" />
     <Content Include="MIS\site\site5F.aspx" />
+    <Content Include="MIS\site\site6F.aspx" />
+    <Content Include="MIS\site\site9F.aspx" />
     <Content Include="MIS\stylesheet.css" />
+    <Content Include="ReferenceCode\easyui\jquery.easyui.min.js" />
     <Content Include="Sales\IMG\Screenshot_9.png" />
     <Content Include="Sales\Sales010.aspx" />
     <Content Include="Sales\Sales009.aspx" />
@@ -557,6 +578,7 @@
     <Content Include="Ship\Ship004.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
+    <Content Include="TempCode\TempExcelImport.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="test\DevExtreme.aspx" />
     <Content Include="test\HighChart-column-basic.aspx" />
@@ -715,6 +737,13 @@
     </Content>
     <Content Include="DataSetSource\SalesTempDS.xsc">
       <DependentUpon>SalesTempDS.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DataSetSource\MISModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MISModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataSetSource\MISModel.edmx.diagram">
+      <DependentUpon>MISModel.edmx</DependentUpon>
     </Content>
     <None Include="DataSetSource\SalesTempDS.xsd">
       <SubType>Designer</SubType>
@@ -1126,6 +1155,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MGTTempDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\MISModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MISModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\MISModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\MISModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MISModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\purc_pkd.cs">
       <DependentUpon>GGFTest.tt</DependentUpon>
     </Compile>
@@ -1147,6 +1191,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ShipTempDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\shpc_bat.cs">
+      <DependentUpon>MISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\view_employee.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
@@ -1175,6 +1222,13 @@
     </Compile>
     <Compile Include="DataSetSource\快遞單明細.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance010.aspx.cs">
       <DependentUpon>Finance010.aspx</DependentUpon>
@@ -1281,6 +1335,13 @@
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\MIS010.aspx.cs">
+      <DependentUpon>MIS010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS010.aspx.designer.cs">
+      <DependentUpon>MIS010.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\MIS009.aspx.cs">
       <DependentUpon>MIS009.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1309,6 +1370,20 @@
     <Compile Include="MIS\MIS006.aspx.designer.cs">
       <DependentUpon>MIS006.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\site\site12F.aspx.cs">
+      <DependentUpon>site12F.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\site\site12F.aspx.designer.cs">
+      <DependentUpon>site12F.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\site\site10.aspx.cs">
+      <DependentUpon>site10.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\site\site10.aspx.designer.cs">
+      <DependentUpon>site10.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\site\site4F.aspx.cs">
       <DependentUpon>site4F.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1320,6 +1395,24 @@
       <DependentUpon>site5F.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MIS\site\site6F.aspx.cs">
+      <DependentUpon>site6F.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\site\site6F.aspx.designer.cs">
+      <DependentUpon>site6F.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\site\site9F.aspx.cs">
+      <DependentUpon>site9F.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\site\site9F.aspx.designer.cs">
+      <DependentUpon>site9F.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MIS\佣金Controller.cs" />
+    <Compile Include="MIS\佣金Model.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductsController.cs" />
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
     <Compile Include="Sales\Sales010.aspx.cs">
       <DependentUpon>Sales010.aspx</DependentUpon>
@@ -1453,6 +1546,13 @@
     </Compile>
     <Compile Include="Ship\Ship002.aspx.designer.cs">
       <DependentUpon>Ship002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\TempExcelImport.aspx.cs">
+      <DependentUpon>TempExcelImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\TempExcelImport.aspx.designer.cs">
+      <DependentUpon>TempExcelImport.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\angulartest.aspx.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
@@ -2241,7 +2341,6 @@
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="MGT\MGTFile\" />
     <Folder Include="MIS\site\070914021691_files\" />
-    <Folder Include="MIS\site\files\" />
     <Folder Include="Models\" />
     <Folder Include="test\sitetest\062911555236_files\" />
   </ItemGroup>

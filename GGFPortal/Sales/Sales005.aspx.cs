@@ -17,6 +17,7 @@ namespace GGFPortal.Sales
             //EndTB.Attributes["readonly"] = "readonly";
             DateTime dtNow = DateTime.Now;
             int icount = (dtNow.Year- 2017)*12+dtNow.Month;
+            int icount2 = (dtNow.AddYears(1).Year - 2017) * 12 + dtNow.Month;
             if (StartDDL.Items.Count == 0)
             {
                 for (int i = 0; i < icount; i++)
@@ -30,13 +31,13 @@ namespace GGFPortal.Sales
             }
             if (EndDDL.Items.Count == 0)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i = icount2; i >0; i--)
                 {
-                    if (i == 0)
+                    if (i == icount2)
                     {
                         EndDDL.Items.Add("");
                     }
-                    EndDDL.Items.Add(dtNow.AddMonths(i).ToString("yyyyMM"));
+                    EndDDL.Items.Add(dtNow.AddMonths(-i+13).ToString("yyyyMM"));
                 }
             }
         }
@@ -105,6 +106,7 @@ namespace GGFPortal.Sales
             
             StringBuilder strsql = new StringBuilder(@" SELECT  * FROM [dbo].[View營收資料] ");
             strsql.AppendFormat(" where 交期年月 between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDDL.SelectedValue))? StartDDL.SelectedValue : DateTime.Now.ToString("yyyyMM"), (!String.IsNullOrEmpty(EndDDL.SelectedValue)) ? EndDDL.SelectedValue : DateTime.Now.AddMonths(3).ToString("yyyyMM"));
+            strsql.AppendFormat(" and 公司 like '{0}' ", (公司別DDL.SelectedValue=="ALL") ? "%" : 公司別DDL.SelectedValue);
             return strsql;
         }
         

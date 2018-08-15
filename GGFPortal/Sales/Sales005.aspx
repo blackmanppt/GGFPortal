@@ -26,10 +26,14 @@
                         <h3 class="text-info text-center">營收資料查詢
                         </h3>
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-<%--                            <div class="form-group">
-                            <h4>年</h4>
-<asp:DropDownList ID="YearDDL" runat="server" class="form-control"></asp:DropDownList>
-						</div> --%>
+                            <div class="form-group">
+                            <h4>公司別</h4>
+<asp:DropDownList ID="公司別DDL" runat="server" class="form-control">
+    <asp:ListItem>ALL</asp:ListItem>
+    <asp:ListItem>GGF</asp:ListItem>
+    <asp:ListItem>TCL</asp:ListItem>
+</asp:DropDownList>
+						</div> 
                     <h4>訂單日期</h4>
                     <div class="form-group">
 <%--                        <asp:TextBox ID="StartTB" runat="server" class="form-control"></asp:TextBox>

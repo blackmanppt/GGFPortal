@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Sales {
+namespace GGFPortal.MIS {
     
     
-    public partial class Sales005 {
+    public partial class MIS010 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,31 +31,13 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// 公司別DDL 控制項。
+        /// 出貨單號TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList 公司別DDL;
-        
-        /// <summary>
-        /// StartDDL 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StartDDL;
-        
-        /// <summary>
-        /// EndDDL 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EndDDL;
+        protected global::System.Web.UI.WebControls.TextBox 出貨單號TB;
         
         /// <summary>
         /// SearchBT 控制項。
@@ -76,21 +58,12 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.Button ClearBT;
         
         /// <summary>
-        /// MessageLT 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal MessageLT;
-        
-        /// <summary>
-        /// ReportViewer1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

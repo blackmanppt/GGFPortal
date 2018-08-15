@@ -402,6 +402,35 @@ namespace GGFPortal.ReferenceCode
         }
 
     }
-    
+    public class AMZForcast
+    {
+        //public int ColumnID { get; set; }
+        //public string ColumnName { get; set; }
+        //public string VNName { get; set; }
+        //public int ColumnType { get; set; }
+        //public string ChineseName { get; set; }
+        public string Size { get; set; }
+        public string Color { get; set; }
+        public string 款號 { get; set; }
+        public int 訂單單位 { get; set; }
+        public int 可用庫存 { get; set; }
+        //public int Week1 { get; set; }
+
+        public DataTable ForcastDataTable { get; set; }
+        public void ForcastDT()
+        {
+            ForcastDataTable = new DataTable();
+            ForcastDataTable.Columns.Add("款號");
+            ForcastDataTable.Columns.Add("顏色");
+            ForcastDataTable.Columns.Add("尺寸");
+            ForcastDataTable.Columns.Add("匯入起始日期");
+            ForcastDataTable.Columns.Add("匯入結束日期");
+            ForcastDataTable.Columns.Add("訂單單位");
+            ForcastDataTable.Columns.Add("可用庫存");
+
+        }
+
+    }
+
 
 }

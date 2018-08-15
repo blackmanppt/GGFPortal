@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GGFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="shpc_bat">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="shp_nbr" />
+            <PropertyRef Name="shp_seq" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="kind" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="shp_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="shp_seq" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="pre_shp_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="pre_shp_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="ord_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="ord_seq" Type="nvarchar" MaxLength="4" />
+          <Property Name="ord_rank" Type="nvarchar" MaxLength="4" />
+          <Property Name="doc_ctl" Type="nvarchar" MaxLength="1" />
+          <Property Name="rs_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="stockroom" Type="nvarchar" MaxLength="12" />
+          <Property Name="stockroom_to" Type="nvarchar" MaxLength="12" />
+          <Property Name="lot_nbr" Type="nvarchar" MaxLength="100" />
+          <Property Name="cus_item_name" Type="nvarchar" MaxLength="120" />
+          <Property Name="sales_um" Type="nvarchar" MaxLength="4" />
+          <Property Name="pack_unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="sale_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="shp_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="rtn_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="aux_qty" Type="numeric" Precision="11" Scale="3" />
+          <Property Name="pack_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="inner_qty" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="std_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="sale_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="shp_amt" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="base_amt" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="ship_cost" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="other_expse" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="discount_rate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="box_qty" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="net_weight" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="gross_weight" Type="numeric" Precision="12" Scale="3" />
+          <Property Name="cuft_size" Type="numeric" Precision="14" Scale="4" />
+          <Property Name="invoice_nbr" Type="nvarchar" MaxLength="10" />
+          <Property Name="reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="shp_whence" Type="nvarchar" MaxLength="1" />
+          <Property Name="remark150" Type="nvarchar" MaxLength="150" />
+          <Property Name="modify_count" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="detail_status" Type="nvarchar" MaxLength="2" />
+          <Property Name="posted_ivc" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_sal" Type="nvarchar" MaxLength="1" />
+          <Property Name="posted_inv" Type="nvarchar" MaxLength="1" />
+          <Property Name="post_inv_date" Type="datetime" />
+          <Property Name="protect_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="cust_po_nbr" Type="nvarchar" MaxLength="20" />
+          <Property Name="commiss_amount" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="base_commiss_amount" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="add_reduce_item" Type="numeric" Precision="12" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="GGFModelStoreContainer">
+          <EntitySet Name="shpc_bat" EntityType="Self.shpc_bat" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GGFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="shpc_bat">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="kind" />
+            <PropertyRef Name="shp_nbr" />
+            <PropertyRef Name="shp_seq" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kind" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shp_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shp_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pre_shp_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pre_shp_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ord_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ord_seq" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ord_rank" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="doc_ctl" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="rs_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="stockroom_to" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="lot_nbr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cus_item_name" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="sales_um" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="pack_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="sale_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="shp_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="rtn_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="aux_qty" Type="Decimal" Precision="11" Scale="3" />
+          <Property Name="pack_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="inner_qty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="std_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="sale_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="shp_amt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="base_amt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="ship_cost" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="other_expse" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="discount_rate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="box_qty" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="net_weight" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="gross_weight" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="cuft_size" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="invoice_nbr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="shp_whence" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="remark150" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="modify_count" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="detail_status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="posted_ivc" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_sal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="posted_inv" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="post_inv_date" Type="DateTime" Precision="3" />
+          <Property Name="protect_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="cust_po_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="commiss_amount" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="base_commiss_amount" Type="Decimal" Precision="11" Scale="2" />
+          <Property Name="add_reduce_item" Type="Decimal" Precision="12" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="MISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="shpc_bat" EntityType="Self.shpc_bat" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GGFModelStoreContainer" CdmEntityContainer="MISEntities">
+          <EntitySetMapping Name="shpc_bat">
+            <EntityTypeMapping TypeName="GGFModel.shpc_bat">
+              <MappingFragment StoreEntitySet="shpc_bat">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="shp_nbr" ColumnName="shp_nbr" />
+                <ScalarProperty Name="shp_seq" ColumnName="shp_seq" />
+                <ScalarProperty Name="pre_shp_nbr" ColumnName="pre_shp_nbr" />
+                <ScalarProperty Name="pre_shp_seq" ColumnName="pre_shp_seq" />
+                <ScalarProperty Name="ord_nbr" ColumnName="ord_nbr" />
+                <ScalarProperty Name="ord_seq" ColumnName="ord_seq" />
+                <ScalarProperty Name="ord_rank" ColumnName="ord_rank" />
+                <ScalarProperty Name="doc_ctl" ColumnName="doc_ctl" />
+                <ScalarProperty Name="rs_type" ColumnName="rs_type" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="stockroom" ColumnName="stockroom" />
+                <ScalarProperty Name="stockroom_to" ColumnName="stockroom_to" />
+                <ScalarProperty Name="lot_nbr" ColumnName="lot_nbr" />
+                <ScalarProperty Name="cus_item_name" ColumnName="cus_item_name" />
+                <ScalarProperty Name="sales_um" ColumnName="sales_um" />
+                <ScalarProperty Name="pack_unit" ColumnName="pack_unit" />
+                <ScalarProperty Name="sale_qty" ColumnName="sale_qty" />
+                <ScalarProperty Name="shp_qty" ColumnName="shp_qty" />
+                <ScalarProperty Name="rtn_qty" ColumnName="rtn_qty" />
+                <ScalarProperty Name="aux_qty" ColumnName="aux_qty" />
+                <ScalarProperty Name="pack_qty" ColumnName="pack_qty" />
+                <ScalarProperty Name="inner_qty" ColumnName="inner_qty" />
+                <ScalarProperty Name="std_price" ColumnName="std_price" />
+                <ScalarProperty Name="sale_price" ColumnName="sale_price" />
+                <ScalarProperty Name="shp_amt" ColumnName="shp_amt" />
+                <ScalarProperty Name="base_amt" ColumnName="base_amt" />
+                <ScalarProperty Name="ship_cost" ColumnName="ship_cost" />
+                <ScalarProperty Name="other_expse" ColumnName="other_expse" />
+                <ScalarProperty Name="discount_rate" ColumnName="discount_rate" />
+                <ScalarProperty Name="box_qty" ColumnName="box_qty" />
+                <ScalarProperty Name="net_weight" ColumnName="net_weight" />
+                <ScalarProperty Name="gross_weight" ColumnName="gross_weight" />
+                <ScalarProperty Name="cuft_size" ColumnName="cuft_size" />
+                <ScalarProperty Name="invoice_nbr" ColumnName="invoice_nbr" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="shp_whence" ColumnName="shp_whence" />
+                <ScalarProperty Name="remark150" ColumnName="remark150" />
+                <ScalarProperty Name="modify_count" ColumnName="modify_count" />
+                <ScalarProperty Name="detail_status" ColumnName="detail_status" />
+                <ScalarProperty Name="posted_ivc" ColumnName="posted_ivc" />
+                <ScalarProperty Name="posted_sal" ColumnName="posted_sal" />
+                <ScalarProperty Name="posted_inv" ColumnName="posted_inv" />
+                <ScalarProperty Name="post_inv_date" ColumnName="post_inv_date" />
+                <ScalarProperty Name="protect_yn" ColumnName="protect_yn" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="cust_po_nbr" ColumnName="cust_po_nbr" />
+                <ScalarProperty Name="commiss_amount" ColumnName="commiss_amount" />
+                <ScalarProperty Name="base_commiss_amount" ColumnName="base_commiss_amount" />
+                <ScalarProperty Name="add_reduce_item" ColumnName="add_reduce_item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
