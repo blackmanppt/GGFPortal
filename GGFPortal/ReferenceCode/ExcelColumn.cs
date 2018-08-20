@@ -423,11 +423,34 @@ namespace GGFPortal.ReferenceCode
             ForcastDataTable.Columns.Add("款號");
             ForcastDataTable.Columns.Add("顏色");
             ForcastDataTable.Columns.Add("尺寸");
-            ForcastDataTable.Columns.Add("匯入起始日期");
-            ForcastDataTable.Columns.Add("匯入結束日期");
             ForcastDataTable.Columns.Add("訂單單位");
             ForcastDataTable.Columns.Add("可用庫存");
-
+            ForcastDataTable.Columns.Add("Week1");
+            ForcastDataTable.Columns.Add("Week2");
+            ForcastDataTable.Columns.Add("Week3");
+            ForcastDataTable.Columns.Add("Week4");
+            ForcastDataTable.Columns.Add("Week5");
+            ForcastDataTable.Columns.Add("Week6");
+            ForcastDataTable.Columns.Add("Week7");
+            ForcastDataTable.Columns.Add("Week8");
+            ForcastDataTable.Columns.Add("Week9");
+            ForcastDataTable.Columns.Add("Week10");
+            ForcastDataTable.Columns.Add("Week11");
+            ForcastDataTable.Columns.Add("Week12");
+            ForcastDataTable.Columns.Add("Week13");
+            ForcastDataTable.Columns.Add("Week14");
+            ForcastDataTable.Columns.Add("Week15");
+            ForcastDataTable.Columns.Add("Week16");
+            ForcastDataTable.Columns.Add("Week17");
+            ForcastDataTable.Columns.Add("Week18");
+            ForcastDataTable.Columns.Add("Week19");
+            ForcastDataTable.Columns.Add("Week20");
+            ForcastDataTable.Columns.Add("Week21");
+            ForcastDataTable.Columns.Add("Week22");
+            ForcastDataTable.Columns.Add("Week23");
+            ForcastDataTable.Columns.Add("Week24");
+            ForcastDataTable.Columns.Add("Week25");
+            ForcastDataTable.Columns.Add("Week26");
         }
 
     }

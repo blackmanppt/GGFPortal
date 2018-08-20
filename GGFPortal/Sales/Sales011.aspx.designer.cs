@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.TempCode {
+namespace GGFPortal.Sales {
     
     
-    public partial class TempExcelImport {
+    public partial class Sales011 {
         
         /// <summary>
         /// form1 控制項。
@@ -38,6 +38,24 @@ namespace GGFPortal.TempCode {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload 文件上傳FU;
+        
+        /// <summary>
+        /// StartDayTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StartDayTB;
+        
+        /// <summary>
+        /// StartDayTB_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender StartDayTB_CalendarExtender;
         
         /// <summary>
         /// DataCheckBT 控制項。

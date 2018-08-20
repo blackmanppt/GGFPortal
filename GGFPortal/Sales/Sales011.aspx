@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TempExcelImport.aspx.cs" Inherits="GGFPortal.TempCode.TempExcelImport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sales011.aspx.cs" Inherits="GGFPortal.Sales.Sales011" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -30,12 +30,14 @@
 
 
                             <h4>匯入檔案</h4>
-                            
                                 <asp:FileUpload ID="文件上傳FU" runat="server" CssClass=""/>
+                            <h4>匯入起始日</h4>
+                            <asp:TextBox ID="StartDayTB" runat="server" CssClass="form-control"></asp:TextBox>
+                            <ajaxToolkit:CalendarExtender runat="server" BehaviorID="StartDayTB_CalendarExtender" TargetControlID="StartDayTB" ID="StartDayTB_CalendarExtender" Format="yyyy-MM-dd"></ajaxToolkit:CalendarExtender>
                             <div class="form-group">
                                 <%--<asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />--%>
                                 <asp:Button ID="DataCheckBT" runat="server" Text="CheckData" CssClass="btn btn-danger" OnClick="DataCheckBT_Click" />
-                                <asp:Button ID="UpLoadBT" runat="server" Text="UpLoadData" CssClass="btn btn-group" />
+                                <asp:Button ID="UpLoadBT" runat="server" Text="UpLoadData" CssClass="btn btn-group" OnClick="UpLoadBT_Click" />
                             </div>
                         </div>
 

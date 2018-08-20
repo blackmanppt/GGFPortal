@@ -61,13 +61,8 @@
                                 <asp:Button ID="SearchBT" runat="server" Text="搜尋" class="btn btn-default" OnClick="SearchBT_Click" />
                                 <asp:Button ID="ClearBT" runat="server" Text="清除搜尋資料" class="btn btn-default" OnClick="ClearBT_Click1"  />
                                 <asp:Button ID="AddBT" runat="server" Text="新增快遞單" class="btn btn-default" OnClick="AddBT_Click"  />
-
-
                             </div>
-
-
                         </div>
-
                     </nav>
                 </div>
                 <div class="col-md-10">
