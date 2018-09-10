@@ -420,9 +420,9 @@ namespace GGFPortal.ReferenceCode
         public void ForcastDT()
         {
             ForcastDataTable = new DataTable();
-            ForcastDataTable.Columns.Add("款號");
-            ForcastDataTable.Columns.Add("顏色");
             ForcastDataTable.Columns.Add("尺寸");
+            ForcastDataTable.Columns.Add("顏色");
+            ForcastDataTable.Columns.Add("款號");
             ForcastDataTable.Columns.Add("訂單單位");
             ForcastDataTable.Columns.Add("可用庫存");
             ForcastDataTable.Columns.Add("Week1");

@@ -116,6 +116,12 @@
               <xs:element name="允收上限" msprop:Generator_ColumnVarNameInTable="column允收上限" msprop:Generator_ColumnPropNameInRow="允收上限" msprop:Generator_ColumnPropNameInTable="允收上限Column" msprop:Generator_UserColumnName="允收上限" type="xs:decimal" minOccurs="0" />
               <xs:element name="允收下限" msprop:Generator_ColumnVarNameInTable="column允收下限" msprop:Generator_ColumnPropNameInRow="允收下限" msprop:Generator_ColumnPropNameInTable="允收下限Column" msprop:Generator_UserColumnName="允收下限" type="xs:decimal" minOccurs="0" />
               <xs:element name="採購日期" msprop:Generator_ColumnVarNameInTable="column採購日期" msprop:Generator_ColumnPropNameInRow="採購日期" msprop:Generator_ColumnPropNameInTable="採購日期Column" msprop:Generator_UserColumnName="採購日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="料號說明" msprop:Generator_ColumnVarNameInTable="column料號說明" msprop:Generator_ColumnPropNameInRow="料號說明" msprop:Generator_ColumnPropNameInTable="料號說明Column" msprop:Generator_UserColumnName="料號說明" type="xs:string" minOccurs="0" />
+              <xs:element name="料號規格" msprop:Generator_ColumnVarNameInTable="column料號規格" msprop:Generator_ColumnPropNameInRow="料號規格" msprop:Generator_ColumnPropNameInTable="料號規格Column" msprop:Generator_UserColumnName="料號規格" type="xs:string" minOccurs="0" />
+              <xs:element name="預定到廠日" msprop:Generator_ColumnVarNameInTable="column預定到廠日" msprop:Generator_ColumnPropNameInRow="預定到廠日" msprop:Generator_ColumnPropNameInTable="預定到廠日Column" msprop:Generator_UserColumnName="預定到廠日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="供應商名稱" msprop:Generator_ColumnVarNameInTable="column供應商名稱" msprop:Generator_ColumnPropNameInRow="供應商名稱" msprop:Generator_ColumnPropNameInTable="供應商名稱Column" msprop:Generator_UserColumnName="供應商名稱" type="xs:string" minOccurs="0" />
+              <xs:element name="供應商簡稱" msprop:Generator_ColumnVarNameInTable="column供應商簡稱" msprop:Generator_ColumnPropNameInRow="供應商簡稱" msprop:Generator_ColumnPropNameInTable="供應商簡稱Column" msprop:Generator_UserColumnName="供應商簡稱" type="xs:string" minOccurs="0" />
+              <xs:element name="採購單部門" msprop:Generator_ColumnVarNameInTable="column採購單部門" msprop:Generator_ColumnPropNameInRow="採購單部門" msprop:Generator_ColumnPropNameInTable="採購單部門Column" msprop:Generator_UserColumnName="採購單部門" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -200,6 +206,7 @@
               </xs:element>
               <xs:element name="代理商" msprop:Generator_ColumnVarNameInTable="column代理商" msprop:Generator_ColumnPropNameInRow="代理商" msprop:Generator_ColumnPropNameInTable="代理商Column" msprop:Generator_UserColumnName="代理商" type="xs:string" minOccurs="0" />
               <xs:element name="傭金比" msprop:Generator_ColumnVarNameInTable="column傭金比" msprop:Generator_ColumnPropNameInRow="傭金比" msprop:Generator_ColumnPropNameInTable="傭金比Column" msprop:Generator_UserColumnName="傭金比" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PO別" msprop:Generator_ColumnVarNameInTable="columnPO別" msprop:Generator_ColumnPropNameInRow="PO別" msprop:Generator_ColumnPropNameInTable="PO別Column" msprop:Generator_UserColumnName="PO別" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

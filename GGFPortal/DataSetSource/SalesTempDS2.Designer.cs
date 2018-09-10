@@ -34,6 +34,8 @@ namespace GGFPortal.DataSetSource {
         
         private 採購單訂單資料DataTable table採購單訂單資料;
         
+        private AMZForecastDataTable tableAMZForecast;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["採購單訂單資料"] != null)) {
                     base.Tables.Add(new 採購單訂單資料DataTable(ds.Tables["採購單訂單資料"]));
+                }
+                if ((ds.Tables["AMZForecast"] != null)) {
+                    base.Tables.Add(new AMZForecastDataTable(ds.Tables["AMZForecast"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace GGFPortal.DataSetSource {
         public 採購單訂單資料DataTable 採購單訂單資料 {
             get {
                 return this.table採購單訂單資料;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public AMZForecastDataTable AMZForecast {
+            get {
+                return this.tableAMZForecast;
             }
         }
         
@@ -227,6 +242,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["採購單訂單資料"] != null)) {
                     base.Tables.Add(new 採購單訂單資料DataTable(ds.Tables["採購單訂單資料"]));
                 }
+                if ((ds.Tables["AMZForecast"] != null)) {
+                    base.Tables.Add(new AMZForecastDataTable(ds.Tables["AMZForecast"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace GGFPortal.DataSetSource {
                     this.table採購單訂單資料.InitVars();
                 }
             }
+            this.tableAMZForecast = ((AMZForecastDataTable)(base.Tables["AMZForecast"]));
+            if ((initTable == true)) {
+                if ((this.tableAMZForecast != null)) {
+                    this.tableAMZForecast.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.table業務出口資料);
             this.table採購單訂單資料 = new 採購單訂單資料DataTable();
             base.Tables.Add(this.table採購單訂單資料);
+            this.tableAMZForecast = new AMZForecastDataTable();
+            base.Tables.Add(this.tableAMZForecast);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerialize採購單訂單資料() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeAMZForecast() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void 採購單訂單資料RowChangeEventHandler(object sender, 採購單訂單資料RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void AMZForecastRowChangeEventHandler(object sender, AMZForecastRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3480,6 +3515,447 @@ namespace GGFPortal.DataSetSource {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "採購單訂單資料DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class AMZForecastDataTable : global::System.Data.TypedTableBase<AMZForecastRow> {
+            
+            private global::System.Data.DataColumn columnuid;
+            
+            private global::System.Data.DataColumn column款號;
+            
+            private global::System.Data.DataColumn column顏色;
+            
+            private global::System.Data.DataColumn column尺寸;
+            
+            private global::System.Data.DataColumn column匯入起始日期;
+            
+            private global::System.Data.DataColumn column匯入結束日期;
+            
+            private global::System.Data.DataColumn column訂單單位;
+            
+            private global::System.Data.DataColumn column可用庫存;
+            
+            private global::System.Data.DataColumn column建立日期;
+            
+            private global::System.Data.DataColumn columnIsDelete;
+            
+            private global::System.Data.DataColumn column日期;
+            
+            private global::System.Data.DataColumn column年度;
+            
+            private global::System.Data.DataColumn column周數;
+            
+            private global::System.Data.DataColumn column數量;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastDataTable() {
+                this.TableName = "AMZForecast";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal AMZForecastDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected AMZForecastDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn uidColumn {
+                get {
+                    return this.columnuid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 款號Column {
+                get {
+                    return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 顏色Column {
+                get {
+                    return this.column顏色;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 尺寸Column {
+                get {
+                    return this.column尺寸;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 匯入起始日期Column {
+                get {
+                    return this.column匯入起始日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 匯入結束日期Column {
+                get {
+                    return this.column匯入結束日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 訂單單位Column {
+                get {
+                    return this.column訂單單位;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 可用庫存Column {
+                get {
+                    return this.column可用庫存;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 建立日期Column {
+                get {
+                    return this.column建立日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsDeleteColumn {
+                get {
+                    return this.columnIsDelete;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 日期Column {
+                get {
+                    return this.column日期;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 年度Column {
+                get {
+                    return this.column年度;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 周數Column {
+                get {
+                    return this.column周數;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 數量Column {
+                get {
+                    return this.column數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastRow this[int index] {
+                get {
+                    return ((AMZForecastRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AMZForecastRowChangeEventHandler AMZForecastRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AMZForecastRowChangeEventHandler AMZForecastRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AMZForecastRowChangeEventHandler AMZForecastRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AMZForecastRowChangeEventHandler AMZForecastRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddAMZForecastRow(AMZForecastRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastRow AddAMZForecastRow(int uid, string 款號, string 顏色, string 尺寸, string 匯入起始日期, string 匯入結束日期, int 訂單單位, int 可用庫存, System.DateTime 建立日期, bool IsDelete, System.DateTime 日期, int 年度, int 周數, int 數量) {
+                AMZForecastRow rowAMZForecastRow = ((AMZForecastRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        uid,
+                        款號,
+                        顏色,
+                        尺寸,
+                        匯入起始日期,
+                        匯入結束日期,
+                        訂單單位,
+                        可用庫存,
+                        建立日期,
+                        IsDelete,
+                        日期,
+                        年度,
+                        周數,
+                        數量};
+                rowAMZForecastRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAMZForecastRow);
+                return rowAMZForecastRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                AMZForecastDataTable cln = ((AMZForecastDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new AMZForecastDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnuid = base.Columns["uid"];
+                this.column款號 = base.Columns["款號"];
+                this.column顏色 = base.Columns["顏色"];
+                this.column尺寸 = base.Columns["尺寸"];
+                this.column匯入起始日期 = base.Columns["匯入起始日期"];
+                this.column匯入結束日期 = base.Columns["匯入結束日期"];
+                this.column訂單單位 = base.Columns["訂單單位"];
+                this.column可用庫存 = base.Columns["可用庫存"];
+                this.column建立日期 = base.Columns["建立日期"];
+                this.columnIsDelete = base.Columns["IsDelete"];
+                this.column日期 = base.Columns["日期"];
+                this.column年度 = base.Columns["年度"];
+                this.column周數 = base.Columns["周數"];
+                this.column數量 = base.Columns["數量"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnuid = new global::System.Data.DataColumn("uid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuid);
+                this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款號);
+                this.column顏色 = new global::System.Data.DataColumn("顏色", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column顏色);
+                this.column尺寸 = new global::System.Data.DataColumn("尺寸", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column尺寸);
+                this.column匯入起始日期 = new global::System.Data.DataColumn("匯入起始日期", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column匯入起始日期);
+                this.column匯入結束日期 = new global::System.Data.DataColumn("匯入結束日期", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column匯入結束日期);
+                this.column訂單單位 = new global::System.Data.DataColumn("訂單單位", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單單位);
+                this.column可用庫存 = new global::System.Data.DataColumn("可用庫存", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column可用庫存);
+                this.column建立日期 = new global::System.Data.DataColumn("建立日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column建立日期);
+                this.columnIsDelete = new global::System.Data.DataColumn("IsDelete", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsDelete);
+                this.column日期 = new global::System.Data.DataColumn("日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column日期);
+                this.column年度 = new global::System.Data.DataColumn("年度", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column年度);
+                this.column周數 = new global::System.Data.DataColumn("周數", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column周數);
+                this.column數量 = new global::System.Data.DataColumn("數量", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column數量);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                                this.columnuid}, false));
+                this.columnuid.AllowDBNull = false;
+                this.columnuid.Unique = true;
+                this.column款號.MaxLength = 150;
+                this.column顏色.MaxLength = 50;
+                this.column尺寸.MaxLength = 50;
+                this.column匯入起始日期.AllowDBNull = false;
+                this.column匯入起始日期.MaxLength = 8;
+                this.column匯入結束日期.MaxLength = 8;
+                this.column建立日期.AllowDBNull = false;
+                this.columnIsDelete.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastRow NewAMZForecastRow() {
+                return ((AMZForecastRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new AMZForecastRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(AMZForecastRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.AMZForecastRowChanged != null)) {
+                    this.AMZForecastRowChanged(this, new AMZForecastRowChangeEvent(((AMZForecastRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.AMZForecastRowChanging != null)) {
+                    this.AMZForecastRowChanging(this, new AMZForecastRowChangeEvent(((AMZForecastRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.AMZForecastRowDeleted != null)) {
+                    this.AMZForecastRowDeleted(this, new AMZForecastRowChangeEvent(((AMZForecastRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.AMZForecastRowDeleting != null)) {
+                    this.AMZForecastRowDeleting(this, new AMZForecastRowChangeEvent(((AMZForecastRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveAMZForecastRow(AMZForecastRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS2 ds = new SalesTempDS2();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "AMZForecastDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7022,6 +7498,345 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class AMZForecastRow : global::System.Data.DataRow {
+            
+            private AMZForecastDataTable tableAMZForecast;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal AMZForecastRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAMZForecast = ((AMZForecastDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int uid {
+                get {
+                    return ((int)(this[this.tableAMZForecast.uidColumn]));
+                }
+                set {
+                    this[this.tableAMZForecast.uidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 款號 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZForecast.款號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'款號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.款號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 顏色 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZForecast.顏色Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'顏色\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.顏色Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 尺寸 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZForecast.尺寸Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'尺寸\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.尺寸Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 匯入起始日期 {
+                get {
+                    return ((string)(this[this.tableAMZForecast.匯入起始日期Column]));
+                }
+                set {
+                    this[this.tableAMZForecast.匯入起始日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 匯入結束日期 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZForecast.匯入結束日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'匯入結束日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.匯入結束日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 訂單單位 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZForecast.訂單單位Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'訂單單位\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.訂單單位Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 可用庫存 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZForecast.可用庫存Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'可用庫存\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.可用庫存Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 建立日期 {
+                get {
+                    return ((global::System.DateTime)(this[this.tableAMZForecast.建立日期Column]));
+                }
+                set {
+                    this[this.tableAMZForecast.建立日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDelete {
+                get {
+                    return ((bool)(this[this.tableAMZForecast.IsDeleteColumn]));
+                }
+                set {
+                    this[this.tableAMZForecast.IsDeleteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 日期 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableAMZForecast.日期Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'日期\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.日期Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 年度 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZForecast.年度Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'年度\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.年度Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 周數 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZForecast.周數Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'周數\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.周數Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 數量 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZForecast.數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZForecast\' 中資料行 \'數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZForecast.數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is款號Null() {
+                return this.IsNull(this.tableAMZForecast.款號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set款號Null() {
+                this[this.tableAMZForecast.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is顏色Null() {
+                return this.IsNull(this.tableAMZForecast.顏色Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set顏色Null() {
+                this[this.tableAMZForecast.顏色Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is尺寸Null() {
+                return this.IsNull(this.tableAMZForecast.尺寸Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set尺寸Null() {
+                this[this.tableAMZForecast.尺寸Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is匯入結束日期Null() {
+                return this.IsNull(this.tableAMZForecast.匯入結束日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set匯入結束日期Null() {
+                this[this.tableAMZForecast.匯入結束日期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is訂單單位Null() {
+                return this.IsNull(this.tableAMZForecast.訂單單位Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set訂單單位Null() {
+                this[this.tableAMZForecast.訂單單位Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is可用庫存Null() {
+                return this.IsNull(this.tableAMZForecast.可用庫存Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set可用庫存Null() {
+                this[this.tableAMZForecast.可用庫存Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is日期Null() {
+                return this.IsNull(this.tableAMZForecast.日期Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set日期Null() {
+                this[this.tableAMZForecast.日期Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is年度Null() {
+                return this.IsNull(this.tableAMZForecast.年度Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set年度Null() {
+                this[this.tableAMZForecast.年度Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is周數Null() {
+                return this.IsNull(this.tableAMZForecast.周數Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set周數Null() {
+                this[this.tableAMZForecast.周數Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is數量Null() {
+                return this.IsNull(this.tableAMZForecast.數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set數量Null() {
+                this[this.tableAMZForecast.數量Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -7177,6 +7992,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 採購單訂單資料Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class AMZForecastRowChangeEvent : global::System.EventArgs {
+            
+            private AMZForecastRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastRowChangeEvent(AMZForecastRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AMZForecastRow Row {
                 get {
                     return this.eventRow;
                 }

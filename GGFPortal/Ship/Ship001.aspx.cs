@@ -23,10 +23,11 @@ namespace GGFPortal.Ship
         {
             //SiteDDL.SelectedValue = "";
             //CusTB.Text = "";
-            //StyleTB.Text = "";
+            StyleTB.Text = "";
             //StartDay.Text = "";
-            //EndDay.Text = "";
-            //VendorDDL.SelectedValue = "";
+            供應商TB.Text = "";
+            主料CB.Checked = true;
+            副料CB.Checked = true;
             PurTB.Text = "";
             款號TB.Text = "";
         }
@@ -37,25 +38,28 @@ namespace GGFPortal.Ship
         }
         protected void DbInit()
         {
-            DataTable dt = new DataTable();
-            using (SqlConnection Conn = new SqlConnection(strConnectString))
-            {
-                SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
-                myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+            if(F_Check())
+            { 
+                DataTable dt = new DataTable();
+                using (SqlConnection Conn = new SqlConnection(strConnectString))
+                {
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
+                    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    ReportViewer1.Visible = true;
+                    ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                    ReportDataSource source = new ReportDataSource("Ship001", dt);
+                    ReportViewer1.LocalReport.DataSources.Clear();
+                    ReportViewer1.LocalReport.DataSources.Add(source);
+                    ReportViewer1.DataBind();
+                    ReportViewer1.LocalReport.Refresh();
+                }
+                else
+                    F_ErrorShow("搜尋不到資料");
             }
-            if (dt.Rows.Count > 0)
-            {
-                ReportViewer1.Visible = true;
-                ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("Ship001", dt);
-                ReportViewer1.LocalReport.DataSources.Clear();
-                ReportViewer1.LocalReport.DataSources.Add(source);
-                ReportViewer1.DataBind();
-                ReportViewer1.LocalReport.Refresh();
-            }
-            else
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
         }
 
         private StringBuilder selectsql()
@@ -70,9 +74,32 @@ namespace GGFPortal.Ship
                 strsql.AppendFormat(" and 款號 in {0} ", 款號);
             if (採購單.Length>0)
                 strsql.AppendFormat(" and 採購單 in {0} ", 採購單);
-
+            if (主料CB.Checked == false || 副料CB.Checked == false)
+                strsql.AppendFormat(" and 主副料 = '{0}'", (主料CB.Checked == true) ? "M" : "S");
+            if (!string.IsNullOrEmpty(供應商TB.Text))
+                strsql.AppendFormat("and  (供應商簡稱 ='{0}' or  供應商代號 = '{0}')", 供應商TB.Text);
+            if (!string.IsNullOrEmpty(StyleTB.Text))
+                strsql.AppendFormat(" and 款號 = '{0}' ", StyleTB.Text);
             return strsql;
         }
-        
+        public void F_ErrorShow(string strError)
+        {
+            MessageLB.Text = strError;
+            AlertPanel_ModalPopupExtender.Show();
+        }
+        public bool F_Check()
+        {
+            bool bChk = true;
+            string strError="";
+            if (主料CB.Checked == false && 副料CB.Checked == false)
+            { 
+                strError = "主副料最少要選擇一項";
+                bChk = false;
+                
+            }
+            if(!bChk)
+                F_ErrorShow(strError);
+            return bChk;
+        }
     }
 }

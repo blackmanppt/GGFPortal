@@ -304,5 +304,34 @@ namespace GGFPortal.ReferenceCode
             }
         }
 
+        [OperationContract]
+        public List<string> Search供應商代號(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select  distinct top 10  [廠商代號] as Search ,[廠商簡稱] as SearchName from [View廠商付款條件] where upper([廠商簡稱]) like '%' +  @SearchText + '%' or  upper([廠商代號]) like '%' +  @SearchText + '%'   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchList = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            //SearchCusId.Add(sdr["Search"].ToString());
+                            //string item = AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem(sdr["Search"].ToString(), sdr["SearchName"].ToString());
+                            //SearchList.Add(item);
+                            SearchList.Add(AjaxControlToolkit.AutoCompleteExtender
+                        .CreateAutoCompleteItem(string.Format("{0},{1}",sdr["Search"].ToString(), sdr["SearchName"]),
+                        sdr["Search"].ToString()));
+                        }
+                    }
+                    conn.Close();
+                    return SearchList;
+                }
+            }
+        }
     }
 }

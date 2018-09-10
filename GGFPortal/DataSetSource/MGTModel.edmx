@@ -68,6 +68,8 @@
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="修改日期" Type="datetime" />
+          <Property Name="快遞數量" Type="int" Nullable="false" />
+          <Property Name="快遞單位" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'GGF.dbo.view_employee' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -96,6 +98,34 @@
           <Property Name="Email" Type="nvarchar" MaxLength="40" />
           <Property Name="分機" Type="nvarchar" MaxLength="10" />
           <Property Name="狀態" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'GGF.dbo.View廠商付款條件' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="View廠商付款條件">
+          <Key>
+            <PropertyRef Name="公司別" />
+            <PropertyRef Name="廠商代號" />
+          </Key>
+          <Property Name="公司別" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="廠商代號" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="廠商名稱" Type="nvarchar" MaxLength="100" />
+          <Property Name="廠商簡稱" Type="nvarchar" MaxLength="12" />
+          <Property Name="統一編號" Type="nvarchar" MaxLength="12" />
+          <Property Name="地址" Type="nvarchar" MaxLength="180" />
+          <Property Name="地址2" Type="nvarchar" MaxLength="180" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="buyer" Type="nvarchar" MaxLength="8" />
+          <Property Name="負責人" Type="nvarchar" MaxLength="30" />
+          <Property Name="boss_tel" Type="nvarchar" MaxLength="30" />
+          <Property Name="carrier_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="國家" Type="nvarchar" MaxLength="10" />
+          <Property Name="英文名稱" Type="nvarchar" MaxLength="100" />
+          <Property Name="remark60_1" Type="nvarchar" MaxLength="60" />
+          <Property Name="remark60_2" Type="nvarchar" MaxLength="60" />
+          <Property Name="付款代號" Type="nvarchar" MaxLength="6" />
+          <Property Name="付款名稱" Type="nvarchar" MaxLength="40" />
+          <Property Name="交易代號" Type="nvarchar" MaxLength="6" />
+          <Property Name="交易名稱" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -132,6 +162,30 @@
     [View員工基本資料].[分機] AS [分機], 
     [View員工基本資料].[狀態] AS [狀態]
     FROM [dbo].[View員工基本資料] AS [View員工基本資料]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View廠商付款條件" EntityType="Self.View廠商付款條件" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View廠商付款條件].[公司別] AS [公司別], 
+    [View廠商付款條件].[廠商代號] AS [廠商代號], 
+    [View廠商付款條件].[廠商名稱] AS [廠商名稱], 
+    [View廠商付款條件].[廠商簡稱] AS [廠商簡稱], 
+    [View廠商付款條件].[統一編號] AS [統一編號], 
+    [View廠商付款條件].[地址] AS [地址], 
+    [View廠商付款條件].[地址2] AS [地址2], 
+    [View廠商付款條件].[dept_no] AS [dept_no], 
+    [View廠商付款條件].[buyer] AS [buyer], 
+    [View廠商付款條件].[負責人] AS [負責人], 
+    [View廠商付款條件].[boss_tel] AS [boss_tel], 
+    [View廠商付款條件].[carrier_id] AS [carrier_id], 
+    [View廠商付款條件].[國家] AS [國家], 
+    [View廠商付款條件].[英文名稱] AS [英文名稱], 
+    [View廠商付款條件].[remark60_1] AS [remark60_1], 
+    [View廠商付款條件].[remark60_2] AS [remark60_2], 
+    [View廠商付款條件].[付款代號] AS [付款代號], 
+    [View廠商付款條件].[付款名稱] AS [付款名稱], 
+    [View廠商付款條件].[交易代號] AS [交易代號], 
+    [View廠商付款條件].[交易名稱] AS [交易名稱]
+    FROM [dbo].[View廠商付款條件] AS [View廠商付款條件]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_快遞單明細_快遞單1" Association="Self.FK_快遞單明細_快遞單1">
             <End Role="快遞單" EntitySet="快遞單" />
@@ -187,6 +241,8 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="備註二" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="原因歸屬" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="快遞數量" Type="Int32" Nullable="false" />
+          <Property Name="快遞單位" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -210,6 +266,7 @@
           <EntitySet Name="view_employee" EntityType="GGFModelMGT.view_employee" />
           <EntitySet Name="bas_employee" EntityType="GGFModelMGT.bas_employee" />
           <EntitySet Name="View員工基本資料" EntityType="GGFModelMGT.View員工基本資料" />
+          <EntitySet Name="View廠商付款條件" EntityType="GGFModelMGT.View廠商付款條件" />
         </EntityContainer>
         <EntityType Name="view_employee">
           <Key>
@@ -255,6 +312,32 @@
           <Property Name="分機" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="狀態" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="View廠商付款條件">
+          <Key>
+            <PropertyRef Name="公司別" />
+            <PropertyRef Name="廠商代號" />
+          </Key>
+          <Property Name="公司別" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="廠商代號" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="廠商名稱" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="廠商簡稱" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="統一編號" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="地址" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <Property Name="地址2" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="buyer" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="負責人" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="boss_tel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="carrier_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="國家" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="英文名稱" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="remark60_1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="remark60_2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="付款代號" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="付款名稱" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="交易代號" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="交易名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -285,6 +368,8 @@
           <EntitySetMapping Name="快遞單明細">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單明細">
               <MappingFragment StoreEntitySet="快遞單明細">
+                <ScalarProperty Name="快遞單位" ColumnName="快遞單位" />
+                <ScalarProperty Name="快遞數量" ColumnName="快遞數量" />
                 <ScalarProperty Name="原因歸屬" ColumnName="原因歸屬" />
                 <ScalarProperty Name="備註二" ColumnName="備註二" />
                 <ScalarProperty Name="email" ColumnName="email" />
@@ -348,6 +433,32 @@
                 <ScalarProperty Name="英文名字" ColumnName="英文名字" />
                 <ScalarProperty Name="名字" ColumnName="名字" />
                 <ScalarProperty Name="員工代號" ColumnName="員工代號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View廠商付款條件">
+            <EntityTypeMapping TypeName="GGFModelMGT.View廠商付款條件">
+              <MappingFragment StoreEntitySet="View廠商付款條件">
+                <ScalarProperty Name="交易名稱" ColumnName="交易名稱" />
+                <ScalarProperty Name="交易代號" ColumnName="交易代號" />
+                <ScalarProperty Name="付款名稱" ColumnName="付款名稱" />
+                <ScalarProperty Name="付款代號" ColumnName="付款代號" />
+                <ScalarProperty Name="remark60_2" ColumnName="remark60_2" />
+                <ScalarProperty Name="remark60_1" ColumnName="remark60_1" />
+                <ScalarProperty Name="英文名稱" ColumnName="英文名稱" />
+                <ScalarProperty Name="國家" ColumnName="國家" />
+                <ScalarProperty Name="carrier_id" ColumnName="carrier_id" />
+                <ScalarProperty Name="boss_tel" ColumnName="boss_tel" />
+                <ScalarProperty Name="負責人" ColumnName="負責人" />
+                <ScalarProperty Name="buyer" ColumnName="buyer" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="地址2" ColumnName="地址2" />
+                <ScalarProperty Name="地址" ColumnName="地址" />
+                <ScalarProperty Name="統一編號" ColumnName="統一編號" />
+                <ScalarProperty Name="廠商簡稱" ColumnName="廠商簡稱" />
+                <ScalarProperty Name="廠商名稱" ColumnName="廠商名稱" />
+                <ScalarProperty Name="廠商代號" ColumnName="廠商代號" />
+                <ScalarProperty Name="公司別" ColumnName="公司別" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

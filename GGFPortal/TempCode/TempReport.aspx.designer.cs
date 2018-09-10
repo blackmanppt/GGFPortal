@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Ship {
+namespace GGFPortal.Temp {
     
     
-    public partial class Ship001 {
+    public partial class TempReport {
         
         /// <summary>
         /// form1 控制項。
@@ -31,15 +31,6 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// PurTB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PurTB;
-        
-        /// <summary>
         /// 款號TB 控制項。
         /// </summary>
         /// <remarks>
@@ -49,40 +40,76 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.WebControls.TextBox 款號TB;
         
         /// <summary>
-        /// StyleTB 控制項。
+        /// 年度DDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StyleTB;
+        protected global::System.Web.UI.WebControls.DropDownList 年度DDL;
         
         /// <summary>
-        /// StyleTB_AutoCompleteExtender 控制項。
+        /// SqlDataSource2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
-        /// 供應商TB 控制項。
+        /// 季節DDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 供應商TB;
+        protected global::System.Web.UI.WebControls.DropDownList 季節DDL;
         
         /// <summary>
-        /// 供應商TB_AutoCompleteExtender 控制項。
+        /// SqlDataSource1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender 供應商TB_AutoCompleteExtender;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        
+        /// <summary>
+        /// 代理商TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 代理商TB;
+        
+        /// <summary>
+        /// 代理商TB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender 代理商TB_AutoCompleteExtender;
+        
+        /// <summary>
+        /// 品牌TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 品牌TB;
+        
+        /// <summary>
+        /// 品牌TB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender 品牌TB_AutoCompleteExtender;
         
         /// <summary>
         /// 主料CB 控制項。
@@ -94,13 +121,13 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.WebControls.CheckBox 主料CB;
         
         /// <summary>
-        /// 副料CB 控制項。
+        /// 入庫CB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 副料CB;
+        protected global::System.Web.UI.WebControls.CheckBox 入庫CB;
         
         /// <summary>
         /// SearchBT 控制項。

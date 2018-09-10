@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Ship {
+namespace GGFPortal.Sales {
     
     
-    public partial class Ship001 {
+    public partial class Sales012 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,15 +31,6 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// PurTB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PurTB;
-        
-        /// <summary>
         /// 款號TB 控制項。
         /// </summary>
         /// <remarks>
@@ -49,58 +40,40 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.WebControls.TextBox 款號TB;
         
         /// <summary>
-        /// StyleTB 控制項。
+        /// 開始年度TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StyleTB;
+        protected global::System.Web.UI.WebControls.TextBox 開始年度TB;
         
         /// <summary>
-        /// StyleTB_AutoCompleteExtender 控制項。
+        /// 開始年度周數TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
+        protected global::System.Web.UI.WebControls.TextBox 開始年度周數TB;
         
         /// <summary>
-        /// 供應商TB 控制項。
+        /// 結束年度TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox 供應商TB;
+        protected global::System.Web.UI.WebControls.TextBox 結束年度TB;
         
         /// <summary>
-        /// 供應商TB_AutoCompleteExtender 控制項。
+        /// 結束年度周數TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender 供應商TB_AutoCompleteExtender;
-        
-        /// <summary>
-        /// 主料CB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 主料CB;
-        
-        /// <summary>
-        /// 副料CB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 副料CB;
+        protected global::System.Web.UI.WebControls.TextBox 結束年度周數TB;
         
         /// <summary>
         /// SearchBT 控制項。
@@ -119,6 +92,15 @@ namespace GGFPortal.Ship {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ClearBT;
+        
+        /// <summary>
+        /// Button1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// ReportViewer1 控制項。

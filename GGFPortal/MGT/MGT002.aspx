@@ -182,8 +182,8 @@
 
 
                                 <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
-                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup" Height="400px" Width="600px" BackColor="#33CCFF" Style="display:none" ScrollBars="Horizontal"  >
-                                    <div class=" text-center">
+                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup form-control" Height="430px" Width="700px" BackColor="#33CCFF" Style="display: none"  >
+                                    <div class=" text-center text-danger">
                                         <h3><b>新增明細</b></h3>
                                     </div>
                                     <div class="row">
@@ -206,7 +206,32 @@
                                             <asp:Label ID="客戶名稱LB" runat="server" Text="客戶名稱：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-4 text-left">
+                                            <!--
+                                                pup裡面包auto
+                                                1.欄位前要多加
+                                                <div id="chromeUse"></div>
+                                                2.
+                                                <ajaxToolkit:AutoCompleteExtender CompletionListElementID="chromeUse"
+                                                -->
+                                            <div id="chromeUse"></div>
                                             <asp:TextBox ID="客戶名稱TB" runat="server"></asp:TextBox>
+                                             <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="客戶名稱TB" ID="客戶名稱TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
+        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false" CompletionListElementID="chromeUse"></ajaxToolkit:AutoCompleteExtender>
+                            <div>
+                                    <script type="text/javascript">
+                                        function Employees_Populated(sender, e) {
+                                            var employees = sender.get_completionList().childNodes;
+                                            var div = "<table>";
+                                            div += "<tr><th>客戶代號</th><th>&nbsp;</th><th>客戶簡稱</th></tr>";
+                                            for (var i = 0; i < employees.length; i++) {
+ 
+                                                div += "<tr><td>" + employees[i].innerHTML.split(',')[0] + "</td><td>&nbsp;</td><td>" + employees[i].innerHTML.split(',')[1] + "</td></tr>";
+                                            }
+                                            div += "</table>";
+                                            sender._completionListElement.innerHTML = div;
+                                        }
+                                    </script>
+                                </div>
                                         </div>
                                         <div class=" col-md-2 text-right">
                                             <asp:Label ID="收件人LB" runat="server" Text="收件人：" Font-Bold="True"></asp:Label>
@@ -250,6 +275,24 @@
                                             </asp:SqlDataSource>
                                         </div>
                                     </div>
+                                    <div id="DHLrow" runat="server" class="row" visible="false">
+                                        <div class=" col-md-2 text-right">
+                                            <asp:Label ID="數量LB" runat="server" Text="數量：" Font-Bold="True" ></asp:Label>
+                                        </div>
+                                        <div class=" col-md-4 text-left">
+                                            <asp:TextBox ID="數量TB" runat="server" TextMode="Number"></asp:TextBox>
+                                        </div>
+                                        <div class=" col-md-2 text-right">
+                                            <asp:Label ID="單位LB" runat="server" Text="單位：" Font-Bold="True"></asp:Label>
+                                        </div>
+                                        <div class=" col-md-4 text-left">
+                                            <asp:DropDownList ID="單位DDL" runat="server">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>PSC</asp:ListItem>
+                                                <asp:ListItem>SET</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
                                     <div class="row ">
                                         <div class="col-md-2 text-right">
                                             <asp:Label ID="明細LB" runat="server" Text="明細：" Font-Bold="True"></asp:Label></div>
@@ -279,6 +322,7 @@
                                 </asp:Panel>
                                 <ajaxToolkit:ModalPopupExtender ID="EditListPanel_ModalPopupExtender" runat="server" BehaviorID="EditListPanel_ModalPopupExtender" TargetControlID="show" PopupControlID="EditListPanel" >
                                 </ajaxToolkit:ModalPopupExtender>
+                        
 
                                 <asp:Panel ID="SelectPanel" runat="server" align="center" Height="400px" Width="600px" BackColor="#0099FF" Style="display:none"   ScrollBars="Vertical">
                                     <div><h3>選擇快遞單</h3></div>

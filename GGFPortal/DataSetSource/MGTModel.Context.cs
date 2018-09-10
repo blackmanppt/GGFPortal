@@ -30,5 +30,6 @@ namespace GGFPortal.DataSetSource
         public virtual DbSet<view_employee> view_employee { get; set; }
         public virtual DbSet<bas_employee> bas_employee { get; set; }
         public virtual DbSet<View員工基本資料> View員工基本資料 { get; set; }
+        public virtual DbSet<View廠商付款條件> View廠商付款條件 { get; set; }
     }
 }

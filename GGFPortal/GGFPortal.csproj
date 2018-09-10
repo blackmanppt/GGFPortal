@@ -579,6 +579,8 @@
     <Content Include="Ship\Ship004.aspx" />
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
+    <Content Include="Sales\Sales012.aspx" />
+    <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="test\DevExtreme.aspx" />
@@ -1202,6 +1204,9 @@
     <Compile Include="DataSetSource\View員工基本資料.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\View廠商付款條件.cs">
+      <DependentUpon>MGTModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\VNDSTemp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1415,6 +1420,7 @@
     <Compile Include="Product.cs" />
     <Compile Include="ProductsController.cs" />
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="ReferenceCode\計算函式.cs" />
     <Compile Include="Sales\Sales010.aspx.cs">
       <DependentUpon>Sales010.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1554,6 +1560,20 @@
     </Compile>
     <Compile Include="Ship\Ship002.aspx.designer.cs">
       <DependentUpon>Ship002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales012.aspx.cs">
+      <DependentUpon>Sales012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales012.aspx.designer.cs">
+      <DependentUpon>Sales012.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\TempReport.aspx.cs">
+      <DependentUpon>TempReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\TempReport.aspx.designer.cs">
+      <DependentUpon>TempReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="TempCode\TempExcelImport.aspx.cs">
       <DependentUpon>TempExcelImport.aspx</DependentUpon>
@@ -2403,6 +2423,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales012.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />

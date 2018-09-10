@@ -103,7 +103,7 @@
                     <div>
             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                             <ContentTemplate>
-                                <asp:Button ID="show3" runat="server" Text="show3" Style="" OnClick="show3_Click" />
+                                <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" OnClick="show3_Click" />
                                 <%--<asp:Button ID="Button1" runat="server" Text="show3" Style="display: none" />--%>
                                 <asp:Panel ID="AlertPanel" runat="server" align="center" Height="100px" Width="600px" BackColor="#009999" Style="display: none">
                                     <div class=" text-center">

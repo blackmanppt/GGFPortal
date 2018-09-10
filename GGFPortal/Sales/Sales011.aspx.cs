@@ -439,7 +439,7 @@ namespace GGFPortal.Sales
                 {
                     dt = Convert.ToDateTime(strstartday);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     bcheck = false;
                     F_ErrorShow("確認日期資料正確2018-01-01");
