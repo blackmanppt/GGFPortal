@@ -209,7 +209,9 @@ namespace GGFPortal.MGT
             else
             {
                 if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
-                    DHLrow.Visible = true;
+                    F_showDHL(true);
+                else
+                    F_showDHL(false);
                 新增BT.Visible = true;
                 更新BT.Visible = false;
                 EditListPanel_ModalPopupExtender.Show();
@@ -239,9 +241,10 @@ namespace GGFPortal.MGT
                         if (iuid > 0)
                         {
                             if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
-                            {
-                                DHLrow.Visible = true;
-                            }
+                                F_showDHL(true);
+                            else
+                                F_showDHL(false);
+
                             var dset = db.快遞單明細.Where(p => p.uid == iuid);
                             foreach (var item in dset)
                             {
@@ -258,6 +261,7 @@ namespace GGFPortal.MGT
                                 原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
                                 if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
                                 {
+                                    款號TB.Text = item.備註;
                                     數量TB.Text = item.快遞數量.ToString();
                                     單位DDL.SelectedValue = item.快遞單位 ?? "";
                                 }
@@ -410,6 +414,8 @@ namespace GGFPortal.MGT
                             }
                         }
                         
+                            
+
                         if (string.IsNullOrEmpty(收件人TB.Text.Trim()))
                             sbErrorstring(sbError, "請輸入收件人");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
@@ -449,6 +455,8 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.原因歸屬 = 原因歸屬DDL.SelectedValue;
                                 if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
                                 {
+                                    if(!string.IsNullOrEmpty(款號TB.Text))
+                                        新增快遞單明細.備註 = 款號TB.Text.Trim().ToUpper();
                                     新增快遞單明細.快遞數量 = int.Parse(數量TB.Text);
                                     新增快遞單明細.快遞單位 = 單位DDL.SelectedValue;
                                 }
@@ -473,6 +481,8 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.原因歸屬 = 原因歸屬DDL.SelectedValue;
                                 if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
                                 {
+                                    if (!string.IsNullOrEmpty(款號TB.Text))
+                                        新增快遞單明細.備註 = 款號TB.Text.Trim().ToUpper();
                                     新增快遞單明細.快遞數量 = int.Parse(數量TB.Text);
                                     新增快遞單明細.快遞單位 = 單位DDL.SelectedValue;
                                 }
@@ -566,6 +576,20 @@ namespace GGFPortal.MGT
             if (廠商 != null)
                 chk代號 = true;
             return chk代號;
+        }
+        public void F_showDHL(bool show)
+        {
+
+            if(show)
+            { 
+                DHLrow2.Visible = true;
+                DHLrow.Visible = true;
+            }
+            else
+            {
+                DHLrow2.Visible = false;
+                DHLrow.Visible = false;
+            }
         }
     }
 }

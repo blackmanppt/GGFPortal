@@ -275,6 +275,18 @@
                                             </asp:SqlDataSource>
                                         </div>
                                     </div>
+                                    <div id="DHLrow2" runat="server" class="row" visible="false">
+                                        <div class=" col-md-2 text-right">
+                                            <asp:Label ID="款號LB" runat="server" Text="款號：" Font-Bold="True" ></asp:Label>
+                                        </div>
+                                        <div class=" col-md-10 text-left">
+                                            <div id="showauto"></div>
+                                            <asp:TextBox ID="款號TB" runat="server"></asp:TextBox>
+                                            <ajaxToolkit:AutoCompleteExtender ID="款號TB_AutoCompleteExtender" runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="款號TB" ServiceMethod="SearchOrdStyle" MinimumPrefixLength="1" UseContextKey="True" CompletionListElementID="showauto">
+                                            </ajaxToolkit:AutoCompleteExtender>
+                                        </div>
+                                    </div>
+
                                     <div id="DHLrow" runat="server" class="row" visible="false">
                                         <div class=" col-md-2 text-right">
                                             <asp:Label ID="數量LB" runat="server" Text="數量：" Font-Bold="True" ></asp:Label>

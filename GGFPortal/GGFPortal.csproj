@@ -308,6 +308,7 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MGT\MGT009.aspx" />
     <Content Include="MIS\MIS010.aspx" />
     <Content Include="MIS\MIS009.aspx" />
     <Content Include="MIS\MIS008.aspx" />
@@ -1340,6 +1341,13 @@
     </Compile>
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT009.aspx.cs">
+      <DependentUpon>MGT009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT009.aspx.designer.cs">
+      <DependentUpon>MGT009.aspx</DependentUpon>
     </Compile>
     <Compile Include="MIS\MIS010.aspx.cs">
       <DependentUpon>MIS010.aspx</DependentUpon>
@@ -2389,6 +2397,7 @@
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT007.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT009.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS006.rdlc" />
     <EmbeddedResource Include="ReportSource\MIS\ReportMIS009.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportS001V3.rdlc">

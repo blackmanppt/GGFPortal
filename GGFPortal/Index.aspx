@@ -6,6 +6,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+        <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+    
     <style>
 table {
     border-collapse: collapse;
@@ -30,7 +37,7 @@ table, td, th {
     <form id="form1" runat="server">
         <div>
 
-            <table style="width: 100%;">
+            <table style="width: 100%;" class="table table-hover">
                 <tr>
                     <td class="auto-style1">
                         MIS</td>
@@ -51,6 +58,14 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink85" runat="server" NavigateUrl="~/MIS/site/site4F.aspx">4F座位表</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink86" runat="server" NavigateUrl="~/MIS/site/site5F.aspx">5F座位表</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink87" runat="server" NavigateUrl="~/MIS/site/site6F.aspx">6F座位表</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink88" runat="server" NavigateUrl="~/MIS/site/site9F.aspx">9F座位表</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink89" runat="server" NavigateUrl="~/MIS/site/site10.aspx">10F座位表</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink90" runat="server" NavigateUrl="~/MIS/site/site12F.aspx">12F座位表</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         測試區：</td>
@@ -269,6 +284,7 @@ table, td, th {
                         <br />
                           <asp:HyperLink ID="HyperLink67" runat="server" NavigateUrl="~/MGT/MGT008.aspx">快遞單撿貨結案</asp:HyperLink>
                         <br />
+                        <asp:HyperLink ID="HyperLink91" runat="server" NavigateUrl="~/MGT/MGT009.aspx">快遞單INVOICE</asp:HyperLink>
                     </td>
                 </tr>
             </table>

@@ -56,7 +56,7 @@
                                             div += "<tr><th>Search</th><th>SearchName</th></tr>";
                                             for (var i = 0; i < employees.length; i++) {
  
-                                                div += "<tr><td>" + employees[i].innerHTML.split('-')[0] + "</td><td>" + employees[i].innerHTML.split('-')[1]  + "</td></tr>";
+                                                div += "<tr><td>" + employees[i].innerHTML.split(',')[0] + "</td><td>" + employees[i].innerHTML.split(',')[1]  + "</td></tr>";
                                             }
                                             div += "</table>";
                                             sender._completionListElement.innerHTML = div;

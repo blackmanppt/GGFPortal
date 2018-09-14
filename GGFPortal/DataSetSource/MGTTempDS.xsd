@@ -14,7 +14,7 @@
   <xs:element name="MGTTempDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MGTTempDS" msprop:Generator_UserDSName="MGTTempDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="快遞單明細" msprop:Generator_TableClassName="快遞單明細DataTable" msprop:Generator_TableVarName="table快遞單明細" msprop:Generator_TablePropName="快遞單明細" msprop:Generator_RowDeletingName="快遞單明細RowDeleting" msprop:Generator_RowChangingName="快遞單明細RowChanging" msprop:Generator_RowEvHandlerName="快遞單明細RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單明細RowDeleted" msprop:Generator_UserTableName="快遞單明細" msprop:Generator_RowChangedName="快遞單明細RowChanged" msprop:Generator_RowEvArgName="快遞單明細RowChangeEvent" msprop:Generator_RowClassName="快遞單明細Row">
+        <xs:element name="快遞單明細" msprop:Generator_TableClassName="快遞單明細DataTable" msprop:Generator_TableVarName="table快遞單明細" msprop:Generator_RowChangedName="快遞單明細RowChanged" msprop:Generator_TablePropName="快遞單明細" msprop:Generator_RowDeletingName="快遞單明細RowDeleting" msprop:Generator_RowChangingName="快遞單明細RowChanging" msprop:Generator_RowEvHandlerName="快遞單明細RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單明細RowDeleted" msprop:Generator_RowClassName="快遞單明細Row" msprop:Generator_UserTableName="快遞單明細" msprop:Generator_RowEvArgName="快遞單明細RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="uid" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnuid" msprop:Generator_ColumnPropNameInRow="uid" msprop:Generator_ColumnPropNameInTable="uidColumn" msprop:Generator_UserColumnName="uid" type="xs:int" />
@@ -98,7 +98,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="快遞單" msprop:Generator_TableClassName="快遞單DataTable" msprop:Generator_TableVarName="table快遞單" msprop:Generator_RowChangedName="快遞單RowChanged" msprop:Generator_TablePropName="快遞單" msprop:Generator_RowDeletingName="快遞單RowDeleting" msprop:Generator_RowChangingName="快遞單RowChanging" msprop:Generator_RowEvHandlerName="快遞單RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單RowDeleted" msprop:Generator_RowClassName="快遞單Row" msprop:Generator_UserTableName="快遞單" msprop:Generator_RowEvArgName="快遞單RowChangeEvent">
+        <xs:element name="快遞單" msprop:Generator_TableClassName="快遞單DataTable" msprop:Generator_TableVarName="table快遞單" msprop:Generator_TablePropName="快遞單" msprop:Generator_RowDeletingName="快遞單RowDeleting" msprop:Generator_RowChangingName="快遞單RowChanging" msprop:Generator_RowEvHandlerName="快遞單RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單RowDeleted" msprop:Generator_UserTableName="快遞單" msprop:Generator_RowChangedName="快遞單RowChanged" msprop:Generator_RowEvArgName="快遞單RowChangeEvent" msprop:Generator_RowClassName="快遞單Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -141,7 +141,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="快遞單總表" msprop:Generator_TableClassName="快遞單總表DataTable" msprop:Generator_TableVarName="table快遞單總表" msprop:Generator_TablePropName="快遞單總表" msprop:Generator_RowDeletingName="快遞單總表RowDeleting" msprop:Generator_RowChangingName="快遞單總表RowChanging" msprop:Generator_RowEvHandlerName="快遞單總表RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單總表RowDeleted" msprop:Generator_UserTableName="快遞單總表" msprop:Generator_RowChangedName="快遞單總表RowChanged" msprop:Generator_RowEvArgName="快遞單總表RowChangeEvent" msprop:Generator_RowClassName="快遞單總表Row">
+        <xs:element name="快遞單總表" msprop:Generator_TableClassName="快遞單總表DataTable" msprop:Generator_TableVarName="table快遞單總表" msprop:Generator_RowChangedName="快遞單總表RowChanged" msprop:Generator_TablePropName="快遞單總表" msprop:Generator_RowDeletingName="快遞單總表RowDeleting" msprop:Generator_RowChangingName="快遞單總表RowChanging" msprop:Generator_RowEvHandlerName="快遞單總表RowChangeEventHandler" msprop:Generator_RowDeletedName="快遞單總表RowDeleted" msprop:Generator_RowClassName="快遞單總表Row" msprop:Generator_UserTableName="快遞單總表" msprop:Generator_RowEvArgName="快遞單總表RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="提單號碼" msprop:Generator_ColumnVarNameInTable="column提單號碼" msprop:Generator_ColumnPropNameInRow="提單號碼" msprop:Generator_ColumnPropNameInTable="提單號碼Column" msprop:Generator_UserColumnName="提單號碼">
@@ -242,6 +242,8 @@
               </xs:element>
               <xs:element name="檢貨時間" msprop:Generator_ColumnVarNameInTable="column檢貨時間" msprop:Generator_ColumnPropNameInRow="檢貨時間" msprop:Generator_ColumnPropNameInTable="檢貨時間Column" msprop:Generator_UserColumnName="檢貨時間" type="xs:dateTime" minOccurs="0" />
               <xs:element name="結案時間" msprop:Generator_ColumnVarNameInTable="column結案時間" msprop:Generator_ColumnPropNameInRow="結案時間" msprop:Generator_ColumnPropNameInTable="結案時間Column" msprop:Generator_UserColumnName="結案時間" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="快遞數量" msprop:Generator_ColumnVarNameInTable="column快遞數量" msprop:Generator_ColumnPropNameInRow="快遞數量" msprop:Generator_ColumnPropNameInTable="快遞數量Column" msprop:Generator_UserColumnName="快遞數量" type="xs:short" minOccurs="0" />
+              <xs:element name="快遞單位" msprop:Generator_ColumnVarNameInTable="column快遞單位" msprop:Generator_ColumnPropNameInRow="快遞單位" msprop:Generator_ColumnPropNameInTable="快遞單位Column" msprop:Generator_UserColumnName="快遞單位" type="xs:string" minOccurs="0" />
               <xs:element name="最後修改時間" msprop:Generator_ColumnVarNameInTable="column最後修改時間" msprop:Generator_ColumnPropNameInRow="最後修改時間" msprop:Generator_ColumnPropNameInTable="最後修改時間Column" msprop:Generator_UserColumnName="最後修改時間" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
