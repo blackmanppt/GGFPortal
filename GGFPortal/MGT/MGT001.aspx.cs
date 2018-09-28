@@ -103,6 +103,7 @@ namespace GGFPortal.MGT
                             部門DDL.SelectedValue = item.送件部門 ?? "業務部";
                             地點備註TB.Text = item.地點備註 ?? "";
                             idHF.Value = item.id.ToString();
+                            寄件地點DDL.SelectedValue = item.寄件地點 ?? "振大";
                         }
                     }
                     else
@@ -122,6 +123,7 @@ namespace GGFPortal.MGT
                 Session["提單日期"] = "%";
                 Session["提單號碼"] = "%";
                 送件地點DDL.SelectedValue = "其他";
+                寄件地點DDL.SelectedValue = "振大";
                 idHF.Value = null;
             }
             
@@ -256,6 +258,7 @@ namespace GGFPortal.MGT
                                 新增快遞單.快遞單檔案 = fileName;
                             新增快遞單.送件部門 = 部門DDL.SelectedValue??"業務部";
                             新增快遞單.地點備註 = 地點備註TB.Text.Trim();
+                            新增快遞單.寄件地點 = 寄件地點DDL.SelectedValue;
                             conn.快遞單.Add(新增快遞單);
                         }
                         else
@@ -270,6 +273,7 @@ namespace GGFPortal.MGT
                             修改快遞單.送件部門 = 部門DDL.SelectedValue ?? "業務部";
                             修改快遞單.地點備註 = 地點備註TB.Text.Trim();
                             修改快遞單.修改日期 = DateTime.Now;
+                            修改快遞單.寄件地點 = 寄件地點DDL.SelectedValue;
                         }
                         conn.SaveChanges();
                         transaction.Commit();
@@ -312,6 +316,7 @@ namespace GGFPortal.MGT
             地點備註TB.Text = "";
             送件地點DDL.SelectedValue = "其他";
             部門DDL.SelectedValue = "業務部";
+            寄件地點DDL.SelectedValue = "振大";
             Session["提單日期"] = "%";
             Session["提單號碼"] = "%";
             Session["送件地點"] = null;
@@ -344,6 +349,7 @@ namespace GGFPortal.MGT
                             部門DDL.SelectedValue = item.送件部門 ?? "業務部";
                             地點備註TB.Text = item.地點備註??"";
                             idHF.Value = item.id.ToString();
+                            寄件地點DDL.SelectedValue = item.寄件地點 ?? "振大";
                         }
                         Session["提單日期"] = (string.IsNullOrEmpty(快遞時間TB.Text.Trim())) ? "%" : 快遞時間TB.Text.Trim();
                         Session["提單號碼"] = (string.IsNullOrEmpty(快遞單號TB.Text.Trim())) ? "%" : 快遞單號TB.Text.Trim();

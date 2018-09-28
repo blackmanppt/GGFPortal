@@ -195,6 +195,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink78" runat="server" NavigateUrl="~/Sales/Sales008.aspx">訂單小圖</asp:HyperLink>                        
                                                                                                                                                                         <br />
                         <asp:HyperLink ID="HyperLink82" runat="server" NavigateUrl="~/Sales/Sales010.aspx">採購料號查詢</asp:HyperLink>                        
+                                                                                                                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink92" runat="server" NavigateUrl="~/Sales/Sales011.aspx">AMZ Forecast匯入</asp:HyperLink>                        
+                        <br />
+                        <asp:HyperLink ID="HyperLink93" runat="server" NavigateUrl="~/Sales/Sales012.aspx">AMZ Forecast報表</asp:HyperLink>                        
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -285,6 +289,8 @@ table, td, th {
                           <asp:HyperLink ID="HyperLink67" runat="server" NavigateUrl="~/MGT/MGT008.aspx">快遞單撿貨結案</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink91" runat="server" NavigateUrl="~/MGT/MGT009.aspx">快遞單INVOICE</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink94" runat="server" NavigateUrl="~/MGT/MGT010.aspx">快遞單原因歸屬管理</asp:HyperLink>
                     </td>
                 </tr>
             </table>

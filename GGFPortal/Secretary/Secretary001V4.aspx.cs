@@ -62,10 +62,10 @@ namespace GGFPortal.Secretary
         {
             StringBuilder sbstring = new StringBuilder(@"select left(訂單月份,4) 訂單年度,RIGHT(訂單月份,2)訂單月, * from (
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    ForMGF, salesman, employee_name,OrderBy FROM ViewOrderQty 
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                     UNION ALL 
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    ForMGF, salesman, employee_name,OrderBy FROM ViewPreOrderQty 
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                                         ) a ");
             StringBuilder sbstr1 = new StringBuilder(sbstring.ToString()), sbstr2= new StringBuilder(sbstring.ToString()), sbstr3 = new StringBuilder(sbstring.ToString()), sbstr4 = new StringBuilder(sbstring.ToString());
             //sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00");

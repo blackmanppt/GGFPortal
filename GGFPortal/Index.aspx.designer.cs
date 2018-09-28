@@ -571,6 +571,24 @@ namespace GGFPortal {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink82;
         
         /// <summary>
+        /// HyperLink92 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink92;
+        
+        /// <summary>
+        /// HyperLink93 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink93;
+        
+        /// <summary>
         /// Label1 控制項。
         /// </summary>
         /// <remarks>
@@ -866,5 +884,14 @@ namespace GGFPortal {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink91;
+        
+        /// <summary>
+        /// HyperLink94 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink94;
     }
 }

@@ -75,7 +75,7 @@ function printPage() {
                                         </th>
 					</tr>
                 <tr>
-						<th class="auto-style1">送件地點
+						<th class="auto-style1">送件目的地
 							</th>
 						<th>
 							<asp:Label ID="送件地點LB" runat="server" Text=""></asp:Label>

@@ -1351,6 +1351,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column快遞單位;
             
+            private global::System.Data.DataColumn column寄件地點;
+            
             private global::System.Data.DataColumn column最後修改時間;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1564,6 +1566,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 寄件地點Column {
+                get {
+                    return this.column寄件地點;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn 最後修改時間Column {
                 get {
                     return this.column最後修改時間;
@@ -1630,6 +1640,7 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime 結案時間, 
                         short 快遞數量, 
                         string 快遞單位, 
+                        string 寄件地點, 
                         System.DateTime 最後修改時間) {
                 快遞單總表Row row快遞單總表Row = ((快遞單總表Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1655,6 +1666,7 @@ namespace GGFPortal.DataSetSource {
                         結案時間,
                         快遞數量,
                         快遞單位,
+                        寄件地點,
                         最後修改時間};
                 row快遞單總表Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row快遞單總表Row);
@@ -1700,6 +1712,7 @@ namespace GGFPortal.DataSetSource {
                 this.column結案時間 = base.Columns["結案時間"];
                 this.column快遞數量 = base.Columns["快遞數量"];
                 this.column快遞單位 = base.Columns["快遞單位"];
+                this.column寄件地點 = base.Columns["寄件地點"];
                 this.column最後修改時間 = base.Columns["最後修改時間"];
             }
             
@@ -1750,6 +1763,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column快遞數量);
                 this.column快遞單位 = new global::System.Data.DataColumn("快遞單位", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column快遞單位);
+                this.column寄件地點 = new global::System.Data.DataColumn("寄件地點", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column寄件地點);
                 this.column最後修改時間 = new global::System.Data.DataColumn("最後修改時間", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column最後修改時間);
                 this.column提單號碼.AllowDBNull = false;
@@ -2912,6 +2927,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 寄件地點 {
+                get {
+                    try {
+                        return ((string)(this[this.table快遞單總表.寄件地點Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'快遞單總表\' 中資料行 \'寄件地點\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table快遞單總表.寄件地點Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public System.DateTime 最後修改時間 {
                 get {
                     try {
@@ -3116,6 +3147,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set快遞單位Null() {
                 this[this.table快遞單總表.快遞單位Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is寄件地點Null() {
+                return this.IsNull(this.table快遞單總表.寄件地點Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set寄件地點Null() {
+                this[this.table快遞單總表.寄件地點Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

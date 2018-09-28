@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:快遞單明細" ZOrder="3" X="307" Y="97" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:快遞單" ZOrder="2" X="484" Y="99" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
-    <Shape ID="DesignTable:快遞單總表" ZOrder="1" X="86" Y="106" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:快遞單總表" ZOrder="1" X="86" Y="106" Height="372" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

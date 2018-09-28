@@ -77,7 +77,7 @@
                                             <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
                                             <asp:BoundField DataField="提單日期" HeaderText="提單日期" SortExpression="提單日期" DataFormatString="{0:yyyy-MM-dd}" />
                                             <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
-                                            <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
+                                            <asp:BoundField DataField="送件地點" HeaderText="送件目的地" SortExpression="送件地點" />
                                             <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
                                             <asp:BoundField DataField="建立日期" HeaderText="建立日期" SortExpression="建立日期" DataFormatString="{0:yyyy-MM-dd}" />
                                         </Columns>

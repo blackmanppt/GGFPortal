@@ -35,6 +35,7 @@
           <Property Name="快遞廠商" Type="nvarchar" MaxLength="50" />
           <Property Name="快遞單檔案" Type="nvarchar" MaxLength="100" />
           <Property Name="地點備註" Type="nvarchar" MaxLength="255" />
+          <Property Name="寄件地點" Type="nvarchar" MaxLength="255" />
           <Property Name="送件地點" Type="nvarchar" MaxLength="255" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="建立日期" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
@@ -216,6 +217,7 @@
           <Property Name="檢貨時間" Type="DateTime" Precision="3" />
           <Property Name="結案狀態" Type="Boolean" />
           <Property Name="結案時間" Type="DateTime" Precision="3" />
+          <Property Name="寄件地點" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="快遞單明細">
           <Key>
@@ -347,6 +349,7 @@
           <EntitySetMapping Name="快遞單">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單">
               <MappingFragment StoreEntitySet="快遞單">
+                <ScalarProperty Name="寄件地點" ColumnName="寄件地點" />
                 <ScalarProperty Name="結案時間" ColumnName="結案時間" />
                 <ScalarProperty Name="結案狀態" ColumnName="結案狀態" />
                 <ScalarProperty Name="檢貨時間" ColumnName="檢貨時間" />

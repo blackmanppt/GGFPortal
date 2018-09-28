@@ -58,7 +58,7 @@
                                         </th>
 					</tr>
                 <tr>
-						<th>送件地點
+						<th>送件目的地
 							</th>
 						<th>
 							<asp:Label ID="送件地點LB" runat="server" Text=""></asp:Label>

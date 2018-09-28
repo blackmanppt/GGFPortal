@@ -62,14 +62,14 @@ namespace GGFPortal.Secretary
         {
             StringBuilder sbstring = new StringBuilder(@"select * from (
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    ForMGF, salesman, employee_name,OrderBy FROM ViewOrderQty 
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewOrderQty  x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                     UNION ALL 
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    ForMGF, salesman, employee_name,OrderBy FROM ViewPreOrderQty 
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewPreOrderQty  x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                                         ) a ");
             StringBuilder sbstr1 = new StringBuilder(sbstring.ToString()), sbstr2= new StringBuilder(sbstring.ToString()), sbstr3 = new StringBuilder(sbstring.ToString());
-            sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00");
-            sbstr2.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime( StartDay.Text.Substring(0,4)+"/"+ StartDay.Text.Substring(4, 2)+ "/" + StartDay.Text.Substring(6, 2)).AddMonths(-7).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-7).ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddMonths(-1).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "00");
+            sbstr1.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : DateTime.Now.AddMonths(6).ToString("yyyyMM") + "00");
+            sbstr2.AppendFormat(" where 訂單日期 between '{0}' and '{1}'", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime( StartDay.Text.Substring(0,4)+"/"+ StartDay.Text.Substring(4, 2)+ "/" + StartDay.Text.Substring(6, 2)).AddMonths(-7).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-7).ToString("yyyyMM") + "00", (!string.IsNullOrEmpty(EndDay.Text)) ? Convert.ToDateTime(EndDay.Text.Substring(0, 4) + "/" + EndDay.Text.Substring(4, 2) + "/" + EndDay.Text.Substring(6, 2)).AddMonths(-1).ToString("yyyyMMdd") : DateTime.Now.AddMonths(-1).ToString("yyyyMM") + "00");
             sbstr3.AppendFormat(" where 訂單日期 like '{0}' ", (!string.IsNullOrEmpty(StartDay.Text)) ? Convert.ToDateTime(StartDay.Text.Substring(0, 4) + "/" + StartDay.Text.Substring(4, 2) + "/" + StartDay.Text.Substring(6, 2)).AddYears(-1).ToString("yyyy")+"%" : DateTime.Now.AddYears(-1).ToString("yyyy") + "%");
             DataTable dt = new DataTable(), dt2 = new DataTable(), dt3 = new DataTable();
             using (SqlConnection Conn = new SqlConnection(strConnectString))

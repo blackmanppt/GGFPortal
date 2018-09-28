@@ -308,6 +308,7 @@
     <Content Include="MGT\MGT005.aspx" />
     <Content Include="MGT\MGT003.aspx" />
     <Content Include="MGT\MGT004.aspx" />
+    <Content Include="MGT\MGT010.aspx" />
     <Content Include="MGT\MGT009.aspx" />
     <Content Include="MIS\MIS010.aspx" />
     <Content Include="MIS\MIS009.aspx" />
@@ -1341,6 +1342,13 @@
     </Compile>
     <Compile Include="MGT\MGT004.aspx.designer.cs">
       <DependentUpon>MGT004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT010.aspx.cs">
+      <DependentUpon>MGT010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT010.aspx.designer.cs">
+      <DependentUpon>MGT010.aspx</DependentUpon>
     </Compile>
     <Compile Include="MGT\MGT009.aspx.cs">
       <DependentUpon>MGT009.aspx</DependentUpon>
