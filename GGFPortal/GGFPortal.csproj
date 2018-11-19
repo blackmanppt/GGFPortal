@@ -339,6 +339,7 @@
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
     <Content Include="Sales\Sales011.aspx" />
+    <Content Include="Sales\Sales013.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -1507,6 +1508,13 @@
     <Compile Include="Sales\Sales011.aspx.designer.cs">
       <DependentUpon>Sales011.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sales013.aspx.cs">
+      <DependentUpon>Sales013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales013.aspx.designer.cs">
+      <DependentUpon>Sales013.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secretary\Secretary008.aspx.cs">
       <DependentUpon>Secretary008.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2441,6 +2449,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales005V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales010.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales012.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales013.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />

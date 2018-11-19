@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.VN {
+namespace GGFPortal.Sales {
     
     
-    public partial class VN014 {
+    public partial class Sales013 {
         
         /// <summary>
         /// form1 控制項。
@@ -31,85 +31,49 @@ namespace GGFPortal.VN {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// StartDay 控制項。
+        /// 下線日StartTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StartDay;
+        protected global::System.Web.UI.WebControls.TextBox 下線日StartTB;
         
         /// <summary>
-        /// StartDay_CalendarExtender 控制項。
+        /// 下線日StartTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
+        protected global::AjaxControlToolkit.CalendarExtender 下線日StartTB_CalendarExtender;
         
         /// <summary>
-        /// EndDay 控制項。
+        /// 下線日EndTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDay;
+        protected global::System.Web.UI.WebControls.TextBox 下線日EndTB;
         
         /// <summary>
-        /// EndDay_CalendarExtender 控制項。
+        /// 下線日EndTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        protected global::AjaxControlToolkit.CalendarExtender 下線日EndTB_CalendarExtender;
         
         /// <summary>
-        /// CusTB 控制項。
+        /// 車縫DDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CusTB;
-        
-        /// <summary>
-        /// CusTB_AutoCompleteExtender 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender CusTB_AutoCompleteExtender;
-        
-        /// <summary>
-        /// StyleTB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StyleTB;
-        
-        /// <summary>
-        /// StyleTB_AutoCompleteExtender 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
-        
-        /// <summary>
-        /// 工廠CBL 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList 工廠CBL;
+        protected global::System.Web.UI.WebControls.DropDownList 車縫DDL;
         
         /// <summary>
         /// SqlDataSource1 控制項。
@@ -119,6 +83,51 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        
+        /// <summary>
+        /// updatepanel1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatepanel1;
+        
+        /// <summary>
+        /// TextBox1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// TextBox1_PopupControlExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.PopupControlExtender TextBox1_PopupControlExtender;
+        
+        /// <summary>
+        /// Panel1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
+        /// CheckBoxList1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
         
         /// <summary>
         /// SearchBT 控制項。
@@ -146,5 +155,59 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        
+        /// <summary>
+        /// UpdatePanel3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
+        /// show3 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button show3;
+        
+        /// <summary>
+        /// AlertPanel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel AlertPanel;
+        
+        /// <summary>
+        /// MessageLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageLB;
+        
+        /// <summary>
+        /// AlertBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AlertBT;
+        
+        /// <summary>
+        /// AlertPanel_ModalPopupExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender AlertPanel_ModalPopupExtender;
     }
 }

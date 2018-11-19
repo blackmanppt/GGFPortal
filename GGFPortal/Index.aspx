@@ -199,6 +199,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink92" runat="server" NavigateUrl="~/Sales/Sales011.aspx">AMZ Forecast匯入</asp:HyperLink>                        
                         <br />
                         <asp:HyperLink ID="HyperLink93" runat="server" NavigateUrl="~/Sales/Sales012.aspx">AMZ Forecast報表</asp:HyperLink>                        
+                        <br />
+                        <asp:HyperLink ID="HyperLink95" runat="server" NavigateUrl="~/Sales/Sales013.aspx">CRP排程表</asp:HyperLink>                        
+
+                        
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

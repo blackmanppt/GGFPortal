@@ -60,7 +60,7 @@ namespace GGFPortal.MGT
         private StringBuilder selectsql()
         {
             StringBuilder strsql = new StringBuilder();
-            strsql.AppendFormat(@"SELECT b.提單號碼,b.提單日期,b.快遞廠商,b.送件地點     ,[寄件人]
+            strsql.AppendFormat(@"SELECT b.提單號碼,b.提單日期,b.快遞廠商, case when b.送件地點='其他' then b.送件地點+'：' + b.地點備註 else b.送件地點 end as '送件地點'     ,[寄件人]
                                           ,[寄件人工號]
                                           ,[寄件人分機]
                                           ,[寄件人部門]
@@ -88,7 +88,7 @@ namespace GGFPortal.MGT
             }
             if (快遞廠商DDL.SelectedValue!="")
             {
-                strsql.AppendFormat(" and UPPER(b.[快遞廠商]) = '{0}'", 快遞廠商DDL.SelectedValue);
+                strsql.AppendFormat(" and UPPER(b.[快遞廠商]) = '{0}'", 快遞廠商DDL.SelectedValue.ToUpper());
             }
             return strsql;
         }

@@ -51,6 +51,13 @@
                                 <ajaxToolkit:AutoCompleteExtender ID="StyleTB_AutoCompleteExtender" runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="StyleTB"  ServiceMethod="SearchOrdStyle" MinimumPrefixLength="1" UseContextKey="True" >
                                 </ajaxToolkit:AutoCompleteExtender>
                             </div>
+                            <h4>工廠</h4>
+                            <div class=" checkbox-inline">
+                                <asp:CheckBoxList ID="工廠CBL" runat="server" CssClass=" checkbox checklist" DataSourceID="SqlDataSource1" DataTextField="vendor_name_brief" DataValueField="vendor_id" >
+                                    
+                                </asp:CheckBoxList>
+                            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:GGFConnectionString %>' SelectCommand="select distinct vendor_id,vendor_name_brief from bas_vendor_master where  ( factory_code<>'') and factory_code is not null"></asp:SqlDataSource>
+</div>
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
                             <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />

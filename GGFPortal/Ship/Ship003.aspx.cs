@@ -83,6 +83,7 @@ namespace GGFPortal.Ship
                                                             ,代理商
                                                             ,傭金比
                                                             ,PO別
+                                                            ,目的地
                                                         from [View客戶訂單轉Excel] where  ");
             strsql.AppendFormat(" 出貨日期  between '{0}' and '{1}' ",(string.IsNullOrEmpty(StarDayTB.Text.Trim()))?"2000-01-01": StarDayTB.Text.Trim(), (string.IsNullOrEmpty(EndDayTB.Text.Trim())) ? "2099-01-01" : EndDayTB.Text.Trim());
             if (!string.IsNullOrEmpty(公司別DDL.Text))
@@ -122,7 +123,8 @@ namespace GGFPortal.Ship
                                 ,公司別
                                 ,代理商
                                 ,傭金比
-                                ,PO別");
+                                ,PO別
+                                ,目的地");
 
             return strsql;
         }

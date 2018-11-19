@@ -38,5 +38,35 @@ namespace GGFPortal.ReferenceCode
             string[] lines = strPur.Split(stringSeparators, StringSplitOptions.None);
             return lines;
         }
+        public StringBuilder 逗點字串多筆資料搜尋(string strtext)
+        {
+            StringBuilder 多筆資料 = new StringBuilder("");
+            string[] strtextarry = 切割逗點(strtext);
+            if (strtextarry.Length > 0)
+            {
+                for (int i = 0; i < strtextarry.Length; i++)
+                {
+                    if (strtextarry[i].Trim().Length > 0)
+                        if (多筆資料.Length == 0)
+                            多筆資料.AppendFormat("('{0}'", strtextarry[i].Trim());
+                        else
+                            多筆資料.AppendFormat(",'{0}'", strtextarry[i].Trim());
+                }
+                if (多筆資料.Length > 0)
+                    多筆資料.Append(")");
+            }
+            else
+            {
+
+            }
+
+            return 多筆資料;
+        }
+        protected string[] 切割逗點(string str逗點)
+        {
+            string[] stringSeparators = new string[] { "," };
+            string[] lines = str逗點.Split(stringSeparators, StringSplitOptions.None);
+            return lines;
+        }
     }
 }

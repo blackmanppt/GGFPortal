@@ -83,7 +83,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
   <xs:element name="VNDSTemp" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="VNDSTemp" msprop:Generator_UserDSName="VNDSTemp">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="VNReport" msprop:Generator_TableClassName="VNReportDataTable" msprop:Generator_TableVarName="tableVNReport" msprop:Generator_TablePropName="VNReport" msprop:Generator_RowDeletingName="VNReportRowDeleting" msprop:Generator_RowChangingName="VNReportRowChanging" msprop:Generator_RowEvHandlerName="VNReportRowChangeEventHandler" msprop:Generator_RowDeletedName="VNReportRowDeleted" msprop:Generator_UserTableName="VNReport" msprop:Generator_RowChangedName="VNReportRowChanged" msprop:Generator_RowEvArgName="VNReportRowChangeEvent" msprop:Generator_RowClassName="VNReportRow">
+        <xs:element name="VNReport" msprop:Generator_TableClassName="VNReportDataTable" msprop:Generator_TableVarName="tableVNReport" msprop:Generator_RowChangedName="VNReportRowChanged" msprop:Generator_TablePropName="VNReport" msprop:Generator_RowDeletingName="VNReportRowDeleting" msprop:Generator_RowChangingName="VNReportRowChanging" msprop:Generator_RowEvHandlerName="VNReportRowChangeEventHandler" msprop:Generator_RowDeletedName="VNReportRowDeleted" msprop:Generator_RowClassName="VNReportRow" msprop:Generator_UserTableName="VNReport" msprop:Generator_RowEvArgName="VNReportRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Team" msprop:Generator_ColumnVarNameInTable="columnTeam" msprop:Generator_ColumnPropNameInRow="Team" msprop:Generator_ColumnPropNameInTable="TeamColumn" msprop:Generator_UserColumnName="Team">
@@ -186,7 +186,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="工時成本" msprop:Generator_TableClassName="工時成本DataTable" msprop:Generator_TableVarName="table工時成本" msprop:Generator_TablePropName="工時成本" msprop:Generator_RowDeletingName="工時成本RowDeleting" msprop:Generator_RowChangingName="工時成本RowChanging" msprop:Generator_RowEvHandlerName="工時成本RowChangeEventHandler" msprop:Generator_RowDeletedName="工時成本RowDeleted" msprop:Generator_UserTableName="工時成本" msprop:Generator_RowChangedName="工時成本RowChanged" msprop:Generator_RowEvArgName="工時成本RowChangeEvent" msprop:Generator_RowClassName="工時成本Row">
+        <xs:element name="工時成本" msprop:Generator_TableClassName="工時成本DataTable" msprop:Generator_TableVarName="table工時成本" msprop:Generator_RowChangedName="工時成本RowChanged" msprop:Generator_TablePropName="工時成本" msprop:Generator_RowDeletingName="工時成本RowDeleting" msprop:Generator_RowChangingName="工時成本RowChanging" msprop:Generator_RowEvHandlerName="工時成本RowChangeEventHandler" msprop:Generator_RowDeletedName="工時成本RowDeleted" msprop:Generator_RowClassName="工時成本Row" msprop:Generator_UserTableName="工時成本" msprop:Generator_RowEvArgName="工時成本RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="成本年月" msprop:Generator_ColumnVarNameInTable="column成本年月" msprop:Generator_ColumnPropNameInRow="成本年月" msprop:Generator_ColumnPropNameInTable="成本年月Column" msprop:Generator_UserColumnName="成本年月" type="xs:string" minOccurs="0" />
@@ -196,7 +196,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="越南產量統計" msprop:Generator_TableClassName="越南產量統計DataTable" msprop:Generator_TableVarName="table越南產量統計" msprop:Generator_RowChangedName="越南產量統計RowChanged" msprop:Generator_TablePropName="越南產量統計" msprop:Generator_RowDeletingName="越南產量統計RowDeleting" msprop:Generator_RowChangingName="越南產量統計RowChanging" msprop:Generator_RowEvHandlerName="越南產量統計RowChangeEventHandler" msprop:Generator_RowDeletedName="越南產量統計RowDeleted" msprop:Generator_RowClassName="越南產量統計Row" msprop:Generator_UserTableName="越南產量統計" msprop:Generator_RowEvArgName="越南產量統計RowChangeEvent">
+        <xs:element name="越南產量統計" msprop:Generator_TableClassName="越南產量統計DataTable" msprop:Generator_TableVarName="table越南產量統計" msprop:Generator_TablePropName="越南產量統計" msprop:Generator_RowDeletingName="越南產量統計RowDeleting" msprop:Generator_RowChangingName="越南產量統計RowChanging" msprop:Generator_RowEvHandlerName="越南產量統計RowChangeEventHandler" msprop:Generator_RowDeletedName="越南產量統計RowDeleted" msprop:Generator_UserTableName="越南產量統計" msprop:Generator_RowChangedName="越南產量統計RowChanged" msprop:Generator_RowEvArgName="越南產量統計RowChangeEvent" msprop:Generator_RowClassName="越南產量統計Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Team" msprop:Generator_ColumnVarNameInTable="columnTeam" msprop:Generator_ColumnPropNameInRow="Team" msprop:Generator_ColumnPropNameInTable="TeamColumn" msprop:Generator_UserColumnName="Team">
@@ -217,7 +217,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VNReport2" msprop:Generator_TableClassName="VNReport2DataTable" msprop:Generator_TableVarName="tableVNReport2" msprop:Generator_TablePropName="VNReport2" msprop:Generator_RowDeletingName="VNReport2RowDeleting" msprop:Generator_RowChangingName="VNReport2RowChanging" msprop:Generator_RowEvHandlerName="VNReport2RowChangeEventHandler" msprop:Generator_RowDeletedName="VNReport2RowDeleted" msprop:Generator_UserTableName="VNReport2" msprop:Generator_RowChangedName="VNReport2RowChanged" msprop:Generator_RowEvArgName="VNReport2RowChangeEvent" msprop:Generator_RowClassName="VNReport2Row">
+        <xs:element name="VNReport2" msprop:Generator_TableClassName="VNReport2DataTable" msprop:Generator_TableVarName="tableVNReport2" msprop:Generator_RowChangedName="VNReport2RowChanged" msprop:Generator_TablePropName="VNReport2" msprop:Generator_RowDeletingName="VNReport2RowDeleting" msprop:Generator_RowChangingName="VNReport2RowChanging" msprop:Generator_RowEvHandlerName="VNReport2RowChangeEventHandler" msprop:Generator_RowDeletedName="VNReport2RowDeleted" msprop:Generator_RowClassName="VNReport2Row" msprop:Generator_UserTableName="VNReport2" msprop:Generator_RowEvArgName="VNReport2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Team" msprop:Generator_ColumnVarNameInTable="columnTeam" msprop:Generator_ColumnPropNameInRow="Team" msprop:Generator_ColumnPropNameInTable="TeamColumn" msprop:Generator_UserColumnName="Team">
@@ -321,7 +321,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="訂單主料預定到廠日" msprop:Generator_TableClassName="訂單主料預定到廠日DataTable" msprop:Generator_TableVarName="table訂單主料預定到廠日" msprop:Generator_RowChangedName="訂單主料預定到廠日RowChanged" msprop:Generator_TablePropName="訂單主料預定到廠日" msprop:Generator_RowDeletingName="訂單主料預定到廠日RowDeleting" msprop:Generator_RowChangingName="訂單主料預定到廠日RowChanging" msprop:Generator_RowEvHandlerName="訂單主料預定到廠日RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單主料預定到廠日RowDeleted" msprop:Generator_RowClassName="訂單主料預定到廠日Row" msprop:Generator_UserTableName="訂單主料預定到廠日" msprop:Generator_RowEvArgName="訂單主料預定到廠日RowChangeEvent">
+        <xs:element name="訂單主料預定到廠日" msprop:Generator_TableClassName="訂單主料預定到廠日DataTable" msprop:Generator_TableVarName="table訂單主料預定到廠日" msprop:Generator_TablePropName="訂單主料預定到廠日" msprop:Generator_RowDeletingName="訂單主料預定到廠日RowDeleting" msprop:Generator_RowChangingName="訂單主料預定到廠日RowChanging" msprop:Generator_RowEvHandlerName="訂單主料預定到廠日RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單主料預定到廠日RowDeleted" msprop:Generator_UserTableName="訂單主料預定到廠日" msprop:Generator_RowChangedName="訂單主料預定到廠日RowChanged" msprop:Generator_RowEvArgName="訂單主料預定到廠日RowChangeEvent" msprop:Generator_RowClassName="訂單主料預定到廠日Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="訂單數量" msprop:Generator_ColumnVarNameInTable="column訂單數量" msprop:Generator_ColumnPropNameInRow="訂單數量" msprop:Generator_ColumnPropNameInTable="訂單數量Column" msprop:Generator_UserColumnName="訂單數量" type="xs:decimal" minOccurs="0" />
@@ -371,6 +371,7 @@ WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.St
               </xs:element>
               <xs:element name="ETD" msprop:Generator_ColumnVarNameInTable="columnETD" msprop:Generator_ColumnPropNameInRow="ETD" msprop:Generator_ColumnPropNameInTable="ETDColumn" msprop:Generator_UserColumnName="ETD" type="xs:dateTime" minOccurs="0" />
               <xs:element name="訂單狀態" msprop:Generator_ColumnVarNameInTable="column訂單狀態" msprop:Generator_ColumnPropNameInRow="訂單狀態" msprop:Generator_ColumnPropNameInTable="訂單狀態Column" msprop:Generator_UserColumnName="訂單狀態" type="xs:string" minOccurs="0" />
+              <xs:element name="工廠" msprop:Generator_ColumnVarNameInTable="column工廠" msprop:Generator_ColumnPropNameInRow="工廠" msprop:Generator_ColumnPropNameInTable="工廠Column" msprop:Generator_UserColumnName="工廠" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

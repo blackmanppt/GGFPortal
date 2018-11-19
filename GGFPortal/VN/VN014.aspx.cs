@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace GGFPortal.VN
 {
@@ -65,7 +66,8 @@ namespace GGFPortal.VN
                                                       ,[小圖]
                                                       ,[預計到廠日]
                                                       ,[訂單狀態]
-                                                        ,ETD
+                                                      ,ETD
+                                                      ,工廠
 from [View訂單主料預定到廠日] "); 
 
             if (!String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
@@ -81,8 +83,16 @@ from [View訂單主料預定到廠日] ");
                 //    strsql.AppendFormat(" and [工廠代號]  = '{0}'", VendorDDL.SelectedValue);
                 if (!String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
                 {
-                    strsql.AppendFormat(" and [預計到廠日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text))? StartDay.Text:"2000-01-01", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "2999-01-01");
+                    strsql.AppendFormat(" and [客戶交期]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text))? StartDay.Text:"2000-01-01", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "2999-01-01");
                 }
+                string strckb = "";
+                foreach (ListItem item in 工廠CBL.Items)
+                {
+                    if (item.Selected == true)
+                        strckb = (strckb.Length > 0) ? strckb + " ,'" + item.Value + "' " : " '" + item.Value + "'";
+                }
+                if (strckb.Length > 0)
+                    strsql.AppendFormat(" and 工廠 in ( {0} )", strckb);
                 strsql.Append(@" group by 
       [代理商]
       ,[Name]
@@ -92,6 +102,7 @@ from [View訂單主料預定到廠日] ");
       ,[預計到廠日]
       ,[訂單狀態]
 ,ETD
+,工廠
 ");
             }
             return strsql;

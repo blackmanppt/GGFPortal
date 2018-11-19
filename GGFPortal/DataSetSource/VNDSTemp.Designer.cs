@@ -2628,6 +2628,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column訂單狀態;
             
+            private global::System.Data.DataColumn column工廠;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 訂單主料預定到廠日DataTable() {
@@ -2751,6 +2753,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 工廠Column {
+                get {
+                    return this.column工廠;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2786,7 +2796,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public 訂單主料預定到廠日Row Add訂單主料預定到廠日Row(decimal 訂單數量, string 代理商, string email, string Name, string 款號, System.DateTime 客戶交期, string 小圖, System.DateTime 預計到廠日, string bah_status, System.DateTime ETD, string 訂單狀態) {
+            public 訂單主料預定到廠日Row Add訂單主料預定到廠日Row(decimal 訂單數量, string 代理商, string email, string Name, string 款號, System.DateTime 客戶交期, string 小圖, System.DateTime 預計到廠日, string bah_status, System.DateTime ETD, string 訂單狀態, string 工廠) {
                 訂單主料預定到廠日Row row訂單主料預定到廠日Row = ((訂單主料預定到廠日Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         訂單數量,
@@ -2799,7 +2809,8 @@ namespace GGFPortal.DataSetSource {
                         預計到廠日,
                         bah_status,
                         ETD,
-                        訂單狀態};
+                        訂單狀態,
+                        工廠};
                 row訂單主料預定到廠日Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row訂單主料預定到廠日Row);
                 return row訂單主料預定到廠日Row;
@@ -2833,6 +2844,7 @@ namespace GGFPortal.DataSetSource {
                 this.columnbah_status = base.Columns["bah_status"];
                 this.columnETD = base.Columns["ETD"];
                 this.column訂單狀態 = base.Columns["訂單狀態"];
+                this.column工廠 = base.Columns["工廠"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2860,6 +2872,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnETD);
                 this.column訂單狀態 = new global::System.Data.DataColumn("訂單狀態", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column訂單狀態);
+                this.column工廠 = new global::System.Data.DataColumn("工廠", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column工廠);
                 this.column代理商.MaxLength = 8;
                 this.columnemail.MaxLength = 40;
                 this.columnName.ReadOnly = true;
@@ -5389,6 +5403,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 工廠 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單主料預定到廠日.工廠Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單主料預定到廠日\' 中資料行 \'工廠\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單主料預定到廠日.工廠Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is訂單數量Null() {
                 return this.IsNull(this.table訂單主料預定到廠日.訂單數量Column);
             }
@@ -5517,6 +5547,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set訂單狀態Null() {
                 this[this.table訂單主料預定到廠日.訂單狀態Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is工廠Null() {
+                return this.IsNull(this.table訂單主料預定到廠日.工廠Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set工廠Null() {
+                this[this.table訂單主料預定到廠日.工廠Column] = global::System.Convert.DBNull;
             }
         }
         

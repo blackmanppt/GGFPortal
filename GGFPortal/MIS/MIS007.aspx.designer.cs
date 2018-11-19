@@ -49,6 +49,24 @@ namespace GGFPortal.MIS {
         protected global::System.Web.UI.WebControls.TextBox 款號TB;
         
         /// <summary>
+        /// 供應商TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 供應商TB;
+        
+        /// <summary>
+        /// 供應商TB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender 供應商TB_AutoCompleteExtender;
+        
+        /// <summary>
         /// SearchBT 控制項。
         /// </summary>
         /// <remarks>

@@ -33,9 +33,14 @@ namespace GGFPortal.MIS
 
         private void DBBind()
         {
-            if(string.IsNullOrEmpty(採購單TB.Text)&& string.IsNullOrEmpty(款號TB.Text))
+            if (string.IsNullOrEmpty(採購單TB.Text) && string.IsNullOrEmpty(款號TB.Text) && string.IsNullOrEmpty(供應商TB.Text))
             {
                 MessageLB.Text = "請輸入搜尋條件";
+                AlertPanel_ModalPopupExtender.Show();
+            }
+            else if (string.IsNullOrEmpty(款號TB.Text) && !string.IsNullOrEmpty(供應商TB.Text))
+            {
+                MessageLB.Text = "使用供應商查詢需輸入款號";
                 AlertPanel_ModalPopupExtender.Show();
             }
             else
@@ -51,6 +56,8 @@ namespace GGFPortal.MIS
                     sb.AppendFormat(" and 採購單號碼 in {0}", 字串處理.字串多筆資料搜尋(採購單TB.Text).ToString());
                 if (!string.IsNullOrEmpty(款號TB.Text))
                     sb.AppendFormat(" and 款號 in {0}", 字串處理.字串多筆資料搜尋(款號TB.Text).ToString());
+                if (!string.IsNullOrEmpty(供應商TB.Text))
+                    sb.AppendFormat(" and  (供應商簡稱 ='{0}' or  供應商代號 = '{0}')", 供應商TB.Text);
                 if (sb.Length > 0)
                 {
                     DataTable dt = new DataTable();
@@ -60,10 +67,11 @@ namespace GGFPortal.MIS
                         myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
                     }
+                    確認GV.DataSource = dt;
+                    確認GV.DataBind();
                     if (dt.Rows.Count > 0)
                     {
-                        確認GV.DataSource = dt;
-                        確認GV.DataBind();
+ 
                     }
                     else
                     {
@@ -78,6 +86,7 @@ namespace GGFPortal.MIS
         {
             採購單TB.Text = "";
             款號TB.Text = "";
+            供應商TB.Text = "";
         }
 
         protected void UpDateBT_Click(object sender, EventArgs e)
