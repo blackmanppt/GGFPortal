@@ -81,6 +81,7 @@ namespace GGFPortal.Sales
                                                                ,[處理類別]
                                                                ,[Creator]
                                                                ,[處理時間]
+                                                               ,[件數]
                                                                )
                                                             VALUES
                                                                 (@uid
@@ -89,6 +90,7 @@ namespace GGFPortal.Sales
                                                                 ,@處理類別
                                                                 ,@Creator
                                                                 ,@處理時間
+                                                                ,@件數
                                                                 )
                                                                 ");
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
@@ -97,6 +99,7 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@處理類別", SqlDbType.Int).Value = TypeDDL.SelectedValue;
                         command1.Parameters.Add("@Creator", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@處理時間", SqlDbType.NVarChar).Value = DateTB.Text;
+                        command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -146,6 +149,7 @@ namespace GGFPortal.Sales
             //DateLB.Visible = false;
             DateTB.Text = "";
             //DateTB.Visible = false;
+            件數TB.Text = "";
         }
 
         protected void UpDateBT_Click1(object sender, EventArgs e)
@@ -173,6 +177,7 @@ namespace GGFPortal.Sales
                                                                   ,[修改日期] = GETDATE() 
                                                                   ,[Modifier] = @Modifier
                                                                   ,[處理時間] = @處理時間
+                                                                  ,[件數]=@件數
                                                             WHERE id = {0} ", Session["id"].ToString());
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
                         command1.Parameters.Add("@修改人員", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
@@ -184,6 +189,7 @@ namespace GGFPortal.Sales
                         //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
                         //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
                         //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
+                        command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -227,12 +233,14 @@ namespace GGFPortal.Sales
             UserDDL.SelectedValue= UserDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[4].Text).Value;
             //QtyTB.Text = this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
             DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
+            件數TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
             //DateTB.Visible = true;
             UpDateBT.Visible = true;
             CancelBT.Visible = true;
             //DateLB.Visible = true;
             //DateTB.Visible = true;
             AddBT.Visible = false;
+
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
@@ -307,6 +315,17 @@ namespace GGFPortal.Sales
             {
                 strerror += (strerror.Length > 0) ?  "、沒有選擇處理日期" : "沒有選擇處理日期";
             }
+            if (string.IsNullOrEmpty(件數TB.Text))
+            {
+                strerror += (strerror.Length > 0) ? "、沒有件數" : "沒有件數";
+            }
+            else
+            {
+                string RegularExpressions = null;
+                RegularExpressions = @"^\+?[1-9][0-9]*$";
+                Match m = Regex.Match(件數TB.Text, RegularExpressions);
+                strerror += (m.Success) ? "" : (strerror.Length > 0) ? "、件數格式錯誤" : "件數格式錯誤";
+            }
             //if(QtyTB.Text!="")
             //{ 
             //    string RegularExpressions = null;
@@ -314,9 +333,9 @@ namespace GGFPortal.Sales
             //    Match m = Regex.Match(QtyTB.Text, RegularExpressions);
             //    strerror += (m.Success) ? "" : (strerror.Length > 0) ? "、數量格式錯誤" : "數量格式錯誤";
             //}
-            
 
-      
+
+
 
             return (strerror == "") ? "" : "資料錯誤："+strerror;
         }

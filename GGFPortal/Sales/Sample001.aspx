@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample001.aspx.cs" Inherits="GGFPortal.Sales.Sample001" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample001.aspx.cs" Inherits="GGFPortal.Sales.Sample001" EnableEventValidation="False" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,12 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>樣品進度登記</title>
-    
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
         <%--<link href="scripts/bootstrap.min.css" rel="stylesheet"/>--%>
     <style type="text/css">
         .auto-style1 {
@@ -41,13 +46,13 @@
             </tr>
             <tr>
                 <td class="auto-style1">
-                    <asp:Label ID="StyleNoLB" runat="server" Text="Style No："></asp:Label>
+                    <asp:Label CssClass=" label label-default" ID="StyleNoLB" runat="server" Text="Style No："></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox ID="StyleNoTB" runat="server"></asp:TextBox>
                     <ajaxToolkit:AutoCompleteExtender ID="StyleNoTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo"  TargetControlID="StyleNoTB">
                     </ajaxToolkit:AutoCompleteExtender>
-                    <asp:Button ID="Button1" runat="server" Text="Search" />
+                    <asp:Button ID="Button1" runat="server" Text="Search" CssClass="  btn-default btn" OnClick="Button1_Click" />
                 </td>
                 <td>
                     &nbsp;</td>
@@ -56,7 +61,9 @@
                 <td class="auto-style1">
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                    <asp:CheckBox ID="未收單CB" runat="server" Text="打版未完成" CssClass=" control-label" Checked="True" />
+                    <asp:CheckBox ID="UnTDCB" runat="server" Text="TD未完成" CssClass=" control-label" Checked="True" />
+                </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
@@ -64,9 +71,13 @@
     </div>
         <div>
 
-            <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False" DataKeyNames="site,sam_nbr,sam_times" DataSourceID="SqlDataSource1" AllowPaging="True" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" PageSize="20" OnRowDataBound="GridView1_RowDataBound">
+            <asp:GridView CssClass="table" ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False" DataKeyNames="site,sam_nbr,sam_times" DataSourceID="SqlDataSource1" AllowPaging="True" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" PageSize="20" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
                 <Columns>
-                    <asp:CommandField ButtonType="Button" HeaderText="編輯" SelectText="編輯" ShowSelectButton="True" />
+                    <asp:TemplateField HeaderText="編輯" ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="EditeDetail" Text="編輯" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="site" HeaderText="公司別" ReadOnly="True" SortExpression="site" />
                     <asp:BoundField DataField="sam_nbr" HeaderText="樣品單號" ReadOnly="True" SortExpression="sam_nbr" />
                     <asp:BoundField DataField="cus_style_no" HeaderText="款號" SortExpression="cus_style_no" />
@@ -167,12 +178,17 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="type_desc" HeaderText="種類" ReadOnly="True" SortExpression="type_desc" />
-                    <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:yyyy/MM/dd}" />
                     <asp:BoundField DataField="sam_qty" HeaderText="需求件數" SortExpression="sam_qty" />
-                    <asp:BoundField DataField="sam_date" HeaderText="打樣日期" SortExpression="sam_date" DataFormatString="{0:d}"/>
+                    <asp:BoundField DataField="sam_date" HeaderText="打樣日期" SortExpression="sam_date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="TD_Fin_Date" HeaderText="TD完成日" SortExpression="TD_Fin_Date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="Sam_In_Date" HeaderText="樣衣收單日" SortExpression="Sam_In_Date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="Sam_Out_Date" HeaderText="樣衣完成日" SortExpression="Sam_Out_Date" DataFormatString="{0:yyyy/MM/dd}"/>
+
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerSettings Position="Top" />
                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
                 <RowStyle ForeColor="#000066" />
                 <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
@@ -182,7 +198,7 @@
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT a.site, a.sam_nbr, a.sam_times, a.sam_no, a.version, a.sam_date, a.cus_id, a.dept_no, a.item_no, a.type_id, a.salesman, a.sam_size, a.assign_qty, a.plan_fin_date, a.emb, a.washing, a.oth_extra, a.finish_date, a.finish_qty, a.place_origin, a.currency_id, a.unit_price, a.amount, a.sam_qty, a.sam_cus_qty, a.sam_taipei_qty, a.image_path, a.remark60, a.status, a.close_date, a.reason, a.online_date, a.confirm_yn, a.progress_rate, a.sam_class, a.original_sampleo_yn, a.original_edition_yn, a.original_edition_size, a.ratio_size, a.sample_complete_1, a.sample_complete_2, a.cus_express_corp, a.cus_assign_account, a.cus_address_id, a.cus_addressee, a.cus_address, a.cus_style_no, a.brand_name, a.sam_type, a.proofing_factory, a.filter_creator, a.filter_dept, a.creator, a.create_date, a.modifier, a.modify_date, a.printing, a.sewing, a.samc_remark60, a.mark, a.crp_yn, a.crp_date, a.item_statistic, a.remark_1, a.final, a.last_date, a.samc_fin_date, a.sam_type_A, a.sam_type_B, a.sam_type_C, a.sam_type_D, a.sam_type_E, a.sam_type_F, a.hotfix, a.s_plan_arrival_date, a.s_real_arrival_date, a.sam_type_G, a.samc_plan_fin_date, a.original_edition, a.reason_remark, a.sale_finish_date, a.receipt_yn, a.receipt_date, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b ON a.site = b.site AND a.type_id = b.type_id WHERE (a.cus_style_no LIKE '%' + LTRIM(RTRIM(@sam_nbr)) + '%') AND (a.status &lt;&gt; @status) ORDER BY a.modify_date DESC">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b ON a.site = b.site AND a.type_id = b.type_id WHERE (a.cus_style_no LIKE '%' + LTRIM(RTRIM(@sam_nbr)) + '%') AND (a.status &lt;&gt; @status) and TD_Fin_Date is not Null ORDER BY a.modify_date DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="StyleNoTB" DefaultValue="%" Name="sam_nbr" PropertyName="Text" Type="String" />
                     <asp:Parameter DefaultValue="CL" Name="status" Type="String" />

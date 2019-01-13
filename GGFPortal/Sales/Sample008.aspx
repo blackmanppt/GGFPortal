@@ -68,9 +68,11 @@
                         <asp:Label ID="打樣人員LB" runat="server" Text=""></asp:Label>
                     </td>
                     <th class="auto-style4">
-                        &nbsp;</th>
+                        <asp:Label ID="DateLB0" runat="server" Text="處理件數：" ></asp:Label>
+                    </th>
                     <td class="auto-style3">
-                        &nbsp;</td>
+                        <asp:TextBox ID="件數TB" runat="server" TextMode="Number"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <th class="auto-style1">
@@ -123,6 +125,7 @@
                     <asp:BoundField DataField="修改人員" HeaderText="處理人員" SortExpression="處理人員" />
                     <asp:BoundField DataField="建立日期" HeaderText="建立日期" SortExpression="建立日期" NullDisplayText="沒有資料"  DataFormatString="{0:d}"/>
                     <asp:BoundField DataField="處理時間" HeaderText="處理時間" SortExpression="處理時間" NullDisplayText="沒有資料"  />
+                    <asp:BoundField DataField="件數" HeaderText="件數" SortExpression="件數" NullDisplayText="沒有資料" />
 <%--                    <asp:BoundField DataField="馬克" HeaderText="馬克" SortExpression="馬克" NullDisplayText="沒有資料" />
                     <asp:BoundField DataField="修改馬克" HeaderText="修改馬克" SortExpression="修改馬克" NullDisplayText="沒有資料" />
                     <asp:BoundField DataField="馬克完成日" HeaderText="馬克完成日" SortExpression="馬克完成日" NullDisplayText="沒有資料" />--%>

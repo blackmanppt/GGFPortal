@@ -7,10 +7,10 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Sales {
+namespace GGFPortal.Secretary {
     
     
-    public partial class Sample001 {
+    public partial class Secretary001V5 {
         
         /// <summary>
         /// form1 控制項。
@@ -22,13 +22,13 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Label1 控制項。
+        /// TitleLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label TitleLB;
         
         /// <summary>
         /// ScriptManager1 控制項。
@@ -40,75 +40,93 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// StyleNoLB 控制項。
+        /// StartLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StyleNoLB;
+        protected global::System.Web.UI.WebControls.Label StartLB;
         
         /// <summary>
-        /// StyleNoTB 控制項。
+        /// StartDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StyleNoTB;
+        protected global::System.Web.UI.WebControls.TextBox StartDay;
         
         /// <summary>
-        /// StyleNoTB_AutoCompleteExtender 控制項。
+        /// StartDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::AjaxControlToolkit.AutoCompleteExtender StyleNoTB_AutoCompleteExtender;
+        protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
         
         /// <summary>
-        /// Button1 控制項。
+        /// SearchBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button SearchBT;
         
         /// <summary>
-        /// 未收單CB 控制項。
+        /// ClearBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 未收單CB;
+        protected global::System.Web.UI.WebControls.Button ClearBT;
         
         /// <summary>
-        /// UnTDCB 控制項。
+        /// EndLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox UnTDCB;
+        protected global::System.Web.UI.WebControls.Label EndLB;
         
         /// <summary>
-        /// GridView1 控制項。
+        /// EndDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.TextBox EndDay;
         
         /// <summary>
-        /// SqlDataSource1 控制項。
+        /// EndDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
+        
+        /// <summary>
+        /// 跨年度資料CB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox 跨年度資料CB;
+        
+        /// <summary>
+        /// ReportViewer1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

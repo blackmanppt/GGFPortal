@@ -133,6 +133,8 @@ table, td, th {
                                                                         <asp:HyperLink ID="HyperLink71" runat="server" NavigateUrl="~/Secretary/Secretary001V3.aspx">產區表(多資料組合版)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink72" runat="server" NavigateUrl="~/Secretary/Secretary001V4.aspx">產區表(多資料組合版無產量月份顯示)</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink99" runat="server" NavigateUrl="~/Secretary/Secretary001V5.aspx">產區表(多資料組合版無產量月份含出貨單資料)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Secretary/Secretary004.aspx">產區表(資料查詢)</asp:HyperLink>
                         <br />
@@ -201,6 +203,13 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink93" runat="server" NavigateUrl="~/Sales/Sales012.aspx">AMZ Forecast報表</asp:HyperLink>                        
                         <br />
                         <asp:HyperLink ID="HyperLink95" runat="server" NavigateUrl="~/Sales/Sales013.aspx">CRP排程表</asp:HyperLink>                        
+                        <br />
+                        <asp:HyperLink ID="HyperLink97" runat="server" NavigateUrl="~/Sales/Sales014V2.aspx">訂單工廠樣品單產區表</asp:HyperLink>                        
+
+                        <br />
+                        <asp:HyperLink ID="HyperLink96" runat="server" NavigateUrl="~/Sales/Sales014.aspx">訂單工廠樣品單產區表(三旬版)</asp:HyperLink>                        
+                                                <br />
+                        <asp:HyperLink ID="HyperLink98" runat="server" NavigateUrl="~/Sales/Sales015.aspx">訂單工廠樣品單產區表(明細)</asp:HyperLink>                        
 
                         
                     </td>

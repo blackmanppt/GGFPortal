@@ -334,12 +334,15 @@
     <Content Include="Sales\Sales008.aspx" />
     <Content Include="Sales\Sales007.aspx" />
     <Content Include="Sales\Sales006.aspx" />
+    <Content Include="Sales\Sales015.aspx" />
+    <Content Include="Sales\Sales014V2.aspx" />
     <Content Include="Sales\Sample011.aspx" />
     <Content Include="Sales\Sample010.aspx" />
     <Content Include="Sales\Sample009.aspx" />
     <Content Include="Sales\Sample008.aspx" />
     <Content Include="Sales\Sales011.aspx" />
     <Content Include="Sales\Sales013.aspx" />
+    <Content Include="Sales\Sales014.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -572,6 +575,7 @@
     <Content Include="scripts\jQuery.print.min.js" />
     <Content Include="scripts\jszip.js" />
     <Content Include="scripts\jszip.min.js" />
+    <Content Include="Secretary\Secretary001V5.aspx" />
     <Content Include="Secretary\Secretary008.aspx" />
     <Content Include="Secretary\Secretary007.aspx" />
     <Content Include="Secretary\Secretary001V4.aspx" />
@@ -592,6 +596,7 @@
     <Content Include="test\HighChart.html" />
     <Content Include="test\Jsontest.aspx" />
     <Content Include="test\pictureplay.aspx" />
+    <Content Include="test\RegexTest.aspx" />
     <Content Include="test\sitetest\062911555236.html" />
     <Content Include="test\sitetest\tabletest.aspx" />
     <Content Include="test\WEBapitest.aspx" />
@@ -1473,6 +1478,20 @@
     <Compile Include="Sales\Sales006.aspx.designer.cs">
       <DependentUpon>Sales006.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sales015.aspx.cs">
+      <DependentUpon>Sales015.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales015.aspx.designer.cs">
+      <DependentUpon>Sales015.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales014V2.aspx.cs">
+      <DependentUpon>Sales014V2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales014V2.aspx.designer.cs">
+      <DependentUpon>Sales014V2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample011.aspx.cs">
       <DependentUpon>Sample011.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1514,6 +1533,20 @@
     </Compile>
     <Compile Include="Sales\Sales013.aspx.designer.cs">
       <DependentUpon>Sales013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales014.aspx.cs">
+      <DependentUpon>Sales014.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales014.aspx.designer.cs">
+      <DependentUpon>Sales014.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V5.aspx.cs">
+      <DependentUpon>Secretary001V5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V5.aspx.designer.cs">
+      <DependentUpon>Secretary001V5.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary008.aspx.cs">
       <DependentUpon>Secretary008.aspx</DependentUpon>
@@ -1647,6 +1680,13 @@
     </Compile>
     <Compile Include="test\pictureplay.aspx.designer.cs">
       <DependentUpon>pictureplay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\RegexTest.aspx.cs">
+      <DependentUpon>RegexTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\RegexTest.aspx.designer.cs">
+      <DependentUpon>RegexTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\sitetest\tabletest.aspx.cs">
       <DependentUpon>tabletest.aspx</DependentUpon>
@@ -2419,6 +2459,8 @@
     <EmbeddedResource Include="ReportSource\ReportS001V3.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales014V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSale014.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales008.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales006.rdlc" />
@@ -2450,6 +2492,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales010.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales012.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales013.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales015.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
@@ -2457,6 +2500,9 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample011.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample011V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportS001V5.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\Secretary\ReportS001V4.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
