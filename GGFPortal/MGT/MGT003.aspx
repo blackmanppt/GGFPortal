@@ -76,6 +76,31 @@
                             <asp:Label ID="明細LB" runat="server" Text=""></asp:Label></th>
 
 					</tr>
+                <tr>
+                    <th >
+
+                        公斤數</th>
+                    <th >
+
+                        <asp:Label ID="公斤LB" runat="server" ></asp:Label>
+
+                    </th>
+                    <th >
+
+                        簽名欄</th>
+                    <th >
+
+                    </th>
+                </tr>
+
+                <tr>
+                    <th colspan="4">
+                        寄包裹超過2kg以上，需經理級批核<br />
+                        寄包裹超過5kg以上，需副總級批核<br />
+                        寄包裹超過10kg以上，需總經理批核<br />
+                        寄包裹超過20kg以上，需董事長批核
+                    </th>
+                </tr>
 <%--					<tr class="success">
 						<td>
 							&nbsp;</td>

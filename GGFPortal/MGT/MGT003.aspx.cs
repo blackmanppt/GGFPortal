@@ -32,6 +32,7 @@ namespace GGFPortal.MGT
                     收件人LB.Text = 提單列印明細.收件人;
                     明細LB.Text = 提單列印明細.明細;
                     英文名LB.Text = (string.IsNullOrEmpty(提單列印明細.email))?"": 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
+                    公斤LB.Text = 提單列印明細.重量.ToString();
                     快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + 提單列印明細.快遞單.快遞單檔案 + @"' />";
                 }
 

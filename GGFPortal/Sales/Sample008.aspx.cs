@@ -33,6 +33,7 @@ namespace GGFPortal.Sales
                 {
                     SiteHF.Value = Session["Site"].ToString();
                     SampleNbrHF.Value = Session["SampleNbr"].ToString();
+                    DeptHF.Value = Session["Dept"].ToString();
                     GGFDataContext db = new GGFDataContext();
                     var xx = from x in db.GGFRequestSam
                              where x.uid == Int32.Parse(Session["uid"].ToString())
@@ -406,7 +407,9 @@ namespace GGFPortal.Sales
             Session.RemoveAll();
             Session["Site"] = SiteHF.Value;
             Session["SampleNbr"] = SampleNbrHF.Value;
+            Session["Dept"] = DeptHF.Value;
             Response.Redirect("Sample002.aspx");
+            
         }
     }
 }

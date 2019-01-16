@@ -75,7 +75,9 @@
                 <Columns>
                     <asp:TemplateField HeaderText="編輯" ShowHeader="False">
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="EditeDetail" Text="編輯" />
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="EditeDetail_1" Text="打版" CssClass="btn btn-block btn-success" />
+                            <asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="EditeDetail_2" Text="樣衣" CssClass="btn btn-block btn-warning" />
+                            <asp:Button ID="Button3" runat="server" CausesValidation="False" CommandName="EditeDetail_3" Text="TD" CssClass="btn btn-block btn-danger" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="site" HeaderText="公司別" ReadOnly="True" SortExpression="site" />

@@ -105,20 +105,20 @@
                         <asp:Label ID="Label3" runat="server" Text="處理人員："></asp:Label>
                     </th>
                     <td class="auto-style7">
-                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown dropdown-toggle">
-                            <asp:ListItem></asp:ListItem>
+                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True"  DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown dropdown-toggle">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
-                            SelectCommand="select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A','G010')  and a.employee_status<>'IA'  order by Name,employee_no"></asp:SqlDataSource>
+<%--                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
+                            SelectCommand="SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE (a.dept_no IN ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A','G010')) AND (a.employee_status &lt;&gt; 'IA') ORDER BY Name, a.employee_no" OnSelecting="SqlDataSource2_Selecting" OnSelected="SqlDataSource2_Selected">
+                        </asp:SqlDataSource>--%>
                         <asp:Label ID="UserLB" runat="server" Text=""></asp:Label>
                     </td>
                     <th style="border: 1px solid #000000;text-align: right; color: #003300; background-color: #00CCFF" >
                         <asp:Label ID="Label6" runat="server" Text="打版完成日：" CssClass="auto-style13"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="FinalDayTB" runat="server"  Width="90px" AutoCompleteType="Disabled"></asp:TextBox>
+                        <asp:TextBox ID="FinalDayTB" runat="server"  Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="FinalDayTB_CalendarExtender" runat="server" TargetControlID="FinalDayTB" Format="yyyy/MM/dd" />
-                        <asp:Button ID="DayUpdateBT" runat="server" Text="打版完成日上傳" OnClick="DayUpdateBT_Click" CssClass="btn btn-primary" />
+                        <asp:Button ID="DayUpdateBT" runat="server" Text="打版完成日上傳" OnClick="DayUpdateBT_Click" CssClass="btn btn-primary" Visible="False" />
                     </td>
                 </tr>
                 <tr>
@@ -135,11 +135,11 @@
                         <asp:Label ID="Label9" runat="server" Text="樣衣收單日：" CssClass="auto-style15"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="SamInTB" runat="server"  Width="90px" AutoCompleteType="Disabled"></asp:TextBox>
+                        <asp:TextBox ID="SamInTB" runat="server"  Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
                         
                         <ajaxToolkit:CalendarExtender ID="SamInTB_CalendarExtender" runat="server" BehaviorID="SamInTB_CalendarExtender" TargetControlID="SamInTB"  Format="yyyy/MM/dd" />
                         
-                        <asp:Button ID="SamInBT" runat="server" Text="樣衣收單日上傳" OnClick="SamInBT_Click"  CssClass="btn btn-primary"/>
+                        <asp:Button ID="SamInBT" runat="server" Text="樣衣收單日上傳" OnClick="SamInBT_Click"  CssClass="btn btn-primary" Visible="False"/>
                     </td>
                 </tr>
                 <tr>
@@ -153,11 +153,11 @@
                         <asp:Label ID="Label10" runat="server" Text="樣衣完成日：" CssClass="auto-style15"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="SamOutTB" runat="server" Width="90px" AutoCompleteType="Disabled"></asp:TextBox>
+                        <asp:TextBox ID="SamOutTB" runat="server" Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
                         
                         <ajaxToolkit:CalendarExtender ID="SamOutTB_CalendarExtender" runat="server" BehaviorID="SamOutTB_CalendarExtender" TargetControlID="SamOutTB" Format="yyyy/MM/dd"  />
                         
-                        <asp:Button ID="SamOutBT" runat="server" Text="樣衣完成日上傳" OnClick="SamOutBT_Click" CssClass="btn btn-primary"/>
+                        <asp:Button ID="SamOutBT" runat="server" Text="樣衣完成日上傳" OnClick="SamOutBT_Click" CssClass="btn btn-primary" Visible="False"/>
                     </td>
                 </tr>
                 <tr>
@@ -172,9 +172,9 @@
                         <asp:Label ID="Label8" runat="server" Text="TD完成日：" style="text-align: right" ></asp:Label>
                     </th>
                     <td class="auto-style4">
-                        <asp:TextBox ID="TDFinTB" runat="server" Width="90px" AutoCompleteType="Disabled"></asp:TextBox>
+                        <asp:TextBox ID="TDFinTB" runat="server" Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="TDFinTB_CalendarExtender" runat="server" BehaviorID="TDFinTB_CalendarExtender" TargetControlID="TDFinTB"  Format="yyyy/MM/dd" />
-                        <asp:Button ID="TDFinBT" runat="server" Text="TD完成日上傳" OnClick="TDFinBT_Click" CssClass="btn btn-primary"/>
+                        <asp:Button ID="TDFinBT" runat="server" Text="TD完成日上傳" OnClick="TDFinBT_Click" CssClass="btn btn-primary" Visible="False"/>
                     </td>
                 </tr>
                  <tr>

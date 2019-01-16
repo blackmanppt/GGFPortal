@@ -153,7 +153,7 @@
 
             <asp:HiddenField ID="SiteHF" runat="server" />
             <asp:HiddenField ID="SampleNbrHF" runat="server" />
-
+            <asp:HiddenField ID="DeptHF" runat="server" />
         </div>
         <div>
         </div>

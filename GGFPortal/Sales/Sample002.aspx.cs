@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using GGFPortal.ReferenceCode;
+using System.Collections.Generic;
 
 namespace GGFPortal.Sales
 {
@@ -27,6 +28,7 @@ namespace GGFPortal.Sales
             if (Session["SampleNbr"] ==null)
             {
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有樣品單號，請重新選取');</script>");
+                Session.RemoveAll();
                 Response.Redirect("Sample001.aspx");
             }
             else
@@ -36,6 +38,7 @@ namespace GGFPortal.Sales
             if (Session["Site"] == null)
             {
                 Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有公司別，請重新選取');</script>");
+                Session.RemoveAll();
                 Response.Redirect("Sample001.aspx");
             }
             else
@@ -59,6 +62,60 @@ namespace GGFPortal.Sales
                 if (Session["SamOut"] != null )
                 {
                     SamOutTB.Text = Session["SamOut"].ToString();
+                }
+            }
+            string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
+            string strwhere = "";
+            switch (Session["Dept"].ToString())
+            {
+                case "TD":
+                    strwhere = @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    break;
+                case "Sam1":
+                    strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    break;
+                case "Sam2":
+                    strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    break;
+                default:
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                    Session.RemoveAll();
+                    Response.Redirect("Sample001.aspx");
+                    break;
+            }
+            if(!string.IsNullOrEmpty(strwhere))
+            {
+                if (UserDDL.Items.Count == 0)
+                {
+                    using (SqlConnection Conn = new SqlConnection(strConnectString))
+                    {
+                        DataSet Ds = new DataSet();
+                        
+                        SqlDataAdapter myAdapter = new SqlDataAdapter(strsql+ strwhere, Conn);
+                        myAdapter.Fill(Ds, "DDL1");
+                        if (Ds.Tables["DDL1"].Rows.Count > 0)
+                        {
+                            //for (int i = 0; i < Ds.Tables["DDL1"].Rows.Count; i++)
+                            //{
+                            //    if (i == 0)
+                            //    {
+                            //        UserDDL.Items.Add("");
+                            //    }
+                            //    ListIem items = new ListItem();
+                            //    items.Text = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                            //    items.Value = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                            //    UserDDL.Items.Add(Ds.Tables["DDL1"].Rows[i][""].ToString());
+                            //}
+                            UserDDL.Items.Add("");
+                            List<ListItem> ListDDL1 = new List<ListItem>();
+                            foreach (DataRow item in Ds.Tables["DDL1"].Rows)
+                            {
+                                ListItem li = new ListItem(item["Name"].ToString(), item["employee_no"].ToString());
+                                ListDDL1.Add(li);
+                            }
+                            UserDDL.Items.AddRange(ListDDL1.ToArray());
+                        }
+                    }
                 }
             }
             string xxx = "";
@@ -114,13 +171,32 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTime.Now.ToString("yyyyMMdd");
                         command1.Parameters.Add("@Creator", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
-                        //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
 
                         transaction1.Commit();
+
+                        switch (TypeDDL.SelectedItem.Text)
+                        {
+                            case "TD":
+                                F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd"));
+                                TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                            case "樣衣":
+                                F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd"));
+                                SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                            case "裁版":
+                                F_UpdataWorkDate("樣衣完成", DateTime.Now.ToString("yyyy/MM/dd"));
+                                SamOutTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                            default:
+                                F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd"));
+                                FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                        }
+
+                        
                         ClearData();
                     }
                     catch (Exception ex1)
@@ -210,6 +286,26 @@ namespace GGFPortal.Sales
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
+                        string strdate = DateTB.Text.Substring(0, 4) +"/"+ DateTB.Text.Substring(4, 2) + "/" + DateTB.Text.Substring(6, 2);
+                        switch (TypeDDL.SelectedItem.Text)
+                        {
+                            case "TD":
+                                F_UpdataWorkDate("TD", strdate);
+                                TDFinTB.Text = strdate;
+                                break;
+                            case "樣衣":
+                                F_UpdataWorkDate("樣衣收單", strdate);
+                                SamInTB.Text = strdate;
+                                break;
+                            case "裁版":
+                                F_UpdataWorkDate("樣衣完成", strdate);
+                                SamOutTB.Text = strdate;
+                                break;
+                            default:
+                                F_UpdataWorkDate("打版完成", strdate);
+                                FinalDayTB.Text = strdate;
+                                break;
+                        }
                         ClearData();
                     }
                     catch (Exception ex1)
@@ -368,7 +464,7 @@ namespace GGFPortal.Sales
                 //    }
                 //}
                 #endregion
-                F_UpdataWorkDate("打版完成");
+                //F_UpdataWorkDate("打版完成");
             }
             else
             {
@@ -473,13 +569,53 @@ namespace GGFPortal.Sales
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Button BT = (Button)e.Row.FindControl("修改馬克");
-                if (e.Row.Cells[5].Text != "打版")
-                    BT.Visible = false;
+                Button 馬克BT = (Button)e.Row.FindControl("修改馬克");
+                Button 編輯BT = (Button)e.Row.FindControl("Button2");
+                Button 刪除BT = (Button)e.Row.FindControl("Button1");
+
+                switch (Session["Dept"].ToString())
+                {
+                    //TD
+                    case "TD":
+                        if (e.Row.Cells[5].Text != "TD")
+                        {
+                            編輯BT.Visible = false;
+                            刪除BT.Visible = false;
+                            
+                        }
+                        馬克BT.Visible = false;
+                        break;
+                        //打版
+                    case "Sam1":
+                        if (e.Row.Cells[5].Text != "打版")
+                        {
+                            編輯BT.Visible = false;
+                            刪除BT.Visible = false;
+                            馬克BT.Visible = false;
+                        }
+                            
+                        break;
+                        //樣衣
+                    case "Sam2":
+                        if (e.Row.Cells[5].Text != "樣衣"|| e.Row.Cells[5].Text != "裁版")
+                        {
+                            編輯BT.Visible = false;
+                            刪除BT.Visible = false;
+                            
+                        }
+                        馬克BT.Visible = false;
+                        break;
+                    default:
+                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                        Session.RemoveAll();
+                        Response.Redirect("Sample001.aspx");
+                        break;
+                }
+
 
             }
         }
-        Boolean F_UpdataWorkDate(string updataString)
+        Boolean F_UpdataWorkDate(string updataString,string update)
         {
             bool UpDateCheck=true;
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
@@ -503,16 +639,16 @@ namespace GGFPortal.Sales
                     else
                         strDate = @"[TD_Fin_Date] = @TD_Fin_Date";
 
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[samc_reqm] SET  WHERE sam_nbr = @sam_nbr and site =@site ", strDate);
+                    command1.CommandText = string.Format(@"UPDATE [dbo].[samc_reqm] SET {0} WHERE sam_nbr = @sam_nbr and site =@site ", strDate);
 
                     if (updataString == "打版完成")
-                        command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(FinalDayTB.Text);
+                        command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                     else if (updataString == "樣衣收單")
-                        command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(SamInTB.Text);
+                        command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                     else if (updataString == "樣衣完成")
-                        command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(SamOutTB.Text);
+                        command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                     else
-                        command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(TDFinTB.Text);
+                        command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
 
                     command1.Parameters.Add("@sam_nbr", SqlDbType.NVarChar).Value = Session["SampleNbr"].ToString();
                     command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
@@ -550,38 +686,65 @@ namespace GGFPortal.Sales
 
         protected void SamInBT_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(SamInTB.Text))
-            {
-                F_UpdataWorkDate("樣衣收單");
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣收單日');</script>");
-            }
+            //if (!string.IsNullOrEmpty(SamInTB.Text))
+            //{
+            //    F_UpdataWorkDate("樣衣收單");
+            //}
+            //else
+            //{
+            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣收單日');</script>");
+            //}
         }
 
         protected void SamOutBT_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(SamOutTB.Text))
-            {
-                F_UpdataWorkDate("樣衣完成");
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
-            }
+            //if (!string.IsNullOrEmpty(SamOutTB.Text))
+            //{
+            //    F_UpdataWorkDate("樣衣完成");
+            //}
+            //else
+            //{
+            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+            //}
         }
 
         protected void TDFinBT_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TDFinTB.Text))
-            {
-                F_UpdataWorkDate("TD完成");
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇TD完成日');</script>");
-            }
+            //if (!string.IsNullOrEmpty(TDFinTB.Text))
+            //{
+            //    F_UpdataWorkDate("TD完成");
+            //}
+            //else
+            //{
+            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇TD完成日');</script>");
+            //}
         }
+
+        //protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        //{
+        //    string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
+        //    switch (Session["Dept"].ToString())
+        //    {
+        //        case "TD":
+        //            SqlDataSource2.SelectCommand = strsql+ @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+        //            break;
+        //        case "Sam1":
+        //            SqlDataSource2.SelectCommand = strsql + @" (a.dept_no IN ('M01B','K01B','N01B','E010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+        //            break;
+        //        case "Sam2":
+        //            SqlDataSource2.SelectCommand = strsql + @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+        //            break;
+        //        default:
+        //            SqlDataSource2.SelectCommand = "";
+        //            break;
+        //    }
+            
+
+        //}
+
+        //protected void SqlDataSource2_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        //{
+        //    SqlDataSource2.DataBind();
+        //}
     }
 }

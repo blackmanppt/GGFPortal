@@ -52,6 +52,7 @@
                                         <asp:ListItem>船務-馬島-DHL</asp:ListItem>
                                         <asp:ListItem>DHL</asp:ListItem>
                                         <asp:ListItem>FedEx</asp:ListItem>
+                                        <asp:ListItem>VGG</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             <h4>快遞單號</h4>
