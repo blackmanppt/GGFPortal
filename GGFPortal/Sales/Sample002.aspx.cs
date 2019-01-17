@@ -183,12 +183,12 @@ namespace GGFPortal.Sales
                                 TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "樣衣":
-                                F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd"));
-                                SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
-                                break;
-                            case "裁版":
                                 F_UpdataWorkDate("樣衣完成", DateTime.Now.ToString("yyyy/MM/dd"));
                                 SamOutTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                            case "裁版":
+                                F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd"));
+                                SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             default:
                                 F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd"));
@@ -294,12 +294,13 @@ namespace GGFPortal.Sales
                                 TDFinTB.Text = strdate;
                                 break;
                             case "樣衣":
-                                F_UpdataWorkDate("樣衣收單", strdate);
-                                SamInTB.Text = strdate;
-                                break;
-                            case "裁版":
                                 F_UpdataWorkDate("樣衣完成", strdate);
                                 SamOutTB.Text = strdate;
+
+                                break;
+                            case "裁版":
+                                F_UpdataWorkDate("樣衣收單", strdate);
+                                SamInTB.Text = strdate;
                                 break;
                             default:
                                 F_UpdataWorkDate("打版完成", strdate);
@@ -597,7 +598,7 @@ namespace GGFPortal.Sales
                         break;
                         //樣衣
                     case "Sam2":
-                        if (e.Row.Cells[5].Text != "樣衣"|| e.Row.Cells[5].Text != "裁版")
+                        if (e.Row.Cells[5].Text == "打版" || e.Row.Cells[5].Text == "TD")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;

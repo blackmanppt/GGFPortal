@@ -133,6 +133,8 @@ namespace GGFPortal.MGT
         }
         protected void DbInit()
         {
+            寄件地點DDL.DataBind();
+            送件地點DDL.DataBind();
             ACRGV.DataBind();
         }
         private int GetTaxIndex()
