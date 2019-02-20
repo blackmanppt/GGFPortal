@@ -183,9 +183,9 @@
                     <asp:BoundField DataField="samc_fin_date" HeaderText="打版完成日" SortExpression="samc_fin_date" DataFormatString="{0:yyyy/MM/dd}" />
                     <asp:BoundField DataField="sam_qty" HeaderText="需求件數" SortExpression="sam_qty" />
                     <asp:BoundField DataField="sam_date" HeaderText="打樣日期" SortExpression="sam_date" DataFormatString="{0:yyyy/MM/dd}"/>
-                    <asp:BoundField DataField="TD_Fin_Date" HeaderText="TD完成日" SortExpression="TD_Fin_Date" DataFormatString="{0:yyyy/MM/dd}"/>
-                    <asp:BoundField DataField="Sam_In_Date" HeaderText="樣衣收單日" SortExpression="Sam_In_Date" DataFormatString="{0:yyyy/MM/dd}"/>
-                    <asp:BoundField DataField="Sam_Out_Date" HeaderText="樣衣完成日" SortExpression="Sam_Out_Date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="td_fin_date" HeaderText="TD完成日" SortExpression="td_fin_date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="sam_in_date" HeaderText="樣衣收單日" SortExpression="sam_in_date" DataFormatString="{0:yyyy/MM/dd}"/>
+                    <asp:BoundField DataField="sam_out_date" HeaderText="樣衣完成日" SortExpression="sam_out_date" DataFormatString="{0:yyyy/MM/dd}"/>
 
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />

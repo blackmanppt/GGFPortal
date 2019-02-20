@@ -45,7 +45,11 @@ namespace GGFPortal.Sales
             {
                 SiteLB.Text = Session["Site"].ToString();
             }
-            if(!Page.IsPostBack )
+            if (Session["style"] != null)
+            {
+                styleLB.Text = "("+ Session["style"].ToString()+")";
+            }
+            if (!Page.IsPostBack )
             { 
                 if (Session["SamDay"]!=null )
                 {
@@ -63,6 +67,8 @@ namespace GGFPortal.Sales
                 {
                     SamOutTB.Text = Session["SamOut"].ToString();
                 }
+
+
             }
             string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
             string strwhere = "";
@@ -70,12 +76,15 @@ namespace GGFPortal.Sales
             {
                 case "TD":
                     strwhere = @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+
                     break;
                 case "Sam1":
                     strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     break;
                 case "Sam2":
                     strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    SamOutBT.Visible = true;
+                    SamOutTB.Enabled = true;
                     break;
                 default:
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
@@ -179,20 +188,24 @@ namespace GGFPortal.Sales
                         switch (TypeDDL.SelectedItem.Text)
                         {
                             case "TD":
-                                F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd"));
-                                TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
+                                    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "樣衣":
-                                F_UpdataWorkDate("樣衣完成", DateTime.Now.ToString("yyyy/MM/dd"));
-                                SamOutTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                //if (F_UpdataWorkDate("樣衣完成", DateTime.Now.ToString("yyyy/MM/dd")))
+                                //    SamOutTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "裁版":
-                                F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd"));
-                                SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                if (F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd")))
+                                    SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                break;
+                            case "PP":
+                                break;
+                            case "尺寸套":
                                 break;
                             default:
-                                F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd"));
-                                FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                if (F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd")))
+                                    FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                         }
 
@@ -290,21 +303,25 @@ namespace GGFPortal.Sales
                         switch (TypeDDL.SelectedItem.Text)
                         {
                             case "TD":
-                                F_UpdataWorkDate("TD", strdate);
-                                TDFinTB.Text = strdate;
+                                if(F_UpdataWorkDate("TD", strdate))
+                                    TDFinTB.Text = strdate;
                                 break;
                             case "樣衣":
-                                F_UpdataWorkDate("樣衣完成", strdate);
-                                SamOutTB.Text = strdate;
+                                //if (F_UpdataWorkDate("樣衣完成", strdate))
+                                //    SamOutTB.Text = strdate;
 
                                 break;
                             case "裁版":
-                                F_UpdataWorkDate("樣衣收單", strdate);
-                                SamInTB.Text = strdate;
+                                if (F_UpdataWorkDate("樣衣收單", strdate))
+                                    SamInTB.Text = strdate;
+                                break;
+                            case "PP":
+                                break;
+                            case "尺寸套":
                                 break;
                             default:
-                                F_UpdataWorkDate("打版完成", strdate);
-                                FinalDayTB.Text = strdate;
+                                if (F_UpdataWorkDate("打版完成", strdate))
+                                    FinalDayTB.Text = strdate;
                                 break;
                         }
                         ClearData();
@@ -578,7 +595,7 @@ namespace GGFPortal.Sales
                 {
                     //TD
                     case "TD":
-                        if (e.Row.Cells[5].Text != "TD")
+                        if (e.Row.Cells[5].Text == "打版"|| e.Row.Cells[5].Text == "樣衣" || e.Row.Cells[5].Text== "裁版")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;
@@ -598,7 +615,7 @@ namespace GGFPortal.Sales
                         break;
                         //樣衣
                     case "Sam2":
-                        if (e.Row.Cells[5].Text == "打版" || e.Row.Cells[5].Text == "TD")
+                        if (e.Row.Cells[5].Text == "打版" || e.Row.Cells[5].Text == "TD" || e.Row.Cells[5].Text == "PP" || e.Row.Cells[5].Text == "尺寸套")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;
@@ -606,6 +623,7 @@ namespace GGFPortal.Sales
                         }
                         馬克BT.Visible = false;
                         break;
+
                     default:
                         Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
                         Session.RemoveAll();
@@ -618,70 +636,97 @@ namespace GGFPortal.Sales
         }
         Boolean F_UpdataWorkDate(string updataString,string update)
         {
-            bool UpDateCheck=true;
-            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            #region check TD Update
+            //bool bcheck = true;
+            bool UpDateCheck = true;
+            if (updataString == "TD")
             {
-                string strDate="";
-                SqlCommand command1 = conn1.CreateCommand();
-                SqlTransaction transaction1;
-                conn1.Open();
-                transaction1 = conn1.BeginTransaction("UpdateGGFSam");
-
-                command1.Connection = conn1;
-                command1.Transaction = transaction1;
-                try
+                using (SqlConnection conn = new SqlConnection(strConnectString))
                 {
-                    if (updataString == "打版完成")
-                        strDate = @"[samc_fin_date] = @samc_fin_date";
-                    else if(updataString == "樣衣收單")
-                        strDate = @"[Sam_In_Date] = @Sam_In_Date";
-                    else if (updataString == "樣衣完成")
-                        strDate = @"[Sam_Out_Date] = @Sam_Out_Date";
-                    else
-                        strDate = @"[TD_Fin_Date] = @TD_Fin_Date";
-
-                    command1.CommandText = string.Format(@"UPDATE [dbo].[samc_reqm] SET {0} WHERE sam_nbr = @sam_nbr and site =@site ", strDate);
-
-                    if (updataString == "打版完成")
-                        command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                    else if (updataString == "樣衣收單")
-                        command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                    else if (updataString == "樣衣完成")
-                        command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                    else
-                        command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-
-                    command1.Parameters.Add("@sam_nbr", SqlDbType.NVarChar).Value = Session["SampleNbr"].ToString();
-                    command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
-                    command1.ExecuteNonQuery();
-                    command1.Parameters.Clear();
-                    transaction1.Commit();
-                    ClearData();
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(
+                        string.Format(@"
+                        select * from [GGFRequestSam] where sam_nbr ='{0}' and Flag=0 and SampleType=4 and SampleCreatDate >'{1}'
+                        ",SamNbrLB.Text,update), conn);
+                    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+                    if (dt.Rows.Count == 0)
+                        UpDateCheck = false;
                 }
-                catch (Exception ex1)
+            }
+            #endregion
+            
+            if(UpDateCheck)
+                using (SqlConnection conn1 = new SqlConnection(strConnectString))
                 {
-                    UpDateCheck = false;
+                    string strDate="";
+
+                    SqlCommand command1 = conn1.CreateCommand();
+                    SqlTransaction transaction1;
+                    conn1.Open();
+                    transaction1 = conn1.BeginTransaction("UpdateGGFSam");
+
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
                     try
                     {
-                        Log.ErrorLog(ex1, "Update Error :" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        if (updataString == "打版完成")
+                            strDate = @"[samc_fin_date] = @samc_fin_date";
+                        else if(updataString == "樣衣收單")
+                            strDate = @"[sam_in_date] = @Sam_In_Date ,[s_real_arrival_date]=@s_real_arrival_date ";
+                        else if (updataString == "樣衣完成")
+                        { 
+                            strDate = @"[sam_out_date] = @Sam_Out_Date";
+                        }
+                        else
+                            strDate = @"[td_fin_date] = @TD_Fin_Date";
+
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[samc_reqm] SET {0} WHERE sam_nbr = @sam_nbr and site =@site ", strDate);
+
+                        if (updataString == "打版完成")
+                            command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        else if (updataString == "樣衣收單")
+                        {
+                            command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        }
+                        else if (updataString == "樣衣完成")
+                        { 
+                            command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        }
+                        else
+                            command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+
+                        command1.Parameters.Add("@sam_nbr", SqlDbType.NVarChar).Value = Session["SampleNbr"].ToString();
+                        command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
+                        command1.ExecuteNonQuery();
+                        command1.Parameters.Clear();
+                        transaction1.Commit();
+                        ClearData();
                     }
-                    catch (Exception ex2)
+                    catch (Exception ex1)
                     {
-                        Log.ErrorLog(ex2, "Update Error Error:" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        UpDateCheck = false;
+                        try
+                        {
+                            Log.ErrorLog(ex1, "Update Error :" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "Update Error Error:" + Session["SampleNbr"].ToString(), "Sample002.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ updataString + "日上傳失敗');</script>");
+                        }
                     }
                     finally
                     {
-                        transaction1.Rollback();
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ updataString + "日上傳失敗');</script>");
+                        conn1.Close();
+                        conn1.Dispose();
+                        command1.Dispose();
                     }
                 }
-                finally
-                {
-                    conn1.Close();
-                    conn1.Dispose();
-                    command1.Dispose();
-                }
-            }
             return UpDateCheck;
         }
 
@@ -699,14 +744,14 @@ namespace GGFPortal.Sales
 
         protected void SamOutBT_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(SamOutTB.Text))
-            //{
-            //    F_UpdataWorkDate("樣衣完成");
-            //}
-            //else
-            //{
-            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
-            //}
+            if (!string.IsNullOrEmpty(SamOutTB.Text))
+            {
+                F_UpdataWorkDate("樣衣完成",SamOutTB.Text);
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+            }
         }
 
         protected void TDFinBT_Click(object sender, EventArgs e)

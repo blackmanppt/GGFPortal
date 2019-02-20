@@ -18,12 +18,6 @@
             border: 1px solid black;
         }
 
-        .auto-style1 {
-            width: 97px;
-            border: 1px solid black;
-            background-color: #99CCFF;
-        }
-
         .auto-style3 {
             width: 239px;
             border: 1px solid black;
@@ -90,10 +84,11 @@
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">
-                        <asp:Label ID="SamNbrLB" runat="server" Text="樣品單號："></asp:Label>
+                        <asp:Label ID="SamNbrLB" runat="server" Text="樣品單號(款號)："></asp:Label>
                     </th>
                     <td class="auto-style7">
                         <asp:Label ID="SampleNbrLB" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="styleLB" runat="server" Text="" style="font-weight: 700; color: #FF3300"></asp:Label>
                     </td>
                     <th class="auto-style10">
                         &nbsp;</th>

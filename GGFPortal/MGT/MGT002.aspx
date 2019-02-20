@@ -92,9 +92,9 @@
                                 </th>
                             </tr>
                             <tr class="auto-style2">
-                                <th class="auto-style1">快遞日期</th>
-                                <th class="auto-style1">快遞廠商</th>
-                                <th class="auto-style1">提單號碼</th>
+                                <th class="auto-style1">快遞日期(Thời gian chuyển phát nhanh)</th>
+                                <th class="auto-style1">快遞廠商(Nhà cung cấp chuyển phát nhanh)</th>
+                                <th class="auto-style1">提單號碼(Đặt hàng nhanh)</th>
                                 
                             </tr>
                         </thead>
@@ -113,8 +113,8 @@
 
                             </tr>
                             <tr class="auto-style2">
-                                                                <th class="auto-style1">送件目的地</th>
-                                <th class="auto-style1">快遞單檔案</th>
+                                                                <th class="auto-style1">送件目的地(<span lang="EN-US">Địa điểm giao hàng</span>)</th>
+                                <th class="auto-style1">快遞單檔案(<span lang="EN-US">Tập tin chuyển phát nhanh</span>)</th>
                                                                 <th class=" text-right" style="vertical-align:bottom;"rowspan="2" >                                    
                                     <asp:Button ID="SaveBT" runat="server" Text="新增明細" CssClass="btn btn-default" OnClick="SaveBT_Click"/>
                                                                     <%--<button class="print-link" onclick="jQuery.print()">Print page - jQuery.print()
@@ -144,17 +144,17 @@
                             <asp:BoundField DataField="id" HeaderStyle-CssClass="hiddencol" HeaderText="id" ItemStyle-cssclass="hiddencol" SortExpression="id" />
                               <asp:TemplateField ShowHeader="False" ItemStyle-Width="200px">
                                 <ItemTemplate>
-                                    <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="編輯" />
-                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除"  OnClientClick="return confirm('是否刪除')"  />
-                                    <asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="列印" />
+                                    <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="Edit"  CssClass="btn btn-default"/>
+                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="Delete"  OnClientClick="return confirm('是否刪除')" CssClass="btn btn-danger"  />
+                                    <asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="Print" CssClass="btn btn-primary" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="寄件人" HeaderText="寄件人" SortExpression="寄件人" />
-                            <asp:BoundField DataField="寄件人分機" HeaderText="寄件人分機" SortExpression="寄件人分機" />
-                            <asp:BoundField DataField="收件人" HeaderText="收件人" SortExpression="收件人" />
-                            <asp:BoundField DataField="客戶名稱" HeaderText="客戶名稱" SortExpression="客戶名稱" />
-                            <asp:BoundField DataField="明細" HeaderText="明細" SortExpression="明細" />
-                            <asp:BoundField DataField="重量" HeaderText="重量" SortExpression="重量" />
+                            <asp:BoundField DataField="寄件人分機" HeaderText="寄件人分機(Gia hạn)" SortExpression="寄件人分機" />
+                            <asp:BoundField DataField="收件人" HeaderText="收件人(Người nhận)" SortExpression="收件人" />
+                            <asp:BoundField DataField="客戶名稱" HeaderText="客戶名稱(Khách hàng)" SortExpression="客戶名稱" />
+                            <asp:BoundField DataField="明細" HeaderText="明細(Chi tiết)" SortExpression="明細" />
+                            <asp:BoundField DataField="重量" HeaderText="重量(Cân nặng)" SortExpression="重量" />
                             <asp:BoundField DataField="付款方式" HeaderText="到付" SortExpression="付款方式" />
                             <asp:BoundField DataField="建立日期" HeaderText="建立日期" SortExpression="建立日期"  DataFormatString="{0:yyyy-MM-dd}"/>
                         </Columns>
@@ -182,30 +182,30 @@
 
 
                                 <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
-                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup form-control" Height="430px" Width="700px" BackColor="#33CCFF" Style="display: none"  >
+                                <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup form-control" Height="430px" Width="800px" BackColor="#33CCFF" Style="display: none"  >
                                     <div class=" text-center text-danger">
-                                        <h3><b>新增明細</b></h3>
+                                        <h3><b>Detail</b></h3>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="寄件人LB" runat="server" Text="寄件人工號：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="寄件人LB" runat="server" Text="ID：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
 
                                             <asp:TextBox ID="寄件人工號TB" runat="server"></asp:TextBox>
                                         </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="分機："></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="Telephone："></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:TextBox ID="分機TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-md-2  text-right">
-                                            <asp:Label ID="客戶名稱LB" runat="server" Text="客戶名稱：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3  text-right">
+                                            <asp:Label ID="客戶名稱LB" runat="server" Text="Receive company：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <!--
                                                 pup裡面包auto
                                                 1.欄位前要多加
@@ -233,38 +233,38 @@
                                     </script>
                                 </div>
                                         </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="收件人LB" runat="server" Text="收件人：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="收件人LB" runat="server" Text="receiver：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:TextBox ID="收件人TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-md-2  text-right">
-                                            <asp:Label ID="重量LB" runat="server" Text="重量(kg)：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3  text-right">
+                                            <asp:Label ID="重量LB" runat="server" Text="weight(kg)：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:TextBox ID="重量TB" runat="server"></asp:TextBox>
                                             </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="責任歸屬LB" runat="server" Text="責任歸屬：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="責任歸屬LB" runat="server" Text="Responsibility：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:TextBox ID="責任歸屬TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class=" col-md-2  text-right">
-                                            <asp:Label ID="到付LB" runat="server" Text="到付：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3  text-right">
+                                            <asp:Label ID="到付LB" runat="server" Text="Cash on delivery：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:CheckBox ID="到付CB" runat="server" />
                                         </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="Label1" runat="server" Text="原因歸屬：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="Label1" runat="server" Text="Reason：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:DropDownList ID="原因歸屬DDL" runat="server" DataSourceID="SqlDataSource3" DataTextField="Data" DataValueField="MappingData" AppendDataBoundItems="True">
                                             <asp:ListItem></asp:ListItem>
                                             </asp:DropDownList>
@@ -276,10 +276,10 @@
                                         </div>
                                     </div>
                                     <div id="DHLrow2" runat="server" class="row" visible="false">
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="款號LB" runat="server" Text="款號：" Font-Bold="True" ></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="款號LB" runat="server" Text="Style：" Font-Bold="True" ></asp:Label>
                                         </div>
-                                        <div class=" col-md-10 text-left">
+                                        <div class=" col-md-9 text-left">
                                             <div id="showauto"></div>
                                             <asp:TextBox ID="款號TB" runat="server"></asp:TextBox>
                                             <ajaxToolkit:AutoCompleteExtender ID="款號TB_AutoCompleteExtender" runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="款號TB" ServiceMethod="SearchOrdStyle" MinimumPrefixLength="1" UseContextKey="True" CompletionListElementID="showauto">
@@ -288,16 +288,16 @@
                                     </div>
 
                                     <div id="DHLrow" runat="server" class="row" visible="false">
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="數量LB" runat="server" Text="數量：" Font-Bold="True" ></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="數量LB" runat="server" Text="Qty：" Font-Bold="True" ></asp:Label>
                                         </div>
-                                        <div class=" col-md-4 text-left">
+                                        <div class=" col-md-3 text-left">
                                             <asp:TextBox ID="數量TB" runat="server" TextMode="Number"></asp:TextBox>
                                         </div>
-                                        <div class=" col-md-2 text-right">
-                                            <asp:Label ID="單位LB" runat="server" Text="單位：" Font-Bold="True"></asp:Label>
+                                        <div class=" col-md-3 text-right">
+                                            <asp:Label ID="單位LB" runat="server" Text="Unit：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class=" col-md-4 text-left">
+                                        <div class=" col-md-3 text-left">
                                             <asp:DropDownList ID="單位DDL" runat="server">
                                                 <asp:ListItem></asp:ListItem>
                                                 <asp:ListItem>PSC</asp:ListItem>
@@ -306,16 +306,16 @@
                                         </div>
                                     </div>
                                     <div class="row ">
-                                        <div class="col-md-2 text-right">
-                                            <asp:Label ID="明細LB" runat="server" Text="明細：" Font-Bold="True"></asp:Label></div>
-                                        <div class="col-md-10 text-left">
+                                        <div class="col-md-3 text-right">
+                                            <asp:Label ID="明細LB" runat="server" Text="Detail：" Font-Bold="True"></asp:Label></div>
+                                        <div class="col-md-9 text-left">
                                             <asp:TextBox ID="明細TB" runat="server" Width="489px"></asp:TextBox></div>
                                     </div>
                                     <div class="row">
-                                                                                <div class=" col-md-2 text-right">
-                                            <asp:Label ID="備註" runat="server" Text="備註：" Font-Bold="True"></asp:Label>
+                                                                                <div class=" col-md-3 text-right">
+                                            <asp:Label ID="備註" runat="server" Text="remark：" Font-Bold="True"></asp:Label>
                                         </div>
-                                        <div class="col-md-4 text-left">
+                                        <div class="col-md-3 text-left">
                                             <asp:TextBox ID="備註TB" runat="server" Width="489px" TextMode="MultiLine" Height="84px"></asp:TextBox>
                                         </div>                                        
                                     </div>
@@ -328,9 +328,9 @@
                                         </div>
                                     </div>
                                     <%--<asp:Literal ID="EditMessageLiteral" runat="server"></asp:Literal>--%>
-                                    <asp:Button ID="新增BT" runat="server" Text="新增" CssClass="btn btn-primary" Visible="false" OnClick="新增BT_Click" />
-                                    <asp:Button ID="更新BT" runat="server" Text="修改" CssClass="btn btn-primary" Visible="false" OnClick="更新BT_Click" />
-                                    <asp:Button ID="取消BT" runat="server" Text="取消" CssClass="btn btn-primary" OnClick="取消BT_Click" />
+                                    <asp:Button ID="新增BT" runat="server" Text="ADD" CssClass="btn btn-primary" Visible="false" OnClick="新增BT_Click" />
+                                    <asp:Button ID="更新BT" runat="server" Text="Update" CssClass="btn btn-primary" Visible="false" OnClick="更新BT_Click" />
+                                    <asp:Button ID="取消BT" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="取消BT_Click" />
                                 </asp:Panel>
                                 <ajaxToolkit:ModalPopupExtender ID="EditListPanel_ModalPopupExtender" runat="server" BehaviorID="EditListPanel_ModalPopupExtender" TargetControlID="show" PopupControlID="EditListPanel" >
                                 </ajaxToolkit:ModalPopupExtender>

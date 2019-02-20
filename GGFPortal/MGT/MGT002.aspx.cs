@@ -383,51 +383,51 @@ namespace GGFPortal.MGT
                         
                         var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人工號TB.Text).FirstOrDefault();
                         if (iid == 0)
-                            sbError.Append("請重選資料");
+                            sbError.Append("Please search again");
                         if (工號資料 == null)
                         {
-                            sbErrorstring(sbError, "無工號資料");
+                            sbErrorstring(sbError, "No ID");
                         }
                         else
                         {
                             if (工號資料.employee_status == "IA")
-                                sbErrorstring(sbError, "工號已停用");
+                                sbErrorstring(sbError, "Invalid ID");
                         }
 
-                        //if (d重量 == 0)
-                        //    sbErrorstring(sbError, "請輸入重量");
+                        if (d重量 == 0)
+                            sbErrorstring(sbError, "No weight");
                         if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
                         {
                             sbErrorstring(sbError,(string.IsNullOrEmpty(數量TB.Text)|| string.IsNullOrEmpty(單位DDL.SelectedValue))? 快遞廠商LB.Text+"快遞單需" : "");
                             if (string.IsNullOrEmpty(數量TB.Text))
                             {
-                                sbErrorstring(sbError, "數量未填");
+                                sbErrorstring(sbError, "No Qty");
                             }
                             if (string.IsNullOrEmpty(單位DDL.SelectedValue))
                             {
-                                sbErrorstring(sbError, "單位未選");
+                                sbErrorstring(sbError, "No unit");
                             }
                             if(!string.IsNullOrEmpty(客戶名稱TB.Text))
                             {
                                 if(!F_確認客戶代號())
-                                    sbErrorstring(sbError, "請輸入正確客戶代號");
+                                    sbErrorstring(sbError, "Please enter the correct customer code");
                             }
                         }
                         
                             
 
                         if (string.IsNullOrEmpty(收件人TB.Text.Trim()))
-                            sbErrorstring(sbError, "請輸入收件人");
+                            sbErrorstring(sbError, "No ID");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
-                            sbErrorstring(sbError, "請輸入客戶名稱");
+                            sbErrorstring(sbError, "No receive company");
                         if (string.IsNullOrEmpty(責任歸屬TB.Text))
-                            sbErrorstring(sbError, "請輸入責任歸屬：振大付費塡GG，廠商付費塡廠商名稱");
+                            sbErrorstring(sbError, "No responsibility：great giant payment key in GG");
                         if (string.IsNullOrEmpty(明細TB.Text))
-                            sbErrorstring(sbError, "請輸明細");
+                            sbErrorstring(sbError, "No detail");
                         if (string.IsNullOrEmpty(原因歸屬DDL.SelectedValue))
-                            sbErrorstring(sbError, "請輸原因歸屬");
+                            sbErrorstring(sbError, "No reason");
                         if(F_確認結案(iid))
-                            sbErrorstring(sbError, "快遞單已結案，請明天再送");
+                            sbErrorstring(sbError, "Express order closed，resend package tomorrow");
                         if (sbError.Length > 0)
                         {
                             EditMessageLB.Text =  sbError.ToString();

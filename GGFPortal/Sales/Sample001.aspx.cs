@@ -114,7 +114,7 @@ namespace GGFPortal.Sales
                             SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b 
                             ON a.site = b.site AND a.type_id = b.type_id WHERE  (a.status <>'CL') 
                             ";
-            strwhere += (UnTDCB.Checked) ? "" : " and TD_Fin_Date is not Null";
+            strwhere += (UnTDCB.Checked) ? "" : " and td_fin_date is not Null";
             strwhere += (未收單CB.Checked) ? "" : " and samc_fin_date is not Null";
             strwhere += (string.IsNullOrEmpty(StyleNoTB.Text)) ? "" : string.Format(" and (a.cus_style_no LIKE   LTRIM(RTRIM('%{0}%')) ) ", StyleNoTB.Text);
             sqlstr += strwhere + " ORDER BY a.modify_date DESC ";
@@ -125,16 +125,11 @@ namespace GGFPortal.Sales
         {
             if (e.CommandName == "EditeDetail_1")
             {
-               GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                 //string strid = GridView1.DataKeys[row.RowIndex].Values[0].ToString();
 
-                Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
-                Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
-                Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
-                Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
-                Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
-                Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
-                Session["Dept"] = "Sam1";
+                SetSession(row, "Sam1");
+
                 Response.Redirect("Sample002.aspx");
 
 
@@ -147,13 +142,14 @@ namespace GGFPortal.Sales
                 GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                 //string strid = GridView1.DataKeys[row.RowIndex].Values[0].ToString();
 
-                Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
-                Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
-                Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
-                Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
-                Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
-                Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
-                Session["Dept"] = "Sam2";
+                //Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
+                //Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
+                //Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
+                //Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
+                //Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
+                //Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
+                //Session["Dept"] = "Sam2";
+                SetSession(row, "Sam2");
                 Response.Redirect("Sample002.aspx");
 
 
@@ -166,13 +162,14 @@ namespace GGFPortal.Sales
                 GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                 //string strid = GridView1.DataKeys[row.RowIndex].Values[0].ToString();
 
-                Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
-                Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
-                Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
-                Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
-                Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
-                Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
-                Session["Dept"] = "TD";
+                //Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
+                //Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
+                //Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
+                //Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
+                //Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
+                //Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
+                //Session["Dept"] = "TD";
+                SetSession(row, "TD");
                 Response.Redirect("Sample002.aspx");
 
 
@@ -185,6 +182,18 @@ namespace GGFPortal.Sales
                 DbInit();
             }
 
+        }
+
+        private void SetSession(GridViewRow row,string strDept)
+        {
+            Session["SampleNbr"] = GridView1.Rows[row.RowIndex].Cells[2].Text;
+            Session["SamDay"] = GridView1.Rows[row.RowIndex].Cells[7].Text.Replace("&nbsp;", "");
+            Session["site"] = GridView1.Rows[row.RowIndex].Cells[1].Text;
+            Session["TDDay"] = GridView1.Rows[row.RowIndex].Cells[10].Text.Replace("&nbsp;", "");
+            Session["SamIn"] = GridView1.Rows[row.RowIndex].Cells[11].Text.Replace("&nbsp;", "");
+            Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
+            Session["Dept"] = strDept;
+            Session["style"] = GridView1.Rows[row.RowIndex].Cells[3].Text.Replace("&nbsp;", "");
         }
     }
 }

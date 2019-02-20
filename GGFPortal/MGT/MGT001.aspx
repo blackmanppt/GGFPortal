@@ -76,9 +76,9 @@
                                     </th>
                                 </tr>
                                 <tr class="auto-style2">
-                                    <th class="auto-style1">快遞日期</th>
-                                    <th class="auto-style1">快遞廠商</th>
-                                    <th class="auto-style1">提單號碼</th>
+                                    <th class="auto-style1">快遞日期(<span lang="EN-US">Thời gian chuyển phát nhanh</span>)</th>
+                                    <th class="auto-style1">快遞廠商(<span lang="EN-US">Nhà cung cấp chuyển phát nhanh</span>)</th>
+                                    <th class="auto-style1">提單號碼(<span lang="EN-US">Vận đơn</span>)</th>
 
                                 </tr>
                             </thead>
@@ -111,11 +111,9 @@
 
                                 </tr>
                                 <tr class="auto-style2">
-                                    <th class="auto-style1">送件目的地</th>
-                                    <th class="auto-style1">快遞單檔案</th>
-                                    <th class="auto-style1">寄件部門        
-
-                                    </th>
+                                    <th class="auto-style1">送件目的地(<span lang="EN-US">Địa điểm giao hàng</span>)</th>
+                                    <th class="auto-style1">快遞單檔案(<span lang="EN-US">Tập tin chuyển phát nhanh</span>)</th>
+                                    <th class="auto-style1">寄件部門(<span lang="EN-US">Bộ phận vận chuyển</span>)</th>
 
                                 </tr>
                                 <tr>
@@ -157,9 +155,9 @@
                                                                         <td class=" text-right" style="vertical-align: bottom;">
                                         <%--                                    <th class=" text-right" style="vertical-align:bottom;" >                                    
                                         </th>--%>
-                                        <asp:Button ID="SaveBT" runat="server" Text="儲存" CssClass="btn btn-default" Visible="false" OnClick="SaveBT_Click" />
-                                        <asp:Button ID="DeleteBT" runat="server" Text="刪除" CssClass="btn btn-default" Visible="false" OnClick="DeleteBT_Click" OnClientClick="return confirm('是否刪除')" />
-                                        <asp:Button ID="CancelBT" runat="server" Text="取消" CssClass="btn btn-default" OnClick="CancelBT_Click" />
+                                        <asp:Button ID="SaveBT" runat="server" Text="Save" CssClass="btn btn-default" Visible="false" OnClick="SaveBT_Click" />
+                                        <asp:Button ID="DeleteBT" runat="server" Text="Delete" CssClass="btn btn-danger" Visible="false" OnClick="DeleteBT_Click" OnClientClick="return confirm('是否刪除')" />
+                                        <asp:Button ID="CancelBT" runat="server" Text="Cancel" CssClass="btn btn-primary" OnClick="CancelBT_Click" />
 
                                     </td>
                                 </tr>
@@ -176,19 +174,89 @@
                                 </asp:BoundField>
                                 <asp:TemplateField ShowHeader="False" ItemStyle-Width="200px">
                                     <ItemTemplate>
-                                        <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="編輯" />
-                                        <asp:Button ID="NewBT" runat="server" CausesValidation="false" CommandName="新增明細" Text="新增明細" />
-                                        <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除" OnClientClick="return confirm('是否刪除')" />
+                                        <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="Edit" CssClass="btn btn-default btn-block" />
+                                        <asp:Button ID="NewBT" runat="server" CausesValidation="false" CommandName="新增明細" Text="ADD Detail" CssClass="btn btn-primary btn-block" />
+                                        <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="Delete" OnClientClick="return confirm('是否刪除')" CssClass="btn btn-danger btn-block" />
+                                    </ItemTemplate>
+                                    <ItemStyle Width="200px" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="提單號碼(Vận đơn)" SortExpression="提單號碼">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("提單號碼") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        提單號碼<br /> (Vận đơn)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("提單號碼") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="提單號碼" HeaderText="提單號碼" SortExpression="提單號碼" />
-                                <asp:BoundField DataField="送件部門" HeaderText="送件部門" SortExpression="送件部門" />
-
-                                <asp:BoundField DataField="提單日期" DataFormatString="{0:yyyy-MM-dd}" HeaderText="提單日期" SortExpression="提單日期" />
-                                <asp:BoundField DataField="快遞廠商" HeaderText="快遞廠商" SortExpression="快遞廠商" />
-                                <asp:BoundField DataField="快遞單檔案" HeaderText="快遞單檔案" SortExpression="快遞單檔案" />
-                                <asp:BoundField DataField="送件地點" HeaderText="送件地點" SortExpression="送件地點" />
-                                <asp:BoundField DataField="地點備註" HeaderText="地點備註" SortExpression="地點備註" />
+                                <asp:TemplateField HeaderText="送件部門(Bộ phận giao hàng)" SortExpression="送件部門">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("送件部門") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        送件部門<br /> (Bộ phận giao hàng)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("送件部門") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="提單日期(Ngày vận đơn)" SortExpression="提單日期">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("提單日期") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        提單日期<br /> (Ngày vận đơn)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("提單日期", "{0:yyyy-MM-dd}") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="快遞廠商(Nhà sản xuất nhanh)" SortExpression="快遞廠商">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("快遞廠商") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        快遞廠商<br /> (Nhà sản xuất nhanh)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("快遞廠商") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="快遞單檔案(Tập tin chuyển phát nhanh)" SortExpression="快遞單檔案">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("快遞單檔案") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        快遞單檔案<br /> (Tập tin chuyển phát nhanh)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("快遞單檔案") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="" SortExpression="送件地點">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("送件地點") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        送件地點<br /> (Địa điểm giao hàng)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("送件地點") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="" SortExpression="地點備註">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("地點備註") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <HeaderTemplate>
+                                        地點備註<br /> (Ghi chú vị trí)
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("地點備註") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                             </Columns>
                             <EditRowStyle BackColor="#7C6F57" />

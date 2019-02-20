@@ -54,7 +54,7 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="寄件人" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="寄件人工號" Type="nvarchar" MaxLength="20" />
-          <Property Name="寄件人分機" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="寄件人分機" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="寄件人部門" Type="nvarchar" MaxLength="6" />
           <Property Name="收件人" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="客戶名稱" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -226,7 +226,7 @@
           <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="寄件人" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="寄件人分機" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="寄件人分機" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="收件人" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="客戶名稱" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="明細" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
