@@ -2511,6 +2511,7 @@
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary008.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip003NoPrice.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip003.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip004.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip005.rdlc" />
