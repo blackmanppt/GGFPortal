@@ -186,6 +186,10 @@ namespace GGFPortal.Secretary
                                     SELECT  訂單日期, 訂單月份, 訂單數量, 
                                     case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF' FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                     where 訂單月份 between '{2}' and '{3}'
+                                    union all
+                                    SELECT  訂單日期, 訂單月份, 訂單數量, 
+                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF' FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                    where 訂單月份 between '{2}' and '{3}'
                                     "
                                    , (!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text.Substring(0, 4) + "01" : DateTime.Now.ToString("yyyy") + "01"
                                    //(!string.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text.Substring(0, 6) : DateTime.Now.AddYears(-1).ToString("yyyy") + "%"

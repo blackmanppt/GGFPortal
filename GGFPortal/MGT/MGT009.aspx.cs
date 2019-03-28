@@ -131,7 +131,7 @@ namespace GGFPortal.MGT
                 }
                 if (!string.IsNullOrEmpty(提單TB.Text))
                 {
-                    strsql.AppendFormat(" and b.提單號碼 = {0}",提單TB.Text);
+                    strsql.AppendFormat(" and 提單號碼 = '{0}'",提單TB.Text);
                 }
             }
             

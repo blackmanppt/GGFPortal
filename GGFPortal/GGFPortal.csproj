@@ -159,8 +159,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
@@ -186,8 +186,8 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
@@ -208,12 +208,12 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -327,7 +327,13 @@
     <Content Include="MIS\site\site6F.aspx" />
     <Content Include="MIS\site\site9F.aspx" />
     <Content Include="MIS\stylesheet.css" />
+    <Content Include="ReferenceCode\easyui\changelog.txt" />
+    <Content Include="ReferenceCode\easyui\easyloader.js" />
     <Content Include="ReferenceCode\easyui\jquery.easyui.min.js" />
+    <Content Include="ReferenceCode\easyui\jquery.easyui.mobile.js" />
+    <Content Include="ReferenceCode\easyui\jquery.min.js" />
+    <Content Include="ReferenceCode\easyui\license_freeware.txt" />
+    <Content Include="ReferenceCode\easyui\readme.txt" />
     <Content Include="Sales\IMG\Screenshot_9.png" />
     <Content Include="Sales\Sales010.aspx" />
     <Content Include="Sales\Sales009.aspx" />
@@ -587,10 +593,15 @@
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="Sales\Sales012.aspx" />
+    <Content Include="Ship\Ship006_old.aspx" />
+    <Content Include="Ship\Ship006.aspx" />
+    <Content Include="Ship\Ship007.aspx" />
     <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="test\DevExtreme.aspx" />
+    <Content Include="test\easyui2.aspx" />
+    <Content Include="test\easyui.aspx" />
     <Content Include="test\HighChart-column-basic.aspx" />
     <Content Include="test\HighChart.aspx" />
     <Content Include="test\HighChart.html" />
@@ -1048,6 +1059,7 @@
     <Content Include="test\Testadbo.edmx.diagram">
       <DependentUpon>Testadbo.edmx</DependentUpon>
     </Content>
+    <Content Include="test\Handler2.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1085,6 +1097,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controls\HighchartsControl.ascx.cs">
       <DependentUpon>HighchartsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1625,6 +1638,27 @@
     <Compile Include="Sales\Sales012.aspx.designer.cs">
       <DependentUpon>Sales012.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ship\Ship006_old.aspx.cs">
+      <DependentUpon>Ship006_old.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship006_old.aspx.designer.cs">
+      <DependentUpon>Ship006_old.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship006.aspx.cs">
+      <DependentUpon>Ship006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship006.aspx.designer.cs">
+      <DependentUpon>Ship006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship007.aspx.cs">
+      <DependentUpon>Ship007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship007.aspx.designer.cs">
+      <DependentUpon>Ship007.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TempCode\TempReport.aspx.cs">
       <DependentUpon>TempReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1652,6 +1686,23 @@
     </Compile>
     <Compile Include="test\DevExtreme.aspx.designer.cs">
       <DependentUpon>DevExtreme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\easyui2.aspx.cs">
+      <DependentUpon>easyui2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\easyui2.aspx.designer.cs">
+      <DependentUpon>easyui2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\easyui.aspx.cs">
+      <DependentUpon>easyui.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\easyui.aspx.designer.cs">
+      <DependentUpon>easyui.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\Handler2.ashx.cs">
+      <DependentUpon>Handler2.ashx</DependentUpon>
     </Compile>
     <Compile Include="test\HighChart-column-basic.aspx.cs">
       <DependentUpon>HighChart-column-basic.aspx</DependentUpon>
@@ -2418,6 +2469,7 @@
       <DependentUpon>VNTimeDelete.aspx</DependentUpon>
     </Compile>
     <Compile Include="WEBAPI\APITest.cs" />
+    <Compile Include="WEBAPI\TestcodeController.cs" />
     <Compile Include="資料庫連線\GGFlinq.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2435,6 +2487,12 @@
     <Folder Include="MGT\MGTFile\" />
     <Folder Include="MIS\site\070914021691_files\" />
     <Folder Include="Models\" />
+    <Folder Include="ReferenceCode\easyui\demo-mobile\" />
+    <Folder Include="ReferenceCode\easyui\demo\" />
+    <Folder Include="ReferenceCode\easyui\locale\" />
+    <Folder Include="ReferenceCode\easyui\plugins\" />
+    <Folder Include="ReferenceCode\easyui\src\" />
+    <Folder Include="ReferenceCode\easyui\themes\" />
     <Folder Include="test\sitetest\062911555236_files\" />
   </ItemGroup>
   <ItemGroup>
@@ -2516,6 +2574,7 @@
     <EmbeddedResource Include="ReportSource\Ship\ReportShip004.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip005.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip005BOSS.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip007.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN003.rdlc" />
