@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace GGFPortal.Ship
 {
-    public partial class Ship006_old : System.Web.UI.Page
+    public partial class Ship006old : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)

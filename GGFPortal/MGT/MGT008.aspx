@@ -61,6 +61,10 @@
                                 <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click"  />
 
                             </div>
+                            <div class="form-group">
+                                <asp:Button ID="全部結案BT" runat="server" Text="全部結案" class="btn btn-default" OnClick="全部結案BT_Click" />
+                                <asp:Button ID="全部撿貨BT" runat="server" Text="全部檢貨" class="btn btn-default" OnClick="全部撿貨BT_Click"/>
+                            </div>
                         </div>
 
                     </nav>

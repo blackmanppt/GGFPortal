@@ -1229,6 +1229,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column金額;
             
+            private global::System.Data.DataColumn column總數量;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 工時成本DataTable() {
@@ -1296,6 +1298,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 總數量Column {
+                get {
+                    return this.column總數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1331,13 +1341,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public 工時成本Row Add工時成本Row(string 成本年月, string 訂單號碼, decimal 投入工時, decimal 金額) {
+            public 工時成本Row Add工時成本Row(string 成本年月, string 訂單號碼, decimal 投入工時, decimal 金額, string 總數量) {
                 工時成本Row row工時成本Row = ((工時成本Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         成本年月,
                         訂單號碼,
                         投入工時,
-                        金額};
+                        金額,
+                        總數量};
                 row工時成本Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row工時成本Row);
                 return row工時成本Row;
@@ -1364,6 +1375,7 @@ namespace GGFPortal.DataSetSource {
                 this.column訂單號碼 = base.Columns["訂單號碼"];
                 this.column投入工時 = base.Columns["投入工時"];
                 this.column金額 = base.Columns["金額"];
+                this.column總數量 = base.Columns["總數量"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1377,6 +1389,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column投入工時);
                 this.column金額 = new global::System.Data.DataColumn("金額", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column金額);
+                this.column總數量 = new global::System.Data.DataColumn("總數量", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column總數量);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4071,6 +4085,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 總數量 {
+                get {
+                    try {
+                        return ((string)(this[this.table工時成本.總數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'工時成本\' 中資料行 \'總數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table工時成本.總數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is成本年月Null() {
                 return this.IsNull(this.table工時成本.成本年月Column);
             }
@@ -4115,6 +4145,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set金額Null() {
                 this[this.table工時成本.金額Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is總數量Null() {
+                return this.IsNull(this.table工時成本.總數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set總數量Null() {
+                this[this.table工時成本.總數量Column] = global::System.Convert.DBNull;
             }
         }
         

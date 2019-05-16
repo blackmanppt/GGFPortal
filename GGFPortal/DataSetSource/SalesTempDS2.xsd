@@ -660,6 +660,10 @@
               <xs:element name="預估毛利" msprop:Generator_ColumnVarNameInTable="column預估毛利" msprop:Generator_ColumnPropNameInRow="預估毛利" msprop:Generator_ColumnPropNameInTable="預估毛利Column" msprop:Generator_UserColumnName="預估毛利" type="xs:decimal" minOccurs="0" />
               <xs:element name="採購金額" msprop:Generator_ColumnVarNameInTable="column採購金額" msprop:Generator_ColumnPropNameInRow="採購金額" msprop:Generator_ColumnPropNameInTable="採購金額Column" msprop:Generator_UserColumnName="採購金額" type="xs:decimal" minOccurs="0" />
               <xs:element name="採購數量" msprop:Generator_ColumnVarNameInTable="column採購數量" msprop:Generator_ColumnPropNameInRow="採購數量" msprop:Generator_ColumnPropNameInTable="採購數量Column" msprop:Generator_UserColumnName="採購數量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="供應商代號" msprop:Generator_ColumnVarNameInTable="column供應商代號" msprop:Generator_ColumnPropNameInRow="供應商代號" msprop:Generator_ColumnPropNameInTable="供應商代號Column" msprop:Generator_UserColumnName="供應商代號" type="xs:string" minOccurs="0" />
+              <xs:element name="供應商名稱" msprop:Generator_ColumnVarNameInTable="column供應商名稱" msprop:Generator_ColumnPropNameInRow="供應商名稱" msprop:Generator_ColumnPropNameInTable="供應商名稱Column" msprop:Generator_UserColumnName="供應商名稱" type="xs:string" minOccurs="0" />
+              <xs:element name="採購單價" msprop:Generator_ColumnVarNameInTable="column採購單價" msprop:Generator_ColumnPropNameInRow="採購單價" msprop:Generator_ColumnPropNameInTable="採購單價Column" msprop:Generator_UserColumnName="採購單價" type="xs:decimal" minOccurs="0" />
+              <xs:element name="入廠量" msprop:Generator_ColumnVarNameInTable="column入廠量" msprop:Generator_ColumnPropNameInRow="入廠量" msprop:Generator_ColumnPropNameInTable="入廠量Column" msprop:Generator_UserColumnName="入廠量" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

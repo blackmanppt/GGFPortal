@@ -123,7 +123,7 @@ namespace GGFPortal.Sales
             dt = Convert.ToDateTime(開始年度TB.Text + "-01-01");
             計算函式 F計算 = new 計算函式();
             int x = F計算.當年第幾週(dt);
-            int y = 0;
+            
             if (!string.IsNullOrEmpty(開始年度周數TB.Text))
                 x = F計算.當年第幾週(dt.AddDays(7 * Convert.ToInt16(開始年度周數TB.Text)));
             F_ErrorShow(dt.AddDays(7 * Convert.ToInt16(開始年度周數TB.Text)).ToString("yyyyMMdd"));

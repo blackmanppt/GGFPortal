@@ -10,7 +10,7 @@
 namespace GGFPortal.Ship {
     
     
-    public partial class Ship006_old {
+    public partial class Ship006old {
         
         /// <summary>
         /// form1 控制項。

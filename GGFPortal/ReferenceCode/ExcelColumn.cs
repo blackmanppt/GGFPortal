@@ -454,6 +454,25 @@ namespace GGFPortal.ReferenceCode
         }
 
     }
+    public class CustomerRate
+    {
+        public string 三巡年月 { get; set; }
+        public string 三巡類別 { get; set; }
+        public string 外匯幣別 { get; set; }
+        public float 買進匯率 { get; set; }
+        public float 賣出匯率 { get; set; }
+        public DataTable CustomerRateDataTable { get; set; }
 
+        public void RateDT()
+        {
+            CustomerRateDataTable = new DataTable();
+            CustomerRateDataTable.Columns.Add("外匯幣別");
+            CustomerRateDataTable.Columns.Add("買進匯率");
+            CustomerRateDataTable.Columns.Add("賣出匯率");
+        }
+
+
+
+    }
 
 }

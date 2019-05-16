@@ -122,7 +122,7 @@ namespace GGFPortal.Secretary
                         EndDay.Text.Substring(0,6);
             }
             //檢查起迄時間有沒有報表生成日有差距
-            bool bchk = true;
+            
             DateTime startdt = DateTime.Now, enddt= DateTime.Now;
 
             if (!string.IsNullOrEmpty(StartDay.Text))

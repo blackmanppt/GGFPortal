@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ship006_old.aspx.cs" Inherits="GGFPortal.Ship.Ship006_old" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ship006old.aspx.cs" Inherits="GGFPortal.Ship.Ship006old" %>
 
 <!DOCTYPE html>
 

@@ -10,7 +10,7 @@
 namespace GGFPortal.Ship {
     
     
-    public partial class Ship006_old {
+    public partial class Ship006 {
         
         /// <summary>
         /// form1 控制項。
@@ -85,21 +85,12 @@ namespace GGFPortal.Ship {
         protected global::System.Web.UI.WebControls.Label 入庫暫估LB;
         
         /// <summary>
-        /// GV1 控制項。
+        /// ReportViewer1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV1;
-        
-        /// <summary>
-        /// GV2 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV2;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

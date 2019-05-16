@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.Reporting.WebForms;
 
 namespace GGFPortal.Ship
 {
@@ -41,8 +42,6 @@ namespace GGFPortal.Ship
                 {
                     
                     d1 = Convert.ToDecimal(dt.Compute("Sum(數量)", "true"));
-                    GV1.DataSource = dt;
-                    GV1.DataBind();
                 }
 
                 DataTable dt2 = new DataTable();
@@ -55,8 +54,6 @@ namespace GGFPortal.Ship
                 if (dt2.Rows.Count > 0)
                 {
                     d2 = Convert.ToDecimal(dt2.Compute("Sum(數量)", "true"));
-                    GV2.DataSource = dt2;
-                    GV2.DataBind();
                 }
                 入庫應付LB.Text = d1.ToString();
                 入庫暫估LB.Text = d2.ToString();
@@ -70,6 +67,19 @@ namespace GGFPortal.Ship
                     入庫暫估LB.BackColor = System.Drawing.Color.Red;
                     入庫暫估LB.ForeColor = System.Drawing.Color.Yellow;
                 }
+                if (dt.Rows.Count > 0)
+                {
+                    ReportViewer1.Visible = true;
+                    ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                    ReportDataSource source = new ReportDataSource("DataSet1", dt);
+                    ReportDataSource source2 = new ReportDataSource("DataSet2", dt2);
+                    ReportViewer1.LocalReport.DataSources.Clear();
+                    ReportViewer1.LocalReport.DataSources.Add(source);
+                    ReportViewer1.LocalReport.DataSources.Add(source2);
+                    ReportViewer1.DataBind();
+                    ReportViewer1.LocalReport.Refresh();
+                }
+
             }
             
             

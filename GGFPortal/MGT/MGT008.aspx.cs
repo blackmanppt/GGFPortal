@@ -123,5 +123,62 @@ namespace GGFPortal.MGT
             Session["Nbr"] = "%";
             Session["快遞商"] = "%";
         }
+
+        protected void 全部撿貨BT_Click(object sender, EventArgs e)
+        {
+            F_狀態更新("檢貨");
+        }
+
+        protected void 全部結案BT_Click(object sender, EventArgs e)
+        {
+            F_狀態更新("結案");
+        }
+        void F_狀態更新(string 處理狀態)
+        {
+            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            {
+                SqlCommand command1 = conn1.CreateCommand();
+                SqlTransaction transaction1;
+                conn1.Open();
+                transaction1 = conn1.BeginTransaction("Update");
+
+                command1.Connection = conn1;
+                command1.Transaction = transaction1;
+                try
+                {
+                    
+                    //上傳成功更新Head狀態
+                    command1.CommandText = string.Format(@"UPDATE [dbo].[快遞單] SET {0} = 1,{1}=getdate()  WHERE CONVERT(varchar(10), [提單日期],126) = '{2}' and [IsDeleted] =0 "
+                                                        , (處理狀態 == "檢貨") ? "[檢貨狀態]" : "[結案狀態]"
+                                                        , (處理狀態 == "檢貨") ? "[檢貨時間]" : "[結案時間]"
+                                                        , (string.IsNullOrEmpty(StartDay.Text))?DateTime.Now.ToString("yyy-MM-dd"):StartDay.Text);
+                    command1.ExecuteNonQuery();
+                    transaction1.Commit();
+                }
+                catch (Exception ex1)
+                {
+                    try
+                    {
+                        Log.ErrorLog(ex1, " Error :" + Session["FileName"].ToString(), "VN002.aspx");
+                    }
+                    catch (Exception ex2)
+                    {
+                        Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), "VN002.aspx");
+                    }
+                    finally
+                    {
+                        transaction1.Rollback();
+                        
+                    }
+                }
+                finally
+                {
+                    conn1.Close();
+                    conn1.Dispose();
+                    command1.Dispose();
+                    確認GV.DataBind();
+                }
+            }
+        }
     }
 }

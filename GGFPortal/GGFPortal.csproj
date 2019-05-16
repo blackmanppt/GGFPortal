@@ -300,6 +300,7 @@
     <Content Include="Finance\Finance014.aspx" />
     <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
+    <Content Include="Finance\Finance016.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
     <Content Include="MGT\MGT008.aspx" />
@@ -593,8 +594,8 @@
     <Content Include="Ship\Ship003.aspx" />
     <Content Include="Ship\Ship002.aspx" />
     <Content Include="Sales\Sales012.aspx" />
-    <Content Include="Ship\Ship006_old.aspx" />
     <Content Include="Ship\Ship006.aspx" />
+    <Content Include="Ship\Ship006old.aspx" />
     <Content Include="Ship\Ship007.aspx" />
     <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
@@ -1306,6 +1307,13 @@
     <Compile Include="Finance\Finance013.aspx.designer.cs">
       <DependentUpon>Finance013.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance016.aspx.cs">
+      <DependentUpon>Finance016.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance016.aspx.designer.cs">
+      <DependentUpon>Finance016.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MGT\MGT002.aspx.cs">
       <DependentUpon>MGT002.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1638,19 +1646,19 @@
     <Compile Include="Sales\Sales012.aspx.designer.cs">
       <DependentUpon>Sales012.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Ship\Ship006_old.aspx.cs">
-      <DependentUpon>Ship006_old.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ship\Ship006_old.aspx.designer.cs">
-      <DependentUpon>Ship006_old.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Ship\Ship006.aspx.cs">
       <DependentUpon>Ship006.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Ship\Ship006.aspx.designer.cs">
       <DependentUpon>Ship006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ship\Ship006old.aspx.cs">
+      <DependentUpon>Ship006old.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ship\Ship006old.aspx.designer.cs">
+      <DependentUpon>Ship006old.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ship\Ship007.aspx.cs">
       <DependentUpon>Ship007.aspx</DependentUpon>
@@ -2480,6 +2488,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="aspnet_client\" />
     <Folder Include="Controllers\" />
+    <Folder Include="ExcelUpLoad\Finance\CustomerRate\" />
     <Folder Include="ExcelUpLoad\Salse\AMZForcast\" />
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
@@ -2574,6 +2583,7 @@
     <EmbeddedResource Include="ReportSource\Ship\ReportShip004.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip005.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip005BOSS.rdlc" />
+    <EmbeddedResource Include="ReportSource\Ship\ReportShip006.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip007.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN001.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVN002.rdlc" />

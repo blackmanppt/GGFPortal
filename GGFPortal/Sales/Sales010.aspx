@@ -55,6 +55,25 @@
                                 <asp:TextBox ID="品牌TB" runat="server" CssClass="form-control" ></asp:TextBox>
                                 <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="品牌TB_AutoCompleteExtender" TargetControlID="品牌TB" ID="品牌TB_AutoCompleteExtender" ServiceMethod="Search訂單品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
                             </div>
+                                                        <h4>供應商</h4>
+                                <asp:TextBox ID="供應商TB" runat="server" class="form-control"></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="供應商TB" ID="供應商TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
+        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false"></ajaxToolkit:AutoCompleteExtender>
+                            <div>
+                                    <script type="text/javascript">
+                                        function Employees_Populated(sender, e) {
+                                            var employees = sender.get_completionList().childNodes;
+                                            var div = "<table>";
+                                            div += "<tr><th>Search</th><th>SearchName</th></tr>";
+                                            for (var i = 0; i < employees.length; i++) {
+ 
+                                                div += "<tr><td>" + employees[i].innerHTML.split(',')[0] + "</td><td>" + employees[i].innerHTML.split(',')[1]  + "</td></tr>";
+                                            }
+                                            div += "</table>";
+                                            sender._completionListElement.innerHTML = div;
+                                        }
+                                    </script>
+                                </div>
                             <h4>狀態</h4>
                             <div class="form-group">
                                 <asp:CheckBox ID="主料CB" runat="server" Checked="true"  CssClass="form-control" Text="顯示主料資料"/>

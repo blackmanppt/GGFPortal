@@ -103,6 +103,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink68" runat="server" NavigateUrl="~/Finance/Finance014.aspx">預計到貨毛利-查詢</asp:HyperLink>
                                                  <br />
                         <asp:HyperLink ID="HyperLink74" runat="server" NavigateUrl="~/Finance/Finance015.aspx">文件實際上傳日-查詢</asp:HyperLink>
+                                                 <br />
+                        <asp:HyperLink ID="HyperLink102" runat="server" NavigateUrl="~/Finance/Finance016.aspx">匯率上傳</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
@@ -170,6 +172,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink75" runat="server" NavigateUrl="~/Ship/Ship004.aspx">櫃號相關資料-查詢 </asp:HyperLink>
                                                  <br />
                         <asp:HyperLink ID="HyperLink79" runat="server" NavigateUrl="~/Ship/Ship005.aspx">出口大表(BOSS/設計師) </asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink100" runat="server" NavigateUrl="~/Ship/Ship006.aspx">入庫暫估應付比較表 </asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink101" runat="server" NavigateUrl="~/Ship/Ship007.aspx">採購入庫狀況V2 </asp:HyperLink>
 
                     </td>
 

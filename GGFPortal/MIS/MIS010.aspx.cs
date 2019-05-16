@@ -27,7 +27,7 @@ namespace GGFPortal.MIS
         {
             using (var conn = new GGFEntitiesMGT())
             {
-                int iid = 0;
+                
                 if (e.CommandName == "檢貨")
                 {
                     //GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;

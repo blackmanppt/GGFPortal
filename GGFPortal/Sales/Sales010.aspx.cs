@@ -42,7 +42,6 @@ namespace GGFPortal.Sales
             {
                 SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
                 myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
-
             }
             if (dt.Rows.Count > 0)
             {
@@ -76,6 +75,8 @@ namespace GGFPortal.Sales
                 strsql.Append(" and upper([主副料])  = 'M' ");
             if (入庫CB.Checked)
                 strsql.Append(" and upper([採購單狀態])  = 'IN' ");
+            if (!string.IsNullOrEmpty(供應商TB.Text))
+                strsql.AppendFormat(" and (upper([供應商代號]) = '{0}' or upper(供應商名稱) = '{0}' )", 供應商TB.Text.ToUpper());
             return strsql;
         }
         public bool SearchCheck()
@@ -90,6 +91,8 @@ namespace GGFPortal.Sales
             if (!string.IsNullOrEmpty(品牌TB.Text))
                 bCheck = true;
             if (!string.IsNullOrEmpty(代理商TB.Text))
+                bCheck = true;
+            if (!string.IsNullOrEmpty(供應商TB.Text))
                 bCheck = true;
             return bCheck;
 

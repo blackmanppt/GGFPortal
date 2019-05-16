@@ -22644,23 +22644,27 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 "m_type_D, a.sam_type_E, a.sam_type_F, a.hotfix,[dbo].[F_DateToNull](s_plan_arriv" +
                 "al_date) as \'s_plan_arrival_date\', \r\n                            [dbo].[F_DateTo" +
                 "Null](s_real_arrival_date) \'s_real_arrival_date\', b.tel_nbr,d.dept_name,e.item_s" +
-                "tatistic_name,a.reason_remark,a.original_edition,\r\n(SELECT distinct cast((n.Mapp" +
-                "ingData +\'_\'+ z.SampleUser )  AS NVARCHAR ) + \',\' from  [GGFRequestSam]  z left " +
-                "join Mapping n on z.Flag=n.Data and n.UsingDefine=\'GGFRequestSam\'\r\nwhere sam_nbr" +
-                "=a.sam_nbr \r\n                                FOR XML PATH(\'\')) as SampleName,f.r" +
-                "eason_name,[dbo].[F_DateToNull](samc_plan_fin_date) as \'samc_plan_fin_date\', [db" +
-                "o].[F_DateToNull](receipt_date) as \'receipt_date\'\r\nFROM              samc_reqm A" +
-                "S a LEFT OUTER JOIN\r\n                            bas_employee AS b ON a.site = b" +
-                ".site AND a.creator = b.employee_no LEFT OUTER JOIN\r\n                           " +
-                " samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept " +
-                "d on a.site=d.site and a.dept_no=d.dept_no\r\n\t\t\t\t\t\t\tleft join bas_item_statistic " +
-                "e on a.site=e.site and a.item_statistic=e.item_statistic\r\nleft join bas_reason f" +
-                " on a.site=f.site and a.reason=f.reason and f.sys_id=\'SAMC\'\r\nWHERE        \r\na.pr" +
-                "ogress_rate in (@progress_rate,@progress_rate1  )\r\nand ((a.receipt_date  between" +
-                " @modify_date1 and cast( @modify_date2 as datetime) + 1 and 1=@flag1) or (a.rece" +
-                "ipt_date  is null and 1=@flag2)or(1=@flag3))\r\nand a.brand_name LIKE @brand_name " +
-                "and a.type_id LIKE @type_id\r\nand a.status =@status and (a.close_date between @sa" +
-                "mc_fin_date1 and @samc_fin_date2 or 1=@flag4)\r\norder by receipt_date desc";
+                "tatistic_name,a.reason_remark,a.original_edition,\r\n((SELECT distinct cast((n.Map" +
+                "pingData +\'_\'+ z.SampleUser )  AS NVARCHAR ) + \',\' from  [GGFRequestSam]  z left" +
+                " join Mapping n on z.SampleType=n.Data and n.UsingDefine=\'GGFRequestSam\'\r\nwhere " +
+                "sam_nbr=a.sam_nbr \r\n                                FOR XML PATH(\'\'))+(SELECT di" +
+                "stinct cast((n.MappingData +\'_\'+ zz.修改人員 )  AS NVARCHAR ) + \',\' from  [GGFReques" +
+                "tSam]  z  left join Mapping n on z.SampleType=n.Data and n.UsingDefine=\'GGFReque" +
+                "stSam\' left join [GGFRequestMark] zz on z.uid=zz.uid\r\nwhere sam_nbr=a.sam_nbr \r\n" +
+                "                                FOR XML PATH(\'\'))) as SampleName,f.reason_name,[" +
+                "dbo].[F_DateToNull](samc_plan_fin_date) as \'samc_plan_fin_date\', [dbo].[F_DateTo" +
+                "Null](receipt_date) as \'receipt_date\'\r\nFROM              samc_reqm AS a LEFT OUT" +
+                "ER JOIN\r\n                            bas_employee AS b ON a.site = b.site AND a." +
+                "creator = b.employee_no LEFT OUTER JOIN\r\n                            samc_type A" +
+                "S c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=" +
+                "d.site and a.dept_no=d.dept_no\r\n\t\t\t\t\t\t\tleft join bas_item_statistic e on a.site=" +
+                "e.site and a.item_statistic=e.item_statistic\r\nleft join bas_reason f on a.site=f" +
+                ".site and a.reason=f.reason and f.sys_id=\'SAMC\'\r\nWHERE        \r\na.progress_rate " +
+                "in (@progress_rate,@progress_rate1  )\r\nand ((a.receipt_date  between @modify_dat" +
+                "e1 and cast( @modify_date2 as datetime) + 1 and 1=@flag1) or (a.receipt_date  is" +
+                " null and 1=@flag2)or(1=@flag3))\r\nand a.brand_name LIKE @brand_name and a.type_i" +
+                "d LIKE @type_id\r\nand a.status =@status and (a.close_date between @samc_fin_date1" +
+                " and @samc_fin_date2 or 1=@flag4)\r\norder by receipt_date desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate1", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ship006.aspx.cs" Inherits="GGFPortal.Ship.Ship006" %>
 
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -41,49 +43,25 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h3>
-                        入庫應付總金額：<asp:Label ID="入庫應付LB" runat="server"></asp:Label>
+                        入庫應付總數量：<asp:Label ID="入庫應付LB" runat="server"></asp:Label>
                     </h3>
                 </div>
                 <div class="col-lg-6">
                     <h3>
-                        入庫暫估總金額：<asp:Label ID="入庫暫估LB" runat="server" Text=""></asp:Label>
+                        入庫暫估總數量：<asp:Label ID="入庫暫估LB" runat="server" Text=""></asp:Label>
                     </h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <asp:GridView ID="GV1" runat="server" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" CssClass=" table table-hover">
-                        <AlternatingRowStyle BackColor="#F7F7F7" />
-                        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                        <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                        <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                        <SortedDescendingHeaderStyle BackColor="#3E3277" />
-                    </asp:GridView>
+                <div class="col-lg-12">
+
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Visible="False" Height="363px" Width="890px">
+                        <LocalReport DisplayName="入庫資料表" ReportPath="ReportSource\Ship\ReportShip006.rdlc">
+                        </LocalReport>
+                    </rsweb:ReportViewer>
 
                 </div>
-                <div class="col-lg-6">
-                    <asp:GridView ID="GV2" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" CssClass=" table table-hover">
-                        <AlternatingRowStyle BackColor="#CCCCCC" />
-                        <FooterStyle BackColor="#CCCCCC" />
-                        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#808080" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#383838" />
-                    </asp:GridView>
-
-                </div>
+                
         </div>
             </div>
     </form>
