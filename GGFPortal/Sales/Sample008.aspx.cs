@@ -83,6 +83,7 @@ namespace GGFPortal.Sales
                                                                ,[Creator]
                                                                ,[處理時間]
                                                                ,[件數]
+                                                               ,[備註]
                                                                )
                                                             VALUES
                                                                 (@uid
@@ -92,6 +93,7 @@ namespace GGFPortal.Sales
                                                                 ,@Creator
                                                                 ,@處理時間
                                                                 ,@件數
+                                                                ,@備註
                                                                 )
                                                                 ");
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
@@ -101,6 +103,7 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@Creator", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@處理時間", SqlDbType.NVarChar).Value = DateTB.Text;
                         command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
+                        command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -151,6 +154,7 @@ namespace GGFPortal.Sales
             DateTB.Text = "";
             //DateTB.Visible = false;
             件數TB.Text = "";
+            備註TB.Text = "";
         }
 
         protected void UpDateBT_Click1(object sender, EventArgs e)
@@ -179,18 +183,16 @@ namespace GGFPortal.Sales
                                                                   ,[Modifier] = @Modifier
                                                                   ,[處理時間] = @處理時間
                                                                   ,[件數]=@件數
+                                                                  ,[備註]=@備註
                                                             WHERE id = {0} ", Session["id"].ToString());
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
                         command1.Parameters.Add("@修改人員", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
                         command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@處理類別", SqlDbType.Int).Value = TypeDDL.SelectedValue;
                         command1.Parameters.Add("@Modifier", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
-                        //command1.Parameters.Add("@Qty", SqlDbType.Decimal).Value = QtyTB.Text.Trim();
                         command1.Parameters.Add("@處理時間", SqlDbType.NVarChar).Value = DateTB.Text;
-                        //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
+                        command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -235,6 +237,7 @@ namespace GGFPortal.Sales
             //QtyTB.Text = this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
             DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
             件數TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+            備註TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
             //DateTB.Visible = true;
             UpDateBT.Visible = true;
             CancelBT.Visible = true;

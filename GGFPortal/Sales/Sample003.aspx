@@ -38,6 +38,12 @@
                         <asp:TextBox ID="CusText" runat="server"></asp:TextBox>
                         <ajaxToolkit:AutoCompleteExtender ID="CusText_AutoCompleteExtender" runat="server" TargetControlID="CusText"  CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchCus">
                         </ajaxToolkit:AutoCompleteExtender>
+                        <asp:Label ID="Label5" runat="server" Text="打版人員："></asp:Label>
+                        <asp:DropDownList ID="打版DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="employee_no">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE 
+  (a.dept_no IN ('M01B','K01B','N01B','E010')) AND (a.employee_status &lt;&gt; 'IA') ORDER BY Name, a.employee_no"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -74,6 +80,7 @@
                     <asp:SessionParameter DefaultValue="2999-01-01" Name="EndDay" SessionField="EndDay" Type="DateTime" />
                     <asp:SessionParameter DefaultValue="%" Name="cus_id" SessionField="cus_id" Type="String" />
                     <asp:SessionParameter DefaultValue="%" Name="styleno" SessionField="styleno" Type="String" />
+                    <asp:SessionParameter DefaultValue="%" Name="SampleNo" SessionField="SampleNo" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>

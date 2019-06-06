@@ -27,11 +27,14 @@
                         <h3 class="text-info text-left">海關三巡匯入</h3>
 
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-
-
+                            <h4>公司別</h4>
+                            <asp:DropDownList ID="公司別DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="site" DataValueField="site">
+                                <asp:ListItem></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [site] FROM [bas_customs_rate]"></asp:SqlDataSource>
                             <h4>匯入檔案</h4>
-
-                            <asp:FileUpload ID="文件上傳FU" runat="server" CssClass="" />
+                            
+                            <asp:FileUpload ID="文件上傳FU" runat="server" />
                             <div class="form-group">
                                 <%--<asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />--%>
                                 <asp:Button ID="DataCheckBT" runat="server" Text="CheckData" CssClass="btn btn-danger" OnClick="DataCheckBT_Click" />

@@ -6851,19 +6851,19 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column版完成日期;
             
+            private global::System.Data.DataColumn column馬克;
+            
+            private global::System.Data.DataColumn column修改馬克;
+            
+            private global::System.Data.DataColumn column備註;
+            
             private global::System.Data.DataColumn column創新板;
             
             private global::System.Data.DataColumn column修改版;
             
             private global::System.Data.DataColumn column核可大貨板;
             
-            private global::System.Data.DataColumn column馬克;
-            
-            private global::System.Data.DataColumn column修改馬克;
-            
             private global::System.Data.DataColumn column馬克完成日;
-            
-            private global::System.Data.DataColumn column備註;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -6948,6 +6948,30 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 馬克Column {
+                get {
+                    return this.column馬克;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 修改馬克Column {
+                get {
+                    return this.column修改馬克;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 備註Column {
+                get {
+                    return this.column備註;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn 創新板Column {
                 get {
                     return this.column創新板;
@@ -6972,33 +6996,9 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn 馬克Column {
-                get {
-                    return this.column馬克;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn 修改馬克Column {
-                get {
-                    return this.column修改馬克;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn 馬克完成日Column {
                 get {
                     return this.column馬克完成日;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn 備註Column {
-                get {
-                    return this.column備註;
                 }
             }
             
@@ -7039,7 +7039,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public View打版發單表Row AddView打版發單表Row(System.DateTime 發版日期, string 打版師, string 客戶名稱, string 款號, string sam_nbr, System.DateTime 版完成日期, string 創新板, string 修改版, string 核可大貨板, string 馬克, string 修改馬克, System.DateTime 馬克完成日, string 備註) {
+            public View打版發單表Row AddView打版發單表Row(System.DateTime 發版日期, string 打版師, string 客戶名稱, string 款號, string sam_nbr, System.DateTime 版完成日期, string 馬克, string 修改馬克, string 備註, int 創新板, int 修改版, int 核可大貨板, System.DateTime 馬克完成日) {
                 View打版發單表Row rowView打版發單表Row = ((View打版發單表Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         發版日期,
@@ -7048,13 +7048,13 @@ namespace GGFPortal.DataSetSource {
                         款號,
                         sam_nbr,
                         版完成日期,
+                        馬克,
+                        修改馬克,
+                        備註,
                         創新板,
                         修改版,
                         核可大貨板,
-                        馬克,
-                        修改馬克,
-                        馬克完成日,
-                        備註};
+                        馬克完成日};
                 rowView打版發單表Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowView打版發單表Row);
                 return rowView打版發單表Row;
@@ -7083,13 +7083,13 @@ namespace GGFPortal.DataSetSource {
                 this.column款號 = base.Columns["款號"];
                 this.columnsam_nbr = base.Columns["sam_nbr"];
                 this.column版完成日期 = base.Columns["版完成日期"];
+                this.column馬克 = base.Columns["馬克"];
+                this.column修改馬克 = base.Columns["修改馬克"];
+                this.column備註 = base.Columns["備註"];
                 this.column創新板 = base.Columns["創新板"];
                 this.column修改版 = base.Columns["修改版"];
                 this.column核可大貨板 = base.Columns["核可大貨板"];
-                this.column馬克 = base.Columns["馬克"];
-                this.column修改馬克 = base.Columns["修改馬克"];
                 this.column馬克完成日 = base.Columns["馬克完成日"];
-                this.column備註 = base.Columns["備註"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7107,35 +7107,32 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnsam_nbr);
                 this.column版完成日期 = new global::System.Data.DataColumn("版完成日期", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column版完成日期);
-                this.column創新板 = new global::System.Data.DataColumn("創新板", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column創新板);
-                this.column修改版 = new global::System.Data.DataColumn("修改版", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column修改版);
-                this.column核可大貨板 = new global::System.Data.DataColumn("核可大貨板", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column核可大貨板);
                 this.column馬克 = new global::System.Data.DataColumn("馬克", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column馬克);
                 this.column修改馬克 = new global::System.Data.DataColumn("修改馬克", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column修改馬克);
-                this.column馬克完成日 = new global::System.Data.DataColumn("馬克完成日", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column馬克完成日);
                 this.column備註 = new global::System.Data.DataColumn("備註", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column備註);
+                this.column創新板 = new global::System.Data.DataColumn("創新板", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column創新板);
+                this.column修改版 = new global::System.Data.DataColumn("修改版", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column修改版);
+                this.column核可大貨板 = new global::System.Data.DataColumn("核可大貨板", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column核可大貨板);
+                this.column馬克完成日 = new global::System.Data.DataColumn("馬克完成日", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column馬克完成日);
                 this.column打版師.MaxLength = 30;
                 this.column客戶名稱.MaxLength = 8;
                 this.column款號.MaxLength = 120;
                 this.columnsam_nbr.AllowDBNull = false;
                 this.columnsam_nbr.MaxLength = 20;
-                this.column創新板.ReadOnly = true;
-                this.column創新板.MaxLength = 1;
-                this.column修改版.ReadOnly = true;
-                this.column修改版.MaxLength = 1;
-                this.column核可大貨板.ReadOnly = true;
-                this.column核可大貨板.MaxLength = 1;
                 this.column馬克.MaxLength = 30;
                 this.column修改馬克.MaxLength = 30;
-                this.column馬克完成日.ReadOnly = true;
                 this.column備註.MaxLength = 60;
+                this.column創新板.ReadOnly = true;
+                this.column修改版.ReadOnly = true;
+                this.column核可大貨板.ReadOnly = true;
+                this.column馬克完成日.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18654,54 +18651,6 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string 創新板 {
-                get {
-                    try {
-                        return ((string)(this[this.tableView打版發單表.創新板Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'創新板\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableView打版發單表.創新板Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string 修改版 {
-                get {
-                    try {
-                        return ((string)(this[this.tableView打版發單表.修改版Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'修改版\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableView打版發單表.修改版Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string 核可大貨板 {
-                get {
-                    try {
-                        return ((string)(this[this.tableView打版發單表.核可大貨板Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'核可大貨板\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableView打版發單表.核可大貨板Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 馬克 {
                 get {
                     try {
@@ -18734,22 +18683,6 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime 馬克完成日 {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableView打版發單表.馬克完成日Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'馬克完成日\' 的值是 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableView打版發單表.馬克完成日Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 備註 {
                 get {
                     try {
@@ -18761,6 +18694,70 @@ namespace GGFPortal.DataSetSource {
                 }
                 set {
                     this[this.tableView打版發單表.備註Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 創新板 {
+                get {
+                    try {
+                        return ((int)(this[this.tableView打版發單表.創新板Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'創新板\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.創新板Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 修改版 {
+                get {
+                    try {
+                        return ((int)(this[this.tableView打版發單表.修改版Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'修改版\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.修改版Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 核可大貨板 {
+                get {
+                    try {
+                        return ((int)(this[this.tableView打版發單表.核可大貨板Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'核可大貨板\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.核可大貨板Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime 馬克完成日 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableView打版發單表.馬克完成日Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View打版發單表\' 中資料行 \'馬克完成日\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView打版發單表.馬克完成日Column] = value;
                 }
             }
             
@@ -18826,6 +18823,42 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is馬克Null() {
+                return this.IsNull(this.tableView打版發單表.馬克Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set馬克Null() {
+                this[this.tableView打版發單表.馬克Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is修改馬克Null() {
+                return this.IsNull(this.tableView打版發單表.修改馬克Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set修改馬克Null() {
+                this[this.tableView打版發單表.修改馬克Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is備註Null() {
+                return this.IsNull(this.tableView打版發單表.備註Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set備註Null() {
+                this[this.tableView打版發單表.備註Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is創新板Null() {
                 return this.IsNull(this.tableView打版發單表.創新板Column);
             }
@@ -18862,30 +18895,6 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is馬克Null() {
-                return this.IsNull(this.tableView打版發單表.馬克Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set馬克Null() {
-                this[this.tableView打版發單表.馬克Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is修改馬克Null() {
-                return this.IsNull(this.tableView打版發單表.修改馬克Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set修改馬克Null() {
-                this[this.tableView打版發單表.修改馬克Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is馬克完成日Null() {
                 return this.IsNull(this.tableView打版發單表.馬克完成日Column);
             }
@@ -18894,18 +18903,6 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set馬克完成日Null() {
                 this[this.tableView打版發單表.馬克完成日Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is備註Null() {
-                return this.IsNull(this.tableView打版發單表.備註Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set備註Null() {
-                this[this.tableView打版發單表.備註Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -22949,13 +22946,13 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             tableMapping.ColumnMappings.Add("款號", "款號");
             tableMapping.ColumnMappings.Add("sam_nbr", "sam_nbr");
             tableMapping.ColumnMappings.Add("版完成日期", "版完成日期");
+            tableMapping.ColumnMappings.Add("馬克", "馬克");
+            tableMapping.ColumnMappings.Add("修改馬克", "修改馬克");
+            tableMapping.ColumnMappings.Add("備註", "備註");
             tableMapping.ColumnMappings.Add("創新板", "創新板");
             tableMapping.ColumnMappings.Add("修改版", "修改版");
             tableMapping.ColumnMappings.Add("核可大貨板", "核可大貨板");
-            tableMapping.ColumnMappings.Add("馬克", "馬克");
-            tableMapping.ColumnMappings.Add("修改馬克", "修改馬克");
             tableMapping.ColumnMappings.Add("馬克完成日", "馬克完成日");
-            tableMapping.ColumnMappings.Add("備註", "備註");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22972,23 +22969,25 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, [dbo].[F_DateToNull](版完成日期) as 版完成日期, 創新板, 修改版, 核可大貨板, 馬克, 修改馬克, [dbo].[F_DateToNull](馬克完成日) as 馬克完成日, 
-                            備註
+            this._commandCollection[0].CommandText = @"SELECT          發版日期, 打版師, 客戶名稱, 款號, sam_nbr, dbo.F_DateToNull(版完成日期) AS 版完成日期, 創新板, 修改版, 
+                            核可大貨板, 馬克, 修改馬克, 備註, 馬克完成日
 FROM              View打版發單表
-WHERE          (發版日期 BETWEEN @StarDay AND  cast( @EndDay as datetime) + 1 ) AND (客戶名稱 LIKE @cus_id) AND (款號 LIKE @styleno)
-order by 發版日期  desc";
+WHERE          (發版日期 BETWEEN @StarDay AND CAST(@EndDay AS datetime) + 1) AND (客戶名稱 LIKE @cus_id) AND 
+                            (款號 LIKE @styleno) AND (SampleNo LIKE @SampleNo)
+ORDER BY   發版日期 DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StarDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDay", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "發版日期", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cus_id", global::System.Data.SqlDbType.NVarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "客戶名稱", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@styleno", global::System.Data.SqlDbType.NVarChar, 120, global::System.Data.ParameterDirection.Input, 0, 0, "款號", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SampleNo", global::System.Data.SqlDbType.NVarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "SampleNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesTempDS.View打版發單表DataTable dataTable, global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno) {
+        public virtual int Fill(SalesTempDS.View打版發單表DataTable dataTable, global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno, string SampleNo) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((StarDay.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StarDay.Value));
@@ -23013,6 +23012,12 @@ order by 發版日期  desc";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = ((string)(styleno));
+            }
+            if ((SampleNo == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(SampleNo));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -23025,7 +23030,7 @@ order by 發版日期  desc";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesTempDS.View打版發單表DataTable GetData(global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno) {
+        public virtual SalesTempDS.View打版發單表DataTable GetData(global::System.Nullable<global::System.DateTime> StarDay, global::System.Nullable<global::System.DateTime> EndDay, string cus_id, string styleno, string SampleNo) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((StarDay.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StarDay.Value));
@@ -23050,6 +23055,12 @@ order by 發版日期  desc";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = ((string)(styleno));
+            }
+            if ((SampleNo == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(SampleNo));
             }
             SalesTempDS.View打版發單表DataTable dataTable = new SalesTempDS.View打版發單表DataTable();
             this.Adapter.Fill(dataTable);

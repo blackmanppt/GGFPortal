@@ -176,7 +176,7 @@ namespace GGFPortal.Finance
                                                     ,[modifier]
                                                     ,[modify_date])
                                                 VALUES
-                                                    ('GGF'
+                                                    (@site
                                                     ,@year_month
                                                     ,@period_type
                                                     ,'NTD'
@@ -191,6 +191,7 @@ namespace GGFPortal.Finance
                                                     ,getdate()
                                                     )
                                                     ");
+                                command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = 公司別DDL.SelectedValue;
                                 command1.Parameters.Add("@year_month", SqlDbType.NVarChar).Value = str三巡時間年+ str三巡時間月;
                                 command1.Parameters.Add("@period_type", SqlDbType.NVarChar).Value = str三巡時間巡;
                                 command1.Parameters.Add("@work_currency", SqlDbType.NVarChar).Value = dt.Rows[i]["外匯幣別"].ToString();
@@ -506,31 +507,38 @@ namespace GGFPortal.Finance
         private bool F_CheckData(string strPType,string strDate)
         {
             bool bcheck = true;
+            if(!string.IsNullOrEmpty(公司別DDL.SelectedValue))
+                using (SqlConnection conn = new SqlConnection(strConnectString))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = conn;
+                    // 海關三巡沒有越盾，User可能會手動輸入
+                    command.CommandText = @"SELECT top 1 *
+                                                FROM [dbo].[bas_customs_rate]
+                                                where [period_type] = @PType and [year_month] = @Date and work_currency <>'VND' and site=@site";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.Add("@site", SqlDbType.NVarChar).Value = 公司別DDL.SelectedValue;
+                    command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = strDate;
+                    command.Parameters.Add("@PType", SqlDbType.NVarChar).Value = strPType;
+                    conn.Open();
+                    SqlDataReader reader = command.ExecuteReader();
 
-            using (SqlConnection conn = new SqlConnection(strConnectString))
+                    if (reader.HasRows)
+                    {
+                        bcheck = false;
+                    }
+                    reader.Close();
+                    if (!bcheck)
+                    {
+                        F_ErrorShow("資料庫已有資料 年：" + strDate +"、巡：" + strPType );
+                    }
+                }
+            else
             {
-                SqlCommand command = new SqlCommand();
-                command.Connection = conn;
-                // 海關三巡沒有越盾，User可能會手動輸入
-                command.CommandText = @"SELECT top 1 *
-                                            FROM [dbo].[bas_customs_rate]
-                                            where [period_type] = @PType and [year_month] = @Date and work_currency <>'VND'";
-                command.CommandType = CommandType.Text;
-                command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = strDate;
-                command.Parameters.Add("@PType", SqlDbType.NVarChar).Value = strPType;
-                conn.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    bcheck = false;
-                }
-                reader.Close();
-                if (!bcheck)
-                {
-                    F_ErrorShow("資料庫已有資料 年：" + strDate +"、巡：" + strPType );
-                }
+                bcheck = false;
+                F_ErrorShow("請選擇公司別");
             }
+
             return bcheck;
         }
         public void F_Show(bool bshow)

@@ -350,6 +350,7 @@
     <Content Include="Sales\Sales011.aspx" />
     <Content Include="Sales\Sales013.aspx" />
     <Content Include="Sales\Sales014.aspx" />
+    <Content Include="Sales\Sample012.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -1561,6 +1562,13 @@
     </Compile>
     <Compile Include="Sales\Sales014.aspx.designer.cs">
       <DependentUpon>Sales014.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample012.aspx.cs">
+      <DependentUpon>Sample012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample012.aspx.designer.cs">
+      <DependentUpon>Sample012.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary001V5.aspx.cs">
       <DependentUpon>Secretary001V5.aspx</DependentUpon>

@@ -83,6 +83,7 @@ namespace GGFPortal.Sales
             Session["EndDay"] = (string.IsNullOrEmpty(EndTB.Text)) ? "2999-01-01" : EndTB.Text;
             Session["cus_id"] = (string.IsNullOrEmpty(CusText.Text)) ? "%" : CusText.Text;
             Session["styleno"] = (string.IsNullOrEmpty(StyleTB.Text)) ? "%" : StyleTB.Text;
+            Session["SampleNo"] = (string.IsNullOrEmpty(打版DDL.SelectedValue)) ? "%" : 打版DDL.SelectedValue;
             ReportViewer1.LocalReport.Refresh();
         }
     }

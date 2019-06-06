@@ -188,6 +188,7 @@ namespace GGFPortal.Sales
                         switch (TypeDDL.SelectedItem.Text)
                         {
                             case "TD":
+                                //取消TD自動UPdate
                                 if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
                                     TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
@@ -204,8 +205,8 @@ namespace GGFPortal.Sales
                             case "尺寸套":
                                 break;
                             default:
-                                if (F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd")))
-                                    FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                //if (F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd")))
+                                //    FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                         }
 
@@ -293,9 +294,6 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTB.Text;
                         command1.Parameters.Add("@Modifier", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
-                        //command1.Parameters.Add("@馬克", SqlDbType.NVarChar).Value = MarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@修改馬克", SqlDbType.NVarChar).Value = ReMarkDDL.SelectedItem.Text;
-                        //command1.Parameters.Add("@馬克完成日", SqlDbType.NVarChar).Value = MarkDateTB.Text;
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -672,10 +670,10 @@ namespace GGFPortal.Sales
                         if (updataString == "打版完成")
                             strDate = @"[samc_fin_date] = @samc_fin_date";
                         else if(updataString == "樣衣收單")
-                            strDate = @"[sam_in_date] = @Sam_In_Date ,[s_real_arrival_date]=@s_real_arrival_date ";
+                            strDate = @"[sam_in_date] = @Sam_In_Date ,[s_real_arrival_date]=@s_real_arrival_date ,online_date=@online_date";
                         else if (updataString == "樣衣完成")
                         { 
-                            strDate = @"[sam_out_date] = @Sam_Out_Date";
+                            strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
                         }
                         else
                             strDate = @"[td_fin_date] = @TD_Fin_Date";
@@ -688,10 +686,12 @@ namespace GGFPortal.Sales
                         {
                             command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                             command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else if (updataString == "樣衣完成")
                         { 
                             command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            command1.Parameters.Add("@finish_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else
                             command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);

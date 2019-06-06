@@ -925,7 +925,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>11.81102in</Width>
+  <Width>12.79528in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -979,15 +979,15 @@
         </Field>
         <Field Name="創新板">
           <DataField>創新板</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
         <Field Name="修改版">
           <DataField>修改版</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
         <Field Name="核可大貨板">
           <DataField>核可大貨板</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
         <Field Name="馬克">
           <DataField>馬克</DataField>
