@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace GGFPortal.Sales
 {
@@ -11,6 +12,7 @@ namespace GGFPortal.Sales
     public partial class Sample012 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -66,11 +68,11 @@ namespace GGFPortal.Sales
 
         private StringBuilder selectsql()
         {
-            string strwhere = "", strselect = "";
+            string strselect = "";
+            StringBuilder strwhere = new StringBuilder();
             if (打樣未收單CB.Checked)
             {
-
-                strwhere = @" and dbo.F_DateToNull(sam_in_date) is null";
+                strwhere.AppendFormat(@" and dbo.F_DateToNull(sam_in_date) is null and samc_fin_date > '2019-06-10'");
             }
             else
             {
@@ -78,7 +80,9 @@ namespace GGFPortal.Sales
 	                          ,convert(varchar(20),dbo.F_DateToNull(sam_in_date),111) 樣衣收單日
 	                          ,convert(varchar(20),dbo.F_DateToNull(sam_out_date),111) 樣衣完成日";
             }
-            StringBuilder strsql = new StringBuilder(string.Format(@" SELECT TOP 1000
+            if (!string.IsNullOrEmpty(代理商TB.Text))
+                strwhere.AppendFormat(" and upper([cus_id])  = '{0}' ", 代理商TB.Text.ToUpper());
+            StringBuilder strsql = new StringBuilder(string.Format(@" SELECT TOP 1000 a.site,
                                               [sam_nbr] 打樣單號
                                               ,[cus_id] 客戶
                                               ,cus_style_no 款號
@@ -87,13 +91,14 @@ namespace GGFPortal.Sales
                                                 ,c.employee_name+'('+employee_name_eng+')' 業務
                                               ,convert(varchar(20),dbo.F_DateToNull([sam_date]),111) 打樣日期
 	                                          ,convert(varchar(20),dbo.F_DateToNull(samc_fin_date),111) 打版完成日
+                                               ,convert(varchar(20),dbo.F_DateToNull(s_real_arrival_date),111) 到料日
                                                 {0}
                                           FROM [samc_reqm] a
                                               left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no
                                               left join bas_employee c on a.site=c.site and   a.salesman=c.employee_no
                                               left join bas_item_statistic d on a.site=d.site and a.item_statistic=d.item_statistic
                                               left join samc_type e on a.site=e.site and a.type_id=e.type_id
-                                          where samc_fin_date is not null 
+                                          where samc_fin_date is not null  
                                                 {1}
                                           order by samc_fin_date desc ", strselect, strwhere));
 
@@ -143,6 +148,76 @@ namespace GGFPortal.Sales
         {
             SamGV.PageIndex = e.NewPageIndex;
             DbInit();
+        }
+
+        protected void SamGV_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "上傳"|| e.CommandName == "刪除")
+            {
+                GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                string StrSite = "", StrSam_nbr = "" ,StrUpdateData="";
+                //StringBuilder sb = new StringBuilder();
+
+                StrSite = SamGV.Rows[row.RowIndex].Cells[1].Text;
+                StrSam_nbr = SamGV.Rows[row.RowIndex].Cells[2].Text;
+                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                {
+                    SqlCommand command1 = conn1.CreateCommand();
+                    SqlTransaction transaction1;
+                    conn1.Open();
+                    transaction1 = conn1.BeginTransaction("UpdateSam");
+
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
+                    try
+                    {
+                        StrUpdateData = (e.CommandName == "上傳") ?"'" + DateTime.Now.ToString("yyyy-MM-dd") +"'": "null";
+
+
+                        command1.CommandText = string.Format(@"
+                                        update samc_reqm
+                                            set s_real_arrival_date= {0}
+                                        where 
+                                        sam_nbr = '{1}' and 
+                                        site = '{2}'
+                                        ", StrUpdateData, StrSam_nbr, StrSite);
+                        command1.ExecuteNonQuery();
+
+                        transaction1.Commit();
+                        //DBBind();
+                        DbInit();
+                        MessageLB.Text = "主副料到期日上傳完畢";
+                        AlertPanel_ModalPopupExtender.Show();
+                    }
+                    catch (Exception ex1)
+                    {
+                        try
+                        {
+                            Log.ErrorLog(ex1, "主副料到期日上傳失敗 :", "Sample012.aspx");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Log.ErrorLog(ex2, "主副料到期日上傳 Error:", "Sample012.aspx");
+                        }
+                        finally
+                        {
+                            transaction1.Rollback();
+                            MessageLB.Text = "主副料到期日上傳失敗請連絡MIS";
+                            AlertPanel_ModalPopupExtender.Show();
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('核准失敗請連絡MIS');</script>");
+                        }
+                    }
+                    finally
+                    {
+                        conn1.Close();
+                        conn1.Dispose();
+                        command1.Dispose();
+                        //Session.RemoveAll();
+                    }
+                }
+
+            }
+
         }
     }
 }

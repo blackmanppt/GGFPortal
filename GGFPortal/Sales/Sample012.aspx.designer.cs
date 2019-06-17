@@ -40,6 +40,24 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.CheckBox 打樣未收單CB;
         
         /// <summary>
+        /// 代理商TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 代理商TB;
+        
+        /// <summary>
+        /// 代理商TB_AutoCompleteExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.AutoCompleteExtender 代理商TB_AutoCompleteExtender;
+        
+        /// <summary>
         /// SearchBT 控制項。
         /// </summary>
         /// <remarks>

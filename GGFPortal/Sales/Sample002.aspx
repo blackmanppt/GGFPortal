@@ -91,9 +91,13 @@
                         <asp:Label ID="styleLB" runat="server" Text="" style="font-weight: 700; color: #FF3300"></asp:Label>
                     </td>
                     <th class="auto-style10">
-                        &nbsp;</th>
+                        <asp:Label ID="Label11" runat="server" Text="打樣預計完成日："></asp:Label>
+                    </th>
                     <td class="auto-style3">
-                        &nbsp;</td>
+                        <asp:TextBox ID="PlanDateTB" runat="server" Enabled="False" Width="90px"></asp:TextBox>
+                        <ajaxToolkit:CalendarExtender ID="PlanDateTB_CalendarExtender" runat="server" BehaviorID="PlanDateTB_CalendarExtender" TargetControlID="PlanDateTB" Format="yyyy/MM/dd" />
+                        <asp:Button ID="PlanDateBT" runat="server" Text="打樣預計完成日上傳"  CssClass="btn btn-primary" Visible="False" OnClick="PlanDateBT_Click"  />
+                    </td>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">

@@ -194,6 +194,7 @@ namespace GGFPortal.Sales
             Session["SamOut"] = GridView1.Rows[row.RowIndex].Cells[12].Text.Replace("&nbsp;", "");
             Session["Dept"] = strDept;
             Session["style"] = GridView1.Rows[row.RowIndex].Cells[3].Text.Replace("&nbsp;", "");
+            Session["PlanDate"] = GridView1.Rows[row.RowIndex].Cells[13].Text.Replace("&nbsp;", "");
         }
     }
 }

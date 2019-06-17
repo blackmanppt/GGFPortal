@@ -35,7 +35,7 @@ namespace GGFPortal.VN
                     {
                         YearDDL.Items.Add("");
                     }
-                    YearDDL.Items.Add(DateTime.Now.AddMonths(-i).ToString("yyyy"));
+                    YearDDL.Items.Add(DateTime.Now.AddYears(-i).ToString("yyyy"));
                 }
             }
         }

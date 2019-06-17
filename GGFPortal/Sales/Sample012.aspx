@@ -45,12 +45,7 @@
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season] FROM [ordc_bah1] ORDER BY [season]"></asp:SqlDataSource>
                             </div>
-                            <h4>代理商</h4>
-                            <div class="form-group">
-                                <asp:TextBox ID="代理商TB" runat="server"  CssClass="form-control"></asp:TextBox>
-                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" BehaviorID="代理商TB_AutoCompleteExtender" TargetControlID="代理商TB" ID="代理商TB_AutoCompleteExtender" ServiceMethod="Search訂單客戶品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
 
-                            </div>
                             <h4>品牌</h4>
                             <div class="form-group">
                                 <asp:TextBox ID="品牌TB" runat="server" CssClass="form-control" ></asp:TextBox>
@@ -60,6 +55,12 @@
                             <div class="form-group">
                                 <asp:CheckBox ID="打樣未收單CB" runat="server" Checked="true"  CssClass="form-control" Text="打樣未收單"/>
                                 <%--<asp:CheckBox ID="入庫CB" runat="server" Checked="true"   CssClass="form-control" Text="顯示入庫資料"/>--%>
+                            </div>
+                            <h4>客戶</h4>
+                            <div class="form-group">
+                                <asp:TextBox ID="代理商TB" runat="server"  CssClass="form-control"></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" BehaviorID="代理商TB_AutoCompleteExtender" TargetControlID="代理商TB" ID="代理商TB_AutoCompleteExtender" ServiceMethod="Search樣品客戶" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
+
                             </div>
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
@@ -73,7 +74,15 @@
                 </div>
                 <div class="col-md-10">
 
-                    <asp:GridView ID="SamGV" runat="server" CssClass="table table-responsive" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="True" PageSize="30" OnPageIndexChanging="SamGV_PageIndexChanging">
+                    <asp:GridView ID="SamGV" runat="server" CssClass="table table-responsive" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="True" PageSize="30" OnPageIndexChanging="SamGV_PageIndexChanging" OnRowCommand="SamGV_RowCommand">
+                        <Columns>
+                            <asp:TemplateField ShowHeader="False" ItemStyle-Width="145px" >
+                                <ItemTemplate>
+                                    <asp:Button ID="上傳到料日BT" runat="server" CausesValidation="false" CommandName="上傳" Text="到料" CssClass="btn btn-default"/>
+                                    <asp:Button ID="刪除到料日BT" runat="server" CausesValidation="false" CommandName="刪除" Text="刪除" CssClass="btn btn-danger"  OnClientClick="return confirm('是否主副料到期日刪除')" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
                         <PagerSettings Position="Top" />

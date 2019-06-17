@@ -2501,6 +2501,8 @@
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
+    <Folder Include="FactoryMG\" />
+    <Folder Include="GAMA\" />
     <Folder Include="MGT\MGTFile\" />
     <Folder Include="MIS\site\070914021691_files\" />
     <Folder Include="Models\" />

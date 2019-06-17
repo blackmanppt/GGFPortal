@@ -94,6 +94,42 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.Label styleLB;
         
         /// <summary>
+        /// Label11 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label11;
+        
+        /// <summary>
+        /// PlanDateTB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PlanDateTB;
+        
+        /// <summary>
+        /// PlanDateTB_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender PlanDateTB_CalendarExtender;
+        
+        /// <summary>
+        /// PlanDateBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button PlanDateBT;
+        
+        /// <summary>
         /// Label3 控制項。
         /// </summary>
         /// <remarks>

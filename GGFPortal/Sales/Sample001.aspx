@@ -102,7 +102,7 @@
                     <asp:BoundField DataField="salesman" HeaderText="salesman" SortExpression="salesman" />
                     <asp:BoundField DataField="sam_size" HeaderText="sam_size" SortExpression="sam_size" />
                     <asp:BoundField DataField="assign_qty" HeaderText="assign_qty" SortExpression="assign_qty" />
-                    <asp:BoundField DataField="plan_fin_date" HeaderText="plan_fin_date" SortExpression="plan_fin_date" />
+                    
                     <asp:BoundField DataField="emb" HeaderText="emb" SortExpression="emb" />
                     <asp:BoundField DataField="washing" HeaderText="washing" SortExpression="washing" />
                     <asp:BoundField DataField="oth_extra" HeaderText="oth_extra" SortExpression="oth_extra" />
@@ -186,7 +186,7 @@
                     <asp:BoundField DataField="td_fin_date" HeaderText="TD完成日" SortExpression="td_fin_date" DataFormatString="{0:yyyy/MM/dd}"/>
                     <asp:BoundField DataField="sam_in_date" HeaderText="樣衣收單日" SortExpression="sam_in_date" DataFormatString="{0:yyyy/MM/dd}"/>
                     <asp:BoundField DataField="sam_out_date" HeaderText="樣衣完成日" SortExpression="sam_out_date" DataFormatString="{0:yyyy/MM/dd}"/>
-
+                    <asp:BoundField DataField="plan_fin_date" HeaderText="打樣預計完成單日" SortExpression="plan_fin_date"  DataFormatString="{0:yyyy/MM/dd}"/>
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

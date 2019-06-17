@@ -67,7 +67,10 @@ namespace GGFPortal.Sales
                 {
                     SamOutTB.Text = Session["SamOut"].ToString();
                 }
-
+                if (Session["PlanDate"] != null)
+                {
+                    PlanDateTB.Text = Session["PlanDate"].ToString();
+                }
 
             }
             string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
@@ -85,6 +88,8 @@ namespace GGFPortal.Sales
                     strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     SamOutBT.Visible = true;
                     SamOutTB.Enabled = true;
+                    PlanDateBT.Visible = true;
+                    PlanDateTB.Enabled = true;
                     break;
                 default:
                     Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
@@ -637,20 +642,20 @@ namespace GGFPortal.Sales
             #region check TD Update
             //bool bcheck = true;
             bool UpDateCheck = true;
-            if (updataString == "TD")
-            {
-                using (SqlConnection conn = new SqlConnection(strConnectString))
-                {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter myAdapter = new SqlDataAdapter(
-                        string.Format(@"
-                        select * from [GGFRequestSam] where sam_nbr ='{0}' and Flag=0 and SampleType=4 and SampleCreatDate >'{1}'
-                        ",SamNbrLB.Text,update), conn);
-                    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
-                    if (dt.Rows.Count == 0)
-                        UpDateCheck = false;
-                }
-            }
+            //if (updataString == "TD")
+            //{
+            //    using (SqlConnection conn = new SqlConnection(strConnectString))
+            //    {
+            //        DataTable dt = new DataTable();
+            //        SqlDataAdapter myAdapter = new SqlDataAdapter(
+            //            string.Format(@"
+            //            select * from [GGFRequestSam] where sam_nbr ='{0}' and Flag=0 and SampleType=4 and SampleCreatDate >'{1}'
+            //            ",SamNbrLB.Text,update), conn);
+            //        myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+            //        if (dt.Rows.Count == 0)
+            //            UpDateCheck = false;
+            //    }
+            //}
             #endregion
             
             if(UpDateCheck)
@@ -675,6 +680,10 @@ namespace GGFPortal.Sales
                         { 
                             strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
                         }
+                        else if (updataString== "打樣預計完成日")
+                        {
+                            strDate = @"[plan_fin_date] = @plan_fin_date ";
+                        }
                         else
                             strDate = @"[td_fin_date] = @TD_Fin_Date";
 
@@ -689,9 +698,13 @@ namespace GGFPortal.Sales
                             command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else if (updataString == "樣衣完成")
-                        { 
+                        {
                             command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                             command1.Parameters.Add("@finish_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        }
+                        else if (updataString == "打樣預計完成日")
+                        {
+                            command1.Parameters.Add("@plan_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else
                             command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
@@ -766,6 +779,18 @@ namespace GGFPortal.Sales
             //}
         }
 
+        protected void PlanDateBT_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(PlanDateTB.Text))
+            {
+                F_UpdataWorkDate("打樣預計完成日", PlanDateTB.Text);
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+            }
+        }
+
         //protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         //{
         //    string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
@@ -784,7 +809,7 @@ namespace GGFPortal.Sales
         //            SqlDataSource2.SelectCommand = "";
         //            break;
         //    }
-            
+
 
         //}
 
