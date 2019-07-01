@@ -382,6 +382,36 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        [OperationContract]
+        public List<string> Search打樣單品牌(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"select  distinct top 10  [brand_name] as Search from [samc_reqm] where upper([brand_name]) like '%' +  @SearchText + '%'   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchCusId = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchCusId.Add(sdr["Search"].ToString());
+                        }
+                    }
+                    conn.Close();
+                    return SearchCusId;
+                }
+            }
+        }
 
     }
 }

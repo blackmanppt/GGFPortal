@@ -26,7 +26,9 @@
                         <h3 class="text-info text-left">打版完成查詢</h3>
 
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                            <%--<h4>款號</h4>
+                            <%--
+                                
+                                <h4>款號</h4>
                             <div class="form-group">
                                 <asp:TextBox ID="款號TB" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
@@ -46,11 +48,7 @@
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season] FROM [ordc_bah1] ORDER BY [season]"></asp:SqlDataSource>
                             </div>
 
-                            <h4>品牌</h4>
-                            <div class="form-group">
-                                <asp:TextBox ID="品牌TB" runat="server" CssClass="form-control" ></asp:TextBox>
-                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="品牌TB_AutoCompleteExtender" TargetControlID="品牌TB" ID="品牌TB_AutoCompleteExtender" ServiceMethod="Search訂單品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
-                            </div>--%>
+                            --%>
                             <h4>狀態</h4>
                             <div class="form-group">
                                 <asp:CheckBox ID="打樣未收單CB" runat="server" Checked="true"  CssClass="form-control" Text="打樣未收單"/>
@@ -61,6 +59,16 @@
                                 <asp:TextBox ID="代理商TB" runat="server"  CssClass="form-control"></asp:TextBox>
                                 <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" BehaviorID="代理商TB_AutoCompleteExtender" TargetControlID="代理商TB" ID="代理商TB_AutoCompleteExtender" ServiceMethod="Search樣品客戶" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
 
+                            </div>
+                              <h4>款號</h4>
+                            <div class="form-group">
+                                <asp:TextBox ID="款號TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender runat="server"  ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="款號TB_AutoCompleteExtender" TargetControlID="款號TB" ID="款號TB_AutoCompleteExtender" ServiceMethod="SearchSampleStyleNo" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
+                            </div>
+                            <h4>品牌</h4>
+                            <div class="form-group">
+                                <asp:TextBox ID="品牌TB" runat="server" CssClass="form-control" ></asp:TextBox>
+                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="品牌TB_AutoCompleteExtender" TargetControlID="品牌TB" ID="品牌TB_AutoCompleteExtender" ServiceMethod="Search打樣單品牌" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
                             </div>
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />

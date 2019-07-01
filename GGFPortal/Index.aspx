@@ -258,6 +258,10 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink83" runat="server" NavigateUrl="~/Sales/Sample011.aspx">樣品室產量月總表-處理人員(打版日期)</asp:HyperLink>
                         <br />
                                                 <asp:HyperLink ID="HyperLink103" runat="server" NavigateUrl="~/Sales/Sample012.aspx">打版完成資料查詢</asp:HyperLink>
+                                                <br />
+                                                <asp:HyperLink ID="HyperLink104" runat="server" NavigateUrl="~/Sales/Sample013.aspx">打版資料查詢</asp:HyperLink>
+                                                <br />
+                                                <asp:HyperLink ID="HyperLink105" runat="server" NavigateUrl="~/Sales/Sample014.aspx">打版資料明細查詢</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 

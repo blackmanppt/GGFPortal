@@ -82,7 +82,7 @@ namespace GGFPortal.Sales
 
                     break;
                 case "Sam1":
-                    strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010','N01C')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     break;
                 case "Sam2":
                     strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
@@ -322,6 +322,7 @@ namespace GGFPortal.Sales
                                 break;
                             case "尺寸套":
                                 break;
+                                //版套同打版
                             default:
                                 if (F_UpdataWorkDate("打版完成", strdate))
                                     FinalDayTB.Text = strdate;
@@ -598,7 +599,7 @@ namespace GGFPortal.Sales
                 {
                     //TD
                     case "TD":
-                        if (e.Row.Cells[5].Text == "打版"|| e.Row.Cells[5].Text == "樣衣" || e.Row.Cells[5].Text== "裁版")
+                        if (e.Row.Cells[5].Text == "打版"|| e.Row.Cells[5].Text == "樣衣" || e.Row.Cells[5].Text== "裁版" || e.Row.Cells[5].Text == "版套")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;
@@ -608,7 +609,7 @@ namespace GGFPortal.Sales
                         break;
                         //打版
                     case "Sam1":
-                        if (e.Row.Cells[5].Text != "打版")
+                        if (e.Row.Cells[5].Text != "打版" && e.Row.Cells[5].Text != "版套")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;
@@ -618,7 +619,7 @@ namespace GGFPortal.Sales
                         break;
                         //樣衣
                     case "Sam2":
-                        if (e.Row.Cells[5].Text == "打版" || e.Row.Cells[5].Text == "TD" || e.Row.Cells[5].Text == "PP" || e.Row.Cells[5].Text == "尺寸套")
+                        if (e.Row.Cells[5].Text == "打版" || e.Row.Cells[5].Text == "版套" || e.Row.Cells[5].Text == "TD" || e.Row.Cells[5].Text == "PP" || e.Row.Cells[5].Text == "尺寸套")
                         {
                             編輯BT.Visible = false;
                             刪除BT.Visible = false;

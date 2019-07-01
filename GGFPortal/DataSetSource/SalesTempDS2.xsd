@@ -15,7 +15,7 @@
   <xs:element name="SalesTempDS2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SalesTempDS2" msprop:Generator_UserDSName="SalesTempDS2">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="營收資料" msprop:Generator_TableClassName="營收資料DataTable" msprop:Generator_TableVarName="table營收資料" msprop:Generator_RowChangedName="營收資料RowChanged" msprop:Generator_TablePropName="營收資料" msprop:Generator_RowDeletingName="營收資料RowDeleting" msprop:Generator_RowChangingName="營收資料RowChanging" msprop:Generator_RowEvHandlerName="營收資料RowChangeEventHandler" msprop:Generator_RowDeletedName="營收資料RowDeleted" msprop:Generator_RowClassName="營收資料Row" msprop:Generator_UserTableName="營收資料" msprop:Generator_RowEvArgName="營收資料RowChangeEvent">
+        <xs:element name="營收資料" msprop:Generator_TableClassName="營收資料DataTable" msprop:Generator_TableVarName="table營收資料" msprop:Generator_TablePropName="營收資料" msprop:Generator_RowDeletingName="營收資料RowDeleting" msprop:Generator_RowChangingName="營收資料RowChanging" msprop:Generator_RowEvHandlerName="營收資料RowChangeEventHandler" msprop:Generator_RowDeletedName="營收資料RowDeleted" msprop:Generator_UserTableName="營收資料" msprop:Generator_RowChangedName="營收資料RowChanged" msprop:Generator_RowEvArgName="營收資料RowChangeEvent" msprop:Generator_RowClassName="營收資料Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="公司" msprop:Generator_ColumnVarNameInTable="column公司" msprop:Generator_ColumnPropNameInRow="公司" msprop:Generator_ColumnPropNameInTable="公司Column" msprop:Generator_UserColumnName="公司" type="xs:string" minOccurs="0" />
@@ -30,7 +30,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="打版馬克處理" msprop:Generator_TableClassName="打版馬克處理DataTable" msprop:Generator_TableVarName="table打版馬克處理" msprop:Generator_RowChangedName="打版馬克處理RowChanged" msprop:Generator_TablePropName="打版馬克處理" msprop:Generator_RowDeletingName="打版馬克處理RowDeleting" msprop:Generator_RowChangingName="打版馬克處理RowChanging" msprop:Generator_RowEvHandlerName="打版馬克處理RowChangeEventHandler" msprop:Generator_RowDeletedName="打版馬克處理RowDeleted" msprop:Generator_RowClassName="打版馬克處理Row" msprop:Generator_UserTableName="打版馬克處理" msprop:Generator_RowEvArgName="打版馬克處理RowChangeEvent">
+        <xs:element name="打版馬克處理" msprop:Generator_TableClassName="打版馬克處理DataTable" msprop:Generator_TableVarName="table打版馬克處理" msprop:Generator_TablePropName="打版馬克處理" msprop:Generator_RowDeletingName="打版馬克處理RowDeleting" msprop:Generator_RowChangingName="打版馬克處理RowChanging" msprop:Generator_RowEvHandlerName="打版馬克處理RowChangeEventHandler" msprop:Generator_RowDeletedName="打版馬克處理RowDeleted" msprop:Generator_UserTableName="打版馬克處理" msprop:Generator_RowChangedName="打版馬克處理RowChanged" msprop:Generator_RowEvArgName="打版馬克處理RowChangeEvent" msprop:Generator_RowClassName="打版馬克處理Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="sam_nbr" msprop:Generator_ColumnVarNameInTable="columnsam_nbr" msprop:Generator_ColumnPropNameInRow="sam_nbr" msprop:Generator_ColumnPropNameInTable="sam_nbrColumn" msprop:Generator_UserColumnName="sam_nbr">
@@ -82,7 +82,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="打樣收單" msprop:Generator_TableClassName="打樣收單DataTable" msprop:Generator_TableVarName="table打樣收單" msprop:Generator_TablePropName="打樣收單" msprop:Generator_RowDeletingName="打樣收單RowDeleting" msprop:Generator_RowChangingName="打樣收單RowChanging" msprop:Generator_RowEvHandlerName="打樣收單RowChangeEventHandler" msprop:Generator_RowDeletedName="打樣收單RowDeleted" msprop:Generator_UserTableName="打樣收單" msprop:Generator_RowChangedName="打樣收單RowChanged" msprop:Generator_RowEvArgName="打樣收單RowChangeEvent" msprop:Generator_RowClassName="打樣收單Row">
+        <xs:element name="打樣收單" msprop:Generator_TableClassName="打樣收單DataTable" msprop:Generator_TableVarName="table打樣收單" msprop:Generator_RowChangedName="打樣收單RowChanged" msprop:Generator_TablePropName="打樣收單" msprop:Generator_RowDeletingName="打樣收單RowDeleting" msprop:Generator_RowChangingName="打樣收單RowChanging" msprop:Generator_RowEvHandlerName="打樣收單RowChangeEventHandler" msprop:Generator_RowDeletedName="打樣收單RowDeleted" msprop:Generator_RowClassName="打樣收單Row" msprop:Generator_UserTableName="打樣收單" msprop:Generator_RowEvArgName="打樣收單RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
@@ -564,7 +564,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="業務出口資料" msprop:Generator_TableClassName="業務出口資料DataTable" msprop:Generator_TableVarName="table業務出口資料" msprop:Generator_RowChangedName="業務出口資料RowChanged" msprop:Generator_TablePropName="業務出口資料" msprop:Generator_RowDeletingName="業務出口資料RowDeleting" msprop:Generator_RowChangingName="業務出口資料RowChanging" msprop:Generator_RowEvHandlerName="業務出口資料RowChangeEventHandler" msprop:Generator_RowDeletedName="業務出口資料RowDeleted" msprop:Generator_RowClassName="業務出口資料Row" msprop:Generator_UserTableName="業務出口資料" msprop:Generator_RowEvArgName="業務出口資料RowChangeEvent">
+        <xs:element name="業務出口資料" msprop:Generator_TableClassName="業務出口資料DataTable" msprop:Generator_TableVarName="table業務出口資料" msprop:Generator_TablePropName="業務出口資料" msprop:Generator_RowDeletingName="業務出口資料RowDeleting" msprop:Generator_RowChangingName="業務出口資料RowChanging" msprop:Generator_RowEvHandlerName="業務出口資料RowChangeEventHandler" msprop:Generator_RowDeletedName="業務出口資料RowDeleted" msprop:Generator_UserTableName="業務出口資料" msprop:Generator_RowChangedName="業務出口資料RowChanged" msprop:Generator_RowEvArgName="業務出口資料RowChangeEvent" msprop:Generator_RowClassName="業務出口資料Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="客戶" msprop:Generator_ColumnVarNameInTable="column客戶" msprop:Generator_ColumnPropNameInRow="客戶" msprop:Generator_ColumnPropNameInTable="客戶Column" msprop:Generator_UserColumnName="客戶" type="xs:string" minOccurs="0" />
@@ -576,7 +576,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="採購單訂單資料" msprop:Generator_TableClassName="採購單訂單資料DataTable" msprop:Generator_TableVarName="table採購單訂單資料" msprop:Generator_TablePropName="採購單訂單資料" msprop:Generator_RowDeletingName="採購單訂單資料RowDeleting" msprop:Generator_RowChangingName="採購單訂單資料RowChanging" msprop:Generator_RowEvHandlerName="採購單訂單資料RowChangeEventHandler" msprop:Generator_RowDeletedName="採購單訂單資料RowDeleted" msprop:Generator_UserTableName="採購單訂單資料" msprop:Generator_RowChangedName="採購單訂單資料RowChanged" msprop:Generator_RowEvArgName="採購單訂單資料RowChangeEvent" msprop:Generator_RowClassName="採購單訂單資料Row">
+        <xs:element name="採購單訂單資料" msprop:Generator_TableClassName="採購單訂單資料DataTable" msprop:Generator_TableVarName="table採購單訂單資料" msprop:Generator_RowChangedName="採購單訂單資料RowChanged" msprop:Generator_TablePropName="採購單訂單資料" msprop:Generator_RowDeletingName="採購單訂單資料RowDeleting" msprop:Generator_RowChangingName="採購單訂單資料RowChanging" msprop:Generator_RowEvHandlerName="採購單訂單資料RowChangeEventHandler" msprop:Generator_RowDeletedName="採購單訂單資料RowDeleted" msprop:Generator_RowClassName="採購單訂單資料Row" msprop:Generator_UserTableName="採購單訂單資料" msprop:Generator_RowEvArgName="採購單訂單資料RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="原始料號" msprop:Generator_ColumnVarNameInTable="column原始料號" msprop:Generator_ColumnPropNameInRow="原始料號" msprop:Generator_ColumnPropNameInTable="原始料號Column" msprop:Generator_UserColumnName="原始料號" minOccurs="0">
@@ -667,7 +667,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AMZForecast" msprop:Generator_TableClassName="AMZForecastDataTable" msprop:Generator_TableVarName="tableAMZForecast" msprop:Generator_RowChangedName="AMZForecastRowChanged" msprop:Generator_TablePropName="AMZForecast" msprop:Generator_RowDeletingName="AMZForecastRowDeleting" msprop:Generator_RowChangingName="AMZForecastRowChanging" msprop:Generator_RowEvHandlerName="AMZForecastRowChangeEventHandler" msprop:Generator_RowDeletedName="AMZForecastRowDeleted" msprop:Generator_RowClassName="AMZForecastRow" msprop:Generator_UserTableName="AMZForecast" msprop:Generator_RowEvArgName="AMZForecastRowChangeEvent">
+        <xs:element name="AMZForecast" msprop:Generator_TableClassName="AMZForecastDataTable" msprop:Generator_TableVarName="tableAMZForecast" msprop:Generator_TablePropName="AMZForecast" msprop:Generator_RowDeletingName="AMZForecastRowDeleting" msprop:Generator_RowChangingName="AMZForecastRowChanging" msprop:Generator_RowEvHandlerName="AMZForecastRowChangeEventHandler" msprop:Generator_RowDeletedName="AMZForecastRowDeleted" msprop:Generator_UserTableName="AMZForecast" msprop:Generator_RowChangedName="AMZForecastRowChanged" msprop:Generator_RowEvArgName="AMZForecastRowChangeEvent" msprop:Generator_RowClassName="AMZForecastRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="uid" msprop:Generator_ColumnVarNameInTable="columnuid" msprop:Generator_ColumnPropNameInRow="uid" msprop:Generator_ColumnPropNameInTable="uidColumn" msprop:Generator_UserColumnName="uid" type="xs:int" />
@@ -717,7 +717,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CRP排程表" msprop:Generator_TableClassName="CRP排程表DataTable" msprop:Generator_TableVarName="tableCRP排程表" msprop:Generator_TablePropName="CRP排程表" msprop:Generator_RowDeletingName="CRP排程表RowDeleting" msprop:Generator_RowChangingName="CRP排程表RowChanging" msprop:Generator_RowEvHandlerName="CRP排程表RowChangeEventHandler" msprop:Generator_RowDeletedName="CRP排程表RowDeleted" msprop:Generator_UserTableName="CRP排程表" msprop:Generator_RowChangedName="CRP排程表RowChanged" msprop:Generator_RowEvArgName="CRP排程表RowChangeEvent" msprop:Generator_RowClassName="CRP排程表Row">
+        <xs:element name="CRP排程表" msprop:Generator_TableClassName="CRP排程表DataTable" msprop:Generator_TableVarName="tableCRP排程表" msprop:Generator_RowChangedName="CRP排程表RowChanged" msprop:Generator_TablePropName="CRP排程表" msprop:Generator_RowDeletingName="CRP排程表RowDeleting" msprop:Generator_RowChangingName="CRP排程表RowChanging" msprop:Generator_RowEvHandlerName="CRP排程表RowChangeEventHandler" msprop:Generator_RowDeletedName="CRP排程表RowDeleted" msprop:Generator_RowClassName="CRP排程表Row" msprop:Generator_UserTableName="CRP排程表" msprop:Generator_RowEvArgName="CRP排程表RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="車縫組" msprop:Generator_ColumnVarNameInTable="column車縫組" msprop:Generator_ColumnPropNameInRow="車縫組" msprop:Generator_ColumnPropNameInTable="車縫組Column" msprop:Generator_UserColumnName="車縫組" minOccurs="0">
@@ -832,7 +832,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="訂單工廠樣品單" msprop:Generator_TableClassName="訂單工廠樣品單DataTable" msprop:Generator_TableVarName="table訂單工廠樣品單" msprop:Generator_RowChangedName="訂單工廠樣品單RowChanged" msprop:Generator_TablePropName="訂單工廠樣品單" msprop:Generator_RowDeletingName="訂單工廠樣品單RowDeleting" msprop:Generator_RowChangingName="訂單工廠樣品單RowChanging" msprop:Generator_RowEvHandlerName="訂單工廠樣品單RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單工廠樣品單RowDeleted" msprop:Generator_RowClassName="訂單工廠樣品單Row" msprop:Generator_UserTableName="訂單工廠樣品單" msprop:Generator_RowEvArgName="訂單工廠樣品單RowChangeEvent">
+        <xs:element name="訂單工廠樣品單" msprop:Generator_TableClassName="訂單工廠樣品單DataTable" msprop:Generator_TableVarName="table訂單工廠樣品單" msprop:Generator_TablePropName="訂單工廠樣品單" msprop:Generator_RowDeletingName="訂單工廠樣品單RowDeleting" msprop:Generator_RowChangingName="訂單工廠樣品單RowChanging" msprop:Generator_RowEvHandlerName="訂單工廠樣品單RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單工廠樣品單RowDeleted" msprop:Generator_UserTableName="訂單工廠樣品單" msprop:Generator_RowChangedName="訂單工廠樣品單RowChanged" msprop:Generator_RowEvArgName="訂單工廠樣品單RowChangeEvent" msprop:Generator_RowClassName="訂單工廠樣品單Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="業務" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column業務" msprop:Generator_ColumnPropNameInRow="業務" msprop:Generator_ColumnPropNameInTable="業務Column" msprop:Generator_UserColumnName="業務" minOccurs="0">
@@ -895,6 +895,174 @@
               <xs:element name="件數" msprop:Generator_ColumnVarNameInTable="column件數" msprop:Generator_ColumnPropNameInRow="件數" msprop:Generator_ColumnPropNameInTable="件數Column" msprop:Generator_UserColumnName="件數" type="xs:decimal" minOccurs="0" />
               <xs:element name="需求月份" msprop:Generator_ColumnVarNameInTable="column需求月份" msprop:Generator_ColumnPropNameInRow="需求月份" msprop:Generator_ColumnPropNameInTable="需求月份Column" msprop:Generator_UserColumnName="需求月份" type="xs:string" minOccurs="0" />
               <xs:element name="三旬" msprop:Generator_ColumnVarNameInTable="column三旬" msprop:Generator_ColumnPropNameInRow="三旬" msprop:Generator_ColumnPropNameInTable="三旬Column" msprop:Generator_UserColumnName="三旬" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="樣品室處理作業總表" msprop:Generator_TableClassName="樣品室處理作業總表DataTable" msprop:Generator_TableVarName="table樣品室處理作業總表" msprop:Generator_TablePropName="樣品室處理作業總表" msprop:Generator_RowDeletingName="樣品室處理作業總表RowDeleting" msprop:Generator_RowChangingName="樣品室處理作業總表RowChanging" msprop:Generator_RowEvHandlerName="樣品室處理作業總表RowChangeEventHandler" msprop:Generator_RowDeletedName="樣品室處理作業總表RowDeleted" msprop:Generator_UserTableName="樣品室處理作業總表" msprop:Generator_RowChangedName="樣品室處理作業總表RowChanged" msprop:Generator_RowEvArgName="樣品室處理作業總表RowChangeEvent" msprop:Generator_RowClassName="樣品室處理作業總表Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sam_nbr" msprop:Generator_ColumnVarNameInTable="columnsam_nbr" msprop:Generator_ColumnPropNameInRow="sam_nbr" msprop:Generator_ColumnPropNameInTable="sam_nbrColumn" msprop:Generator_UserColumnName="sam_nbr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="款號" msprop:Generator_ColumnVarNameInTable="column款號" msprop:Generator_ColumnPropNameInRow="款號" msprop:Generator_ColumnPropNameInTable="款號Column" msprop:Generator_UserColumnName="款號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="item_statistic_name" msprop:Generator_ColumnVarNameInTable="columnitem_statistic_name" msprop:Generator_ColumnPropNameInRow="item_statistic_name" msprop:Generator_ColumnPropNameInTable="item_statistic_nameColumn" msprop:Generator_UserColumnName="item_statistic_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="type_desc" msprop:Generator_ColumnVarNameInTable="columntype_desc" msprop:Generator_ColumnPropNameInRow="type_desc" msprop:Generator_ColumnPropNameInTable="type_descColumn" msprop:Generator_UserColumnName="type_desc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SampleUser" msprop:Generator_ColumnVarNameInTable="columnSampleUser" msprop:Generator_ColumnPropNameInRow="SampleUser" msprop:Generator_ColumnPropNameInTable="SampleUserColumn" msprop:Generator_UserColumnName="SampleUser">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="處理方式" msprop:Generator_ColumnVarNameInTable="column處理方式" msprop:Generator_ColumnPropNameInRow="處理方式" msprop:Generator_ColumnPropNameInTable="處理方式Column" msprop:Generator_UserColumnName="處理方式" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="樣品室處理數量" msprop:Generator_ColumnVarNameInTable="column樣品室處理數量" msprop:Generator_ColumnPropNameInRow="樣品室處理數量" msprop:Generator_ColumnPropNameInTable="樣品室處理數量Column" msprop:Generator_UserColumnName="樣品室處理數量" type="xs:decimal" />
+              <xs:element name="修改馬克人員" msprop:Generator_ColumnVarNameInTable="column修改馬克人員" msprop:Generator_ColumnPropNameInRow="修改馬克人員" msprop:Generator_ColumnPropNameInTable="修改馬克人員Column" msprop:Generator_UserColumnName="修改馬克人員" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="修改馬克件數" msprop:Generator_ColumnVarNameInTable="column修改馬克件數" msprop:Generator_ColumnPropNameInRow="修改馬克件數" msprop:Generator_ColumnPropNameInTable="修改馬克件數Column" msprop:Generator_UserColumnName="修改馬克件數" type="xs:int" minOccurs="0" />
+              <xs:element name="創新版" msprop:Generator_ColumnVarNameInTable="column創新版" msprop:Generator_ColumnPropNameInRow="創新版" msprop:Generator_ColumnPropNameInTable="創新版Column" msprop:Generator_UserColumnName="創新版" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="改版" msprop:Generator_ColumnVarNameInTable="column改版" msprop:Generator_ColumnPropNameInRow="改版" msprop:Generator_ColumnPropNameInTable="改版Column" msprop:Generator_UserColumnName="改版" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="馬克" msprop:Generator_ColumnVarNameInTable="column馬克" msprop:Generator_ColumnPropNameInRow="馬克" msprop:Generator_ColumnPropNameInTable="馬克Column" msprop:Generator_UserColumnName="馬克" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="電子版" msprop:Generator_ColumnVarNameInTable="column電子版" msprop:Generator_ColumnPropNameInRow="電子版" msprop:Generator_ColumnPropNameInTable="電子版Column" msprop:Generator_UserColumnName="電子版" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="樣衣" msprop:Generator_ColumnVarNameInTable="column樣衣" msprop:Generator_ColumnPropNameInRow="樣衣" msprop:Generator_ColumnPropNameInTable="樣衣Column" msprop:Generator_UserColumnName="樣衣" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="部分縫" msprop:Generator_ColumnVarNameInTable="column部分縫" msprop:Generator_ColumnPropNameInRow="部分縫" msprop:Generator_ColumnPropNameInTable="部分縫Column" msprop:Generator_UserColumnName="部分縫" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ThreeD" msprop:Generator_ColumnVarNameInTable="columnThreeD" msprop:Generator_ColumnPropNameInRow="ThreeD" msprop:Generator_ColumnPropNameInTable="ThreeDColumn" msprop:Generator_UserColumnName="ThreeD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="其他" msprop:Generator_ColumnVarNameInTable="column其他" msprop:Generator_ColumnPropNameInRow="其他" msprop:Generator_ColumnPropNameInTable="其他Column" msprop:Generator_UserColumnName="其他" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="收單日期" msprop:Generator_ColumnVarNameInTable="column收單日期" msprop:Generator_ColumnPropNameInRow="收單日期" msprop:Generator_ColumnPropNameInTable="收單日期Column" msprop:Generator_UserColumnName="收單日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打樣預計完成單日" msprop:Generator_ColumnVarNameInTable="column打樣預計完成單日" msprop:Generator_ColumnPropNameInRow="打樣預計完成單日" msprop:Generator_ColumnPropNameInTable="打樣預計完成單日Column" msprop:Generator_UserColumnName="打樣預計完成單日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打版完成日" msprop:Generator_ColumnVarNameInTable="column打版完成日" msprop:Generator_ColumnPropNameInRow="打版完成日" msprop:Generator_ColumnPropNameInTable="打版完成日Column" msprop:Generator_UserColumnName="打版完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打樣單需求件數" msprop:Generator_ColumnVarNameInTable="column打樣單需求件數" msprop:Generator_ColumnPropNameInRow="打樣單需求件數" msprop:Generator_ColumnPropNameInTable="打樣單需求件數Column" msprop:Generator_UserColumnName="打樣單需求件數" type="xs:decimal" minOccurs="0" />
+              <xs:element name="打樣日期" msprop:Generator_ColumnVarNameInTable="column打樣日期" msprop:Generator_ColumnPropNameInRow="打樣日期" msprop:Generator_ColumnPropNameInTable="打樣日期Column" msprop:Generator_UserColumnName="打樣日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TD完成日" msprop:Generator_ColumnVarNameInTable="columnTD完成日" msprop:Generator_ColumnPropNameInRow="TD完成日" msprop:Generator_ColumnPropNameInTable="TD完成日Column" msprop:Generator_UserColumnName="TD完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="樣衣收單日" msprop:Generator_ColumnVarNameInTable="column樣衣收單日" msprop:Generator_ColumnPropNameInRow="樣衣收單日" msprop:Generator_ColumnPropNameInTable="樣衣收單日Column" msprop:Generator_UserColumnName="樣衣收單日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="樣衣完成日" msprop:Generator_ColumnVarNameInTable="column樣衣完成日" msprop:Generator_ColumnPropNameInRow="樣衣完成日" msprop:Generator_ColumnPropNameInTable="樣衣完成日Column" msprop:Generator_UserColumnName="樣衣完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="客戶代號" msprop:Generator_ColumnVarNameInTable="column客戶代號" msprop:Generator_ColumnPropNameInRow="客戶代號" msprop:Generator_ColumnPropNameInTable="客戶代號Column" msprop:Generator_UserColumnName="客戶代號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="打樣處理建立日期" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column打樣處理建立日期" msprop:Generator_ColumnPropNameInRow="打樣處理建立日期" msprop:Generator_ColumnPropNameInTable="打樣處理建立日期Column" msprop:Generator_UserColumnName="打樣處理建立日期" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="打樣狀況表" msprop:Generator_TableClassName="打樣狀況表DataTable" msprop:Generator_TableVarName="table打樣狀況表" msprop:Generator_TablePropName="打樣狀況表" msprop:Generator_RowDeletingName="打樣狀況表RowDeleting" msprop:Generator_RowChangingName="打樣狀況表RowChanging" msprop:Generator_RowEvHandlerName="打樣狀況表RowChangeEventHandler" msprop:Generator_RowDeletedName="打樣狀況表RowDeleted" msprop:Generator_UserTableName="打樣狀況表" msprop:Generator_RowChangedName="打樣狀況表RowChanged" msprop:Generator_RowEvArgName="打樣狀況表RowChangeEvent" msprop:Generator_RowClassName="打樣狀況表Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="收單日期" msprop:Generator_ColumnVarNameInTable="column收單日期" msprop:Generator_ColumnPropNameInRow="收單日期" msprop:Generator_ColumnPropNameInTable="收單日期Column" msprop:Generator_UserColumnName="收單日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="樣品單號" msprop:Generator_ColumnVarNameInTable="column樣品單號" msprop:Generator_ColumnPropNameInRow="樣品單號" msprop:Generator_ColumnPropNameInTable="樣品單號Column" msprop:Generator_UserColumnName="樣品單號" type="xs:string" minOccurs="0" />
+              <xs:element name="小圖" msprop:Generator_ColumnVarNameInTable="column小圖" msprop:Generator_ColumnPropNameInRow="小圖" msprop:Generator_ColumnPropNameInTable="小圖Column" msprop:Generator_UserColumnName="小圖" type="xs:string" minOccurs="0" />
+              <xs:element name="品牌" msprop:Generator_ColumnVarNameInTable="column品牌" msprop:Generator_ColumnPropNameInRow="品牌" msprop:Generator_ColumnPropNameInTable="品牌Column" msprop:Generator_UserColumnName="品牌" type="xs:string" minOccurs="0" />
+              <xs:element name="款號" msprop:Generator_ColumnVarNameInTable="column款號" msprop:Generator_ColumnPropNameInRow="款號" msprop:Generator_ColumnPropNameInTable="款號Column" msprop:Generator_UserColumnName="款號" type="xs:string" minOccurs="0" />
+              <xs:element name="款式類別" msprop:Generator_ColumnVarNameInTable="column款式類別" msprop:Generator_ColumnPropNameInRow="款式類別" msprop:Generator_ColumnPropNameInTable="款式類別Column" msprop:Generator_UserColumnName="款式類別" type="xs:string" minOccurs="0" />
+              <xs:element name="樣品種類" msprop:Generator_ColumnVarNameInTable="column樣品種類" msprop:Generator_ColumnPropNameInRow="樣品種類" msprop:Generator_ColumnPropNameInTable="樣品種類Column" msprop:Generator_UserColumnName="樣品種類" type="xs:string" minOccurs="0" />
+              <xs:element name="需求日期" msprop:Generator_ColumnVarNameInTable="column需求日期" msprop:Generator_ColumnPropNameInRow="需求日期" msprop:Generator_ColumnPropNameInTable="需求日期Column" msprop:Generator_UserColumnName="需求日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="需求尺寸" msprop:Generator_ColumnVarNameInTable="column需求尺寸" msprop:Generator_ColumnPropNameInRow="需求尺寸" msprop:Generator_ColumnPropNameInTable="需求尺寸Column" msprop:Generator_UserColumnName="需求尺寸" type="xs:string" minOccurs="0" />
+              <xs:element name="需求件數" msprop:Generator_ColumnVarNameInTable="column需求件數" msprop:Generator_ColumnPropNameInRow="需求件數" msprop:Generator_ColumnPropNameInTable="需求件數Column" msprop:Generator_UserColumnName="需求件數" type="xs:decimal" minOccurs="0" />
+              <xs:element name="上線日期" msprop:Generator_ColumnVarNameInTable="column上線日期" msprop:Generator_ColumnPropNameInRow="上線日期" msprop:Generator_ColumnPropNameInTable="上線日期Column" msprop:Generator_UserColumnName="上線日期" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打版完成日" msprop:Generator_ColumnVarNameInTable="column打版完成日" msprop:Generator_ColumnPropNameInRow="打版完成日" msprop:Generator_ColumnPropNameInTable="打版完成日Column" msprop:Generator_UserColumnName="打版完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="主副料到達日" msprop:Generator_ColumnVarNameInTable="column主副料到達日" msprop:Generator_ColumnPropNameInRow="主副料到達日" msprop:Generator_ColumnPropNameInTable="主副料到達日Column" msprop:Generator_UserColumnName="主副料到達日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="預計完成日" msprop:Generator_ColumnVarNameInTable="column預計完成日" msprop:Generator_ColumnPropNameInRow="預計完成日" msprop:Generator_ColumnPropNameInTable="預計完成日Column" msprop:Generator_UserColumnName="預計完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="打樣完成日" msprop:Generator_ColumnVarNameInTable="column打樣完成日" msprop:Generator_ColumnPropNameInRow="打樣完成日" msprop:Generator_ColumnPropNameInTable="打樣完成日Column" msprop:Generator_UserColumnName="打樣完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TD預計完成日" msprop:Generator_ColumnVarNameInTable="columnTD預計完成日" msprop:Generator_ColumnPropNameInRow="TD預計完成日" msprop:Generator_ColumnPropNameInTable="TD預計完成日Column" msprop:Generator_UserColumnName="TD預計完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TD完成日" msprop:Generator_ColumnVarNameInTable="columnTD完成日" msprop:Generator_ColumnPropNameInRow="TD完成日" msprop:Generator_ColumnPropNameInTable="TD完成日Column" msprop:Generator_UserColumnName="TD完成日" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="開單人員" msprop:Generator_ColumnVarNameInTable="column開單人員" msprop:Generator_ColumnPropNameInRow="開單人員" msprop:Generator_ColumnPropNameInTable="開單人員Column" msprop:Generator_UserColumnName="開單人員" type="xs:string" minOccurs="0" />
+              <xs:element name="備註" msprop:Generator_ColumnVarNameInTable="column備註" msprop:Generator_ColumnPropNameInRow="備註" msprop:Generator_ColumnPropNameInTable="備註Column" msprop:Generator_UserColumnName="備註" type="xs:string" minOccurs="0" />
+              <xs:element name="打樣人員" msprop:Generator_ColumnVarNameInTable="column打樣人員" msprop:Generator_ColumnPropNameInRow="打樣人員" msprop:Generator_ColumnPropNameInTable="打樣人員Column" msprop:Generator_UserColumnName="打樣人員" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -351,6 +351,9 @@
     <Content Include="Sales\Sales013.aspx" />
     <Content Include="Sales\Sales014.aspx" />
     <Content Include="Sales\Sample012.aspx" />
+    <Content Include="Sales\Sample014.aspx" />
+    <Content Include="Sales\Sample013.aspx" />
+    <Content Include="Sales\SALE_V5.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -631,7 +634,7 @@
     <Content Include="Sales\Sample006.aspx" />
     <Content Include="Sales\Sample005.aspx" />
     <Content Include="Sales\Sample004.aspx" />
-    <Content Include="Sales\SALE_V5.aspx" />
+    <Content Include="Sales\SALE_V5Old.aspx" />
     <Content Include="Sales\SALE_V4.aspx" />
     <Content Include="Sales\SALE_V3.aspx" />
     <Content Include="Sales\SALE_V2.aspx" />
@@ -1570,6 +1573,27 @@
     <Compile Include="Sales\Sample012.aspx.designer.cs">
       <DependentUpon>Sample012.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sample014.aspx.cs">
+      <DependentUpon>Sample014.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample014.aspx.designer.cs">
+      <DependentUpon>Sample014.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample013.aspx.cs">
+      <DependentUpon>Sample013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample013.aspx.designer.cs">
+      <DependentUpon>Sample013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SALE_V5.aspx.cs">
+      <DependentUpon>SALE_V5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\SALE_V5.aspx.designer.cs">
+      <DependentUpon>SALE_V5.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secretary\Secretary001V5.aspx.cs">
       <DependentUpon>Secretary001V5.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1894,12 +1918,12 @@
     <Compile Include="Sales\Sample004.aspx.designer.cs">
       <DependentUpon>Sample004.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sales\SALE_V5.aspx.cs">
-      <DependentUpon>SALE_V5.aspx</DependentUpon>
+    <Compile Include="Sales\SALE_V5Old.aspx.cs">
+      <DependentUpon>SALE_V5Old.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sales\SALE_V5.aspx.designer.cs">
-      <DependentUpon>SALE_V5.aspx</DependentUpon>
+    <Compile Include="Sales\SALE_V5Old.aspx.designer.cs">
+      <DependentUpon>SALE_V5Old.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\SALE_V4.aspx.cs">
       <DependentUpon>SALE_V4.aspx</DependentUpon>
@@ -2570,6 +2594,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales012.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales013.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales015.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSALEV6.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
@@ -2577,6 +2602,9 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample010.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample011.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample011V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample013.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample014.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\Reporttest2.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportS001V5.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>

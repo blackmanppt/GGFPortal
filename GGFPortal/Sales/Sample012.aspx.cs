@@ -25,8 +25,9 @@ namespace GGFPortal.Sales
 
         protected void ClearBT_Click(object sender, EventArgs e)
         {
-            //品牌TB.Text = "";
-            //款號TB.Text = "";
+            品牌TB.Text = "";
+            款號TB.Text = "";
+            代理商TB.Text = "";
         }
 
         protected void SearchBT_Click(object sender, EventArgs e)
@@ -80,6 +81,10 @@ namespace GGFPortal.Sales
 	                          ,convert(varchar(20),dbo.F_DateToNull(sam_in_date),111) 樣衣收單日
 	                          ,convert(varchar(20),dbo.F_DateToNull(sam_out_date),111) 樣衣完成日";
             }
+            if (!string.IsNullOrEmpty(款號TB.Text))
+                strwhere.AppendFormat(" and upper(a.cus_style_no)  like '%{0}%' ", 款號TB.Text.ToUpper());
+            if (!string.IsNullOrEmpty(品牌TB.Text))
+                strwhere.AppendFormat(" and upper(a.brand_name)  like '%{0}%' ", 品牌TB.Text.ToUpper());
             if (!string.IsNullOrEmpty(代理商TB.Text))
                 strwhere.AppendFormat(" and upper([cus_id])  = '{0}' ", 代理商TB.Text.ToUpper());
             StringBuilder strsql = new StringBuilder(string.Format(@" SELECT TOP 1000 a.site,
@@ -110,10 +115,7 @@ namespace GGFPortal.Sales
             //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
             //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
             //    strsql.AppendFormat(" and upper([季節])  = '{0}' ", 季節DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    strsql.AppendFormat(" and upper([Style])  like '%{0}%' ", 款號TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    strsql.AppendFormat(" and upper([品牌])  = '{0}' ", 品牌TB.Text.ToUpper());
+            
             //if (!string.IsNullOrEmpty(代理商TB.Text))
             //    strsql.AppendFormat(" and upper([代理商])  = '{0}' ", 代理商TB.Text.ToUpper());
             //if(主料CB.Checked)

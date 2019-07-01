@@ -22661,7 +22661,8 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 "e1 and cast( @modify_date2 as datetime) + 1 and 1=@flag1) or (a.receipt_date  is" +
                 " null and 1=@flag2)or(1=@flag3))\r\nand a.brand_name LIKE @brand_name and a.type_i" +
                 "d LIKE @type_id\r\nand a.status =@status and (a.close_date between @samc_fin_date1" +
-                " and @samc_fin_date2 or 1=@flag4)\r\norder by receipt_date desc";
+                " and @samc_fin_date2 or 1=@flag4) \r\nand a.cus_style_no like @cus_style_no\r\norder" +
+                " by receipt_date desc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@progress_rate1", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -22676,13 +22677,14 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@samc_fin_date1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "close_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@samc_fin_date2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "close_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@flag4", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cus_style_no", global::System.Data.SqlDbType.NVarChar, 120, global::System.Data.ParameterDirection.Input, 0, 0, "cus_style_no", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SalesTempDS.samc_reqm5DataTable dataTable, string progress_rate, string progress_rate1, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, decimal flag1, decimal flag2, decimal flag3, string brand_name, string type_id, string status, global::System.Nullable<global::System.DateTime> samc_fin_date1, global::System.Nullable<global::System.DateTime> samc_fin_date2, decimal flag4) {
+        public virtual int Fill(SalesTempDS.samc_reqm5DataTable dataTable, string progress_rate, string progress_rate1, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, decimal flag1, decimal flag2, decimal flag3, string brand_name, string type_id, string status, global::System.Nullable<global::System.DateTime> samc_fin_date1, global::System.Nullable<global::System.DateTime> samc_fin_date2, decimal flag4, string cus_style_no) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((progress_rate == null)) {
                 throw new global::System.ArgumentNullException("progress_rate");
@@ -22742,6 +22744,12 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 this.Adapter.SelectCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             this.Adapter.SelectCommand.Parameters[12].Value = ((decimal)(flag4));
+            if ((cus_style_no == null)) {
+                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[13].Value = ((string)(cus_style_no));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -22753,7 +22761,7 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SalesTempDS.samc_reqm5DataTable GetData(string progress_rate, string progress_rate1, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, decimal flag1, decimal flag2, decimal flag3, string brand_name, string type_id, string status, global::System.Nullable<global::System.DateTime> samc_fin_date1, global::System.Nullable<global::System.DateTime> samc_fin_date2, decimal flag4) {
+        public virtual SalesTempDS.samc_reqm5DataTable GetData(string progress_rate, string progress_rate1, global::System.Nullable<global::System.DateTime> modify_date1, global::System.Nullable<global::System.DateTime> modify_date2, decimal flag1, decimal flag2, decimal flag3, string brand_name, string type_id, string status, global::System.Nullable<global::System.DateTime> samc_fin_date1, global::System.Nullable<global::System.DateTime> samc_fin_date2, decimal flag4, string cus_style_no) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((progress_rate == null)) {
                 throw new global::System.ArgumentNullException("progress_rate");
@@ -22813,6 +22821,12 @@ namespace GGFPortal.DataSetSource.SalesTempDSTableAdapters {
                 this.Adapter.SelectCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             this.Adapter.SelectCommand.Parameters[12].Value = ((decimal)(flag4));
+            if ((cus_style_no == null)) {
+                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[13].Value = ((string)(cus_style_no));
+            }
             SalesTempDS.samc_reqm5DataTable dataTable = new SalesTempDS.samc_reqm5DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
