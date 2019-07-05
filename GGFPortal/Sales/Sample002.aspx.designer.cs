@@ -391,6 +391,33 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.TextBox RemarkTB;
         
         /// <summary>
+        /// Label12 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label12;
+        
+        /// <summary>
+        /// 原因碼DDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList 原因碼DDL;
+        
+        /// <summary>
+        /// 原因LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 原因LB;
+        
+        /// <summary>
         /// AddBT 控制項。
         /// </summary>
         /// <remarks>

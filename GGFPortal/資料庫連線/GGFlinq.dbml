@@ -17,6 +17,8 @@
       <Column Name="馬克" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="修改馬克" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="馬克完成日" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="原因碼" Type="System.String" DbType="NChar(15)" CanBeNull="false" />
+      <Column Name="原因" Type="System.String" DbType="NChar(60)" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.GGFRequestMark" Member="GGFRequestMark">
@@ -28,7 +30,12 @@
       <Column Name="處理類別" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="建立日期" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="狀態" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="修改日期" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="修改日期" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="備註" Type="System.String" DbType="NChar(200)" CanBeNull="false" />
+      <Column Name="原因碼" Type="System.String" DbType="NChar(15)" CanBeNull="false" />
+      <Column Name="原因" Type="System.String" DbType="NChar(60)" CanBeNull="false" />
+      <Column Name="件數" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="處理時間" Type="System.String" DbType="NChar(8)" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.shpc_bah" Member="shpc_bah">

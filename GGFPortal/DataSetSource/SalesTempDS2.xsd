@@ -1063,6 +1063,7 @@
               <xs:element name="開單人員" msprop:Generator_ColumnVarNameInTable="column開單人員" msprop:Generator_ColumnPropNameInRow="開單人員" msprop:Generator_ColumnPropNameInTable="開單人員Column" msprop:Generator_UserColumnName="開單人員" type="xs:string" minOccurs="0" />
               <xs:element name="備註" msprop:Generator_ColumnVarNameInTable="column備註" msprop:Generator_ColumnPropNameInRow="備註" msprop:Generator_ColumnPropNameInTable="備註Column" msprop:Generator_UserColumnName="備註" type="xs:string" minOccurs="0" />
               <xs:element name="打樣人員" msprop:Generator_ColumnVarNameInTable="column打樣人員" msprop:Generator_ColumnPropNameInRow="打樣人員" msprop:Generator_ColumnPropNameInTable="打樣人員Column" msprop:Generator_UserColumnName="打樣人員" type="xs:string" minOccurs="0" />
+              <xs:element name="馬克處理" msprop:Generator_ColumnVarNameInTable="column馬克處理" msprop:Generator_ColumnPropNameInRow="馬克處理" msprop:Generator_ColumnPropNameInTable="馬克處理Column" msprop:Generator_UserColumnName="馬克處理" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

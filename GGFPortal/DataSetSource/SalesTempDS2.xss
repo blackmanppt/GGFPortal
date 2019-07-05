@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:CRP排程表" ZOrder="4" X="506" Y="13" Height="466" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="462" />
     <Shape ID="DesignTable:訂單工廠樣品單" ZOrder="3" X="670" Y="19" Height="257" Width="152" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:樣品室處理作業總表" ZOrder="2" X="822" Y="22" Height="543" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="539" />
-    <Shape ID="DesignTable:打樣狀況表" ZOrder="1" X="1032" Y="27" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
+    <Shape ID="DesignTable:打樣狀況表" ZOrder="1" X="1032" Y="27" Height="467" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="463" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

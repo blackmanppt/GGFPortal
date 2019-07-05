@@ -165,6 +165,10 @@ namespace GGFPortal.資料庫連線
 		
 		private string _馬克完成日;
 		
+		private string _原因碼;
+		
+		private string _原因;
+		
     #region 擴充性方法定義
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -199,6 +203,10 @@ namespace GGFPortal.資料庫連線
     partial void On修改馬克Changed();
     partial void On馬克完成日Changing(string value);
     partial void On馬克完成日Changed();
+    partial void On原因碼Changing(string value);
+    partial void On原因碼Changed();
+    partial void On原因Changing(string value);
+    partial void On原因Changed();
     #endregion
 		
 		public GGFRequestSam()
@@ -506,6 +514,46 @@ namespace GGFPortal.資料庫連線
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_原因碼", DbType="NChar(15)", CanBeNull=false)]
+		public string 原因碼
+		{
+			get
+			{
+				return this._原因碼;
+			}
+			set
+			{
+				if ((this._原因碼 != value))
+				{
+					this.On原因碼Changing(value);
+					this.SendPropertyChanging();
+					this._原因碼 = value;
+					this.SendPropertyChanged("原因碼");
+					this.On原因碼Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_原因", DbType="NChar(60)", CanBeNull=false)]
+		public string 原因
+		{
+			get
+			{
+				return this._原因;
+			}
+			set
+			{
+				if ((this._原因 != value))
+				{
+					this.On原因Changing(value);
+					this.SendPropertyChanging();
+					this._原因 = value;
+					this.SendPropertyChanged("原因");
+					this.On原因Changed();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -547,7 +595,17 @@ namespace GGFPortal.資料庫連線
 		
 		private int _狀態;
 		
-		private string _修改日期;
+		private System.Nullable<System.DateTime> _修改日期;
+		
+		private string _備註;
+		
+		private string _原因碼;
+		
+		private string _原因;
+		
+		private int _件數;
+		
+		private string _處理時間;
 		
     #region 擴充性方法定義
     partial void OnLoaded();
@@ -567,8 +625,18 @@ namespace GGFPortal.資料庫連線
     partial void On建立日期Changed();
     partial void On狀態Changing(int value);
     partial void On狀態Changed();
-    partial void On修改日期Changing(string value);
+    partial void On修改日期Changing(System.Nullable<System.DateTime> value);
     partial void On修改日期Changed();
+    partial void On備註Changing(string value);
+    partial void On備註Changed();
+    partial void On原因碼Changing(string value);
+    partial void On原因碼Changed();
+    partial void On原因Changing(string value);
+    partial void On原因Changed();
+    partial void On件數Changing(int value);
+    partial void On件數Changed();
+    partial void On處理時間Changing(string value);
+    partial void On處理時間Changed();
     #endregion
 		
 		public GGFRequestMark()
@@ -716,8 +784,8 @@ namespace GGFPortal.資料庫連線
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_修改日期", DbType="NChar(10)")]
-		public string 修改日期
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_修改日期", DbType="DateTime")]
+		public System.Nullable<System.DateTime> 修改日期
 		{
 			get
 			{
@@ -732,6 +800,106 @@ namespace GGFPortal.資料庫連線
 					this._修改日期 = value;
 					this.SendPropertyChanged("修改日期");
 					this.On修改日期Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_備註", DbType="NChar(200)", CanBeNull=false)]
+		public string 備註
+		{
+			get
+			{
+				return this._備註;
+			}
+			set
+			{
+				if ((this._備註 != value))
+				{
+					this.On備註Changing(value);
+					this.SendPropertyChanging();
+					this._備註 = value;
+					this.SendPropertyChanged("備註");
+					this.On備註Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_原因碼", DbType="NChar(15)", CanBeNull=false)]
+		public string 原因碼
+		{
+			get
+			{
+				return this._原因碼;
+			}
+			set
+			{
+				if ((this._原因碼 != value))
+				{
+					this.On原因碼Changing(value);
+					this.SendPropertyChanging();
+					this._原因碼 = value;
+					this.SendPropertyChanged("原因碼");
+					this.On原因碼Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_原因", DbType="NChar(60)", CanBeNull=false)]
+		public string 原因
+		{
+			get
+			{
+				return this._原因;
+			}
+			set
+			{
+				if ((this._原因 != value))
+				{
+					this.On原因Changing(value);
+					this.SendPropertyChanging();
+					this._原因 = value;
+					this.SendPropertyChanged("原因");
+					this.On原因Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_件數", DbType="Int NOT NULL")]
+		public int 件數
+		{
+			get
+			{
+				return this._件數;
+			}
+			set
+			{
+				if ((this._件數 != value))
+				{
+					this.On件數Changing(value);
+					this.SendPropertyChanging();
+					this._件數 = value;
+					this.SendPropertyChanged("件數");
+					this.On件數Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_處理時間", DbType="NChar(8)", CanBeNull=false)]
+		public string 處理時間
+		{
+			get
+			{
+				return this._處理時間;
+			}
+			set
+			{
+				if ((this._處理時間 != value))
+				{
+					this.On處理時間Changing(value);
+					this.SendPropertyChanging();
+					this._處理時間 = value;
+					this.SendPropertyChanged("處理時間");
+					this.On處理時間Changed();
 				}
 			}
 		}

@@ -5973,6 +5973,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column打樣人員;
             
+            private global::System.Data.DataColumn column馬克處理;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 打樣狀況表DataTable() {
@@ -6168,6 +6170,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 馬克處理Column {
+                get {
+                    return this.column馬克處理;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6223,7 +6233,8 @@ namespace GGFPortal.DataSetSource {
                         System.DateTime TD完成日, 
                         string 開單人員, 
                         string 備註, 
-                        string 打樣人員) {
+                        string 打樣人員, 
+                        string 馬克處理) {
                 打樣狀況表Row row打樣狀況表Row = ((打樣狀況表Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         收單日期,
@@ -6245,7 +6256,8 @@ namespace GGFPortal.DataSetSource {
                         TD完成日,
                         開單人員,
                         備註,
-                        打樣人員};
+                        打樣人員,
+                        馬克處理};
                 row打樣狀況表Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row打樣狀況表Row);
                 return row打樣狀況表Row;
@@ -6288,6 +6300,7 @@ namespace GGFPortal.DataSetSource {
                 this.column開單人員 = base.Columns["開單人員"];
                 this.column備註 = base.Columns["備註"];
                 this.column打樣人員 = base.Columns["打樣人員"];
+                this.column馬克處理 = base.Columns["馬克處理"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6333,6 +6346,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column備註);
                 this.column打樣人員 = new global::System.Data.DataColumn("打樣人員", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column打樣人員);
+                this.column馬克處理 = new global::System.Data.DataColumn("馬克處理", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column馬克處理);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12493,6 +12508,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 馬克處理 {
+                get {
+                    try {
+                        return ((string)(this[this.table打樣狀況表.馬克處理Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'打樣狀況表\' 中資料行 \'馬克處理\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table打樣狀況表.馬克處理Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is收單日期Null() {
                 return this.IsNull(this.table打樣狀況表.收單日期Column);
             }
@@ -12729,6 +12760,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set打樣人員Null() {
                 this[this.table打樣狀況表.打樣人員Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is馬克處理Null() {
+                return this.IsNull(this.table打樣狀況表.馬克處理Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set馬克處理Null() {
+                this[this.table打樣狀況表.馬克處理Column] = global::System.Convert.DBNull;
             }
         }
         

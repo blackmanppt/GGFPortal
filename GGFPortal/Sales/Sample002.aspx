@@ -56,6 +56,14 @@
         .auto-style16 {
             background-color: #FF9933;
         }
+        .auto-style17 {
+            align-content:center;
+            text-align:left;
+            vertical-align:middle;
+
+            
+            
+        }
     </style>
 </head>
 <body>
@@ -70,7 +78,7 @@
         </div>
         <div>
 
-            <table style="width: 800px;" id="titletable" class=" table">
+            <table style="width: 1000px;" id="titletable" class=" table">
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">
                         <asp:Label ID="Label7" runat="server" Text="公司別："></asp:Label>
@@ -78,9 +86,10 @@
                     <td style="border: 1px solid #000000; "">
                         <asp:Label ID="SiteLB" runat="server" Text=""></asp:Label>
                     </td>
-                    <td colspan="2" style="border: 1px solid #000000;text-align: right ">
+                    <td colspan="3" style="border: 1px solid #000000;text-align: right ">
                         <asp:Button ID="IndexBT" runat="server" Text="返回搜尋畫面" OnClick="IndexBT_Click" CssClass="btn btn-block btn-primary" />
                     </td>
+                    
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">
@@ -94,17 +103,19 @@
                         <asp:Label ID="Label11" runat="server" Text="打樣預計完成日："></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="PlanDateTB" runat="server" Enabled="False" Width="90px"></asp:TextBox>
+                        <asp:TextBox ID="PlanDateTB" runat="server" Enabled="False" Width="100px" CssClass=" form-control"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="PlanDateTB_CalendarExtender" runat="server" BehaviorID="PlanDateTB_CalendarExtender" TargetControlID="PlanDateTB" Format="yyyy/MM/dd" />
                         <asp:Button ID="PlanDateBT" runat="server" Text="打樣預計完成日上傳"  CssClass="btn btn-primary" Visible="False" OnClick="PlanDateBT_Click"  />
                     </td>
+                    <th class="auto-style3">
+                        &nbsp;</th>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">
                         <asp:Label ID="Label3" runat="server" Text="處理人員："></asp:Label>
                     </th>
                     <td class="auto-style7">
-                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True"  DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown dropdown-toggle">
+                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True"  DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown form-control">
                         </asp:DropDownList>
 <%--                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
                             SelectCommand="SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE (a.dept_no IN ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A','G010')) AND (a.employee_status &lt;&gt; 'IA') ORDER BY Name, a.employee_no" OnSelecting="SqlDataSource2_Selecting" OnSelected="SqlDataSource2_Selected">
@@ -115,17 +126,19 @@
                         <asp:Label ID="Label6" runat="server" Text="打版完成日：" CssClass="auto-style13"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="FinalDayTB" runat="server"  Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="FinalDayTB" runat="server"  Width="100px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="FinalDayTB_CalendarExtender" runat="server" TargetControlID="FinalDayTB" Format="yyyy/MM/dd" />
                         <asp:Button ID="DayUpdateBT" runat="server" Text="打版完成日上傳" OnClick="DayUpdateBT_Click" CssClass="btn btn-primary" Visible="False" />
                     </td>
+                    <th class="auto-style3">
+                        &nbsp;</th>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">
                         <asp:Label ID="Label4" runat="server" Text="處理方式："></asp:Label>
                     </th>
                     <td class="auto-style7">
-                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data">
+                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data" CssClass=" dropdown form-control">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="select Data,MappingData from Mapping where UsingDefine='GGFRequestSam'"></asp:SqlDataSource>
@@ -134,60 +147,76 @@
                         <asp:Label ID="Label9" runat="server" Text="樣衣收單日：" CssClass="auto-style15"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="SamInTB" runat="server"  Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="SamInTB" runat="server"  Width="100px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                         
                         <ajaxToolkit:CalendarExtender ID="SamInTB_CalendarExtender" runat="server" BehaviorID="SamInTB_CalendarExtender" TargetControlID="SamInTB"  Format="yyyy/MM/dd" />
                         
                         <asp:Button ID="SamInBT" runat="server" Text="樣衣收單日上傳" OnClick="SamInBT_Click"  CssClass="btn btn-primary" Visible="False"/>
                     </td>
+                    <th class="auto-style3">
+                        &nbsp;</th>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000;text-align: right" >
                         <asp:Label ID="Label5" runat="server" Text="處理件數："></asp:Label>
                     </th>
                     <td class="auto-style7">
-                        <asp:TextBox ID="QtyTB" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="QtyTB" runat="server" CssClass=" form-control"></asp:TextBox>
                     </td>
                     <th class="auto-style16" style="border: 1px solid #000000;text-align: right" >
                         <asp:Label ID="Label10" runat="server" Text="樣衣完成日：" CssClass="auto-style15"></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="SamOutTB" runat="server" Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="SamOutTB" runat="server" Width="100px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                         
                         <ajaxToolkit:CalendarExtender ID="SamOutTB_CalendarExtender" runat="server" BehaviorID="SamOutTB_CalendarExtender" TargetControlID="SamOutTB" Format="yyyy/MM/dd"  />
                         
                         <asp:Button ID="SamOutBT" runat="server" Text="樣衣完成日上傳" OnClick="SamOutBT_Click" CssClass="btn btn-primary" Visible="False"/>
                     </td>
+                    <th class="auto-style3">
+                        &nbsp;</th>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000;text-align: right"  >
                         <asp:Label ID="DateLB" runat="server" Text="處理日期：" Visible="false" ></asp:Label>
                     </th>
                     <td class="auto-style8">
-                        <asp:TextBox ID="DateTB" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="DateTB" runat="server" Visible="false" CssClass=" form-control"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="DateTB_CalendarExtender" runat="server" TargetControlID="DateTB" Format="yyyyMMdd" />
                     </td>
                     <th class="" style="text-align: right; color: #FFFFFF; background-color: #000000">
                         <asp:Label ID="Label8" runat="server" Text="TD完成日：" style="text-align: right" ></asp:Label>
                     </th>
                     <td class="auto-style4">
-                        <asp:TextBox ID="TDFinTB" runat="server" Width="90px" AutoCompleteType="Disabled" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="TDFinTB" runat="server" Width="100px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="TDFinTB_CalendarExtender" runat="server" BehaviorID="TDFinTB_CalendarExtender" TargetControlID="TDFinTB"  Format="yyyy/MM/dd" />
                         <asp:Button ID="TDFinBT" runat="server" Text="TD完成日上傳" OnClick="TDFinBT_Click" CssClass="btn btn-primary" Visible="False"/>
                     </td>
+                    <th class="auto-style4">
+                        &nbsp;</th>
                 </tr>
                  <tr>
                     <th style="border: 1px solid #000000;text-align: right" >
                         <asp:Label ID="DateLB0" runat="server" Text="備註：" ></asp:Label>
                      </th>
                     <td class="auto-style8">
-                        <asp:TextBox ID="RemarkTB" runat="server" Height="58px" TextMode="MultiLine" Width="257px" CssClass=""></asp:TextBox>
+                        <asp:TextBox ID="RemarkTB" runat="server" Height="58px" TextMode="MultiLine" Width="257px" CssClass=" form-control"></asp:TextBox>
                      </td>
-                    <th class="auto-style11"></th>
+                    <th class="auto-style11">
+                        <asp:Label ID="Label12" runat="server" Text="原因碼："></asp:Label>
+                     </th>
                     <td class="auto-style4">
-                        <asp:Button ID="AddBT" runat="server" OnClick="AddBT_Click" Text="新增" CssClass="btn btn-warning"/>
-                        <asp:Button ID="UpDateBT" runat="server" OnClick="UpDateBT_Click1" Text="更新" Visible="False" CssClass="btn btn-primary"/>
-                        <asp:Button ID="CancelBT" runat="server" OnClick="CancelBT_Click" Text="取消" Visible="False" CssClass="btn btn-danger"/>
+                        <div class="form-group">
+                        <asp:DropDownList ID="原因碼DDL" runat="server" DataTextField="reason_name" DataValueField="reason" CssClass=" dropdown form-control"  >
+                        </asp:DropDownList>
+                        <asp:Label ID="原因LB" runat="server" Text="" style="text-align: right" ></asp:Label>
+                            </div>
+                        </td>
+                    
+                    <td class="auto-style17" >
+                        <asp:Button ID="AddBT" runat="server" OnClick="AddBT_Click" Text="新增" CssClass="btn btn-warning form-control"/>
+                        <asp:Button ID="UpDateBT" runat="server" OnClick="UpDateBT_Click1" Text="更新" Visible="False" CssClass="btn btn-primary form-control"/>
+                        <asp:Button ID="CancelBT" runat="server" OnClick="CancelBT_Click" Text="取消" Visible="False" CssClass="btn btn-danger  form-control"/>
                      </td>
                 </tr>
                 <%--<tr>

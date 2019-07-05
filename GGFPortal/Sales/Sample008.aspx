@@ -6,7 +6,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>打版處理</title>
-
+     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
     <style>
         #titletable {
             border-collapse: collapse;
@@ -57,8 +62,10 @@
                         <asp:Label ID="SampleNbrLB" runat="server" Text=""></asp:Label>
                     </td>
                     <td colspan="2" style="text-align: right">
-                        <asp:Button ID="SamBT" runat="server" Text="回打樣單" OnClick="SamBT_Click" />
-                        <asp:Button ID="IndexBT" runat="server" Text="回首頁" OnClick="IndexBT_Click" />
+                        <div class=" btn-group">
+                        <asp:Button ID="SamBT" runat="server" Text="回打樣單" OnClick="SamBT_Click" CssClass="btn btn-default" />
+                        <asp:Button ID="IndexBT" runat="server" Text="回首頁" OnClick="IndexBT_Click" CssClass="btn btn-success" />
+                            </div>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +79,7 @@
                         <asp:Label ID="DateLB0" runat="server" Text="處理件數："></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="件數TB" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:TextBox ID="件數TB" runat="server" TextMode="Number" CssClass=" form-control"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -80,17 +87,18 @@
                         <asp:Label ID="Label3" runat="server" Text="處理人員："></asp:Label>
                     </th>
                     <td class="auto-style2">
-                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="employee_no">
+                        <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown form-control">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>"
                             SelectCommand="select distinct a.employee_no,b.dept_name+'-'+a.employee_name  as Name from bas_employee a left join bas_dept b on a.site=b.site and a.dept_no=b.dept_no where a.dept_no in ('E010','M01B','N01B')  and a.employee_status<>'IA'  order by Name,employee_no"></asp:SqlDataSource>
+                        <asp:Label ID="UserLB" runat="server" Text=""></asp:Label>
                     </td>
                     <th class="auto-style4">
                         <asp:Label ID="DateLB" runat="server" Text="處理日期："></asp:Label>
                     </th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="DateTB" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="DateTB" runat="server" CssClass=" form-control"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="DateTB_CalendarExtender" runat="server" TargetControlID="DateTB" Format="yyyyMMdd" />
                     </td>
                 </tr>
@@ -99,31 +107,39 @@
                         <asp:Label ID="Label4" runat="server" Text="處理方式："></asp:Label>
                     </th>
                     <td class="auto-style2">
-                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data">
+                        <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data" CssClass=" dropdown form-control">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="select Data,MappingData from Mapping where UsingDefine='打版後續處理'"></asp:SqlDataSource>
                     </td>
                     <th class="auto-style4"> <asp:Label ID="Label2" runat="server" Text="備註"></asp:Label></th>
                     <td class="auto-style3">
-                        <asp:TextBox ID="備註TB" runat="server" Height="68px" TextMode="MultiLine" Width="196px"></asp:TextBox></td>
+                        <asp:TextBox ID="備註TB" runat="server" Height="68px" TextMode="MultiLine" Width="196px" CssClass=" form-control"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <th class="auto-style1"></th>
-                    <td class="auto-style2"></td>
+                    <th class="auto-style1">
+                        <asp:Label ID="Label8" runat="server" Text="異常原因："></asp:Label>
+                    </th>
+                    <td class="auto-style2">
+                        <div class="form-group">
+                        <asp:DropDownList ID="原因碼DDL" runat="server" DataTextField="reason_name" DataValueField="reason" CssClass=" dropdown form-control" >
+                        </asp:DropDownList>
+                            <asp:Label ID="resonLB" runat="server" Text=""></asp:Label>
+                            </div>
+                    </td>
                     <th class="auto-style4"></th>
                     <td class="auto-style3">
-                        <asp:Button ID="AddBT" runat="server" Text="新增" OnClick="AddBT_Click" />
-                        <asp:Button ID="UpDateBT" runat="server" Text="更新" OnClick="UpDateBT_Click1" Visible="False" />
-                        <asp:Button ID="CancelBT" runat="server" Text="取消" OnClick="CancelBT_Click" Visible="False" /></td>
+                        <asp:Button ID="AddBT" runat="server" Text="新增" OnClick="AddBT_Click" CssClass="btn btn-default"/>
+                        <asp:Button ID="UpDateBT" runat="server" Text="更新" OnClick="UpDateBT_Click1" Visible="False" CssClass="btn btn-primary" />
+                        <asp:Button ID="CancelBT" runat="server" Text="取消" OnClick="CancelBT_Click" Visible="False" CssClass="btn btn-danger" /></td>
                 </tr>
             </table>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" Style="background-color: #00CC00" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" OnRowDeleting="GridView1_RowDeleting">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None" Style="background-color: #00CC00" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" OnRowDeleting="GridView1_RowDeleting" CssClass="table tab-content">
                 <Columns>
-                    <asp:CommandField ButtonType="Button" SelectText="編輯" ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Button" SelectText="編輯" ShowSelectButton="True"  />
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick="return confirm('是否刪除')" />
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" OnClientClick="return confirm('是否刪除')" CssClass="btn btn-danger btn-block" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />

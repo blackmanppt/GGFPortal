@@ -7,6 +7,8 @@ using System.Web.UI;
 using GGFPortal.資料庫連線;
 using GGFPortal.ReferenceCode;
 using System.Web;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace GGFPortal.Sales
 {
@@ -24,7 +26,38 @@ namespace GGFPortal.Sales
             Response.Cache.SetExpires(DateTime.MinValue);
 
             DateTB.Attributes["readonly"] = "readonly";
+            if (原因碼DDL.Items.Count == 0)
+            {
+                using (SqlConnection Conn = new SqlConnection(strConnectString))
+                {
+                    DataSet Ds = new DataSet();
 
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(" select * from bas_reason where sys_id ='SAMC' and reason_status='A' and site='GGF'  and reason like 'C%'", Conn);
+                    myAdapter.Fill(Ds, "DDL1");
+                    if (Ds.Tables["DDL1"].Rows.Count > 0)
+                    {
+                        //for (int i = 0; i < Ds.Tables["DDL1"].Rows.Count; i++)
+                        //{
+                        //    if (i == 0)
+                        //    {
+                        //        UserDDL.Items.Add("");
+                        //    }
+                        //    ListIem items = new ListItem();
+                        //    items.Text = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                        //    items.Value = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                        //    UserDDL.Items.Add(Ds.Tables["DDL1"].Rows[i][""].ToString());
+                        //}
+                        原因碼DDL.Items.Add("");
+                        List<ListItem> ListDDL1 = new List<ListItem>();
+                        foreach (DataRow item in Ds.Tables["DDL1"].Rows)
+                        {
+                            ListItem li = new ListItem(item["reason_name"].ToString(), item["reason"].ToString());
+                            ListDDL1.Add(li);
+                        }
+                        原因碼DDL.Items.AddRange(ListDDL1.ToArray());
+                    }
+                }
+            }
             if (Session["uid"]==null)
                 Response.Redirect("Sample001.aspx");
             else
@@ -42,6 +75,8 @@ namespace GGFPortal.Sales
                     {
                         SampleNbrLB.Text = item.sam_nbr;
                         打樣人員LB.Text = item.SampleUser;
+                        
+                        
                     }
                 }
             }
@@ -84,6 +119,8 @@ namespace GGFPortal.Sales
                                                                ,[處理時間]
                                                                ,[件數]
                                                                ,[備註]
+                                                               ,[原因碼]
+                                                               ,[原因]
                                                                )
                                                             VALUES
                                                                 (@uid
@@ -94,6 +131,8 @@ namespace GGFPortal.Sales
                                                                 ,@處理時間
                                                                 ,@件數
                                                                 ,@備註
+                                                                ,@原因碼
+                                                                ,@原因
                                                                 )
                                                                 ");
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
@@ -104,6 +143,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@處理時間", SqlDbType.NVarChar).Value = DateTB.Text;
                         command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
                         command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Text;
+                        command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
+                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.ID.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -184,6 +225,8 @@ namespace GGFPortal.Sales
                                                                   ,[處理時間] = @處理時間
                                                                   ,[件數]=@件數
                                                                   ,[備註]=@備註
+                                                                  ,[原因碼]=@原因碼
+                                                                  ,[原因]=@原因
                                                             WHERE id = {0} ", Session["id"].ToString());
                         command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
                         command1.Parameters.Add("@修改人員", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
@@ -193,6 +236,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@處理時間", SqlDbType.NVarChar).Value = DateTB.Text;
                         command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
                         command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Text;
+                        command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
+                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -232,17 +277,51 @@ namespace GGFPortal.Sales
         protected void GridView1_SelectedIndexChanging(object sender, System.Web.UI.WebControls.GridViewSelectEventArgs e)
         {
             Session["id"] = this.GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
-            TypeDDL.SelectedValue = TypeDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[3].Text).Value;
-            UserDDL.SelectedValue= UserDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[4].Text).Value;
-            //QtyTB.Text = this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
-            DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text=="沒有資料")?"": this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
-            件數TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
-            備註TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
-            //DateTB.Visible = true;
+            GGFDataContext db = new GGFDataContext();
+            var xx = from x in db.GGFRequestMark
+                     where x.id == Int32.Parse(this.GridView1.Rows[e.NewSelectedIndex].Cells[2].Text)
+                     select x;
+            foreach (var item in xx)
+            {
+                if (UserDDL.Items.Contains(UserDDL.Items.FindByText(item.修改人員)) == true)
+                {
+                    UserDDL.SelectedValue = UserDDL.Items.FindByText(item.修改人員).Value;
+                    //UserDDL.SelectedItem.Text=item.
+                    UserLB.Text = "";
+                }
+                else
+                {
+                    UserDDL.SelectedValue = "";
+                    UserLB.Text = "離職人員";
+                }
+                if (原因碼DDL.Items.Contains(原因碼DDL.Items.FindByValue(item.原因碼)) == true)
+                {
+                    原因碼DDL.SelectedValue = 原因碼DDL.Items.FindByValue(item.原因碼).Value;
+                    resonLB.Text = "";
+                }
+                else if(!string.IsNullOrEmpty(item.原因))
+                {
+                    原因碼DDL.SelectedValue = "";
+                    resonLB.Text = "原因碼以異動";
+                }
+                //SampleNbrLB.Text = item.sam_nbr;
+                //打樣人員LB.Text = item.SampleUser;
+                //TypeDDL.SelectedValue = TypeDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[3].Text).Value;
+                TypeDDL.SelectedValue = TypeDDL.Items.FindByValue(item.處理類別).Value;
+                //UserDDL.SelectedValue = UserDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[4].Text).Value;
+                //UserDDL.SelectedValue = UserDDL.Items.FindByText(this.GridView1.Rows[e.NewSelectedIndex].Cells[4].Text).Value;
+                //DateTB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
+                DateTB.Text = item.處理時間;
+
+                //件數TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+                件數TB.Text = item.件數.ToString();
+                //備註TB.Text = (this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text == "沒有資料") ? "" : this.GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
+                備註TB.Text = item.備註;
+
+            }
+
             UpDateBT.Visible = true;
             CancelBT.Visible = true;
-            //DateLB.Visible = true;
-            //DateTB.Visible = true;
             AddBT.Visible = false;
 
         }

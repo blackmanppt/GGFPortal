@@ -111,11 +111,12 @@ namespace GGFPortal.Sales
                                                         ,b.employee_name_eng +'('+b.tel_nbr+')' as 開單人員
                                                         ,[remark60] 備註
 
-                                                        ,((SELECT distinct cast((n.MappingData +'_'+ z.SampleUser )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.SampleType=n.Data and n.UsingDefine='GGFRequestSam' and z.Flag=0
+                                                         ,((SELECT distinct cast((n.MappingData +'_'+ z.SampleUser )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.SampleType=n.Data and n.UsingDefine='GGFRequestSam' and z.Flag=0
                                                         where sam_nbr=a.sam_nbr 
-                                                        FOR XML PATH(''))+(SELECT distinct cast(('馬克_'+ zz.修改人員 )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z  left join [GGFRequestMark] zz on z.uid=zz.uid and z.Flag=0 and zz.狀態=0
+                                                        FOR XML PATH(''))) as 打樣人員
+														,(SELECT distinct cast((zz.處理時間+'_'+ zz.修改人員 )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z  left join [GGFRequestMark] zz on z.uid=zz.uid and z.Flag=0 and zz.狀態=0
                                                         where sam_nbr=a.sam_nbr 
-                                                        FOR XML PATH(''))) as SampleName
+                                                        FOR XML PATH('')) as 馬克處理
                                                         FROM              samc_reqm AS a LEFT OUTER JOIN
                                                         bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
                                                         samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no
@@ -125,7 +126,7 @@ namespace GGFPortal.Sales
             
             if (ReceiptCB.Checked == false)
             {
-                strsql.AppendFormat(" and  a.receipt_date  between '{0}' and '{1}'"
+                strsql.AppendFormat(" and   convert(varchar(10),a.receipt_date,111)  between '{0}' and '{1}'"
                     , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
                     , (string.IsNullOrEmpty(收單迄TB.Text)) ?
                                     (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
@@ -146,7 +147,7 @@ namespace GGFPortal.Sales
                 strsql.AppendFormat(" and a.status ='{0}'  ", StatusDDL.SelectedValue);
             if (StatusDDL.SelectedValue == "CL")
             {
-                strsql.AppendFormat(" and  a.close_date  between '{0}' and '{1}'"
+                strsql.AppendFormat(" and   convert(varchar(10),a.close_date,111)  between '{0}' and '{1}'"
                     , (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 結案起TB.Text
                     , (string.IsNullOrEmpty(結案迄TB.Text)) ?
                                     (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(結案起TB.Text).AddDays(7).ToString("yyyy/MM/dd")

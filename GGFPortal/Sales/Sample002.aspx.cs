@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using GGFPortal.ReferenceCode;
 using System.Collections.Generic;
+using GGFPortal.資料庫連線;
 
 namespace GGFPortal.Sales
 {
@@ -22,7 +23,7 @@ namespace GGFPortal.Sales
             TDFinTB.Attributes["readonly"] = "readonly";
             SamOutTB.Attributes["readonly"] = "readonly";
             SamInTB.Attributes["readonly"] = "readonly";
-            //MarkDateTB.Attributes["readonly"] = "readonly";
+            PlanDateTB.Attributes["readonly"] = "readonly";
             if (Session["Uid"]==null)
                 UpDateBT.Visible = false;
             if (Session["SampleNbr"] ==null)
@@ -74,18 +75,20 @@ namespace GGFPortal.Sales
 
             }
             string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
-            string strwhere = "";
+            string strwhere = "",StrReasonSql= " select * from bas_reason where sys_id ='SAMC' and reason_status='A' and site='GGF' ";
             switch (Session["Dept"].ToString())
             {
                 case "TD":
                     strwhere = @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
-
+                    StrReasonSql += " and reason like 'D%'";
                     break;
                 case "Sam1":
                     strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010','N01C')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    StrReasonSql += " and reason like 'B%'";
                     break;
                 case "Sam2":
                     strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    StrReasonSql += " and reason like 'C%'";
                     SamOutBT.Visible = true;
                     SamOutTB.Enabled = true;
                     PlanDateBT.Visible = true;
@@ -132,6 +135,40 @@ namespace GGFPortal.Sales
                     }
                 }
             }
+            
+            if (原因碼DDL.Items.Count == 0)
+            {
+                using (SqlConnection Conn = new SqlConnection(strConnectString))
+                {
+                    DataSet Ds = new DataSet();
+
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(StrReasonSql, Conn);
+                    myAdapter.Fill(Ds, "DDL1");
+                    if (Ds.Tables["DDL1"].Rows.Count > 0)
+                    {
+                        //for (int i = 0; i < Ds.Tables["DDL1"].Rows.Count; i++)
+                        //{
+                        //    if (i == 0)
+                        //    {
+                        //        UserDDL.Items.Add("");
+                        //    }
+                        //    ListIem items = new ListItem();
+                        //    items.Text = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                        //    items.Value = Ds.Tables["DDL1"].Rows[i][""].ToString().Trim();
+                        //    UserDDL.Items.Add(Ds.Tables["DDL1"].Rows[i][""].ToString());
+                        //}
+                        原因碼DDL.Items.Add("");
+                        List<ListItem> ListDDL1 = new List<ListItem>();
+                        foreach (DataRow item in Ds.Tables["DDL1"].Rows)
+                        {
+                            ListItem li = new ListItem(item["reason_name"].ToString(), item["reason"].ToString());
+                            ListDDL1.Add(li);
+                        }
+                        原因碼DDL.Items.AddRange(ListDDL1.ToArray());
+                    }
+                }
+            }
+            
             string xxx = "";
             xxx=使用者資料.取得電腦名稱();
         }
@@ -163,6 +200,8 @@ namespace GGFPortal.Sales
                                             ,[SampleCreatDate]
                                             ,[Creator]
                                             ,[Remark]
+                                            ,[原因碼]
+                                            ,[原因]
                                             )
                                         VALUES
                                             (@site
@@ -174,6 +213,8 @@ namespace GGFPortal.Sales
                                             ,@SampleCreatDate
                                             ,@Creator
                                             ,@Remark
+                                            ,@原因碼
+                                            ,@原因
                                             )
                                             ");
                         command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
@@ -185,6 +226,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTime.Now.ToString("yyyyMMdd");
                         command1.Parameters.Add("@Creator", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
+                        command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
+                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
 
@@ -266,6 +309,8 @@ namespace GGFPortal.Sales
             DateTB.Visible = false;
             UserLB.Text = "";
             RemarkTB.Text = "";
+            原因碼DDL.Text = "";
+            原因LB.Text = "";
         }
 
         protected void UpDateBT_Click1(object sender, EventArgs e)
@@ -291,6 +336,8 @@ namespace GGFPortal.Sales
                                                             ,[Modifier] = @Modifier
                                                             ,[ModifyDate]=GETDATE() 
                                                             ,[Remark]=@Remark
+                                                            ,[原因碼]=@原因碼
+                                                            ,[原因]=@原因
                                                             WHERE uid = {0} ", Session["Uid"].ToString());
                         command1.Parameters.Add("@SampleType", SqlDbType.NVarChar).Value = TypeDDL.SelectedValue;
                         command1.Parameters.Add("@SampleUser", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
@@ -299,6 +346,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@SampleCreatDate", SqlDbType.NVarChar).Value = DateTB.Text;
                         command1.Parameters.Add("@Modifier", SqlDbType.NVarChar).Value = 使用者資料.取得使用者名稱();
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
+                        command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
+                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -514,20 +563,54 @@ namespace GGFPortal.Sales
             {
                 GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                 Session["Uid"] = this.GridView1.Rows[row.RowIndex].Cells[3].Text;
-                if (UserDDL.Items.Contains(UserDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[6].Text)) == true)
+                GGFDataContext db = new GGFDataContext();
+                var xx = from x in db.GGFRequestSam
+                         where x.uid == Int32.Parse(this.GridView1.Rows[row.RowIndex].Cells[3].Text)
+                         select x;
+                foreach (var item in xx)
                 {
-                    UserDDL.SelectedValue = UserDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[6].Text).Value;
-                    UserLB.Text = "";
+                    if (UserDDL.Items.Contains(UserDDL.Items.FindByValue(item.SampleNo)) == true)
+                    {
+                        UserDDL.SelectedValue = UserDDL.Items.FindByValue(item.SampleNo).Value;
+                        UserDDL.SelectedItem.Text = item.SampleUser;
+                        UserLB.Text = "";
+                    }
+                    else
+                    {
+                        UserDDL.SelectedValue = "";
+                        UserLB.Text = "離職人員";
+                    }
+                    if (原因碼DDL.Items.Contains(原因碼DDL.Items.FindByValue(item.原因碼)) == true)
+                    {
+                        原因碼DDL.SelectedValue = 原因碼DDL.Items.FindByValue(item.原因碼).Value;
+                        原因碼DDL.SelectedItem.Text = item.原因;
+                        原因LB.Text = "";
+                    }
+                    else if (!string.IsNullOrEmpty(item.原因))
+                    {
+                        原因碼DDL.SelectedValue = "";
+                        原因LB.Text = "原因碼以異動";
+                    }
+                    TypeDDL.SelectedValue = TypeDDL.Items.FindByValue(item.SampleType).Value;
+                    QtyTB.Text = item.Qty.ToString();
+                    DateTB.Text = item.SampleCreatDate;
+                    RemarkTB.Text = item.Remark;
                 }
-                else
-                {
-                    UserDDL.SelectedValue = "";
-                    UserLB.Text = "離職人員";
-                }
-                TypeDDL.SelectedValue = TypeDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[5].Text).Value;
-                QtyTB.Text = GridView1.Rows[row.RowIndex].Cells[7].Text;
-                DateTB.Text = (this.GridView1.Rows[row.RowIndex].Cells[8].Text == "沒有資料") ? "" : this.GridView1.Rows[row.RowIndex].Cells[8].Text;
-                RemarkTB.Text = (this.GridView1.Rows[row.RowIndex].Cells[11].Text == "沒有資料") ? "" : this.GridView1.Rows[row.RowIndex].Cells[11].Text;
+
+                //if (UserDDL.Items.Contains(UserDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[6].Text)) == true)
+                //{
+                //    UserDDL.SelectedValue = UserDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[6].Text).Value;
+                //    UserLB.Text = "";
+                //}
+                //else
+                //{
+                //    UserDDL.SelectedValue = "";
+                //    UserLB.Text = "離職人員";
+                //}
+                //TypeDDL.SelectedValue = TypeDDL.Items.FindByText(GridView1.Rows[row.RowIndex].Cells[5].Text).Value;
+                //QtyTB.Text = GridView1.Rows[row.RowIndex].Cells[7].Text;
+                //DateTB.Text = (this.GridView1.Rows[row.RowIndex].Cells[8].Text == "沒有資料") ? "" : this.GridView1.Rows[row.RowIndex].Cells[8].Text;
+                //RemarkTB.Text = (this.GridView1.Rows[row.RowIndex].Cells[11].Text == "沒有資料") ? "" : this.GridView1.Rows[row.RowIndex].Cells[11].Text;
                 DateTB.Visible = true;
                 UpDateBT.Visible = true;
                 CancelBT.Visible = true;
@@ -673,10 +756,10 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
                     try
                     {
-                        if (updataString == "打版完成")
+                        if (updataString == "打版完成")　
                             strDate = @"[samc_fin_date] = @samc_fin_date";
                         else if(updataString == "樣衣收單")
-                            strDate = @"[sam_in_date] = @Sam_In_Date ,[s_real_arrival_date]=@s_real_arrival_date ,online_date=@online_date";
+                            strDate = @"[sam_in_date] = @Sam_In_Date  ,online_date=@online_date";
                         else if (updataString == "樣衣完成")
                         { 
                             strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
@@ -695,7 +778,7 @@ namespace GGFPortal.Sales
                         else if (updataString == "樣衣收單")
                         {
                             command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                            command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            //command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                             command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else if (updataString == "樣衣完成")
