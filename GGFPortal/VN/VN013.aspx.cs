@@ -60,7 +60,7 @@ namespace GGFPortal.VN
             StringBuilder strsql = new StringBuilder(@"SELECT [款號],[部門],  sum([今日目標產量]) as 今日目標產量 ,sum([今日產量]) as 今日產量 ,sum([工時]*[實際工作人數]) as [總時數] 
                                                         FROM [dbo].[View工時資料]  a 
                                                          ");
-            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and a.Team= 'Stitch' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
+            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and a.Team= 'Stitch'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
             if(!string.IsNullOrEmpty(StyleTB.Text))
                 strsql.AppendFormat(" and [款號]  = '{0}'", StyleTB.Text);
             strsql.AppendFormat(" group by [款號],[部門]  ", StyleTB.Text);

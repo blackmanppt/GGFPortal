@@ -5,10 +5,10 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
 
-    public partial class VN011 : System.Web.UI.Page
+    public partial class F011 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)

@@ -60,7 +60,7 @@ namespace GGFPortal.VN
             StringBuilder strsql = new StringBuilder(@"SELECT a.*,(a.[今日產量]/12)*a.[工繳收入] as 今日工繳收入,b.estimate_ie as 訂單工繳
                                                         FROM [dbo].[View工時資料]  a 
                                                         LEFT JOIN ordc_bah1 b on a.款號=b.cus_item_no and b.chn_turn_out='N' ");
-            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and a.Team= 'Stitch' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
+            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and a.Team= 'Stitch' and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
             if(!string.IsNullOrEmpty(StyleTB.Text))
                 strsql.AppendFormat(" and [款號]  = '{0}'", StyleTB.Text);
             //if (!String.IsNullOrEmpty(SiteDDL.SelectedValue) || !String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(VendorDDL.SelectedValue) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))

@@ -5,9 +5,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
-    public partial class VN003 : System.Web.UI.Page
+    public partial class F003 : System.Web.UI.Page
     {
         static DataSet Ds = new DataSet();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();

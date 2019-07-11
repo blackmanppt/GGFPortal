@@ -3,9 +3,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
-    public partial class VN006 : System.Web.UI.Page
+    public partial class F006 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();

@@ -97,7 +97,7 @@ namespace GGFPortal.VN
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.CommandText = @"select dbo.F_總工時(@SearchText) as Search ";
+                        cmd.CommandText = @"select dbo.F_總工時(@SearchText , 'VGG' ) as Search ";
                         cmd.Parameters.AddWithValue("@SearchText", YearDDL.SelectedValue);
                         cmd.Connection = conn;
                         conn.Open();
@@ -118,8 +118,8 @@ namespace GGFPortal.VN
                                                 ,LEFT(工作時間,4) as 年
                                                 ,SUBSTRING(工作時間  ,5,2) as 月
                                                 ,sum([工時]*[實際工作人數]) as 投入工時,[dbo].[F_StyleFindOrd_nbr](款號)as 訂單號碼 ,sum([今日產量]) as 總數量
-                                            FROM [GGF].[dbo].[View工時資料]
-                                            where Team ='Stitch'
+                                            FROM [dbo].[View工時資料]
+                                            where Team ='Stitch'  and [地區] ='VGG' 
                                             and 工作時間 like '{1}%'
                                             group by 地區,left(工作時間,6),款號,LEFT(工作時間,4) 	  ,SUBSTRING(工作時間  ,5,2)
                                         ) x left join ProductivityCost b on x.地區=b.VendorId and  x.年= b.Year and x.月 = b.Month

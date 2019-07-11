@@ -6,10 +6,10 @@ using System.Text;
 using System.Web.UI;
 using GGFPortal.ReferenceCode;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
 
-    public partial class VN010 : System.Web.UI.Page
+    public partial class F010 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         字串處理 多款號 = new 字串處理();

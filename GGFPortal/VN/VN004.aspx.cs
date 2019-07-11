@@ -75,7 +75,7 @@ namespace GGFPortal.VN
             
             string sqlstr = @"
                                 select a.*,b.Date,c.MappingData from  Productivity_Line a left join Productivity_Head b on a.uid=b.uid left join Mapping c on b.Team=c.Data and c.UsingDefine='Productivity'    
-                                where b.Team='QC' and b.Flag=1  
+                                where b.Team='QC' and b.Flag=1   and Area ='VGG'
                             ";
 
             sqlstr += strwhere;

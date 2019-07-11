@@ -5963,7 +5963,7 @@ namespace GGFPortal.DataSetSource.VNDSTempTableAdapters {
                             b.DayCost7 AS 累積損益, b.QCQty AS QC檢驗數量, b.ErrorQty AS 瑕疵數, b.OnlineDay AS 上線天數
 FROM              Productivity_Head AS a LEFT OUTER JOIN
                             Productivity_Line AS b ON a.uid = b.uid
-WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.StyleNo LIKE @StyleNo)";
+WHERE          (a.Flag = @Flag) AND (a.Date BETWEEN @Date1 AND @Date2) AND (b.StyleNo LIKE @StyleNo)  and Area ='VGG' ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Flag", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Flag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date1", global::System.Data.SqlDbType.NVarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

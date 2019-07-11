@@ -60,7 +60,7 @@ namespace GGFPortal.VN
             string sqlstr = string.Format(@"
                                 SELECT a.Date, b.Remark, CASE WHEN a.Flag = 1 THEN N'Thêm mới' WHEN a.Flag = 2 THEN N'Loại bỏ' ELSE '' END AS 狀態, a.CreateDate, a.ModifyDate 
                                 FROM Productivity_Head AS a LEFT OUTER JOIN Mapping AS b ON a.Team = b.Data AND b.UsingDefine = 'Productivity'
-                                where a.Flag>0 {0}
+                                where a.Flag>0  and Area ='VGG' {0}
                                 order by Date
                             ", strwhere);
 

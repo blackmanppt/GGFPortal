@@ -5,9 +5,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
-    public partial class VN003 : System.Web.UI.Page
+    public partial class F004 : System.Web.UI.Page
     {
         static DataSet Ds = new DataSet();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
@@ -27,18 +27,18 @@ namespace GGFPortal.VN
         {
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
-                if (Ds.Tables.Contains("Stitch"))
-                    Ds.Tables.Remove("Stitch");
+                if (Ds.Tables.Contains("QC"))
+                    Ds.Tables.Remove("QC");
                 string sqlstr = selectsql();
                 SqlDataAdapter myAdapter = new SqlDataAdapter(sqlstr, Conn);
-                myAdapter.Fill(Ds, "Stitch");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+                myAdapter.Fill(Ds, "QC");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
             }
-            if (Ds.Tables["Stitch"].Rows.Count > 0)
+            if (Ds.Tables["QC"].Rows.Count > 0)
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("VN001", Ds.Tables["Stitch"]);
+                ReportDataSource source = new ReportDataSource("VN002", Ds.Tables["QC"]);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -59,23 +59,23 @@ namespace GGFPortal.VN
             strEndDay = (EndDay.Text.Length > 0) ? EndDay.Text : "29990101";
             strwhere += " and b.Date between '" + strStartDay + "' and '" + strEndDay + "' ";
             strwhere += (StyleNoTB.Text.Trim().Length > 0) ? " and a.StyleNo ='" + StyleNoTB.Text.Trim() + "'" : "";
-            if(TeamCB.Items[0].Selected != true)
-            {
-                string strchk = "";
-                for (int i = 1; i < TeamCB.Items.Count; i++)
-                {
-                    if(strchk.Length>0)
-                        strchk += (TeamCB.Items[i].Selected == true) ? string.Format(",'{0}'", TeamCB.Items[i].Value) : "";
-                    else
-                        strchk += (TeamCB.Items[i].Selected == true) ? string.Format("'{0}'", TeamCB.Items[i].Value) : "";
-                }
-                strwhere += (strchk.Length > 0) ? " and b.Team in ( " + strchk + " )" : "";
-            }
+            //if(TeamCB.Items[0].Selected != true)
+            //{
+            //    string strchk = "";
+            //    for (int i = 1; i < TeamCB.Items.Count; i++)
+            //    {
+            //        if(strchk.Length>0)
+            //            strchk += (TeamCB.Items[i].Selected == true) ? string.Format(",'{0}'", TeamCB.Items[i].Value) : "";
+            //        else
+            //            strchk += (TeamCB.Items[i].Selected == true) ? string.Format("'{0}'", TeamCB.Items[i].Value) : "";
+            //    }
+            //    strwhere += (strchk.Length > 0) ? " and b.Team in ( " + strchk + " )" : "";
+            //}
 
             
             string sqlstr = @"
-                                select a.*,b.Date,c.MappingData from  Productivity_Line a left join Productivity_Head b on a.uid=b.uid  left join Mapping c on b.Team=c.Data and c.UsingDefine='Productivity'    
-                                where b.Flag=1  and Area ='VGG'
+                                select a.*,b.Date,c.MappingData from  Productivity_Line a left join Productivity_Head b on a.uid=b.uid left join Mapping c on b.Team=c.Data and c.UsingDefine='Productivity'    
+                                where b.Team='QC' and b.Flag=1   and Area ='VGG'
                             ";
 
             sqlstr += strwhere;

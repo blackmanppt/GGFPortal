@@ -293,6 +293,22 @@
       <LastGenOutput>MISModel.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="FactoryMG\F001.aspx" />
+    <Content Include="FactoryMG\F002.aspx" />
+    <Content Include="FactoryMG\F003.aspx" />
+    <Content Include="FactoryMG\F004.aspx" />
+    <Content Include="FactoryMG\F005.aspx" />
+    <Content Include="FactoryMG\F006.aspx" />
+    <Content Include="FactoryMG\F007.aspx" />
+    <Content Include="FactoryMG\F008.aspx" />
+    <Content Include="FactoryMG\F009.aspx" />
+    <Content Include="FactoryMG\F010.aspx" />
+    <Content Include="FactoryMG\F011.aspx" />
+    <Content Include="FactoryMG\F012.aspx" />
+    <Content Include="FactoryMG\F013.aspx" />
+    <Content Include="FactoryMG\F014.aspx" />
+    <Content Include="FactoryMG\Findex.aspx" />
+    <Content Include="FactoryMG\FProductivityManagement.aspx" />
     <Content Include="Finance\Finance010.aspx" />
     <Content Include="Finance\Finance009.aspx" />
     <Content Include="Finance\Finance008.aspx" />
@@ -1261,6 +1277,118 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F001.aspx.cs">
+      <DependentUpon>F001.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F001.aspx.designer.cs">
+      <DependentUpon>F001.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F002.aspx.cs">
+      <DependentUpon>F002.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F002.aspx.designer.cs">
+      <DependentUpon>F002.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F003.aspx.cs">
+      <DependentUpon>F003.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F003.aspx.designer.cs">
+      <DependentUpon>F003.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F004.aspx.cs">
+      <DependentUpon>F004.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F004.aspx.designer.cs">
+      <DependentUpon>F004.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F005.aspx.cs">
+      <DependentUpon>F005.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F005.aspx.designer.cs">
+      <DependentUpon>F005.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F006.aspx.cs">
+      <DependentUpon>F006.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F006.aspx.designer.cs">
+      <DependentUpon>F006.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F007.aspx.cs">
+      <DependentUpon>F007.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F007.aspx.designer.cs">
+      <DependentUpon>F007.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F008.aspx.cs">
+      <DependentUpon>F008.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F008.aspx.designer.cs">
+      <DependentUpon>F008.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F009.aspx.cs">
+      <DependentUpon>F009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F009.aspx.designer.cs">
+      <DependentUpon>F009.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F010.aspx.cs">
+      <DependentUpon>F010.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F010.aspx.designer.cs">
+      <DependentUpon>F010.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F011.aspx.cs">
+      <DependentUpon>F011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F011.aspx.designer.cs">
+      <DependentUpon>F011.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F012.aspx.cs">
+      <DependentUpon>F012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F012.aspx.designer.cs">
+      <DependentUpon>F012.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F013.aspx.cs">
+      <DependentUpon>F013.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F013.aspx.designer.cs">
+      <DependentUpon>F013.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\F014.aspx.cs">
+      <DependentUpon>F014.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\F014.aspx.designer.cs">
+      <DependentUpon>F014.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\Findex.aspx.cs">
+      <DependentUpon>Findex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\Findex.aspx.designer.cs">
+      <DependentUpon>Findex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\FProductivityManagement.aspx.cs">
+      <DependentUpon>FProductivityManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\FProductivityManagement.aspx.designer.cs">
+      <DependentUpon>FProductivityManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance\Finance010.aspx.cs">
       <DependentUpon>Finance010.aspx</DependentUpon>
@@ -2525,7 +2653,6 @@
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\VN\" />
-    <Folder Include="FactoryMG\" />
     <Folder Include="GAMA\" />
     <Folder Include="MGT\MGTFile\" />
     <Folder Include="MIS\site\070914021691_files\" />

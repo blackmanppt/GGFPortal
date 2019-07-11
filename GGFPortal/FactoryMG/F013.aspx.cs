@@ -5,10 +5,10 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
 
-namespace GGFPortal.VN
+namespace GGFPortal.FactoryMG
 {
 
-    public partial class VN011 : System.Web.UI.Page
+    public partial class F013 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace GGFPortal.VN
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("VNReport", dt);
+                ReportDataSource source = new ReportDataSource("VN013", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -57,12 +57,13 @@ namespace GGFPortal.VN
         private StringBuilder selectsql()
         {
             
-            StringBuilder strsql = new StringBuilder(@"SELECT a.*,(a.[今日產量]/12)*a.[工繳收入] as 今日工繳收入,b.estimate_ie as 訂單工繳
+            StringBuilder strsql = new StringBuilder(@"SELECT [款號],[部門],  sum([今日目標產量]) as 今日目標產量 ,sum([今日產量]) as 今日產量 ,sum([工時]*[實際工作人數]) as [總時數] 
                                                         FROM [dbo].[View工時資料]  a 
-                                                        LEFT JOIN ordc_bah1 b on a.款號=b.cus_item_no and b.chn_turn_out='N' ");
-            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
+                                                         ");
+            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and a.Team= 'Stitch'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
             if(!string.IsNullOrEmpty(StyleTB.Text))
                 strsql.AppendFormat(" and [款號]  = '{0}'", StyleTB.Text);
+            strsql.AppendFormat(" group by [款號],[部門]  ", StyleTB.Text);
             //if (!String.IsNullOrEmpty(SiteDDL.SelectedValue) || !String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(VendorDDL.SelectedValue) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
             //{
             //    strsql.Append(" where 1=1 ");
