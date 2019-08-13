@@ -756,17 +756,22 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
                     try
                     {
-                        if (updataString == "打版完成")　
+                        if (updataString == "打版完成")
                             strDate = @"[samc_fin_date] = @samc_fin_date";
-                        else if(updataString == "樣衣收單")
-                            strDate = @"[sam_in_date] = @Sam_In_Date  ,online_date=@online_date";
+                        else if (updataString == "樣衣收單")
+                            //strDate = @"[sam_in_date] = @Sam_In_Date  ,online_date=@online_date";
+                            strDate = @"[sam_in_date] = @Sam_In_Date ";
                         else if (updataString == "樣衣完成")
-                        { 
+                        {
                             strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
                         }
-                        else if (updataString== "打樣預計完成日")
+                        else if (updataString == "打樣預計完成日")
                         {
                             strDate = @"[plan_fin_date] = @plan_fin_date ";
+                        }
+                        else if (updataString == "上線日期")
+                        {
+                            strDate = @" online_date=@online_date ";
                         }
                         else
                             strDate = @"[td_fin_date] = @TD_Fin_Date";
@@ -779,7 +784,7 @@ namespace GGFPortal.Sales
                         {
                             command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                             //command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                            command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            //command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else if (updataString == "樣衣完成")
                         {
@@ -789,6 +794,10 @@ namespace GGFPortal.Sales
                         else if (updataString == "打樣預計完成日")
                         {
                             command1.Parameters.Add("@plan_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        }
+                        else if (updataString == "上線日期")
+                        {
+                            command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
                         else
                             command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);

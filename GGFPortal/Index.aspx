@@ -140,8 +140,8 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Secretary/Secretary004.aspx">產區表(資料查詢)</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Secretary/Secretary006.aspx">產區表資料</asp:HyperLink>
-                                                <br />
+<%--                        <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Secretary/Secretary006.aspx">產區表資料</asp:HyperLink>
+                                                <br />--%>
                         <asp:HyperLink ID="HyperLink73" runat="server" NavigateUrl="~/Secretary/Secretary007.aspx">工時IE對應表</asp:HyperLink>
                                                                         <br />
                         <asp:HyperLink ID="HyperLink80" runat="server" NavigateUrl="~/Secretary/Secretary008.aspx">訂單明細</asp:HyperLink>

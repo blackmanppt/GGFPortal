@@ -108,7 +108,9 @@
                         <asp:Button ID="PlanDateBT" runat="server" Text="打樣預計完成日上傳"  CssClass="btn btn-primary" Visible="False" OnClick="PlanDateBT_Click"  />
                     </td>
                     <th class="auto-style3">
-                        &nbsp;</th>
+                        <asp:TextBox ID="onlineDateTB" runat="server"  Enabled="False" Width="100px" CssClass=" form-control"></asp:TextBox>
+                        <asp:Button ID="Button3" runat="server" Text="上線日期"  CssClass="btn btn-info" Visible="False" />
+                    </th>
                 </tr>
                 <tr>
                     <th style="border: 1px solid #000000; text-align: right">

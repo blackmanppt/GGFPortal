@@ -112,7 +112,7 @@ namespace GGFPortal.Sales
             
             string sqlstr = @"
                             SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b 
-                            ON a.site = b.site AND a.type_id = b.type_id WHERE  (a.status <>'CL') 
+                            ON a.site = b.site AND a.type_id = b.type_id WHERE  (a.status <>'CL') and a.progress_rate in ('2','3')
                             ";
             strwhere += (UnTDCB.Checked) ? "" : " and td_fin_date is not Null";
             strwhere += (未收單CB.Checked) ? "" : " and samc_fin_date is not Null";

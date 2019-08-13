@@ -1153,6 +1153,10 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column衣架價格;
             
+            private global::System.Data.DataColumn column客戶Style;
+            
+            private global::System.Data.DataColumn columnDC;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 客戶訂單轉ExcelDataTable() {
@@ -1372,6 +1376,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 客戶StyleColumn {
+                get {
+                    return this.column客戶Style;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DCColumn {
+                get {
+                    return this.columnDC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1430,7 +1450,9 @@ namespace GGFPortal.DataSetSource {
                         string 目的地, 
                         string 是否有衣架, 
                         decimal 尺碼價格, 
-                        decimal 衣架價格) {
+                        decimal 衣架價格, 
+                        string 客戶Style, 
+                        System.DateTime DC) {
                 客戶訂單轉ExcelRow row客戶訂單轉ExcelRow = ((客戶訂單轉ExcelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         公司別,
@@ -1455,7 +1477,9 @@ namespace GGFPortal.DataSetSource {
                         目的地,
                         是否有衣架,
                         尺碼價格,
-                        衣架價格};
+                        衣架價格,
+                        客戶Style,
+                        DC};
                 row客戶訂單轉ExcelRow.ItemArray = columnValuesArray;
                 this.Rows.Add(row客戶訂單轉ExcelRow);
                 return row客戶訂單轉ExcelRow;
@@ -1501,6 +1525,8 @@ namespace GGFPortal.DataSetSource {
                 this.column是否有衣架 = base.Columns["是否有衣架"];
                 this.column尺碼價格 = base.Columns["尺碼價格"];
                 this.column衣架價格 = base.Columns["衣架價格"];
+                this.column客戶Style = base.Columns["客戶Style"];
+                this.columnDC = base.Columns["DC"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1552,6 +1578,10 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column尺碼價格);
                 this.column衣架價格 = new global::System.Data.DataColumn("衣架價格", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column衣架價格);
+                this.column客戶Style = new global::System.Data.DataColumn("客戶Style", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶Style);
+                this.columnDC = new global::System.Data.DataColumn("DC", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDC);
                 this.column訂單號碼.AllowDBNull = false;
                 this.column訂單號碼.MaxLength = 20;
                 this.column訂單序號.MaxLength = 4;
@@ -4321,6 +4351,38 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 客戶Style {
+                get {
+                    try {
+                        return ((string)(this[this.table客戶訂單轉Excel.客戶StyleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'客戶訂單轉Excel\' 中資料行 \'客戶Style\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table客戶訂單轉Excel.客戶StyleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime DC {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table客戶訂單轉Excel.DCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'客戶訂單轉Excel\' 中資料行 \'DC\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table客戶訂單轉Excel.DCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is公司別Null() {
                 return this.IsNull(this.table客戶訂單轉Excel.公司別Column);
             }
@@ -4581,6 +4643,30 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Set衣架價格Null() {
                 this[this.table客戶訂單轉Excel.衣架價格Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is客戶StyleNull() {
+                return this.IsNull(this.table客戶訂單轉Excel.客戶StyleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set客戶StyleNull() {
+                this[this.table客戶訂單轉Excel.客戶StyleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDCNull() {
+                return this.IsNull(this.table客戶訂單轉Excel.DCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDCNull() {
+                this[this.table客戶訂單轉Excel.DCColumn] = global::System.Convert.DBNull;
             }
         }
         

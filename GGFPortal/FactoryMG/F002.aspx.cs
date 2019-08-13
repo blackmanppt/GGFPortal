@@ -64,7 +64,7 @@ namespace GGFPortal.FactoryMG
         }
         protected void CheckBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
+            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
             {
                 
                 ReferenceCode.Column1 GetExcelDefine = new ReferenceCode.Column1();
@@ -919,22 +919,22 @@ namespace GGFPortal.FactoryMG
 
                 case "Stitch":
                     //GetExcelDefine.VNStitchmain(); //車縫
-                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample車縫.xlsx"));
+                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample車縫.xlsx"));
                     break;
                 case "Package":
-                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample包裝.xlsx"));
+                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample包裝.xlsx"));
                     break;
                 case "Cut":
-                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample採剪.xlsx"));
+                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample採剪.xlsx"));
                     break;
                 case "Iron":
-                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample包裝.xlsx"));
+                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample包裝.xlsx"));
                     break;
                 case "QC":
-                    b = wc.DownloadData(Server.MapPath("~\\VN\\Temp\\Excel\\Sample品檢.xlsx"));
+                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample品檢.xlsx"));
                     break;
                 default:
-                    Response.Redirect("VNindex.aspx");
+                    Response.Redirect("Factoryindex.aspx");
                     break;
             }
             //載入要下載的檔案
@@ -956,7 +956,7 @@ namespace GGFPortal.FactoryMG
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
+            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
             {
                 using (SqlConnection conn1 = new SqlConnection(strConnectString))
                 {
@@ -980,11 +980,11 @@ namespace GGFPortal.FactoryMG
                     {
                         try
                         {
-                            Log.ErrorLog(ex1, "Delete Error :" , "VN002.aspx");
+                            Log.ErrorLog(ex1, "Delete Error :" , "F002.aspx");
                         }
                         catch (Exception ex2)
                         {
-                            Log.ErrorLog(ex2, "Delete Error Error:" , "VN002.aspx");
+                            Log.ErrorLog(ex2, "Delete Error Error:" , "F002.aspx");
                         }
                         finally
                         {
@@ -1015,7 +1015,7 @@ namespace GGFPortal.FactoryMG
         public Boolean F_CheckData()
         {
             bool bcheck = true;
-            if (確認LOCK.Check工時Lock("VGG", SearchTB.Text))
+            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
             { 
                 using (SqlConnection conn = new SqlConnection(strConnectString1))
                 {

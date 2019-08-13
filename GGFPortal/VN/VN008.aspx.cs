@@ -97,7 +97,7 @@ namespace GGFPortal.VN
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.CommandText = @"select dbo.F_總工時(@SearchText , 'VGG' ) as Search ";
+                        cmd.CommandText = @"select dbo.F_地區總工時(@SearchText , 'VGG' ) as Search ";
                         cmd.Parameters.AddWithValue("@SearchText", YearDDL.SelectedValue);
                         cmd.Connection = conn;
                         conn.Open();

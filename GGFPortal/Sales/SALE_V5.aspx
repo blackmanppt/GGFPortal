@@ -26,7 +26,8 @@
                         <h3 class="text-info text-left">打樣收單查詢</h3>
 
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                            <h4>收單日期</h4>
+                            <h4>
+                                <asp:Label ID="Label1" runat="server" Text="收單日期"></asp:Label></h4>
                             <asp:TextBox ID="收單起TB" runat="server" AutoPostBack="true" CssClass=" form-control"></asp:TextBox>
                             <ajaxToolkit:CalendarExtender runat="server" BehaviorID="收單起TB_CalendarExtender" TargetControlID="收單起TB" ID="收單起TB_CalendarExtender" Format="yyyy/MM/dd" ></ajaxToolkit:CalendarExtender>
                             <asp:TextBox ID="收單迄TB" runat="server" AutoPostBack="true" CssClass=" form-control"></asp:TextBox>
@@ -86,7 +87,7 @@
                             </div>--%>
                             <h4>代理商</h4>
                             <div class="form-group">
-                                <asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" />
+                                <asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" AutoPostBack="True" OnCheckedChanged="ReceiptCB_CheckedChanged" />
 <%-- 多欄位autocomp                               <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="供應商TB" ID="供應商TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
         CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false"></ajaxToolkit:AutoCompleteExtender>
                             <div>

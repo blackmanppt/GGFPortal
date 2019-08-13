@@ -6,8 +6,21 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Excel匯入</title>
+
+<%--      <!-- Custom fonts for this template-->
+    <link href="../scripts/SbAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Page level plugin CSS-->
+  <link href="../scripts/SbAdmin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"/>
+
+  <!-- Custom styles for this template-->
+  <link href="../scripts/SbAdmin/css/sb-admin.css" rel="stylesheet"/>--%>
+
     <script src="../scripts/jquery-3.1.1.min.js"></script>
     <script src="../scripts/scripts.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
@@ -15,12 +28,16 @@
     <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/style.css" rel="stylesheet" />
+    
+
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+
         <div class="container-fluid">
+          
             <div class="row">
                 <div class="col-md-2">
                     <nav class="navbar navbar-default" role="navigation">
