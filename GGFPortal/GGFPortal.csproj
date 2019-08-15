@@ -79,9 +79,8 @@
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -252,16 +251,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="Controls\HighchartsControl.ascx" />
-    <Content Include="DataSetSource\GGFCube.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GGFCube.edmx</DependentUpon>
-      <LastGenOutput>GGFCube.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataSetSource\GGFCube.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GGFCube.edmx</DependentUpon>
-      <LastGenOutput>GGFCube.cs</LastGenOutput>
-    </Content>
     <Content Include="DataSetSource\GGFTest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GGFTest.edmx</DependentUpon>
@@ -3826,7 +3815,16 @@
     <Content Include="test\HighChart-column-basic.aspx" />
     <Content Include="test\HighChart.aspx" />
     <Content Include="test\HighChart.html" />
-    <Content Include="test\Jsontest.aspx" />
+    <Content Include="test\Modeltest.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modeltest.edmx</DependentUpon>
+      <LastGenOutput>Modeltest.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="test\Modeltest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modeltest.edmx</DependentUpon>
+      <LastGenOutput>Modeltest.cs</LastGenOutput>
+    </Content>
     <Content Include="test\pictureplay.aspx" />
     <Content Include="test\RegexTest.aspx" />
     <Content Include="test\sitetest\062911555236.html" />
@@ -3965,13 +3963,6 @@
     </Content>
     <Content Include="DataSetSource\MGTTempDS.xsc">
       <DependentUpon>MGTTempDS.xsd</DependentUpon>
-    </Content>
-    <EntityDeploy Include="DataSetSource\GGFCube.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GGFCube.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DataSetSource\GGFCube.edmx.diagram">
-      <DependentUpon>GGFCube.edmx</DependentUpon>
     </Content>
     <None Include="DataSetSource\MGTTempDS.xsd">
       <SubType>Designer</SubType>
@@ -4588,16 +4579,6 @@
     <Content Include="test\DataSetTest.xss">
       <DependentUpon>DataSetTest.xsd</DependentUpon>
     </Content>
-    <Content Include="test\TestModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TestModel.Context.cs</LastGenOutput>
-      <DependentUpon>Testadbo.edmx</DependentUpon>
-    </Content>
-    <Content Include="test\TestModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TestModel.cs</LastGenOutput>
-      <DependentUpon>Testadbo.edmx</DependentUpon>
-    </Content>
     <Content Include="VN\VN010.aspx" />
     <Content Include="VN\VN009.aspx" />
     <Content Include="VN\VN008.aspx" />
@@ -4609,14 +4590,14 @@
     <Content Include="VN\Temp\Excel\Sample採剪.xlsx" />
     <Content Include="VN\Temp\Excel\Sample整燙.xlsx" />
     <Content Include="VN\Temp\Excel\Sample車縫.xlsx" />
-    <EntityDeploy Include="test\Testadbo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Testadbo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="test\Testadbo.edmx.diagram">
-      <DependentUpon>Testadbo.edmx</DependentUpon>
-    </Content>
     <Content Include="test\Handler2.ashx" />
+    <EntityDeploy Include="test\Modeltest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modeltest.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="test\Modeltest.edmx.diagram">
+      <DependentUpon>Modeltest.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4683,28 +4664,10 @@
     <Compile Include="DataSetSource\bas_employee.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSetSource\Coretest.cs">
-      <DependentUpon>GGFCube.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSetSource\FactoryDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FactoryDS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSource\GGFCube.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GGFCube.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSource\GGFCube.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GGFCube.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSource\GGFCube.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GGFCube.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\GGFTest.Context.cs">
       <AutoGen>True</AutoGen>
@@ -4799,12 +4762,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VNTemp.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSource\WebTable.cs">
-      <DependentUpon>GGFCube.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSetSource\WebURL.cs">
-      <DependentUpon>GGFCube.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\快遞單.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
@@ -5434,12 +5391,23 @@
     <Compile Include="test\HighChart.aspx.designer.cs">
       <DependentUpon>HighChart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test\Jsontest.aspx.cs">
-      <DependentUpon>Jsontest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="test\Mapping.cs">
+      <DependentUpon>Modeltest.tt</DependentUpon>
     </Compile>
-    <Compile Include="test\Jsontest.aspx.designer.cs">
-      <DependentUpon>Jsontest.aspx</DependentUpon>
+    <Compile Include="test\Modeltest.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modeltest.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test\Modeltest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modeltest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test\Modeltest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modeltest.edmx</DependentUpon>
     </Compile>
     <Compile Include="test\pictureplay.aspx.cs">
       <DependentUpon>pictureplay.aspx</DependentUpon>
@@ -5684,12 +5652,6 @@
     </Compile>
     <Compile Include="test\CrystalReport1.aspx.designer.cs">
       <DependentUpon>CrystalReport1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test\CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataSetSource\FinanceD001.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -6016,25 +5978,10 @@
     <Compile Include="test\AutoComplete.aspx.designer.cs">
       <DependentUpon>AutoComplete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test\CrystalReport2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport2.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="test\CrystalReport3.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport3.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="test\DataSetTest.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetTest.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="test\Entity1.cs">
-      <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
     <Compile Include="test\ExcelUpload.aspx.cs">
       <DependentUpon>ExcelUpload.aspx</DependentUpon>
@@ -6056,21 +6003,6 @@
     </Compile>
     <Compile Include="test\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="test\Testadbo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Testadbo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="test\TestModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="test\TestModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
     <Compile Include="test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -6184,7 +6116,6 @@
     <Compile Include="VN\VNTimeDelete.aspx.designer.cs">
       <DependentUpon>VNTimeDelete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WEBAPI\APITest.cs" />
     <Compile Include="WEBAPI\TestcodeController.cs" />
     <Compile Include="資料庫連線\GGFlinq.designer.cs">
       <AutoGen>True</AutoGen>
@@ -6312,10 +6243,6 @@
     <EmbeddedResource Include="ReportSource\VN\ReportVN014V2.rdlc" />
     <EmbeddedResource Include="ReportSource\VN\ReportVNTest.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSample02_V2.rdlc" />
-    <EmbeddedResource Include="test\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -6335,14 +6262,6 @@
     <EmbeddedResource Include="ReportSource\ReportSales001.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportSalse002.rdlc" />
     <EmbeddedResource Include="ReportSource\ReportTAX.rdlc" />
-    <EmbeddedResource Include="test\CrystalReport2.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="test\CrystalReport3.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport3.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="資料庫連線\GGFlinq.dbml.layout">
       <DependentUpon>GGFlinq.dbml</DependentUpon>
     </None>

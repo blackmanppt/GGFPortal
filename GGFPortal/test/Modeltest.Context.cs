@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.DataSetSource
+namespace GGFPortal.test
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GGFCubeDBEntities : DbContext
+    public partial class GGFEntitiestest : DbContext
     {
-        public GGFCubeDBEntities()
-            : base("name=GGFCubeDBEntities")
+        public GGFEntitiestest()
+            : base("name=GGFEntitiestest")
         {
         }
     
@@ -25,8 +25,6 @@ namespace GGFPortal.DataSetSource
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Coretest> Coretest { get; set; }
-        public virtual DbSet<WebTable> WebTable { get; set; }
-        public virtual DbSet<WebURL> WebURL { get; set; }
+        public virtual DbSet<Mapping> Mapping { get; set; }
     }
 }
