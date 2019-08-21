@@ -121,6 +121,7 @@ namespace GGFPortal.Sales
 														,(SELECT distinct cast((zz.處理時間+'_'+ zz.修改人員 )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z  left join [GGFRequestMark] zz on z.uid=zz.uid and z.Flag=0 and zz.狀態=0
                                                         where sam_nbr=a.sam_nbr 
                                                         FOR XML PATH('')) as 馬克處理
+                                                        ,(select top 1 [Remark] from [dbo].[GGFRequestSam] zz where a.site=zz.site and a.sam_nbr=zz.sam_nbr and zz.SampleType=2 and zz.Flag=0) as 打樣備註
                                                         FROM              samc_reqm AS a LEFT OUTER JOIN
                                                         bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
                                                         samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no

@@ -15,6 +15,7 @@ namespace GGFPortal.Sales
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
+        bool UpDateCheck = true;
         Get使用者資料 使用者資料 = new Get使用者資料();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,11 +25,14 @@ namespace GGFPortal.Sales
             SamOutTB.Attributes["readonly"] = "readonly";
             SamInTB.Attributes["readonly"] = "readonly";
             PlanDateTB.Attributes["readonly"] = "readonly";
+            TDinDateTB.Attributes["readonly"] = "readonly";
+
             if (Session["Uid"]==null)
                 UpDateBT.Visible = false;
             if (Session["SampleNbr"] ==null)
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有樣品單號，請重新選取');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有樣品單號，請重新選取');</script>");
+                F_ErrorShow("沒有樣品單號，請重新選取");
                 Session.RemoveAll();
                 Response.Redirect("Sample001.aspx");
             }
@@ -38,7 +42,8 @@ namespace GGFPortal.Sales
             }
             if (Session["Site"] == null)
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有公司別，請重新選取');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有公司別，請重新選取');</script>");
+                F_ErrorShow("沒有公司別，請重新選取");
                 Session.RemoveAll();
                 Response.Redirect("Sample001.aspx");
             }
@@ -81,11 +86,15 @@ namespace GGFPortal.Sales
                 case "TD":
                     strwhere = @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'D%'";
+                    TDinDateBT.Visible = true;
+                    TDinDateTB.Visible = true;
                     break;
+                //打版
                 case "Sam1":
                     strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010','N01C')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'B%'";
                     break;
+                //樣衣
                 case "Sam2":
                     strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'C%'";
@@ -93,9 +102,12 @@ namespace GGFPortal.Sales
                     SamOutTB.Enabled = true;
                     PlanDateBT.Visible = true;
                     PlanDateTB.Enabled = true;
+                    //上線日上傳BT.Visible = true;
+                    //上線日上傳TB.Enabled = true;
                     break;
                 default:
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                    //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                    F_ErrorShow("無部門資料，請重新選取");
                     Session.RemoveAll();
                     Response.Redirect("Sample001.aspx");
                     break;
@@ -170,7 +182,7 @@ namespace GGFPortal.Sales
             }
             
             string xxx = "";
-            xxx=使用者資料.取得電腦名稱();
+            xxx = 使用者資料.取得電腦名稱();
         }
 
         protected void AddBT_Click(object sender, EventArgs e)
@@ -237,28 +249,26 @@ namespace GGFPortal.Sales
                         {
                             case "TD":
                                 //取消TD自動UPdate
-                                if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
-                                    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                //if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
+                                //    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "樣衣":
-                                //if (F_UpdataWorkDate("樣衣完成", DateTime.Now.ToString("yyyy/MM/dd")))
-                                //    SamOutTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                if (F_UpdataWorkDate("上線日期", DateTime.Now.ToString("yyyy/MM/dd")))
+                                    上線日上傳TB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "裁版":
                                 if (F_UpdataWorkDate("樣衣收單", DateTime.Now.ToString("yyyy/MM/dd")))
                                     SamInBT.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
-                            case "PP":
-                                break;
-                            case "尺寸套":
-                                break;
+                            //case "PP":
+                            //    break;
+                            //case "尺寸套":
+                            //    break;
                             default:
                                 //if (F_UpdataWorkDate("打版完成", DateTime.Now.ToString("yyyy/MM/dd")))
                                 //    FinalDayTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                         }
-
-                        
                         ClearData();
                     }
                     catch (Exception ex1)
@@ -274,7 +284,8 @@ namespace GGFPortal.Sales
                         finally
                         {
                             transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('新增失敗請連絡MIS');</script>");
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('新增失敗請連絡MIS');</script>");
+                            F_ErrorShow("新增失敗請連絡MIS");
                         }
                     }
                     finally
@@ -287,7 +298,8 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('" + strCheck + "');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('" + strCheck + "');</script>");
+                F_ErrorShow(strCheck);
             }
                 
 
@@ -359,8 +371,8 @@ namespace GGFPortal.Sales
                                     TDFinTB.Text = strdate;
                                 break;
                             case "樣衣":
-                                //if (F_UpdataWorkDate("樣衣完成", strdate))
-                                //    SamOutTB.Text = strdate;
+                                if (F_UpdataWorkDate("上線日期", strdate))
+                                    上線日上傳TB.Text = strdate;
 
                                 break;
                             case "裁版":
@@ -392,7 +404,8 @@ namespace GGFPortal.Sales
                         finally
                         {
                             transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('新增失敗請連絡MIS');</script>");
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('新增失敗請連絡MIS');</script>");
+                            F_ErrorShow("新增失敗請連絡MIS");
                         }
                     }
                     finally
@@ -405,7 +418,8 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ strCheck + "');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ strCheck + "');</script>");
+                F_ErrorShow(strCheck);
             }
                 
         }
@@ -450,7 +464,7 @@ namespace GGFPortal.Sales
             string strerror = "";
             if (Session["SampleNbr"] == null)
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有樣品單號，請重新選取');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('沒有樣品單號，請重新選取');</script>");
                 strerror = "沒有樣品單號";
             }
             if (TypeDDL.SelectedValue == "")
@@ -539,7 +553,8 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇打版完成日');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇打版完成日');</script>");
+                F_ErrorShow("請選擇打版完成日");
             }
         }
 
@@ -656,7 +671,8 @@ namespace GGFPortal.Sales
                         finally
                         {
                             transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                            F_ErrorShow("刪除失敗請連絡MIS");
                         }
                     }
                     finally
@@ -712,7 +728,8 @@ namespace GGFPortal.Sales
                         break;
 
                     default:
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                        //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('無部門資料，請重新選取');</script>");
+                        F_ErrorShow("無部門資料，請重新選取");
                         Session.RemoveAll();
                         Response.Redirect("Sample001.aspx");
                         break;
@@ -725,7 +742,7 @@ namespace GGFPortal.Sales
         {
             #region check TD Update
             //bool bcheck = true;
-            bool UpDateCheck = true;
+            
             //if (updataString == "TD")
             //{
             //    using (SqlConnection conn = new SqlConnection(strConnectString))
@@ -773,6 +790,8 @@ namespace GGFPortal.Sales
                         {
                             strDate = @" online_date=@online_date ";
                         }
+                        else if (updataString == "TD收單")
+                            strDate = @"[td_in_date] = @td_in_Date";
                         else
                             strDate = @"[td_fin_date] = @TD_Fin_Date";
 
@@ -799,6 +818,8 @@ namespace GGFPortal.Sales
                         {
                             command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         }
+                        else if (updataString == "TD收單")
+                            command1.Parameters.Add("@td_in_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
                         else
                             command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
 
@@ -823,7 +844,8 @@ namespace GGFPortal.Sales
                         finally
                         {
                             transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ updataString + "日上傳失敗');</script>");
+                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ updataString + "日上傳失敗');</script>");
+                            F_ErrorShow(updataString + "日上傳失敗");
                         }
                     }
                     finally
@@ -856,7 +878,7 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+                F_ErrorShow("請選擇樣衣完成日");
             }
         }
 
@@ -880,10 +902,40 @@ namespace GGFPortal.Sales
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇樣衣完成日');</script>");
+                F_ErrorShow("請選擇樣打樣預計完成日");
             }
         }
 
+
+
+        protected void 上線日上傳BT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TDinDateBT_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TDinDateTB.Text))
+            {
+                F_UpdataWorkDate("TD收單", TDinDateTB.Text);
+            }
+            else
+            {
+                F_ErrorShow("請選擇TD收單日");
+            }
+        }
+
+        protected void show3_Click(object sender, EventArgs e)
+        {
+            AlertPanel_ModalPopupExtender.Show();
+        }
+
+        public void F_ErrorShow(string strError)
+        {
+            MessageLB.Text = strError;
+            AlertPanel_ModalPopupExtender.Show();
+        }
         //protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         //{
         //    string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
