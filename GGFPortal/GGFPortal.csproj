@@ -284,6 +284,16 @@
       <DependentUpon>MISModel.edmx</DependentUpon>
       <LastGenOutput>MISModel.cs</LastGenOutput>
     </Content>
+    <Content Include="DataSetSource\SampleModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleModel.edmx</DependentUpon>
+      <LastGenOutput>SampleModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataSetSource\SampleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleModel.edmx</DependentUpon>
+      <LastGenOutput>SampleModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Default.aspx" />
     <Content Include="FactoryMG\F001.aspx" />
     <Content Include="FactoryMG\F002.aspx" />
@@ -351,6 +361,7 @@
     <Content Include="Sales\Sales006.aspx" />
     <Content Include="Sales\Sales015.aspx" />
     <Content Include="Sales\Sales014V2.aspx" />
+    <Content Include="Sales\Sales018.aspx" />
     <Content Include="Sales\Sample011.aspx" />
     <Content Include="Sales\Sample010.aspx" />
     <Content Include="Sales\Sample009.aspx" />
@@ -362,6 +373,8 @@
     <Content Include="Sales\Sample014.aspx" />
     <Content Include="Sales\Sample013.aspx" />
     <Content Include="Sales\SALE_V5.aspx" />
+    <Content Include="Sales\Sales016.aspx" />
+    <Content Include="Sales\Sales017.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -805,6 +818,9 @@
     <Content Include="scripts\code\themes\skies.src.js" />
     <Content Include="scripts\code\themes\sunset.js" />
     <Content Include="scripts\code\themes\sunset.src.js" />
+    <Content Include="scripts\daterangepicker\daterangepicker.css" />
+    <Content Include="scripts\daterangepicker\daterangepicker.min.js" />
+    <Content Include="scripts\daterangepicker\moment.min.js" />
     <Content Include="scripts\globalize.js" />
     <Content Include="scripts\globalize\currency.js" />
     <Content Include="scripts\globalize\date.js" />
@@ -4033,8 +4049,10 @@
     <Content Include="Ship\Ship006old.aspx" />
     <Content Include="Ship\Ship007.aspx" />
     <Content Include="TempCode\SbAdminTempCode.aspx" />
+    <Content Include="TempCode\TempCode2.aspx" />
     <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
+    <Content Include="TempCode\TempCode.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="test\DevExtreme.aspx" />
     <Content Include="test\easyui2.aspx" />
@@ -4056,6 +4074,7 @@
     <Content Include="test\RegexTest.aspx" />
     <Content Include="test\sitetest\062911555236.html" />
     <Content Include="test\sitetest\tabletest.aspx" />
+    <Content Include="test\tttt.html" />
     <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="test\xmlconvertexcel.aspx" />
@@ -4235,6 +4254,13 @@
     </None>
     <Content Include="DataSetSource\SalesTempDS2.xss">
       <DependentUpon>SalesTempDS2.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DataSetSource\SampleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SampleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataSetSource\SampleModel.edmx.diagram">
+      <DependentUpon>SampleModel.edmx</DependentUpon>
     </Content>
     <None Include="DataSetSource\Sercetary.xsd">
       <SubType>Designer</SubType>
@@ -5156,6 +5182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FactoryDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetSource\GGFRequestMark.cs">
+      <DependentUpon>SampleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\GGFRequestSam.cs">
+      <DependentUpon>SampleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetSource\GGFTest.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -5222,6 +5254,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesTempDS2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\samc_reqm.cs">
+      <DependentUpon>SampleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\SampleModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\SampleModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\SampleModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\ShipTempDS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -5630,6 +5680,13 @@
     <Compile Include="Sales\Sales014V2.aspx.designer.cs">
       <DependentUpon>Sales014V2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Sales018.aspx.cs">
+      <DependentUpon>Sales018.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales018.aspx.designer.cs">
+      <DependentUpon>Sales018.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample011.aspx.cs">
       <DependentUpon>Sample011.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5706,6 +5763,20 @@
     </Compile>
     <Compile Include="Sales\SALE_V5.aspx.designer.cs">
       <DependentUpon>SALE_V5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales016.aspx.cs">
+      <DependentUpon>Sales016.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales016.aspx.designer.cs">
+      <DependentUpon>Sales016.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales017.aspx.cs">
+      <DependentUpon>Sales017.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales017.aspx.designer.cs">
+      <DependentUpon>Sales017.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary001V5.aspx.cs">
       <DependentUpon>Secretary001V5.aspx</DependentUpon>
@@ -5819,6 +5890,13 @@
     <Compile Include="TempCode\SbAdminTempCode.aspx.designer.cs">
       <DependentUpon>SbAdminTempCode.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TempCode\TempCode2.aspx.cs">
+      <DependentUpon>TempCode2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\TempCode2.aspx.designer.cs">
+      <DependentUpon>TempCode2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TempCode\TempReport.aspx.cs">
       <DependentUpon>TempReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5832,6 +5910,13 @@
     </Compile>
     <Compile Include="TempCode\TempExcelImport.aspx.designer.cs">
       <DependentUpon>TempExcelImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\TempCode.aspx.cs">
+      <DependentUpon>TempCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\TempCode.aspx.designer.cs">
+      <DependentUpon>TempCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\angulartest.aspx.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>

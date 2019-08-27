@@ -239,7 +239,7 @@
                             <div class="row form-row">
                                 <asp:TextBox ID="TDinDateTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                                 <asp:Button ID="TDinDateBT" runat="server" Text="TD收單日" CssClass="btn btn-outline-info text-break" Visible="False" OnClick="TDinDateBT_Click" />
-                                <ajaxToolkit:CalendarExtender ID="TDinDateTB_CalendarExtender" runat="server" BehaviorID="TDinDateTB_CalendarExtender" TargetControlID="TDinDateTB" Format="yyyyMMdd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="TDinDateTB_CalendarExtender" runat="server" BehaviorID="TDinDateTB_CalendarExtender" TargetControlID="TDinDateTB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
                             </div>
 
 
@@ -409,7 +409,7 @@
             </div>
     </form>
     <script src="../scripts/bootstrap-4.3.1/js/dist/util.js"></script>
-    <script src="../scripts/bootstrap-4.3.1/jsdist/dropdown.js"></script>
-    <script src="../scripts/bootstrap-4.3.1/jsdist/collapse.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/js/dist/dropdown.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/js/dist/collapse.js"></script>
 </body>
 </html>

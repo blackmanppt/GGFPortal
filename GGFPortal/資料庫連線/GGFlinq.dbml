@@ -352,4 +352,100 @@
       <Column Name="contract_record" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.samc_reqm" Member="samc_reqm">
+    <Type Name="samc_reqm">
+      <Column Name="site" Type="System.String" DbType="NVarChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sam_nbr" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sam_times" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sam_no" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="version" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="sam_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cus_id" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="dept_no" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="item_no" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
+      <Column Name="type_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="salesman" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="sam_size" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="assign_qty" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="plan_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="emb" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="washing" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="oth_extra" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="finish_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="finish_qty" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="place_origin" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="currency_id" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="unit_price" Type="System.Decimal" DbType="Decimal(15,5)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="sam_qty" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="sam_cus_qty" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="sam_taipei_qty" Type="System.Decimal" DbType="Decimal(3,0)" CanBeNull="true" />
+      <Column Name="image_path" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="remark60" Type="System.String" DbType="NVarChar(260)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="close_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="online_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="confirm_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="progress_rate" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_class" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="original_sampleo_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="original_edition_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="original_edition_size" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ratio_size" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="sample_complete_1" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sample_complete_2" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="cus_express_corp" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="cus_assign_account" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="cus_address_id" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="cus_addressee" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="cus_address" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="cus_style_no" Type="System.String" DbType="NVarChar(120)" CanBeNull="true" />
+      <Column Name="brand_name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="sam_type" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="proofing_factory" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="filter_creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="filter_dept" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="creator" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modifier" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="modify_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="printing" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sewing" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="samc_remark60" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="mark" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="crp_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="crp_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="item_statistic" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="remark_1" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="final" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="last_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="samc_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sam_type_A" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_type_B" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_type_C" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_type_D" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_type_E" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="sam_type_F" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="hotfix" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="s_plan_arrival_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="s_real_arrival_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sam_type_G" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="samc_plan_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="original_edition" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="reason_remark" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="sale_finish_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="receipt_yn" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="receipt_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="samc_factory" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="sam_type_H" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="season_y" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="season" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="big_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="td_fin_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sam_in_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sam_out_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="td_in_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

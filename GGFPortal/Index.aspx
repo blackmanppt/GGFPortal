@@ -216,8 +216,10 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink96" runat="server" NavigateUrl="~/Sales/Sales014.aspx">訂單工廠樣品單產區表(三旬版)</asp:HyperLink>                        
                                                 <br />
                         <asp:HyperLink ID="HyperLink98" runat="server" NavigateUrl="~/Sales/Sales015.aspx">訂單工廠樣品單產區表(明細)</asp:HyperLink>                        
-
-                        
+                                                <br />
+                        <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Sales/Sales017.aspx">訂單樣衣到料上傳</asp:HyperLink> 
+                                                                        <br />
+                        <asp:HyperLink ID="HyperLink106" runat="server" NavigateUrl="~/Sales/Sales017.aspx">訂單樣衣到料結案上傳</asp:HyperLink> 
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -262,6 +264,7 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink104" runat="server" NavigateUrl="~/Sales/Sample013.aspx">打版資料查詢</asp:HyperLink>
                                                 <br />
                                                 <asp:HyperLink ID="HyperLink105" runat="server" NavigateUrl="~/Sales/Sample014.aspx">打版資料明細查詢</asp:HyperLink>
+
                                                 </td>
                     <th  class="auto-style2">
 

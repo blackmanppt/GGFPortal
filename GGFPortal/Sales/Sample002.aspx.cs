@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using GGFPortal.ReferenceCode;
 using System.Collections.Generic;
 using GGFPortal.資料庫連線;
-
+using GGFPortal.DataSetSource;
 namespace GGFPortal.Sales
 {
     public partial class Sample002 : System.Web.UI.Page
@@ -17,6 +17,7 @@ namespace GGFPortal.Sales
         SysLog Log = new SysLog();
         bool UpDateCheck = true;
         Get使用者資料 使用者資料 = new Get使用者資料();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             FinalDayTB.Attributes["readonly"] = "readonly";
@@ -56,27 +57,54 @@ namespace GGFPortal.Sales
                 styleLB.Text = "("+ Session["style"].ToString()+")";
             }
             if (!Page.IsPostBack )
-            { 
-                if (Session["SamDay"]!=null )
+            {
+                using(GGFDataContext db = new GGFDataContext())
                 {
-                    FinalDayTB.Text = Session["SamDay"].ToString();
+                    var xx = from x in db.samc_reqm
+                             where x.site == Session["Site"].ToString() && x.sam_nbr == Session["SampleNbr"].ToString()
+                             select x;
+                    if(xx.Any())
+                    {
+                        foreach (var item in xx)
+                        {
+                            FinalDayTB.Text = item.samc_fin_date?.ToString("yyyy/MM/dd");
+                            TDinDateTB.Text = item.td_in_date?.ToString("yyyy/MM/dd");
+                            TDFinTB.Text = item.td_fin_date?.ToString("yyyy/MM/dd");
+                            SamInTB.Text = item.sam_in_date?.ToString("yyyy/MM/dd");
+                            SamOutTB.Text = item.sam_out_date?.ToString("yyyy/MM/dd");
+                            PlanDateTB.Text = item.plan_fin_date?.ToString("yyyy/MM/dd");
+                        }
+                    }
+                    else
+                    {
+                        F_ErrorShow("沒有資料，請重新選取");
+                        Session.RemoveAll();
+                        Response.Redirect("Sample001.aspx");
+                    }
+
                 }
-                if (Session["TDDay"] != null )
-                {
-                    TDFinTB.Text = Session["TDDay"].ToString();
-                }
-                if (Session["SamIn"] != null )
-                {
-                    SamInTB.Text = Session["SamIn"].ToString();
-                }
-                if (Session["SamOut"] != null )
-                {
-                    SamOutTB.Text = Session["SamOut"].ToString();
-                }
-                if (Session["PlanDate"] != null)
-                {
-                    PlanDateTB.Text = Session["PlanDate"].ToString();
-                }
+                
+                
+                //if (Session["SamDay"]!=null )
+                //{
+                //    FinalDayTB.Text = Session["SamDay"].ToString();
+                //}
+                //if (Session["TDDay"] != null )
+                //{
+                //    TDFinTB.Text = Session["TDDay"].ToString();
+                //}
+                //if (Session["SamIn"] != null )
+                //{
+                //    SamInTB.Text = Session["SamIn"].ToString();
+                //}
+                //if (Session["SamOut"] != null )
+                //{
+                //    SamOutTB.Text = Session["SamOut"].ToString();
+                //}
+                //if (Session["PlanDate"] != null)
+                //{
+                //    PlanDateTB.Text = Session["PlanDate"].ToString();
+                //}
 
             }
             string strsql = @"SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE ";
@@ -87,7 +115,7 @@ namespace GGFPortal.Sales
                     strwhere = @" (a.dept_no IN ('G010')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'D%'";
                     TDinDateBT.Visible = true;
-                    TDinDateTB.Visible = true;
+                    TDinDateTB.Enabled = true;
                     break;
                 //打版
                 case "Sam1":

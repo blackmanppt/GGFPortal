@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GGFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GGFRequestMark">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="修改人員" Type="nvarchar" MaxLength="30" />
+          <Property Name="工號" Type="nvarchar" MaxLength="8" />
+          <Property Name="處理類別" Type="nvarchar" MaxLength="10" />
+          <Property Name="處理時間" Type="nvarchar" MaxLength="8" />
+          <Property Name="原因碼" Type="nvarchar" MaxLength="15" />
+          <Property Name="原因" Type="nvarchar" MaxLength="60" />
+          <Property Name="建立日期" Type="datetime" Nullable="false" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="狀態" Type="int" Nullable="false" />
+          <Property Name="修改日期" Type="datetime" />
+          <Property Name="Modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="件數" Type="int" Nullable="false" />
+          <Property Name="備註" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GGFRequestSam">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="site" />
+            <PropertyRef Name="sam_nbr" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="sam_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SampleType" Type="nvarchar" MaxLength="10" />
+          <Property Name="SampleUser" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SampleNo" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="SampleCreatDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="原因碼" Type="nvarchar" MaxLength="15" />
+          <Property Name="原因" Type="nvarchar" MaxLength="60" />
+          <Property Name="CreatDate" Type="datetime" Nullable="false" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flag" Type="int" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="Modifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="馬克" Type="nvarchar" MaxLength="30" />
+          <Property Name="修改馬克" Type="nvarchar" MaxLength="30" />
+          <Property Name="馬克完成日" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="samc_reqm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="sam_nbr" />
+            <PropertyRef Name="sam_times" />
+          </Key>
+          <Property Name="site" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="sam_nbr" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="sam_times" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="sam_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="version" Type="nvarchar" MaxLength="2" />
+          <Property Name="sam_date" Type="datetime" />
+          <Property Name="cus_id" Type="nvarchar" MaxLength="8" />
+          <Property Name="dept_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="item_no" Type="nvarchar" MaxLength="38" />
+          <Property Name="type_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="salesman" Type="nvarchar" MaxLength="8" />
+          <Property Name="sam_size" Type="nvarchar" MaxLength="20" />
+          <Property Name="assign_qty" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="plan_fin_date" Type="datetime" />
+          <Property Name="emb" Type="nvarchar" MaxLength="1" />
+          <Property Name="washing" Type="nvarchar" MaxLength="1" />
+          <Property Name="oth_extra" Type="nvarchar" MaxLength="60" />
+          <Property Name="finish_date" Type="datetime" />
+          <Property Name="finish_qty" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="place_origin" Type="nvarchar" MaxLength="1" />
+          <Property Name="currency_id" Type="nvarchar" MaxLength="4" />
+          <Property Name="unit_price" Type="numeric" Precision="15" Scale="5" />
+          <Property Name="amount" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="sam_qty" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="sam_cus_qty" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="sam_taipei_qty" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="image_path" Type="nvarchar" MaxLength="255" />
+          <Property Name="remark60" Type="nvarchar" MaxLength="260" />
+          <Property Name="status" Type="nvarchar" MaxLength="2" />
+          <Property Name="close_date" Type="datetime" />
+          <Property Name="reason" Type="nvarchar" MaxLength="15" />
+          <Property Name="online_date" Type="datetime" />
+          <Property Name="confirm_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="progress_rate" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_class" Type="nvarchar" MaxLength="1" />
+          <Property Name="original_sampleo_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="original_edition_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="original_edition_size" Type="nvarchar" MaxLength="20" />
+          <Property Name="ratio_size" Type="nvarchar" MaxLength="40" />
+          <Property Name="sample_complete_1" Type="nvarchar" MaxLength="1" />
+          <Property Name="sample_complete_2" Type="nvarchar" MaxLength="1" />
+          <Property Name="cus_express_corp" Type="nvarchar" MaxLength="8" />
+          <Property Name="cus_assign_account" Type="nvarchar" MaxLength="20" />
+          <Property Name="cus_address_id" Type="nvarchar" MaxLength="6" />
+          <Property Name="cus_addressee" Type="nvarchar" MaxLength="20" />
+          <Property Name="cus_address" Type="nvarchar" MaxLength="60" />
+          <Property Name="cus_style_no" Type="nvarchar" MaxLength="120" />
+          <Property Name="brand_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="sam_type" Type="nvarchar" MaxLength="1" />
+          <Property Name="proofing_factory" Type="nvarchar" MaxLength="1" />
+          <Property Name="filter_creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="filter_dept" Type="nvarchar" MaxLength="6" />
+          <Property Name="creator" Type="nvarchar" MaxLength="12" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="modifier" Type="nvarchar" MaxLength="12" />
+          <Property Name="modify_date" Type="datetime" />
+          <Property Name="printing" Type="nvarchar" MaxLength="1" />
+          <Property Name="sewing" Type="nvarchar" MaxLength="1" />
+          <Property Name="samc_remark60" Type="nvarchar" MaxLength="60" />
+          <Property Name="mark" Type="nvarchar" MaxLength="1" />
+          <Property Name="crp_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="crp_date" Type="datetime" />
+          <Property Name="item_statistic" Type="nvarchar" MaxLength="8" />
+          <Property Name="remark_1" Type="nvarchar" MaxLength="60" />
+          <Property Name="final" Type="nvarchar" MaxLength="1" />
+          <Property Name="last_date" Type="datetime" />
+          <Property Name="samc_fin_date" Type="datetime" />
+          <Property Name="sam_type_A" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_type_B" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_type_C" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_type_D" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_type_E" Type="nvarchar" MaxLength="1" />
+          <Property Name="sam_type_F" Type="nvarchar" MaxLength="1" />
+          <Property Name="hotfix" Type="nvarchar" MaxLength="1" />
+          <Property Name="s_plan_arrival_date" Type="datetime" />
+          <Property Name="s_real_arrival_date" Type="datetime" />
+          <Property Name="sam_type_G" Type="nvarchar" MaxLength="1" />
+          <Property Name="samc_plan_fin_date" Type="datetime" />
+          <Property Name="original_edition" Type="nvarchar" MaxLength="40" />
+          <Property Name="reason_remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="sale_finish_date" Type="datetime" />
+          <Property Name="receipt_yn" Type="nvarchar" MaxLength="1" />
+          <Property Name="receipt_date" Type="datetime" />
+          <Property Name="samc_factory" Type="nvarchar" MaxLength="8" />
+          <Property Name="sam_type_H" Type="nvarchar" MaxLength="1" />
+          <Property Name="season_y" Type="nvarchar" MaxLength="4" />
+          <Property Name="season" Type="nvarchar" MaxLength="20" />
+          <Property Name="big_date" Type="datetime" />
+          <Property Name="td_fin_date" Type="datetime" />
+          <Property Name="sam_in_date" Type="datetime" />
+          <Property Name="sam_out_date" Type="datetime" />
+          <Property Name="td_in_date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="GGFModelStoreContainer">
+          <EntitySet Name="GGFRequestMark" EntityType="Self.GGFRequestMark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GGFRequestSam" EntityType="Self.GGFRequestSam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samc_reqm" EntityType="Self.samc_reqm" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GGFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GGFRequestMark">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="修改人員" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="工號" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="處理類別" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="處理時間" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="原因碼" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="原因" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="建立日期" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="狀態" Type="Int32" Nullable="false" />
+          <Property Name="修改日期" Type="DateTime" Precision="3" />
+          <Property Name="Modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="件數" Type="Int32" Nullable="false" />
+          <Property Name="備註" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GGFRequestSam">
+          <Key>
+            <PropertyRef Name="uid" />
+            <PropertyRef Name="site" />
+            <PropertyRef Name="sam_nbr" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sam_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SampleType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SampleUser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SampleNo" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="1" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SampleCreatDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="原因碼" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="原因" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CreatDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Creator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flag" Type="Int32" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="Modifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="馬克" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="修改馬克" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="馬克完成日" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="samc_reqm">
+          <Key>
+            <PropertyRef Name="site" />
+            <PropertyRef Name="sam_nbr" />
+            <PropertyRef Name="sam_times" />
+          </Key>
+          <Property Name="site" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sam_nbr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sam_times" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sam_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="version" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="sam_date" Type="DateTime" Precision="3" />
+          <Property Name="cus_id" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="dept_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="item_no" Type="String" MaxLength="38" FixedLength="false" Unicode="true" />
+          <Property Name="type_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="salesman" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="sam_size" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="assign_qty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="plan_fin_date" Type="DateTime" Precision="3" />
+          <Property Name="emb" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="washing" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="oth_extra" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="finish_date" Type="DateTime" Precision="3" />
+          <Property Name="finish_qty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="place_origin" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="currency_id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="unit_price" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="sam_qty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="sam_cus_qty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="sam_taipei_qty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="image_path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="remark60" Type="String" MaxLength="260" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="close_date" Type="DateTime" Precision="3" />
+          <Property Name="reason" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="online_date" Type="DateTime" Precision="3" />
+          <Property Name="confirm_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="progress_rate" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_class" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="original_sampleo_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="original_edition_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="original_edition_size" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ratio_size" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="sample_complete_1" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sample_complete_2" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="cus_express_corp" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="cus_assign_account" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cus_address_id" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="cus_addressee" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cus_address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="cus_style_no" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="brand_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="proofing_factory" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="filter_creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="filter_dept" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="creator" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="modifier" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="modify_date" Type="DateTime" Precision="3" />
+          <Property Name="printing" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sewing" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="samc_remark60" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="mark" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="crp_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="crp_date" Type="DateTime" Precision="3" />
+          <Property Name="item_statistic" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="remark_1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="final" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="last_date" Type="DateTime" Precision="3" />
+          <Property Name="samc_fin_date" Type="DateTime" Precision="3" />
+          <Property Name="sam_type_A" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_B" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_C" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_D" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_E" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_F" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="hotfix" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="s_plan_arrival_date" Type="DateTime" Precision="3" />
+          <Property Name="s_real_arrival_date" Type="DateTime" Precision="3" />
+          <Property Name="sam_type_G" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="samc_plan_fin_date" Type="DateTime" Precision="3" />
+          <Property Name="original_edition" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="reason_remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="sale_finish_date" Type="DateTime" Precision="3" />
+          <Property Name="receipt_yn" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="receipt_date" Type="DateTime" Precision="3" />
+          <Property Name="samc_factory" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="sam_type_H" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="season_y" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="season" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="big_date" Type="DateTime" Precision="3" />
+          <Property Name="td_fin_date" Type="DateTime" Precision="3" />
+          <Property Name="sam_in_date" Type="DateTime" Precision="3" />
+          <Property Name="sam_out_date" Type="DateTime" Precision="3" />
+          <Property Name="td_in_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="GGFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GGFRequestMark" EntityType="Self.GGFRequestMark" />
+          <EntitySet Name="GGFRequestSam" EntityType="Self.GGFRequestSam" />
+          <EntitySet Name="samc_reqm" EntityType="Self.samc_reqm" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GGFModelStoreContainer" CdmEntityContainer="GGFEntities">
+          <EntitySetMapping Name="GGFRequestMark">
+            <EntityTypeMapping TypeName="GGFModel.GGFRequestMark">
+              <MappingFragment StoreEntitySet="GGFRequestMark">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="修改人員" ColumnName="修改人員" />
+                <ScalarProperty Name="工號" ColumnName="工號" />
+                <ScalarProperty Name="處理類別" ColumnName="處理類別" />
+                <ScalarProperty Name="處理時間" ColumnName="處理時間" />
+                <ScalarProperty Name="原因碼" ColumnName="原因碼" />
+                <ScalarProperty Name="原因" ColumnName="原因" />
+                <ScalarProperty Name="建立日期" ColumnName="建立日期" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="狀態" ColumnName="狀態" />
+                <ScalarProperty Name="修改日期" ColumnName="修改日期" />
+                <ScalarProperty Name="Modifier" ColumnName="Modifier" />
+                <ScalarProperty Name="件數" ColumnName="件數" />
+                <ScalarProperty Name="備註" ColumnName="備註" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GGFRequestSam">
+            <EntityTypeMapping TypeName="GGFModel.GGFRequestSam">
+              <MappingFragment StoreEntitySet="GGFRequestSam">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="sam_nbr" ColumnName="sam_nbr" />
+                <ScalarProperty Name="SampleType" ColumnName="SampleType" />
+                <ScalarProperty Name="SampleUser" ColumnName="SampleUser" />
+                <ScalarProperty Name="SampleNo" ColumnName="SampleNo" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="SampleCreatDate" ColumnName="SampleCreatDate" />
+                <ScalarProperty Name="原因碼" ColumnName="原因碼" />
+                <ScalarProperty Name="原因" ColumnName="原因" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="Modifier" ColumnName="Modifier" />
+                <ScalarProperty Name="馬克" ColumnName="馬克" />
+                <ScalarProperty Name="修改馬克" ColumnName="修改馬克" />
+                <ScalarProperty Name="馬克完成日" ColumnName="馬克完成日" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samc_reqm">
+            <EntityTypeMapping TypeName="GGFModel.samc_reqm">
+              <MappingFragment StoreEntitySet="samc_reqm">
+                <ScalarProperty Name="site" ColumnName="site" />
+                <ScalarProperty Name="sam_nbr" ColumnName="sam_nbr" />
+                <ScalarProperty Name="sam_times" ColumnName="sam_times" />
+                <ScalarProperty Name="sam_no" ColumnName="sam_no" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="sam_date" ColumnName="sam_date" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="dept_no" ColumnName="dept_no" />
+                <ScalarProperty Name="item_no" ColumnName="item_no" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="salesman" ColumnName="salesman" />
+                <ScalarProperty Name="sam_size" ColumnName="sam_size" />
+                <ScalarProperty Name="assign_qty" ColumnName="assign_qty" />
+                <ScalarProperty Name="plan_fin_date" ColumnName="plan_fin_date" />
+                <ScalarProperty Name="emb" ColumnName="emb" />
+                <ScalarProperty Name="washing" ColumnName="washing" />
+                <ScalarProperty Name="oth_extra" ColumnName="oth_extra" />
+                <ScalarProperty Name="finish_date" ColumnName="finish_date" />
+                <ScalarProperty Name="finish_qty" ColumnName="finish_qty" />
+                <ScalarProperty Name="place_origin" ColumnName="place_origin" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="sam_qty" ColumnName="sam_qty" />
+                <ScalarProperty Name="sam_cus_qty" ColumnName="sam_cus_qty" />
+                <ScalarProperty Name="sam_taipei_qty" ColumnName="sam_taipei_qty" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="remark60" ColumnName="remark60" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="close_date" ColumnName="close_date" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="online_date" ColumnName="online_date" />
+                <ScalarProperty Name="confirm_yn" ColumnName="confirm_yn" />
+                <ScalarProperty Name="progress_rate" ColumnName="progress_rate" />
+                <ScalarProperty Name="sam_class" ColumnName="sam_class" />
+                <ScalarProperty Name="original_sampleo_yn" ColumnName="original_sampleo_yn" />
+                <ScalarProperty Name="original_edition_yn" ColumnName="original_edition_yn" />
+                <ScalarProperty Name="original_edition_size" ColumnName="original_edition_size" />
+                <ScalarProperty Name="ratio_size" ColumnName="ratio_size" />
+                <ScalarProperty Name="sample_complete_1" ColumnName="sample_complete_1" />
+                <ScalarProperty Name="sample_complete_2" ColumnName="sample_complete_2" />
+                <ScalarProperty Name="cus_express_corp" ColumnName="cus_express_corp" />
+                <ScalarProperty Name="cus_assign_account" ColumnName="cus_assign_account" />
+                <ScalarProperty Name="cus_address_id" ColumnName="cus_address_id" />
+                <ScalarProperty Name="cus_addressee" ColumnName="cus_addressee" />
+                <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+                <ScalarProperty Name="cus_style_no" ColumnName="cus_style_no" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="sam_type" ColumnName="sam_type" />
+                <ScalarProperty Name="proofing_factory" ColumnName="proofing_factory" />
+                <ScalarProperty Name="filter_creator" ColumnName="filter_creator" />
+                <ScalarProperty Name="filter_dept" ColumnName="filter_dept" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modifier" ColumnName="modifier" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="printing" ColumnName="printing" />
+                <ScalarProperty Name="sewing" ColumnName="sewing" />
+                <ScalarProperty Name="samc_remark60" ColumnName="samc_remark60" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="crp_yn" ColumnName="crp_yn" />
+                <ScalarProperty Name="crp_date" ColumnName="crp_date" />
+                <ScalarProperty Name="item_statistic" ColumnName="item_statistic" />
+                <ScalarProperty Name="remark_1" ColumnName="remark_1" />
+                <ScalarProperty Name="final" ColumnName="final" />
+                <ScalarProperty Name="last_date" ColumnName="last_date" />
+                <ScalarProperty Name="samc_fin_date" ColumnName="samc_fin_date" />
+                <ScalarProperty Name="sam_type_A" ColumnName="sam_type_A" />
+                <ScalarProperty Name="sam_type_B" ColumnName="sam_type_B" />
+                <ScalarProperty Name="sam_type_C" ColumnName="sam_type_C" />
+                <ScalarProperty Name="sam_type_D" ColumnName="sam_type_D" />
+                <ScalarProperty Name="sam_type_E" ColumnName="sam_type_E" />
+                <ScalarProperty Name="sam_type_F" ColumnName="sam_type_F" />
+                <ScalarProperty Name="hotfix" ColumnName="hotfix" />
+                <ScalarProperty Name="s_plan_arrival_date" ColumnName="s_plan_arrival_date" />
+                <ScalarProperty Name="s_real_arrival_date" ColumnName="s_real_arrival_date" />
+                <ScalarProperty Name="sam_type_G" ColumnName="sam_type_G" />
+                <ScalarProperty Name="samc_plan_fin_date" ColumnName="samc_plan_fin_date" />
+                <ScalarProperty Name="original_edition" ColumnName="original_edition" />
+                <ScalarProperty Name="reason_remark" ColumnName="reason_remark" />
+                <ScalarProperty Name="sale_finish_date" ColumnName="sale_finish_date" />
+                <ScalarProperty Name="receipt_yn" ColumnName="receipt_yn" />
+                <ScalarProperty Name="receipt_date" ColumnName="receipt_date" />
+                <ScalarProperty Name="samc_factory" ColumnName="samc_factory" />
+                <ScalarProperty Name="sam_type_H" ColumnName="sam_type_H" />
+                <ScalarProperty Name="season_y" ColumnName="season_y" />
+                <ScalarProperty Name="season" ColumnName="season" />
+                <ScalarProperty Name="big_date" ColumnName="big_date" />
+                <ScalarProperty Name="td_fin_date" ColumnName="td_fin_date" />
+                <ScalarProperty Name="sam_in_date" ColumnName="sam_in_date" />
+                <ScalarProperty Name="sam_out_date" ColumnName="sam_out_date" />
+                <ScalarProperty Name="td_in_date" ColumnName="td_in_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
