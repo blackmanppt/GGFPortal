@@ -412,6 +412,33 @@ namespace GGFPortal.ReferenceCode
                 }
             }
         }
+        [OperationContract]
+        public List<string> Search採購單供應商(string prefixText, int count)
+        {
+            using (SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = @"SELECT distinct top 10  a.[vendor_id] as Search,b.vendor_name_brief as SearchName FROM purc_purchase_master a left join bas_vendor_master b on a.site=b.site and a.vendor_id=b.vendor_id
+                                        where upper(b.vendor_name_brief) like '%' +  @SearchText + '%' or  upper(a.vendor_id) like '%' +  @SearchText + '%'   ";
+                    cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
+                    cmd.Connection = conn;
+                    conn.Open();
+                    List<string> SearchList = new List<string>();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            SearchList.Add(AjaxControlToolkit.AutoCompleteExtender
+                                .CreateAutoCompleteItem(string.Format("{0},{1}", sdr["Search"].ToString(), sdr["SearchName"]),
+                        sdr["Search"].ToString()));
+                        }
+                    }
+                    conn.Close();
+                    return SearchList;
+                }
+            }
+        }
 
     }
 }

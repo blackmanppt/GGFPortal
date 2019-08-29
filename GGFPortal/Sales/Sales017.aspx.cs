@@ -22,8 +22,9 @@ namespace GGFPortal.Sales
             #region 網頁Layout基本參數
             //網頁標題
             BrandLB.Text = "訂單樣衣到料日";
+            Page.Title = "訂單樣衣到料日";
             #endregion
-            
+
             DateRangeTB.Attributes["readonly"] = "readonly";
             if (Page.IsPostBack)
             {
@@ -141,6 +142,7 @@ namespace GGFPortal.Sales
                         {
                             transaction1.Rollback();
                             MessageLB.Text = "訂單樣衣料到料日上傳失敗請連絡MIS";
+                            AlertPanel_ModalPopupExtender.Show();
                         }
                     }
                     finally
@@ -149,7 +151,7 @@ namespace GGFPortal.Sales
                         conn1.Dispose();
                         command1.Dispose();
                         //Session.RemoveAll();
-                        AlertPanel_ModalPopupExtender.Show();
+                        
                     }
                 }
         }

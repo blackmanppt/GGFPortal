@@ -13,8 +13,24 @@ namespace GGFPortal.Sales
         {
             #region 網頁Layout基本參數
             //網頁標題
-            TitleLB.Text = "TempCode";
+            //網頁標題
+            string StrPageName = "布價歷史資料查詢", StrProgram = "Sales016.aspx";
+            TitleLB.Text = StrPageName;
+            Page.Title = StrPageName;
+            //StrError名稱 = "";
+            //StrProgram = "TempCode.aspx";
+            //DateRangeTB.Attributes["readonly"] = "readonly";
             #endregion
+
+        }
+
+        protected void SearchBT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Remark_Click(object sender, EventArgs e)
+        {
 
         }
     }

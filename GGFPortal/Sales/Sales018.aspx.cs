@@ -22,8 +22,8 @@ namespace GGFPortal.Sales
         {
             #region 網頁Layout基本參數
             //網頁標題
-            BrandLB.Text = "訂單樣衣到料日結案";
-            StrError名稱 = "訂單樣衣料到料結案上傳失敗";
+            BrandLB.Text = "訂單樣衣完工";
+            StrError名稱 = "訂單樣衣完工上傳失敗";
             StrProgram = "Sales018.aspx";
             #endregion
 
@@ -50,9 +50,10 @@ namespace GGFPortal.Sales
 
             //款號
 
-            strsql.AppendFormat(@"SELECT distinct TOP (100)  a.site,a.ord_nbr,b.cus_item_no, doc_item,a.color_id, color_cname, color_ename,req_date, material_flag, material_check_date 
+            strsql.AppendFormat(@"SELECT distinct TOP (100)  a.site,a.ord_nbr,b.cus_item_no, doc_item,a.color_id, color_cname, color_ename,req_date, material_flag, material_check_date , sum(a.doc_qty) as 'SumQty'
                     FROM ordc_sample a left join ordc_bah1 b on a.site=b.site and a.ord_nbr=b.ord_nbr
                     where a.material_flag=1 {0} and substring( CONVERT(varchar(10),req_date,111),1,7) between '{1}' and '{2}' and b.vendor_id like'{3}'
+                    group by a.site,a.ord_nbr,b.cus_item_no, doc_item,a.color_id, color_cname, color_ename,req_date, material_flag, material_check_date
                     order by req_date"
                     , strwhere
                     , StrDate.Substring(0, 7)
@@ -144,6 +145,7 @@ namespace GGFPortal.Sales
                         {
                             transaction1.Rollback();
                             MessageLB.Text = StrError名稱 + "請連絡MIS";
+                            AlertPanel_ModalPopupExtender.Show();
                         }
                     }
                     finally
@@ -152,7 +154,7 @@ namespace GGFPortal.Sales
                         conn1.Dispose();
                         command1.Dispose();
                         //Session.RemoveAll();
-                        AlertPanel_ModalPopupExtender.Show();
+                        //AlertPanel_ModalPopupExtender.Show();
                     }
                 }
         }

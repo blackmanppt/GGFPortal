@@ -114,16 +114,16 @@
 
                     <div class=" bg-light">
 
-                        <asp:GridView ID="MaterialGV" runat="server" CssClass="table table-striped table-sm table-active" AutoGenerateColumns="False" DataKeyNames="site,ord_nbr,color_id" OnRowCommand="MaterialGV_RowCommand">
+                        <asp:GridView ID="MaterialGV" runat="server" CssClass="table table-striped table-sm table-active text-center" AutoGenerateColumns="False" DataKeyNames="site,ord_nbr,color_id" OnRowCommand="MaterialGV_RowCommand">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button ID="結案BT" runat="server" Text="結案" CssClass="btn btn-light" CommandName="結案" />
+                                        <asp:Button ID="結案BT" runat="server" Text="結案" CssClass="btn btn-danger btn-sm" CommandName="結案" />
                                     </ItemTemplate>
-                                    <ItemStyle CssClass=" text-sm-center" />
+
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="site" HeaderText="公司別" ReadOnly="True" SortExpression="site">
-                                    <ItemStyle CssClass="text-sm-center" />
+
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ord_nbr" HeaderText="訂單號碼" ReadOnly="True" SortExpression="ord_nbr" />
                                 <asp:BoundField DataField="cus_item_no" HeaderText="款號" ReadOnly="True" SortExpression="cus_item_no" />
@@ -132,8 +132,10 @@
                                 <asp:BoundField DataField="color_cname" HeaderText="顏色" SortExpression="color_cname" />
                                 <asp:BoundField DataField="color_ename" HeaderText="顏色(英)" SortExpression="color_ename" />
                                 <asp:BoundField DataField="req_date" HeaderText="需求日" SortExpression="req_date" DataFormatString="{0:d}" />
+                                <asp:BoundField DataField="SumQty" HeaderText="需求數量" SortExpression="SumQty"  />
                             </Columns>
                             <HeaderStyle CssClass=" text-center text-secondary h5" />
+                            <RowStyle CssClass=" align-items-center" />
                         </asp:GridView>
 
                         <asp:ScriptManager ID="ScriptManager1" runat="server">

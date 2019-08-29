@@ -219,7 +219,7 @@ table, td, th {
                                                 <br />
                         <asp:HyperLink ID="HyperLink63" runat="server" NavigateUrl="~/Sales/Sales017.aspx">訂單樣衣到料上傳</asp:HyperLink> 
                                                                         <br />
-                        <asp:HyperLink ID="HyperLink106" runat="server" NavigateUrl="~/Sales/Sales017.aspx">訂單樣衣到料結案上傳</asp:HyperLink> 
+                        <asp:HyperLink ID="HyperLink106" runat="server" NavigateUrl="~/Sales/Sales018.aspx">訂單樣衣完工上傳</asp:HyperLink> 
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

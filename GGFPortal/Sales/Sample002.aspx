@@ -124,7 +124,7 @@
                         <td class="auto-style22">
                             <div class="row  form-row">
                                 <asp:TextBox ID="FinalDayTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="FinalDayTB_CalendarExtender" runat="server" TargetControlID="FinalDayTB" Format="yyyy/MM/dd" CssClass=" table table-light"  />
+                                <ajaxToolkit:CalendarExtender ID="FinalDayTB_CalendarExtender" runat="server" TargetControlID="FinalDayTB" Format="yyyy/MM/dd" CssClass=" table-dark"  />
                                 <asp:Button ID="DayUpdateBT" runat="server" Text="打版完成日上傳" OnClick="DayUpdateBT_Click" CssClass="btn btn-outline-success" Visible="False" />
                             </div>
                         </td>
@@ -145,7 +145,7 @@
                         <td class="auto-style22">
                             <div class="row form-row">
                                 <asp:TextBox ID="PlanDateTB" runat="server" Enabled="False" Width="120px" CssClass=" form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="PlanDateTB_CalendarExtender" runat="server" BehaviorID="PlanDateTB_CalendarExtender" TargetControlID="PlanDateTB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="PlanDateTB_CalendarExtender" runat="server" BehaviorID="PlanDateTB_CalendarExtender" TargetControlID="PlanDateTB" Format="yyyy/MM/dd"  CssClass=" table-dark" />
                                 <asp:Button ID="PlanDateBT" runat="server" Text="打樣預計完成日上傳" CssClass="btn btn-outline-warning" Visible="False" OnClick="PlanDateBT_Click" />
                             </div>
                         </td>
@@ -170,7 +170,7 @@
                             <div class="row form-row">
                                 <asp:TextBox ID="上線日上傳TB" runat="server" Enabled="False" Width="120px" CssClass=" form-control"></asp:TextBox>
 
-                                <ajaxToolkit:CalendarExtender ID="上線日上傳TB_CalendarExtender" runat="server" BehaviorID="上線日上傳TB_CalendarExtender" TargetControlID="上線日上傳TB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="上線日上傳TB_CalendarExtender" runat="server" BehaviorID="上線日上傳TB_CalendarExtender" TargetControlID="上線日上傳TB" Format="yyyy/MM/dd"  CssClass=" table-dark" />
 
                                 <asp:Button ID="上線日上傳BT" runat="server" Text="上線日上傳" CssClass="btn btn-outline-warning" Visible="False" OnClick="上線日上傳BT_Click" />
                             </div>
@@ -194,7 +194,7 @@
                             <div class="row form-row">
                                 <asp:TextBox ID="SamInTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
 
-                                <ajaxToolkit:CalendarExtender ID="SamInTB_CalendarExtender" runat="server" BehaviorID="SamInTB_CalendarExtender" TargetControlID="SamInTB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="SamInTB_CalendarExtender" runat="server" BehaviorID="SamInTB_CalendarExtender" TargetControlID="SamInTB" Format="yyyy/MM/dd"  CssClass="table-dark" />
 
                                 <asp:Button ID="SamInBT" runat="server" Text="樣衣收單日上傳" OnClick="SamInBT_Click" CssClass="btn btn-outline-warning" Visible="False" />
                             </div>
@@ -215,7 +215,7 @@
                             <div class="row form-row">
                                 <asp:TextBox ID="SamOutTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
 
-                                <ajaxToolkit:CalendarExtender ID="SamOutTB_CalendarExtender" runat="server" BehaviorID="SamOutTB_CalendarExtender" TargetControlID="SamOutTB" Format="yyyy/MM/dd" CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="SamOutTB_CalendarExtender" runat="server" BehaviorID="SamOutTB_CalendarExtender" TargetControlID="SamOutTB" Format="yyyy/MM/dd" CssClass=" table-dark" />
 
                                 <asp:Button ID="SamOutBT" runat="server" Text="樣衣完成日上傳" OnClick="SamOutBT_Click" CssClass="btn btn-outline-warning" Visible="False" />
                             </div>
@@ -229,7 +229,7 @@
                         <td class="auto-style8">
                             <div class="row form-row">
                                 <asp:TextBox ID="DateTB" runat="server" Visible="false" CssClass=" form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="DateTB_CalendarExtender" runat="server" TargetControlID="DateTB" Format="yyyyMMdd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="DateTB_CalendarExtender" runat="server" TargetControlID="DateTB" Format="yyyyMMdd"  CssClass=" table-dark" />
                             </div>
                         </td>
                         <th class="auto-style21">
@@ -239,7 +239,7 @@
                             <div class="row form-row">
                                 <asp:TextBox ID="TDinDateTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
                                 <asp:Button ID="TDinDateBT" runat="server" Text="TD收單日" CssClass="btn btn-outline-info text-break" Visible="False" OnClick="TDinDateBT_Click" />
-                                <ajaxToolkit:CalendarExtender ID="TDinDateTB_CalendarExtender" runat="server" BehaviorID="TDinDateTB_CalendarExtender" TargetControlID="TDinDateTB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="TDinDateTB_CalendarExtender" runat="server" BehaviorID="TDinDateTB_CalendarExtender" TargetControlID="TDinDateTB" Format="yyyy/MM/dd"  CssClass=" table-dark" />
                             </div>
 
 
@@ -264,7 +264,7 @@
                         <td class="auto-style4">
                             <div class="row form-row">
                                 <asp:TextBox ID="TDFinTB" runat="server" Width="120px" AutoCompleteType="Disabled" Enabled="False" CssClass=" form-control"></asp:TextBox>
-                                <ajaxToolkit:CalendarExtender ID="TDFinTB_CalendarExtender" runat="server" BehaviorID="TDFinTB_CalendarExtender" TargetControlID="TDFinTB" Format="yyyy/MM/dd"  CssClass=" table table-light" />
+                                <ajaxToolkit:CalendarExtender ID="TDFinTB_CalendarExtender" runat="server" BehaviorID="TDFinTB_CalendarExtender" TargetControlID="TDFinTB" Format="yyyy/MM/dd"  CssClass=" table-dark" />
                                 <asp:Button ID="TDFinBT" runat="server" Text="TD完成日上傳" OnClick="TDFinBT_Click" CssClass="btn btn-outline-info" Visible="False" />
                             </div>
                         </td>
