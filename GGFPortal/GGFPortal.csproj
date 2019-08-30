@@ -319,6 +319,7 @@
     <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="Finance\Finance016.aspx" />
+    <Content Include="IMG\SalesSearch.png" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
     <Content Include="MGT\MGT008.aspx" />
@@ -6714,6 +6715,7 @@
     <Folder Include="ReferenceCode\easyui\plugins\" />
     <Folder Include="ReferenceCode\easyui\src\" />
     <Folder Include="ReferenceCode\easyui\themes\" />
+    <Folder Include="ReportSource\Sales\IMG\" />
     <Folder Include="test\sitetest\062911555236_files\" />
   </ItemGroup>
   <ItemGroup>
@@ -6772,6 +6774,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales012.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales013.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales015.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales016.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSALEV6.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />

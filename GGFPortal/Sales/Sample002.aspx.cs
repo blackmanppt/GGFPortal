@@ -124,7 +124,7 @@ namespace GGFPortal.Sales
                     break;
                 //樣衣
                 case "Sam2":
-                    strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A','N02C')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
+                    strwhere = @" (a.dept_no IN ('D010','N01A','M01A','K01A','D01A','N02C','N02A')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'C%'";
                     SamOutBT.Visible = true;
                     SamOutTB.Enabled = true;

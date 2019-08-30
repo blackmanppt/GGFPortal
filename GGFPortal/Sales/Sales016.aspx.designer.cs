@@ -112,13 +112,13 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.TextBox 布種規格TB;
         
         /// <summary>
-        /// RemarkLinkB 控制項。
+        /// RemarkShowBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton RemarkLinkB;
+        protected global::System.Web.UI.WebControls.Button RemarkShowBT;
         
         /// <summary>
         /// 供應商LB 控制項。
@@ -137,6 +137,15 @@ namespace GGFPortal.Sales {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox 供應商TB;
+        
+        /// <summary>
+        /// 供應商TB_TextBoxWatermarkExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender 供應商TB_TextBoxWatermarkExtender;
         
         /// <summary>
         /// 供應商TB_AutoCompleteExtender 控制項。
@@ -292,6 +301,15 @@ namespace GGFPortal.Sales {
         protected global::System.Web.UI.WebControls.Button RemarkBT;
         
         /// <summary>
+        /// RemarkPanel_ModalPopupExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender RemarkPanel_ModalPopupExtender;
+        
+        /// <summary>
         /// show 控制項。
         /// </summary>
         /// <remarks>
@@ -299,14 +317,5 @@ namespace GGFPortal.Sales {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button show;
-        
-        /// <summary>
-        /// RemarkPanel_PopupControlExtender 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::AjaxControlToolkit.PopupControlExtender RemarkPanel_PopupControlExtender;
     }
 }
