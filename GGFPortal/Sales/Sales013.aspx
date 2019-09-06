@@ -26,7 +26,7 @@
                         <h3 class="text-info text-left">CRP排程表</h3>
 
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                            <h4>預計下線日</h4>
+                            <h4>預計上線日</h4>
                             <div class="form-group">
                                 <asp:TextBox ID="下線日StartTB" runat="server" CssClass="form-control"></asp:TextBox>
                                 <ajaxToolkit:CalendarExtender runat="server" BehaviorID="下線日StartTB_CalendarExtender" TargetControlID="下線日StartTB" ID="下線日StartTB_CalendarExtender" Format="yyyy-MM-dd"></ajaxToolkit:CalendarExtender>

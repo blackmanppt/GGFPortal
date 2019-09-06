@@ -4,12 +4,18 @@ using System.Data;
 using System.Web.UI;
 using System.Data.SqlClient;
 using System.Web.Configuration;
-
+using System.Web.UI.WebControls;
 
 namespace GGFPortal.FactoryMG
 {
     public partial class F001 : System.Web.UI.Page
     {
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            Page.Title = "test1234";
+            Button xx = (Button)Master.FindControl("Button5");
+            xx.Text = "test5";
+        }
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,8 +46,8 @@ namespace GGFPortal.FactoryMG
         {
             string sqlstr = selectsql();
 
-            this.SqlDataSource1.SelectCommand = sqlstr;
-            this.SqlDataSource1.DataBind();
+            //this.SqlDataSource1.SelectCommand = sqlstr;
+            //this.SqlDataSource1.DataBind();
             GridView1.DataBind();
         }
 
@@ -92,8 +98,8 @@ namespace GGFPortal.FactoryMG
             if (String.IsNullOrEmpty(StartDayTB.Text) && String.IsNullOrEmpty(EndDayTB.Text) )
             {
 
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Please enter Search Data');</script>");
-
+                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Please enter Search Data');</script>");
+                F_ErrorShow("Please enter Search Data");
             }
             else
             {
@@ -136,6 +142,11 @@ namespace GGFPortal.FactoryMG
                     return StyleNo;
                 }
             }
+        }
+        public void F_ErrorShow(string strError)
+        {
+            MessageLB.Text = strError;
+            AlertPanel_ModalPopupExtender.Show();
         }
 
     }

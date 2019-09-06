@@ -26,5 +26,6 @@ namespace GGFPortal.DataSetSource
         }
     
         public virtual DbSet<shpc_bat> shpc_bat { get; set; }
+        public virtual DbSet<GGF多語對照表> GGF多語對照表 { get; set; }
     }
 }

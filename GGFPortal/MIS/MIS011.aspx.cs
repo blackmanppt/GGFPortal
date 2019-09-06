@@ -9,19 +9,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.TempCode
+namespace GGFPortal.MIS
 {
-    public partial class TempCode2 : System.Web.UI.Page
+    public partial class MIS011 : System.Web.UI.Page
     {
         //字串處理 切字串 = new 字串處理();
         //static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //SysLog Log = new SysLog();
-        string StrPageName = "TempCode", StrProgram = "TempCode.aspx";
+        //string StrError名稱, StrProgram;
+        string StrPageName = "多語系設定", StrProgram = "MIS01.aspx";
         protected void Page_Load(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
             //網頁標題
-
             BrandLB.Text = StrPageName;
             Page.Title = StrPageName;
             //StrError名稱 = "";

@@ -12,6 +12,17 @@
         }
         
     </style>
+        <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />    
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+     <script type="text/javascript"  src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript"  src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -19,7 +30,7 @@
     
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <table style="border: 2px solid #000000; width:500px; border-collapse: collapse;border: 2px solid black;"  >
+        <table class=" table w-50 table-secondary"  >
             <tr class="line">
                 <td colspan="3">
                     <h1>
@@ -29,10 +40,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="line">
+                <th class="text-right  align-items-center">
                     <asp:Label ID="Label4" runat="server" Text="UpDate："></asp:Label>
                     
-                </td>
+                </th>
                 <td class="line">
 
                     <asp:TextBox ID="SearchTB" runat="server" ></asp:TextBox>
@@ -43,36 +54,37 @@
                 </td>
                 <td class="line">
 
-                    <asp:Button ID="DeleteBT" runat="server" Text="DeleteData" OnClick="DeleteBT_Click" />
+                    <asp:Button ID="DeleteBT" runat="server" Text="DeleteData" OnClick="DeleteBT_Click" CssClass="btn-danger" />
                 </td>
             </tr>
             <tr>
-                <td  class="line">                   
+                <th class="text-right  align-items-center">       
                     <asp:Label ID="Label3" runat="server" Text="File Update"></asp:Label>
-                </td>
+                </th>
                 <td class="line">          
                     <asp:FileUpload ID="FileUpload1" runat="server" />
                 </td>
                 <td>
-                    <asp:Button ID="CheckBT" runat="server" Text="Check" OnClick="CheckBT_Click" />
+                    <asp:Button ID="CheckBT" runat="server" Text="Check" OnClick="CheckBT_Click" CssClass="btn-outline-primary" />
                 </td>
             </tr>
             <tr>
                 <td class="line"></td>
                 <td class="line">
+                    <div class="btn-group">
+                    <asp:Button ID="TeamCodeBT" runat="server" Text="TeamCode" OnClick="TeamCodeBT_Click" CssClass="btn-primary" />
 
-                    <asp:Button ID="TeamCodeBT" runat="server" Text="TeamCode" OnClick="TeamCodeBT_Click" />
-
-                    <asp:Button ID="TempExcel" runat="server" Text="TempExcel" OnClick="TempExcel_Click" />
+                    <asp:Button ID="TempExcel" runat="server" Text="TempExcel" OnClick="TempExcel_Click" CssClass="btn-secondary"/>
+                        </div>
                 </td>
                 <td class="line">
-                    <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" OnClick="UpLoadBT_Click" />
+                    <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" OnClick="UpLoadBT_Click" CssClass="btn-outline-dark" />
                 </td>
             </tr>
             <tr>
-                <td colspan="3" class="line">
+                <th class="align-items-center" colspan="3">
                     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                </td>
+                </th>
             </tr>
         </table>
     

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -252,6 +251,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="Controls\HighchartsControl.ascx" />
     <Content Include="DataSetSource\GGFTest.Context.tt">
@@ -347,6 +347,7 @@
     <Content Include="MIS\site\site6F.aspx" />
     <Content Include="MIS\site\site9F.aspx" />
     <Content Include="MIS\stylesheet.css" />
+    <Content Include="MIS\MIS011.aspx" />
     <Content Include="ReferenceCode\easyui\changelog.txt" />
     <Content Include="ReferenceCode\easyui\easyloader.js" />
     <Content Include="ReferenceCode\easyui\jquery.easyui.min.js" />
@@ -833,8 +834,14 @@
     <Content Include="scripts\jquery-3.4.1.min.js" />
     <Content Include="scripts\jQuery.print.js" />
     <Content Include="scripts\jQuery.print.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\jszip.js" />
     <Content Include="scripts\jszip.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\SbAdmin2\css\sb-admin-2.css" />
     <Content Include="scripts\SbAdmin2\css\sb-admin-2.min.css" />
     <Content Include="scripts\SbAdmin2\img\undraw_posting_photo.svg" />
@@ -4050,6 +4057,7 @@
     <Content Include="Ship\Ship006old.aspx" />
     <Content Include="Ship\Ship007.aspx" />
     <Content Include="TempCode\SbAdminTempCode.aspx" />
+    <Content Include="TempCode\siteTest.aspx" />
     <Content Include="TempCode\TempCode2.aspx" />
     <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
@@ -4358,6 +4366,7 @@
     <Content Include="FactoryMG\Temp\Excel\Sample品檢.xlsx" />
     <Content Include="FactoryMG\Temp\Excel\Sample採剪.xlsx" />
     <Content Include="FactoryMG\Temp\Excel\Sample整燙.xlsx" />
+    <Content Include="FactoryMG\FactorySite.Master" />
     <None Include="Properties\PublishProfiles\GGF.pubxml" />
     <None Include="Properties\PublishProfiles\GGFTest.pubxml" />
     <None Include="Properties\PublishProfiles\Localhost.pubxml" />
@@ -5085,6 +5094,7 @@
     <Content Include="scripts\SbAdmin2\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="scripts\SbAdmin2\vendor\jquery\jquery.min.map" />
     <Content Include="scripts\SbAdmin2\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="TempCode\SiteTest.Master" />
     <None Include="test\DataSetTest.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -5112,6 +5122,13 @@
     <Content Include="test\Modeltest.edmx.diagram">
       <DependentUpon>Modeltest.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\GGF多語對照表\Create.cshtml" />
+    <Content Include="Views\GGF多語對照表\Delete.cshtml" />
+    <Content Include="Views\GGF多語對照表\Details.cshtml" />
+    <Content Include="Views\GGF多語對照表\Edit.cshtml" />
+    <Content Include="Views\GGF多語對照表\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5150,6 +5167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GGF多語對照表Controller.cs" />
     <Compile Include="Controls\HighchartsControl.ascx.cs">
       <DependentUpon>HighchartsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5203,6 +5221,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GGFTest.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSource\GGF多語對照表.cs">
+      <DependentUpon>MISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSetSource\MGTModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -5411,6 +5432,13 @@
     </Compile>
     <Compile Include="FactoryMG\F014.aspx.designer.cs">
       <DependentUpon>F014.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FactoryMG\FactorySite.Master.cs">
+      <DependentUpon>FactorySite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FactoryMG\FactorySite.Master.designer.cs">
+      <DependentUpon>FactorySite.Master</DependentUpon>
     </Compile>
     <Compile Include="FactoryMG\Findex.aspx.cs">
       <DependentUpon>Findex.aspx</DependentUpon>
@@ -5626,11 +5654,19 @@
     <Compile Include="MIS\site\site9F.aspx.designer.cs">
       <DependentUpon>site9F.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MIS\MIS011.aspx.cs">
+      <DependentUpon>MIS011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MIS\MIS011.aspx.designer.cs">
+      <DependentUpon>MIS011.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MIS\佣金Controller.cs" />
     <Compile Include="MIS\佣金Model.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductsController.cs" />
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
+    <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
     <Compile Include="Sales\Sales010.aspx.cs">
       <DependentUpon>Sales010.aspx</DependentUpon>
@@ -5890,6 +5926,20 @@
     </Compile>
     <Compile Include="TempCode\SbAdminTempCode.aspx.designer.cs">
       <DependentUpon>SbAdminTempCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\siteTest.aspx.cs">
+      <DependentUpon>siteTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\siteTest.aspx.designer.cs">
+      <DependentUpon>siteTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\SiteTest.Master.cs">
+      <DependentUpon>SiteTest.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\SiteTest.Master.designer.cs">
+      <DependentUpon>SiteTest.Master</DependentUpon>
     </Compile>
     <Compile Include="TempCode\TempCode2.aspx.cs">
       <DependentUpon>TempCode2.aspx</DependentUpon>
@@ -6699,7 +6749,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="aspnet_client\" />
-    <Folder Include="Controllers\" />
     <Folder Include="ExcelUpLoad\Finance\CustomerRate\" />
     <Folder Include="ExcelUpLoad\Salse\AMZForcast\" />
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
@@ -6717,6 +6766,7 @@
     <Folder Include="ReferenceCode\easyui\themes\" />
     <Folder Include="ReportSource\Sales\IMG\" />
     <Folder Include="test\sitetest\062911555236_files\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CrystalReporttest1.rpt">
@@ -6907,7 +6957,6 @@
     <PropertyGroup>
       <ErrorText>此專案參考這部電腦上所缺少的 NuGet 封裝。請啟用 NuGet 封裝還原，以下載該封裝。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

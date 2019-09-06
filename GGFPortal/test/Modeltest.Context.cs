@@ -26,5 +26,7 @@ namespace GGFPortal.test
         }
     
         public virtual DbSet<Mapping> Mapping { get; set; }
+
+        public System.Data.Entity.DbSet<GGFPortal.DataSetSource.GGF多語對照表> GGF多語對照表 { get; set; }
     }
 }

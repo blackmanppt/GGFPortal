@@ -1,0 +1,90 @@
+﻿@model GGFPortal.DataSetSource.GGF多語對照表
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>GGF多語對照表</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.程式)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.程式)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.資料代號)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.資料代號)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.中文)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.中文)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.英文)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.英文)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.越文)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.越文)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.說明)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.說明)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.建立時間)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.異動時間)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.異動時間)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

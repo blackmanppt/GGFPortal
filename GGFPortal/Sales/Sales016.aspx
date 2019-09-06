@@ -156,7 +156,7 @@
                 
             </div>--%>
             <div>
-                <rsweb:ReportViewer ID="TempRV" runat="server" CssClass=" bg-light w-100  " Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Style="left: 0px; top: 0px">
+                <rsweb:ReportViewer ID="TempRV" runat="server" CssClass=" bg-light w-100  " Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Style="left: 0px; top: 0px" Visible="False">
                     <LocalReport ReportPath="ReportSource\Sales\ReportSales016.rdlc">
                     </LocalReport>
                 </rsweb:ReportViewer>

@@ -28,5 +28,8 @@ namespace GGFPortal.DataSetSource
         public virtual DbSet<GGFRequestMark> GGFRequestMark { get; set; }
         public virtual DbSet<GGFRequestSam> GGFRequestSam { get; set; }
         public virtual DbSet<samc_reqm> samc_reqm { get; set; }
+
+        //object placeHolderVariable;
+        //public System.Data.Entity.DbSet<GGFPortal.DataSetSource.GGF多語對照表> GGF多語對照表 { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TempCode2.aspx.cs" Inherits="GGFPortal.TempCode.TempCode2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MIS011.aspx.cs" Inherits="GGFPortal.MIS.MIS011" %>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,16 @@
      <script type="text/javascript"  src="../scripts/daterangepicker/moment.min.js"></script>
     <script type="text/javascript"  src="../scripts/daterangepicker/daterangepicker.min.js"></script>
     <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
-
+    <style type="text/css">
+    .hiddencol
+    {
+        display:none;
+    }
+    .viscol
+    {
+        display:block;
+    }
+</style>
     
     <script type="text/javascript">
         $(function () {
@@ -208,7 +217,33 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                         </table>
-                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
+                        <asp:GridView ID="LanguageGV" runat="server" CssClass="table table-striped table-sm table-dark" AutoGenerateColumns="False" DataKeyNames="id,程式,資料代號" DataSourceID="SqlDataSource1">
+                            <Columns>
+                                <asp:TemplateField HeaderText="編輯"   >
+                                    <ItemTemplate>
+                                        <div class="  text-center">
+                                        <div class="btn-group">
+                                        <asp:Button ID="AddBT" runat="server" Text="新增" CssClass="btn btn-primary" CommandName="Add" />
+                                        <asp:Button ID="DeleteBT" runat="server" Text="刪除"  CssClass="btn btn-danger" CommandName="Delete" OnClientClick="return confirm('是否刪除')" />
+                                        </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id"   ItemStyle-cssclass="hiddencol" HeaderStyle-CssClass="hiddencol"  >
+
+                                </asp:BoundField>
+                                <asp:BoundField DataField="程式" HeaderText="程式" ReadOnly="True" SortExpression="程式" ItemStyle-CssClass="align-items-center" />
+                                <asp:BoundField DataField="資料代號" HeaderText="資料代號" ReadOnly="True" SortExpression="資料代號" />
+                                <asp:BoundField DataField="中文" HeaderText="中文" SortExpression="中文" />
+                                <asp:BoundField DataField="英文" HeaderText="英文" SortExpression="英文" />
+                                <asp:BoundField DataField="越文" HeaderText="越文" SortExpression="越文" />
+                                <asp:BoundField DataField="說明" HeaderText="說明" SortExpression="說明" />
+                                <asp:BoundField DataField="建立時間" HeaderText="建立時間" SortExpression="建立時間" DataFormatString="{0:d}" />
+                                <asp:BoundField DataField="異動時間" HeaderText="異動時間" SortExpression="異動時間" DataFormatString="{0:d}" />
+                            </Columns>
+                            <RowStyle CssClass="align-items-center" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [GGF多語對照表]"></asp:SqlDataSource>
                     </div>
                 </main>
             </div>

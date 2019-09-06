@@ -65,7 +65,8 @@ namespace GGFPortal.Sales
         {
             
             StringBuilder strsql = new StringBuilder(" select * from [ViewCRP排程表] where 1=1 ");
-            strsql.AppendFormat(" and 下線日 between '{0}' and '{1}' ",
+            //20190903 修改為上線日查詢
+            strsql.AppendFormat(" and 上線日 between '{0}' and '{1}' ",
                 (!string.IsNullOrEmpty(下線日StartTB.Text))? 下線日StartTB.Text:DateTime.Now.AddDays(-15).ToString("yyyy-MM-dd"),
                 (!string.IsNullOrEmpty(下線日EndTB.Text))? 下線日EndTB.Text :(!string.IsNullOrEmpty(下線日StartTB.Text))?(Convert.ToDateTime(下線日StartTB.Text)).AddDays(45).ToString("yyyy-MM-dd"):DateTime.Now.AddDays(45).ToString("yyyy-MM-dd"));
             if(車縫DDL.SelectedValue!="")

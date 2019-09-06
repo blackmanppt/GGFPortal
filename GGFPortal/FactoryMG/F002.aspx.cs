@@ -7,47 +7,106 @@ using NPOI.HSSF.UserModel;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.Net;
+using GGFPortal.ReferenceCode;
 
 namespace GGFPortal.FactoryMG
 {
     public partial class F002 : System.Web.UI.Page
     {
-        ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
-        ReferenceCode.DataCheck 確認LOCK = new ReferenceCode.DataCheck();
-        
+        SysLog Log = new SysLog();
+        DataCheck 確認LOCK = new DataCheck();
+
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
         static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //static string strImportType = "Package";
-        string strArea = "", strImportType="";
+        string strArea = "", strImportType = "", StrRedirect,StrTeam;
+
+        多語 lang = new 多語();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            //清空Error資料
+            Session.Remove("Error");
+            try
+            {
+                if (!string.IsNullOrEmpty(Session["Area"].ToString()) && !string.IsNullOrEmpty(Session["Team"].ToString()))
+                {
+                    strImportType = Session["Team"].ToString();
+                    strArea = Session["Area"].ToString();
+                    lang.讀取多語資料("Factory");
+                    StrRedirect = "Findex.aspx";
+                    switch (strArea)
+                    {
+                        case "VGG":
+                            StrTeam = lang.gg.Find(p => p.資料代號 == strImportType).越文;
+                            break;
+                        case "GAMA":
+                            StrTeam = lang.gg.Find(p => p.資料代號 == strImportType).英文;
+                            break;
+                        default:
+                            Session["Error"] = "Session Timeout";
+                            Response.Redirect(StrRedirect);
+                            break;
+                    }
+                    TypeLB.Text = StrTeam;
+                    AreaLB.Text = strArea;
+                    Page.Title = strArea + StrTeam;
+                }
+                else
+                {
+                    Session["Error"] = "Session Timeout";
+                    Response.Redirect(StrRedirect);
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                Session["Error"] = "Page_PreInit Error :" + ex.ToString();
+                Response.Redirect(StrRedirect);
+                throw;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            SearchTB.Attributes["readonly"] = "readonly";
-            strArea = (Request.Params["AREA"] != null)? Request.Params["AREA"] :"";
-            strImportType = (Request.Params["TYPE"] != null) ? Request.Params["TYPE"] : "";
-            if (strArea == "" || strImportType == "")
-                Response.Redirect("VNindex.aspx");
-            AreaLB.Text = strArea;
-            switch (strImportType)
-            {
-                case "Stitch":
-                    TypeLB.Text = "May";
-                    break;
-                case "Package":
-                    TypeLB.Text = "Đóng gói";
-                    break;
-                case "Cut":
-                    TypeLB.Text = "Cắt";
-                    break;
-                case "Iron":
-                    TypeLB.Text = "Là";
-                    break;
-                case "QC":
-                    TypeLB.Text = "Kiểm tra chất lượng";
-                    break;
-                default:
-                    Response.Redirect("VNindex.aspx");
-                    break;
-            }
+            //try
+            //{
+            //    SearchTB.Attributes["readonly"] = "readonly";
+            //    strArea = (Request.Params["AREA"] != null) ? Request.Params["AREA"] : "";
+            //    strImportType = (Request.Params["TYPE"] != null) ? Request.Params["TYPE"] : "";
+            //    if (strArea == "" || strImportType == "")
+            //        Response.Redirect(StrRedirect);
+            //    AreaLB.Text = strArea;
+            //}
+            //catch (Exception)
+            //{
+            //    Session.RemoveAll();
+            //    Session["Error"] = "Session Timeout";
+            //    Response.Redirect(StrRedirect);
+            //    throw;
+            //}
+
+
+            TypeLB.Text = strImportType;
+            //switch (strImportType)
+            //{
+            //    case "Stitch":
+            //        TypeLB.Text = "Stitch";
+            //        break;
+            //    case "Package":
+            //        TypeLB.Text = "Đóng gói";
+            //        break;
+            //    case "Cut":
+            //        TypeLB.Text = "Cắt";
+            //        break;
+            //    case "Iron":
+            //        TypeLB.Text = "Là";
+            //        break;
+            //    case "QC":
+            //        TypeLB.Text = "Kiểm tra chất lượng";
+            //        break;
+            //    default:
+            //        Response.Redirect("VNindex.aspx");
+            //        break;
+            //}
 
         }
 
@@ -66,8 +125,8 @@ namespace GGFPortal.FactoryMG
         {
             if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
             {
-                
-                ReferenceCode.Column1 GetExcelDefine = new ReferenceCode.Column1();
+
+                Column1 GetExcelDefine = new Column1();
                 switch(strImportType)
                 {
                     case "Stitch":

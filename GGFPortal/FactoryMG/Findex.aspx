@@ -4,135 +4,89 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/style.css" rel="stylesheet" />
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <style type="text/css">
-        .auto-style2 {
-            width: 85px;
-            background-color: #00CCFF;
-        }
-table, td, th {
-    border: 1px solid black;
-}
-    </style>
+    <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
-    <form id="form1" runat="server">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-				 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">Brand</a>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="navbar-nav">
-						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item">
-							 <a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
-					<form class="form-inline">
-						<input class="form-control mr-sm-2" type="text"> 
-						<button class="btn btn-primary my-2 my-sm-0" type="submit">
-							Search
-						</button>
-					</form>
-					<ul class="navbar-nav ml-md-auto">
-						<li class="nav-item active">
-							 <a class="nav-link" href="#">Link <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item dropdown">
-							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-								<div class="dropdown-divider">
-								</div> <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
-        <div class="row text-center">
-            <div class=" col-lg-12">
-                <div class="h2">test</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class=" col-md-2"></div>
-            <div class=" col-md-10"></div>
-        </div>
-        <div class=" row table table-bordered">
-            <div class=" col-md-3 "><asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/VN/VN002.aspx?AREA=VGG&TYPE=Cut" CssClass="btn btn-primary btn-lg active">裁剪</asp:LinkButton><br/></div>
-            <div class=" col-md-3">2</div>
-            <div class=" col-md-3">3</div>
-            <div class=" col-md-3">4</div>
-        </div>
-    <div>
-   
-        <table style="width:400px;">
+    <form id="form1" runat="server" class="container ">
+<asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+
+        <table class="table table-secondary m-2">
             <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="Label2" runat="server" Text="資料查詢："></asp:Label>
-                </td>
-                <td>
-                    <asp:LinkButton ID="LinkButton6" runat="server" PostBackUrl="~/VN/VN001.aspx">Style No 查詢</asp:LinkButton>
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Label ID="Label1" runat="server" Text="資料匯入："></asp:Label>
-                </td>
-                <td>
+                <th class="h3 text-center" colspan="2">
                     
-                    <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/VN/VN002.aspx?AREA=VGG&TYPE=Stitch">車縫</asp:LinkButton><br/>
-                    <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/VN/VN002.aspx?AREA=VGG&TYPE=QC">品檢</asp:LinkButton><br/>
-                    <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/VN/VN002.aspx?AREA=VGG&TYPE=Iron">整燙</asp:LinkButton><br/>
-                    <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/VN/VN002.aspx?AREA=VGG&TYPE=Package">包裝</asp:LinkButton>
+                    <asp:Label ID="TitleLB" runat="server" Text="Program" CssClass=""></asp:Label>
+                </th>
+            </tr>
+            <tr class="row m-1">
+                <th class=" text-right col-3">
+                    <asp:Label ID="Label3" runat="server" Text="Area："></asp:Label>
+                </th>
+                <td class="  col-9">
+                    <asp:DropDownList ID="FactoryDDL" runat="server" CssClass="dropdown dropdown-toggle-split bg-light form-control-sm" AutoPostBack="True" OnSelectedIndexChanged="FactoryDDL_SelectedIndexChanged">
+                        <asp:ListItem></asp:ListItem>
+                        <asp:ListItem >VGG</asp:ListItem>
+                        <asp:ListItem>GAMA</asp:ListItem>
+
+                    </asp:DropDownList>
+
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+
             </tr>
-            <tr>
-                <td class="auto-style2">
-                    &nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+            <tr class="row m-1 ">
+                <th class=" text-right col-3">
+                    <asp:Label ID="Label2" runat="server" Text="Style Search："></asp:Label>
+                </th>
+                <td class="  col-9">
+                    <asp:Button ID="StyleBT" runat="server" Text="Style Search" CssClass="btn btn-primary" OnClick="StyleBT_Click" />
+                </td>
+
             </tr>
-            <tr>
-                <td class="auto-style2">
-                    &nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+            <tr class="row  m-1">
+                <th class="text-right col-3">
+                    <asp:Label ID="Label1" runat="server" Text="Data Import："></asp:Label>
+                </th>
+                <td class="col-9">
+                    <div class="btn-group">
+                        <asp:Button ID="StitchBT" runat="server" Text="" CssClass="btn btn-primary" Visible="false" OnClick="StitchBT_Click" />
+                        <asp:Button ID="PackageBT" runat="server" Text="" CssClass="btn btn-secondary" Visible="false" OnClick="PackageBT_Click" />
+                        <asp:Button ID="CutBT" runat="server" Text="" CssClass="btn btn-primary" Visible="false" OnClick="CutBT_Click"/>
+                        <asp:Button ID="IronBT" runat="server" Text="" CssClass="btn  btn-secondary" Visible="false" OnClick="IronBT_Click"/>
+                        <asp:Button ID="QCBT" runat="server" Text="" CssClass="btn btn-primary" Visible="false" OnClick="QCBT_Click"/>
+                    </div>
+                </td>
+
             </tr>
-            <tr>
-            <td class="auto-style2">
-                    &nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
+
         </table>
-   
-    </div>
+
+                <div>
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                <ContentTemplate>
+                    <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                    <asp:Panel ID="AlertPanel" runat="server" align="center" Height="100px" Width="600px" BackColor="#009999" Style="display: none">
+                        <div class=" text-center">
+                            <h3>
+                                <asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>
+
+                            </h3>
+                            <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
+                        </div>
+                    </asp:Panel>
+                    <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                    </ajaxToolkit:ModalPopupExtender>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+
     </form>
 </body>
 </html>

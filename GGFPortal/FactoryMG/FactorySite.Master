@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FactorySite.master.cs" Inherits="GGFPortal.FactoryMG.FactorySite" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+     <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />    
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+          <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<asp:Label ID="BrandBL" runat="server" Text=""  class="navbar-brand"></asp:Label>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExample03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <asp:Button ID="LastDayBT" runat="server" Text="Style Search" CssClass=" nav-link btn btn-outline-primary" />
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WorkTeam</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+        <asp:Button ID="StitchBT" runat="server" Text="Button" CssClass="dropdown-item" OnClick="StitchBT_Click" />
+            <asp:Button ID="PackageBT" runat="server" Text="Button" CssClass="dropdown-item" OnClick="PackageBT_Click" />
+            <asp:Button ID="CutBT" runat="server" Text="Button" CssClass="dropdown-item" OnClick="CutBT_Click" />
+            <asp:Button ID="IronBT" runat="server" Text="Button" CssClass="dropdown-item" OnClick="IronBT_Click" />
+            <asp:Button ID="QCBT" runat="server" Text="Button" CssClass="dropdown-item" OnClick="QCBT_Click" />
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

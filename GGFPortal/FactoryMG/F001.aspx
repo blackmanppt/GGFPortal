@@ -1,79 +1,44 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="F001.aspx.cs" Inherits="GGFPortal.FactoryMG.F001" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="F001.aspx.cs" Inherits="GGFPortal.FactoryMG.F001" MasterPageFile="FactorySite.Master" %>
 
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-    <title>Search Style No</title>
-    <style type="text/css">
-        .auto-style3 {
-            text-align: left;
-            height: 23px;
-            border: 2px solid black;
-        }
-        .xx{
-            border: 2px solid black;
-        }
-        
-        .auto-style4 {
-            text-align: right;
-        }
-        .auto-style5 {
-            text-align: right;
-            height: 23px;
-            border: 2px solid black;
-        }
-        
-    </style>
-        <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css"/>
-    <link rel="stylesheet" type="text/css" href="../../themes/icon.css"/>
-    <link rel="stylesheet" type="text/css" href="../demo.css"/>
-    <script type="text/javascript" src="../Scripts/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div  >
-            
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            
-            <asp:Label ID="Label1" runat="server" Text="Style No Search" Font-Bold="True" Font-Size="X-Large"></asp:Label>
-            
-        </div>
+
         <div  >
-            <table style="border: 2px solid #000000; width:400px; border-collapse: collapse;border: 2px solid black;"  >
-                <tr class="xx">
-                    <td class="auto-style5">
+            <table class="table table-dark w-50" >
+                <tr class="">
+                    <th class=" text-right">
                         <asp:Label ID="Label2" runat="server" Text="預計出貨日："></asp:Label>
-                    </td>
-                    <td class="auto-style3">
-                    <asp:TextBox ID="StartDayTB" runat="server" Width="70px" AutoPostBack="True"></asp:TextBox>
-                    <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy-MM-dd" />
+                    </th>
+                    <td class="">
+                    <asp:TextBox ID="StartDayTB" runat="server" CssClass="form-row form-control-sm" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyy-MM-dd" CssClass="table table-dark" />
                     ~
-                    <asp:TextBox ID="EndDayTB" runat="server" Width="70px" AutoPostBack="True"></asp:TextBox>
-                    <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyy-MM-dd"  />
+                    <asp:TextBox ID="EndDayTB" runat="server" CssClass="form-row form-control-sm" AutoPostBack="True"></asp:TextBox>
+                    <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyy-MM-dd"  CssClass="table table-dark" />
                     </td>
-                    <td class="auto-style3">
+                    <td class="">
                        
                     </td>
                 </tr>
-                <tr class="xx">
-                    <td class="auto-style4">
+                <tr class="">
+                    <th class="text-right">
                         <asp:Label ID="Label3" runat="server" Text="Style No："></asp:Label>
-                    </td>
+                    </th>
                     <td>
- <asp:TextBox ID="StyleNoTB" runat="server"></asp:TextBox>
+ <asp:TextBox ID="StyleNoTB" runat="server" CssClass="form-control"></asp:TextBox>
                     <ajaxToolkit:AutoCompleteExtender ID="StyleNoTB_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo"  TargetControlID="StyleNoTB">
                     </ajaxToolkit:AutoCompleteExtender>
                     </td>
                     <td> 
-                        <asp:Button ID="Search" runat="server" Text="Search" />
-                        <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" />
-
+                        <div class="btn-group">
+                            <asp:Button ID="Search" runat="server" Text="Search" CssClass="btn btn-primary" />
+                            <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" CssClass="btn btn-secondary" />
+                        </div>
                     </td>
                 </tr>
                
@@ -81,7 +46,7 @@
         </div>
         <div >
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" AllowPaging="True" PageSize="50" BorderStyle="None">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" AllowPaging="True" PageSize="50" BorderStyle="None">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="cus_item_no" HeaderText="style_no" SortExpression="style_no" />
@@ -99,15 +64,38 @@
                 <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
+<%--            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
                 SelectCommand="select distinct a.agents,b.cus_name,brand,cus_item_no from ordc_bat x left join ordc_bah1 a on x.site=a.site and x.ord_nbr=a.ord_nbr left join bas_cus_master b on a.agents=b.cus_id where  bah_status<>'CA'">
 
-            </asp:SqlDataSource>
+            </asp:SqlDataSource>--%>
 
 
 
         </div>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="show3" runat="server" Text="show3" Style="" />
+                <asp:Panel ID="AlertPanel" runat="server" align="center"  CssClass="alert-danger w-75" Style="display: none">
+                    <div class=" text-center">
+                        <h3>
+                            <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
 
-    </form>
-</body>
-</html>
+                        </h3>
+                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-danger" />
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                </ajaxToolkit:ModalPopupExtender>
+
+                <asp:ScriptManager ID="ScriptManager2" runat="server">
+                </asp:ScriptManager>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+</asp:Content>
+
+
+
+
+
+
