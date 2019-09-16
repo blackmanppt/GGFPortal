@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="96896ceefc8b478d9a3266e293c63395" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="GGFModel.shpc_bat" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GGFModel.GGF多語對照表" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>

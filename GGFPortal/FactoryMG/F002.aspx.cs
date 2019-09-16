@@ -85,7 +85,7 @@ namespace GGFPortal.FactoryMG
             //}
 
 
-            TypeLB.Text = strImportType;
+            //TypeLB.Text = strImportType;
             //switch (strImportType)
             //{
             //    case "Stitch":

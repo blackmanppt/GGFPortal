@@ -377,6 +377,7 @@
     <Content Include="Sales\SALE_V5.aspx" />
     <Content Include="Sales\Sales016.aspx" />
     <Content Include="Sales\Sales017.aspx" />
+    <Content Include="Sales\Sample015.aspx" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
@@ -5300,9 +5301,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShipTempDS.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSetSource\shpc_bat.cs">
-      <DependentUpon>MISModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSetSource\view_employee.cs">
       <DependentUpon>MGTModel.tt</DependentUpon>
     </Compile>
@@ -5814,6 +5812,13 @@
     </Compile>
     <Compile Include="Sales\Sales017.aspx.designer.cs">
       <DependentUpon>Sales017.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample015.aspx.cs">
+      <DependentUpon>Sample015.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample015.aspx.designer.cs">
+      <DependentUpon>Sample015.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary001V5.aspx.cs">
       <DependentUpon>Secretary001V5.aspx</DependentUpon>

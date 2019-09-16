@@ -276,9 +276,9 @@ namespace GGFPortal.Sales
                         switch (TypeDDL.SelectedItem.Text)
                         {
                             case "TD":
-                                //取消TD自動UPdate
-                                //if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
-                                //    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                //取消TD自動UPdate //20190916 TD決定復原自動UpDate
+                                if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
+                                    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "樣衣":
                                 if (F_UpdataWorkDate("上線日期", DateTime.Now.ToString("yyyy/MM/dd")))
@@ -801,55 +801,109 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
                     try
                     {
-                        if (updataString == "打版完成")
-                            strDate = @"[samc_fin_date] = @samc_fin_date";
-                        else if (updataString == "樣衣收單")
-                            //strDate = @"[sam_in_date] = @Sam_In_Date  ,online_date=@online_date";
-                            strDate = @"[sam_in_date] = @Sam_In_Date ";
-                        else if (updataString == "樣衣完成")
+                        #region 程式改版--狀態新增過多
+                        //if (updataString == "打版完成")
+                        //    strDate = @"[samc_fin_date] = @samc_fin_date";
+                        //else if (updataString == "樣衣收單")
+                        //    //strDate = @"[sam_in_date] = @Sam_In_Date  ,online_date=@online_date";
+                        //    strDate = @"[sam_in_date] = @Sam_In_Date ";
+                        //else if (updataString == "樣衣完成")
+                        //{
+                        //    strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
+                        //}
+                        //else if (updataString == "打樣預計完成日")
+                        //{
+                        //    strDate = @"[plan_fin_date] = @plan_fin_date ";
+                        //}
+                        //else if (updataString == "上線日期")
+                        //{
+                        //    strDate = @" online_date=@online_date ";
+                        //}
+                        //else if (updataString == "TD收單")
+                        //    strDate = @"[td_in_date] = @td_in_Date";
+                        //else
+                        //    strDate = @"[td_fin_date] = @TD_Fin_Date";
+                        #endregion
+                        switch (updataString)
                         {
-                            strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
+                            case "打版完成":
+                                strDate = @"[samc_fin_date] = @samc_fin_date";
+                                break;
+                            case "樣衣收單":
+                                strDate = @"[sam_in_date] = @Sam_In_Date ";
+                                break;
+                            case "樣衣完成":
+                                strDate = @"[sam_out_date] = @Sam_Out_Date , [finish_date]=@finish_date";
+                                break;
+                            case "打樣預計完成日":
+                                strDate = @"[plan_fin_date] = @plan_fin_date ";
+                                break;
+                            case "上線日期":
+                                strDate = @" online_date=@online_date ";
+                                break;
+                            case "TD收單":
+                                strDate = @"[td_in_date] = @td_in_Date";
+                                break;
+                            //TD完成
+                            default:
+                                strDate = @"[td_fin_date] = @TD_Fin_Date";
+                                break;
                         }
-                        else if (updataString == "打樣預計完成日")
-                        {
-                            strDate = @"[plan_fin_date] = @plan_fin_date ";
-                        }
-                        else if (updataString == "上線日期")
-                        {
-                            strDate = @" online_date=@online_date ";
-                        }
-                        else if (updataString == "TD收單")
-                            strDate = @"[td_in_date] = @td_in_Date";
-                        else
-                            strDate = @"[td_fin_date] = @TD_Fin_Date";
 
                         command1.CommandText = string.Format(@"UPDATE [dbo].[samc_reqm] SET {0} WHERE sam_nbr = @sam_nbr and site =@site ", strDate);
-
-                        if (updataString == "打版完成")
-                            command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                        else if (updataString == "樣衣收單")
+                        #region 程式改版--狀態新增過多
+                        //if (updataString == "打版完成")
+                        //    command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //else if (updataString == "樣衣收單")
+                        //{
+                        //    command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //    //command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //    //command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //}
+                        //else if (updataString == "樣衣完成")
+                        //{
+                        //    command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //    command1.Parameters.Add("@finish_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //}
+                        //else if (updataString == "打樣預計完成日")
+                        //{
+                        //    command1.Parameters.Add("@plan_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //}
+                        //else if (updataString == "上線日期")
+                        //{
+                        //    command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //}
+                        //else if (updataString == "TD收單")
+                        //    command1.Parameters.Add("@td_in_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        //else
+                        //    command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                        #endregion
+                        switch (updataString)
                         {
-                            command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                            //command1.Parameters.Add("@s_real_arrival_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                            //command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                            case "打版完成":
+                                command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            case "樣衣收單":
+                                command1.Parameters.Add("@Sam_In_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            case "樣衣完成":
+                                command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                command1.Parameters.Add("@finish_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            case "打樣預計完成日":
+                                command1.Parameters.Add("@plan_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            case "上線日期":
+                                command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            case "TD收單":
+                                command1.Parameters.Add("@td_in_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
+                            //TD完成
+                            default:
+                                command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
+                                break;
                         }
-                        else if (updataString == "樣衣完成")
-                        {
-                            command1.Parameters.Add("@Sam_Out_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                            command1.Parameters.Add("@finish_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                        }
-                        else if (updataString == "打樣預計完成日")
-                        {
-                            command1.Parameters.Add("@plan_fin_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                        }
-                        else if (updataString == "上線日期")
-                        {
-                            command1.Parameters.Add("@online_date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                        }
-                        else if (updataString == "TD收單")
-                            command1.Parameters.Add("@td_in_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
-                        else
-                            command1.Parameters.Add("@TD_Fin_Date", SqlDbType.DateTime).Value = Convert.ToDateTime(update);
 
                         command1.Parameters.Add("@sam_nbr", SqlDbType.NVarChar).Value = Session["SampleNbr"].ToString();
                         command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();

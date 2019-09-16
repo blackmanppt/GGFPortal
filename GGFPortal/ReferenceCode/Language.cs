@@ -20,7 +20,7 @@ namespace GGFPortal.ReferenceCode
         }
         public string 工段 { get; set; }
         //GGF多語對照表 gg = new GGF多語對照表();
-        public List<GGF多語對照表> gg { get; set; }
+        public List<GGF多語對照表> gg = new List<GGF多語對照表>();
         public void 讀取多語資料(string Str程式)
         {
             var 譯名 = db.GGF多語對照表.Where(p => p.程式 == Str程式 );
