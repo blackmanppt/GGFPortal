@@ -17,7 +17,7 @@ namespace GGFPortal.Sales
         字串處理 切字串 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        string StrPageName = "打樣完成日上傳", StrProgram =  "Sample015.aspx";
+        string StrPageName = "打版完成日上傳", StrProgram =  "Sample015.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -124,7 +124,7 @@ namespace GGFPortal.Sales
             {
                 Log.ErrorLog(ex, "資料搜尋異常", StrProgram);
                 F_ErrorShow("資料搜尋異常");
-                throw;
+                //throw;
             }
 
         }
@@ -154,12 +154,12 @@ namespace GGFPortal.Sales
                         foreach (var item in SamArray)
                         {
                             strUnion += (strUnion.Length > 0)?
-                                " union select '" + item.ToString() + "' as 'Search' ": strUnion = " select '" + item.ToString() + "' as 'Search' ";
+                                " union select '" + item.ToString() + "' as '打樣單號' " : strUnion = " select '" + item.ToString() + "' as '打樣單號' ";
                         }
-                    strsql.AppendFormat(@" select distinct Search
+                    strsql.AppendFormat(@" select distinct b.cus_style_no as 款號,b.cus_id as 客戶代號, 打樣單號
                                             ,case when b.create_date is NULL then '打樣無資料' else '有打樣單' end as '打樣單狀態' 
                                             , case when c.sam_nbr  is NULL then '無資料' else '有資料' end as '打樣處理'  from ( {0} )
-            							 a left join samc_reqm b on a.Search=b.sam_nbr left join GGFRequestSam c on a.Search=c.sam_nbr 
+            							 a left join samc_reqm b on a.打樣單號=b.sam_nbr left join GGFRequestSam c on a.打樣單號=c.sam_nbr 
                                         ", strUnion);
                     //strsql.Append(" and a.sam_nbr in " + 切字串.字串多筆資料搜尋(打樣單號TB.Text));
                     break;
@@ -206,14 +206,15 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
 
                     #region 匯入
-                    string[] parameters = SamArray.Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
+                    string[] parameters = dt.Rows.OfType<DataRow>().Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
+                    //string[] parameters = SamArray.Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
                     command1.CommandText = string.Format(@"UPDATE samc_reqm
                                                                     set samc_fin_date=@samc_fin_date
                                                                where sam_nbr in ( {0} ) and site='GGF'
                                                                ", string.Join(",", parameters));
                     command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
                     for (int i = 0; i < dt.Rows.Count; i++)
-                        command1.Parameters.AddWithValue(parameters[i], dt.Rows[i][""]);
+                        command1.Parameters.AddWithValue(parameters[i], dt.Rows[i]["打樣單號"]);
                     //command1.Parameters.Add("@sam_nbr", SqlDbType.DateTime).Value = DateRangeTB.Text;
                     command1.ExecuteNonQuery();
                     #endregion
@@ -224,7 +225,7 @@ namespace GGFPortal.Sales
                     Log.ErrorLog(ex, "上傳失敗", StrProgram);
                     transaction1.Rollback();
                     BCheck = false;
-                    throw;
+                    //throw;
                 }
                 finally
                 {

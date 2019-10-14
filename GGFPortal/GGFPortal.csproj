@@ -6755,9 +6755,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="aspnet_client\" />
     <Folder Include="ExcelUpLoad\Finance\CustomerRate\" />
+    <Folder Include="ExcelUpLoad\GAMA\" />
     <Folder Include="ExcelUpLoad\Salse\AMZForcast\" />
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
+    <Folder Include="ExcelUpLoad\VGG\" />
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="GAMA\" />
     <Folder Include="MGT\MGTFile\" />

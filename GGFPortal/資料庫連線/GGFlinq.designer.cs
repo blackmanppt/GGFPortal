@@ -180,6 +180,8 @@ namespace GGFPortal.資料庫連線
 		
 		private string _原因;
 		
+		private string _處理地點;
+		
     #region 擴充性方法定義
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -218,6 +220,8 @@ namespace GGFPortal.資料庫連線
     partial void On原因碼Changed();
     partial void On原因Changing(string value);
     partial void On原因Changed();
+    partial void On處理地點Changing(string value);
+    partial void On處理地點Changed();
     #endregion
 		
 		public GGFRequestSam()
@@ -561,6 +565,26 @@ namespace GGFPortal.資料庫連線
 					this._原因 = value;
 					this.SendPropertyChanged("原因");
 					this.On原因Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_處理地點", DbType="NChar(10)", CanBeNull=false)]
+		public string 處理地點
+		{
+			get
+			{
+				return this._處理地點;
+			}
+			set
+			{
+				if ((this._處理地點 != value))
+				{
+					this.On處理地點Changing(value);
+					this.SendPropertyChanging();
+					this._處理地點 = value;
+					this.SendPropertyChanged("處理地點");
+					this.On處理地點Changed();
 				}
 			}
 		}

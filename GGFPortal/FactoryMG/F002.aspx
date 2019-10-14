@@ -94,7 +94,7 @@
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="SheetName" HeaderText="SheetName" />
-                    <asp:BoundField DataField="Dept" HeaderText="部門 Bộ Phận" />
+                    <asp:BoundField DataField="Dept" HeaderText="Dept" />
                     <asp:BoundField DataField="Error" HeaderText="Error" />
                 </Columns>
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

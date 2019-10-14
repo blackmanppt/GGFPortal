@@ -109,7 +109,9 @@
 
                     <asp:GridView ID="ErrorGV" runat="server" CssClass="table table-striped table-sm table-danger"  AutoGenerateColumns="False">
                         <Columns>
-                            <asp:BoundField DataField="Search" HeaderText="Search" SortExpression="Search" />
+                            <asp:BoundField DataField="打樣單號" HeaderText="打樣單號" SortExpression="打樣單號" />
+                            <asp:BoundField DataField="款號" HeaderText="款號" SortExpression="款號" />
+                            <asp:BoundField DataField="客戶代號" HeaderText="客戶代號" SortExpression="客戶代號" />
                             <asp:BoundField DataField="打樣單狀態" HeaderText="打樣單狀態" SortExpression="打樣單狀態" />
                             <asp:BoundField DataField="打樣處理" HeaderText="打樣處理" SortExpression="打樣處理" />
                         </Columns>

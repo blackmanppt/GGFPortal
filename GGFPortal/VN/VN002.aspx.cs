@@ -71,19 +71,19 @@ namespace GGFPortal.VN
                 switch(strImportType)
                 {
                     case "Stitch":
-                        GetExcelDefine.VNStitchmain(); //車縫
+                        GetExcelDefine.VNStitchmain("VGG"); //車縫
                         break;
                     case "Package":
-                        GetExcelDefine.VNPackagemain();//包裝
+                        GetExcelDefine.VNPackagemain("VGG");//包裝
                         break;
                     case "Cut":
-                        GetExcelDefine.VNCutmain();//裁剪
+                        GetExcelDefine.VNCutmain("VGG");//裁剪
                         break;
                     case "Iron":
-                        GetExcelDefine.VNIronmain();//整燙
+                        GetExcelDefine.VNIronmain("VGG");//整燙
                         break;
                     case "QC":
-                        GetExcelDefine.VNQCmain();//品檢
+                        GetExcelDefine.VNQCmain("VGG");//品檢
                         break;
                     default:
                         Response.Redirect("VNindex.aspx");

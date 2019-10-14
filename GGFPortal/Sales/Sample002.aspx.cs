@@ -116,11 +116,13 @@ namespace GGFPortal.Sales
                     StrReasonSql += " and reason like 'D%'";
                     TDinDateBT.Visible = true;
                     TDinDateTB.Enabled = true;
+                    AreaDDL.Visible = false;
                     break;
                 //打版
                 case "Sam1":
                     strwhere = @" (a.dept_no IN ('M01B','K01B','N01B','E010','N01C')) AND (a.employee_status <> 'IA') ORDER BY Name, a.employee_no";
                     StrReasonSql += " and reason like 'B%'";
+                    AreaDDL.Visible = false;
                     break;
                 //樣衣
                 case "Sam2":
@@ -130,6 +132,8 @@ namespace GGFPortal.Sales
                     SamOutTB.Enabled = true;
                     PlanDateBT.Visible = true;
                     PlanDateTB.Enabled = true;
+                    AreaDDL.Visible = true;
+                    Label3.Text = "處理人員/處理地區：";
                     //上線日上傳BT.Visible = true;
                     //上線日上傳TB.Enabled = true;
                     break;
@@ -242,6 +246,7 @@ namespace GGFPortal.Sales
                                             ,[Remark]
                                             ,[原因碼]
                                             ,[原因]
+                                            ,[處理地點]
                                             )
                                         VALUES
                                             (@site
@@ -255,6 +260,7 @@ namespace GGFPortal.Sales
                                             ,@Remark
                                             ,@原因碼
                                             ,@原因
+                                            ,@處理地點
                                             )
                                             ");
                         command1.Parameters.Add("@site", SqlDbType.NVarChar).Value = Session["Site"].ToString();
@@ -268,6 +274,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
                         command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
                         command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
+                        command1.Parameters.Add("@處理地點", SqlDbType.NVarChar).Value = (Session["Dept"].ToString()== "Sam2") ?AreaDDL.SelectedItem.Value.Trim():"";
+                        
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
 
@@ -351,6 +359,8 @@ namespace GGFPortal.Sales
             RemarkTB.Text = "";
             原因碼DDL.Text = "";
             原因LB.Text = "";
+            if (AreaDDL.Visible)
+                AreaDDL.SelectedValue = "";
         }
 
         protected void UpDateBT_Click1(object sender, EventArgs e)
@@ -370,6 +380,7 @@ namespace GGFPortal.Sales
                     try
                     {
                         //TypeLB.Text = i.ToString();
+                        string strArea = (Session["Dept"].ToString() == "Sam2") ? " , 處理地點=@處理地點 "  : "";
                         command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestSam] SET [SampleType] = @SampleType 
                                                             ,[SampleUser] = @SampleUser,[SampleNo] = @SampleNo
                                                             ,[Qty] = @Qty,[SampleCreatDate] = @SampleCreatDate
@@ -378,7 +389,8 @@ namespace GGFPortal.Sales
                                                             ,[Remark]=@Remark
                                                             ,[原因碼]=@原因碼
                                                             ,[原因]=@原因
-                                                            WHERE uid = {0} ", Session["Uid"].ToString());
+                                                            {1}
+                                                            WHERE uid = {0} ", Session["Uid"].ToString(), strArea);
                         command1.Parameters.Add("@SampleType", SqlDbType.NVarChar).Value = TypeDDL.SelectedValue;
                         command1.Parameters.Add("@SampleUser", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
                         command1.Parameters.Add("@SampleNo", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
@@ -388,6 +400,8 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = RemarkTB.Text.Trim();
                         command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
                         command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
+                        if(strArea.Length>0)
+                            command1.Parameters.Add("@處理地點", SqlDbType.NVarChar).Value = AreaDDL.SelectedItem.Value.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -634,6 +648,23 @@ namespace GGFPortal.Sales
                         原因碼DDL.SelectedValue = "";
                         原因LB.Text = "原因碼以異動";
                     }
+                    if(Session["Dept"].ToString()== "Sam2")
+                    {
+                        if(!string.IsNullOrEmpty(item.處理地點))
+                            if (AreaDDL.Items.Contains(AreaDDL.Items.FindByValue(item.處理地點)) == true)
+                            {
+                                AreaDDL.SelectedValue = AreaDDL.Items.FindByValue(item.處理地點).Value;
+                            }
+                            else
+                            {
+                                UserLB.Text += "處理地點：不存在";
+                            }
+                        else
+                        {
+                            AreaDDL.SelectedItem.Value = "";
+                            AreaDDL.SelectedItem.Text = "";
+                        }
+                    }
                     TypeDDL.SelectedValue = TypeDDL.Items.FindByValue(item.SampleType).Value;
                     QtyTB.Text = item.Qty.ToString();
                     DateTB.Text = item.SampleCreatDate;
@@ -699,7 +730,6 @@ namespace GGFPortal.Sales
                         finally
                         {
                             transaction1.Rollback();
-                            //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
                             F_ErrorShow("刪除失敗請連絡MIS");
                         }
                     }

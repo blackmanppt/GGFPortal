@@ -266,6 +266,8 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink104" runat="server" NavigateUrl="~/Sales/Sample013.aspx">打版資料查詢</asp:HyperLink>
                                                 <br />
                                                 <asp:HyperLink ID="HyperLink105" runat="server" NavigateUrl="~/Sales/Sample014.aspx">打版資料明細查詢</asp:HyperLink>
+                                                                        <br />
+                                                <asp:HyperLink ID="HyperLink108" runat="server" NavigateUrl="~/Sales/Sample015.aspx">打版完成日快速上傳</asp:HyperLink>
 
                                                 </td>
                     <th  class="auto-style2">

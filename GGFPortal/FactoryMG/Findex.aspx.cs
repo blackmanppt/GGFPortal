@@ -14,6 +14,17 @@ namespace GGFPortal.FactoryMG
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!string.IsNullOrEmpty(Session["Error"].ToString()))
+                    FError(Session["Error"].ToString());
+            }
+            catch (Exception)
+            {
+                FError("Error");
+                
+            }
+
             if (Page.IsPostBack)
             {
 

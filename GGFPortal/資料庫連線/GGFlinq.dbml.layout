@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.875, 22.75" name="GGF">
   <DataContextMoniker Name="/GGFDataContext" />
   <nestedChildShapes>
-    <classShape Id="39407651-cfbb-4641-900f-4ea8e90e1692" absoluteBounds="3.75, 0.75, 2, 3.9396284993489576">
+    <classShape Id="39407651-cfbb-4641-900f-4ea8e90e1692" absoluteBounds="3.75, 0.75, 2, 4.1244226074218746">
       <DataClassMoniker Name="/GGFDataContext/GGFRequestSam" />
       <nestedChildShapes>
-        <elementListCompartment Id="f2d32bbf-890e-4862-b4e7-2d907b257882" absoluteBounds="3.765, 1.21, 1.9700000000000002, 3.379628499348958" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f2d32bbf-890e-4862-b4e7-2d907b257882" absoluteBounds="3.765, 1.21, 1.9700000000000002, 3.564422607421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="6f7fd775-0930-4e23-b2ac-1f992d09f8a6" absoluteBounds="6.75, 0.75, 2, 3.2004520670572916">

@@ -52,6 +52,7 @@
 
         .auto-style19 {
             width: 100px;
+            vertical-align: middle;
             text-align: right;
         }
 
@@ -156,8 +157,23 @@
                             <asp:Label ID="Label3" runat="server" Text="處理人員：" CssClass="text-right "></asp:Label>
                         </th>
                         <td class="auto-style20">
-                            <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown form-control">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <asp:DropDownList ID="UserDDL" runat="server" AppendDataBoundItems="True" DataTextField="Name" DataValueField="employee_no" CssClass=" dropdown  form-control">
                             </asp:DropDownList>
+                                </div>
+                                <div class="col-md-6">
+                                    <asp:DropDownList ID="AreaDDL" runat="server" AppendDataBoundItems="True" CssClass=" dropdown form-control" DataSourceID="SqlDataSource2" DataTextField="MappingData" DataValueField="Data" Visible="false">
+                                        <asp:ListItem></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [Data], [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
+                                        <SelectParameters>
+                                            <asp:Parameter DefaultValue="SamArea" Name="UsingDefine" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                </div>
+                            
+                                </div>
                             <%--                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
                             SelectCommand="SELECT DISTINCT a.employee_no, b.dept_name + '-' + a.employee_name AS Name FROM bas_employee AS a LEFT OUTER JOIN bas_dept AS b ON a.site = b.site AND a.dept_no = b.dept_no WHERE (a.dept_no IN ('K01B','D01A','D010','E010','N01A','N01B','M01A','M01B','K01A','G010')) AND (a.employee_status &lt;&gt; 'IA') ORDER BY Name, a.employee_no" OnSelecting="SqlDataSource2_Selecting" OnSelected="SqlDataSource2_Selected">
                         </asp:SqlDataSource>--%>
@@ -182,7 +198,7 @@
                             <asp:Label ID="Label4" runat="server" Text="處理方式："></asp:Label>
                         </th>
                         <td class="auto-style20">
-                            <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data" CssClass=" dropdown form-control">
+                            <asp:DropDownList ID="TypeDDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource3" DataTextField="MappingData" DataValueField="Data" CssClass=" dropdown form-control-sm">
                                 <asp:ListItem></asp:ListItem>
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="select Data,MappingData from Mapping where UsingDefine='GGFRequestSam'"></asp:SqlDataSource>
@@ -251,7 +267,7 @@
                             <asp:Label ID="Label12" runat="server" Text="原因碼："></asp:Label>
                         </th>
                         <td class="auto-style8">
-                            <div class="form-group">
+                            <div class="form-group align-self-center">
                                 <asp:DropDownList ID="原因碼DDL" runat="server" DataTextField="reason_name" DataValueField="reason" CssClass=" dropdown form-control">
                                 </asp:DropDownList>
                                 <asp:Label ID="原因LB" runat="server" Text="" Style="text-align: right"></asp:Label>

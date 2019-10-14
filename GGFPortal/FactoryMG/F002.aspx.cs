@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.Net;
 using GGFPortal.ReferenceCode;
+using System.Collections.Generic;
 
 namespace GGFPortal.FactoryMG
 {
@@ -20,8 +21,9 @@ namespace GGFPortal.FactoryMG
         static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //static string strImportType = "Package";
         string strArea = "", strImportType = "", StrRedirect,StrTeam;
-
+        string StrPageName = "TempCode", StrProgram = "F002.aspx";
         多語 lang = new 多語();
+        List<Column1> xx=new List<Column1>();
         protected void Page_PreInit(object sender, EventArgs e)
         {
             //清空Error資料
@@ -37,6 +39,7 @@ namespace GGFPortal.FactoryMG
                     switch (strArea)
                     {
                         case "VGG":
+
                             StrTeam = lang.gg.Find(p => p.資料代號 == strImportType).越文;
                             break;
                         case "GAMA":
@@ -130,64 +133,26 @@ namespace GGFPortal.FactoryMG
                 switch(strImportType)
                 {
                     case "Stitch":
-                        GetExcelDefine.VNStitchmain(); //車縫
+                        GetExcelDefine.VNStitchmain(strArea); //車縫
                         break;
                     case "Package":
-                        GetExcelDefine.VNPackagemain();//包裝
+                        GetExcelDefine.VNPackagemain(strArea);//包裝
                         break;
                     case "Cut":
-                        GetExcelDefine.VNCutmain();//裁剪
+                        GetExcelDefine.VNCutmain(strArea);//裁剪
                         break;
                     case "Iron":
-                        GetExcelDefine.VNIronmain();//整燙
+                        GetExcelDefine.VNIronmain(strArea);//整燙
                         break;
                     case "QC":
-                        GetExcelDefine.VNQCmain();//品檢
+                        GetExcelDefine.VNQCmain(strArea);//品檢
                         break;
                     default:
-                        Response.Redirect("VNindex.aspx");
+                        Response.Redirect(StrProgram);
                         break;
                 }
                 
-                #region old
-                //int xxx = 1;
-                //List <Column> InsertColumn = new List<Column>();
-                //// Type 1：int , Type 2：String , Type 3：日期 , Type 4：float, Type 6：不需要資料 String, Type 7：不需要資料 int , Type 8：float 不需要資料
-                //InsertColumn.Add(new Column() { ColumnID = xxx, ColumnName = "SheetName", ColumnType = 2 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Date", ColumnType = 3 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Dept", ColumnType = 2 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Customer", ColumnType = 2 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "StyleNo", ColumnType = 2 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "OrderQty", ColumnType = 1 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "TeamProductivity", ColumnType = 1 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "OrderShipDate", ColumnType = 3 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "OnlineDate", ColumnType = 3 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "StandardProductivity", ColumnType = 4 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Person", ColumnType = 4 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "TotalTime", ColumnType = 4 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Time", ColumnType = 4 });
-                ////InsertColumn.Add(new Column() { ColumnID = IntAdd(ref x), ColumnName = "Percent", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "GoalProductivity", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayProductivity", ColumnType = 1 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "PreProductivity", ColumnType = 7 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "TotalProductivity", ColumnType = 7 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Difference", ColumnType = 7 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Efficiency", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "TotalEfficiency", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "ReturnPercent", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Rmark1", ColumnType = 6 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "Rmark2", ColumnType = 6 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost1", ColumnType = 4 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost2", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost3", ColumnType = 4 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost4", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost5", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost6", ColumnType = 8 });
-                //InsertColumn.Add(new Column() { ColumnID = IntAdd(ref xxx), ColumnName = "DayCost7", ColumnType = 4 });
-                #endregion
-
-
-                String savePath = Server.MapPath(@"~\ExcelUpLoad\VN\");
+                String savePath = Server.MapPath(@"~\ExcelUpLoad\"+ strArea + @"\");
 
                 DataTable D_table = new DataTable("Excel");
                 D_table = GetExcelDefine.ExcelTable.Copy();
@@ -203,43 +168,12 @@ namespace GGFPortal.FactoryMG
                         savePath = savePath + fileName;
                         FileUpload1.SaveAs(savePath);
 
-                        Label1.Text = "Kiểm tra tệp tin dữ liệu thành công, tên tệp tin---- " + fileName;
+                        //Label1.Text = "Kiểm tra tệp tin dữ liệu thành công, tên tệp tin---- " + fileName;
                         //--------------------------------------------------
                         //---- （以上是）上傳 FileUpload的部分，成功運作！
                         //--------------------------------------------------
 
-                        #region TableTitle excel排序 old
-                        //D_table.Columns.Add("SheetName");
-                        //D_table.Columns.Add("Date");
-                        //D_table.Columns.Add("Dept");
-                        //D_table.Columns.Add("Customer");
-                        //D_table.Columns.Add("StyleNo");
-                        //D_table.Columns.Add("OrderQty");
-                        //D_table.Columns.Add("TeamProductivity");
-                        //D_table.Columns.Add("OrderShipDate");
-                        //D_table.Columns.Add("OnlineDate");
-                        //D_table.Columns.Add("StandardProductivity");
-                        //D_table.Columns.Add("Person");
-                        //D_table.Columns.Add("TotalTime");
-                        //D_table.Columns.Add("Time");
-                        //D_table.Columns.Add("GoalProductivity");
-                        //D_table.Columns.Add("DayProductivity");
-                        //D_table.Columns.Add("PreProductivity");
-                        //D_table.Columns.Add("TotalProductivity");
-                        //D_table.Columns.Add("Difference");
-                        //D_table.Columns.Add("Efficiency");
-                        //D_table.Columns.Add("TotalEfficiency");
-                        //D_table.Columns.Add("ReturnPercent");
-                        //D_table.Columns.Add("Rmark1");
-                        //D_table.Columns.Add("Rmark2");
-                        //D_table.Columns.Add("DayCost1");
-                        //D_table.Columns.Add("DayCost2");
-                        //D_table.Columns.Add("DayCost3");
-                        //D_table.Columns.Add("DayCost4");
-                        //D_table.Columns.Add("DayCost5");
-                        //D_table.Columns.Add("DayCost6");
-                        //D_table.Columns.Add("DayCost7");
-                        #endregion
+                        
                         #region ErrorTable
                         D_errortable.Columns.Add("SheetName");
                         D_errortable.Columns.Add("Dept");
@@ -542,7 +476,7 @@ namespace GGFPortal.FactoryMG
                 if (x == 1&& row.GetCell(j)==null)
                 {
                     berror = true;
-                    sError += ColumnName + "必填欄位未填資料。";
+                    sError += "NoData" + ColumnName ;
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
 
                 }
@@ -578,7 +512,7 @@ namespace GGFPortal.FactoryMG
                             if (reader.HasRows==false)
                             {
                                 berror = true;
-                                sError += "Style_no("+ strString + ")：Không có tài liệu";
+                                sError += "StyleCheck" + strString ;
                             }
                             reader.Close();
                         }
@@ -592,7 +526,7 @@ namespace GGFPortal.FactoryMG
                 if (x == 1)
                 {
                     berror = true;
-                    sError +=  ColumnName + "欄匯入失敗。";
+                    sError += "ImportError" + ColumnName ;
                 }
                 //else
                 //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄匯入失敗(非必要資料不影響匯入)。";
@@ -617,17 +551,15 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError +=  ColumnName + "公式錯誤1。";
+                        sError += "int Error1。" + ColumnName ;
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
-
             }
             else
             {
-
                 try
                 {
                     int iout = 0;
@@ -636,7 +568,7 @@ namespace GGFPortal.FactoryMG
                         if (x == 1)
                         {
                             berror = true;
-                            sError += ColumnName + "未填資料。";
+                            sError += "NoData" + ColumnName ;
                         }
                         D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -647,7 +579,7 @@ namespace GGFPortal.FactoryMG
                             if (x == 1)
                             {
                                 berror = true;
-                                sError +=  ColumnName + "非數字：" + row.GetCell(j).ToString()+ "。";
+                                sError += "int Error2" + ColumnName + row.GetCell(j).ToString()+ "。";
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
@@ -664,7 +596,7 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError +=  ColumnName + "公式錯誤2。";
+                        sError += "Number Error2。" + ColumnName;
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
@@ -690,7 +622,7 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError += ColumnName + "公式錯誤3。";
+                        sError += "Float Error1" + ColumnName;
                     }
                     //else 
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
@@ -709,7 +641,7 @@ namespace GGFPortal.FactoryMG
                         if (x == 1)
                         {
                             berror = true;
-                            sError +=  ColumnName + "必填欄位未填資料。";
+                            sError += "NoData" + ColumnName;
                         }
                         D_dataRow[j + 2] = "0" ;  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -721,7 +653,7 @@ namespace GGFPortal.FactoryMG
                             if (x == 1)
                             {
                                 berror = true;
-                                sError +=  ColumnName + "非數字。";
+                                sError +=  ColumnName + "Float Error2";
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
@@ -772,7 +704,7 @@ namespace GGFPortal.FactoryMG
                 }
                 catch (Exception ex)
                 {
-                    Log.ErrorLog(ex, "Get Productivity_Head uid Error" + Session["FileName"].ToString() + ":", "VN002.aspx");
+                    Log.ErrorLog(ex, "Get Productivity_Head uid Error" + Session["FileName"].ToString() + ":", StrProgram);
                 }
             }
             return (int)ProductivityHeadID;
@@ -786,7 +718,6 @@ namespace GGFPortal.FactoryMG
                     if (Session["Excel"] != null)
                     {
                         DataTable dt = (DataTable)Session["Excel"];
-                        //TypeLB.Text = dt.Rows[2][2].ToString();
                         int iIndex = 0;
                         iIndex = GetExcelIdex();
                         if (iIndex > 0)
@@ -806,8 +737,6 @@ namespace GGFPortal.FactoryMG
                                         string strInsertColumn="", strInsertData="";
                                         if (strImportType=="Stitch")
                                         {
-                                            //strInsertColumn = ",[QCQty],[ErrorQty],[ErrorUnreturnQty],[OnlineDay]";
-                                            //strInsertData = ",@QCQty ,@ErrorQty,@ErrorUnreturnQty,@OnlineDay";
                                             strInsertColumn = ",[QCQty],[ErrorQty],[OnlineDay],[ErrorRate]";
                                             strInsertData = ",@QCQty ,@ErrorQty,@OnlineDay,@ErrorRate";
                                         }
@@ -925,20 +854,22 @@ namespace GGFPortal.FactoryMG
                                     command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
                                     command1.ExecuteNonQuery();
                                     transaction1.Commit();
+                                    Label1.Text = "DataUpSuccess";
                                 }
                                 catch (Exception ex1)
                                 {
                                     try
                                     {
-                                        Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), "VN002.aspx");
+                                        Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), StrProgram);
                                     }
                                     catch (Exception ex2)
                                     {
-                                        Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), "VN002.aspx");
+                                        Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), StrProgram);
                                     }
                                     finally
                                     {
                                         transaction1.Rollback();
+                                        Label1.Text = "DataUpfail";
                                         Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
                                     }
                                 }
@@ -948,7 +879,6 @@ namespace GGFPortal.FactoryMG
                                     conn1.Dispose();
                                     command1.Dispose();
                                     Session.RemoveAll();
-                                    Label1.Text = "資料上傳成功";
                                 }
                             }
                         else
@@ -958,17 +888,14 @@ namespace GGFPortal.FactoryMG
             else
             {
                 if(F_CheckData()==false)
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('HaveData');</script>");
                 else
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Import Date');</script>");
             }
         }
 
         protected void TempExcel_Click(object sender, EventArgs e)
         {
-            //WebClient wc = new WebClient();
-            //string path = "http://127.0.0.1/FileName.pdf";
-
             //宣告並建立WebClient物件
             WebClient wc = new WebClient();
             byte[] b=null;
@@ -1039,16 +966,16 @@ namespace GGFPortal.FactoryMG
                     {
                         try
                         {
-                            Log.ErrorLog(ex1, "Delete Error :" , "F002.aspx");
+                            Log.ErrorLog(ex1, "Delete Error :" , StrProgram);
                         }
                         catch (Exception ex2)
                         {
-                            Log.ErrorLog(ex2, "Delete Error Error:" , "F002.aspx");
+                            Log.ErrorLog(ex2, "Delete Error Error:" , StrProgram);
                         }
                         finally
                         {
                             transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('刪除失敗請連絡MIS');</script>");
+                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Delete Failed');</script>");
                         }
                     }
                     finally

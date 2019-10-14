@@ -279,83 +279,172 @@ namespace GGFPortal.ReferenceCode
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
             VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorRate", ColumnType = 8 });
         }
-        public void VNStitchmain()
+        public void VNStitchmain(string strArea)
         {
             VNStitch();
             VNDT("Stitch");
-            VNChinese("Stitch");
+            VNChinese("Stitch", strArea);
             VNNameHead("Stitch");
         }
-        public void VNPackagemain()
+        public void VNPackagemain(string strArea)
         {
             VNPackage();
             VNDT();
-            VNChinese();
+            VNChinese(string.Empty, strArea);
             VNNameHead();
         }
-        public void VNCutmain()
+        public void VNCutmain(string strArea)
         {
             VNCut();
             VNDT();
-            VNChinese();
+            VNChinese(string.Empty, strArea);
             VNNameHead();
         }
-        public void VNIronmain()
+        public void VNIronmain(string strArea)
         {
             VNIron();
             VNDT();
-            VNChinese();
+            VNChinese(string.Empty, strArea);
             VNNameHead();
         }
-        public void VNQCmain()
+        public void VNQCmain(string strArea)
         {
             VNQC();
             VNDT();
-            VNChinese();
+            VNChinese(string.Empty, strArea);
             VNNameHead();
         }
-        public void VNChinese(string Team = null)
+        public void VNChinese(string Team = null, string strArea = null)
         {
             int x = 0;
-            VNExcel[IntAdd(ref x)].ChineseName = "SheetName";
-            VNExcel[IntAdd(ref x)].ChineseName = "Date";
-            VNExcel[IntAdd(ref x)].ChineseName = "部門";
-            VNExcel[IntAdd(ref x)].ChineseName = "客戶";
-            VNExcel[IntAdd(ref x)].ChineseName = "款號";
-            VNExcel[IntAdd(ref x)].ChineseName = "訂單量";
-            VNExcel[IntAdd(ref x)].ChineseName = "組生產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "訂單交期";
-            VNExcel[IntAdd(ref x)].ChineseName = "上線日期";
-            VNExcel[IntAdd(ref x)].ChineseName = "標準產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "實際工作人數";
-            VNExcel[IntAdd(ref x)].ChineseName = "工時";
-            VNExcel[IntAdd(ref x)].ChineseName = "總時數";
-            VNExcel[IntAdd(ref x)].ChineseName = "百分比";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日目標產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "前天累積產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "累積產量";
-            VNExcel[IntAdd(ref x)].ChineseName = "差異量";
-            VNExcel[IntAdd(ref x)].ChineseName = "組各別效率";
-            VNExcel[IntAdd(ref x)].ChineseName = "組效率";
-            VNExcel[IntAdd(ref x)].ChineseName = "返修率";
-            VNExcel[IntAdd(ref x)].ChineseName = "責任歸屬及上線天數";
-            VNExcel[IntAdd(ref x)].ChineseName = "顏色";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日各組成本";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日生產成本";
-            VNExcel[IntAdd(ref x)].ChineseName = "工繳收入";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日工繳收入";
-            VNExcel[IntAdd(ref x)].ChineseName = "今日生產損益";
-            VNExcel[IntAdd(ref x)].ChineseName = "CM損益";
-            VNExcel[IntAdd(ref x)].ChineseName = "累積損益";
-            if (!string.IsNullOrEmpty(Team))
-            { 
-                VNExcel[IntAdd(ref x)].ChineseName = "QC檢驗數量";
-                VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數可返修";
-                //VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數不可返修";
-                VNExcel[IntAdd(ref x)].ChineseName = "上線天數";
-                VNExcel[IntAdd(ref x)].ChineseName = "新舊瑕疵率判定";
+            switch (strArea)
+            {
+                case "VGG":
+                    VNExcel[IntAdd(ref x)].ChineseName = "SheetName";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Date";
+                    VNExcel[IntAdd(ref x)].ChineseName = "部門 Bộ Phận";
+                    VNExcel[IntAdd(ref x)].ChineseName = "客户 Khách Hàng";
+                    VNExcel[IntAdd(ref x)].ChineseName = "款號 Mã Hàng";
+                    VNExcel[IntAdd(ref x)].ChineseName = "訂單數量 SL đơn hàng";
+                    VNExcel[IntAdd(ref x)].ChineseName = "组生产量 sản lượng tổ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "訂單交期 Ngày giao hàng";
+                    VNExcel[IntAdd(ref x)].ChineseName = "上線日期 Ngày lên chuyền";
+                    VNExcel[IntAdd(ref x)].ChineseName = "1/人8H標準產量 M.tiêu 1ng/8H";
+                    VNExcel[IntAdd(ref x)].ChineseName = "實際工作人數 Số cn  làm";
+                    VNExcel[IntAdd(ref x)].ChineseName = "工時 Thời gian làm việc";
+                    VNExcel[IntAdd(ref x)].ChineseName = "總工時 tổng thời gian làm việc của cả tổ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "百分比 phần trăm";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日目標產量 SL Mụ tiêu ngày";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日產量 Sản Lượng Ngày";
+                    VNExcel[IntAdd(ref x)].ChineseName = "前天累積產量 Tích luỹ trước 1 ngày";
+                    VNExcel[IntAdd(ref x)].ChineseName = "累積產量 Sản lượng tích luỹ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "差異量 Sản lượng  tích luỹ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "組各別效率 hiệu quả của 1 mã hàng trong tổ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "組效率 Tỉ Lệ Hiệu Suất %";
+                    VNExcel[IntAdd(ref x)].ChineseName = "返修率 Tỉ lệ hàng sửa";
+                    VNExcel[IntAdd(ref x)].ChineseName = "责任归属及上线天数 (文字備註)";
+                    VNExcel[IntAdd(ref x)].ChineseName = "顏色";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日各組成本 giá thành các tổ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日生產成本/DZ giá thành SP/DZ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "工繳收入/DZ Đơn giá bán/DZ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日工繳收入 /DZ Doanh thu";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日生產損益 USD USD Lãi,lỗ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "(CM-COST)/CM 損 益 % lãi lỗ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "累積損益";
+                    if (!string.IsNullOrEmpty(Team))
+                    {
+                        VNExcel[IntAdd(ref x)].ChineseName = "QC檢驗數量 Tổng hàng kiểm";
+                        VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數可返修hàng lỗi có thể sửa được";
+                        //VNExcel[IntAdd(ref x)].VNName = "瑕疵數不可返修hàng lỗi không thể sửa được";
+                        VNExcel[IntAdd(ref x)].ChineseName = "上線天數 Số ngày lên ";
+                        VNExcel[IntAdd(ref x)].ChineseName = "新舊瑕疵率判定";
+                    }
+                    break;
+                case "GAMA":
+                    VNExcel[IntAdd(ref x)].ChineseName = "SheetName";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Date";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Dept";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Customer";
+                    VNExcel[IntAdd(ref x)].ChineseName = "StyleNo";
+                    VNExcel[IntAdd(ref x)].ChineseName = "OrderQty";
+                    VNExcel[IntAdd(ref x)].ChineseName = "TeamProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "OrderShipDate";
+                    VNExcel[IntAdd(ref x)].ChineseName = "OnlineDate";
+                    VNExcel[IntAdd(ref x)].ChineseName = "StandardProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Person";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Time";
+                    VNExcel[IntAdd(ref x)].ChineseName = "TotalTime";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Percent";
+                    VNExcel[IntAdd(ref x)].ChineseName = "GoalProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "PreProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "TotalProductivity";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Difference";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Efficiency";
+                    VNExcel[IntAdd(ref x)].ChineseName = "TotalEfficiency";
+                    VNExcel[IntAdd(ref x)].ChineseName = "ReturnPercent";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Rmark1";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Rmark2";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost1";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost2";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost3";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost4";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost5";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost6";
+                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost7";
+                    if (!string.IsNullOrEmpty(Team))
+                    {
+                        VNExcel[IntAdd(ref x)].ChineseName = "QCQty";
+                        VNExcel[IntAdd(ref x)].ChineseName = "ErrorQty";
+                        //VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數不可返修";
+                        VNExcel[IntAdd(ref x)].ChineseName = "OnlineDay";
+                        VNExcel[IntAdd(ref x)].ChineseName = "ErrorRate";
+                    }
+                    break;
+                default:
+                    VNExcel[IntAdd(ref x)].ChineseName = "SheetName";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Date";
+                    VNExcel[IntAdd(ref x)].ChineseName = "部門";
+                    VNExcel[IntAdd(ref x)].ChineseName = "客戶";
+                    VNExcel[IntAdd(ref x)].ChineseName = "款號";
+                    VNExcel[IntAdd(ref x)].ChineseName = "訂單量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "組生產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "訂單交期";
+                    VNExcel[IntAdd(ref x)].ChineseName = "上線日期";
+                    VNExcel[IntAdd(ref x)].ChineseName = "標準產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "實際工作人數";
+                    VNExcel[IntAdd(ref x)].ChineseName = "工時";
+                    VNExcel[IntAdd(ref x)].ChineseName = "總時數";
+                    VNExcel[IntAdd(ref x)].ChineseName = "百分比";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日目標產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "前天累積產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "累積產量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "差異量";
+                    VNExcel[IntAdd(ref x)].ChineseName = "組各別效率";
+                    VNExcel[IntAdd(ref x)].ChineseName = "組效率";
+                    VNExcel[IntAdd(ref x)].ChineseName = "返修率";
+                    VNExcel[IntAdd(ref x)].ChineseName = "責任歸屬及上線天數";
+                    VNExcel[IntAdd(ref x)].ChineseName = "顏色";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日各組成本";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日生產成本";
+                    VNExcel[IntAdd(ref x)].ChineseName = "工繳收入";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日工繳收入";
+                    VNExcel[IntAdd(ref x)].ChineseName = "今日生產損益";
+                    VNExcel[IntAdd(ref x)].ChineseName = "CM損益";
+                    VNExcel[IntAdd(ref x)].ChineseName = "累積損益";
+                    if (!string.IsNullOrEmpty(Team))
+                    {
+                        VNExcel[IntAdd(ref x)].ChineseName = "QC檢驗數量";
+                        VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數可返修";
+                        //VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數不可返修";
+                        VNExcel[IntAdd(ref x)].ChineseName = "上線天數";
+                        VNExcel[IntAdd(ref x)].ChineseName = "新舊瑕疵率判定";
+                    }
+                    break;
             }
+            
+            
         }
         public void VNNameHead(string Team = null)
         {

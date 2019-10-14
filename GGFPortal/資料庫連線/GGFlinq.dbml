@@ -19,6 +19,7 @@
       <Column Name="馬克完成日" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
       <Column Name="原因碼" Type="System.String" DbType="NChar(15)" CanBeNull="false" />
       <Column Name="原因" Type="System.String" DbType="NChar(60)" CanBeNull="false" />
+      <Column Name="處理地點" Type="System.String" DbType="NChar(10)" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.GGFRequestMark" Member="GGFRequestMark">
