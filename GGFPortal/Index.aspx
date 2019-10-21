@@ -268,6 +268,8 @@ table, td, th {
                                                 <asp:HyperLink ID="HyperLink105" runat="server" NavigateUrl="~/Sales/Sample014.aspx">打版資料明細查詢</asp:HyperLink>
                                                                         <br />
                                                 <asp:HyperLink ID="HyperLink108" runat="server" NavigateUrl="~/Sales/Sample015.aspx">打版完成日快速上傳</asp:HyperLink>
+                                                                        <br />
+                                                <asp:HyperLink ID="HyperLink109" runat="server" NavigateUrl="~/Sales/Sample016.aspx">打樣收單(河內)</asp:HyperLink>
 
                                                 </td>
                     <th  class="auto-style2">
@@ -302,7 +304,9 @@ table, td, th {
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:HyperLink ID="HyperLink110" runat="server" NavigateUrl="~/FactoryMG/Findex.aspx">工廠多語首頁</asp:HyperLink>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style1">管理部</td>

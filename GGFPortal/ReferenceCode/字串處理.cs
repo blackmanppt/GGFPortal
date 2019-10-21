@@ -29,7 +29,7 @@ namespace GGFPortal.ReferenceCode
 
             return 多筆資料;
         }
-        protected string[] SplitEnter(string strPur)
+        public string[] SplitEnter(string strPur)
         {
             string[] stringSeparators = new string[] { "\r\n" };
             string[] lines = strPur.Split(stringSeparators, StringSplitOptions.None);

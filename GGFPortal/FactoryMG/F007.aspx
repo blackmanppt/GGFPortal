@@ -11,71 +11,105 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <title>工時資料餵入查詢表</title>
-    <style type="text/css">
-        #titletable {
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
-        .auto-style2 {
-            text-align: left;
-            border: 1px solid black;
-        }
-        .auto-style3 {
-            text-align: left;
-            height: 23px;
-            border: 1px solid black;
-        }
-    </style>
-        <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css"/>
-    <link rel="stylesheet" type="text/css" href="../../themes/icon.css"/>
-    <link rel="stylesheet" type="text/css" href="../demo.css"/>
-    <script type="text/javascript" src="../Scripts/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
-</head>
+    
+    <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />    
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+     <script type="text/javascript"  src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript"  src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+
+    
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+            $('input[name="DateRangeTB"]').daterangepicker({
+                "startDate": start,
+                "endDate": end,
+                "showDropdowns": true,
+                "autoApply": true,
+                "locale": {
+                    "format": "YYYYMMDD",
+                    "separator": " - ",
+                    "applyLabel": "Apply",
+                    "cancelLabel": "Cancel",
+                    "fromLabel": "From",
+                    "toLabel": "To",
+                    "customRangeLabel": "Custom",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "Su",
+                        "Mo",
+                        "Tu",
+                        "We",
+                        "Th",
+                        "Fr",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    ],
+                    "firstDay": 1
+                },
+                "showCustomRangeLabel": false,
+                "alwaysShowCalendars": true,
+                "autoUpdateInput": true
+            }, function (start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+        });
+    </script>
+    </head>
 <body>
-    <form id="form1" runat="server">
-        <div  >
-            
-            <asp:Label ID="Label1" runat="server" Text="工時資料餵入查詢表" Font-Bold="True" Font-Size="X-Large" style="color: #FFCC66; background-color: #3333FF"></asp:Label>
-            
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
-            
-        </div>
-        <div  >
-            <table style="width:600px;"  id="titletable">
-                <tr>
-                    <th class="auto-style3">
-                        <asp:Label ID="Label2" runat="server" Text="匯入日期："></asp:Label>
-                    </th>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>
-                        <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB"  Format="yyyyMMdd"/>
-                        ~<asp:TextBox ID="EndDayTB" runat="server"></asp:TextBox>
-                        <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB"  Format="yyyyMMdd"/>
-                    </td>
-                    <td class="auto-style3">
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <th class="auto-style2">
-                        <asp:Label ID="Label4" runat="server" Text="Style no："></asp:Label>
-                    </th>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="StyleNoSeachTB" runat="server" ></asp:TextBox>
+    <form id="form1" runat="server"> 
+        <asp:ScriptManager ID="ScriptManager1" runat="server">   </asp:ScriptManager>
+                 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+
+            <asp:Label ID="BrandLB" runat="server" Text="" CssClass="navbar-brand col-sm-3 col-md-2 mr-0"></asp:Label>
+           
+   
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                         <h3 >
+                                    <asp:Label ID="Label3" runat="server" Text="起迄日期："></asp:Label>
+
+                                </h3>
+                                <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+
+                            <h2><asp:Label ID="StyleNoLB" runat="server" Text="款號："></asp:Label></h2>
+                    
+
+                        <asp:TextBox ID="StyleNoSeachTB" runat="server" CssClass="form-control" ></asp:TextBox>
                         <ajaxToolkit:AutoCompleteExtender ID="StyleNoSeachTB_AutoCompleteExtender" runat="server" TargetControlID="StyleNoSeachTB" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo">
                         </ajaxToolkit:AutoCompleteExtender>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" />
-                    </td>
-                </tr>
-
-            </table>
-        </div>
-        <div >
-
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" DataSourceID="SqlDataSource2" GridLines="Horizontal">
+                        <asp:TextBox ID="StyleNoSearchMutiTB" runat="server" CssClass="form-control h-25" TextMode="MultiLine"></asp:TextBox>
+                                                <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" CssClass="btn-dark"/>
+                    
+                    </div>
+                </nav>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="table-responsive">
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" CssClass="table col-md-4">
                 <Columns>
                     <asp:BoundField DataField="Team" HeaderText="Team" SortExpression="Team" />
                     <asp:BoundField DataField="SumTime" HeaderText="SumTime" ReadOnly="True" SortExpression="SumTime" DataFormatString="{0:N2}" />
@@ -90,32 +124,32 @@
                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
                 <SortedDescendingHeaderStyle BackColor="#275353" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="select Team,sum(b.Person* b.Time) as SumTime from  Productivity_Head a left join Productivity_Line b on a.uid=b.uid
-where Flag=1 and Date between @Date1 and @Date2
-
-group by Team">
-                <SelectParameters>
-                    <asp:SessionParameter DefaultValue="19000101" Name="Date1" SessionField="Date1" />
-                    <asp:SessionParameter DefaultValue="29991231" Name="Date2" SessionField="Date2" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="500px" Width="1001px">
-                <LocalReport ReportPath="ReportSource\VN\ReportVN003.rdlc">
-                    <DataSources>
-                        <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
-                    </DataSources>
-                </LocalReport>
-            </rsweb:ReportViewer>
-            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.VNDSTempTableAdapters.VNReportTableAdapter">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="1" Name="Flag" Type="Int32" />
-                    <asp:SessionParameter DefaultValue="19000101" Name="Date1" SessionField="Date1" Type="String" />
-                    <asp:SessionParameter DefaultValue="29991231" Name="Date2" SessionField="Date2" Type="String" />
-                    <asp:SessionParameter DefaultValue="%" Name="StyleNo" SessionField="StyleNo" Type="String" />
-                </SelectParameters>
-            </asp:ObjectDataSource>
+                    </div>
+                    
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" CssClass="table">
+        </rsweb:ReportViewer>
+                </main>
+            </div>
         </div>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="show3" runat="server" Text="show3" Style="display:none" />
+                <asp:Panel ID="AlertPanel" runat="server" align="center"  CssClass="alert-danger w-75" Style="display: none">
+                    <div class=" text-center">
+                        <h3>
+                            <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
+
+                        </h3>
+                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-danger" />
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                </ajaxToolkit:ModalPopupExtender>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+      
+
+      
 
     </form>
 </body>

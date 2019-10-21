@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SALE_V5.aspx.cs" Inherits="GGFPortal.Sales.SALE_V5" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sample016.aspx.cs" Inherits="GGFPortal.Sales.Sample016" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>打樣收單查詢</title>
+    <title>打樣收單查詢(河內)</title>
     <script src="../scripts/jquery-3.1.1.min.js"></script>
     <script src="../scripts/scripts.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-left">打樣收單查詢</h3>
+                        <h3 class="text-info text-left">打樣收單查詢(河內)</h3>
 
                         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                             <h4>
@@ -61,36 +61,15 @@
                             </div>
                             <h4>打樣單狀態</h4>
                             <div class=" ">
-                                <asp:DropDownList ID="StatusDDL" runat="server" AutoPostBack="True" OnSelectedIndexChanged="StatusDDL_SelectedIndexChanged" CssClass=" form-control dropdown ">
+                                <asp:DropDownList ID="StatusDDL" runat="server" AutoPostBack="True"  CssClass=" form-control dropdown ">
                             <asp:ListItem Value="A">新增</asp:ListItem>
                             <asp:ListItem Value="CL">結案</asp:ListItem>
                             <asp:ListItem Value="CA">刪除</asp:ListItem>
                             <asp:ListItem Value="ALL">全部</asp:ListItem>
                         </asp:DropDownList>
                             </div>
-                            
-                            
-                            <%--                            <h4>年度</h4>
-                                <div class="form-group">
-                                <asp:DropDownList ID="年度DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="season_y" DataValueField="season_y"  CssClass="form-control">
-                                    <asp:ListItem></asp:ListItem>
-                                </asp:DropDownList>
-
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season_y] FROM [ordc_bah1] ORDER BY [season_y] DESC"></asp:SqlDataSource>
-                                    </div>
-                            <h4>季節</h4>
-                            <div class="form-group">
-                                <asp:DropDownList ID="季節DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="season" DataValueField="season"  CssClass="form-control">
-                                    <asp:ListItem></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season] FROM [ordc_bah1] ORDER BY [season]"></asp:SqlDataSource>
-                            </div>--%>
-                            
-                            <div class="form-group">
-                                <h4>是否收單</h4>
-                                <asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" AutoPostBack="True" OnCheckedChanged="ReceiptCB_CheckedChanged"  />
-                                <h4>地區</h4>
-                                <asp:CheckBox ID="HanoiCB" runat="server" Text="河內打樣" />
+                           <div class="form-group">
+                                <%--<asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" AutoPostBack="True" OnCheckedChanged="ReceiptCB_CheckedChanged" />--%>
 <%-- 多欄位autocomp                               <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="供應商TB" ID="供應商TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
         CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false"></ajaxToolkit:AutoCompleteExtender>
                             <div>
@@ -109,20 +88,15 @@
                                     </script>
                                 </div>--%>
                             </div>
-<%--                            
-                            <h4>狀態</h4>
-                            <div class="form-group">
-                                <asp:CheckBox ID="主料CB" runat="server" Checked="true" CssClass="form-control" Text="顯示主料資料" />
-                                <asp:CheckBox ID="入庫CB" runat="server" Checked="true" CssClass="form-control" Text="顯示入庫資料" />
-                            </div>--%>
-                            <h4>結案日期</h4>
+
+<%--                            <h4>結案日期</h4>
                             <div class=" form-group">
                                 
                                 <asp:TextBox runat="server" ID="結案起TB" Enabled="false"  CssClass=" form-control " />
                                 <ajaxToolkit:CalendarExtender runat="server" BehaviorID="結案起TB_CalendarExtender" TargetControlID="結案起TB" ID="結案起TB_CalendarExtender"  Format="yyyy/MM/dd"></ajaxToolkit:CalendarExtender>
                                 <asp:TextBox runat="server" ID="結案迄TB" Enabled="false" CssClass=" form-control " />
                                 <ajaxToolkit:CalendarExtender runat="server" BehaviorID="結案迄TB_CalendarExtender" TargetControlID="結案迄TB" ID="結案迄TB_CalendarExtender"  Format="yyyy/MM/dd"></ajaxToolkit:CalendarExtender>
-                            </div>
+                            </div>--%>
                             <div class="form-group">
                                 <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
                                 <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />

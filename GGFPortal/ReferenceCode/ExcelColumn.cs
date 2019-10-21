@@ -284,35 +284,35 @@ namespace GGFPortal.ReferenceCode
             VNStitch();
             VNDT("Stitch");
             VNChinese("Stitch", strArea);
-            VNNameHead("Stitch");
+            VNNameHead("Stitch", strArea);
         }
         public void VNPackagemain(string strArea)
         {
             VNPackage();
             VNDT();
             VNChinese(string.Empty, strArea);
-            VNNameHead();
+            VNNameHead(string.Empty, strArea);
         }
         public void VNCutmain(string strArea)
         {
             VNCut();
             VNDT();
             VNChinese(string.Empty, strArea);
-            VNNameHead();
+            VNNameHead(string.Empty, strArea);
         }
         public void VNIronmain(string strArea)
         {
             VNIron();
             VNDT();
             VNChinese(string.Empty, strArea);
-            VNNameHead();
+            VNNameHead(string.Empty, strArea);
         }
         public void VNQCmain(string strArea)
         {
             VNQC();
             VNDT();
             VNChinese(string.Empty, strArea);
-            VNNameHead();
+            VNNameHead(string.Empty, strArea);
         }
         public void VNChinese(string Team = null, string strArea = null)
         {
@@ -446,48 +446,95 @@ namespace GGFPortal.ReferenceCode
             
             
         }
-        public void VNNameHead(string Team = null)
+        public void VNNameHead(string Team = null, string strArea = "VGG")
         {
             int x = 0;
-            VNExcel[IntAdd(ref x)].VNName = "SheetName";
-            VNExcel[IntAdd(ref x)].VNName = "Date";
-            VNExcel[IntAdd(ref x)].VNName = "部門 Bộ Phận";
-            VNExcel[IntAdd(ref x)].VNName = "客户 Khách Hàng";
-            VNExcel[IntAdd(ref x)].VNName = "款號 Mã Hàng";
-            VNExcel[IntAdd(ref x)].VNName = "訂單數量 SL đơn hàng";
-            VNExcel[IntAdd(ref x)].VNName = "组生产量 sản lượng tổ";
-            VNExcel[IntAdd(ref x)].VNName = "訂單交期 Ngày giao hàng";
-            VNExcel[IntAdd(ref x)].VNName = "上線日期 Ngày lên chuyền";
-            VNExcel[IntAdd(ref x)].VNName = "1/人8H標準產量 M.tiêu 1ng/8H";
-            VNExcel[IntAdd(ref x)].VNName = "實際工作人數 Số cn  làm";
-            VNExcel[IntAdd(ref x)].VNName = "工時 Thời gian làm việc";
-            VNExcel[IntAdd(ref x)].VNName = "總工時 tổng thời gian làm việc của cả tổ";
-            VNExcel[IntAdd(ref x)].VNName = "百分比 phần trăm";
-            VNExcel[IntAdd(ref x)].VNName = "今日目標產量 SL Mụ tiêu ngày";
-            VNExcel[IntAdd(ref x)].VNName = "今日產量 Sản Lượng Ngày";
-            VNExcel[IntAdd(ref x)].VNName = "前天累積產量 Tích luỹ trước 1 ngày";
-            VNExcel[IntAdd(ref x)].VNName = "累積產量 Sản lượng tích luỹ";
-            VNExcel[IntAdd(ref x)].VNName = "差異量 Sản lượng  tích luỹ";
-            VNExcel[IntAdd(ref x)].VNName = "組各別效率 hiệu quả của 1 mã hàng trong tổ";
-            VNExcel[IntAdd(ref x)].VNName = "組效率 Tỉ Lệ Hiệu Suất %";
-            VNExcel[IntAdd(ref x)].VNName = "返修率 Tỉ lệ hàng sửa";
-            VNExcel[IntAdd(ref x)].VNName = "责任归属及上线天数 (文字備註)";
-            VNExcel[IntAdd(ref x)].VNName = "顏色";
-            VNExcel[IntAdd(ref x)].VNName = "今日各組成本 giá thành các tổ";
-            VNExcel[IntAdd(ref x)].VNName = "今日生產成本/DZ giá thành SP/DZ";
-            VNExcel[IntAdd(ref x)].VNName = "工繳收入/DZ Đơn giá bán/DZ";
-            VNExcel[IntAdd(ref x)].VNName = "今日工繳收入 /DZ Doanh thu";
-            VNExcel[IntAdd(ref x)].VNName = "今日生產損益 USD USD Lãi,lỗ";
-            VNExcel[IntAdd(ref x)].VNName = "(CM-COST)/CM 損 益 % lãi lỗ";
-            VNExcel[IntAdd(ref x)].VNName = "累積損益";
-            if (!string.IsNullOrEmpty(Team))
+            switch (strArea)
             {
-                VNExcel[IntAdd(ref x)].VNName = "QC檢驗數量 Tổng hàng kiểm";
-                VNExcel[IntAdd(ref x)].VNName = "瑕疵數可返修hàng lỗi có thể sửa được";
-                //VNExcel[IntAdd(ref x)].VNName = "瑕疵數不可返修hàng lỗi không thể sửa được";
-                VNExcel[IntAdd(ref x)].VNName = "上線天數 Số ngày lên ";
-                VNExcel[IntAdd(ref x)].VNName = "新舊瑕疵率判定";
+                case "VGG":
+                    VNExcel[IntAdd(ref x)].VNName = "SheetName";
+                    VNExcel[IntAdd(ref x)].VNName = "Date";
+                    VNExcel[IntAdd(ref x)].VNName = "部門 Bộ Phận";
+                    VNExcel[IntAdd(ref x)].VNName = "客户 Khách Hàng";
+                    VNExcel[IntAdd(ref x)].VNName = "款號 Mã Hàng";
+                    VNExcel[IntAdd(ref x)].VNName = "訂單數量 SL đơn hàng";
+                    VNExcel[IntAdd(ref x)].VNName = "组生产量 sản lượng tổ";
+                    VNExcel[IntAdd(ref x)].VNName = "訂單交期 Ngày giao hàng";
+                    VNExcel[IntAdd(ref x)].VNName = "上線日期 Ngày lên chuyền";
+                    VNExcel[IntAdd(ref x)].VNName = "1/人8H標準產量 M.tiêu 1ng/8H";
+                    VNExcel[IntAdd(ref x)].VNName = "實際工作人數 Số cn  làm";
+                    VNExcel[IntAdd(ref x)].VNName = "工時 Thời gian làm việc";
+                    VNExcel[IntAdd(ref x)].VNName = "總工時 tổng thời gian làm việc của cả tổ";
+                    VNExcel[IntAdd(ref x)].VNName = "百分比 phần trăm";
+                    VNExcel[IntAdd(ref x)].VNName = "今日目標產量 SL Mụ tiêu ngày";
+                    VNExcel[IntAdd(ref x)].VNName = "今日產量 Sản Lượng Ngày";
+                    VNExcel[IntAdd(ref x)].VNName = "前天累積產量 Tích luỹ trước 1 ngày";
+                    VNExcel[IntAdd(ref x)].VNName = "累積產量 Sản lượng tích luỹ";
+                    VNExcel[IntAdd(ref x)].VNName = "差異量 Sản lượng  tích luỹ";
+                    VNExcel[IntAdd(ref x)].VNName = "組各別效率 hiệu quả của 1 mã hàng trong tổ";
+                    VNExcel[IntAdd(ref x)].VNName = "組效率 Tỉ Lệ Hiệu Suất %";
+                    VNExcel[IntAdd(ref x)].VNName = "返修率 Tỉ lệ hàng sửa";
+                    VNExcel[IntAdd(ref x)].VNName = "责任归属及上线天数 (文字備註)";
+                    VNExcel[IntAdd(ref x)].VNName = "顏色";
+                    VNExcel[IntAdd(ref x)].VNName = "今日各組成本 giá thành các tổ";
+                    VNExcel[IntAdd(ref x)].VNName = "今日生產成本/DZ giá thành SP/DZ";
+                    VNExcel[IntAdd(ref x)].VNName = "工繳收入/DZ Đơn giá bán/DZ";
+                    VNExcel[IntAdd(ref x)].VNName = "今日工繳收入 /DZ Doanh thu";
+                    VNExcel[IntAdd(ref x)].VNName = "今日生產損益 USD USD Lãi,lỗ";
+                    VNExcel[IntAdd(ref x)].VNName = "(CM-COST)/CM 損 益 % lãi lỗ";
+                    VNExcel[IntAdd(ref x)].VNName = "累積損益";
+                    if (!string.IsNullOrEmpty(Team))
+                    {
+                        VNExcel[IntAdd(ref x)].VNName = "QC檢驗數量 Tổng hàng kiểm";
+                        VNExcel[IntAdd(ref x)].VNName = "瑕疵數可返修hàng lỗi có thể sửa được";
+                        //VNExcel[IntAdd(ref x)].VNName = "瑕疵數不可返修hàng lỗi không thể sửa được";
+                        VNExcel[IntAdd(ref x)].VNName = "上線天數 Số ngày lên ";
+                        VNExcel[IntAdd(ref x)].VNName = "新舊瑕疵率判定";
+                    }
+                    break;
+                case "GAMA":
+                    VNExcel[IntAdd(ref x)].VNName = "Dept";
+                    VNExcel[IntAdd(ref x)].VNName = "Customer";
+                    VNExcel[IntAdd(ref x)].VNName = "StyleNo";
+                    VNExcel[IntAdd(ref x)].VNName = "OrderQty";
+                    VNExcel[IntAdd(ref x)].VNName = "OrderShipDate";
+                    VNExcel[IntAdd(ref x)].VNName = "OnlineDate";
+                    VNExcel[IntAdd(ref x)].VNName = "StandardProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "TeamProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "GoalProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "DayProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "PreProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "TotalProductivity";
+                    VNExcel[IntAdd(ref x)].VNName = "Person";
+                    VNExcel[IntAdd(ref x)].VNName = "Time";
+                    VNExcel[IntAdd(ref x)].VNName = "TotalTime";
+                    VNExcel[IntAdd(ref x)].VNName = "[Percent]";
+                    VNExcel[IntAdd(ref x)].VNName = "Difference";
+                    VNExcel[IntAdd(ref x)].VNName = "Efficiency";
+                    VNExcel[IntAdd(ref x)].VNName = "TotalEfficiency";
+                    VNExcel[IntAdd(ref x)].VNName = "ReturnPercent";
+                    VNExcel[IntAdd(ref x)].VNName = "Rmark1";
+                    VNExcel[IntAdd(ref x)].VNName = "Rmark2";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost1";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost2";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost3";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost4";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost5";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost6";
+                    VNExcel[IntAdd(ref x)].VNName = "DayCost7";
+                    if (!string.IsNullOrEmpty(Team))
+                    {
+                        VNExcel[IntAdd(ref x)].VNName = "QCQty";
+                        VNExcel[IntAdd(ref x)].VNName = "ErrorQty";
+                        VNExcel[IntAdd(ref x)].VNName = "OnlineDay";
+                        VNExcel[IntAdd(ref x)].VNName = "ErrorRate";
+                    }
+                    break;
+                default:
+                    
+                    break;
             }
+            
         }
 
     }

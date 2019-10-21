@@ -22,7 +22,11 @@
     
     <script type="text/javascript">
         $(function () {
+            var start = moment().subtract(29, 'days');
+            var end = moment();
             $('input[name="DateRangeTB"]').daterangepicker({
+                "startDate": start,
+                "endDate": end,
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {

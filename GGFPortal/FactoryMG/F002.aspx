@@ -46,7 +46,7 @@
                 </th>
                 <td class="line">
 
-                    <asp:TextBox ID="SearchTB" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="SearchTB" runat="server" CssClass="form-control form-control-dark" ></asp:TextBox>
                     
                     <ajaxToolkit:TextBoxWatermarkExtender ID="SearchTB_TextBoxWatermarkExtender" runat="server" TargetControlID="SearchTB" WatermarkText="請填入資料" />
                     
@@ -157,7 +157,7 @@
             </asp:GridView>--%>
 
         </div>
-        <asp:GridView ID="ExcelGV" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+        <asp:GridView ID="ExcelGV" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" CssClass="table">
             <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
             <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
             <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
@@ -168,6 +168,23 @@
             <SortedDescendingCellStyle BackColor="#F1E5CE" />
             <SortedDescendingHeaderStyle BackColor="#93451F" />
         </asp:GridView>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                <ContentTemplate>
+                    <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                    <asp:Panel ID="AlertPanel" runat="server" CssClass="w-50 h-50 align-content-center" BackColor="#009999" Style="display: none">
+                        <div class=" align-content-center">
+                            <h3>
+                                <asp:Label ID="MessageLB" runat="server" Text=""></asp:Label>
+
+                            </h3>
+                            <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
+                        </div>
+                    </asp:Panel>
+                    <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                    </ajaxToolkit:ModalPopupExtender>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
     </form>
 </body>
 </html>

@@ -20,10 +20,10 @@ namespace GGFPortal.FactoryMG
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
         static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //static string strImportType = "Package";
-        string strArea = "", strImportType = "", StrRedirect,StrTeam;
-        string StrPageName = "TempCode", StrProgram = "F002.aspx";
-        多語 lang = new 多語();
-        List<Column1> xx=new List<Column1>();
+        static string strArea = "", strImportType = "", StrRedirect,StrTeam,StrRow;
+        string StrPageName = "F002", StrProgram = "F002.aspx";
+        static 多語 lang = new 多語();
+        
         protected void Page_PreInit(object sender, EventArgs e)
         {
             //清空Error資料
@@ -39,11 +39,16 @@ namespace GGFPortal.FactoryMG
                     switch (strArea)
                     {
                         case "VGG":
-
                             StrTeam = lang.gg.Find(p => p.資料代號 == strImportType).越文;
+                            SearchTB_TextBoxWatermarkExtender.WatermarkText= lang.gg.Find(p => p.資料代號 == "Import Date").越文;
+                            StrRow= lang.gg.Find(p => p.資料代號 == "row num").越文;
+                            Page.Title = lang.gg.Find(p => p.資料代號 == StrPageName).越文;
                             break;
                         case "GAMA":
                             StrTeam = lang.gg.Find(p => p.資料代號 == strImportType).英文;
+                            SearchTB_TextBoxWatermarkExtender.WatermarkText = lang.gg.Find(p => p.資料代號 == "Import Date").英文;
+                            StrRow = lang.gg.Find(p => p.資料代號 == "row num").英文;
+                            Page.Title = lang.gg.Find(p => p.資料代號 == StrPageName).英文;
                             break;
                         default:
                             Session["Error"] = "Session Timeout";
@@ -52,65 +57,25 @@ namespace GGFPortal.FactoryMG
                     }
                     TypeLB.Text = StrTeam;
                     AreaLB.Text = strArea;
-                    Page.Title = strArea + StrTeam;
+                    Page.Title = StrPageName+ strArea + StrTeam;
                 }
                 else
                 {
                     Session["Error"] = "Session Timeout";
                     Response.Redirect(StrRedirect);
                 }
-                    
+                
             }
             catch (Exception ex)
             {
                 Session["Error"] = "Page_PreInit Error :" + ex.ToString();
                 Response.Redirect(StrRedirect);
-                throw;
             }
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    SearchTB.Attributes["readonly"] = "readonly";
-            //    strArea = (Request.Params["AREA"] != null) ? Request.Params["AREA"] : "";
-            //    strImportType = (Request.Params["TYPE"] != null) ? Request.Params["TYPE"] : "";
-            //    if (strArea == "" || strImportType == "")
-            //        Response.Redirect(StrRedirect);
-            //    AreaLB.Text = strArea;
-            //}
-            //catch (Exception)
-            //{
-            //    Session.RemoveAll();
-            //    Session["Error"] = "Session Timeout";
-            //    Response.Redirect(StrRedirect);
-            //    throw;
-            //}
-
-
-            //TypeLB.Text = strImportType;
-            //switch (strImportType)
-            //{
-            //    case "Stitch":
-            //        TypeLB.Text = "Stitch";
-            //        break;
-            //    case "Package":
-            //        TypeLB.Text = "Đóng gói";
-            //        break;
-            //    case "Cut":
-            //        TypeLB.Text = "Cắt";
-            //        break;
-            //    case "Iron":
-            //        TypeLB.Text = "Là";
-            //        break;
-            //    case "QC":
-            //        TypeLB.Text = "Kiểm tra chất lượng";
-            //        break;
-            //    default:
-            //        Response.Redirect("VNindex.aspx");
-            //        break;
-            //}
-
+            SearchTB.Attributes["readonly"] = "readonly";
         }
 
         protected void TeamCodeBT_Click(object sender, EventArgs e)
@@ -126,357 +91,403 @@ namespace GGFPortal.FactoryMG
         }
         protected void CheckBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
+            if (!string.IsNullOrEmpty(SearchTB.Text))
             {
-
-                Column1 GetExcelDefine = new Column1();
-                switch(strImportType)
+                if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
                 {
-                    case "Stitch":
-                        GetExcelDefine.VNStitchmain(strArea); //車縫
-                        break;
-                    case "Package":
-                        GetExcelDefine.VNPackagemain(strArea);//包裝
-                        break;
-                    case "Cut":
-                        GetExcelDefine.VNCutmain(strArea);//裁剪
-                        break;
-                    case "Iron":
-                        GetExcelDefine.VNIronmain(strArea);//整燙
-                        break;
-                    case "QC":
-                        GetExcelDefine.VNQCmain(strArea);//品檢
-                        break;
-                    default:
-                        Response.Redirect(StrProgram);
-                        break;
-                }
-                
-                String savePath = Server.MapPath(@"~\ExcelUpLoad\"+ strArea + @"\");
 
-                DataTable D_table = new DataTable("Excel");
-                D_table = GetExcelDefine.ExcelTable.Copy();
-                DataTable D_errortable = new DataTable("Error");
-                //實際顯示欄位
-                int Excel欄位數 = D_table.Columns.Count-2;
-                if (SearchTB.Text.Length > 0 && F_CheckData())
-                {
-                    if (FileUpload1.HasFile)
+                    Column1 GetExcelDefine = new Column1();
+                    switch (strImportType)
                     {
-                        String fileName = FileUpload1.FileName;
-                        Session["FileName"] = fileName;
-                        savePath = savePath + fileName;
-                        FileUpload1.SaveAs(savePath);
+                        case "Stitch":
+                            GetExcelDefine.VNStitchmain(strArea); //車縫
+                            break;
+                        case "Package":
+                            GetExcelDefine.VNPackagemain(strArea);//包裝
+                            break;
+                        case "Cut":
+                            GetExcelDefine.VNCutmain(strArea);//裁剪
+                            break;
+                        case "Iron":
+                            GetExcelDefine.VNIronmain(strArea);//整燙
+                            break;
+                        case "QC":
+                            GetExcelDefine.VNQCmain(strArea);//品檢
+                            break;
+                        default:
+                            Response.Redirect(StrProgram);
+                            break;
+                    }
 
-                        //Label1.Text = "Kiểm tra tệp tin dữ liệu thành công, tên tệp tin---- " + fileName;
-                        //--------------------------------------------------
-                        //---- （以上是）上傳 FileUpload的部分，成功運作！
-                        //--------------------------------------------------
+                    String savePath = Server.MapPath(@"~\ExcelUpLoad\" + strArea + @"\");
 
-                        
-                        #region ErrorTable
-                        D_errortable.Columns.Add("SheetName");
-                        D_errortable.Columns.Add("Dept");
-                        D_errortable.Columns.Add("Error");
-                        #endregion
-
-
-                        if (fileName.Substring(fileName.Length - 4, 4).ToUpper() == "XLSX")
+                    DataTable D_table = new DataTable("Excel");
+                    D_table = GetExcelDefine.ExcelTable.Copy();
+                    DataTable D_errortable = new DataTable("Error");
+                    //實際顯示欄位
+                    int Excel欄位數 = D_table.Columns.Count - 2;
+                    if (SearchTB.Text.Length > 0 && F_CheckData())
+                    {
+                        if (FileUpload1.HasFile)
                         {
-                            XSSFWorkbook workbook = new XSSFWorkbook(FileUpload1.FileContent);  //==只能讀取 System.IO.Stream
+                            String fileName = FileUpload1.FileName;
+                            Session["FileName"] = fileName;
+                            savePath = savePath + fileName;
+                            FileUpload1.SaveAs(savePath);
 
-                            for (int x = 0; x < workbook.NumberOfSheets; x++)
+                            //Label1.Text = "Kiểm tra tệp tin dữ liệu thành công, tên tệp tin---- " + fileName;
+                            //--------------------------------------------------
+                            //---- （以上是）上傳 FileUpload的部分，成功運作！
+                            //--------------------------------------------------
+
+
+                            #region ErrorTable
+                            D_errortable.Columns.Add("SheetName");
+                            D_errortable.Columns.Add("Dept");
+                            D_errortable.Columns.Add("Error");
+                            #endregion
+
+
+                            if (fileName.Substring(fileName.Length - 4, 4).ToUpper() == "XLSX")
                             {
-                                XSSFSheet u_sheet = (XSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
-                                XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
-                                IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
-                                Session["Date"] = SearchTB.Text;
+                                XSSFWorkbook workbook = new XSSFWorkbook(FileUpload1.FileContent);  //==只能讀取 System.IO.Stream
 
-                                //-- for迴圈的「啟始值」要加一，表示不包含 Excel表頭列
-                                // for (int i = (u_sheet.FirstRowNum + 1); i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
-                                for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                                for (int x = 0; x < workbook.NumberOfSheets; x++)
                                 {
-                                    //--不包含 Excel表頭列的 "其他資料列"
-                                    IRow row = (IRow)u_sheet.GetRow(i);
-                                    DataRow D_dataRow = D_table.NewRow();
-                                    DataRow D_erroraRow = D_errortable.NewRow();
-                                    D_dataRow[0] = u_sheet.SheetName.ToString();
-                                    D_dataRow[1] = SearchTB.Text;
-                                    bool bcheck = true, berror = false;
-                                    string sError = "";
-                                    //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                    for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
+                                    XSSFSheet u_sheet = (XSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
+                                    XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
+                                    IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
+                                    Session["Date"] = SearchTB.Text;
+
+                                    //-- for迴圈的「啟始值」要加一，表示不包含 Excel表頭列
+                                    // for (int i = (u_sheet.FirstRowNum + 1); i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                                    for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                                     {
-                                        //沒有Style就不抓
-                                        if (row.GetCell(2) == null)
+                                        //--不包含 Excel表頭列的 "其他資料列"
+                                        IRow row = (IRow)u_sheet.GetRow(i);
+                                        DataRow D_dataRow = D_table.NewRow();
+                                        DataRow D_erroraRow = D_errortable.NewRow();
+                                        D_dataRow[0] = u_sheet.SheetName.ToString();
+                                        D_dataRow[1] = SearchTB.Text;
+                                        bool bcheck = true, berror = false;
+                                        string sError = "";
+                                        //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                        for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
                                         {
-                                            bcheck = false;
-                                            break;
+                                            //沒有Style就不抓
+                                            if (row.GetCell(2) == null)
+                                            {
+                                                bcheck = false;
+                                                break;
+                                            }
+
+                                            switch (GetExcelDefine.VNExcel[j + 2].ColumnType)
+                                            {
+                                                // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
+                                                case 1:
+                                                    IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 2:
+                                                    StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 3:
+                                                    try
+                                                    {
+                                                        D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
+                                                        //轉換日期格式
+                                                    }
+                                                    catch
+                                                    {
+                                                        //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
+                                                        berror = true;
+                                                        sError = FConvertError(GetExcelDefine, i, sError, j, "DateformatError");
+                                                        //D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 6:
+                                                    StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+                                                    #region string old
+                                                    ////-- 檢查這一格，是否包含公式（Formula）？ 
+                                                    //if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
+                                                    //{
+                                                    //    try
+                                                    //    {
+                                                    //        D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
+                                                    //    }
+                                                    //    catch (Exception ex)
+                                                    //    {
+
+                                                    //        D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
+                                                    //    }
+                                                    //}
+                                                    //else
+                                                    //{
+                                                    //    try
+                                                    //    {
+                                                    //        D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
+                                                    //    }
+                                                    //    catch (Exception ex)
+                                                    //    {
+
+                                                    //        D_dataRow[j + 2] = "";  //--每一個欄位，都加入同一列 DataRow
+                                                    //    }
+                                                    //}
+                                                    #endregion
+                                                    break;
+                                                case 7:
+                                                    IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+                                                    break;
+                                                case 8:
+                                                    FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+
+                                                    break;
+
+                                                default:
+                                                    break;
+
+                                                    //-- CellType需要搭配「NPOI.SS.UserModel命名空間」
+
+                                            }
                                         }
-
-                                        switch (GetExcelDefine.VNExcel[j + 2].ColumnType)
+                                        if (bcheck)
+                                            D_table.Rows.Add(D_dataRow);
+                                        if (berror)
                                         {
-                                            // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
-                                            case 1:
-                                                IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 2:
-                                                StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 3:
-                                                try
-                                                {
-                                                    D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
-                                                    //轉換日期格式
-                                                }
-                                                catch 
-                                                {
-                                                    //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
-                                                    berror = true;
-                                                    sError += "第" + (i - 4).ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "日期格式錯誤。";
-                                                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
-                                                                                                                                   //throw;
-                                                }
-                                                break;
-                                            case 4:
-                                                FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 6:
-                                                StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                #region string old
-                                                ////-- 檢查這一格，是否包含公式（Formula）？ 
-                                                //if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
-                                                //{
-                                                //    try
-                                                //    {
-                                                //        D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
-                                                //    }
-                                                //    catch (Exception ex)
-                                                //    {
-
-                                                //        D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
-                                                //    }
-                                                //}
-                                                //else
-                                                //{
-                                                //    try
-                                                //    {
-                                                //        D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
-                                                //    }
-                                                //    catch (Exception ex)
-                                                //    {
-
-                                                //        D_dataRow[j + 2] = "";  //--每一個欄位，都加入同一列 DataRow
-                                                //    }
-                                                //}
-                                                #endregion
-                                                break;
-                                            case 7:
-                                                IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 8:
-                                                FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-
-                                                break;
-
-                                            default:
-                                                break;
-
-                                                //-- CellType需要搭配「NPOI.SS.UserModel命名空間」
-
+                                            D_erroraRow[0] = u_sheet.SheetName.ToString();
+                                            D_erroraRow[1] = row.GetCell(0).ToString();
+                                            D_erroraRow[2] = StrRow + i.ToString() + sError;
+                                            D_errortable.Rows.Add(D_erroraRow);
                                         }
                                     }
-                                    if (bcheck)
-                                        D_table.Rows.Add(D_dataRow);
-                                    if (berror)
-                                    {
-                                        D_erroraRow[0] = u_sheet.SheetName.ToString();
-                                        D_erroraRow[1] = row.GetCell(0).ToString();
-                                        D_erroraRow[2] = "Hàng thứ " + i.ToString() + sError;
-                                        D_errortable.Rows.Add(D_erroraRow);
-                                    }
+                                    //-- 釋放 NPOI的資源
+                                    u_sheet = null;
                                 }
                                 //-- 釋放 NPOI的資源
-                                u_sheet = null;
-                            }
-                            //-- 釋放 NPOI的資源
-                            workbook = null;
-                            //--Excel資料顯示             
-                            DataView D_View2 = new DataView(D_table);
-                            //GridView1.DataSource = D_View2;
-                            //GridView1.DataBind();
-                            ExcelGV.DataSource = D_View2;
-                            ExcelGV.DataBind();
-                            //GridView1.DataSource = D_View2;
-                            //GridView1.DataBind();
-                            for (int i = 0; i < Excel欄位數+2; i++)
-                            {
-                                ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].VNName;
-                            }
-                            
-                            //--錯誤資料顯示
-                            if (D_errortable.Rows.Count > 0)
-                            {
-                                DataView D_View3 = new DataView(D_errortable);
-                                ErrorGV.DataSource = D_View3;
-                                ErrorGV.DataBind();
-                            }
+                                workbook = null;
+                                //--Excel資料顯示             
+                                DataView D_View2 = new DataView(D_table);
+                                //GridView1.DataSource = D_View2;
+                                //GridView1.DataBind();
+                                ExcelGV.DataSource = D_View2;
+                                ExcelGV.DataBind();
+                                //GridView1.DataSource = D_View2;
+                                //GridView1.DataBind();
+                                for (int i = 0; i < Excel欄位數 + 2; i++)
+                                {
+                                    ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].VNName;
+                                }
 
-                            //--------------------------------------------------
-                            //---- （以下是）上傳 FileUpload的部分！
-                            //--------------------------------------------------
+                                //--錯誤資料顯示
+                                if (D_errortable.Rows.Count > 0)
+                                {
+                                    DataView D_View3 = new DataView(D_errortable);
+                                    ErrorGV.DataSource = D_View3;
+                                    ErrorGV.DataBind();
+                                }
+
+                                //--------------------------------------------------
+                                //---- （以下是）上傳 FileUpload的部分！
+                                //--------------------------------------------------
+                            }
+                            else
+                            {
+
+                                HSSFWorkbook workbook = new HSSFWorkbook(FileUpload1.FileContent);  //==只能讀取 System.IO.Stream
+                                for (int x = 0; x < workbook.NumberOfSheets; x++)
+                                {
+                                    HSSFSheet u_sheet = (HSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
+                                    HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
+                                    IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
+                                    Session["Date"] = SearchTB.Text;
+
+                                    for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                                    {
+                                        //--不包含 Excel表頭列的 "其他資料列"
+                                        IRow row = (IRow)u_sheet.GetRow(i);
+                                        DataRow D_dataRow = D_table.NewRow();
+                                        DataRow D_erroraRow = D_errortable.NewRow();
+                                        D_dataRow[0] = u_sheet.SheetName.ToString();
+                                        D_dataRow[1] = SearchTB.Text;
+                                        bool bcheck = true, berror = false;
+                                        string sError = "";
+                                        //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
+                                        for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
+                                        {
+                                            //沒有Style就不抓
+                                            if (row.GetCell(2) == null)
+                                            {
+                                                bcheck = false;
+                                                break;
+                                            }
+                                            switch (GetExcelDefine.VNExcel[j + 2].ColumnType)
+                                            {
+                                                // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
+                                                case 1:
+                                                    IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 2:
+                                                    StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 3:
+                                                    try
+                                                    {
+                                                        D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
+                                                        //轉換日期格式
+                                                    }
+                                                    catch
+                                                    {
+                                                        //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
+                                                        berror = true;
+                                                        //sError += "Hàng thứ " + i.ToString() + "、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "error5。";
+                                                        sError = FConvertError(GetExcelDefine, i, sError, j, "DateformatError");
+                                                        D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                                                                                                                                       //throw;
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine);
+                                                    break;
+                                                case 6:
+                                                    StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+                                                    break;
+                                                case 7:
+                                                    IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+                                                    break;
+                                                case 8:
+                                                    FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                        if (bcheck)
+                                            D_table.Rows.Add(D_dataRow);
+                                        if (berror)
+                                        {
+                                            D_erroraRow[0] = u_sheet.SheetName.ToString();
+                                            D_erroraRow[1] = row.GetCell(0).ToString();
+                                            D_erroraRow[2] = StrRow + i.ToString() + sError;
+                                            D_errortable.Rows.Add(D_erroraRow);
+                                        }
+                                    }
+                                    //-- 釋放 NPOI的資源
+                                    u_sheet = null;
+                                }
+                                //-- 釋放 NPOI的資源
+                                workbook = null;
+                                //--Excel資料顯示             
+                                DataView D_View2 = new DataView(D_table);
+                                //GridView1.DataSource = D_View2;
+                                //GridView1.DataBind();
+                                ExcelGV.DataSource = D_View2;
+                                ExcelGV.DataBind();
+                                //--錯誤資料顯示
+                                if (D_errortable.Rows.Count > 0)
+                                {
+                                    DataView D_View3 = new DataView(D_errortable);
+                                    ErrorGV.DataSource = D_View3;
+                                    ErrorGV.DataBind();
+                                }
+
+                                //--------------------------------------------------
+                                //---- （以下是）上傳 FileUpload的部分！
+                                //--------------------------------------------------
+
+                            }
                         }
                         else
                         {
+                            Label1.Text = FLangConvert("Nofile");
+                        }   // FileUpload使用的第一個 if判別式
 
-                            HSSFWorkbook workbook = new HSSFWorkbook(FileUpload1.FileContent);  //==只能讀取 System.IO.Stream
-                            for (int x = 0; x < workbook.NumberOfSheets; x++)
-                            {
-                                HSSFSheet u_sheet = (HSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
-                                HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
-                                IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
-                                Session["Date"] = SearchTB.Text;
-
-                                for (int i = 3; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
-                                {
-                                    //--不包含 Excel表頭列的 "其他資料列"
-                                    IRow row = (IRow)u_sheet.GetRow(i);
-                                    DataRow D_dataRow = D_table.NewRow();
-                                    DataRow D_erroraRow = D_errortable.NewRow();
-                                    D_dataRow[0] = u_sheet.SheetName.ToString();
-                                    D_dataRow[1] = SearchTB.Text;
-                                    bool bcheck = true, berror = false;
-                                    string sError = "";
-                                    //for (int j = row.FirstCellNum; j < row.LastCellNum; j++)   //-- 每一個欄位做迴圈
-                                    for (int j = row.FirstCellNum; j < Excel欄位數; j++)   //有些EXCEL會沒填資料
-                                    {
-                                        //沒有Style就不抓
-                                        if (row.GetCell(2) == null)
-                                        {
-                                            bcheck = false;
-                                            break;
-                                        }
-                                        switch (GetExcelDefine.VNExcel[j + 2].ColumnType)
-                                        {
-                                            // Type 1：數字 , Type 2：String , Type 3：日期  , Type 6：不需要資料 String, Type 7：不需要資料 int
-                                            case 1:
-                                                IntData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 2:
-                                                StringData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 3:
-                                                try
-                                                {
-                                                    D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
-                                                    //轉換日期格式
-                                                }
-                                                catch 
-                                                {
-                                                    //D_dataRow[j] = row.GetCell(j).CellFormula.ToString();
-                                                    berror = true;
-                                                    sError += "Hàng thứ " + i.ToString() + "、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "error5。";
-                                                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
-                                                                                                                                   //throw;
-                                                }
-                                                break;
-                                            case 4:
-                                                FloatData(row, D_dataRow, ref berror, ref sError, i, j, 1, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 6:
-                                                StringData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 7:
-                                                IntData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            case 8:
-                                                FloatData(row, D_dataRow, ref berror, ref sError, i, j, 0, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    }
-                                    if (bcheck)
-                                        D_table.Rows.Add(D_dataRow);
-                                    if (berror)
-                                    {
-                                        D_erroraRow[0] = u_sheet.SheetName.ToString();
-                                        D_erroraRow[1] = row.GetCell(0).ToString();
-                                        D_erroraRow[2] = "Hàng thứ " + i.ToString()+ sError;
-                                        D_errortable.Rows.Add(D_erroraRow);
-                                    }
-                                }
-                                //-- 釋放 NPOI的資源
-                                u_sheet = null;
-                            }
-                            //-- 釋放 NPOI的資源
-                            workbook = null;
-                            //--Excel資料顯示             
-                            DataView D_View2 = new DataView(D_table);
-                            //GridView1.DataSource = D_View2;
-                            //GridView1.DataBind();
-                            ExcelGV.DataSource = D_View2;
+                        if (D_table.Rows.Count > 0)
+                            Session["Excel"] = D_table;
+                        else
+                        {
+                            Session["Excel"] = null;
+                            ExcelGV.DataSource = null;
                             ExcelGV.DataBind();
-                            //--錯誤資料顯示
-                            if (D_errortable.Rows.Count > 0)
-                            {
-                                DataView D_View3 = new DataView(D_errortable);
-                                ErrorGV.DataSource = D_View3;
-                                ErrorGV.DataBind();
-                            }
 
-                            //--------------------------------------------------
-                            //---- （以下是）上傳 FileUpload的部分！
-                            //--------------------------------------------------
+                        }
 
+                        if (D_errortable.Rows.Count > 0)
+                            Session["ExcelError"] = D_errortable;
+                        else
+                        {
+                            Session["ExcelError"] = null;
+                            ErrorGV.DataSource = null;
+                            ErrorGV.DataBind();
                         }
                     }
                     else
                     {
-                        Label1.Text = "????  ...... 請先挑選檔案之後，再來上傳";
-                    }   // FileUpload使用的第一個 if判別式
-
-                    if (D_table.Rows.Count > 0)
-                        Session["Excel"] = D_table;
-                    else
-                    {
-                        Session["Excel"] = null;
-                        ExcelGV.DataSource = null;
-                        ExcelGV.DataBind();
-
+                        if (F_CheckData() == false)
+                            FError(FLangConvert("HaveData"));
+                        else
+                            FError(FLangConvert("Import Date"));
                     }
 
-                    if (D_errortable.Rows.Count > 0)
-                        Session["ExcelError"] = D_errortable;
-                    else
-                    {
-                        Session["ExcelError"] = null;
-                        ErrorGV.DataSource = null;
-                        ErrorGV.DataBind();
-                    }
                 }
                 else
                 {
-                    if (F_CheckData() == false)
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
-                    else
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+                    FError(FLangConvert("Data Locked"));
                 }
-
             }
             else
             {
-                DataLock();
+                FError(FLangConvert("Import Date"));
             }
+            
         }
-        private static void StringData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, string ColumnName)
+        /// <summary>
+        /// 資料轉換錯誤顯示
+        /// </summary>
+        /// <param name="GetExcelDefine">欄位定義</param>
+        /// <param name="i">處理列</param>
+        /// <param name="sError"></param>
+        /// <param name="j">處理欄</param>
+        /// <param name="strErrorDefine">錯誤說明</param>
+        /// <returns></returns>
+        private static string FConvertError(Column1 GetExcelDefine, int i, string sError, int j, string strErrorDefine)
+        {
+            try
+            {
+                switch (strArea)
+                {
+                    case "GAMA":
+                        //sError += "第" + (i - 4).ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "日期格式錯誤。";
+                        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).英文, GetExcelDefine.VNExcel[j + 2].ChineseName);
+                        break;
+                    case "VGG":
+                        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).越文, GetExcelDefine.VNExcel[j + 2].ChineseName);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
+            
+            return sError;
+        }
+
+        private static void StringData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, Column1 GetExcelDefine)
         {
             try
             {
                 if (x == 1&& row.GetCell(j)==null)
                 {
                     berror = true;
-                    sError += "NoData" + ColumnName ;
+                    //sError += "NoData" + ColumnName;
+                    sError = FConvertError(GetExcelDefine, i, sError, j, "NoData");
+                    
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
 
                 }
@@ -512,7 +523,8 @@ namespace GGFPortal.FactoryMG
                             if (reader.HasRows==false)
                             {
                                 berror = true;
-                                sError += "StyleCheck" + strString ;
+                                //sError += "StyleCheck" + strString ;
+                                sError = FConvertError(GetExcelDefine, i, sError, j, "StyleCheck");
                             }
                             reader.Close();
                         }
@@ -526,7 +538,8 @@ namespace GGFPortal.FactoryMG
                 if (x == 1)
                 {
                     berror = true;
-                    sError += "ImportError" + ColumnName ;
+                    //sError += "ImportError" + ColumnName ;
+                    sError = FConvertError(GetExcelDefine, i, sError, j, "ImportError");
                 }
                 //else
                 //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄匯入失敗(非必要資料不影響匯入)。";
@@ -535,7 +548,7 @@ namespace GGFPortal.FactoryMG
             }
         }
 
-        private static void IntData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x,string ColumnName)
+        private static void IntData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, Column1 GetExcelDefine)
         {
             //x==1代表需要檢查資料
             if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
@@ -551,7 +564,8 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "int Error1。" + ColumnName ;
+                        //sError += "int Error1。" + ColumnName ;
+                        sError = FConvertError(GetExcelDefine, i, sError, j, "int Error1");
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
@@ -568,7 +582,8 @@ namespace GGFPortal.FactoryMG
                         if (x == 1)
                         {
                             berror = true;
-                            sError += "NoData" + ColumnName ;
+                            //sError += "NoData" + ColumnName ;
+                            sError = FConvertError(GetExcelDefine, i, sError, j, "NoData");
                         }
                         D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -579,7 +594,8 @@ namespace GGFPortal.FactoryMG
                             if (x == 1)
                             {
                                 berror = true;
-                                sError += "int Error2" + ColumnName + row.GetCell(j).ToString()+ "。";
+                                //sError += "int Error2" + ColumnName + row.GetCell(j).ToString()+ "。";
+                                sError = FConvertError(GetExcelDefine, i, sError, j, "int Error2");
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
@@ -596,7 +612,8 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "Number Error2。" + ColumnName;
+                        //sError += "Number Error2。" + ColumnName;
+                        sError = FConvertError(GetExcelDefine, i, sError, j, "int Error2");
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
@@ -606,7 +623,7 @@ namespace GGFPortal.FactoryMG
             }
         }
 
-        private static void FloatData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, string ColumnName)
+        private static void FloatData(IRow row, DataRow D_dataRow, ref bool berror, ref string sError, int i, int j, int x, Column1 GetExcelDefine)
         {
             //x==1代表需要檢查資料
             if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
@@ -622,7 +639,8 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError += "Float Error1" + ColumnName;
+                        //sError += "Float Error1" + ColumnName;
+                        sError = FConvertError(GetExcelDefine, i, sError, j, "Float Error1");
                     }
                     //else 
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
@@ -641,7 +659,8 @@ namespace GGFPortal.FactoryMG
                         if (x == 1)
                         {
                             berror = true;
-                            sError += "NoData" + ColumnName;
+                            //sError += "NoData" + ColumnName;
+                            sError = FConvertError(GetExcelDefine, i, sError, j, "NoData");
                         }
                         D_dataRow[j + 2] = "0" ;  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -653,7 +672,8 @@ namespace GGFPortal.FactoryMG
                             if (x == 1)
                             {
                                 berror = true;
-                                sError +=  ColumnName + "Float Error2";
+                                //sError +=  ColumnName + "Float Error2";
+                                sError = FConvertError(GetExcelDefine, i, sError, j, "Float Error2");
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
@@ -668,7 +688,8 @@ namespace GGFPortal.FactoryMG
                     if (x == 1)
                     {
                         berror = true;
-                        sError +=  ColumnName + "非數字。";
+                        //sError +=  ColumnName + "非數字。";
+                        sError = FConvertError(GetExcelDefine, i, sError, j, "NumFormatError");
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
@@ -712,7 +733,7 @@ namespace GGFPortal.FactoryMG
 
         protected void UpLoadBT_Click(object sender, EventArgs e)
         {
-            if(SearchTB.Text.Trim()!=""&&F_CheckData())
+            if (SearchTB.Text.Trim() != "" && F_CheckData())
             { 
                 if (Session["ExcelError"] == null)
                     if (Session["Excel"] != null)
@@ -869,8 +890,8 @@ namespace GGFPortal.FactoryMG
                                     finally
                                     {
                                         transaction1.Rollback();
-                                        Label1.Text = "DataUpfail";
-                                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
+                                        Label1.Text = "UpdateError";
+                                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('UpdateError');</script>");
                                     }
                                 }
                                 finally
@@ -905,19 +926,19 @@ namespace GGFPortal.FactoryMG
 
                 case "Stitch":
                     //GetExcelDefine.VNStitchmain(); //車縫
-                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample車縫.xlsx"));
+                    b = wc.DownloadData(Server.MapPath(string.Format("~\\FactoryMG\\Temp\\{0}\\SampleStitch.xlsx", strArea)));
                     break;
                 case "Package":
-                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample包裝.xlsx"));
+                    b = wc.DownloadData(Server.MapPath(string.Format("~\\FactoryMG\\Temp\\{0}\\SamplePackage.xlsx", strArea)));
                     break;
                 case "Cut":
-                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample採剪.xlsx"));
+                    b = wc.DownloadData(Server.MapPath(string.Format("~\\FactoryMG\\Temp\\{0}\\SampleCut.xlsx", strArea)));
                     break;
                 case "Iron":
-                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample包裝.xlsx"));
+                    b = wc.DownloadData(Server.MapPath(string.Format("~\\FactoryMG\\Temp\\{0}\\SampleIron.xlsx", strArea)));
                     break;
                 case "QC":
-                    b = wc.DownloadData(Server.MapPath("~\\FactoryMG\\Temp\\Excel\\Sample品檢.xlsx"));
+                    b = wc.DownloadData(Server.MapPath(string.Format("~\\FactoryMG\\Temp\\{0}\\SampleQC.xlsx", strArea)));
                     break;
                 default:
                     Response.Redirect("Factoryindex.aspx");
@@ -942,103 +963,151 @@ namespace GGFPortal.FactoryMG
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
+            if (!string.IsNullOrEmpty(SearchTB.Text))
             {
-                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
                 {
-                    SqlCommand command1 = conn1.CreateCommand();
-                    SqlTransaction transaction1;
-                    conn1.Open();
-                    transaction1 = conn1.BeginTransaction("createExcelImport");
+                    using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                    {
+                        SqlCommand command1 = conn1.CreateCommand();
+                        SqlTransaction transaction1;
+                        conn1.Open();
+                        transaction1 = conn1.BeginTransaction("createExcelImport");
 
-                    command1.Connection = conn1;
-                    command1.Transaction = transaction1;
-                    try
-                    {
-                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
-                        command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
-                        command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
-                        command1.ExecuteNonQuery();
-                        transaction1.Commit();
-                        Label1.Text = "刪除完畢，請再次夾檔";
-                    }
-                    catch (Exception ex1)
-                    {
+                        command1.Connection = conn1;
+                        command1.Transaction = transaction1;
                         try
                         {
-                            Log.ErrorLog(ex1, "Delete Error :" , StrProgram);
+                            command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
+                            command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                            command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
+                            command1.ExecuteNonQuery();
+                            transaction1.Commit();
+                            Label1.Text = "DeletedSuccess";
                         }
-                        catch (Exception ex2)
+                        catch (Exception ex1)
                         {
-                            Log.ErrorLog(ex2, "Delete Error Error:" , StrProgram);
+                            try
+                            {
+                                Log.ErrorLog(ex1, "Delete Error :", StrProgram);
+                            }
+                            catch (Exception ex2)
+                            {
+                                Log.ErrorLog(ex2, "Delete Error Error:", StrProgram);
+                            }
+                            finally
+                            {
+                                transaction1.Rollback();
+                                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Delete Failed');</script>");
+                            }
                         }
                         finally
                         {
-                            transaction1.Rollback();
-                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('Delete Failed');</script>");
+                            conn1.Close();
+                            conn1.Dispose();
+                            command1.Dispose();
+                            Session.RemoveAll();
                         }
                     }
-                    finally
-                    {
-                        conn1.Close();
-                        conn1.Dispose();
-                        command1.Dispose();
-                        Session.RemoveAll();
-                    }
+                }
+                else
+                {
+                    FError(FLangConvert("Data Locked"));
                 }
             }
             else
             {
-                DataLock();
+                FError(FLangConvert("Import Date"));
             }
+
         }
 
         private void DataLock()
         {
-            Label1.Text = "資料已鎖定，請洽管理者";
+            Label1.Text = "Data Locked";
         }
 
         public Boolean F_CheckData()
         {
             bool bcheck = true;
-            if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
+            if(!string.IsNullOrEmpty(SearchTB.Text))
             { 
-                using (SqlConnection conn = new SqlConnection(strConnectString1))
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = conn;
-                    command.CommandText = @"SELECT [uid]
-                                              ,[Team]
-                                              ,[FileName]
-                                              ,[Date]
-                                              ,[Area]
-                                              ,[Flag]
-                                              ,[CreateDate]
-                                              ,[Creator]
-                                            FROM [dbo].[Productivity_Head]
-                                            where Team = @Team and Date = @Date and Flag = 1";
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@Team", SqlDbType.NVarChar).Value =strImportType ;
-                    command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
-                    conn.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
+                if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
+                { 
+                    using (SqlConnection conn = new SqlConnection(strConnectString1))
                     {
-                        bcheck = false;
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
+                        SqlCommand command = new SqlCommand();
+                        command.Connection = conn;
+                        command.CommandText = @"SELECT [uid]
+                                                  ,[Team]
+                                                  ,[FileName]
+                                                  ,[Date]
+                                                  ,[Area]
+                                                  ,[Flag]
+                                                  ,[CreateDate]
+                                                  ,[Creator]
+                                                FROM [dbo].[Productivity_Head]
+                                                where Team = @Team and Date = @Date and Flag = 1";
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.Add("@Team", SqlDbType.NVarChar).Value =strImportType ;
+                        command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            bcheck = false;
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                        }
+                        reader.Close();
                     }
-                    reader.Close();
+                }
+                else
+                {
+                    bcheck = false;
+                    FError(FLangConvert("Data Locked"));
                 }
             }
             else
             {
                 bcheck = false;
-                DataLock();
+                FError(FLangConvert("Import Date"));
             }
             return bcheck;
         }
-        
+        public void FError(string StrError)
+        {
+            MessageLB.Text = StrError;
+            AlertPanel_ModalPopupExtender.Show();
+            //ModalPopupExtender Pop = (ModalPopupExtender)Page.FindControl("");
+            //Pop.Show();
+        }
+        /// <summary>
+        /// 多語轉換
+        /// </summary>
+        /// <param name="strResource">資料代號</param>
+        /// <returns>翻譯</returns>
+        public string FLangConvert(string strResource)
+        {
+            try
+            {
+                switch (strArea)
+                {
+                    case "GAMA":
+                        return lang.gg.Find(p => p.資料代號 == strResource).英文;
+                    case "VGG":
+                        return lang.gg.Find(p => p.資料代號 == strResource).越文;
+                    default:
+                        return "No Area";
+                }
+            }
+            catch (Exception)
+            {
+                return "Convert Error";
+            }
+            
+        }
+
     }
 }

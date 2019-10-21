@@ -17,13 +17,13 @@ namespace GGFPortal.Sales
         字串處理 切字串 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        string StrError名稱, StrProgram;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
             //網頁標題
             //網頁標題
-            string StrPageName = "布價歷史資料查詢", StrProgram = "Sales016.aspx";
+            string StrPageName = "布價歷史資料查詢";
             TitleLB.Text = StrPageName;
             Page.Title = StrPageName;
             //StrError名稱 = "";

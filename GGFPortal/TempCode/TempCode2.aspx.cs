@@ -16,11 +16,8 @@ namespace GGFPortal.TempCode
         //字串處理 切字串 = new 字串處理();
         //static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //SysLog Log = new SysLog();
-        string StrPageName = "TempCode", StrProgram = "TempCode.aspx";
+        static string StrPageName = "TempCode", StrProgram = "TempCode.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
-        {
-        }
-        protected void Page_Load(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
             //網頁標題
@@ -29,8 +26,12 @@ namespace GGFPortal.TempCode
             Page.Title = StrPageName;
             //StrError名稱 = "";
             //StrProgram = "TempCode2.aspx";
-            //DateRangeTB.Attributes["readonly"] = "readonly";
+            
             #endregion
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
         }
         protected void DbInit()
         {

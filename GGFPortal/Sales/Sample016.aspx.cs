@@ -8,7 +8,7 @@ using System.Web.UI;
 namespace GGFPortal.Sales
 {
 
-    public partial class SALE_V5 : System.Web.UI.Page
+    public partial class Sample016 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)
@@ -26,14 +26,10 @@ namespace GGFPortal.Sales
                     收單迄TB_CalendarExtender.StartDate = Convert.ToDateTime(收單起TB.Text);
                 if (收單迄TB.Text.Length > 0)
                     收單起TB_CalendarExtender.EndDate = Convert.ToDateTime(收單迄TB.Text);
-                //if (StartDayTB0.Text.Length > 0)
-                //    EndDay0_CalendarExtender.StartDate = Convert.ToDateTime(StartDayTB0.Text);
-                //if (EndDay0.Text.Length > 0)
-                //    StartDayTB0_CalendarExtender.EndDate = Convert.ToDateTime(EndDay0.Text);
-                if (ReceiptCB.Checked == false)
-                    Label1.Text = "收單日期";
-                else
-                    Label1.Text = "業務完成日期";
+                //if (ReceiptCB.Checked == false)
+                //    Label1.Text = "收單日期";
+                //else
+                //    Label1.Text = "業務完成日期";
             }
             else
             {
@@ -48,10 +44,9 @@ namespace GGFPortal.Sales
             BrandTB.Text = "";
             NewOldDDL.SelectedValue = "2";
             StatusDDL.SelectedValue = "A";
-            結案起TB.Text = "";
-            結案迄TB.Text = "";
-            //FinalDateShow(false);
-            ReceiptCB.Checked = false;
+            //結案起TB.Text = "";
+            //結案迄TB.Text = "";
+            //ReceiptCB.Checked = false;
             款號TB.Text = "";
         }
 
@@ -95,7 +90,7 @@ namespace GGFPortal.Sales
             
             StringBuilder strsql = new StringBuilder(string.Format(@" 
                                                         SELECT   {0}
-                                                        [receipt_date] 收單日期
+                                                        [sam_in_date] 收單日期
                                                         ,[sam_nbr] 樣品單號
                                                         ,image_path 小圖
                                                         ,[brand_name] 品牌
@@ -126,7 +121,7 @@ namespace GGFPortal.Sales
                                                         bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
                                                         samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no
                                                         left join bas_item_statistic e on a.site=e.site and a.item_statistic=e.item_statistic
-                                                        where 1=1 
+                                                        where  sam_nbr in (select sam_nbr from GGFRequestSam where 處理地點='Hanoi' and Flag = 0) 
                                                 ", (收單起TB.Text.Length>0&&收單迄TB.Text.Length>0)?"":" top 100 "));
             
             
@@ -138,14 +133,14 @@ namespace GGFPortal.Sales
             }
             if (StatusDDL.SelectedValue != "ALL")
                 strsql.AppendFormat(" and a.status ='{0}'  ", StatusDDL.SelectedValue);
-            if (StatusDDL.SelectedValue == "CL")
-            {
-                strsql.AppendFormat(" and   convert(varchar(10),a.close_date,111)  between '{0}' and '{1}'"
-                    , (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 結案起TB.Text
-                    , (string.IsNullOrEmpty(結案迄TB.Text)) ?
-                                    (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(結案起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
-                                    : 結案迄TB.Text);
-            }
+            //if (StatusDDL.SelectedValue == "CL")
+            //{
+            //    strsql.AppendFormat(" and   convert(varchar(10),a.close_date,111)  between '{0}' and '{1}'"
+            //        , (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 結案起TB.Text
+            //        , (string.IsNullOrEmpty(結案迄TB.Text)) ?
+            //                        (string.IsNullOrEmpty(結案起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(結案起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
+            //                        : 結案迄TB.Text);
+            //}
             
             if(!string.IsNullOrEmpty(款號TB.Text))
                 strsql.AppendFormat(" and a.cus_style_no like '{0}%'  ", 款號TB.Text);
@@ -166,45 +161,49 @@ namespace GGFPortal.Sales
             }
 
             if (string.IsNullOrEmpty(款號TB.Text))
-                if (ReceiptCB.Checked == false)
-                {
-                    if(string.IsNullOrEmpty(款號TB.Text))
-                    { 
+                //if (ReceiptCB.Checked == false)
+                //{
+                //    if(string.IsNullOrEmpty(款號TB.Text))
+                //    { 
 
-                    }
-                    strsql.AppendFormat(" and   convert(varchar(10),a.receipt_date,111)  between '{0}' and '{1}'"
-                        , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
-                        , (string.IsNullOrEmpty(收單迄TB.Text)) ?
-                                        (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
-                                        : 收單迄TB.Text);
-                }
-                else
-                {
-                    strsql.Append(" and  a.receipt_date is null  ");
-                    //查詢未收單，變更查詢業務完成日
-                    strsql.AppendFormat(" and   convert(varchar(10),a.sale_finish_date,111)  between '{0}' and '{1}'"
-                        , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
-                        , (string.IsNullOrEmpty(收單迄TB.Text)) ?
-                                        (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
-                                        : 收單迄TB.Text);
-
-                }
-            if(HanoiCB.Checked)
-                strsql.Append(" and sam_nbr in (select sam_nbr from GGFRequestSam where 處理地點='Hanoi' and Flag= 0) ");
-            //未收單使用樣品單日期排序
-            if (ReceiptCB.Checked == false)
-                strsql.Append(" order by receipt_date desc ");
-            else
-                strsql.Append(" order by sale_finish_date desc ");
+                //    }
+                //    strsql.AppendFormat(" and   convert(varchar(10),a.receipt_date,111)  between '{0}' and '{1}'"
+                //        , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
+                //        , (string.IsNullOrEmpty(收單迄TB.Text)) ?
+                //                        (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
+                //                        : 收單迄TB.Text);
+                //}
+                //else
+                //{
+                //    strsql.Append(" and  a.receipt_date is null  ");
+                //    //查詢未收單，變更查詢業務完成日
+                //    strsql.AppendFormat(" and   convert(varchar(10),a.sale_finish_date,111)  between '{0}' and '{1}'"
+                //        , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
+                //        , (string.IsNullOrEmpty(收單迄TB.Text)) ?
+                //                        (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
+                //                        : 收單迄TB.Text);
+                //}
+                //    strsql.Append(" and  a.receipt_date is null  ");
+                //    //查詢未收單，變更查詢業務完成日
+            strsql.AppendFormat(" and   convert(varchar(10),a.sam_in_date,111)  between '{0}' and '{1}'"
+                , (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd") : 收單起TB.Text
+                , (string.IsNullOrEmpty(收單迄TB.Text)) ?
+                                (string.IsNullOrEmpty(收單起TB.Text)) ? DateTime.Now.ToString("yyyy/MM/dd") : Convert.ToDateTime(收單起TB.Text).AddDays(7).ToString("yyyy/MM/dd")
+                                : 收單迄TB.Text);
+            ////未收單使用樣品單日期排序
+            //if (ReceiptCB.Checked == false)
+            //    strsql.Append(" order by receipt_date desc ");
+            //else
+            strsql.Append(" order by sale_finish_date desc ");
             return strsql;
         }
         public bool SearchCheck()
         {
             bool bCheck = false;
-            if (!string.IsNullOrEmpty(結案起TB.Text))
-                bCheck = true;
-            if (!string.IsNullOrEmpty(結案迄TB.Text))
-                bCheck = true;
+            //if (!string.IsNullOrEmpty(結案起TB.Text))
+            //    bCheck = true;
+            //if (!string.IsNullOrEmpty(結案迄TB.Text))
+            //    bCheck = true;
             if (!string.IsNullOrEmpty(款號TB.Text))
                 bCheck = true;
             if (!string.IsNullOrEmpty(BrandTB.Text))
@@ -213,8 +212,8 @@ namespace GGFPortal.Sales
                 bCheck = true;
             if (!string.IsNullOrEmpty(收單迄TB.Text))
                 bCheck = true;
-            if(ReceiptCB.Checked==true)
-                bCheck = true;
+            //if(ReceiptCB.Checked==true)
+            //    bCheck = true;
             return bCheck;
 
         }
@@ -224,19 +223,19 @@ namespace GGFPortal.Sales
             AlertPanel_ModalPopupExtender.Show();
         }
 
-        protected void StatusDDL_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (StatusDDL.SelectedValue == "CL")
-            {
-                結案起TB.Enabled = true;
-                結案迄TB.Enabled = true;
-            }
-            else
-            {
-                結案起TB.Enabled = false;
-                結案迄TB.Enabled = false;
-            }
-        }
+        //protected void StatusDDL_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (StatusDDL.SelectedValue == "CL")
+        //    {
+        //        結案起TB.Enabled = true;
+        //        結案迄TB.Enabled = true;
+        //    }
+        //    else
+        //    {
+        //        結案起TB.Enabled = false;
+        //        結案迄TB.Enabled = false;
+        //    }
+        //}
 
         protected void ReceiptCB_CheckedChanged(object sender, EventArgs e)
         {
