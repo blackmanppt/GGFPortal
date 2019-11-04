@@ -7,11 +7,13 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.VN {
-    
-    
-    public partial class VN011 {
-        
+namespace GGFPortal.VN
+{
+
+
+    public partial class VN011
+    {
+
         /// <summary>
         /// form1 控制項。
         /// </summary>
@@ -20,7 +22,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// ScriptManager1 控制項。
         /// </summary>
@@ -29,7 +31,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
+
         /// <summary>
         /// StartDay 控制項。
         /// </summary>
@@ -38,7 +40,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox StartDay;
-        
+
         /// <summary>
         /// StartDay_CalendarExtender 控制項。
         /// </summary>
@@ -47,7 +49,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
-        
+
         /// <summary>
         /// EndDay 控制項。
         /// </summary>
@@ -56,7 +58,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EndDay;
-        
+
         /// <summary>
         /// EndDay_CalendarExtender 控制項。
         /// </summary>
@@ -65,7 +67,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
-        
+
         /// <summary>
         /// StyleTB 控制項。
         /// </summary>
@@ -74,7 +76,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox StyleTB;
-        
+
         /// <summary>
         /// StyleTB_AutoCompleteExtender 控制項。
         /// </summary>
@@ -83,7 +85,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender StyleTB_AutoCompleteExtender;
-        
+
         /// <summary>
         /// SearchBT 控制項。
         /// </summary>
@@ -92,7 +94,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SearchBT;
-        
+
         /// <summary>
         /// ClearBT 控制項。
         /// </summary>
@@ -101,7 +103,7 @@ namespace GGFPortal.VN {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ClearBT;
-        
+
         /// <summary>
         /// ReportViewer1 控制項。
         /// </summary>

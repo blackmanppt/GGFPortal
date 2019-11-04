@@ -8,44 +8,71 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>工時匯入狀況查詢</title>
-    <style type="text/css">
-        
-        .auto-style3 {
-            text-align: left;
-            height: 23px;
-        }
+  
+    <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-        .auto-style4 {
-            text-align: left;
-            height: 23px;
-            width: 369px;
-        }
 
-        .auto-style6 {
-            text-align: right;
-            height: 23px;
-            width: 76px;
-        }
 
-        .auto-style8 {
-            width: 369px;
-        }
-        .auto-style9 {
-            width: 76px;
-            text-align: right;
-        }
-        .auto-style10 {
-            width: 76px;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
-    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="../demo.css" />
-    <script type="text/javascript" src="../Scripts/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
-    <script src="../scripts/bootstrap.js"></script>
-    <script src="../scripts/jquery-3.1.1.js"></script>
-    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+            $('input[name="DateRangeTB"]').daterangepicker({
+                "startDate": start,
+                "endDate": end,
+                "showDropdowns": true,
+                "autoApply": true,
+                "locale": {
+                    "format": "YYYYMMDD",
+                    "separator": " - ",
+                    "applyLabel": "Apply",
+                    "cancelLabel": "Cancel",
+                    "fromLabel": "From",
+                    "toLabel": "To",
+                    "customRangeLabel": "Custom",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "Su",
+                        "Mo",
+                        "Tu",
+                        "We",
+                        "Th",
+                        "Fr",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    ],
+                    "firstDay": 1
+                },
+                "showCustomRangeLabel": false,
+                "alwaysShowCalendars": true,
+                "autoUpdateInput": true
+            }, function (start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -98,7 +125,7 @@
         </div>
         <div>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" AllowPaging="True" PageSize="20" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="uid" BorderStyle="None" CellSpacing="2" Font-Size="Medium" Height="778px" Width="564px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderWidth="1px" CellPadding="3" DataSourceID="SqlDataSource1" AllowPaging="True" PageSize="20" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="uid" CssClass="table">
                 <Columns>
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>

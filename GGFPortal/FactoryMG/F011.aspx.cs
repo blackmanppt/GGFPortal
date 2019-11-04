@@ -1,7 +1,9 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using GGFPortal.ReferenceCode;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Web.UI;
 
@@ -11,10 +13,52 @@ namespace GGFPortal.FactoryMG
     public partial class F011 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        static string StrArea, StrPageName = "F011", StrProgram = "F011.aspx";
+        字串處理 切字串 = new 字串處理();
+        static 多語 lang = new 多語();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            try
+            {
+                //清空Error資料
+                Session.Remove("Error");
+                if (Session["Area"].ToString() == "")
+                {
+                    Response.Redirect("Findex.aspx");
+                }
+                StrArea = Session["Area"].ToString();
+                //網頁標題
+                if (StrArea == "TW")
+                {
+                    AreaDDL.Visible = true;
+                    AreaLB.Visible = true;
+                }
+                else
+                {
+                    AreaDDL.Visible = false;
+                    AreaLB.Visible = false;
+                }
+                lang.gg.Clear();
+
+                lang.讀取多語資料("Program", StrPageName);
+            }
+            catch (Exception)
+            {
+                Session["Error"] = "timeout";
+                Response.Redirect("Findex.aspx");
+            }
+            #region 網頁Layout基本參數
+            //網頁標題
+
+            BrandLB.Text = lang.翻譯("Program", StrPageName, StrArea);
+            Page.Title = lang.翻譯("Program", StrPageName, StrArea);
+            DateRangeLB.Text = lang.翻譯("Program", "DateRange", StrArea);
+            #endregion
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            StartDay.Attributes["readonly"] = "readonly";
-            EndDay.Attributes["readonly"] = "readonly";
+            //StartDay.Attributes["readonly"] = "readonly";
+            //EndDay.Attributes["readonly"] = "readonly";
         }
 
         protected void ClearBT_Click(object sender, EventArgs e)
@@ -22,8 +66,8 @@ namespace GGFPortal.FactoryMG
             //SiteDDL.SelectedValue = "";
             //CusTB.Text = "";
             StyleTB.Text = "";
-            StartDay.Text = "";
-            EndDay.Text = "";
+            //StartDay.Text = "";
+            //EndDay.Text = "";
             //VendorDDL.SelectedValue = "";
         }
 
@@ -36,9 +80,43 @@ namespace GGFPortal.FactoryMG
             DataTable dt = new DataTable();
             using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
-                SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
-                myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+                SqlCommand command1 = Conn.CreateCommand();
+                SqlTransaction transaction1;
+                Conn.Open();
+                transaction1 = Conn.BeginTransaction("createExcelImport");
+                try
+                {
+                    command1.Connection = Conn;
+                    command1.Transaction = transaction1;
+                    string[] stringSeparators = new string[] { "\r\n" };
+                    string[] StyleArray = StyleTB.Text.Trim().Split(stringSeparators, StringSplitOptions.None);
+                    #region 匯入
+                    string[] parameters = StyleArray.Select((s, i) => "@StyleNo" + i.ToString()).ToArray();
+                    command1.CommandText = string.Format(@"SELECT a.*,(a.[今日產量]/12)*a.[工繳收入] as 今日工繳收入,b.estimate_ie as 訂單工繳
+                                                        FROM [dbo].[View工時資料]  a 
+                                                        LEFT JOIN ordc_bah1 b on a.款號=b.cus_item_no and b.chn_turn_out='N'  where 地區 =@Area {1} {0}"
+                                 , (!string.IsNullOrEmpty(StyleTB.Text)) ? string.Format(" and StyleNo in ( {0} ) ", string.Join(",", parameters)) : ""
+                                 , string.Format(" and 工作時間 between '{0}' and '{1}'", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11)));
+                    if (!string.IsNullOrEmpty(StyleTB.Text))
+                        for (int i = 0; i < StyleArray.Length; i++)
+                            command1.Parameters.AddWithValue(parameters[i], StyleArray[i]);
+                    command1.Parameters.Add("@Area", SqlDbType.NVarChar).Value = (StrArea == "TW") ? AreaDDL.SelectedValue : StrArea;
+                    command1.ExecuteNonQuery();
+                    SqlDataReader dr = command1.ExecuteReader();
+                    dt.Load(dr);
 
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    //Log.ErrorLog(ex, "上傳失敗", StrProgram);
+                    //transaction1.Rollback();
+                }
+                finally
+                {
+                    Conn.Close();
+                    transaction1.Dispose();
+                }
             }
             if (dt.Rows.Count > 0)
             {
@@ -51,36 +129,12 @@ namespace GGFPortal.FactoryMG
                 ReportViewer1.LocalReport.Refresh();
             }
             else
-                Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('搜尋不到資料');</script>");
+                F_ErrorShow("搜尋不到資料");
         }
-
-        private StringBuilder selectsql()
+        public void F_ErrorShow(string strError)
         {
-            
-            StringBuilder strsql = new StringBuilder(@"SELECT a.*,(a.[今日產量]/12)*a.[工繳收入] as 今日工繳收入,b.estimate_ie as 訂單工繳
-                                                        FROM [dbo].[View工時資料]  a 
-                                                        LEFT JOIN ordc_bah1 b on a.款號=b.cus_item_no and b.chn_turn_out='N' ");
-            strsql.AppendFormat(" where [工作時間]  between '{0}' and '{1}'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartDay.Text)) ? StartDay.Text : "20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
-            if(!string.IsNullOrEmpty(StyleTB.Text))
-                strsql.AppendFormat(" and [款號]  = '{0}'", StyleTB.Text);
-            //if (!String.IsNullOrEmpty(SiteDDL.SelectedValue) || !String.IsNullOrEmpty(CusTB.Text) || !String.IsNullOrEmpty(StyleTB.Text) || !String.IsNullOrEmpty(VendorDDL.SelectedValue) || !String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
-            //{
-            //    strsql.Append(" where 1=1 ");
-            //    if (!String.IsNullOrEmpty(SiteDDL.SelectedValue))
-            //        strsql.AppendFormat(" and [site]  = '{0}' ", SiteDDL.SelectedValue);
-            //    if (!String.IsNullOrEmpty(CusTB.Text))
-            //        strsql.AppendFormat(" and [客戶]  = '{0}'",CusTB.Text);
-            //    if (!String.IsNullOrEmpty(StyleTB.Text))
-            //        strsql.AppendFormat(" and [style_no]  = '{0}'", StyleTB.Text);
-            //    if (!String.IsNullOrEmpty(VendorDDL.SelectedValue))
-            //        strsql.AppendFormat(" and [工廠代號]  = '{0}'", VendorDDL.SelectedValue);
-            //    if (!String.IsNullOrEmpty(StartDay.Text) || !String.IsNullOrEmpty(EndDay.Text))
-            //    {
-            //        strsql.AppendFormat(" and [開航日]  between '{0}' and '{1}' ", (!String.IsNullOrEmpty(StartDay.Text))? StartDay.Text:"20000101", (!String.IsNullOrEmpty(EndDay.Text)) ? EndDay.Text : "29990101");
-            //    }
-            //}
-            return strsql;
+            MessageLB.Text = strError;
+            AlertPanel_ModalPopupExtender.Show();
         }
-        
     }
 }

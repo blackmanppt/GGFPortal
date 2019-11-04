@@ -42,6 +42,24 @@ namespace GGFPortal.FactoryMG
         protected global::System.Web.UI.WebControls.Label BrandLB;
 
         /// <summary>
+        /// AreaLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AreaLB;
+
+        /// <summary>
+        /// AreaDDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList AreaDDL;
+
+        /// <summary>
         /// Label3 控制項。
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace GGFPortal.FactoryMG
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender StyleNoSeachTB_AutoCompleteExtender;
+
+        /// <summary>
+        /// StyleNoMutiLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StyleNoMutiLB;
 
         /// <summary>
         /// StyleNoSearchMutiTB 控制項。

@@ -8,56 +8,134 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>越南款號各組數量查詢</title>
-        <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/style.css" rel="stylesheet" />
+        <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+    <script type="text/javascript" src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+            $('input[name="DateRangeTB"]').daterangepicker({
+                "startDate": start,
+                "endDate": end,
+                "showDropdowns": true,
+                "autoApply": true,
+                "locale": {
+                    "format": "YYYYMMDD",
+                    "separator": " - ",
+                    "applyLabel": "Apply",
+                    "cancelLabel": "Cancel",
+                    "fromLabel": "From",
+                    "toLabel": "To",
+                    "customRangeLabel": "Custom",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "Su",
+                        "Mo",
+                        "Tu",
+                        "We",
+                        "Th",
+                        "Fr",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    ],
+                    "firstDay": 1
+                },
+                "showCustomRangeLabel": false,
+                "alwaysShowCalendars": true,
+                "autoUpdateInput": true
+            }, function (start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
+          <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+
+            <asp:Label ID="BrandLB" runat="server" Text="" CssClass="navbar-brand col-sm-3 col-md-2 mr-0"></asp:Label>
+            
+        </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
-                    <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-center">越南款號各組數量
-                        </h3>
-                        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                    <h4>處理日期</h4>
-                    <div class="form-group">
-                        <asp:TextBox ID="StartTB" runat="server" class="form-control"></asp:TextBox>
-                            <ajaxToolkit:CalendarExtender ID="StartTB_CalendarExtender" runat="server" BehaviorID="StartTB_CalendarExtender" TargetControlID="StartTB" Format="yyyyMMdd"/>
-                        <asp:TextBox ID="EndTB" runat="server" class="form-control"></asp:TextBox>
-						    <ajaxToolkit:CalendarExtender ID="EndTB_CalendarExtender" runat="server" BehaviorID="EndTB_CalendarExtender" TargetControlID="EndTB" Format="yyyyMMdd" />
-						</div> 
-                            <h4>款號</h4>
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                                                                 <h3>
+                                <asp:Label ID="AreaLB" runat="server" Text="地區" Visible="false"></asp:Label></h3>
+                            <asp:DropDownList ID="AreaDDL" runat="server" CssClass="dropdown form-control" Visible="false">
+                                <asp:ListItem>VGG</asp:ListItem>
+                                <asp:ListItem>GAMA</asp:ListItem>
+                            </asp:DropDownList>
+                    <h4>
+                        <asp:Label ID="DateRangeLB" runat="server" Text=""></asp:Label></h4>
+                        <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+                            <h4>
+                                <asp:Label ID="StyleLB" runat="server" Text="Style No:"></asp:Label>
+                            </h4>
+                        <asp:TextBox ID="StyleNoTB" runat="server" TextMode="MultiLine" CssClass="text-muted form-control h-25"></asp:TextBox>
                             <div class="form-group">
-                                <asp:TextBox ID="StyleNoTB" runat="server" TextMode="MultiLine" Height="100px" CssClass="text-muted form-control"></asp:TextBox>
-                            </div>
-
-                            <div class="form-group">
-                            <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
-                            <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />
+                            <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-outline-dark" OnClick="SearchBT_Click" />
+                            <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-dark" OnClick="ClearBT_Click" />
 
                             </div>
                             <asp:Literal ID="MessageLT" runat="server"></asp:Literal>
 
 
                         </div>
-
+                                   
                     </nav>
-                </div>
-                <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\VN\ReportVN005.rdlc" DisplayName="產量統計">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+                        <LocalReport ReportPath="ReportSource\Factory\ReportF005.rdlc" DisplayName="產量統計">
                         </LocalReport>
                     </rsweb:ReportViewer>
-                </div>
+                
+            </main>
             </div>
-        </div>
+            </div>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                <asp:Panel ID="AlertPanel" runat="server" align="center" CssClass="alert-danger w-75" Style="display: none">
+                    <div class=" text-center">
+                        <h3>
+                            <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
+
+                        </h3>
+                        <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                </ajaxToolkit:ModalPopupExtender>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
 </body>
 </html>

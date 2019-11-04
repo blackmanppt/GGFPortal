@@ -17,8 +17,8 @@ namespace GGFPortal.FactoryMG
         SysLog Log = new SysLog();
         DataCheck 確認LOCK = new DataCheck();
 
-        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
-        static string strConnectString1 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        
+        static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //static string strImportType = "Package";
         static string strArea = "", strImportType = "", StrRedirect,StrTeam,StrRow;
         string StrPageName = "F002", StrProgram = "F002.aspx";
@@ -26,15 +26,17 @@ namespace GGFPortal.FactoryMG
         
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            //清空Error資料
-            Session.Remove("Error");
             try
             {
+                //清空Error資料
+                Session.Remove("Error");
+
+                lang.gg.Clear();
                 if (!string.IsNullOrEmpty(Session["Area"].ToString()) && !string.IsNullOrEmpty(Session["Team"].ToString()))
                 {
                     strImportType = Session["Team"].ToString();
                     strArea = Session["Area"].ToString();
-                    lang.讀取多語資料("Factory");
+                    lang.讀取多語資料("Program", StrPageName);
                     StrRedirect = "Findex.aspx";
                     switch (strArea)
                     {
@@ -277,7 +279,7 @@ namespace GGFPortal.FactoryMG
                                 //GridView1.DataBind();
                                 for (int i = 0; i < Excel欄位數 + 2; i++)
                                 {
-                                    ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].VNName;
+                                    ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].ChineseName;
                                 }
 
                                 //--錯誤資料顯示
@@ -384,6 +386,10 @@ namespace GGFPortal.FactoryMG
                                 //GridView1.DataBind();
                                 ExcelGV.DataSource = D_View2;
                                 ExcelGV.DataBind();
+                                for (int i = 0; i < Excel欄位數 + 2; i++)
+                                {
+                                    ExcelGV.HeaderRow.Cells[i].Text = GetExcelDefine.VNExcel[i].ChineseName;
+                                }
                                 //--錯誤資料顯示
                                 if (D_errortable.Rows.Count > 0)
                                 {
@@ -455,18 +461,19 @@ namespace GGFPortal.FactoryMG
         {
             try
             {
-                switch (strArea)
-                {
-                    case "GAMA":
-                        //sError += "第" + (i - 4).ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "日期格式錯誤。";
-                        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).英文, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                        break;
-                    case "VGG":
-                        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).越文, GetExcelDefine.VNExcel[j + 2].ChineseName);
-                        break;
-                    default:
-                        break;
-                }
+                sError += string.Format(" {0} column name:{1}. ",lang.翻譯("Program", strErrorDefine,strArea), GetExcelDefine.VNExcel[j + 2].ChineseName);
+                //switch (strArea)
+                //{
+                //    case "GAMA":
+                //        //sError += "第" + (i - 4).ToString() + "行、" + GetExcelDefine.VNExcel[j + 2].ChineseName + "日期格式錯誤。";
+                //        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).英文, GetExcelDefine.VNExcel[j + 2].ChineseName);
+                //        break;
+                //    case "VGG":
+                //        sError += string.Format(" {0} column name:{1}. ", lang.gg.Find(p => p.資料代號 == strErrorDefine).越文, GetExcelDefine.VNExcel[j + 2].ChineseName);
+                //        break;
+                //    default:
+                //        break;
+                //}
             }
             catch (Exception)
             {
@@ -498,7 +505,7 @@ namespace GGFPortal.FactoryMG
                     D_dataRow[j + 2] = strString;
                     if (j==2)
                     {
-                        using (SqlConnection conn = new SqlConnection(strConnectString1))
+                        using (SqlConnection conn = new SqlConnection(strConnectString))
                         {
                             // Create the command and set its properties.
                             SqlCommand command = new SqlCommand();
@@ -646,14 +653,11 @@ namespace GGFPortal.FactoryMG
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
                     D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
-
             }
             else
             {
-
                 try
                 {
-
                     if (string.IsNullOrEmpty(row.GetCell(j).ToString()))
                     {
                         if (x == 1)
@@ -1034,7 +1038,7 @@ namespace GGFPortal.FactoryMG
             { 
                 if (確認LOCK.Check工時Lock(strArea, SearchTB.Text))
                 { 
-                    using (SqlConnection conn = new SqlConnection(strConnectString1))
+                    using (SqlConnection conn = new SqlConnection(strConnectString))
                     {
                         SqlCommand command = new SqlCommand();
                         command.Connection = conn;

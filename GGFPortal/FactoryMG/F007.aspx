@@ -10,7 +10,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>工時資料餵入查詢表</title>
+    <title></title>
     
     <script src="../scripts/jquery-3.4.1.min.js"></script>
     <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
@@ -90,20 +90,27 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
+                                                    <h3>
+                                <asp:Label ID="AreaLB" runat="server" Text="地區" Visible="false"></asp:Label></h3>
+                            <asp:DropDownList ID="AreaDDL" runat="server" CssClass="dropdown form-control" Visible="false">
+                                <asp:ListItem>VGG</asp:ListItem>
+                                <asp:ListItem>GAMA</asp:ListItem>
+                            </asp:DropDownList>
                          <h3 >
                                     <asp:Label ID="Label3" runat="server" Text="起迄日期："></asp:Label>
 
                                 </h3>
                                 <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
 
-                            <h2><asp:Label ID="StyleNoLB" runat="server" Text="款號："></asp:Label></h2>
+                            <h2><asp:Label ID="StyleNoLB" runat="server" Text="Style No："></asp:Label></h2>
                     
 
                         <asp:TextBox ID="StyleNoSeachTB" runat="server" CssClass="form-control" ></asp:TextBox>
                         <ajaxToolkit:AutoCompleteExtender ID="StyleNoSeachTB_AutoCompleteExtender" runat="server" TargetControlID="StyleNoSeachTB" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="1" ServiceMethod="SearchStyleNo">
                         </ajaxToolkit:AutoCompleteExtender>
+                        <h2><asp:Label ID="StyleNoMutiLB" runat="server" Text="Muti Style No："></asp:Label></h2>
                         <asp:TextBox ID="StyleNoSearchMutiTB" runat="server" CssClass="form-control h-25" TextMode="MultiLine"></asp:TextBox>
-                                                <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" CssClass="btn-dark"/>
+                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" CssClass="btn-dark"/>
                     
                     </div>
                 </nav>
@@ -126,8 +133,9 @@
             </asp:GridView>
                     </div>
                     
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" CssClass="table">
-        </rsweb:ReportViewer>
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false" Width="100%" Height="60%" >
+                        <LocalReport ReportPath="ReportSource\Factory\ReportF007.rdlc"></LocalReport>
+                    </rsweb:ReportViewer>
                 </main>
             </div>
         </div>
@@ -140,7 +148,7 @@
                             <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
 
                         </h3>
-                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-danger" />
+                        <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
                     </div>
                 </asp:Panel>
                 <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">

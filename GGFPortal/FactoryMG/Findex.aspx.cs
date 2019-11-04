@@ -18,7 +18,7 @@ namespace GGFPortal.FactoryMG
             try
             {
 
-                lang.讀取多語資料("Factory");
+                lang.讀取多語資料("Program", "Findex");
             }
             catch (Exception)
             {
@@ -94,25 +94,27 @@ namespace GGFPortal.FactoryMG
                 CutBT.Visible = true;
                 PackageBT.Visible = true;
             }
-            switch (FactoryDDL.SelectedValue)
+            
+            if(FactoryDDL.SelectedValue=="TW")
             {
-                case "GAMA":
-                    IronBT.Text = lang.gg.Find(p => p.資料代號 == "Iron").英文;
-                    QCBT.Text = lang.gg.Find(p => p.資料代號 == "QC").英文; 
-                    StitchBT.Text = lang.gg.Find(p => p.資料代號 == "Stitch").英文;
-                    CutBT.Text = lang.gg.Find(p => p.資料代號 == "Cut").英文; 
-                    PackageBT.Text = lang.gg.Find(p => p.資料代號 == "Package").英文;
-                    break;
-                case "VGG":
-                    IronBT.Text = lang.gg.Find(p => p.資料代號 == "Iron").越文;
-                    QCBT.Text = lang.gg.Find(p => p.資料代號 == "QC").越文;
-                    StitchBT.Text = lang.gg.Find(p => p.資料代號 == "Stitch").越文;
-                    CutBT.Text = lang.gg.Find(p => p.資料代號 == "Cut").越文;
-                    PackageBT.Text = lang.gg.Find(p => p.資料代號 == "Package").越文;
-                    break;
-                default:
-                    break;
+                IronBT.Visible = false;
+                QCBT.Visible = false;
+                StitchBT.Visible = false;
+                CutBT.Visible = false;
+                PackageBT.Visible = false;
             }
+            IronBT.Text = lang.翻譯("Program", "Iron", FactoryDDL.SelectedValue);
+            QCBT.Text = lang.翻譯("Program", "QC", FactoryDDL.SelectedValue);
+            StitchBT.Text = lang.翻譯("Program", "Stitch", FactoryDDL.SelectedValue);
+            CutBT.Text = lang.翻譯("Program", "Cut", FactoryDDL.SelectedValue);
+            PackageBT.Text = lang.翻譯("Program", "Package", FactoryDDL.SelectedValue);
+            ImportLogSearchBT.Text = lang.翻譯("Program", "F005", FactoryDDL.SelectedValue);
+            ImportDataSearchBT.Text = lang.翻譯("Program", "F007", FactoryDDL.SelectedValue);
+            MonthTimeSumBT.Text = lang.翻譯("Program", "F008", FactoryDDL.SelectedValue);
+            TeamQtyBT.Text = lang.翻譯("Program", "F010", FactoryDDL.SelectedValue);
+            TeamCMBT.Text = lang.翻譯("Program", "F011", FactoryDDL.SelectedValue);
+            TimeSecBT.Text = lang.翻譯("Program", "F012", FactoryDDL.SelectedValue);
+            TimeSecTeamBT.Text = lang.翻譯("Program", "F013", FactoryDDL.SelectedValue);
         }
 
         protected void StitchBT_Click(object sender, EventArgs e)

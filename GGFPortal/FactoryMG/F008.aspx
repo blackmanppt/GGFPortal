@@ -8,67 +8,71 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>工時資料查詢</title>
-    <%--    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/style.css" rel="stylesheet" />--%>
-        <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/style.css" rel="stylesheet" />
+        <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />    
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+     <script type="text/javascript"  src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript"  src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+               <asp:ScriptManager ID="ScriptManager1" runat="server">   </asp:ScriptManager>
+                 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+
+            <asp:Label ID="BrandLB" runat="server" Text="" CssClass="navbar-brand col-sm-3 col-md-2 mr-0"></asp:Label>
+           
+   
+        </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
-                    <nav class="navbar navbar-default" role="navigation">
-                        <h3 class="text-info text-center">工時資料查詢
-                        </h3>
-                        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                                                                                         <h3>
+                                <asp:Label ID="AreaLB" runat="server" Text="地區" Visible="false"></asp:Label></h3>
+                            <asp:DropDownList ID="AreaDDL" runat="server" CssClass="dropdown form-control" Visible="false">
+                                <asp:ListItem>VGG</asp:ListItem>
+                                <asp:ListItem>GAMA</asp:ListItem>
+                            </asp:DropDownList>
                             <div class="form-group">
-                            <h4>選擇月份</h4>
+                            <h4><asp:Label ID="MonthLB" runat="server" Text=""></asp:Label></h4>
 <asp:DropDownList ID="YearDDL" runat="server" class="form-control"></asp:DropDownList>
 						</div> 
-                    <%--<h4>訂單日期</h4>
-                    <div class="form-group">
-                        <asp:TextBox ID="StartTB" runat="server" class="form-control"></asp:TextBox>
-                            <ajaxToolkit:CalendarExtender ID="StartTB_CalendarExtender" runat="server" BehaviorID="StartTB_CalendarExtender" TargetControlID="StartTB" Format="yyyy-MM-dd"/>
-                        <asp:TextBox ID="EndTB" runat="server" class="form-control"></asp:TextBox>
-						    <ajaxToolkit:CalendarExtender ID="EndTB_CalendarExtender" runat="server" BehaviorID="EndTB_CalendarExtender" TargetControlID="EndTB" Format="yyyy-MM-dd" />
-						</div> 
-                            <h4>地區</h4>
                             <div class="form-group">
-                                <asp:CheckBoxList ID="DeptCBL" runat="server" DataSourceID="SqlDataSource1" DataTextField="部門" DataValueField="部門" CssClass="checkbox checkbox-inline"></asp:CheckBoxList>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT DISTINCT [部門] FROM [View訂單資料] ORDER BY [部門]"></asp:SqlDataSource>
-                            </div>--%>
-
-                            <div class="form-group">
-                            <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
-                            <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />
+                            <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-outline-dark" OnClick="SearchBT_Click" />
+                            <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-dark" OnClick="ClearBT_Click" />
 
                             </div>
-                            <asp:Literal ID="MessageLT" runat="server"></asp:Literal>
-
-
-                        </div>
-
-                    </nav>
-                </div>
-                <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False" >
-                        <LocalReport ReportPath="ReportSource\VN\ReportVN004V2.rdlc" DisplayName="訂單資料">
-                        </LocalReport>
+                    </div>
+                                               
+                </nav>
+                
+                                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                                                        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+<%--                        <LocalReport ReportPath="ReportSource\Factory\ReportF004V2.rdlc" DisplayName="訂單資料">
+                        </LocalReport>--%>
                     </rsweb:ReportViewer>
-                </div>
+                </main>
             </div>
         </div>
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="show3" runat="server" Text="show3" Style="display:none" />
+                <asp:Panel ID="AlertPanel" runat="server" align="center"  CssClass="alert-danger w-75" Style="display: none">
+                    <div class=" text-center">
+                        <h3>
+                            <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
+
+                        </h3>
+                        <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                </ajaxToolkit:ModalPopupExtender>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
 </body>
 </html>

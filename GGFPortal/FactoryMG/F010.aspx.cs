@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Web.UI;
 using GGFPortal.ReferenceCode;
+using System.Linq;
 
 namespace GGFPortal.FactoryMG
 {
@@ -12,11 +13,53 @@ namespace GGFPortal.FactoryMG
     public partial class F010 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
-        字串處理 多款號 = new 字串處理();
+        
+        static string StrArea, StrPageName = "F010", StrProgram = "F010.aspx";
+        字串處理 切字串 = new 字串處理();
+        static 多語 lang = new 多語();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            try
+            {
+                //清空Error資料
+                Session.Remove("Error");
+                if (Session["Area"].ToString() == "")
+                {
+                    Response.Redirect("Findex.aspx");
+                }
+                StrArea = Session["Area"].ToString();
+                //網頁標題
+                if (StrArea == "TW")
+                {
+                    AreaDDL.Visible = true;
+                    AreaLB.Visible = true;
+                }
+                else
+                {
+                    AreaDDL.Visible = false;
+                    AreaLB.Visible = false;
+                }
+                lang.gg.Clear();
+
+                lang.讀取多語資料("Program", StrPageName);
+            }
+            catch (Exception)
+            {
+                Session["Error"] = "timeout";
+                Response.Redirect("Findex.aspx");
+            }
+            #region 網頁Layout基本參數
+            //網頁標題
+
+            BrandLB.Text = lang.翻譯("Program", StrPageName, StrArea);
+            Page.Title = lang.翻譯("Program", StrPageName, StrArea);
+            DateRangeLB.Text = lang.翻譯("Program", "DateRange", StrArea);
+            #endregion
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            StartTB.Attributes["readonly"] = "readonly";
-            EndTB.Attributes["readonly"] = "readonly";
+            //StartTB.Attributes["readonly"] = "readonly";
+            //EndTB.Attributes["readonly"] = "readonly";
             //if (YearDDL.Items.Count == 0)
             //{
             //    //int iCountYear = DateTime.Now.Year - 2015;
@@ -40,8 +83,8 @@ namespace GGFPortal.FactoryMG
 
         protected void ClearBT_Click(object sender, EventArgs e)
         {
-            StartTB.Text = "";
-            EndTB.Text = "";
+            //StartTB.Text = "";
+            //EndTB.Text = "";
             StyleNoTB.Text = "";
         }
 
@@ -52,75 +95,93 @@ namespace GGFPortal.FactoryMG
         }
         protected void DbInit()
         {
-            if (!String.IsNullOrEmpty(StartTB.Text) && !String.IsNullOrEmpty(EndTB.Text))
+            DataTable dt = new DataTable();
+            using (SqlConnection Conn = new SqlConnection(strConnectString))
             {
-                //if (DateTime.Parse( StartTB.Text)> DateTime.Parse(EndTB.Text))
-                //{
-                //    MessageLT.Text = @"                            
-                //                    <div class='form-group'>
-                //                        <h3 class='text-info text-center'>訂單日期錯誤 </ h3 >
-                //                    </div>";
-                //}
-                //else
-                //{
-                    DataTable dt = new DataTable();
-                    using (SqlConnection Conn = new SqlConnection(strConnectString))
-                    {
-                        SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
-                        myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
-
-                    }
-                    if (dt.Rows.Count > 0)
-                    {
-                        ReportViewer1.Visible = true;
-                        ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                        ReportDataSource source = new ReportDataSource("產量統計", dt);
-                        ReportViewer1.LocalReport.DataSources.Clear();
-                        ReportViewer1.LocalReport.DataSources.Add(source);
-                        ReportViewer1.DataBind();
-                        ReportViewer1.LocalReport.Refresh();
-                    }
-                    else
-                    {
-                        MessageLT.Text = @"                            
-                                    <div class='form-group'>
-                                        <h3 class='text-info text-center'>沒有資料 </ h3 >
-                                    </div>";
-                    }
-                }
-            //}
-            //else
-            //{
-                
-            //}
-
-        }
-
-        private StringBuilder selectsql()
-        {
-            
-            StringBuilder strsql = new StringBuilder(@" 
-                                            SELECT  [Team]
+                SqlCommand command1 = Conn.CreateCommand();
+                SqlTransaction transaction1;
+                Conn.Open();
+                transaction1 = Conn.BeginTransaction("createExcelImport");
+                try
+                {
+                    command1.Connection = Conn;
+                    command1.Transaction = transaction1;
+                    string[] stringSeparators = new string[] { "\r\n" };
+                    string[] StyleArray = StyleNoTB.Text.Trim().Split(stringSeparators, StringSplitOptions.None);
+                    #region 匯入
+                    string[] parameters = StyleArray.Select((s, i) => "@StyleNo" + i.ToString()).ToArray();
+                    command1.CommandText = string.Format(@"SELECT  [Team]
                                                 ,[款號]
                                                 ,[今日產量]
-                                            FROM [dbo].[View工時資料]
-                                        ");
-            //string strDept = "";
-            strsql.AppendFormat(" where 工作時間 between '{0}' and '{1}'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartTB.Text))?StartTB.Text:"20000101", (!String.IsNullOrEmpty(EndTB.Text)) ? EndTB.Text : "29990101");
-            //for (int i = 0; i < DeptCBL.Items.Count; i++)
-            //{
-            //    if (DeptCBL.Items[i].Selected)
-            //    {
-            //        strDept += (string.IsNullOrEmpty(strDept) ? "'" + DeptCBL.Items[i].Value + "'" : ",'" + DeptCBL.Items[i].Value + "'");
-            //    }
-            //}
-            //if(!string.IsNullOrEmpty(strDept))
-            //    strsql.AppendFormat(" and 部門 in ( {0} ) " , strDept);
-            string 款號 = 多款號.字串多筆資料搜尋(StyleNoTB.Text).ToString();
-            if (款號.Length > 0)
-                strsql.AppendFormat(" and 款號 in {0} ",款號);
-            return strsql;
+                                            FROM [dbo].[View工時資料] where 地區 =@Area {1} {0}"
+                                 , (!string.IsNullOrEmpty(StyleNoTB.Text)) ? string.Format(" and StyleNo in ( {0} ) ", string.Join(",", parameters)) : ""
+                                 , string.Format(" and 工作時間 between '{0}' and '{1}'", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11)));
+                    if (!string.IsNullOrEmpty(StyleNoTB.Text))
+                        for (int i = 0; i < StyleArray.Length; i++)
+                            command1.Parameters.AddWithValue(parameters[i], StyleArray[i]);
+                    command1.Parameters.Add("@Area", SqlDbType.NVarChar).Value = (StrArea == "TW") ? AreaDDL.SelectedValue : StrArea;
+                    command1.ExecuteNonQuery();
+                    SqlDataReader dr = command1.ExecuteReader();
+                    dt.Load(dr);
+
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    //Log.ErrorLog(ex, "上傳失敗", StrProgram);
+                    //transaction1.Rollback();
+                }
+                finally
+                {
+                    Conn.Close();
+                    transaction1.Dispose();
+                }
+            }
+            if (dt.Rows.Count > 0)
+            {
+                ReportViewer1.Visible = true;
+                ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                ReportDataSource source = new ReportDataSource("產量統計", dt);
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportViewer1.LocalReport.DataSources.Add(source);
+                ReportViewer1.DataBind();
+                ReportViewer1.LocalReport.Refresh();
+            }
+            else
+            {
+                F_ErrorShow("沒有資料");
+            }
         }
-        
+
+        //private StringBuilder selectsql()
+        //{
+            
+        //    StringBuilder strsql = new StringBuilder(@" 
+        //                                    SELECT  [Team]
+        //                                        ,[款號]
+        //                                        ,[今日產量]
+        //                                    FROM [dbo].[View工時資料]
+        //                                ");
+        //    //string strDept = "";
+        //    strsql.AppendFormat(" where 工作時間 between '{0}' and '{1}'  and [地區] ='VGG' ", (!String.IsNullOrEmpty(StartTB.Text))?StartTB.Text:"20000101", (!String.IsNullOrEmpty(EndTB.Text)) ? EndTB.Text : "29990101");
+        //    //for (int i = 0; i < DeptCBL.Items.Count; i++)
+        //    //{
+        //    //    if (DeptCBL.Items[i].Selected)
+        //    //    {
+        //    //        strDept += (string.IsNullOrEmpty(strDept) ? "'" + DeptCBL.Items[i].Value + "'" : ",'" + DeptCBL.Items[i].Value + "'");
+        //    //    }
+        //    //}
+        //    //if(!string.IsNullOrEmpty(strDept))
+        //    //    strsql.AppendFormat(" and 部門 in ( {0} ) " , strDept);
+        //    string 款號 = 多款號.字串多筆資料搜尋(StyleNoTB.Text).ToString();
+        //    if (款號.Length > 0)
+        //        strsql.AppendFormat(" and 款號 in {0} ",款號);
+        //    return strsql;
+        //}
+        public void F_ErrorShow(string strError)
+        {
+            MessageLB.Text = strError;
+            AlertPanel_ModalPopupExtender.Show();
+        }
     }
 }

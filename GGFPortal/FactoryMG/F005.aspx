@@ -118,7 +118,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-sm">
                         </table>
-                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark" AllowPaging="True" PageSize="30"></asp:GridView>
+                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark" AllowPaging="True" PageSize="30" OnPageIndexChanging="GridView1_PageIndexChanging"></asp:GridView>
                     </div>
                 </main>
             </div>
@@ -132,7 +132,7 @@
                             <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
 
                         </h3>
-                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-danger" />
+                        <asp:Button ID="AlertBT" runat="server" Text="OK" CssClass="btn btn-danger" />
                     </div>
                 </asp:Panel>
                 <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">

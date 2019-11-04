@@ -69,34 +69,10 @@
                         </asp:DropDownList>
                             </div>
                            <div class="form-group">
-                                <%--<asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" AutoPostBack="True" OnCheckedChanged="ReceiptCB_CheckedChanged" />--%>
-<%-- 多欄位autocomp                               <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="供應商TB" ID="供應商TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
-        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false"></ajaxToolkit:AutoCompleteExtender>
-                            <div>
-                                    <script type="text/javascript">
-                                        function Employees_Populated(sender, e) {
-                                            var employees = sender.get_completionList().childNodes;
-                                            var div = "<table>";
-                                            div += "<tr><th>Search</th><th>SearchName</th></tr>";
-                                            for (var i = 0; i < employees.length; i++) {
- 
-                                                div += "<tr><td>" + employees[i].innerHTML.split('-')[0] + "</td><td>" + employees[i].innerHTML.split('-')[1]  + "</td></tr>";
-                                            }
-                                            div += "</table>";
-                                            sender._completionListElement.innerHTML = div;
-                                        }
-                                    </script>
-                                </div>--%>
+                               <h4>樣衣發單地區</h4>
+                               <asp:CheckBox ID="AreaCB" runat="server" Text="河內" Checked="true" />
                             </div>
 
-<%--                            <h4>結案日期</h4>
-                            <div class=" form-group">
-                                
-                                <asp:TextBox runat="server" ID="結案起TB" Enabled="false"  CssClass=" form-control " />
-                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="結案起TB_CalendarExtender" TargetControlID="結案起TB" ID="結案起TB_CalendarExtender"  Format="yyyy/MM/dd"></ajaxToolkit:CalendarExtender>
-                                <asp:TextBox runat="server" ID="結案迄TB" Enabled="false" CssClass=" form-control " />
-                                <ajaxToolkit:CalendarExtender runat="server" BehaviorID="結案迄TB_CalendarExtender" TargetControlID="結案迄TB" ID="結案迄TB_CalendarExtender"  Format="yyyy/MM/dd"></ajaxToolkit:CalendarExtender>
-                            </div>--%>
                             <div class="form-group">
                                 <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
                                 <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />

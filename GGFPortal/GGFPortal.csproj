@@ -4077,6 +4077,7 @@
     <Content Include="TempCode\TempExcelImport.aspx" />
     <Content Include="TempCode\TempCode.aspx" />
     <Content Include="test\angulartest.aspx" />
+    <Content Include="test\datatable.aspx" />
     <Content Include="test\DevExtreme.aspx" />
     <Content Include="test\easyui2.aspx" />
     <Content Include="test\easyui.aspx" />
@@ -6001,6 +6002,13 @@
     <Compile Include="test\angulartest.aspx.designer.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\datatable.aspx.cs">
+      <DependentUpon>datatable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\datatable.aspx.designer.cs">
+      <DependentUpon>datatable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\DevExtreme.aspx.cs">
       <DependentUpon>DevExtreme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6801,6 +6809,20 @@
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF007.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF001.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF002.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF003.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF004.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF004V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF005.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF010.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF012.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF013.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF013V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF014.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF014V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF004V2EN.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance001_V5.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance012.rdlc" />

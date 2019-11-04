@@ -109,8 +109,7 @@ namespace GGFPortal.Sales
                                                         ,[dbo].[F_DateToNull](td_fin_date) TD完成日
                                                         ,b.employee_name_eng +'('+b.tel_nbr+')' as 開單人員
                                                         ,[remark60] 備註
-
-                                                         ,((SELECT distinct cast((n.MappingData +'_'+ z.SampleUser )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.SampleType=n.Data and n.UsingDefine='GGFRequestSam' and z.Flag=0
+                                                         ,((SELECT distinct cast((n.MappingData +'_'+ z.SampleUser+z.處理地點 )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z left join Mapping n on z.SampleType=n.Data and n.UsingDefine='GGFRequestSam' and z.Flag=0
                                                         where sam_nbr=a.sam_nbr 
                                                         FOR XML PATH(''))) as 打樣人員
 														,(SELECT distinct cast((zz.處理時間+'_'+ zz.修改人員 )  AS NVARCHAR ) + ',' from  [GGFRequestSam]  z  left join [GGFRequestMark] zz on z.uid=zz.uid and z.Flag=0 and zz.狀態=0
@@ -121,10 +120,8 @@ namespace GGFPortal.Sales
                                                         bas_employee AS b ON a.site = b.site AND a.creator = b.employee_no LEFT OUTER JOIN
                                                         samc_type AS c ON a.site = c.site AND a.type_id = c.type_id left join bas_dept d on a.site=d.site and a.dept_no=d.dept_no
                                                         left join bas_item_statistic e on a.site=e.site and a.item_statistic=e.item_statistic
-                                                        where  sam_nbr in (select sam_nbr from GGFRequestSam where 處理地點='Hanoi' and Flag = 0) 
-                                                ", (收單起TB.Text.Length>0&&收單迄TB.Text.Length>0)?"":" top 100 "));
-            
-            
+                                                        where {1} 
+                                                ", (收單起TB.Text.Length>0&&收單迄TB.Text.Length>0)?"":" top 100 ",(AreaCB.Checked)? "   sam_nbr in (select sam_nbr from GGFRequestSam where  Flag = 0 and 處理地點='Hanoi' )" : "1=1"));
             if (!string.IsNullOrEmpty(BrandTB.Text))
                 strsql.AppendFormat(" and a.brand_name LIKE '{0}%'",BrandTB.Text);
             if(SamcTypeDDL.Text.Length > 0)
@@ -133,6 +130,7 @@ namespace GGFPortal.Sales
             }
             if (StatusDDL.SelectedValue != "ALL")
                 strsql.AppendFormat(" and a.status ='{0}'  ", StatusDDL.SelectedValue);
+
             //if (StatusDDL.SelectedValue == "CL")
             //{
             //    strsql.AppendFormat(" and   convert(varchar(10),a.close_date,111)  between '{0}' and '{1}'"

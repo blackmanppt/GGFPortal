@@ -18,18 +18,18 @@
 <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
 
-        <table class="table table-secondary m-2">
+        <table class="table table-secondary ">
             <tr>
                 <th class="h3 text-center" colspan="2">
                     
                     <asp:Label ID="TitleLB" runat="server" Text="Program" CssClass=""></asp:Label>
                 </th>
             </tr>
-            <tr class="row m-1">
-                <th class=" text-right col-3">
+            <tr class="">
+                <th class=" text-right ">
                     <asp:Label ID="Label3" runat="server" Text="Area："></asp:Label>
                 </th>
-                <td class="  col-9">
+                <td class=" ">
                     <asp:DropDownList ID="FactoryDDL" runat="server" CssClass="dropdown dropdown-toggle-split bg-light form-control-sm" AutoPostBack="True" OnSelectedIndexChanged="FactoryDDL_SelectedIndexChanged">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem >VGG</asp:ListItem>
@@ -41,20 +41,20 @@
                 </td>
 
             </tr>
-            <tr class="row m-1 ">
-                <th class=" text-right col-3">
+            <tr class="">
+                <th class=" text-right">
                     <asp:Label ID="Label2" runat="server" Text="Style Search："></asp:Label>
                 </th>
-                <td class="  col-9">
+                <td class="">
                     <asp:Button ID="StyleBT" runat="server" Text="Style Search" CssClass="btn btn-primary" OnClick="StyleBT_Click" />
                 </td>
 
             </tr>
-            <tr class="row  m-1">
-                <th class="text-right col-3">
+            <tr class="">
+                <th class="text-right">
                     <asp:Label ID="Label1" runat="server" Text="Data Import："></asp:Label>
                 </th>
-                <td class="col-9">
+                <td class="">
                     <div class="btn-group">
                         <asp:Button ID="StitchBT" runat="server" Text="" CssClass="btn btn-primary" Visible="false" OnClick="StitchBT_Click" />
                         <asp:Button ID="PackageBT" runat="server" Text="" CssClass="btn btn-secondary" Visible="false" OnClick="PackageBT_Click" />
@@ -65,37 +65,30 @@
                 </td>
 
             </tr>
-            <tr class=" m-1">
-                <th class="text-right col-3 " rowspan="6">
+            <tr class="">
+                <th class="text-right  " rowspan="6">
                     <asp:Label ID="Label4" runat="server" Text="Report:"></asp:Label>
                 </th>
-                <td class="col-9">
-                    005
+                <td class="m-2">
                     <asp:Button ID="ImportLogSearchBT" runat="server"  CssClass="btn btn-primary" OnClick="ImportLogSearchBT_Click" />
                     <br />
-                    007
-                    <asp:Button ID="ImportDataSearchBT" runat="server"  CssClass="btn btn-primary" OnClick="ImportDataSearchBT_Click" />
+                    <asp:Button ID="ImportDataSearchBT" runat="server"  CssClass="btn btn-outline-secondary" OnClick="ImportDataSearchBT_Click" />
                     <br />
-                    008
                     <asp:Button ID="MonthTimeSumBT" runat="server"  CssClass="btn btn-primary" OnClick="MonthTimeSumBT_Click" />
                     <br />
-                    010
-                    <asp:Button ID="TeamQtyBT" runat="server"  CssClass="btn btn-primary" OnClick="TeamQtyBT_Click" />
+                    <asp:Button ID="TeamQtyBT" runat="server"  CssClass="btn btn-outline-secondary" OnClick="TeamQtyBT_Click" />
                     <br />
-                    011
                     <asp:Button ID="TeamCMBT" runat="server"  CssClass="btn btn-primary" OnClick="TeamCMBT_Click" />
                     <br />
-                    012越南明細表(秒數)
-                    <asp:Button ID="TimeSecBT" runat="server"  CssClass="btn btn-primary" OnClick="TimeSecBT_Click" />
+                    <asp:Button ID="TimeSecBT" runat="server"  CssClass="btn btn-outline-secondary" OnClick="TimeSecBT_Click" />
                     <br />
-                    013越南明細表(各組秒數)
                     <asp:Button ID="TimeSecTeamBT" runat="server"  CssClass="btn btn-primary" OnClick="TimeSecTeamBT_Click" />
                     </td>
 
             </tr>
-            <tr class="m-1">
+            <tr class="">
 
-                <td class="col-9">
+                <td class="">
                     006
                     <asp:Button ID="ImportLogSearchDeleteBT" runat="server"  CssClass="btn btn-primary" />
                     <br />
@@ -104,9 +97,9 @@
                     </td>
 
             </tr>
-            <tr class="m-1">
+            <tr class="">
 
-                <td class="col-9">
+                <td class="">
                     <asp:Button ID="Button3" runat="server" Text="Button" />
                     </td>
 

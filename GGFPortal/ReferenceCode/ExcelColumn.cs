@@ -238,50 +238,96 @@ namespace GGFPortal.ReferenceCode
             //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
             //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
         }
-        public void VNStitch()
+        public void VNStitch(string StrArea="VGG")
         {
+            // Type 1：int , Type 2：String , Type 3：日期 , Type 4：float, Type 6：不需要資料 String, Type 7：不需要資料 int , Type 8：float 不需要資料, Type 9:
             int x = 1;
             VNExcel = new List<Column1>();
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "SheetName", ColumnType = 2 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Date", ColumnType = 3 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Dept", ColumnType = 2 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Customer", ColumnType = 2 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StyleNo", ColumnType = 2 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderQty", ColumnType = 1 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TeamProductivity", ColumnType = 1 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderShipDate", ColumnType = 3 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDate", ColumnType = 3 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StandardProductivity", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Person", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Time", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalTime", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Percent", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "GoalProductivity", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayProductivity", ColumnType = 1 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "PreProductivity", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalProductivity", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Difference", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Efficiency", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalEfficiency", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ReturnPercent", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark1", ColumnType = 6 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark2", ColumnType = 6 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost1", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost2", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost3", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost4", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 4 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
-            //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
-            VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorRate", ColumnType = 8 });
+            switch (StrArea)
+            {
+                case "GAMA":
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "SheetName", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Date", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Dept", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Customer", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StyleNo", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderQty", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TeamProductivity", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderShipDate", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDate", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StandardProductivity", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Person", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Time", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalTime", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Percent", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "GoalProductivity", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayProductivity", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "PreProductivity", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalProductivity", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Difference", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Efficiency", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalEfficiency", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ReturnPercent", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark1", ColumnType = 6 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark2", ColumnType = 6 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost1", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost2", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost3", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost4", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 3 });
+                    //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorRate", ColumnType = 8 });
+                    break;
+                default:
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "SheetName", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Date", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Dept", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Customer", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StyleNo", ColumnType = 2 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderQty", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TeamProductivity", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OrderShipDate", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDate", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "StandardProductivity", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Person", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Time", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalTime", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Percent", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "GoalProductivity", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayProductivity", ColumnType = 1 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "PreProductivity", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalProductivity", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Difference", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Efficiency", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "TotalEfficiency", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ReturnPercent", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark1", ColumnType = 6 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "Rmark2", ColumnType = 6 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost1", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost2", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost3", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost4", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 4 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
+                    //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorRate", ColumnType = 8 });
+                    break;
+            }
+            
+            
         }
         public void VNStitchmain(string strArea)
         {
-            VNStitch();
+            VNStitch(strArea);
             VNDT("Stitch");
             VNChinese("Stitch", strArea);
             VNNameHead("Stitch", strArea);
@@ -363,41 +409,41 @@ namespace GGFPortal.ReferenceCode
                 case "GAMA":
                     VNExcel[IntAdd(ref x)].ChineseName = "SheetName";
                     VNExcel[IntAdd(ref x)].ChineseName = "Date";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Dept";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Customer";
-                    VNExcel[IntAdd(ref x)].ChineseName = "StyleNo";
-                    VNExcel[IntAdd(ref x)].ChineseName = "OrderQty";
-                    VNExcel[IntAdd(ref x)].ChineseName = "TeamProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "OrderShipDate";
-                    VNExcel[IntAdd(ref x)].ChineseName = "OnlineDate";
-                    VNExcel[IntAdd(ref x)].ChineseName = "StandardProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Person";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Time";
-                    VNExcel[IntAdd(ref x)].ChineseName = "TotalTime";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Line";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Buyer";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Style";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Order Qty";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Total Output";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Delivery Date";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Online";
+                    VNExcel[IntAdd(ref x)].ChineseName = "IE/8H";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Worker's of Today";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Working Hours";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Total Line Working Hour";
                     VNExcel[IntAdd(ref x)].ChineseName = "Percent";
-                    VNExcel[IntAdd(ref x)].ChineseName = "GoalProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "PreProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "TotalProductivity";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Difference";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Efficiency";
-                    VNExcel[IntAdd(ref x)].ChineseName = "TotalEfficiency";
-                    VNExcel[IntAdd(ref x)].ChineseName = "ReturnPercent";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Rmark1";
-                    VNExcel[IntAdd(ref x)].ChineseName = "Rmark2";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost1";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost2";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost3";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost4";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost5";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost6";
-                    VNExcel[IntAdd(ref x)].ChineseName = "DayCost7";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Target";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Today's Output";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Yesterday's Output";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Today+Yesterday Output";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Balance";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Efficiency/ style % ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Efficiency per line %";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Repair % ";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Liability and Online Days";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Color";
+                    VNExcel[IntAdd(ref x)].ChineseName = "cost / line";
+                    VNExcel[IntAdd(ref x)].ChineseName = "production cost";
+                    VNExcel[IntAdd(ref x)].ChineseName = "CM Price";
+                    VNExcel[IntAdd(ref x)].ChineseName = "revenue";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Profit and loss";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Profit and loss %";
+                    VNExcel[IntAdd(ref x)].ChineseName = "Total profit / loss";
                     if (!string.IsNullOrEmpty(Team))
                     {
-                        VNExcel[IntAdd(ref x)].ChineseName = "QCQty";
-                        VNExcel[IntAdd(ref x)].ChineseName = "ErrorQty";
+                        VNExcel[IntAdd(ref x)].ChineseName = "QC check QTY";
+                        VNExcel[IntAdd(ref x)].ChineseName = "Defect QTY";
                         //VNExcel[IntAdd(ref x)].ChineseName = "瑕疵數不可返修";
-                        VNExcel[IntAdd(ref x)].ChineseName = "OnlineDay";
+                        VNExcel[IntAdd(ref x)].ChineseName = "Online days";
                         VNExcel[IntAdd(ref x)].ChineseName = "ErrorRate";
                     }
                     break;
@@ -493,6 +539,7 @@ namespace GGFPortal.ReferenceCode
                     }
                     break;
                 case "GAMA":
+                    VNExcel[IntAdd(ref x)].VNName = "SheetName";
                     VNExcel[IntAdd(ref x)].VNName = "Dept";
                     VNExcel[IntAdd(ref x)].VNName = "Customer";
                     VNExcel[IntAdd(ref x)].VNName = "StyleNo";
