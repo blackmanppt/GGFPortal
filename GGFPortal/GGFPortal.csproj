@@ -356,6 +356,8 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sample018.aspx" />
+    <Content Include="Sales\Sample017.aspx" />
     <Content Include="Sales\IMG\Screenshot_9.png" />
     <Content Include="Sales\Sales010.aspx" />
     <Content Include="Sales\Sales009.aspx" />
@@ -4070,6 +4072,7 @@
     <Content Include="Ship\Ship006.aspx" />
     <Content Include="Ship\Ship006old.aspx" />
     <Content Include="Ship\Ship007.aspx" />
+    <Content Include="TempCode\GGFTempCode.aspx" />
     <Content Include="TempCode\SbAdminTempCode.aspx" />
     <Content Include="TempCode\siteTest.aspx" />
     <Content Include="TempCode\TempCode2.aspx" />
@@ -5110,6 +5113,7 @@
     <Content Include="scripts\SbAdmin2\vendor\jquery\jquery.min.map" />
     <Content Include="scripts\SbAdmin2\vendor\jquery\jquery.slim.min.map" />
     <Content Include="TempCode\SiteTest.Master" />
+    <Content Include="TempCode\GGFSite.Master" />
     <None Include="test\DataSetTest.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -5679,7 +5683,22 @@
     <Compile Include="ProductsController.cs" />
     <Compile Include="ReferenceCode\Get使用者資料.cs" />
     <Compile Include="ReferenceCode\Language.cs" />
+    <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sample018.aspx.cs">
+      <DependentUpon>Sample018.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample018.aspx.designer.cs">
+      <DependentUpon>Sample018.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample017.aspx.cs">
+      <DependentUpon>Sample017.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample017.aspx.designer.cs">
+      <DependentUpon>Sample017.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales010.aspx.cs">
       <DependentUpon>Sales010.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5946,6 +5965,20 @@
     <Compile Include="Ship\Ship007.aspx.designer.cs">
       <DependentUpon>Ship007.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TempCode\GGFSite.Master.cs">
+      <DependentUpon>GGFSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\GGFSite.Master.designer.cs">
+      <DependentUpon>GGFSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCode.aspx.cs">
+      <DependentUpon>GGFTempCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCode.aspx.designer.cs">
+      <DependentUpon>GGFTempCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TempCode\SbAdminTempCode.aspx.cs">
       <DependentUpon>SbAdminTempCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5995,6 +6028,7 @@
     <Compile Include="TempCode\TempCode.aspx.designer.cs">
       <DependentUpon>TempCode.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TempCode\TempScriptCode.cs" />
     <Compile Include="test\angulartest.aspx.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

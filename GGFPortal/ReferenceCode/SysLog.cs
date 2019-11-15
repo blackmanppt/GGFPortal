@@ -68,5 +68,10 @@ namespace GGFPortal.ReferenceCode
 
             }
         }
+        public Boolean BSendMail()
+        {
+            Boolean BStatus = true;
+            return BStatus;
+        }
     }
 }

@@ -6,20 +6,20 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    
+
     <script src="../scripts/jquery-3.4.1.min.js"></script>
     <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
-    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />    
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
     <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
     <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 
 
-     <script type="text/javascript"  src="../scripts/daterangepicker/moment.min.js"></script>
-    <script type="text/javascript"  src="../scripts/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="../scripts/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="../scripts/daterangepicker/daterangepicker.min.js"></script>
     <link href="../scripts/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 
-    
+
     <script type="text/javascript">
         $(function () {
             var start = moment().subtract(29, 'days');
@@ -89,23 +89,23 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
-                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                    <span>說明1</span>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>說明1</span>
 
-                                </h3>
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
-                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                    <span>說明2</span>
+                        </h3>
+                        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>說明2</span>
 
-                                </h3>
-                                <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
-                                                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
-                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                    <span>日期</span>
+                        </h3>
+                        <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>日期</span>
 
-                                </h3>
-                                <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
-                       <%-- <ul class="nav flex-column">
+                        </h3>
+                        <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+                        <%-- <ul class="nav flex-column">
                             <li class="nav-item">
                                                             <a class="nav-link active" href="#">
                                 <span data-feather="home"></span>
@@ -220,7 +220,7 @@
         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
             <ContentTemplate>
                 <asp:Button ID="show3" runat="server" Text="show3" Style="" />
-                <asp:Panel ID="AlertPanel" runat="server" align="center"  CssClass="alert-danger w-75" Style="display: none">
+                <asp:Panel ID="AlertPanel" runat="server" align="center" CssClass="alert-danger w-75" Style="display: none">
                     <div class=" text-center">
                         <h3>
                             <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>

@@ -7,38 +7,38 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.test
+namespace GGFPortal.TempCode
 {
 
 
-    public partial class WebFormHR
+    public partial class GGFTempCode
     {
 
         /// <summary>
-        /// form1 控制項。
+        /// DateRangeTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox DateRangeTB;
 
         /// <summary>
-        /// CheckBoxList1 控制項。
+        /// MutiTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.TextBox MutiTB;
 
         /// <summary>
-        /// Button1 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

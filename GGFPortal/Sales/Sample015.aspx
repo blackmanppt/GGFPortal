@@ -116,13 +116,7 @@
                             <asp:BoundField DataField="打樣處理" HeaderText="打樣處理" SortExpression="打樣處理" />
                         </Columns>
                     </asp:GridView>
-                                        <asp:GridView ID="TESTGV" runat="server" CssClass="table table-striped table-sm table-danger"  AutoGenerateColumns="False">
-                        <Columns>
-                            <asp:BoundField DataField="Search" HeaderText="Search" SortExpression="Search" />
-                            <asp:BoundField DataField="打樣單狀態" HeaderText="打樣單狀態" SortExpression="打樣單狀態" />
-                            <asp:BoundField DataField="打樣處理" HeaderText="打樣處理" SortExpression="打樣處理" />
-                        </Columns>
-                    </asp:GridView>
+
                         <asp:GridView ID="SamGV" runat="server" CssClass="table table-striped table-sm table-dark" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="發版日期" HeaderText="發版日期" SortExpression="發版日期"  DataFormatString="{0:d}"  />

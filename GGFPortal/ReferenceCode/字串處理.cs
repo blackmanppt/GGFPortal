@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -54,6 +55,11 @@ namespace GGFPortal.ReferenceCode
             }
             return 多筆資料;
         }
+        /// <summary>
+        /// 字串切逗點函示
+        /// </summary>
+        /// <param name="str逗點"></param>
+        /// <returns></returns>
         protected string[] 切割逗點(string str逗點)
         {
             string[] stringSeparators = new string[] { "," };
@@ -83,6 +89,44 @@ namespace GGFPortal.ReferenceCode
                 }
             }
             return 多筆資料;
+        }
+        /// <summary>
+        /// Datatable轉陣列參數
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="StrParameter"></param>
+        /// <returns></returns>
+        public string[] QueryParameter(DataTable dt, string StrParameter)
+        {
+            return dt.Rows.OfType<DataRow>().Select((s, i) => "@" + StrParameter + i.ToString()).ToArray();
+        }
+        /// <summary>
+        /// Datatable轉陣列參數
+        /// </summary>
+        /// <param name="StrSearch"></param>
+        /// <param name="StrParameter"></param>
+        /// <returns></returns>
+        public string[] QueryParameter(string StrSearch, string StrParameter)
+        {
+            return SplitEnter(StrSearch).Select((s, i) => "@" + StrParameter + i.ToString()).ToArray();
+        }
+        public string 轉換虛擬Select(string StrSearch ,string StrSearchName)
+        {
+            
+            StringBuilder StrConvert = new StringBuilder("");
+            string[] strtextarry = SplitEnter(StrSearch);
+            if (strtextarry.Length > 0)
+            {
+                for (int i = 0; i < strtextarry.Length; i++)
+                {
+                    if (strtextarry[i].Trim().Length > 0)
+                        if (StrConvert.Length == 0)
+                            StrConvert.AppendFormat(" select '{0}' as '{1}' ", strtextarry[i].Trim(), StrSearchName);
+                        else
+                            StrConvert.AppendFormat(" union select '{0}' as '{1}' ", strtextarry[i].Trim(), StrSearchName);
+                }
+            }
+            return StrConvert.ToString();
         }
     }
 }

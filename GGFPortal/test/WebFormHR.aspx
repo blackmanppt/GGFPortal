@@ -20,7 +20,7 @@
 <asp:ListItem>12/20 加班四小時</asp:ListItem>
 
         </asp:CheckBoxList>
-    
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click1" />
     </div>
     </form>
 </body>

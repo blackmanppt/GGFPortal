@@ -271,6 +271,8 @@ table, td, th {
                                                                         <br />
                                                 <asp:HyperLink ID="HyperLink109" runat="server" NavigateUrl="~/Sales/Sample016.aspx">打樣收單(河內)</asp:HyperLink>
 
+                                                <br />
+                        <asp:HyperLink ID="HyperLink111" runat="server" NavigateUrl="~/Sales/Sample018.aspx">樣品單主副料收單</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 

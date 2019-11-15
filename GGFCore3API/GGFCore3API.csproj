@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>da3047a0-497d-4366-aac1-fc73a406b7d8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DBModels\" />
   </ItemGroup>
 
 </Project>
