@@ -10,7 +10,7 @@ using System.IO;
 namespace GGFPortal.MGT
 {
 
-    public partial class MGT002 : System.Web.UI.Page
+    public partial class MGT002Print : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
@@ -248,18 +248,7 @@ namespace GGFPortal.MGT
                             var dset = db.快遞單明細.Where(p => p.uid == iuid);
                             foreach (var item in dset)
                             {
-                                if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人工號)) == true)
-                                {
-                                    寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人工號).Value;
-                                    寄件人DDL.SelectedItem.Text = item.寄件人;
-                                    //UserLB.Text = "";
-                                }
-                                else
-                                {
-                                    
-                                    //UserLB.Text = "離職人員";
-                                }
-                                //寄件人DDL.se = item.寄件人工號;
+                                寄件人工號TB.Text = item.寄件人工號;
                                 分機TB.Text = item.寄件人分機;
                                 客戶名稱TB.Text = item.客戶名稱;
                                 收件人TB.Text = item.收件人;
@@ -322,18 +311,18 @@ namespace GGFPortal.MGT
                         }
                     }
                 }
-                //else if (e.CommandName == "列印")
-                //{
-                //    GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
-                //    string struid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
-                //    Session.RemoveAll();
-                //    Session["uid"] = struid;
-                //    Session["id"] = ACRGV.Rows[row.RowIndex].Cells[1].Text;
-                //    //Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
-                //    //Response.Redirect("MGT003.aspx");
-                //    Response.Redirect("MGT005.aspx");
+                else if (e.CommandName == "列印")
+                {
+                    GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                    string struid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
+                    Session.RemoveAll();
+                    Session["uid"] = struid;
+                    Session["id"] = ACRGV.Rows[row.RowIndex].Cells[1].Text;
+                    //Session["提單日期"] = ACRGV.Rows[row.RowIndex].Cells[3].Text;
+                    //Response.Redirect("MGT003.aspx");
+                    Response.Redirect("MGT005.aspx");
 
-                //}
+                }
             }
         }
         
@@ -392,7 +381,7 @@ namespace GGFPortal.MGT
                         int.TryParse(uidHF.Value, out iuid);
                         int.TryParse(idHF.Value, out iid);
                         
-                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人DDL.SelectedValue).FirstOrDefault();
+                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人工號TB.Text).FirstOrDefault();
                         if (iid == 0)
                             sbError.Append("Please search again");
                         if (工號資料 == null)
@@ -451,7 +440,7 @@ namespace GGFPortal.MGT
                                 var 新增快遞單明細 = new 快遞單明細();
                                 新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
-                                新增快遞單明細.寄件人工號 = 工號資料.employee_no;
+                                新增快遞單明細.寄件人工號 = 寄件人工號TB.Text.Trim();
                                 新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
                                 新增快遞單明細.客戶名稱 = 客戶名稱TB.Text.Trim();
@@ -478,7 +467,7 @@ namespace GGFPortal.MGT
                                 var 新增快遞單明細 = conn.快遞單明細.Find(iuid);
                                 //新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
-                                新增快遞單明細.寄件人工號 = 工號資料.employee_no;
+                                新增快遞單明細.寄件人工號 = 寄件人工號TB.Text.Trim();
                                 新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
                                 新增快遞單明細.寄件人部門 = 工號資料.dept_no;
@@ -534,7 +523,7 @@ namespace GGFPortal.MGT
 
         public void ClearEdit()
         {
-            寄件人DDL.SelectedIndex = -1;
+            寄件人工號TB.Text = "";
             分機TB.Text = "";
             客戶名稱TB.Text = "";
             收件人TB.Text = "";

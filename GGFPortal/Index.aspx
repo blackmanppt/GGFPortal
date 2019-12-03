@@ -328,6 +328,9 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink91" runat="server" NavigateUrl="~/MGT/MGT009.aspx">快遞單INVOICE</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink94" runat="server" NavigateUrl="~/MGT/MGT010.aspx">快遞單原因歸屬管理</asp:HyperLink>
+                         <br />
+<%--                        <asp:HyperLink ID="HyperLink112" runat="server" NavigateUrl="~/MGT/MGT002Print.aspx">快遞單重量列印</asp:HyperLink>--%>
+                        
                     </td>
                 </tr>
             </table>

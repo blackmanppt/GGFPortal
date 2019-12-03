@@ -62,10 +62,10 @@ namespace GGFPortal.Secretary
         {
             StringBuilder sbstring = new StringBuilder(@"select left(訂單月份,4) 訂單年度,RIGHT(訂單月份,2)訂單月, * from (
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'訂單' as '訂單種類',實際IE*訂單數量 as 秒數   FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                     UNION ALL 
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'預告單' as '訂單種類' , 0 as 秒數  FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                                         ) a ");
             //StringBuilder sbstring2 = new StringBuilder();
             StringBuilder sbstr1 = new StringBuilder(sbstring.ToString()), sbstr2= new StringBuilder(sbstring.ToString()), sbstr3 = new StringBuilder(sbstring.ToString()), sbstr4 = new StringBuilder();
@@ -229,7 +229,7 @@ namespace GGFPortal.Secretary
                                     select '' 訂單年度,'' 訂單月,'' 訂單號碼,'' 代理商代號,'' 代理商名稱,'' 客戶名稱,'' 訂單日期,
                                     LEFT( CONVERT(varchar(8), dateadd(M,rows-1,'{0}'),112),6) AS 訂單月份
                                     ,'預設月份' 工廠代號,'預設月份' 工廠名稱,'' 地區,0 訂單數量
-                                    ,'預設月份' ForMGF,'' salesman,'' employee_name,'' OrderBy
+                                    ,'預設月份' ForMGF,'' salesman,'' employee_name,'' OrderBy,'預告單' as '訂單種類' , 0 as 秒數
                                     from 
                                         ( 
                                         select id,row_number()over(order by id) rows  from sysobjects

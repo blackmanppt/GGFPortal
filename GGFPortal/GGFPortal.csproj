@@ -321,6 +321,7 @@
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="Finance\Finance016.aspx" />
     <Content Include="IMG\SalesSearch.png" />
+    <Content Include="MGT\MGT002Print.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
     <Content Include="MGT\MGT008.aspx" />
@@ -356,6 +357,10 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sample022.aspx" />
+    <Content Include="Sales\Sample021.aspx" />
+    <Content Include="Sales\Sample020.aspx" />
+    <Content Include="Sales\Sample019.aspx" />
     <Content Include="Sales\Sample018.aspx" />
     <Content Include="Sales\Sample017.aspx" />
     <Content Include="Sales\IMG\Screenshot_9.png" />
@@ -4057,6 +4062,7 @@
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.min.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Secretary\Secretary009.aspx" />
     <Content Include="Secretary\Secretary001V5.aspx" />
     <Content Include="Secretary\Secretary008.aspx" />
     <Content Include="Secretary\Secretary007.aspx" />
@@ -5526,6 +5532,13 @@
     <Compile Include="Finance\Finance016.aspx.designer.cs">
       <DependentUpon>Finance016.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MGT\MGT002Print.aspx.cs">
+      <DependentUpon>MGT002Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT002Print.aspx.designer.cs">
+      <DependentUpon>MGT002Print.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MGT\MGT002.aspx.cs">
       <DependentUpon>MGT002.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5685,6 +5698,34 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sample022.aspx.cs">
+      <DependentUpon>Sample022.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample022.aspx.designer.cs">
+      <DependentUpon>Sample022.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample021.aspx.cs">
+      <DependentUpon>Sample021.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample021.aspx.designer.cs">
+      <DependentUpon>Sample021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample020.aspx.cs">
+      <DependentUpon>Sample020.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample020.aspx.designer.cs">
+      <DependentUpon>Sample020.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sample019.aspx.cs">
+      <DependentUpon>Sample019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample019.aspx.designer.cs">
+      <DependentUpon>Sample019.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sample018.aspx.cs">
       <DependentUpon>Sample018.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5859,6 +5900,13 @@
     </Compile>
     <Compile Include="Sales\Sample015.aspx.designer.cs">
       <DependentUpon>Sample015.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary009.aspx.cs">
+      <DependentUpon>Secretary009.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary009.aspx.designer.cs">
+      <DependentUpon>Secretary009.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary001V5.aspx.cs">
       <DependentUpon>Secretary001V5.aspx</DependentUpon>
@@ -6863,7 +6911,9 @@
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance015.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V2.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V3.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT007.rdlc" />
@@ -6918,7 +6968,11 @@
     <EmbeddedResource Include="ReportSource\Sample\ReportSample011V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample013.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample014.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSample022.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\Reporttest2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportS001V6.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportSource\Secretary\ReportS001V5.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -6928,6 +6982,8 @@
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary007.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary008.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary009V2.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary009.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip002.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip003NoPrice.rdlc" />

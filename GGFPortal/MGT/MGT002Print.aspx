@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MGT002.aspx.cs" Inherits="GGFPortal.MGT.MGT002" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MGT002Print.aspx.cs" Inherits="GGFPortal.MGT.MGT002Print" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -146,7 +146,7 @@
                                 <ItemTemplate>
                                     <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="Edit"  CssClass="btn btn-default"/>
                                     <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="Delete"  OnClientClick="return confirm('是否刪除')" CssClass="btn btn-danger"  />
-                                    <%--<asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="Print" CssClass="btn btn-primary" />--%>
+                                    <asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="Print" CssClass="btn btn-primary" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="寄件人" HeaderText="寄件人" SortExpression="寄件人" />
@@ -189,23 +189,16 @@
                                     <div class="row">
                                         <div class=" col-md-3 text-right">
                                             <asp:Label ID="寄件人LB" runat="server" Text="ID：" Font-Bold="True"></asp:Label>
-
                                         </div>
                                         <div class="col-md-3 text-left">
 
-                                            <%--<asp:TextBox ID="寄件人工號TB" runat="server"></asp:TextBox>--%>
-                                            <asp:DropDownList ID="寄件人DDL" runat="server" DataSourceID="SqlDataSource4" DataTextField="dept" DataValueField="Dept_Boss" AppendDataBoundItems="true" CssClass="form-control">
-                                                <asp:ListItem Text="河內快遞" Value="C180100" />                             
-                                                <asp:ListItem Text="寧平快遞" Value="B180100" />        
-                                            </asp:DropDownList>
-                                            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString='<%$ ConnectionStrings:EIPConnectionString %>' SelectCommand="SELECT distinct dept,Dept_Boss
-                                            FROM [dbo].[Dept] where Dept_ID not in ( 'test')"></asp:SqlDataSource>
+                                            <asp:TextBox ID="寄件人工號TB" runat="server"></asp:TextBox>
                                         </div>
                                         <div class=" col-md-3 text-right">
                                             <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="Telephone："></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                           <asp:TextBox ID="分機TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="分機TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -221,7 +214,7 @@
                                                 <ajaxToolkit:AutoCompleteExtender CompletionListElementID="chromeUse"
                                                 -->
                                             <div id="chromeUse"></div>
-                                            <asp:TextBox ID="客戶名稱TB" runat="server"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="客戶名稱TB" runat="server"></asp:TextBox>
                                              <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="客戶名稱TB" ID="客戶名稱TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
         CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false" CompletionListElementID="chromeUse"></ajaxToolkit:AutoCompleteExtender>
                             <div>
@@ -244,7 +237,7 @@
                                             <asp:Label ID="收件人LB" runat="server" Text="receiver：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                            <asp:TextBox ID="收件人TB" runat="server"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="收件人TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -252,13 +245,13 @@
                                             <asp:Label ID="重量LB" runat="server" Text="weight(kg)：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                            <asp:TextBox ID="重量TB" runat="server"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="重量TB" runat="server"></asp:TextBox>
                                             </div>
                                         <div class=" col-md-3 text-right">
                                             <asp:Label ID="責任歸屬LB" runat="server" Text="Responsibility：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                            <asp:TextBox ID="責任歸屬TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="責任歸屬TB" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -272,7 +265,7 @@
                                             <asp:Label ID="Label1" runat="server" Text="Reason：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                            <asp:DropDownList ID="原因歸屬DDL" runat="server" DataSourceID="SqlDataSource3" DataTextField="Data" DataValueField="MappingData" AppendDataBoundItems="True"  CssClass="form-control">
+                                            <asp:DropDownList ID="原因歸屬DDL" runat="server" DataSourceID="SqlDataSource3" DataTextField="Data" DataValueField="MappingData" AppendDataBoundItems="True">
                                             <asp:ListItem></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
@@ -288,7 +281,7 @@
                                         </div>
                                         <div class=" col-md-9 text-left">
                                             <div id="showauto"></div>
-                                            <asp:TextBox ID="款號TB" runat="server"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="款號TB" runat="server"></asp:TextBox>
                                             <ajaxToolkit:AutoCompleteExtender ID="款號TB_AutoCompleteExtender" runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="款號TB" ServiceMethod="SearchOrdStyle" MinimumPrefixLength="1" UseContextKey="True" CompletionListElementID="showauto">
                                             </ajaxToolkit:AutoCompleteExtender>
                                         </div>
@@ -299,13 +292,13 @@
                                             <asp:Label ID="數量LB" runat="server" Text="Qty：" Font-Bold="True" ></asp:Label>
                                         </div>
                                         <div class=" col-md-3 text-left">
-                                            <asp:TextBox ID="數量TB" runat="server" TextMode="Number"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="數量TB" runat="server" TextMode="Number"></asp:TextBox>
                                         </div>
                                         <div class=" col-md-3 text-right">
                                             <asp:Label ID="單位LB" runat="server" Text="Unit：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class=" col-md-3 text-left">
-                                            <asp:DropDownList ID="單位DDL" runat="server"  CssClass="form-control">
+                                            <asp:DropDownList ID="單位DDL" runat="server">
                                                 <asp:ListItem></asp:ListItem>
                                                 <asp:ListItem>PSC</asp:ListItem>
                                                 <asp:ListItem>SET</asp:ListItem>
@@ -316,14 +309,14 @@
                                         <div class="col-md-3 text-right">
                                             <asp:Label ID="明細LB" runat="server" Text="Detail：" Font-Bold="True"></asp:Label></div>
                                         <div class="col-md-9 text-left">
-                                            <asp:TextBox ID="明細TB" runat="server" Width="489px"  CssClass="form-control"></asp:TextBox></div>
+                                            <asp:TextBox ID="明細TB" runat="server" Width="489px"></asp:TextBox></div>
                                     </div>
                                     <div class="row">
                                                                                 <div class=" col-md-3 text-right">
                                             <asp:Label ID="備註" runat="server" Text="remark：" Font-Bold="True"></asp:Label>
                                         </div>
                                         <div class="col-md-3 text-left">
-                                            <asp:TextBox ID="備註TB" runat="server" Width="489px" TextMode="MultiLine" Height="84px"  CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="備註TB" runat="server" Width="489px" TextMode="MultiLine" Height="84px"></asp:TextBox>
                                         </div>                                        
                                     </div>
                                     <div class="row">

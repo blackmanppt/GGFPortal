@@ -103,7 +103,7 @@ namespace GGFPortal.Sales
                     ErrorGV.DataSource = dv.ToTable();
                     ErrorGV.DataBind();
                     dv.RowFilter = String.Empty;
-                    dv.RowFilter = " 打樣單狀態 = '有打樣單' and 打版完成日 <> '無打版完成日' and 打版完成日 <> '')";
+                    dv.RowFilter = " 打樣單狀態 = '有打樣單' and 打版完成日 <> '無打版完成日' ";
 
                     dt2 = dv.ToTable();
                     dv.RowFilter = String.Empty;
@@ -137,7 +137,7 @@ namespace GGFPortal.Sales
                                                         </tr>",item["打樣單號"].ToString(), item["款號"].ToString(), item["客戶代號"].ToString());
                         }
                         sb.Append("</tbody></ table > ");
-                        systemFunction.SendMail("linda.shieh@greatg.com.tw", "樣品主副料到期，未收到版套", sb.ToString());
+                        systemFunction.SendMail("linda.shieh@greatg.com.tw;natalie.lu@greatg.com.tw;", "樣品主副料到期，未收到版套", sb.ToString());
                     }
                     if (dt2.Rows.Count > 0)
                     {
@@ -146,7 +146,7 @@ namespace GGFPortal.Sales
                             using (SqlConnection Conn = new SqlConnection(strConnectString))
                             {
                                 DataTable dt3 = new DataTable();
-                                SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql("Search").ToString(), Conn);
+                                SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql("Search",dt2).ToString(), Conn);
                                 myAdapter.Fill(dt3);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
                                 SamGV.DataSource = dt3;
                                 SamGV.DataBind();
@@ -167,7 +167,7 @@ namespace GGFPortal.Sales
             }
         }
 
-        private StringBuilder selectsql(string SelectPam)
+        private StringBuilder selectsql(string SelectPam,DataTable dt=null)
         {
             StringBuilder strsql = new StringBuilder();
 
@@ -176,6 +176,8 @@ namespace GGFPortal.Sales
             switch (SelectPam)
             {
                 case "Search":
+                    string[] parameters = dt.Rows.OfType<DataRow>().Select(p => "'" + p.Field<string>("打樣單號") + "'").ToArray() ;
+
                     strsql.Append(@" SELECT          convert(varchar(10),a.s_real_arrival_date,120) AS 主副料到料日, 
                             b.cus_name AS 客戶名稱, a.cus_style_no AS 款號, 
                             a.sam_nbr AS 打樣單號,
@@ -185,7 +187,8 @@ namespace GGFPortal.Sales
                             convert(varchar(10),a.plan_fin_date,120) AS 預計完日, convert(varchar(10),a.last_date,120) AS 需求日
                             
 							 from samc_reqm a left join bas_cus_master b on a.site=b.site and a.cus_id=b.cus_id  ");
-                    strsql.Append(" where  a.sam_nbr in " + 字串處理.字串多筆資料搜尋(打樣單號TB.Text));
+                    //strsql.Append(" where  a.sam_nbr in " + 字串處理.字串多筆資料搜尋(打樣單號TB.Text));
+                    strsql.AppendFormat(" where  a.sam_nbr in ({0})" , string.Join(",", parameters));
                     break;
                 case "CheckData":
                     string strUnion = "";

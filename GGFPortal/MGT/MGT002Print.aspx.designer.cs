@@ -11,7 +11,7 @@ namespace GGFPortal.MGT
 {
 
 
-    public partial class MGT002
+    public partial class MGT002Print
     {
 
         /// <summary>
@@ -204,22 +204,13 @@ namespace GGFPortal.MGT
         protected global::System.Web.UI.WebControls.Label 寄件人LB;
 
         /// <summary>
-        /// 寄件人DDL 控制項。
+        /// 寄件人工號TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList 寄件人DDL;
-
-        /// <summary>
-        /// SqlDataSource4 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
+        protected global::System.Web.UI.WebControls.TextBox 寄件人工號TB;
 
         /// <summary>
         /// 分機LB 控制項。

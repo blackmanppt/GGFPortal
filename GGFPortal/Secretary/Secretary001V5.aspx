@@ -34,7 +34,7 @@
     
         
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="700px" Width="90%" Visible="False">
-            <LocalReport ReportPath="ReportSource\Secretary\ReportS001V5.rdlc" DisplayName="產區表">
+            <LocalReport ReportPath="ReportSource\Secretary\ReportS001V6.rdlc" DisplayName="產區表">
 <%--                <DataSources>
                     <rsweb:ReportDataSource DataSourceId="Sercetary001ObjectDataSource" Name="Sercretary001" />
                 </DataSources>--%>

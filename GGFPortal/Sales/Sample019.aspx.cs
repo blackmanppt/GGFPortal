@@ -12,12 +12,12 @@ using System.Web.UI.WebControls;
 
 namespace GGFPortal.Sales
 {
-    public partial class Sample017 : System.Web.UI.Page
+    public partial class Sample019 : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "版師借出", StrProgram = "Sample017.aspx";
+        static string StrPageName = "樣品室接收", StrProgram = "Sample019.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -197,8 +197,8 @@ namespace GGFPortal.Sales
                             try
                             {
                                 DataRow DR正確 = DT正確資料.NewRow(), DR異常 = DT異常資料.NewRow();
-                                //有款號無借出紀錄
-                                if (!string.IsNullOrEmpty(item["cus_style_no"].ToString()) && string.IsNullOrEmpty(item["借出狀態"].ToString()))
+                                //有款號有借出紀錄
+                                if (!string.IsNullOrEmpty(item["cus_style_no"].ToString()) && item["借出狀態"].ToString()=="10")
                                 {
                                     DR正確["sam_nbr"] = item["sam_nbr"].ToString();
                                     DR正確["cus_style_no"] = item["cus_style_no"].ToString();
@@ -218,7 +218,7 @@ namespace GGFPortal.Sales
                                     {
                                         DR異常["搜尋單號"] = item["打樣單號"].ToString();
                                         DR異常["sam_nbr"] = item["sam_nbr"].ToString();
-                                        DR異常["Error"] = "有借出紀錄未歸還，狀態：" + item["狀態"].ToString(); ;
+                                        DR異常["Error"] = "有借出狀態不是打版室借出，狀態：" + item["狀態"].ToString(); ;
                                     }
                                     DT異常資料.Rows.Add(DR異常);
                                 }
@@ -268,7 +268,7 @@ namespace GGFPortal.Sales
                             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                             
                             string[] parameters = DT.Rows.OfType<DataRow>().Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
-                            SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0})  and 借出狀態 is not null ", string.Join(",", parameters)),Conn);
+                            SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0}) ", string.Join(",", parameters)),Conn);
                             sqlDataAdapter.SelectCommand = Cmd;
                             for (int i = 0; i < DT.Rows.Count; i++)
                                 Cmd.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
@@ -276,8 +276,12 @@ namespace GGFPortal.Sales
                             sqlDataAdapter.Fill(DTCheck);
                             Cmd.ExecuteNonQuery();
                             Conn.Dispose();
+                            DataView dv = new DataView(DTCheck);
+                            dv.RowFilter = "借出狀態 <> 10";
+                            DataTable DTReCheck = new DataTable();
+                            DTReCheck = dv.ToTable();
                             //必須無借出資料
-                            if (DTCheck.Rows.Count>0)
+                            if (DTReCheck.Rows.Count>0)
                             {
                                 F_ErrorShow("資料有異動紀錄，請重新搜尋");
                             }
@@ -292,31 +296,21 @@ namespace GGFPortal.Sales
                                     SqlCommand command1 = conn1.CreateCommand();
                                     SqlTransaction transaction1;
                                     conn1.Open();
-                                    transaction1 = conn1.BeginTransaction("InserRent");
+                                    transaction1 = conn1.BeginTransaction("UpdateRent1");
 
                                     command1.Connection = conn1;
                                     command1.Transaction = transaction1;
                                     try
                                     {
+                                        command1.CommandText = string.Format(@"UPDATE [GGFSampleRent]
+                                                                                           SET [樣品室收到時間]=getdate(),
+                                                                                               [借出狀態]=20,
+                                                                                               [RentModifyDate]=getdate()
+                                                                                           WHERE [sam_nbr] in ({0}) and [借出狀態]=10
+                                                                                     ", string.Join(",", parameters));
                                         for (int i = 0; i < DT.Rows.Count; i++)
-                                        {
-                                            command1.CommandText = string.Format(@"INSERT INTO [GGFSampleRent]
-                                                                                           ([sam_nbr]
-                                                                                           ,[RentCreateDate]
-                                                                                           ,[RentModifyDate]
-                                                                                           ,[借出狀態]
-                                                                                           ,[打版室借出時間])
-                                                                                     VALUES
-                                                                                           (@sam_nbr
-                                                                                           ,getdate()
-                                                                                           ,getdate()
-                                                                                           ,10
-                                                                                           ,getdate())");
-                                            command1.Parameters.Add("@sam_nbr", SqlDbType.NVarChar).Value = DT.Rows[i]["sam_nbr"].ToString();
-
-                                            command1.ExecuteNonQuery();
-                                            command1.Parameters.Clear();
-                                        }
+                                            command1.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
+                                        command1.ExecuteNonQuery();
                                         //上傳成功更新Head狀態
                                         //command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
                                         //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
@@ -330,17 +324,17 @@ namespace GGFPortal.Sales
                                     {
                                         try
                                         {
-                                            Log.ErrorLog(ex1, "Insert Error", StrProgram);
+                                            Log.ErrorLog(ex1, "UPDATE Error", StrProgram);
                                         }
                                         catch (Exception ex2)
                                         {
-                                            Log.ErrorLog(ex2, "Insert Error Error" , StrProgram);
+                                            Log.ErrorLog(ex2, "UPDATE Error Error", StrProgram);
                                         }
                                         finally
                                         {
                                             transaction1.Rollback();
                                             //Label1.Text = "UpdateError";
-                                            F_ErrorShow("Insert Error");
+                                            F_ErrorShow("UPDATE Error");
                                         }
                                     }
                                     finally
@@ -356,7 +350,7 @@ namespace GGFPortal.Sales
                         }
                         catch (Exception ex)
                         {
-                            F_ErrorShow("匯入失敗，請重新匯入或通知資訊部，錯誤訊息："+ex.ToString());
+                            F_ErrorShow("上傳失敗，請重新上傳或通知資訊部，錯誤訊息：" + ex.ToString());
 
                         }
                         finally

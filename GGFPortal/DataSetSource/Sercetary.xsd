@@ -552,6 +552,8 @@ where 訂單日期 between @StartDay and @EndDay</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="OrderBy" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOrderBy" msprop:Generator_ColumnPropNameInRow="OrderBy" msprop:Generator_ColumnPropNameInTable="OrderByColumn" msprop:Generator_UserColumnName="OrderBy" type="xs:int" minOccurs="0" />
+              <xs:element name="秒數" msprop:Generator_ColumnVarNameInTable="column秒數" msprop:Generator_ColumnPropNameInRow="秒數" msprop:Generator_ColumnPropNameInTable="秒數Column" msprop:Generator_UserColumnName="秒數" type="xs:decimal" minOccurs="0" />
+              <xs:element name="訂單種類" msprop:Generator_ColumnVarNameInTable="column訂單種類" msprop:Generator_ColumnPropNameInRow="訂單種類" msprop:Generator_ColumnPropNameInTable="訂單種類Column" msprop:Generator_UserColumnName="訂單種類" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -945,6 +947,102 @@ where 訂單日期 between @StartDay and @EndDay</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDataColumn1" msprop:Generator_ColumnPropNameInRow="DataColumn1" msprop:Generator_ColumnPropNameInTable="DataColumn1Column" msprop:Generator_UserColumnName="DataColumn1" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="訂單秒數" msprop:Generator_TableClassName="訂單秒數DataTable" msprop:Generator_TableVarName="table訂單秒數" msprop:Generator_RowChangedName="訂單秒數RowChanged" msprop:Generator_TablePropName="訂單秒數" msprop:Generator_RowDeletingName="訂單秒數RowDeleting" msprop:Generator_RowChangingName="訂單秒數RowChanging" msprop:Generator_RowEvHandlerName="訂單秒數RowChangeEventHandler" msprop:Generator_RowDeletedName="訂單秒數RowDeleted" msprop:Generator_RowClassName="訂單秒數Row" msprop:Generator_UserTableName="訂單秒數" msprop:Generator_RowEvArgName="訂單秒數RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="訂單號碼" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column訂單號碼" msprop:Generator_ColumnPropNameInRow="訂單號碼" msprop:Generator_ColumnPropNameInTable="訂單號碼Column" msprop:Generator_UserColumnName="訂單號碼" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="訂單種類" msprop:Generator_ColumnVarNameInTable="column訂單種類" msprop:Generator_ColumnPropNameInRow="訂單種類" msprop:Generator_ColumnPropNameInTable="訂單種類Column" msprop:Generator_UserColumnName="訂單種類" type="xs:string" minOccurs="0" />
+              <xs:element name="代理商代號" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column代理商代號" msprop:Generator_ColumnPropNameInRow="代理商代號" msprop:Generator_ColumnPropNameInTable="代理商代號Column" msprop:Generator_UserColumnName="代理商代號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="代理商名稱" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column代理商名稱" msprop:Generator_ColumnPropNameInRow="代理商名稱" msprop:Generator_ColumnPropNameInTable="代理商名稱Column" msprop:Generator_UserColumnName="代理商名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="客戶名稱" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column客戶名稱" msprop:Generator_ColumnPropNameInRow="客戶名稱" msprop:Generator_ColumnPropNameInTable="客戶名稱Column" msprop:Generator_UserColumnName="客戶名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="訂單日期" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column訂單日期" msprop:Generator_ColumnPropNameInRow="訂單日期" msprop:Generator_ColumnPropNameInTable="訂單日期Column" msprop:Generator_UserColumnName="訂單日期" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="訂單月份" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column訂單月份" msprop:Generator_ColumnPropNameInRow="訂單月份" msprop:Generator_ColumnPropNameInTable="訂單月份Column" msprop:Generator_UserColumnName="訂單月份" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="訂單年度" msprop:Generator_ColumnVarNameInTable="column訂單年度" msprop:Generator_ColumnPropNameInRow="訂單年度" msprop:Generator_ColumnPropNameInTable="訂單年度Column" msprop:Generator_UserColumnName="訂單年度" type="xs:string" minOccurs="0" />
+              <xs:element name="訂單月" msprop:Generator_ColumnVarNameInTable="column訂單月" msprop:Generator_ColumnPropNameInRow="訂單月" msprop:Generator_ColumnPropNameInTable="訂單月Column" msprop:Generator_UserColumnName="訂單月" type="xs:string" minOccurs="0" />
+              <xs:element name="工廠代號" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column工廠代號" msprop:Generator_ColumnPropNameInRow="工廠代號" msprop:Generator_ColumnPropNameInTable="工廠代號Column" msprop:Generator_UserColumnName="工廠代號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="工廠名稱" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column工廠名稱" msprop:Generator_ColumnPropNameInRow="工廠名稱" msprop:Generator_ColumnPropNameInTable="工廠名稱Column" msprop:Generator_UserColumnName="工廠名稱" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="地區" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column地區" msprop:Generator_ColumnPropNameInRow="地區" msprop:Generator_ColumnPropNameInTable="地區Column" msprop:Generator_UserColumnName="地區" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="訂單數量" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column訂單數量" msprop:Generator_ColumnPropNameInRow="訂單數量" msprop:Generator_ColumnPropNameInTable="訂單數量Column" msprop:Generator_UserColumnName="訂單數量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ForMGF" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnForMGF" msprop:Generator_ColumnPropNameInRow="ForMGF" msprop:Generator_ColumnPropNameInTable="ForMGFColumn" msprop:Generator_UserColumnName="ForMGF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="salesman" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsalesman" msprop:Generator_ColumnPropNameInRow="salesman" msprop:Generator_ColumnPropNameInTable="salesmanColumn" msprop:Generator_UserColumnName="salesman" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="employee_name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnemployee_name" msprop:Generator_ColumnPropNameInRow="employee_name" msprop:Generator_ColumnPropNameInTable="employee_nameColumn" msprop:Generator_UserColumnName="employee_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderBy" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOrderBy" msprop:Generator_ColumnPropNameInRow="OrderBy" msprop:Generator_ColumnPropNameInTable="OrderByColumn" msprop:Generator_UserColumnName="OrderBy" type="xs:int" minOccurs="0" />
+              <xs:element name="秒數" msprop:Generator_ColumnVarNameInTable="column秒數" msprop:Generator_ColumnPropNameInRow="秒數" msprop:Generator_ColumnPropNameInTable="秒數Column" msprop:Generator_UserColumnName="秒數" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

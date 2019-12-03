@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Sample017.aspx.cs" Inherits="GGFPortal.Sales.Sample017" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Sample021.aspx.cs" Inherits="GGFPortal.Sales.Sample021" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -90,9 +90,12 @@
                 <h2>Section title</h2>-->
 
         <div class="table-responsive">
-                <asp:Button ID="UpDateBT" runat="server" Text="Update" CssClass="btn btn-danger m-1" Visible="false" OnClick="UpDateBT_Click"/>
+                <asp:Button ID="UpDateBT" runat="server" Text="還回樣品室" CssClass="btn btn-danger m-1" Visible="false" OnClick="UpDateBT_Click"/>
             <asp:GridView ID="UpdateGV" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
-            <asp:Label ID="ErrorLB" runat="server" Text="錯誤資料" Visible="false"></asp:Label>
+            <asp:Button ID="CloseBT" runat="server" Text="強制結案"  CssClass="btn btn-outline-danger m-1" Visible="false" OnClick="CloseBT_Click" />
+                <asp:Button ID="DeleteBT" runat="server" Text="作廢" CssClass="btn btn-danger m-1" Visible="false" />
+                <br />
+            <asp:Label ID="ErrorLB" runat="server" Text="未歸還資料" Visible="false" CssClass="text-danger "></asp:Label>
             <asp:GridView ID="ErrorGV" runat="server" CssClass="table table-striped table-sm table-danger"></asp:GridView>
 
 
