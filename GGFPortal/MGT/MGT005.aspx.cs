@@ -22,15 +22,18 @@ namespace GGFPortal.MGT
                     DataSetSource.GGFEntitiesMGT db = new DataSetSource.GGFEntitiesMGT();
                     var 提單列印 = db.快遞單明細.Where(p => p.id == iid&&p.uid<=iuid);
                     快遞編號LB.Text = 提單列印.Count().ToString();
+                    快遞編號LB2.Text = 提單列印.Count().ToString();
                     var 提單列印明細 = 提單列印.Where(p => p.uid == iuid).FirstOrDefault();
                     快遞廠商LB.Text = 提單列印明細.快遞單.快遞廠商;
                     快遞日期LB.Text = 提單列印明細.快遞單.提單日期.ToString("yyyy-MM-dd");
                     提單號碼LB.Text = 提單列印明細.快遞單.提單號碼;
                     寄件人LB.Text = 提單列印明細.寄件人+"("+ 提單列印明細.寄件人分機+")";
-
                     送件地點LB.Text = 提單列印明細.快遞單.送件地點+"-"+ 提單列印明細.快遞單.地點備註;
                     收件人LB.Text = 提單列印明細.收件人;
                     明細LB.Text = 提單列印明細.明細;
+
+                    
+
                     string str備註 = 提單列印明細.備註二??"";
                     if (str備註.IndexOf("\r\n") > 0)
                         str備註=str備註.Replace("\r\n", "<br/>");
@@ -38,6 +41,19 @@ namespace GGFPortal.MGT
                     公斤LB.Text = 提單列印明細.重量.ToString();
                     英文名LB.Text = (string.IsNullOrEmpty(提單列印明細.email))?"": 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
                     快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + 提單列印明細.快遞單.快遞單檔案 + @"' />";
+
+
+                    快遞廠商LB2.Text = 提單列印明細.快遞單.快遞廠商;
+                    快遞日期LB2.Text = 提單列印明細.快遞單.提單日期.ToString("yyyy-MM-dd");
+                    提單號碼LB2.Text = 提單列印明細.快遞單.提單號碼;
+                    寄件人LB2.Text = 提單列印明細.寄件人 + "(" + 提單列印明細.寄件人分機 + ")";
+                    送件地點LB2.Text = 提單列印明細.快遞單.送件地點 + "-" + 提單列印明細.快遞單.地點備註;
+                    收件人LB2.Text = 提單列印明細.收件人;
+                    明細LB2.Text = 提單列印明細.明細;
+                    備註LB2.Text = str備註;
+                    公斤LB2.Text = 提單列印明細.重量.ToString();
+                    英文名LB2.Text = (string.IsNullOrEmpty(提單列印明細.email)) ? "" : 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
+                    快遞單檔案Literal2.Text = @"<img alt='提單' src='MGTFile\" + 提單列印明細.快遞單.快遞單檔案 + @"' />";
                 }
 
             }

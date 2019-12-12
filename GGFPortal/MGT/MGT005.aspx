@@ -114,9 +114,7 @@ function printPage() {
                         簽名欄</th>
                     <th >
 
-                        <asp:Label ID="Label1" runat="server" ></asp:Label>
-
-                    </th>
+                        &nbsp;</th>
                 </tr>
 
                 <tr>
@@ -147,6 +145,112 @@ function printPage() {
         <div>
             <asp:Button ID="Button1" runat="server" Text="列印" OnClick="Button1_Click" />
         </div>
+        <hr />
+        <div id="printarea1">
+    <div class="container-fluid" >
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered" style="width:600px;height:400px;">
+					<tr>
+						<th class="auto-style1">
+							快遞廠商</th>
+						<th>
+							<asp:Label ID="快遞廠商LB2" runat="server" Text=""></asp:Label>
+						</th>
+						<th class="auto-style1">
+							快遞日期</th>
+						<th>
+							<asp:Label ID="快遞日期LB2" runat="server" Text=""></asp:Label>
+                        </th>
+					</tr>
+				<tr>
+						<th class="auto-style1">
+							提單號碼</th>
+						<th>
+							<asp:Label ID="提單號碼LB2" runat="server" Text="" style="font-size: x-large"></asp:Label>
+						</th>
+						<th class="auto-style1">
+							快遞編號</th>
+						<th>
+							<asp:Label ID="快遞編號LB2" runat="server" Text=""></asp:Label>
+                        </th>
+					</tr>
+                					<tr>
+						<th class="auto-style1">寄件人
+							</th>
+						<th>
+							<asp:Label ID="寄件人LB2" runat="server" Text=""></asp:Label>
+                                        </th>
+						<th class="auto-style1">
+							name</th>
+						<th>
+							<asp:Label ID="英文名LB2" runat="server" Text=""></asp:Label>
+                                        </th>
+					</tr>
+                <tr>
+						<th class="auto-style1">送件目的地
+							</th>
+						<th>
+							<asp:Label ID="送件地點LB2" runat="server" Text=""></asp:Label>
+                                        </th>
+						<th class="auto-style1">
+							收件人</th>
+						<th>
+							<asp:Label ID="收件人LB2" runat="server" Text="" style="font-size: x-large"></asp:Label>
+                                        </th>
+					</tr>
+					<tr class="active">
+						<th class="auto-style1">
+							明細</th>
+						<th colspan="3">
+                            <asp:Label ID="明細LB2" runat="server" Text=""></asp:Label></th>
+
+					</tr>
+					<tr class="active">
+						<th class="auto-style1">
+							備註</th>
+						<th colspan="3">
+                            <asp:Label ID="備註LB2" runat="server" Text=""></asp:Label></th>
+
+					</tr>
+                <tr>
+                    <th >
+
+                        公斤數</th>
+                    <th >
+
+                        <asp:Label ID="公斤LB2" runat="server" ></asp:Label>
+
+                    </th>
+                    <th >
+
+                        簽名欄</th>
+                    <th >
+
+                        &nbsp;</th>
+                </tr>
+
+                <tr>
+                    <th colspan="4">
+                        寄包裹超過2kg以上，需經理級批核<br />
+                        寄包裹超過5kg以上，需副總級批核<br />
+                        寄包裹超過10kg以上，需總經理批核<br />
+                        寄包裹超過20kg以上，需董事長批核
+                    </th>
+                </tr>
+                <tr>
+
+                    <td colspan="4">
+                        <asp:Literal ID="快遞單檔案Literal2" runat="server"></asp:Literal>
+                    </td>
+                </tr>
+				
+
+			</table>
+		</div>
+	</div>
+</div>
+    </div>
     </form>
 </body>
 </html>

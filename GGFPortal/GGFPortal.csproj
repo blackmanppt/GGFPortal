@@ -321,6 +321,14 @@
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="Finance\Finance016.aspx" />
     <Content Include="IMG\SalesSearch.png" />
+    <Content Include="MGT\LOG\ACSLOGO.jpg" />
+    <Content Include="MGT\LOG\dhl_logo.gif" />
+    <Content Include="MGT\LOG\DPEX2.png" />
+    <Content Include="MGT\LOG\FDR_LOG.png" />
+    <Content Include="MGT\LOG\DPEX_LOG.png" />
+    <Content Include="MGT\LOG\Fadexlogo.png" />
+    <Content Include="MGT\LOG\譽得logo.png" />
+    <Content Include="MGT\LOG\順豐LOGO.png" />
     <Content Include="MGT\MGT002Print.aspx" />
     <Content Include="MGT\MGT002.aspx" />
     <Content Include="MGT\MGT001.aspx" />
@@ -4062,6 +4070,7 @@
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.min.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Secretary\Secretary001V6.aspx" />
     <Content Include="Secretary\Secretary009.aspx" />
     <Content Include="Secretary\Secretary001V5.aspx" />
     <Content Include="Secretary\Secretary008.aspx" />
@@ -5900,6 +5909,13 @@
     </Compile>
     <Compile Include="Sales\Sample015.aspx.designer.cs">
       <DependentUpon>Sample015.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V6.aspx.cs">
+      <DependentUpon>Secretary001V6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secretary\Secretary001V6.aspx.designer.cs">
+      <DependentUpon>Secretary001V6.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secretary\Secretary009.aspx.cs">
       <DependentUpon>Secretary009.aspx</DependentUpon>

@@ -95,7 +95,9 @@
             <asp:Button ID="CloseBT" runat="server" Text="強制結案"  CssClass="btn btn-outline-danger m-1" Visible="false" OnClick="CloseBT_Click" />
                 <asp:Button ID="DeleteBT" runat="server" Text="作廢" CssClass="btn btn-danger m-1" Visible="false" />
                 <br />
-            <asp:Label ID="ErrorLB" runat="server" Text="未歸還資料" Visible="false" CssClass="text-danger "></asp:Label>
+            <asp:Label ID="ErrorContinueLB" runat="server" Text="未歸還資料" Visible="false" CssClass="text-danger "></asp:Label>
+            <asp:GridView ID="ErrorContinueGV" runat="server" CssClass="table table-striped table-sm table-secondary"></asp:GridView>
+            <asp:Label ID="ErrorLB" runat="server" Text="異常資料" Visible="false" CssClass="text-danger "></asp:Label>
             <asp:GridView ID="ErrorGV" runat="server" CssClass="table table-striped table-sm table-danger"></asp:GridView>
 
 

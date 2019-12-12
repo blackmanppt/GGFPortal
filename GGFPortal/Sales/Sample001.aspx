@@ -63,6 +63,7 @@
                 <td>
                     <asp:CheckBox ID="未收單CB" runat="server" Text="打版未完成" CssClass=" control-label" Checked="True" />
                     <asp:CheckBox ID="UnTDCB" runat="server" Text="TD未完成" CssClass=" control-label" Checked="True" />
+                    <asp:CheckBox ID="結案CB" runat="server" Text="結案資料查詢" CssClass=" control-label"  />
                 </td>
                 <td>&nbsp;</td>
             </tr>

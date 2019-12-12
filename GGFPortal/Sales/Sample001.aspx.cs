@@ -37,7 +37,7 @@ namespace GGFPortal.Sales
                 conn.ConnectionString = strConnectString;
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where  status <>'CL' and ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ";
+                    cmd.CommandText = string.Format("select DISTINCT  TOP 10 [cus_style_no] from [samc_reqm] where  ([cus_style_no] like '%'+  @SearchText + '%' or [sam_nbr] like '%'+  @SearchText + '%') ");
                     cmd.Parameters.AddWithValue("@SearchText", prefixText.Trim());
                     cmd.Connection = conn;
                     conn.Open();
@@ -112,11 +112,12 @@ namespace GGFPortal.Sales
             
             string sqlstr = @"
                             SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b 
-                            ON a.site = b.site AND a.type_id = b.type_id WHERE  (a.status <>'CL') and a.progress_rate in ('2','3')
+                            ON a.site = b.site AND a.type_id = b.type_id WHERE  a.progress_rate in ('2','3')
                             ";
             strwhere += (UnTDCB.Checked) ? "" : " and td_fin_date is not Null";
             strwhere += (未收單CB.Checked) ? "" : " and samc_fin_date is not Null";
             strwhere += (string.IsNullOrEmpty(StyleNoTB.Text)) ? "" : string.Format(" and (a.cus_style_no LIKE   LTRIM(RTRIM('%{0}%')) ) ", StyleNoTB.Text);
+            strwhere += (結案CB.Checked) ? "" : "and (a.status <>'CL') ";
             sqlstr += strwhere + " ORDER BY a.modify_date DESC ";
             return sqlstr;
         }

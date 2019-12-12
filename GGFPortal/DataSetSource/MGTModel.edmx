@@ -61,6 +61,7 @@
           <Property Name="明細" Type="nvarchar" MaxLength="255" />
           <Property Name="重量" Type="decimal" Precision="18" Scale="4" />
           <Property Name="責任歸屬" Type="nvarchar" MaxLength="100" />
+          <Property Name="責任歸屬備註" Type="nvarchar" MaxLength="100" />
           <Property Name="原因歸屬" Type="nvarchar" MaxLength="50" />
           <Property Name="付款方式" Type="nvarchar" MaxLength="100" />
           <Property Name="備註" Type="nvarchar" MaxLength="255" />
@@ -245,6 +246,7 @@
           <Property Name="原因歸屬" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="快遞數量" Type="Int32" Nullable="false" />
           <Property Name="快遞單位" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="責任歸屬備註" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_快遞單明細_快遞單1">
           <End Role="快遞單" Type="Self.快遞單" Multiplicity="1" />
@@ -371,6 +373,7 @@
           <EntitySetMapping Name="快遞單明細">
             <EntityTypeMapping TypeName="GGFModelMGT.快遞單明細">
               <MappingFragment StoreEntitySet="快遞單明細">
+                <ScalarProperty Name="責任歸屬備註" ColumnName="責任歸屬備註" />
                 <ScalarProperty Name="快遞單位" ColumnName="快遞單位" />
                 <ScalarProperty Name="快遞數量" ColumnName="快遞數量" />
                 <ScalarProperty Name="原因歸屬" ColumnName="原因歸屬" />

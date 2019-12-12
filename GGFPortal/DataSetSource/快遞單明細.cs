@@ -35,6 +35,7 @@ namespace GGFPortal.DataSetSource
         public string 原因歸屬 { get; set; }
         public int 快遞數量 { get; set; }
         public string 快遞單位 { get; set; }
+        public string 責任歸屬備註 { get; set; }
     
         public virtual 快遞單 快遞單 { get; set; }
     }

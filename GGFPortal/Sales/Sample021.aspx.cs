@@ -96,6 +96,8 @@ namespace GGFPortal.Sales
         protected void SearchBT_Click(object sender, EventArgs e)
         {
             Session.Remove("DT正確");
+            Session.Remove("DT異常要處理資料");
+            
             using (DataTable DT確認資料 = DbInit(""))
             {
                 if (DT確認資料.Rows.Count > 0)
@@ -104,18 +106,21 @@ namespace GGFPortal.Sales
                     UpdateGV.Visible = false;
                     ErrorGV.Visible = false;
                     ErrorLB.Visible = false;
-                    using (DataTable DT正確資料 = new DataTable(),DT異常資料 = new DataTable())
+                    using (DataTable DT正確資料 = new DataTable(),DT異常要處理資料=new DataTable(),DT異常資料 = new DataTable())
                     {
                         DT正確資料.Columns.Add("sam_nbr");
                         DT正確資料.Columns.Add("cus_style_no");
                         DT異常資料.Columns.Add("搜尋單號");
                         DT異常資料.Columns.Add("sam_nbr");
                         DT異常資料.Columns.Add("Error");
+                        DT異常要處理資料.Columns.Add("搜尋單號");
+                        DT異常要處理資料.Columns.Add("sam_nbr");
+                        DT異常要處理資料.Columns.Add("Error");
                         foreach (DataRow item in DT確認資料.Rows)
                         {
                             try
                             {
-                                DataRow DR正確 = DT正確資料.NewRow(), DR異常 = DT異常資料.NewRow();
+                                DataRow DR正確 = DT正確資料.NewRow(), DR異常 = DT異常資料.NewRow(), DR異常要處理資料 = DT異常要處理資料.NewRow();
                                 //有款號有借出紀錄
                                 if (!string.IsNullOrEmpty(item["cus_style_no"].ToString()) && (item["借出狀態"].ToString()=="30" || item["借出狀態"].ToString() == "40"))
                                 {
@@ -131,25 +136,26 @@ namespace GGFPortal.Sales
                                         DR異常["搜尋單號"] = item["打樣單號"].ToString();
                                         DR異常["sam_nbr"] = "";
                                         DR異常["Error"] = "沒有打樣單資料";
+                                        DT異常資料.Rows.Add(DR異常);
                                     }
                                     //有借出紀錄未歸還
                                     else
                                     {
                                         if (!string.IsNullOrEmpty(item["借出狀態"].ToString()))
                                         {
-                                            DR異常["搜尋單號"] = item["打樣單號"].ToString();
-                                            DR異常["sam_nbr"] = item["sam_nbr"].ToString();
-                                            DR異常["Error"] = "有借出狀態不是打樣室歸還，或TD借出，狀態：" + item["狀態"].ToString(); 
+                                            DR異常要處理資料["搜尋單號"] = item["打樣單號"].ToString();
+                                            DR異常要處理資料["sam_nbr"] = item["sam_nbr"].ToString();
+                                            DR異常要處理資料["Error"] = "有借出狀態不是打樣室歸還，或TD借出，狀態：" + item["狀態"].ToString();
+                                            DT異常要處理資料.Rows.Add(DR異常要處理資料);
                                         }
                                         else
                                         {
                                             DR異常["搜尋單號"] = item["打樣單號"].ToString();
                                             DR異常["sam_nbr"] = item["sam_nbr"].ToString();
                                             DR異常["Error"] = "版套為借出狀態未借出、已歸還或已結案";
+                                            DT異常資料.Rows.Add(DR異常);
                                         }
- 
                                     }
-                                    DT異常資料.Rows.Add(DR異常);
                                 }
                             }
                             catch (Exception ex)
@@ -158,25 +164,36 @@ namespace GGFPortal.Sales
                                 F_ErrorShow(ex.ToString());
                             }
                             
-                            if (DT正確資料.Rows.Count > 0)
-                            {
-                                Session["DT正確"] = DT正確資料;
-                                UpDateBT.Visible = true;
-                                UpdateGV.Visible = true;
-                                UpdateGV.DataSource = DT正確資料;
-                                UpdateGV.DataBind();
-                            }
-                            //Session["DT異常"] = (DT異常資料.Rows.Count > 0) ? DT異常資料 : null;
-                            if (DT異常資料.Rows.Count > 0)
-                            {
-                                Session["DT異常"] = DT異常資料;
-                                ErrorGV.Visible = true;
-                                ErrorLB.Visible = true;
-                                DeleteBT.Visible = true;
-                                CloseBT.Visible = true;
-                                ErrorGV.DataSource = DT異常資料;
-                                ErrorGV.DataBind();
-                            }
+                           
+                        }
+                        if (DT正確資料.Rows.Count > 0)
+                        {
+                            Session["DT正確"] = DT正確資料;
+                            UpDateBT.Visible = true;
+                            UpdateGV.Visible = true;
+                            UpdateGV.DataSource = DT正確資料;
+                            UpdateGV.DataBind();
+                        }
+                        //Session["DT異常"] = (DT異常資料.Rows.Count > 0) ? DT異常資料 : null;
+                        if (DT異常資料.Rows.Count > 0)
+                        {
+                            //Session["DT異常"] = DT異常資料;
+                            ErrorGV.Visible = true;
+                            ErrorLB.Visible = true;
+                            //DeleteBT.Visible = true;
+                            //CloseBT.Visible = true;
+                            ErrorGV.DataSource = DT異常資料;
+                            ErrorGV.DataBind();
+                        }
+                        if (DT異常要處理資料.Rows.Count > 0)
+                        {
+                            Session["DT異常要處理資料"] = DT異常要處理資料;
+                            ErrorContinueGV.Visible = true;
+                            ErrorContinueLB.Visible = true;
+                            DeleteBT.Visible = true;
+                            CloseBT.Visible = true;
+                            ErrorContinueGV.DataSource = DT異常要處理資料;
+                            ErrorContinueGV.DataBind();
                         }
                     }
                 }
@@ -192,7 +209,7 @@ namespace GGFPortal.Sales
 
         private void F_Update(string StrUpdateType = "")
         {
-            using (DataTable DT = (DataTable)Session["DT正確"],DTError =(DataTable)Session["DT異常"])
+            using (DataTable DT = (DataTable)Session["DT正確"],DTError =(DataTable)Session["DT異常要處理資料"])
             {
                 if (DT.Rows.Count > 0&& StrUpdateType == "")
                 {

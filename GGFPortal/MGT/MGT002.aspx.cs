@@ -251,7 +251,7 @@ namespace GGFPortal.MGT
                                 if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人工號)) == true)
                                 {
                                     寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人工號).Value;
-                                    寄件人DDL.SelectedItem.Text = item.寄件人;
+                                    //寄件人DDL.SelectedItem.Text = item.寄件人;
                                     //UserLB.Text = "";
                                 }
                                 else
@@ -264,7 +264,29 @@ namespace GGFPortal.MGT
                                 客戶名稱TB.Text = item.客戶名稱;
                                 收件人TB.Text = item.收件人;
                                 重量TB.Text = item.重量.ToString();
-                                責任歸屬TB.Text = item.責任歸屬;
+                                //責任歸屬TB.Text = item.責任歸屬;
+                                if (責任歸屬DDL.Items.Contains(責任歸屬DDL.Items.FindByValue(item.責任歸屬)) == true)
+                                {
+                                    責任歸屬DDL.SelectedValue = 責任歸屬DDL.Items.FindByValue(item.責任歸屬).Value;
+                                    責任歸屬DDL.SelectedItem.Text = item.責任歸屬;
+                                }
+                                else
+                                {
+                                    //UserLB.Text = "離職人員";
+                                }
+                                try
+                                {
+                                    if (item.責任歸屬備註.Length > 0)
+                                    {
+                                        責任歸屬備註TB.Visible = true;
+                                        責任歸屬備註TB.Text = item.責任歸屬備註;
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                }
+
+                                    
                                 到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
                                 備註TB.Text = item.備註二;
                                 明細TB.Text = item.明細;
@@ -405,8 +427,8 @@ namespace GGFPortal.MGT
                                 sbErrorstring(sbError, "Invalid ID");
                         }
 
-                        if (d重量 == 0)
-                            sbErrorstring(sbError, "No weight");
+                        //if (d重量 == 0)
+                        //    sbErrorstring(sbError, "No weight");
                         if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
                         {
                             sbErrorstring(sbError,(string.IsNullOrEmpty(數量TB.Text)|| string.IsNullOrEmpty(單位DDL.SelectedValue))? 快遞廠商LB.Text+"快遞單需" : "");
@@ -431,8 +453,10 @@ namespace GGFPortal.MGT
                             sbErrorstring(sbError, "No ID");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
                             sbErrorstring(sbError, "No receive company");
-                        if (string.IsNullOrEmpty(責任歸屬TB.Text))
-                            sbErrorstring(sbError, "No responsibility：great giant payment key in GG");
+                        //if (string.IsNullOrEmpty(責任歸屬TB.Text))
+                        //    sbErrorstring(sbError, "No responsibility：great giant payment key in GG");
+                        if(責任歸屬DDL.SelectedValue != "GG" && string.IsNullOrEmpty(責任歸屬備註TB.Text))
+                            sbErrorstring(sbError, "No 責任歸屬說明");
                         if (string.IsNullOrEmpty(明細TB.Text))
                             sbErrorstring(sbError, "No detail");
                         if (string.IsNullOrEmpty(原因歸屬DDL.SelectedValue))
@@ -459,7 +483,10 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
                                 新增快遞單明細.IsDeleted = false;
                                 新增快遞單明細.重量 = d重量;
-                                新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
+                                //新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
+                                新增快遞單明細.責任歸屬 = 責任歸屬DDL.SelectedValue;
+                                if (責任歸屬備註TB.Visible)
+                                    新增快遞單明細.責任歸屬備註 = 責任歸屬備註TB.Text;
                                 新增快遞單明細.備註二 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
                                 新增快遞單明細.email = 工號資料.email_address;
@@ -484,7 +511,10 @@ namespace GGFPortal.MGT
                                 新增快遞單明細.寄件人部門 = 工號資料.dept_no;
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
                                 新增快遞單明細.重量 = d重量;
-                                新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
+                                //新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();
+                                新增快遞單明細.責任歸屬 = 責任歸屬DDL.SelectedValue;
+
+                                新增快遞單明細.責任歸屬備註 = (責任歸屬備註TB.Visible)?責任歸屬備註TB.Text:"";
                                 新增快遞單明細.備註二 = 備註TB.Text.Trim();
                                 新增快遞單明細.明細 = 明細TB.Text.Trim();
                                 新增快遞單明細.修改日期 = DateTime.Now;
@@ -539,7 +569,10 @@ namespace GGFPortal.MGT
             客戶名稱TB.Text = "";
             收件人TB.Text = "";
             重量TB.Text = "";
-            責任歸屬TB.Text = "";
+            //責任歸屬TB.Text = "";
+            責任歸屬備註TB.Text = "";
+            責任歸屬備註TB.Visible = false;
+            責任歸屬DDL.SelectedIndex = -1;
             到付CB.Checked = false;
             備註TB.Text = "";
             明細TB.Text = "";
@@ -600,6 +633,17 @@ namespace GGFPortal.MGT
             {
                 DHLrow2.Visible = false;
                 DHLrow.Visible = false;
+            }
+        }
+
+        protected void 責任歸屬DDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (責任歸屬DDL.SelectedValue != "GG")
+                責任歸屬備註TB.Visible = true;
+            else
+            {
+                責任歸屬備註TB.Text = "";
+                責任歸屬備註TB.Visible = false;
             }
         }
     }

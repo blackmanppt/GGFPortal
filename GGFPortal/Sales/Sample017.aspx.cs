@@ -218,7 +218,7 @@ namespace GGFPortal.Sales
                                     {
                                         DR異常["搜尋單號"] = item["打樣單號"].ToString();
                                         DR異常["sam_nbr"] = item["sam_nbr"].ToString();
-                                        DR異常["Error"] = "有借出紀錄未歸還，狀態：" + item["狀態"].ToString(); ;
+                                        DR異常["Error"] = (!string.IsNullOrEmpty(item["狀態"].ToString())) ? "有借出狀態不是打版室借出，狀態：" + item["狀態"].ToString() : "有借出狀態不是打版室借出，狀態：未借出";
                                     }
                                     DT異常資料.Rows.Add(DR異常);
                                 }

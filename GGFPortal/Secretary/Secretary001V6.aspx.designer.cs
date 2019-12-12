@@ -7,21 +7,66 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Sales
+namespace GGFPortal.Secretary
 {
 
 
-    public partial class Sample021
+    public partial class Secretary001V6
     {
 
         /// <summary>
-        /// MutiTB 控制項。
+        /// form1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MutiTB;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// TitleLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleLB;
+
+        /// <summary>
+        /// ScriptManager1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// StartLB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StartLB;
+
+        /// <summary>
+        /// StartDay 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StartDay;
+
+        /// <summary>
+        /// StartDay_CalendarExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender StartDay_CalendarExtender;
 
         /// <summary>
         /// SearchBT 控制項。
@@ -33,84 +78,57 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.Button SearchBT;
 
         /// <summary>
-        /// CancelBT 控制項。
+        /// ClearBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CancelBT;
+        protected global::System.Web.UI.WebControls.Button ClearBT;
 
         /// <summary>
-        /// UpDateBT 控制項。
+        /// EndLB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpDateBT;
+        protected global::System.Web.UI.WebControls.Label EndLB;
 
         /// <summary>
-        /// UpdateGV 控制項。
+        /// EndDay 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView UpdateGV;
+        protected global::System.Web.UI.WebControls.TextBox EndDay;
 
         /// <summary>
-        /// CloseBT 控制項。
+        /// EndDay_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CloseBT;
+        protected global::AjaxControlToolkit.CalendarExtender EndDay_CalendarExtender;
 
         /// <summary>
-        /// DeleteBT 控制項。
+        /// 跨年度資料CB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteBT;
+        protected global::System.Web.UI.WebControls.CheckBox 跨年度資料CB;
 
         /// <summary>
-        /// ErrorContinueLB 控制項。
+        /// ReportViewer1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorContinueLB;
-
-        /// <summary>
-        /// ErrorContinueGV 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ErrorContinueGV;
-
-        /// <summary>
-        /// ErrorLB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLB;
-
-        /// <summary>
-        /// ErrorGV 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ErrorGV;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

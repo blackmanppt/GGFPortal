@@ -273,6 +273,16 @@ table, td, th {
 
                                                 <br />
                         <asp:HyperLink ID="HyperLink111" runat="server" NavigateUrl="~/Sales/Sample018.aspx">樣品單主副料收單</asp:HyperLink>
+                                                                        <br />
+                        <asp:HyperLink ID="HyperLink112" runat="server" NavigateUrl="~/Sales/Sample017.aspx">版師借出</asp:HyperLink>
+                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink113" runat="server" NavigateUrl="~/Sales/Sample019.aspx">打樣室接收</asp:HyperLink>
+                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink114" runat="server" NavigateUrl="~/Sales/Sample020.aspx">打樣室歸還</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink115" runat="server" NavigateUrl="~/Sales/Sample021.aspx">版房收回</asp:HyperLink>
+                                                <br />
+                        <asp:HyperLink ID="HyperLink116" runat="server" NavigateUrl="~/Sales/Sample021.aspx">租借報表</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 
