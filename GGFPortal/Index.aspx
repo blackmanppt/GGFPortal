@@ -145,6 +145,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink73" runat="server" NavigateUrl="~/Secretary/Secretary007.aspx">工時IE對應表</asp:HyperLink>
                                                                         <br />
                         <asp:HyperLink ID="HyperLink80" runat="server" NavigateUrl="~/Secretary/Secretary008.aspx">訂單明細</asp:HyperLink>
+                                                                                                <br />
+                        <asp:HyperLink ID="HyperLink117" runat="server" NavigateUrl="~/Secretary/Secretary009.aspx">產區表含明細</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

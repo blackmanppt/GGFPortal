@@ -97,10 +97,11 @@ namespace GGFPortal.FactoryMG
                     #region 匯入
                     string[] parameters = StyleArray.Select((s, i) => "@StyleNo" + i.ToString()).ToArray();
                     command1.CommandText = string.Format(@"select Team,sum(b.Person* b.Time) as SumTime from  Productivity_Head a left join Productivity_Line b on a.uid=b.uid
-                                                            where Flag=1 and Area=@Area {0} {1}
+                                                            where Flag=1 and Area=@Area {0} {1} {2}
                                                             group by Team "
-                                 ,(!string.IsNullOrEmpty(StyleNoSearchMutiTB.Text))? string.Format(" and StyleNo in ( {0} ) ", string.Join(",", parameters)):""
-                                 ,string.Format(" and Date between '{0}' and '{1}'",DateRangeTB.Text.Substring(0,8),DateRangeTB.Text.Substring(11)));
+                                 ,(!string.IsNullOrEmpty(StyleNoSearchMutiTB.Text))? string.Format(" and (StyleNo in ( {0} )  )", string.Join(",", parameters)) :""
+                                 ,string.Format(" and Date between '{0}' and '{1}'",DateRangeTB.Text.Substring(0,8),DateRangeTB.Text.Substring(11))
+                                 , (string.IsNullOrEmpty(StyleNoSeachTB.Text)) ? "" : "and StyleNo = '" + StyleNoSeachTB.Text + "'");
                     //command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
                     for (int i = 0; i < StyleArray.Length; i++)
                         command1.Parameters.AddWithValue(parameters[i], StyleArray[i]);
@@ -109,9 +110,10 @@ namespace GGFPortal.FactoryMG
                     SqlDataReader dr = command1.ExecuteReader();
                     dt.Load(dr);
                     command1.CommandText = string.Format(@"select * from [View工時資料]
-                                                                                   where  [地區]=@Area {0} {1} "
+                                                                                   where  [地區]=@Area {0} {1} {2}"
                                  , (!string.IsNullOrEmpty(StyleNoSearchMutiTB.Text)) ? string.Format(" and [款號] in ( {0} ) ", string.Join(",", parameters)) : ""
-                                 , string.Format(" and [工作時間] between '{0}' and '{1}'", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11)));
+                                 , string.Format(" and [工作時間] between '{0}' and '{1}'", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11))
+                                 , (string.IsNullOrEmpty(StyleNoSeachTB.Text)) ? "" : "and 款號 = '" + StyleNoSeachTB.Text + "'");
                     command1.ExecuteNonQuery();
                     SqlDataReader dr2 = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt2.Load(dr2);

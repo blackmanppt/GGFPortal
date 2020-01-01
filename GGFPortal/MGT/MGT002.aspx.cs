@@ -6,6 +6,7 @@ using GGFPortal.DataSetSource;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace GGFPortal.MGT
 {
@@ -13,6 +14,8 @@ namespace GGFPortal.MGT
     public partial class MGT002 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        static string strConnectEIPString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["EIPConnectionString"].ToString();
+        
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         GGFEntitiesMGT db = new GGFEntitiesMGT();
         protected void Page_Load(object sender, EventArgs e)
@@ -450,7 +453,7 @@ namespace GGFPortal.MGT
                             
 
                         if (string.IsNullOrEmpty(收件人TB.Text.Trim()))
-                            sbErrorstring(sbError, "No ID");
+                            sbErrorstring(sbError, "No receiver");
                         if (string.IsNullOrEmpty(客戶名稱TB.Text.Trim()))
                             sbErrorstring(sbError, "No receive company");
                         //if (string.IsNullOrEmpty(責任歸屬TB.Text))
@@ -473,13 +476,34 @@ namespace GGFPortal.MGT
                             if (iuid == 0)
                             {
                                 var 新增快遞單明細 = new 快遞單明細();
+                                using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
+                                {
+                                    SqlCommand command = new SqlCommand();
+                                    command.Connection = conn1;
+                                    command.CommandText = @"SELECT  distinct top 1 Dept_ID
+                                            FROM [dbo].[Dept] where Dept = @Dept";
+                                    command.CommandType = CommandType.Text;
+                                    command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
+                                    conn1.Open();
+                                    SqlDataReader reader = command.ExecuteReader();
+
+                                    if (reader.HasRows)
+                                    {
+                                        if (reader.Read())
+                                        {
+                                            //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                                            新增快遞單明細.寄件人部門 = reader.GetString(0);
+                                        }
+                                    }
+                                    reader.Close();
+                                }
                                 新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
                                 新增快遞單明細.寄件人工號 = 工號資料.employee_no;
                                 新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
                                 新增快遞單明細.客戶名稱 = 客戶名稱TB.Text.Trim();
-                                新增快遞單明細.寄件人部門 = 工號資料.dept_no;
+                                //新增快遞單明細.寄件人部門 = 工號資料.dept_no;
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
                                 新增快遞單明細.IsDeleted = false;
                                 新增快遞單明細.重量 = d重量;
@@ -503,12 +527,33 @@ namespace GGFPortal.MGT
                             else
                             {
                                 var 新增快遞單明細 = conn.快遞單明細.Find(iuid);
+                                using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
+                                {
+                                    SqlCommand command = new SqlCommand();
+                                    command.Connection = conn1;
+                                    command.CommandText = @"SELECT  distinct top 1 Dept_ID
+                                            FROM [dbo].[Dept] where Dept = @Dept";
+                                    command.CommandType = CommandType.Text;
+                                    command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
+                                    conn1.Open();
+                                    SqlDataReader reader = command.ExecuteReader();
+
+                                    if (reader.HasRows)
+                                    {
+                                        if (reader.Read())
+                                        {
+                                            //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                                            新增快遞單明細.寄件人部門 = reader.GetString(0);
+                                        }
+                                    }
+                                    reader.Close();
+                                }
                                 //新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
                                 新增快遞單明細.寄件人工號 = 工號資料.employee_no;
                                 新增快遞單明細.寄件人 = 工號資料.employee_name;
                                 新增快遞單明細.寄件人分機 = 分機TB.Text.Trim();
-                                新增快遞單明細.寄件人部門 = 工號資料.dept_no;
+                                //新增快遞單明細.寄件人部門 = 工號資料.dept_no;
                                 新增快遞單明細.收件人 = 收件人TB.Text.Trim();
                                 新增快遞單明細.重量 = d重量;
                                 //新增快遞單明細.責任歸屬 = 責任歸屬TB.Text.Trim();

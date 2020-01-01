@@ -11,142 +11,142 @@ namespace GGFPortal.MGT
 {
 
 
-    public partial class MGT005
+    public partial class MGT011
     {
 
         /// <summary>
-        /// form1 控制項。
+        /// DateRangeTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox DateRangeTB;
 
         /// <summary>
-        /// 快遞廠商LB 控制項。
+        /// DateRangeTB_CalendarExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 快遞廠商LB;
+        protected global::AjaxControlToolkit.CalendarExtender DateRangeTB_CalendarExtender;
 
         /// <summary>
-        /// 快遞日期LB 控制項。
+        /// 提單TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 快遞日期LB;
+        protected global::System.Web.UI.WebControls.TextBox 提單TB;
 
         /// <summary>
-        /// 提單號碼LB 控制項。
+        /// UpdatePanel1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 提單號碼LB;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// 快遞編號LB 控制項。
+        /// 寄件人DDL 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 快遞編號LB;
+        protected global::System.Web.UI.WebControls.DropDownList 寄件人DDL;
 
         /// <summary>
-        /// 寄件人LB 控制項。
+        /// SqlDataSource4 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 寄件人LB;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
 
         /// <summary>
-        /// 英文名LB 控制項。
+        /// SearchBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 英文名LB;
+        protected global::System.Web.UI.WebControls.Button SearchBT;
 
         /// <summary>
-        /// 送件地點LB 控制項。
+        /// ClearBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 送件地點LB;
+        protected global::System.Web.UI.WebControls.Button ClearBT;
 
         /// <summary>
-        /// 收件人LB 控制項。
+        /// ReportViewer1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 收件人LB;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
 
         /// <summary>
-        /// 明細LB 控制項。
+        /// SelectPanel 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 明細LB;
+        protected global::System.Web.UI.WebControls.Panel SelectPanel;
 
         /// <summary>
-        /// 備註LB 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 備註LB;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// 公斤LB 控制項。
+        /// SqlDataSource2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 公斤LB;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
 
         /// <summary>
-        /// 快遞單檔案Literal 控制項。
+        /// 取消選擇BT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal 快遞單檔案Literal;
+        protected global::System.Web.UI.WebControls.Button 取消選擇BT;
 
         /// <summary>
-        /// 過重LB 控制項。
+        /// SelectPanel_ModalPopupExtender 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 過重LB;
+        protected global::AjaxControlToolkit.ModalPopupExtender SelectPanel_ModalPopupExtender;
 
         /// <summary>
-        /// Button1 控制項。
+        /// show2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button show2;
     }
 }

@@ -47,9 +47,9 @@
         </rsweb:ReportViewer>
         <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpcTableAdapter">
             <SelectParameters>
-                <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" DefaultValue="%" />
-                <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
-                <asp:SessionParameter DefaultValue="" Name="site" SessionField="F001Site" Type="String" />
+                <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" DefaultValue="" />
+                <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" DefaultValue="" />
+                <asp:SessionParameter DefaultValue="%" Name="site" SessionField="F001Site" Type="String" />
 
             </SelectParameters>
         </asp:ObjectDataSource>

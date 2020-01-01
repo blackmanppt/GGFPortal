@@ -237,10 +237,11 @@
                                             FROM [dbo].[Dept] where Dept_ID not in ( 'test')"></asp:SqlDataSource>
                                 </div>
                                 <div class=" col-md-3 text-right">
-                                    <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="Telephone："></asp:Label>
+                                    <asp:Label ID="分機LB" runat="server" Font-Bold="True" Text="Telephone/Name："></asp:Label>
                                 </div>
                                 <div class="col-md-3 text-left">
                                     <asp:TextBox ID="分機TB" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <ajaxToolkit:TextBoxWatermarkExtender runat="server" BehaviorID="分機TB_TextBoxWatermarkExtender" TargetControlID="分機TB" ID="分機TB_TextBoxWatermarkExtender" WatermarkText="#999 / name"></ajaxToolkit:TextBoxWatermarkExtender>
                                 </div>
                             </div>
                             <div class="row">

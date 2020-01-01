@@ -116,7 +116,7 @@
                                                                 <th class="auto-style1">送件目的地(<span lang="EN-US">Địa điểm giao hàng</span>)</th>
                                 <th class="auto-style1">快遞單檔案(<span lang="EN-US">Tập tin chuyển phát nhanh</span>)</th>
                                                                 <th class=" text-right" style="vertical-align:bottom;"rowspan="2" >                                    
-                                    <asp:Button ID="SaveBT" runat="server" Text="新增明細" CssClass="btn btn-default" OnClick="SaveBT_Click"/>
+                                    <%--<asp:Button ID="SaveBT" runat="server" Text="新增明細" CssClass="btn btn-default" OnClick="SaveBT_Click"/>--%>
                                                                     <%--<button class="print-link" onclick="jQuery.print()">Print page - jQuery.print()
             </button> <asp:Button ID="Button1" runat="server" Text="列印圖片" class=" btn btn-default"  OnClientClick="jQuery('#picture').print();"/>--%>
                          
@@ -144,8 +144,6 @@
                             <asp:BoundField DataField="id" HeaderStyle-CssClass="hiddencol" HeaderText="id" ItemStyle-cssclass="hiddencol" SortExpression="id" />
                               <asp:TemplateField ShowHeader="False" ItemStyle-Width="200px">
                                 <ItemTemplate>
-                                    <asp:Button ID="EditBT" runat="server" CausesValidation="false" CommandName="編輯" Text="Edit"  CssClass="btn btn-default"/>
-                                    <asp:Button ID="DeleteBT" runat="server" CausesValidation="false" CommandName="刪除" Text="Delete"  OnClientClick="return confirm('是否刪除')" CssClass="btn btn-danger"  />
                                     <asp:Button ID="PrintBT" runat="server" CausesValidation="false" CommandName="列印" Text="Print" CssClass="btn btn-primary" />
                                 </ItemTemplate>
                             </asp:TemplateField>

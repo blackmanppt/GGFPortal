@@ -19,6 +19,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
         <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 
             <asp:Label ID="BrandLB" runat="server" Text="" CssClass="navbar-brand col-sm-3 col-md-2 mr-0"></asp:Label>
@@ -45,8 +47,7 @@
                 <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
                 </ajaxToolkit:ModalPopupExtender>
 
-                <asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+
 
             </ContentTemplate>
         </asp:UpdatePanel>

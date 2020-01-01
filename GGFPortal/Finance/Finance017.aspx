@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Secretary009.aspx.cs" Inherits="GGFPortal.Secretary.Secretary009" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Finance017.aspx.cs" Inherits="GGFPortal.Finance.Finance017" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -63,14 +63,19 @@
 
             </h3>
             <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
-            <div class="form-group">
-                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="SearchBT_Click" />
-            </div>
-    <%--                    <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>說明2</span>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>公司別2</span>
 
             </h3>
-            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>--%>
+            <%--<asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>--%>
+            <asp:DropDownList ID="SiteDDL" runat="server" CssClass="form-control">
+            <asp:ListItem>全部</asp:ListItem>
+            <asp:ListItem>GGF</asp:ListItem>
+            <asp:ListItem>TCL</asp:ListItem>
+        </asp:DropDownList>
+            <div class=" form-group m-2">
+                <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" CssClass="btn btn-dark"/>
+            </div>
         </div>
     </nav>
 
@@ -91,11 +96,8 @@
 
 
                 <h2>Section title</h2>-->
-
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
-                <LocalReport ReportPath="ReportSource\Secretary\ReportSecretary009V3.rdlc" DisplayName="內廠產區表">
-                </LocalReport>
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
+                <LocalReport ReportPath="ReportSource\Finance\ReportFinance017.rdlc"  DisplayName="出口大表New"></LocalReport>
             </rsweb:ReportViewer>
-
     </main>
 </asp:Content>

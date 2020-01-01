@@ -252,8 +252,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\tether\tether-theme-arrows-dark.css" />
+    <Content Include="Content\tether\tether-theme-arrows-dark.min.css" />
+    <Content Include="Content\tether\tether-theme-arrows.css" />
+    <Content Include="Content\tether\tether-theme-arrows.min.css" />
+    <Content Include="Content\tether\tether-theme-basic.css" />
+    <Content Include="Content\tether\tether-theme-basic.min.css" />
+    <Content Include="Content\tether\tether.css" />
+    <Content Include="Content\tether\tether.min.css" />
     <Content Include="Controls\HighchartsControl.ascx" />
     <Content Include="DataSetSource\GGFTest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -320,7 +330,12 @@
     <Content Include="Finance\Finance012V2.aspx" />
     <Content Include="Finance\Finance013.aspx" />
     <Content Include="Finance\Finance016.aspx" />
+    <Content Include="Finance\Finance017.aspx" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="IMG\SalesSearch.png" />
+    <Content Include="MGT\MGT005V2.aspx" />
+    <Content Include="MGT\MGT012.aspx" />
+    <Content Include="MGT\MGT011.aspx" />
     <Content Include="MGT\LOG\ACSLOGO.jpg" />
     <Content Include="MGT\LOG\dhl_logo.gif" />
     <Content Include="MGT\LOG\DPEX2.png" />
@@ -863,6 +878,11 @@
     <Content Include="FactoryMG\Temp\VGG\SampleCut.xlsx" />
     <Content Include="FactoryMG\Temp\VGG\SampleIron.xlsx" />
     <Content Include=".editorconfig" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
@@ -4070,6 +4090,8 @@
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.min.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.js" />
     <Content Include="scripts\SbAdmin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="scripts\tether.js" />
+    <Content Include="scripts\tether.min.js" />
     <Content Include="Secretary\Secretary001V6.aspx" />
     <Content Include="Secretary\Secretary009.aspx" />
     <Content Include="Secretary\Secretary001V5.aspx" />
@@ -5541,6 +5563,34 @@
     <Compile Include="Finance\Finance016.aspx.designer.cs">
       <DependentUpon>Finance016.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Finance\Finance017.aspx.cs">
+      <DependentUpon>Finance017.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\Finance017.aspx.designer.cs">
+      <DependentUpon>Finance017.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT005V2.aspx.cs">
+      <DependentUpon>MGT005V2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT005V2.aspx.designer.cs">
+      <DependentUpon>MGT005V2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT012.aspx.cs">
+      <DependentUpon>MGT012.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT012.aspx.designer.cs">
+      <DependentUpon>MGT012.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MGT\MGT011.aspx.cs">
+      <DependentUpon>MGT011.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MGT\MGT011.aspx.designer.cs">
+      <DependentUpon>MGT011.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MGT\MGT002Print.aspx.cs">
       <DependentUpon>MGT002Print.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6927,9 +6977,11 @@
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance013.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance015.rdlc" />
+    <EmbeddedResource Include="ReportSource\Finance\ReportFinance017.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT011.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V2.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />
-    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V3 - 複製.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT005.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT006.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT007.rdlc" />
@@ -6998,6 +7050,7 @@
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary006.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary007.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary008.rdlc" />
+    <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary009V3.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary009V2.rdlc" />
     <EmbeddedResource Include="ReportSource\Secretary\ReportSecretary009.rdlc" />
     <EmbeddedResource Include="ReportSource\Ship\ReportShip001.rdlc" />
