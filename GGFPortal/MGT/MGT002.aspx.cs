@@ -251,9 +251,10 @@ namespace GGFPortal.MGT
                             var dset = db.快遞單明細.Where(p => p.uid == iuid);
                             foreach (var item in dset)
                             {
-                                if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人工號)) == true)
+                                提單LB.Text = "Delivery No.:"+ 提單號碼LB.Text;
+                                if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人部門)) == true)
                                 {
-                                    寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人工號).Value;
+                                    寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人部門).Value;
                                     //寄件人DDL.SelectedItem.Text = item.寄件人;
                                     //UserLB.Text = "";
                                 }
@@ -416,8 +417,38 @@ namespace GGFPortal.MGT
                         decimal.TryParse(重量TB.Text, out d重量);
                         int.TryParse(uidHF.Value, out iuid);
                         int.TryParse(idHF.Value, out iid);
-                        
-                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == 寄件人DDL.SelectedValue).FirstOrDefault();
+                        string str快遞人="";
+                        if (寄件人DDL.SelectedItem.Text == "河內快遞")
+                        {
+                            str快遞人 = "C180100";
+                        }
+                        else if (寄件人DDL.SelectedItem.Text == "寧平快遞")
+                        {
+                            str快遞人 = "B180100";
+                        }
+                        else
+                            using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
+                            {
+                                SqlCommand command = new SqlCommand();
+                                command.Connection = conn1;
+                                command.CommandText = @"SELECT  distinct top 1 dept_boss1
+                                                FROM [dbo].[Dept] where Dept = @Dept";
+                                command.CommandType = CommandType.Text;
+                                command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
+                                conn1.Open();
+                                SqlDataReader reader = command.ExecuteReader();
+
+                                if (reader.HasRows)
+                                {
+                                    if (reader.Read())
+                                    {
+                                        //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                                        str快遞人 = reader.GetString(0);
+                                    }
+                                }
+                                reader.Close();
+                            }
+                        var 工號資料 = db.bas_employee.Where(p => p.site == "GGF" && p.employee_no == str快遞人).FirstOrDefault();
                         if (iid == 0)
                             sbError.Append("Please search again");
                         if (工號資料 == null)
@@ -476,27 +507,37 @@ namespace GGFPortal.MGT
                             if (iuid == 0)
                             {
                                 var 新增快遞單明細 = new 快遞單明細();
-                                using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
-                                {
-                                    SqlCommand command = new SqlCommand();
-                                    command.Connection = conn1;
-                                    command.CommandText = @"SELECT  distinct top 1 Dept_ID
-                                            FROM [dbo].[Dept] where Dept = @Dept";
-                                    command.CommandType = CommandType.Text;
-                                    command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
-                                    conn1.Open();
-                                    SqlDataReader reader = command.ExecuteReader();
+                                //if (寄件人DDL.SelectedItem.Text == "河內快遞")
+                                //{
+                                //    新增快遞單明細.寄件人部門 = "J010";
+                                //}
+                                //else if (寄件人DDL.SelectedItem.Text == "寧平快遞")
+                                //{
+                                //    新增快遞單明細.寄件人部門 = "J010";
+                                //}
+                                //else
+                                //    using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
+                                //    {
+                                //        SqlCommand command = new SqlCommand();
+                                //        command.Connection = conn1;
+                                //        command.CommandText = @"SELECT  distinct top 1 Dept_ID
+                                //                FROM [dbo].[Dept] where Dept = @Dept";
+                                //        command.CommandType = CommandType.Text;
+                                //        command.Parameters.Add("@Dept_ID", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
+                                //        conn1.Open();
+                                //        SqlDataReader reader = command.ExecuteReader();
 
-                                    if (reader.HasRows)
-                                    {
-                                        if (reader.Read())
-                                        {
-                                            //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                                            新增快遞單明細.寄件人部門 = reader.GetString(0);
-                                        }
-                                    }
-                                    reader.Close();
-                                }
+                                //        if (reader.HasRows)
+                                //        {
+                                //            if (reader.Read())
+                                //            {
+                                //                //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                                //                新增快遞單明細.寄件人部門 = reader.GetString(0);
+                                //            }
+                                //        }
+                                //        reader.Close();
+                                //    }
+                                新增快遞單明細.寄件人部門 = 寄件人DDL.SelectedValue;
                                 新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
                                 新增快遞單明細.寄件人工號 = 工號資料.employee_no;
@@ -527,27 +568,37 @@ namespace GGFPortal.MGT
                             else
                             {
                                 var 新增快遞單明細 = conn.快遞單明細.Find(iuid);
-                                using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
-                                {
-                                    SqlCommand command = new SqlCommand();
-                                    command.Connection = conn1;
-                                    command.CommandText = @"SELECT  distinct top 1 Dept_ID
-                                            FROM [dbo].[Dept] where Dept = @Dept";
-                                    command.CommandType = CommandType.Text;
-                                    command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
-                                    conn1.Open();
-                                    SqlDataReader reader = command.ExecuteReader();
+                                //if (寄件人DDL.SelectedItem.Text == "河內快遞")
+                                //{
+                                //    新增快遞單明細.寄件人部門 = "J010";
+                                //}
+                                //else if (寄件人DDL.SelectedItem.Text == "寧平快遞")
+                                //{
+                                //    新增快遞單明細.寄件人部門 = "J010";
+                                //}
+                                //else
+                                //    using (SqlConnection conn1 = new SqlConnection(strConnectEIPString))
+                                //    {
+                                //        SqlCommand command = new SqlCommand();
+                                //        command.Connection = conn1;
+                                //        command.CommandText = @"SELECT  distinct top 1 Dept_ID
+                                //                FROM [dbo].[Dept] where Dept = @Dept";
+                                //        command.CommandType = CommandType.Text;
+                                //        command.Parameters.Add("@Dept", SqlDbType.NVarChar).Value = 寄件人DDL.SelectedItem.Text;
+                                //        conn1.Open();
+                                //        SqlDataReader reader = command.ExecuteReader();
 
-                                    if (reader.HasRows)
-                                    {
-                                        if (reader.Read())
-                                        {
-                                            //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
-                                            新增快遞單明細.寄件人部門 = reader.GetString(0);
-                                        }
-                                    }
-                                    reader.Close();
-                                }
+                                //        if (reader.HasRows)
+                                //        {
+                                //            if (reader.Read())
+                                //            {
+                                //                //DataReader讀出欄位內資料的方式，通常也可寫Reader[0]、[1]...[N]代表第一個欄位到N個欄位。
+                                //                新增快遞單明細.寄件人部門 = reader.GetString(0);
+                                //            }
+                                //        }
+                                //        reader.Close();
+                                //    }
+                                新增快遞單明細.寄件人部門 = 寄件人DDL.SelectedValue;
                                 //新增快遞單明細.id = int.Parse(idHF.Value);
                                 新增快遞單明細.付款方式 = (到付CB.Checked) ? "到付" : "";
                                 新增快遞單明細.寄件人工號 = 工號資料.employee_no;

@@ -6978,6 +6978,8 @@
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance014.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance015.rdlc" />
     <EmbeddedResource Include="ReportSource\Finance\ReportFinance017.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V3.rdlc" />
+    <EmbeddedResource Include="ReportSource\MGT\ReportMGT011V2.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT011.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004V2.rdlc" />
     <EmbeddedResource Include="ReportSource\MGT\ReportMGT004.rdlc" />

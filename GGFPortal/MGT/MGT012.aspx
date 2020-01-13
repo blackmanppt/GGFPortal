@@ -76,7 +76,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Visible="false" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-            <LocalReport ReportPath="ReportSource\MGT\ReportMGT011.rdlc" DisplayName="快遞核准單"></LocalReport>
+            <LocalReport ReportPath="ReportSource\MGT\ReportMGT011V2.rdlc" DisplayName="快遞核准單"></LocalReport>
         </rsweb:ReportViewer>
     </main>
                                                    

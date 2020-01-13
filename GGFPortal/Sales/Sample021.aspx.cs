@@ -209,8 +209,18 @@ namespace GGFPortal.Sales
 
         private void F_Update(string StrUpdateType = "")
         {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             using (DataTable DT = (DataTable)Session["DT正確"],DTError =(DataTable)Session["DT異常要處理資料"])
             {
+                //
                 if (DT.Rows.Count > 0&& StrUpdateType == "")
                 {
                     using (SqlConnection Conn = new SqlConnection(strConnectString))
@@ -436,6 +446,11 @@ namespace GGFPortal.Sales
         protected void CloseBT_Click(object sender, EventArgs e)
         {
             F_Update("Close");
+        }
+
+        protected void DeleteBT_Click(object sender, EventArgs e)
+        {
+            F_Update("Delecte");
         }
 
         public void F_ErrorShow(string strError)

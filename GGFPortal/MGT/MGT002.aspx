@@ -219,7 +219,7 @@
                         <asp:Button ID="show" runat="server" Text="show" Style="display: none" />
                         <asp:Panel ID="EditListPanel" runat="server" align="center" CssClass="modalPopup form-control" Height="430px" Width="800px" BackColor="#33CCFF" Style="display:none">
                             <div class=" text-center text-danger">
-                                <h3><b>Detail</b></h3>
+                                <h3><b>Detail(<asp:Label ID="提單LB" runat="server" Text=""></asp:Label>)</b></h3>
                             </div>
                             <div class="row">
                                 <div class=" col-md-3 text-right">
@@ -229,11 +229,11 @@
                                 <div class="col-md-3 text-left">
 
                                     <%--<asp:TextBox ID="寄件人工號TB" runat="server"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="寄件人DDL" runat="server" DataSourceID="SqlDataSource4" DataTextField="dept" DataValueField="Dept_Boss" AppendDataBoundItems="true" CssClass="form-control">
-                                        <asp:ListItem Text="河內快遞" Value="C180100" />
-                                        <asp:ListItem Text="寧平快遞" Value="B180100" />
+                                    <asp:DropDownList ID="寄件人DDL" runat="server" DataSourceID="SqlDataSource4" DataTextField="dept" DataValueField="Dept_ID" AppendDataBoundItems="true" CssClass="form-control">
+<%--                                        <asp:ListItem Text="河內快遞" Value="C180100" />
+                                        <asp:ListItem Text="寧平快遞" Value="B180100" />--%>
                                     </asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString='<%$ ConnectionStrings:EIPConnectionString %>' SelectCommand="SELECT distinct dept,Dept_Boss
+                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString='<%$ ConnectionStrings:EIPConnectionString %>' SelectCommand="SELECT distinct dept,Dept_ID
                                             FROM [dbo].[Dept] where Dept_ID not in ( 'test')"></asp:SqlDataSource>
                                 </div>
                                 <div class=" col-md-3 text-right">

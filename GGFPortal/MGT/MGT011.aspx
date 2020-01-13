@@ -69,14 +69,18 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                                 <asp:DropDownList ID="寄件人DDL" runat="server" DataSourceID="SqlDataSource4" DataTextField="dept" DataValueField="Dept_ID" AppendDataBoundItems="true" CssClass="form-control">
-                                        <asp:ListItem Text="河內快遞" Value="C180100" />
-                                        <asp:ListItem Text="寧平快遞" Value="B180100" />
+<%--                                        <asp:ListItem Text="河內快遞" Value="C180100" />
+                                        <asp:ListItem Text="寧平快遞" Value="B180100" />--%>
                                     </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString='<%$ ConnectionStrings:EIPConnectionString %>' SelectCommand="SELECT distinct dept,Dept_ID
                                             FROM [dbo].[Dept] where Dept_ID not in ( 'test')"></asp:SqlDataSource>
                 </ContentTemplate>
             </asp:UpdatePanel>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>寄件人工號</span>
 
+            </h3>
+            <asp:TextBox ID="工號TB" runat="server" class="form-control"></asp:TextBox>
             <div class="form-group m-3">
                                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-outline-primary" OnClick="SearchBT_Click" />
                             <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-outline-dark" OnClick="ClearBT_Click" />
@@ -86,7 +90,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Visible="false" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-            <LocalReport ReportPath="ReportSource\MGT\ReportMGT011.rdlc" DisplayName="快遞核准單"></LocalReport>
+            <LocalReport ReportPath="ReportSource\MGT\ReportMGT011V2.rdlc" DisplayName="快遞核准單"></LocalReport>
         </rsweb:ReportViewer>
     </main>
                                                     <asp:Panel ID="SelectPanel" runat="server" Style="display:none"   ScrollBars="Auto" CssClass="w-50 h-50 bg-info text-center" >

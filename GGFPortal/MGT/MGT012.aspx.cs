@@ -78,13 +78,13 @@ namespace GGFPortal.MGT
             StringBuilder strsql = new StringBuilder();
             if (strType == "明細")
             {
-                strsql.Append(@"SELECT ROW_NUMBER() over(order by uid ) as 流水號,a.寄件人,a.寄件人分機,a.重量,a.明細,a.責任歸屬,a.付款方式,a.IsDeleted,c.dept_name as'寄件人部門'
-                                                        FROM [dbo].[快遞單明細] a left join [快遞單] b on a.id=b.id left join bas_dept c on a.寄件人部門 =c.dept_no and c.site='GGF'
+                strsql.Append(@"SELECT ROW_NUMBER() over(order by uid ) as 流水號,a.寄件人,a.寄件人分機,a.重量,a.明細,a.責任歸屬,a.付款方式,a.IsDeleted,c.Dept as'寄件人部門',a.客戶名稱
+                                                        FROM [dbo].[快遞單明細] a left join [快遞單] b on a.id=b.id left join [192.168.0.116].[EIP].[dbo].[Dept] c on a.寄件人部門 =(c.Dept_ID COLLATE Chinese_Taiwan_Stroke_CI_AS )
                                     where b.IsDeleted = 0  ");
                 if (iid > 0)
                     strsql.AppendFormat(@" and  b.id={0} ", iid);
 
-                strsql.AppendFormat(@" and  寄件人部門 = '{0}' ", Session["部門"].ToString());
+                strsql.AppendFormat(@" and  Dept_ID = '{0}' ", Session["部門"].ToString());
                 //strsql.AppendFormat(@"SELECT ROW_NUMBER() over(order by uid ) as 流水號,a.*
                 //                                        FROM [dbo].[快遞單明細] a left join [快遞單] b on a.id=b.id
                 //                    where (UPPER(b.[提單號碼]) = '{0}' or b.id={1} ) and b.IsDeleted = 0  
@@ -93,7 +93,7 @@ namespace GGFPortal.MGT
             else
             {
 
-                strsql.Append(@"SELECT top 1 * FROM [快遞單] 
+                strsql.Append(@"SELECT top 1 id,提單號碼,提單日期,快遞廠商,快遞單檔案,送件地點+地點備註 as '送件地點',IsDeleted,修改日期,建立日期 FROM [快遞單] 
                                     where  IsDeleted = 0  ");
                 if (iid > 0)
                     strsql.AppendFormat(@" and  id={0} ", iid);

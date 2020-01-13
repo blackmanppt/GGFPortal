@@ -88,7 +88,8 @@ namespace GGFPortal.MGT
                     {
                         過重LB.Text = "部門寄包裹總重" + d總重 + "KG已超過20kg以上，需董事長批核，請列印快遞核准單";
                     }
-
+                    //if (d總重 >= 2)
+                    //    Button1.Visible = true;
                     //快遞廠商LB2.Text = 提單列印明細.快遞單.快遞廠商;
                     //快遞日期LB2.Text = 提單列印明細.快遞單.提單日期.ToString("yyyy-MM-dd");
                     //提單號碼LB2.Text = 提單列印明細.快遞單.提單號碼;
