@@ -9,7 +9,7 @@
               <Width>3.135cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.71708cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.20896cm</Width>
@@ -436,7 +436,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -705,7 +704,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!IsClose.Value=true,"已結案","")</Value>
+                              <Value>=IIF(Fields!IsClose.Value=true,"已結案",IIF(Fields!IsDelete.Value=true,"已刪除",""))</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -730,6 +729,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -761,7 +761,7 @@
         </TablixRowHierarchy>
         <DataSetName>View版套借出表</DataSetName>
         <Height>1.2cm</Height>
-        <Width>25.30458cm</Width>
+        <Width>26.52166cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -772,7 +772,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>10.1446in</Width>
+  <Width>10.4416in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -838,6 +838,10 @@
         </Field>
         <Field Name="IsClose">
           <DataField>IsClose</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsDelete">
+          <DataField>IsDelete</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>

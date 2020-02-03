@@ -30,7 +30,7 @@ namespace GGFPortal.MGT
                     快遞廠商LB.Text = 提單列印明細.快遞單.快遞廠商;
                     快遞日期LB.Text = 提單列印明細.快遞單.提單日期.ToString("yyyy-MM-dd");
                     提單號碼LB.Text = 提單列印明細.快遞單.提單號碼;
-                    寄件人LB.Text = 提單列印明細.寄件人+"("+ 提單列印明細.寄件人分機+")";
+                    寄件人LB.Text =  提單列印明細.寄件人分機;
                     送件地點LB.Text = 提單列印明細.快遞單.送件地點+"-"+ 提單列印明細.快遞單.地點備註;
                     收件人LB.Text = 提單列印明細.收件人;
                     明細LB.Text = 提單列印明細.明細;
@@ -44,7 +44,7 @@ namespace GGFPortal.MGT
                         str備註=str備註.Replace("\r\n", "<br/>");
                     備註LB.Text = str備註;
                     公斤LB.Text = 提單列印明細.重量.ToString();
-                    英文名LB.Text = (string.IsNullOrEmpty(提單列印明細.email))?"": 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
+                    //英文名LB.Text = (string.IsNullOrEmpty(提單列印明細.email))?"": 提單列印明細.email.Substring(0, 提單列印明細.email.IndexOf(@"@"));
                     快遞單檔案Literal.Text = @"<img alt='提單' src='MGTFile\" + 提單列印明細.快遞單.快遞單檔案 + @"' />";
                     decimal d總重 = 0;
                     using (SqlConnection conn1 = new SqlConnection(strConnectString))

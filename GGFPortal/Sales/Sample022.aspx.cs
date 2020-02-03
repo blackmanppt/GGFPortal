@@ -59,40 +59,54 @@ namespace GGFPortal.Sales
                     #region 查詢
                     string Str搜尋參數 = "sam_nbr",Str搜尋日期="";
 
-                    switch (StatusDDL.SelectedItem.Text)
-                    {
-                        case "打版室借出":
-                            Str搜尋日期 = "打版室借出時間";
-                            break;
-                        case "樣品室收到":
-                            Str搜尋日期 = "樣品室收到時間";
-                            break;
-                        case "樣品室還回":
-                            Str搜尋日期 = "樣品室還回時間";
-                            break;
-                        case "轉借TD":
-                            Str搜尋日期 = "轉借TD時間";
-                            break;
-                        case "打版室收回":
-                            Str搜尋日期 = "打版室收回時間";
-                            break;
+                    //switch (StatusDDL.SelectedItem.Text)
+                    //{
+                    //    case "打版室借出":
+                    //        Str搜尋日期 = "打版室借出時間";
+                    //        break;
+                    //    case "樣品室收到":
+                    //        Str搜尋日期 = "樣品室收到時間";
+                    //        break;
+                    //    case "樣品室還回":
+                    //        Str搜尋日期 = "樣品室還回時間";
+                    //        break;
+                    //    case "轉借TD":
+                    //        Str搜尋日期 = "轉借TD時間";
+                    //        break;
+                    //    case "打版室收回":
+                    //        Str搜尋日期 = "打版室收回時間";
+                    //        break;
 
-                        default:
-                            break;
-                    }
+                    //    default:
+                    //        break;
+                    //}
                     string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
-                    command1.CommandText = string.Format(@"SELECT * from View版套借出表
-                                 where {1} in ( {0} ) and {2} between '{3}' and '{4}' {5} "
-                                , string.Join(",", parameters)
-                                , Str搜尋參數
-                                , Str搜尋日期
-                                ,DateRangeTB.Text.Substring(0,10)
+                    command1.CommandText = string.Format(@" select a.[sam_nbr],b.cus_style_no
+                                      ,[SamCreateDate]
+                                      ,[RentCreateDate]
+                                      ,[RentModifyDate]
+                                      ,[IsDelete]
+                                      ,[IsClose]
+                                      ,[借出狀態]
+                                      ,[打版室借出時間]
+                                      ,[樣品室收到時間]
+                                      ,[樣品室還回時間]
+                                      ,[轉借TD時間]
+                                      ,[打版室收回時間]
+                                      ,MappingData AS 狀態
+                                  FROM [dbo].[GGFSampleRent] a left join samc_reqm b on a.sam_nbr=b.sam_nbr 
+                                        LEFT  JOIN
+                            dbo.Mapping AS d ON d.UsingDefine = 'GGFSampleRent' AND a.借出狀態 = d.Data
+                                 where   convert(nvarchar(10),[RentCreateDate],120) between '{1}' and '{2}' {3} {0} "
+                                , (string.IsNullOrEmpty(MutiTB.Text)) ? "" : string.Format(" and a.[sam_nbr] in ({0})", string.Join(",", parameters))
+                                , DateRangeTB.Text.Substring(0, 10)
                                 , DateRangeTB.Text.Substring(13, 10)
-                                ,(未處理CB.Checked)? " and 借出狀態 = " +StatusDDL.SelectedValue : "");
-                    for (int i = 0; i < StrArrary.Length; i++)
-                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                                , (未歸還CB.Checked) ? " and IsDelete =0 and IsClose=0 and [打版室收回時間] is null " : "");
+                    if(!string.IsNullOrEmpty(MutiTB.Text))
+                        for (int i = 0; i < StrArrary.Length; i++)
+                            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
                     command1.ExecuteNonQuery();
                     SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt.Load(dr);

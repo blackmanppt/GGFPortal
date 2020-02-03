@@ -6,11 +6,13 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>快遞單列印</title>
-    <script src="../scripts/jquery-3.4.1.min.js"></script>
-    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
-    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
-    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
-    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../scripts/jquery-3.1.1.min.js"></script>
+    <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/jQuery.print.min.js"></script>
     <style>
         table {
             border-collapse: collapse;
@@ -31,10 +33,10 @@ function printPage() {
 </script>
 </head>
 <body>
-    <form id="form1" runat="server" style="width:600px">
-    <div id="printarea">
+    <form id="form1" runat="server" >
+    <div id="printarea" >
 
-			<table class="table " style="width:600px;height:400px;">
+			<table class="table"  style="width:700px;height:460px">
 					<tr>
 						<th class="text-right">
 							快遞廠商</th>
@@ -62,14 +64,10 @@ function printPage() {
                 					<tr>
 						<th class="text-right">寄件人
 							</th>
-						<th>
+						<th colspan="3">
 							<asp:Label ID="寄件人LB" runat="server" Text=""></asp:Label>
                                         </th>
-						<th class="text-right">
-							name</th>
-						<th>
-							<asp:Label ID="英文名LB" runat="server" Text=""></asp:Label>
-                                        </th>
+
 					</tr>
                 <tr>
 						<th class="text-right">送件目的地

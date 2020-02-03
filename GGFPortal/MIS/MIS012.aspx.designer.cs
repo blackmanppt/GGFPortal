@@ -7,21 +7,12 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Sales
+namespace GGFPortal.MIS
 {
 
 
-    public partial class Sample022
+    public partial class MIS012
     {
-
-        /// <summary>
-        /// DateRangeTB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DateRangeTB;
 
         /// <summary>
         /// MutiTB 控制項。
@@ -33,13 +24,22 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.TextBox MutiTB;
 
         /// <summary>
-        /// 未歸還CB 控制項。
+        /// 佣金TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 未歸還CB;
+        protected global::System.Web.UI.WebControls.TextBox 佣金TB;
+
+        /// <summary>
+        /// 佣金TB_TextBoxWatermarkExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender 佣金TB_TextBoxWatermarkExtender;
 
         /// <summary>
         /// SearchBT 控制項。
@@ -51,12 +51,21 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.Button SearchBT;
 
         /// <summary>
-        /// ReportViewer1 控制項。
+        /// ClearBT 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        protected global::System.Web.UI.WebControls.Button ClearBT;
+
+        /// <summary>
+        /// GridView1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

@@ -239,78 +239,78 @@ namespace GGFPortal.MGT
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     string strid = ACRGV.DataKeys[row.RowIndex].Values[0].ToString();
                     int.TryParse(strid, out iuid);
-                    if (!F_確認結案(iid))
-                    { 
-                        if (iuid > 0)
+                    if (iuid > 0)
+                    {
+                        if (!F_確認結案(iid))
                         {
-                            if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
-                                F_showDHL(true);
-                            else
-                                F_showDHL(false);
-
-                            var dset = db.快遞單明細.Where(p => p.uid == iuid);
-                            foreach (var item in dset)
-                            {
-                                提單LB.Text = "Delivery No.:"+ 提單號碼LB.Text;
-                                if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人部門)) == true)
-                                {
-                                    寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人部門).Value;
-                                    //寄件人DDL.SelectedItem.Text = item.寄件人;
-                                    //UserLB.Text = "";
-                                }
-                                else
-                                {
-                                    
-                                    //UserLB.Text = "離職人員";
-                                }
-                                //寄件人DDL.se = item.寄件人工號;
-                                分機TB.Text = item.寄件人分機;
-                                客戶名稱TB.Text = item.客戶名稱;
-                                收件人TB.Text = item.收件人;
-                                重量TB.Text = item.重量.ToString();
-                                //責任歸屬TB.Text = item.責任歸屬;
-                                if (責任歸屬DDL.Items.Contains(責任歸屬DDL.Items.FindByValue(item.責任歸屬)) == true)
-                                {
-                                    責任歸屬DDL.SelectedValue = 責任歸屬DDL.Items.FindByValue(item.責任歸屬).Value;
-                                    責任歸屬DDL.SelectedItem.Text = item.責任歸屬;
-                                }
-                                else
-                                {
-                                    //UserLB.Text = "離職人員";
-                                }
-                                try
-                                {
-                                    if (item.責任歸屬備註.Length > 0)
-                                    {
-                                        責任歸屬備註TB.Visible = true;
-                                        責任歸屬備註TB.Text = item.責任歸屬備註;
-                                    }
-                                }
-                                catch (Exception)
-                                {
-                                }
-
-                                    
-                                到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
-                                備註TB.Text = item.備註二;
-                                明細TB.Text = item.明細;
-                                uidHF.Value = item.uid.ToString();
-                                原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
-                                if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
-                                {
-                                    款號TB.Text = item.備註;
-                                    數量TB.Text = item.快遞數量.ToString();
-                                    單位DDL.SelectedValue = item.快遞單位 ?? "";
-                                }
-                            }
                             新增BT.Visible = false;
                             更新BT.Visible = true;
-
-                            EditListPanel_ModalPopupExtender.Show();
                         }
+                        else
+                        {
+                            //結案只會顯示資料不提供更新
+                            新增BT.Visible = false;
+                            更新BT.Visible = false;
+                        }
+
+                        if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
+                            F_showDHL(true);
+                        else
+                            F_showDHL(false);
+
+                        var dset = db.快遞單明細.Where(p => p.uid == iuid);
+                        foreach (var item in dset)
+                        {
+                            提單LB.Text = "提單號碼:" + 提單號碼LB.Text;
+                            if (寄件人DDL.Items.Contains(寄件人DDL.Items.FindByValue(item.寄件人部門)) == true)
+                            {
+                                寄件人DDL.SelectedValue = 寄件人DDL.Items.FindByValue(item.寄件人部門).Value;
+                            }
+
+                            分機TB.Text = item.寄件人分機;
+                            客戶名稱TB.Text = item.客戶名稱;
+                            收件人TB.Text = item.收件人;
+                            重量TB.Text = item.重量.ToString();
+                            //責任歸屬TB.Text = item.責任歸屬;
+                            if (責任歸屬DDL.Items.Contains(責任歸屬DDL.Items.FindByValue(item.責任歸屬)) == true)
+                            {
+                                責任歸屬DDL.SelectedValue = 責任歸屬DDL.Items.FindByValue(item.責任歸屬).Value;
+                                責任歸屬DDL.SelectedItem.Text = item.責任歸屬;
+                            }
+                            else
+                            {
+                                //UserLB.Text = "離職人員";
+                            }
+                            try
+                            {
+                                if (item.責任歸屬備註.Length > 0)
+                                {
+                                    責任歸屬備註TB.Visible = true;
+                                    責任歸屬備註TB.Text = item.責任歸屬備註;
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
+
+
+                            到付CB.Checked = (item.付款方式.Length > 0) ? true : false;
+                            備註TB.Text = item.備註二;
+                            明細TB.Text = item.明細;
+                            uidHF.Value = item.uid.ToString();
+                            原因歸屬DDL.SelectedValue = item.原因歸屬 ?? "";
+                            if (快遞廠商LB.Text.ToUpper() == "DHL" || 快遞廠商LB.Text.ToUpper() == "FEDEX")
+                            {
+                                款號TB.Text = item.備註;
+                                數量TB.Text = item.快遞數量.ToString();
+                                單位DDL.SelectedValue = item.快遞單位 ?? "";
+                            }
+                        }
+
+
+                        EditListPanel_ModalPopupExtender.Show();
                     }
-                    else
-                        結案顯示();
+
 
                 }
                 else if (e.CommandName == "刪除")

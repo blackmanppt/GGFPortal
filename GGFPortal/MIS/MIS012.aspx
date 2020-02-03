@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Sample022.aspx.cs" Inherits="GGFPortal.Sales.Sample022" %>
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="MIS012.aspx.cs" Inherits="GGFPortal.MIS.MIS012" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -13,8 +11,8 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {
-                    "format": "YYYY-MM-DD",
-                    "separator": " ~ ",
+                    "format": "YYYY/MM/DD",
+                    "separator": " - ",
                     "applyLabel": "Apply",
                     "cancelLabel": "Cancel",
                     "fromLabel": "From",
@@ -58,34 +56,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>借出日期</span>
+<%--            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>日期</span>
 
             </h3>
-            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
- <%--                                   <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>查詢時間類別</span>
+            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>--%>
 
-            </h3>
-            <asp:DropDownList ID="StatusDDL" runat="server" CssClass="form-control dropdown" DataSourceID="SqlDataSource1" DataTextField="MappingData" DataValueField="Data" >
-            </asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:GGFConnectionString %>' SelectCommand="SELECT [Data], [MappingData] FROM [Mapping] WHERE ([UsingDefine] = @UsingDefine)">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="GGFSampleRent" Name="UsingDefine" Type="String"></asp:Parameter>
-                </SelectParameters>
-            </asp:SqlDataSource>--%>
                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>打樣單號</span>
+                <span>出貨單號</span>
 
             </h3>
-            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
-                        <div class="form-group justify-content-end text-left m-2">
-                            <asp:CheckBox ID="未歸還CB" runat="server" Text="未歸還" />
+            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-75" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="佣金TB" runat="server" CssClass="form-control"></asp:TextBox>
+            <ajaxToolkit:TextBoxWatermarkExtender runat="server" BehaviorID="佣金TB_TextBoxWatermarkExtender" TargetControlID="佣金TB" ID="佣金TB_TextBoxWatermarkExtender" WatermarkText="填入佣金，Example：3.2"></ajaxToolkit:TextBoxWatermarkExtender>
+            <div class="form-group align-items-end">
+                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-outline-secondary" OnClick="SearchBT_Click"/>
+                <asp:Button ID="ClearBT" runat="server" Text="Clear" CssClass="btn btn-dark" />
             </div>
-            <div class="form-group justify-content-end text-right m-2">
-                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-outline-secondary m-1" OnClick="SearchBT_Click" />
-            </div>
-            
         </div>
     </nav>
 
@@ -106,9 +93,6 @@
 
 
                 <h2>Section title</h2>-->
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" CssClass="m-2" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
-                <LocalReport ReportPath="ReportSource\Sample\ReportSample022.rdlc">
-                </LocalReport>
-            </rsweb:ReportViewer>
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
     </main>
 </asp:Content>

@@ -89,7 +89,7 @@
     </div>
     <div>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%" Visible="False">
-            <LocalReport ReportPath="ReportSource\ReportSalse002.rdlc">
+            <LocalReport ReportPath="ReportSource\Sales\ReportSales002V2.rdlc">
 
             </LocalReport>
         </rsweb:ReportViewer>

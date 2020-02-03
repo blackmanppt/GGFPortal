@@ -6917,6 +6917,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columnIsClose;
             
+            private global::System.Data.DataColumn columnIsDelete;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public View版套借出表DataTable() {
@@ -7032,6 +7034,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IsDeleteColumn {
+                get {
+                    return this.columnIsDelete;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7067,7 +7077,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public View版套借出表Row AddView版套借出表Row(string sam_nbr, string cus_style_no, short 借出狀態, string 狀態, System.DateTime 打版室借出時間, System.DateTime 樣品室收到時間, System.DateTime 樣品室還回時間, System.DateTime 轉借TD時間, System.DateTime 打版室收回時間, bool IsClose) {
+            public View版套借出表Row AddView版套借出表Row(string sam_nbr, string cus_style_no, short 借出狀態, string 狀態, System.DateTime 打版室借出時間, System.DateTime 樣品室收到時間, System.DateTime 樣品室還回時間, System.DateTime 轉借TD時間, System.DateTime 打版室收回時間, bool IsClose, bool IsDelete) {
                 View版套借出表Row rowView版套借出表Row = ((View版套借出表Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sam_nbr,
@@ -7079,7 +7089,8 @@ namespace GGFPortal.DataSetSource {
                         樣品室還回時間,
                         轉借TD時間,
                         打版室收回時間,
-                        IsClose};
+                        IsClose,
+                        IsDelete};
                 rowView版套借出表Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowView版套借出表Row);
                 return rowView版套借出表Row;
@@ -7112,6 +7123,7 @@ namespace GGFPortal.DataSetSource {
                 this.column轉借TD時間 = base.Columns["轉借TD時間"];
                 this.column打版室收回時間 = base.Columns["打版室收回時間"];
                 this.columnIsClose = base.Columns["IsClose"];
+                this.columnIsDelete = base.Columns["IsDelete"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7137,6 +7149,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column打版室收回時間);
                 this.columnIsClose = new global::System.Data.DataColumn("IsClose", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsClose);
+                this.columnIsDelete = new global::System.Data.DataColumn("IsDelete", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsDelete);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13979,6 +13993,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDelete {
+                get {
+                    try {
+                        return ((bool)(this[this.tableView版套借出表.IsDeleteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'View版套借出表\' 中資料行 \'IsDelete\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableView版套借出表.IsDeleteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Issam_nbrNull() {
                 return this.IsNull(this.tableView版套借出表.sam_nbrColumn);
             }
@@ -14095,6 +14125,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIsCloseNull() {
                 this[this.tableView版套借出表.IsCloseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIsDeleteNull() {
+                return this.IsNull(this.tableView版套借出表.IsDeleteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIsDeleteNull() {
+                this[this.tableView版套借出表.IsDeleteColumn] = global::System.Convert.DBNull;
             }
         }
         

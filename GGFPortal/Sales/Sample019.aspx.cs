@@ -189,6 +189,7 @@ namespace GGFPortal.Sales
                     {
                         DT正確資料.Columns.Add("sam_nbr");
                         DT正確資料.Columns.Add("cus_style_no");
+                        DT正確資料.Columns.Add("借出狀態");
                         DT異常資料.Columns.Add("搜尋單號");
                         DT異常資料.Columns.Add("sam_nbr");
                         DT異常資料.Columns.Add("Error");
@@ -198,10 +199,11 @@ namespace GGFPortal.Sales
                             {
                                 DataRow DR正確 = DT正確資料.NewRow(), DR異常 = DT異常資料.NewRow();
                                 //有款號有借出紀錄
-                                if (!string.IsNullOrEmpty(item["cus_style_no"].ToString()) && item["借出狀態"].ToString()=="10")
+                                if (!string.IsNullOrEmpty(item["cus_style_no"].ToString()) && (item["借出狀態"].ToString()=="10" || item["借出狀態"].ToString() == "40"))
                                 {
                                     DR正確["sam_nbr"] = item["sam_nbr"].ToString();
                                     DR正確["cus_style_no"] = item["cus_style_no"].ToString();
+                                    DR正確["借出狀態"] = (item["借出狀態"].ToString() == "10") ? "版房借出" : "TD轉借";
                                     DT正確資料.Rows.Add(DR正確);
                                 }
                                 //沒有打樣單
@@ -269,7 +271,7 @@ namespace GGFPortal.Sales
                             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                             
                             string[] parameters = DT.Rows.OfType<DataRow>().Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
-                            SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0}) ", string.Join(",", parameters)),Conn);
+                            SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0}) and 借出狀態 not in ( 10, 40 )", string.Join(",", parameters)),Conn);
                             sqlDataAdapter.SelectCommand = Cmd;
                             for (int i = 0; i < DT.Rows.Count; i++)
                                 Cmd.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
@@ -277,12 +279,12 @@ namespace GGFPortal.Sales
                             sqlDataAdapter.Fill(DTCheck);
                             Cmd.ExecuteNonQuery();
                             Conn.Dispose();
-                            DataView dv = new DataView(DTCheck);
-                            dv.RowFilter = "借出狀態 <> 10";
-                            DataTable DTReCheck = new DataTable();
-                            DTReCheck = dv.ToTable();
+                            //DataView dv = new DataView(DTCheck);
+                            //dv.RowFilter = "借出狀態 <> 10";
+                            //DataTable DTReCheck = new DataTable();
+                            //DTReCheck = dv.ToTable();
                             //必須無借出資料
-                            if (DTReCheck.Rows.Count>0)
+                            if (DTCheck.Rows.Count>0)
                             {
                                 F_ErrorShow("資料有異動紀錄，請重新搜尋");
                             }
@@ -307,7 +309,7 @@ namespace GGFPortal.Sales
                                                                                            SET [樣品室收到時間]=getdate(),
                                                                                                [借出狀態]=20,
                                                                                                [RentModifyDate]=getdate()
-                                                                                           WHERE [sam_nbr] in ({0}) and [借出狀態]=10
+                                                                                           WHERE [sam_nbr] in ({0}) and [借出狀態] in (10,40)
                                                                                      ", string.Join(",", parameters));
                                         for (int i = 0; i < DT.Rows.Count; i++)
                                             command1.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
@@ -352,7 +354,6 @@ namespace GGFPortal.Sales
                         catch (Exception ex)
                         {
                             F_ErrorShow("上傳失敗，請重新上傳或通知資訊部，錯誤訊息：" + ex.ToString());
-
                         }
                         finally
                         {

@@ -209,19 +209,19 @@ namespace GGFPortal.Sales
 
         private void F_Update(string StrUpdateType = "")
         {
-            try
-            {
+            //try
+            //{
 
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
-            using (DataTable DT = (DataTable)Session["DT正確"],DTError =(DataTable)Session["DT異常要處理資料"])
+            //    //throw;
+            //}
+            using (DataTable DT = (Session["DT正確"]!=null)?(DataTable)Session["DT正確"]:null,DTError =(Session["DT異常要處理資料"]!= null)?(DataTable)Session["DT異常要處理資料"]:null)
             {
                 //
-                if (DT.Rows.Count > 0&& StrUpdateType == "")
+                if (DT != null && StrUpdateType == "")
                 {
                     using (SqlConnection Conn = new SqlConnection(strConnectString))
                     {
@@ -241,6 +241,7 @@ namespace GGFPortal.Sales
                             Cmd.ExecuteNonQuery();
                             Conn.Dispose();
                             DataView dv = new DataView(DTCheck);
+                            //30 樣品室還回 40 轉借TD 低於30狀態沒歸還狀態
                             dv.RowFilter = "借出狀態 < 30 ";
                             DataTable DTReCheck = new DataTable();
                             DTReCheck = dv.ToTable();
@@ -288,11 +289,11 @@ namespace GGFPortal.Sales
                                     {
                                         try
                                         {
-                                            Log.ErrorLog(ex1, "UPDATE Error", StrProgram);
+                                            Log.ErrorLog(ex1, "UPDATE Error1", StrProgram);
                                         }
                                         catch (Exception ex2)
                                         {
-                                            Log.ErrorLog(ex2, "UPDATE Error Error", StrProgram);
+                                            Log.ErrorLog(ex2, "UPDATE Error Error1", StrProgram);
                                         }
                                         finally
                                         {
@@ -303,12 +304,7 @@ namespace GGFPortal.Sales
                                     }
                                     finally
                                     {
-                                        conn1.Close();
-                                        conn1.Dispose();
-                                        command1.Dispose();
-                                        UpDateBT.Visible = false;
-                                        CloseBT.Visible = false;
-                                        DeleteBT.Visible = false;
+                                        F_finallyclear(conn1, command1);
                                     }
                                 }
                                 #endregion
@@ -326,98 +322,97 @@ namespace GGFPortal.Sales
                     }
 
                 }
-                else if(DTError.Rows.Count>0&&( StrUpdateType == "Close" || StrUpdateType == "Delete"))
+                else if(DTError != null &&( StrUpdateType == "Close" || StrUpdateType == "Delete"))
                 {
                     using (SqlConnection Conn = new SqlConnection(strConnectString))
                     {
                         try
                         {
                             #region 查詢資否是否有異動
-                            DataTable DTCheck = new DataTable();
-                            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                            //DataTable DTCheck = new DataTable();
+                            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
 
-                            string[] parameters = DT.Rows.OfType<DataRow>().Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
-                            SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0}) ", string.Join(",", parameters)), Conn);
-                            sqlDataAdapter.SelectCommand = Cmd;
-                            for (int i = 0; i < DT.Rows.Count; i++)
-                                Cmd.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
-                            Conn.Open();
-                            sqlDataAdapter.Fill(DTCheck);
-                            Cmd.ExecuteNonQuery();
-                            Conn.Dispose();
-                            DataView dv = new DataView(DTCheck);
-                            dv.RowFilter = "借出狀態 < 30 ";
-                            DataTable DTReCheck = new DataTable();
-                            DTReCheck = dv.ToTable();
-                            //必須無借出資料
-                            if (DTReCheck.Rows.Count > 0)
-                            {
-                                F_ErrorShow("資料有異動紀錄，請重新搜尋");
-                            }
+                            string[] parameters = DTError.Rows.OfType<DataRow>().Select((s, i) => "@sam_nbr" + i.ToString()).ToArray();
+                            //SqlCommand Cmd = new SqlCommand(string.Format(@"select * from View版套借出 where sam_nbr in ({0}) ", string.Join(",", parameters)), Conn);
+                            //sqlDataAdapter.SelectCommand = Cmd;
+                            //for (int i = 0; i < DTError.Rows.Count; i++)
+                            //    Cmd.Parameters.AddWithValue(parameters[i], DTError.Rows[i]["sam_nbr"]);
+                            //Conn.Open();
+                            //sqlDataAdapter.Fill(DTCheck);
+                            //Cmd.ExecuteNonQuery();
+                            //Conn.Dispose();
+                            //DataView dv = new DataView(DTCheck);
+                            //dv.RowFilter = "借出狀態 < 30 ";
+                            //DataTable DTReCheck = new DataTable();
+                            //DTReCheck = dv.ToTable();
+                            ////必須無借出資料
+                            //if (DTReCheck.Rows.Count == 0)
+                            //{
+                            //    F_ErrorShow("資料有異動紀錄，請重新搜尋");
+                            //}
+                            
+                            //else
+                            //{
+
+                            //    Cmd.Dispose();
+
+                            //}
                             #endregion
-                            else
+                            #region 歸還或結案
+                            using (SqlConnection conn1 = new SqlConnection(strConnectString))
                             {
+                                SqlCommand command1 = conn1.CreateCommand();
+                                SqlTransaction transaction1;
+                                conn1.Open();
+                                transaction1 = conn1.BeginTransaction("UpdateRent3");
 
-                                Cmd.Dispose();
-                                #region 匯入租借紀錄
-                                using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                                command1.Connection = conn1;
+                                command1.Transaction = transaction1;
+                                try
                                 {
-                                    SqlCommand command1 = conn1.CreateCommand();
-                                    SqlTransaction transaction1;
-                                    conn1.Open();
-                                    transaction1 = conn1.BeginTransaction("UpdateRent3");
-
-                                    command1.Connection = conn1;
-                                    command1.Transaction = transaction1;
-                                    try
-                                    {
-                                        command1.CommandText = string.Format(@"UPDATE [GGFSampleRent]
+                                    //IsClose = 1 為強制結案
+                                    command1.CommandText = string.Format(@"UPDATE [GGFSampleRent]
                                                                                            SET {1}
+                                                                                                打版室收回時間=getdate(),
                                                                                                [借出狀態]=50,
                                                                                                [RentModifyDate]=getdate()
                                                                                            WHERE [sam_nbr] in ({0}) 
-                                                                                     ", string.Join(",", parameters), (StrUpdateType == "Close") ?  "IsClose = 1,": "打版室收回時間=getdate(),");
-                                        for (int i = 0; i < DT.Rows.Count; i++)
-                                            command1.Parameters.AddWithValue(parameters[i], DT.Rows[i]["sam_nbr"]);
-                                        command1.ExecuteNonQuery();
-                                        //上傳成功更新Head狀態
-                                        //command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
-                                        //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
-                                        //command1.ExecuteNonQuery();
-                                        transaction1.Commit();
-                                        //Label1.Text = "DataUpSuccess";
-                                        F_ErrorShow("資料上傳成功");
+                                                                                     ", string.Join(",", parameters), (StrUpdateType == "Close") ? " IsClose = 1," : " IsDelete = 1, ");
+                                    for (int i = 0; i < DTError.Rows.Count; i++)
+                                        command1.Parameters.AddWithValue(parameters[i], DTError.Rows[i]["sam_nbr"]);
+                                    command1.ExecuteNonQuery();
+                                    //上傳成功更新Head狀態
+                                    //command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
+                                    //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
+                                    //command1.ExecuteNonQuery();
+                                    transaction1.Commit();
+                                    //Label1.Text = "DataUpSuccess";
+                                    F_ErrorShow("資料上傳成功");
 
-                                    }
-                                    catch (Exception ex1)
+                                }
+                                catch (Exception ex1)
+                                {
+                                    try
                                     {
-                                        try
-                                        {
-                                            Log.ErrorLog(ex1, "UPDATE Error", StrProgram);
-                                        }
-                                        catch (Exception ex2)
-                                        {
-                                            Log.ErrorLog(ex2, "UPDATE Error Error", StrProgram);
-                                        }
-                                        finally
-                                        {
-                                            transaction1.Rollback();
-                                            //Label1.Text = "UpdateError";
-                                            F_ErrorShow("UPDATE Error");
-                                        }
+                                        Log.ErrorLog(ex1, "UPDATE Error2", StrProgram);
+                                    }
+                                    catch (Exception ex2)
+                                    {
+                                        Log.ErrorLog(ex2, "UPDATE Error Error2", StrProgram);
                                     }
                                     finally
                                     {
-                                        conn1.Close();
-                                        conn1.Dispose();
-                                        command1.Dispose();
-                                        UpDateBT.Visible = false;
-                                        CloseBT.Visible = false;
-                                        DeleteBT.Visible = false;
+                                        transaction1.Rollback();
+                                        //Label1.Text = "UpdateError";
+                                        F_ErrorShow("UPDATE Error");
                                     }
                                 }
-                                #endregion
+                                finally
+                                {
+                                    F_finallyclear(conn1, command1);
+                                }
                             }
+                            #endregion
                         }
                         catch (Exception ex)
                         {
@@ -431,6 +426,18 @@ namespace GGFPortal.Sales
                     }
                 }
             }
+        }
+
+        private void F_finallyclear(SqlConnection conn1, SqlCommand command1)
+        {
+            conn1.Close();
+            conn1.Dispose();
+            command1.Dispose();
+            UpDateBT.Visible = false;
+            CloseBT.Visible = false;
+            DeleteBT.Visible = false;
+            ErrorContinueLB.Visible = false;
+            ErrorContinueGV.Visible = false;
         }
 
         protected void CancelBT_Click(object sender, EventArgs e)
@@ -450,7 +457,7 @@ namespace GGFPortal.Sales
 
         protected void DeleteBT_Click(object sender, EventArgs e)
         {
-            F_Update("Delecte");
+            F_Update("Delete");
         }
 
         public void F_ErrorShow(string strError)

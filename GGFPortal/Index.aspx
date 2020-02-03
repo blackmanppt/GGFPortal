@@ -284,7 +284,7 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink115" runat="server" NavigateUrl="~/Sales/Sample021.aspx">版房收回</asp:HyperLink>
                                                 <br />
-                        <asp:HyperLink ID="HyperLink116" runat="server" NavigateUrl="~/Sales/Sample021.aspx">租借報表</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink116" runat="server" NavigateUrl="~/Sales/Sample022.aspx">租借報表</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 

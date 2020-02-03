@@ -17,7 +17,7 @@
     <Shape ID="DesignTable:樣品室處理作業總表" ZOrder="4" X="822" Y="22" Height="543" Width="185" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="539" />
     <Shape ID="DesignTable:打樣狀況表" ZOrder="3" X="1032" Y="27" Height="467" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="463" />
     <Shape ID="DesignTable:主料資料查詢" ZOrder="2" X="279" Y="550" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
-    <Shape ID="DesignTable:View版套借出表" ZOrder="1" X="660" Y="421" Height="219" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="215" />
+    <Shape ID="DesignTable:View版套借出表" ZOrder="1" X="660" Y="421" Height="238" Width="156" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
