@@ -11,14 +11,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.Sales
+namespace GGFPortal.Finance
 {
-    public partial class Sample022 : System.Web.UI.Page
+    public partial class Finance019 : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "租借報表", StrProgram = "TempCode.aspx";
+        static string StrPageName = "成品入庫查詢", StrProgram = "TempCode.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -57,56 +57,18 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
 
                     #region 查詢
-                    string Str搜尋參數 = "sam_nbr";
-
-                    //switch (StatusDDL.SelectedItem.Text)
-                    //{
-                    //    case "打版室借出":
-                    //        Str搜尋日期 = "打版室借出時間";
-                    //        break;
-                    //    case "樣品室收到":
-                    //        Str搜尋日期 = "樣品室收到時間";
-                    //        break;
-                    //    case "樣品室還回":
-                    //        Str搜尋日期 = "樣品室還回時間";
-                    //        break;
-                    //    case "轉借TD":
-                    //        Str搜尋日期 = "轉借TD時間";
-                    //        break;
-                    //    case "打版室收回":
-                    //        Str搜尋日期 = "打版室收回時間";
-                    //        break;
-
-                    //    default:
-                    //        break;
-                    //}
+                    string Str搜尋參數 = "cus_item_no";
                     string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
-                    command1.CommandText = string.Format(@" select a.[sam_nbr],b.cus_style_no
-                                      ,[SamCreateDate]
-                                      ,[RentCreateDate]
-                                      ,[RentModifyDate]
-                                      ,[IsDelete]
-                                      ,[IsClose]
-                                      ,[借出狀態]
-                                      ,[打版室借出時間]
-                                      ,[樣品室收到時間]
-                                      ,[樣品室還回時間]
-                                      ,[轉借TD時間]
-                                      ,[打版室收回時間]
-                                      ,MappingData AS 狀態
-                                  FROM [dbo].[GGFSampleRent] a left join samc_reqm b on a.sam_nbr=b.sam_nbr 
-                                        LEFT  JOIN
-                            dbo.Mapping AS d ON d.UsingDefine = 'GGFSampleRent' AND a.借出狀態 = d.Data
-                                 where   convert(nvarchar(10),[RentCreateDate],120) between '{1}' and '{2}' {3} {0} "
-                                , (string.IsNullOrEmpty(MutiTB.Text)) ? "" : string.Format(" and a.[sam_nbr] in ({0})", string.Join(",", parameters))
-                                , DateRangeTB.Text.Substring(0, 10)
-                                , DateRangeTB.Text.Substring(13, 10)
-                                , (未歸還CB.Checked) ? " and IsDelete =0 and IsClose=0 and [打版室收回時間] is null " : "");
-                    if(!string.IsNullOrEmpty(MutiTB.Text))
-                        for (int i = 0; i < StrArrary.Length; i++)
-                            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                    command1.CommandText = string.Format(@"select cus_item_no,ord_nbr,ord_qty
+                            ,LEFT(CONVERT(varchar,inv_date,112),6) as '入庫月份',sum(SumQty) as '當月入庫量' 
+                            from [192.168.0.152].VGG_GGF.dbo.View成衣入庫
+                            where  {1} in ( {0} ) and SumQty >0
+                            group by cus_item_no,ord_nbr,ord_qty,LEFT(CONVERT(varchar,inv_date,112),6)
+                             ", string.Join(",", parameters), Str搜尋參數);
+                    for (int i = 0; i < StrArrary.Length; i++)
+                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
                     command1.ExecuteNonQuery();
                     SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt.Load(dr);
@@ -131,7 +93,7 @@ namespace GGFPortal.Sales
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("View版套借出表", dt);
+                ReportDataSource source = new ReportDataSource("View成品入庫查詢", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();
@@ -144,7 +106,10 @@ namespace GGFPortal.Sales
         private StringBuilder selectsql()
         {
 
-            StringBuilder strsql = new StringBuilder(" select * from [View採購單料號訂單資料] where 1=1 ");
+            StringBuilder strsql = new StringBuilder(@"
+select * from [192.168.0.152].VGG_GGF.dbo.View成衣入庫
+where cus_item_no in (
+select distinct 款號 from View工時資料) and SumQty >0");
             //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
             //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
             //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))

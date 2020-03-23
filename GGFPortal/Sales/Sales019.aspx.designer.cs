@@ -7,11 +7,11 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Secretary
+namespace GGFPortal.Sales
 {
 
 
-    public partial class Secretary009
+    public partial class Sales019
     {
 
         /// <summary>
@@ -22,15 +22,6 @@ namespace GGFPortal.Secretary
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DateRangeTB;
-
-        /// <summary>
-        /// 預告單CB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 預告單CB;
 
         /// <summary>
         /// SearchBT 控制項。

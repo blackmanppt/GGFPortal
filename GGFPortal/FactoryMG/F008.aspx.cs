@@ -14,7 +14,7 @@ namespace GGFPortal.FactoryMG
     public partial class F008 : System.Web.UI.Page
     {
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
-        static string StrPageName = "F008", StrProgram = "F008.aspx";
+        static string StrPageName = "F008";
         static string StrArea;
         static 多語 lang = new 多語();
         protected void Page_PreInit(object sender, EventArgs e)

@@ -969,9 +969,11 @@ namespace GGFPortal.VN
                     command1.Transaction = transaction1;
                     try
                     {
-                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  
+                        WHERE Team = @Team and [Date] = @Date and [Flag] = 1 and Area = @Area");
                         command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
                         command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
+                        command1.Parameters.Add("@Area", SqlDbType.NVarChar).Value = "VGG";
                         command1.ExecuteNonQuery();
                         transaction1.Commit();
                         Label1.Text = "刪除完畢，請再次夾檔";
@@ -1030,7 +1032,7 @@ namespace GGFPortal.VN
                                               ,[CreateDate]
                                               ,[Creator]
                                             FROM [dbo].[Productivity_Head]
-                                            where Team = @Team and Date = @Date and Flag = 1";
+                                            where Team = @Team and Date = @Date and Flag = 1 and Area='VGG'";
                     command.CommandType = CommandType.Text;
                     command.Parameters.Add("@Team", SqlDbType.NVarChar).Value =strImportType ;
                     command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;

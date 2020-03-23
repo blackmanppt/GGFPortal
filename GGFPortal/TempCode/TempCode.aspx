@@ -153,6 +153,25 @@
                 <rsweb:ReportViewer ID="TempRV" runat="server" CssClass="table col-12"></rsweb:ReportViewer>
             </div>
         </div>
+         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
+                <asp:Panel ID="AlertPanel" runat="server" align="center" CssClass="alert-danger w-75" Style="display: none">
+                    <div class=" text-center">
+                        <h3>
+                            <asp:Label ID="MessageLB" runat="server" Text="" CssClass="h3"></asp:Label>
+
+                        </h3>
+                        <asp:Button ID="AlertBT" runat="server" Text="確定" CssClass="btn btn-danger" />
+                    </div>
+                </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="AlertPanel_ModalPopupExtender" runat="server" BehaviorID="AlertPanel_ModalPopupExtender" TargetControlID="show3" PopupControlID="AlertPanel" CancelControlID="">
+                </ajaxToolkit:ModalPopupExtender>
+
+
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
     <script src="../scripts/bootstrap-4.3.1/js/dist/util.js"></script>
     <script src="../scripts/bootstrap-4.3.1/js/dist/dropdown.js"></script>

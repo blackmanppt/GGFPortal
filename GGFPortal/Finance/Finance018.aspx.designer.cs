@@ -7,11 +7,11 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.Secretary
+namespace GGFPortal.Finance
 {
 
 
-    public partial class Secretary009
+    public partial class Finance018
     {
 
         /// <summary>
@@ -24,30 +24,21 @@ namespace GGFPortal.Secretary
         protected global::System.Web.UI.WebControls.TextBox DateRangeTB;
 
         /// <summary>
-        /// 預告單CB 控制項。
+        /// MutiTB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox 預告單CB;
+        protected global::System.Web.UI.WebControls.TextBox MutiTB;
 
         /// <summary>
-        /// SearchBT 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBT;
-
-        /// <summary>
-        /// ReportViewer1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

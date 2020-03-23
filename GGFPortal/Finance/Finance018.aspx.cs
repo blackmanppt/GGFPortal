@@ -10,15 +10,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.MIS
+namespace GGFPortal.Finance
 {
-    public partial class MIS012 : System.Web.UI.Page
+    public partial class Finance018 : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "佣金比率上傳";
-        
+        static string StrPageName = "Search For Grid";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -35,7 +34,7 @@ namespace GGFPortal.MIS
         {
 
         }
-        protected void DbInit(string 查詢條件)
+        protected void DbInit()
         {
             DataTable dt = new DataTable();
             //using (SqlConnection Conn = new SqlConnection(strConnectString))
@@ -101,18 +100,19 @@ namespace GGFPortal.MIS
                 F_ErrorShow("搜尋不到資料");
         }
 
-        private StringBuilder selectsql(string 查詢條件)
+        private StringBuilder selectsql()
         {
 
-            StringBuilder strsql = new StringBuilder();
-            switch (查詢條件)
-            {
-                case "訂單資料查詢":
-                    //strsql.Append()
-                    break;
-                default:
-                    break;
-            }
+            StringBuilder strsql = new StringBuilder(@"
+                    select x.*,y.工作時間,y.上線日期,y.部門,y.今日產量 from (
+                    select a.ord_nbr,cus_item_no,sum(a.stock_qty) MpscQty ,b.ord_qty from mpsc_stock_d a left join ordc_bah1 b on a.site=b.site and a.ord_nbr=b.ord_nbr
+                    where a.ord_nbr in (
+                    select  ord_nbr from mpsc_stock_m
+                    where CONVERT(varchar(8),create_date,112) between CONVERT(varchar(8),getdate()-8,112) and CONVERT(varchar(8),getdate(),112) and ord_nbr like 'OD%'
+                    )
+                    group by  a.ord_nbr,cus_item_no,b.ord_qty
+                    ) x left join GGF.[dbo].[View工時資料] y on x.cus_item_no=y.款號 where x.MpscQty>=x.ord_qty
+                    order by x.ord_nbr,y.工作時間,y.部門 ");
             //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
             //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
             //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
@@ -129,36 +129,22 @@ namespace GGFPortal.MIS
             //    strsql.Append(" and upper([採購單狀態])  = 'IN' ");
             return strsql;
         }
-        public string SearchCheck()
+        public bool SearchCheck()
         {
-            string sCheck = "";
-            if (!string.IsNullOrEmpty(MutiTB.Text))
-                sCheck = "未填出貨單號";
-            if (!string.IsNullOrEmpty(佣金TB.Text))
-                sCheck = (string.IsNullOrEmpty(sCheck))?"未填出貨單號": sCheck + "<br/>未填出貨單號";
-            return sCheck;
+            bool bCheck = false;
+            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
+            //    bCheck = true;
+            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
+            //    bCheck = true;
+            //if (!string.IsNullOrEmpty(款號TB.Text))
+            //    bCheck = true;
+            //if (!string.IsNullOrEmpty(品牌TB.Text))
+            //    bCheck = true;
+            //if (!string.IsNullOrEmpty(代理商TB.Text))
+            //    bCheck = true;
+            return bCheck;
 
         }
-
-        protected void SearchBT_Click(object sender, EventArgs e)
-        {
-
-            Session.Remove("佣金比");
-            Session.Remove("佣金比");
-            string sCheck = SearchCheck();
-            if (!string.IsNullOrEmpty(sCheck))
-            {
-                #region 查詢訂單佣金比率
-
-                #endregion
-            }
-            else
-            {
-                F_ErrorShow(sCheck);
-            }
-
-        }
-
         public void F_ErrorShow(string strError)
         {
             ((Label)Master.FindControl("MessageLB")).Text = strError;

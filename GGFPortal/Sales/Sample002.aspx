@@ -16,6 +16,16 @@
     <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
     <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <style type="text/css">
+    .hiddencol
+    {
+        display:none;
+    }
+    .viscol
+    {
+        display:block;
+    }
+</style>
     <style>
 
 
@@ -375,6 +385,7 @@
                     <asp:BoundField DataField="CreatDate" HeaderText="建立日期" SortExpression="CreatDate" NullDisplayText="沒有資料" DataFormatString="{0:yyyy/MM/dd}" />
                     <asp:BoundField DataField="馬克處理次數" HeaderText="馬克處理次數" SortExpression="馬克處理次數" NullDisplayText="沒有資料" />
                     <asp:BoundField DataField="Remark" HeaderText="備註" SortExpression="Remark" NullDisplayText="沒有資料" />
+                    <asp:BoundField DataField="原因" HeaderText="原因" SortExpression="原因" NullDisplayText="原因" />
                     <%--                    <asp:BoundField DataField="修改馬克" HeaderText="修改馬克" SortExpression="修改馬克" NullDisplayText="沒有資料" />
                     <asp:BoundField DataField="馬克完成日" HeaderText="馬克完成日" SortExpression="馬克完成日" NullDisplayText="沒有資料" />--%>
                 </Columns>

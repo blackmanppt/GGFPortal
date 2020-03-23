@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Secretary009.aspx.cs" Inherits="GGFPortal.Secretary.Secretary009" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Finance019.aspx.cs" Inherits="GGFPortal.Finance.Finance019" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -13,8 +13,8 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {
-                    "format": "YYYYMMDD",
-                    "separator": " ~ ",
+                    "format": "YYYY/MM/DD",
+                    "separator": " - ",
                     "applyLabel": "Apply",
                     "cancelLabel": "Cancel",
                     "fromLabel": "From",
@@ -58,21 +58,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>日期</span>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>款號</span>
 
             </h3>
-            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
-
-            <asp:CheckBox ID="預告單CB" runat="server"  CssClass="form-control m3" Text="顯示預告單"/>
-            <div class="form-group align-items-end m-3">
-                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="SearchBT_Click" />
-            </div>
-    <%--                    <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>說明2</span>
-
-            </h3>
-            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>--%>
+            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
+            <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" CssClass="btn btn-outline-primary"/>
         </div>
     </nav>
 
@@ -94,10 +85,11 @@
 
                 <h2>Section title</h2>-->
 
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
-                <LocalReport  DisplayName="內廠產區表">
+        <div class="table-responsive">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" CssClass="w-100 h-100" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
+                <LocalReport ReportPath="ReportSource\Finance\ReportFinance019.rdlc" DisplayName="成品入庫數量">
                 </LocalReport>
             </rsweb:ReportViewer>
-
+        </div>
     </main>
 </asp:Content>

@@ -27,7 +27,7 @@ namespace GGFPortal.Sales
             SamInTB.Attributes["readonly"] = "readonly";
             PlanDateTB.Attributes["readonly"] = "readonly";
             TDinDateTB.Attributes["readonly"] = "readonly";
-
+            //GridView1.Rows.Cells[0].Attributes["style"] = "";
             if (Session["Uid"]==null)
                 UpDateBT.Visible = false;
             if (Session["SampleNbr"] ==null)

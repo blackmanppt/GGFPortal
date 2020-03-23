@@ -19,7 +19,7 @@ namespace GGFPortal.MGT
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         static string strConnectEIPString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["EIPConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "快遞核准單", StrProgram = "MGT011.aspx";
+        static string StrPageName = "快遞核准單";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數

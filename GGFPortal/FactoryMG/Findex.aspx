@@ -27,7 +27,7 @@
             </tr>
             <tr class="">
                 <th class=" text-right ">
-                    <asp:Label ID="Label3" runat="server" Text="Area："></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="User："></asp:Label>
                 </th>
                 <td class=" ">
                     <asp:DropDownList ID="FactoryDDL" runat="server" CssClass="dropdown dropdown-toggle-split bg-light form-control-sm" AutoPostBack="True" OnSelectedIndexChanged="FactoryDDL_SelectedIndexChanged">

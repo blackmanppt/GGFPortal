@@ -17,7 +17,7 @@ namespace GGFPortal.MIS
         //static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //SysLog Log = new SysLog();
         //string StrError名稱, StrProgram;
-        string StrPageName = "多語系設定", StrProgram = "MIS01.aspx";
+        string StrPageName = "多語系設定";
         protected void Page_Load(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數

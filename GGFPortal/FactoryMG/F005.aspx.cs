@@ -13,7 +13,7 @@ namespace GGFPortal.FactoryMG
         //字串處理 切字串 = new 字串處理();
         //static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //SysLog Log = new SysLog();
-        static string StrPageName = "F005", StrProgram = "F005.aspx";
+        static string StrPageName = "F005";
         static string StrArea;
         static 多語 lang = new 多語();
         protected void Page_PreInit(object sender, EventArgs e)

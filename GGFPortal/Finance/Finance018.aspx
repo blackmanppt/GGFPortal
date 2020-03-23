@@ -1,11 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Secretary009.aspx.cs" Inherits="GGFPortal.Secretary.Secretary009" %>
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Finance018.aspx.cs" Inherits="GGFPortal.Finance.Finance018" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         $(function () {
-            var start = moment().subtract(29, 'days');
+            var start = moment().subtract(8, 'days');
             var end = moment();
             $('input[id="ContentPlaceHolder1_DateRangeTB"]').daterangepicker({
                 "startDate": start,
@@ -13,8 +11,8 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {
-                    "format": "YYYYMMDD",
-                    "separator": " ~ ",
+                    "format": "YYYY/MM/DD",
+                    "separator": " - ",
                     "applyLabel": "Apply",
                     "cancelLabel": "Cancel",
                     "fromLabel": "From",
@@ -63,16 +61,11 @@
 
             </h3>
             <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
-
-            <asp:CheckBox ID="預告單CB" runat="server"  CssClass="form-control m3" Text="顯示預告單"/>
-            <div class="form-group align-items-end m-3">
-                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="SearchBT_Click" />
-            </div>
-    <%--                    <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>說明2</span>
 
             </h3>
-            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>--%>
+            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
         </div>
     </nav>
 
@@ -94,10 +87,10 @@
 
                 <h2>Section title</h2>-->
 
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
-                <LocalReport  DisplayName="內廠產區表">
-                </LocalReport>
-            </rsweb:ReportViewer>
-
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+            </table>
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
+        </div>
     </main>
 </asp:Content>

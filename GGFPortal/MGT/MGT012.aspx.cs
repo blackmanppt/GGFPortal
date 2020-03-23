@@ -18,7 +18,7 @@ namespace GGFPortal.MGT
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "快遞核准單", StrProgram = "MGT012.aspx";
+        static string StrPageName = "快遞核准單";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -35,7 +35,7 @@ namespace GGFPortal.MGT
         {
             if(!Page.IsPostBack)
             {
-                int iuid = 0, iid = 0;
+                int iid = 0;
                 //int.TryParse(Session["uid"].ToString(), out iuid);
                 int.TryParse(Session["id"].ToString(), out iid);
                 DbInit(iid);

@@ -18,7 +18,7 @@ namespace GGFPortal.Finance
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "出口大表(財務用)", StrProgram = "Finance017.aspx";
+        static string StrPageName = "出口大表(財務用)";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數

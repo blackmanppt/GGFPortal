@@ -11,14 +11,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.Sales
+namespace GGFPortal.Ship
 {
-    public partial class Sample022 : System.Web.UI.Page
+    public partial class Ship008 : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "租借報表", StrProgram = "TempCode.aspx";
+        static string StrPageName = "訂單多單價查詢", StrProgram = "TempCode.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -57,56 +57,59 @@ namespace GGFPortal.Sales
                     command1.Transaction = transaction1;
 
                     #region 查詢
-                    string Str搜尋參數 = "sam_nbr";
-
-                    //switch (StatusDDL.SelectedItem.Text)
-                    //{
-                    //    case "打版室借出":
-                    //        Str搜尋日期 = "打版室借出時間";
-                    //        break;
-                    //    case "樣品室收到":
-                    //        Str搜尋日期 = "樣品室收到時間";
-                    //        break;
-                    //    case "樣品室還回":
-                    //        Str搜尋日期 = "樣品室還回時間";
-                    //        break;
-                    //    case "轉借TD":
-                    //        Str搜尋日期 = "轉借TD時間";
-                    //        break;
-                    //    case "打版室收回":
-                    //        Str搜尋日期 = "打版室收回時間";
-                    //        break;
-
-                    //    default:
-                    //        break;
-                    //}
+                    string Str搜尋參數 = "cus_item_no";
                     string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
-                    command1.CommandText = string.Format(@" select a.[sam_nbr],b.cus_style_no
-                                      ,[SamCreateDate]
-                                      ,[RentCreateDate]
-                                      ,[RentModifyDate]
-                                      ,[IsDelete]
-                                      ,[IsClose]
-                                      ,[借出狀態]
-                                      ,[打版室借出時間]
-                                      ,[樣品室收到時間]
-                                      ,[樣品室還回時間]
-                                      ,[轉借TD時間]
-                                      ,[打版室收回時間]
-                                      ,MappingData AS 狀態
-                                  FROM [dbo].[GGFSampleRent] a left join samc_reqm b on a.sam_nbr=b.sam_nbr 
-                                        LEFT  JOIN
-                            dbo.Mapping AS d ON d.UsingDefine = 'GGFSampleRent' AND a.借出狀態 = d.Data
-                                 where   convert(nvarchar(10),[RentCreateDate],120) between '{1}' and '{2}' {3} {0} "
-                                , (string.IsNullOrEmpty(MutiTB.Text)) ? "" : string.Format(" and a.[sam_nbr] in ({0})", string.Join(",", parameters))
-                                , DateRangeTB.Text.Substring(0, 10)
-                                , DateRangeTB.Text.Substring(13, 10)
-                                , (未歸還CB.Checked) ? " and IsDelete =0 and IsClose=0 and [打版室收回時間] is null " : "");
-                    if(!string.IsNullOrEmpty(MutiTB.Text))
-                        for (int i = 0; i < StrArrary.Length; i++)
-                            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                    command1.CommandText = string.Format(@"
+SELECT  cus_item_no,0 as 'ord_seq','' as  'Cus_PO',
+'' as 'color_cname'
+,'' as 'color_ename'
+,0 as 'size1_qty',
+[size1], 0 as 'size2_qty'
+,[size2], 0 as 'size3_qty'
+,[size3], 0 as 'size4_qty'
+,[size4], 0 as 'size5_qty'
+,[size5], 0 as 'size6_qty'
+,[size6], 0 as 'size7_qty'
+,[size7], 0 as 'size8_qty'
+,[size8], 0 as 'size9_qty'
+,[size9], 0 as 'size10_qty'
+,[size10], 0 as 'size11_qty'
+,[size11], 0 as 'size12_qty'
+,[size12], 0 as 'size13_qty'
+,[size13], 0 as 'size14_qty'
+,[size14], 0 as 'size15_qty'
+,[size15]
+FROM [dbo].[ordc_orders_size_side] a left join ordc_bah1 b on a.site=b.site and a.ord_nbr =b.ord_nbr
+where {1} in ( {0} ) and size_flag=2 and input_way=1
+union all 
+SELECT cus_item_no
+,a.[ord_seq],
+c.cust_po_nbr,
+[color_cname]
+,[color_ename]
+,[color_qty1],convert(varchar(20),[color_price1])
+,[color_qty2],convert(varchar(20),[color_price2])
+,[color_qty3],convert(varchar(20),[color_price3])
+,[color_qty4],convert(varchar(20),[color_price4])
+,[color_qty5],convert(varchar(20),[color_price5])
+,[color_qty6],convert(varchar(20),[color_price6])
+,[color_qty7],convert(varchar(20),[color_price7])
+,[color_qty8],convert(varchar(20),[color_price8])
+,[color_qty9],convert(varchar(20),[color_price9])
+,[color_qty10],convert(varchar(20),[color_price10])
+,[color_qty11],convert(varchar(20),[color_price11])
+,[color_qty12],convert(varchar(20),[color_price12])
+,[color_qty13],convert(varchar(20),[color_price13])
+,[color_qty14],convert(varchar(20),[color_price14])
+,[color_qty15],convert(varchar(20),[color_price15])
+FROM [dbo].[ordc_ration] a left join ordc_bah1 b on a.site=b.site and a.ord_nbr =b.ord_nbr left join ordc_bat c on a.ord_nbr=c.ord_nbr and a.site=c.site and a.ord_seq=c.ord_seq
+where {1} in ( {0} )
+                                 ", string.Join(",", parameters), Str搜尋參數);
+                    //command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
+                    for (int i = 0; i < StrArrary.Length; i++)
+                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
                     command1.ExecuteNonQuery();
                     SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt.Load(dr);
@@ -131,7 +134,7 @@ namespace GGFPortal.Sales
             {
                 ReportViewer1.Visible = true;
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportDataSource source = new ReportDataSource("View版套借出表", dt);
+                ReportDataSource source = new ReportDataSource("訂單多單價", dt);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.DataSources.Add(source);
                 ReportViewer1.DataBind();

@@ -260,7 +260,7 @@ namespace GGFPortal.FactoryMG
                                         {
                                             D_erroraRow[0] = u_sheet.SheetName.ToString();
                                             D_erroraRow[1] = row.GetCell(0).ToString();
-                                            D_erroraRow[2] = StrRow + i.ToString() + sError;
+                                            D_erroraRow[2] = StrRow + (i+1).ToString() + sError;
                                             D_errortable.Rows.Add(D_erroraRow);
                                         }
                                     }
@@ -371,7 +371,7 @@ namespace GGFPortal.FactoryMG
                                         {
                                             D_erroraRow[0] = u_sheet.SheetName.ToString();
                                             D_erroraRow[1] = row.GetCell(0).ToString();
-                                            D_erroraRow[2] = StrRow + i.ToString() + sError;
+                                            D_erroraRow[2] = StrRow + (i+1).ToString() + sError;
                                             D_errortable.Rows.Add(D_erroraRow);
                                         }
                                     }
@@ -982,9 +982,11 @@ namespace GGFPortal.FactoryMG
                         command1.Transaction = transaction1;
                         try
                         {
-                            command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  WHERE Team = @Team and [Date] = @Date and [Flag] = 1 ");
+                            command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()  
+                            WHERE Team = @Team and [Date] = @Date and [Flag] = 1 and Area = @Area");
                             command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
                             command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strImportType;
+                            command1.Parameters.Add("@Area", SqlDbType.NVarChar).Value = strArea;
                             command1.ExecuteNonQuery();
                             transaction1.Commit();
                             Label1.Text = "DeletedSuccess";
@@ -1051,10 +1053,11 @@ namespace GGFPortal.FactoryMG
                                                   ,[CreateDate]
                                                   ,[Creator]
                                                 FROM [dbo].[Productivity_Head]
-                                                where Team = @Team and Date = @Date and Flag = 1";
+                                                where Team = @Team and Date = @Date and Flag = 1 and Area =@Area";
                         command.CommandType = CommandType.Text;
                         command.Parameters.Add("@Team", SqlDbType.NVarChar).Value =strImportType ;
                         command.Parameters.Add("@Date", SqlDbType.NVarChar).Value = SearchTB.Text;
+                        command.Parameters.Add("@Area", SqlDbType.NVarChar).Value = strArea;
                         conn.Open();
                         SqlDataReader reader = command.ExecuteReader();
 
