@@ -10,6 +10,7 @@ using System.Net;
 using GGFPortal.ReferenceCode;
 using System.Collections.Generic;
 
+
 namespace GGFPortal.FactoryMG
 {
     public partial class F002 : System.Web.UI.Page
@@ -606,11 +607,11 @@ namespace GGFPortal.FactoryMG
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
-                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : iout.ToString();  //--每一個欄位，都加入同一列 DataRow
 
                         }
                         else
-                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow 
+                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : iout.ToString();  //--每一個欄位，都加入同一列 DataRow 
                     }
                     //D_dataRow[j + 2] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "0" : (int.TryParse( row.GetCell(j).ToString(),out iout)==false)?"0": row.GetCell(j).ToString();   //--每一個欄位，都加入同一列 DataRow
                 }
@@ -624,7 +625,7 @@ namespace GGFPortal.FactoryMG
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "欄公式錯誤(非必要資料不影響匯入)。";
-                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                    D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
                     //throw;
                 }
             }
@@ -681,10 +682,16 @@ namespace GGFPortal.FactoryMG
                             }
                             //else
                             //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
-                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                            D_dataRow[j + 2] = dout.ToString();  //--每一個欄位，都加入同一列 DataRow
                         }
                         else
-                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow 
+                        {
+                            //berror = true;
+                            ////sError +=  ColumnName + "Float Error2";
+                            //sError = FConvertError(GetExcelDefine, i, sError, j, "Float Error2");
+                            D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : dout.ToString();  //--每一個欄位，都加入同一列 DataRow 
+                            //double tt = Convert.ToDouble(D_dataRow[j + 2].ToString());
+                        }
                     }
                 }
                 catch 
@@ -697,7 +704,7 @@ namespace GGFPortal.FactoryMG
                     }
                     //else
                     //    sError += "第" + i.ToString() + "行、第" + (j).ToString() + "非數字(非必要資料不影響匯入)。";
-                    D_dataRow[j + 2] = (row.GetCell(j) == null) ? "0" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
+                    D_dataRow[j + 2] ="0";  //--每一個欄位，都加入同一列 DataRow
                     //throw;
                 }
             }
@@ -871,8 +878,19 @@ namespace GGFPortal.FactoryMG
                                             command1.Parameters.Add("@OnlineDay", SqlDbType.Int).Value = dt.Rows[i]["OnlineDay"].ToString();
                                             command1.Parameters.Add("@ErrorRate", SqlDbType.Int).Value = dt.Rows[i]["ErrorRate"].ToString();
                                         }
-                                        command1.ExecuteNonQuery();
-                                        command1.Parameters.Clear();
+                                        try
+                                        {
+                                            command1.ExecuteNonQuery();
+                                            command1.Parameters.Clear();
+                                        }
+                                        catch (Exception ex1)
+                                        {
+                                             Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), StrProgram);
+                                            transaction1.Rollback();
+                                            Label1.Text = "UpdateError";
+                                            Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('UpdateError');</script>");
+                                        }
+
                                     }
                                     //上傳成功更新Head狀態
                                     command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);

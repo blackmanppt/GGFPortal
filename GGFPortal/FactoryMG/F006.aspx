@@ -85,7 +85,7 @@
 
         </div>
         <div>
-            <table style="width: 600px;">
+            <table class="table table-light">
                 <tr>
                     <th class="auto-style6">
                         <asp:Label ID="Label2" runat="server" Text="匯入日期："></asp:Label>
@@ -96,9 +96,12 @@
                         ~<asp:TextBox ID="EndDayTB" runat="server"></asp:TextBox>
                         <ajaxToolkit:CalendarExtender ID="EndDayTB_CalendarExtender" runat="server" TargetControlID="EndDayTB" Format="yyyyMMdd" />
                     </td>
-                    <td class="auto-style3">
-                        <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" class="btn btn-xs" />
-                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" class="btn btn-xs" />
+                    <td>
+                        <div class="btn-group">
+                                                    <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" class="btn btn-xs btn-outline-success" />
+                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" class="btn btn-xs btn-primary" />
+                        </div>
+
                     </td>
                 </tr>
                 <tr>
@@ -110,15 +113,23 @@
                             <asp:ListItem Value="1">未刪除</asp:ListItem>
                             <asp:ListItem Value="2">刪除</asp:ListItem>
                         </asp:DropDownList></td>
+
                     <td>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn-default btn" PostBackUrl="~/VN/VNProductivityManagement.aspx">基本資料設定</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass= "btn btn-danger" PostBackUrl="~/FactoryMG/FProductivityManagement.aspx">基本資料設定</asp:LinkButton>
                     </td>
                 </tr>
                 <tr>
                     <th class="auto-style10">
 
+                        <asp:Label ID="AreaLB" runat="server" Text="地區" Visible="false"></asp:Label>
+
                     </th>
-                    <td class="auto-style8"></td>
+                    <td class="auto-style8">
+                        <asp:DropDownList ID="AreaDDL" runat="server" CssClass="dropdown form-control" Visible="false">
+                            <asp:ListItem>VGG</asp:ListItem>
+                            <asp:ListItem>GAMA</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
                     <td></td>
                 </tr>
             </table>

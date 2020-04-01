@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GGFPortal.ReferenceCode;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Configuration;
@@ -10,16 +11,48 @@ namespace GGFPortal.FactoryMG
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         ReferenceCode.SysLog Log = new ReferenceCode.SysLog();
         ReferenceCode.DataCheck 確認LOCK = new ReferenceCode.DataCheck();
+        static string StrArea = "";
+        static string StrPageName = "F006";
+        static 多語 lang = new 多語();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            try
+            {
+                lang.gg.Clear();
+                if (Session["Area"].ToString() == "")
+                {
+                    Response.Redirect("Findex.aspx");
+                }
+                StrArea = Session["Area"].ToString();
+                //網頁標題
+                if (StrArea == "TW")
+                {
+                    AreaDDL.Visible = true;
+                    AreaLB.Visible = true;
+                }
+                else
+                {
+                    AreaDDL.Visible = false;
+                    AreaLB.Visible = false;
+                }
+                lang.讀取多語資料("Program", StrPageName);
+                StrArea = Session["Area"].ToString();
+                #region 網頁Layout基本參數
+                //網頁標題
+                //BrandLB.Text = lang.翻譯("Program", StrPageName, StrArea);
+                Page.Title = lang.翻譯("Program", StrPageName, StrArea);
+                //MonthLB.Text = lang.翻譯("Program", "SelectMonth", StrArea);
+                #endregion
+            }
+            catch (Exception)
+            {
+                Response.Redirect("Findex.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";
             EndDayTB.Attributes["readonly"] = "readonly";
-            if (Convert.ToInt32(GridView1.PageIndex) != 0)
-            {
-                //==如果不加上這行IF判別式，假設當我們看第四頁時， 
-                //==又輸入新的條件，重新作搜尋。「新的」搜尋結果將會直接看見 "第四頁"！這個問題發生在這裡，請看！=== 
-                GridView1.PageIndex = 0;
-            }
             if(!IsPostBack)
                 DbInit();
         }
@@ -64,9 +97,9 @@ namespace GGFPortal.FactoryMG
             string sqlstr = string.Format(@"
                                 SELECT a.uid, a.Date, b.MappingData, CASE WHEN a.Flag = 1 THEN N'新增' WHEN a.Flag = 2 THEN N'刪除' ELSE '' END AS 狀態, a.CreateDate, a.ModifyDate 
                                 FROM Productivity_Head AS a LEFT OUTER JOIN Mapping AS b ON a.Team = b.Data AND b.UsingDefine = 'Productivity'
-                                where a.Flag>0 and Area ='VGG' {0}
-                                order by Date
-                            ", strwhere);
+                                where a.Flag>0 and Area ='{1}' {0}
+                                order by Date desc
+                            ", strwhere, (StrArea == "TW") ? AreaDDL.SelectedValue : StrArea);
 
 
             return sqlstr;
@@ -122,7 +155,7 @@ namespace GGFPortal.FactoryMG
             string strDate = "", strTeam = "";
             strDate = (GridView1.Rows[e.RowIndex].Cells[1].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[1].Text;
             strTeam = (GridView1.Rows[e.RowIndex].Cells[2].Text =="") ? "" : GridView1.Rows[e.RowIndex].Cells[2].Text;
-            if (確認LOCK.Check工時Lock("VGG", strDate))
+            if (確認LOCK.Check工時Lock(StrArea, strDate))
             {
                 using (SqlConnection conn1 = new SqlConnection(strConnectString))
                 {
@@ -135,7 +168,7 @@ namespace GGFPortal.FactoryMG
                     command1.Transaction = transaction1;
                     try
                     {
-                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()   WHERE uid = {0} ", strid);
+                        command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 2,[ModifyDate]=GETDATE()   WHERE uid = {0} and Area ='{1}'", strid,StrArea);
                         //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = strDate;
                         //command1.Parameters.Add("@Team", SqlDbType.NVarChar).Value = strTeam;
                         command1.ExecuteNonQuery();

@@ -9,6 +9,7 @@ namespace GGFPortal.FactoryMG
 {
     public partial class F004 : System.Web.UI.Page
     {
+        //程式沒有人使用 20200323
         static DataSet Ds = new DataSet();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         protected void Page_Load(object sender, EventArgs e)

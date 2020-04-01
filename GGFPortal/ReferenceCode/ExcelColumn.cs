@@ -277,7 +277,7 @@ namespace GGFPortal.ReferenceCode
                     VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost5", ColumnType = 4 });
                     VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost6", ColumnType = 8 });
                     VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "DayCost7", ColumnType = 8 });
-                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 3 });
+                    VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "QCQty", ColumnType = 7 });
                     VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorQty", ColumnType = 7 });
                     //VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "ErrorUnreturnQty", ColumnType = 7 });
                     VNExcel.Add(new Column1() { ColumnID = IntAdd(ref x), ColumnName = "OnlineDay", ColumnType = 7 });
