@@ -119,20 +119,20 @@ namespace GGFPortal.Secretary
             StringBuilder strsql = new StringBuilder();
             string strUnion = @" UNION ALL 
                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'預告單' as '訂單種類' , 0 as 秒數  FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'預告單' as '訂單種類' , 0 as 秒數   FROM ViewPreOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                                        ";
             if (StrType=="明細")
             {
                 strsql.AppendFormat(@"select left(訂單月份,4) 訂單年度,RIGHT(訂單月份,2)訂單月, * from (
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'訂單' as '訂單種類',實際IE as 秒數  FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy, case when 訂單類別 = 'A' then '訂單' else '?' end as '訂單種類',實際IE as 秒數 FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                     {2} ) a  where 訂單日期 between '{0}' and '{1}' ", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11, 8),(預告單CB.Checked==true)? strUnion:"");
             }
             else
             {
                 strsql.AppendFormat(@"select left(訂單月份,4) 訂單年度,RIGHT(訂單月份,2)訂單月, * from (
                                                     SELECT 訂單號碼, 代理商代號, 代理商名稱, 客戶名稱, 訂單日期, 訂單月份, 工廠代號, 工廠名稱, 地區, 訂單數量, 
-                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,'訂單' as '訂單種類',實際IE*訂單數量 as 秒數  FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
+                                                    case when [代理商代號] ='MGF' then 'MGF' else cus_name_brief end  as 'ForMGF', salesman, employee_name,OrderBy,case when 訂單類別 = 'A' then '訂單' else '?' end as '訂單種類',實際IE*訂單數量 as 秒數  FROM ViewOrderQty   x left join bas_cus_master b on x.ForMGF=b.cus_id and b.site='GGF'
                                                     {2} ) a  where 訂單日期 between '{0}' and '{1}'   ", DateRangeTB.Text.Substring(0, 8), DateRangeTB.Text.Substring(11, 8), (預告單CB.Checked == true) ? strUnion : "");
             }
             //TimeSpan ts月份;

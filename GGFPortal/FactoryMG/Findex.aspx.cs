@@ -115,6 +115,7 @@ namespace GGFPortal.FactoryMG
             TeamCMBT.Text = lang.翻譯("Program", "F011", FactoryDDL.SelectedValue);
             TimeSecBT.Text = lang.翻譯("Program", "F012", FactoryDDL.SelectedValue);
             TimeSecTeamBT.Text = lang.翻譯("Program", "F013", FactoryDDL.SelectedValue);
+            DeptProductivityBT.Text = lang.翻譯("Program", "F015", FactoryDDL.SelectedValue);
         }
 
         protected void StitchBT_Click(object sender, EventArgs e)
@@ -211,6 +212,12 @@ namespace GGFPortal.FactoryMG
         {
             Session["Area"] = FactoryDDL.SelectedValue;
             F_Redir("F013.aspx");
+        }
+
+        protected void DeptProductivityBT_Click(object sender, EventArgs e)
+        {
+            Session["Area"] = FactoryDDL.SelectedValue;
+            F_Redir("F015.aspx");
         }
     }
 }

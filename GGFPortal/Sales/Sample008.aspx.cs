@@ -144,7 +144,7 @@ namespace GGFPortal.Sales
                         command1.Parameters.Add("@件數", SqlDbType.NVarChar).Value = 件數TB.Text;
                         command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Text;
                         command1.Parameters.Add("@原因碼", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedValue.Trim();
-                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.ID.Trim();
+                        command1.Parameters.Add("@原因", SqlDbType.NVarChar).Value = 原因碼DDL.SelectedItem.Text.Trim();
                         command1.ExecuteNonQuery();
                         command1.Parameters.Clear();
                         transaction1.Commit();
@@ -216,8 +216,7 @@ namespace GGFPortal.Sales
                     {
                         //TypeLB.Text = i.ToString();
                         command1.CommandText = string.Format(@"UPDATE [dbo].[GGFRequestMark]
-                                                               SET [uid] = @uid
-                                                                  ,[修改人員] = @修改人員
+                                                               SET [修改人員] = @修改人員
                                                                   ,[工號] = @工號
                                                                   ,[處理類別] = @處理類別
                                                                   ,[修改日期] = GETDATE() 
@@ -228,7 +227,7 @@ namespace GGFPortal.Sales
                                                                   ,[原因碼]=@原因碼
                                                                   ,[原因]=@原因
                                                             WHERE id = {0} ", Session["id"].ToString());
-                        command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
+                        //command1.Parameters.Add("@uid", SqlDbType.Int).Value = Session["uid"].ToString();
                         command1.Parameters.Add("@修改人員", SqlDbType.NVarChar).Value = UserDDL.SelectedItem.Text;
                         command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = UserDDL.SelectedValue;
                         command1.Parameters.Add("@處理類別", SqlDbType.Int).Value = TypeDDL.SelectedValue;
@@ -261,6 +260,7 @@ namespace GGFPortal.Sales
                     }
                     finally
                     {
+                        Session.RemoveAll();
                         conn1.Close();
                         conn1.Dispose();
                         command1.Dispose();

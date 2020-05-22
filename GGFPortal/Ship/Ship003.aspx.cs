@@ -112,7 +112,7 @@ namespace GGFPortal.Ship
                                                             ,目的地
                                                             ,dbo.F_檢查訂單有無衣架(公司別,訂單號碼) as 是否有衣架
                                                             ,[客戶style]
-                                                            ,[DC]");
+                                                            ,[DC],是否暫停");
             if(衣架資料CB.Checked==true)
                 strsql.AppendFormat(@" ,dbo.F_查詢尺碼夾價格(公司別,訂單號碼) as 尺碼價格
                                    ,dbo.F_查詢衣架價格(公司別, 訂單號碼) as 衣架價格 ");
@@ -157,7 +157,7 @@ namespace GGFPortal.Ship
                                 ,PO別
                                 ,目的地
                                 ,[客戶style]
-                                ,[DC]");
+                                ,[DC],是否暫停");
             return strsql;
         }
         

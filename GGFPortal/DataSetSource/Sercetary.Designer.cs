@@ -5334,6 +5334,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column秒數;
             
+            private global::System.Data.DataColumn column訂單類別;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public 訂單秒數DataTable() {
@@ -5513,6 +5515,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 訂單類別Column {
+                get {
+                    return this.column訂單類別;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5566,7 +5576,8 @@ namespace GGFPortal.DataSetSource {
                         string salesman, 
                         string employee_name, 
                         int OrderBy, 
-                        decimal 秒數) {
+                        decimal 秒數, 
+                        string 訂單類別) {
                 訂單秒數Row row訂單秒數Row = ((訂單秒數Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         訂單號碼,
@@ -5586,7 +5597,8 @@ namespace GGFPortal.DataSetSource {
                         salesman,
                         employee_name,
                         OrderBy,
-                        秒數};
+                        秒數,
+                        訂單類別};
                 row訂單秒數Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row訂單秒數Row);
                 return row訂單秒數Row;
@@ -5627,6 +5639,7 @@ namespace GGFPortal.DataSetSource {
                 this.columnemployee_name = base.Columns["employee_name"];
                 this.columnOrderBy = base.Columns["OrderBy"];
                 this.column秒數 = base.Columns["秒數"];
+                this.column訂單類別 = base.Columns["訂單類別"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5668,6 +5681,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnOrderBy);
                 this.column秒數 = new global::System.Data.DataColumn("秒數", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column秒數);
+                this.column訂單類別 = new global::System.Data.DataColumn("訂單類別", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單類別);
                 this.column訂單號碼.ReadOnly = true;
                 this.column訂單號碼.MaxLength = 20;
                 this.column代理商代號.ReadOnly = true;
@@ -10805,6 +10820,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 訂單類別 {
+                get {
+                    try {
+                        return ((string)(this[this.table訂單秒數.訂單類別Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'訂單秒數\' 中資料行 \'訂單類別\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table訂單秒數.訂單類別Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Is訂單號碼Null() {
                 return this.IsNull(this.table訂單秒數.訂單號碼Column);
             }
@@ -11017,6 +11048,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Set秒數Null() {
                 this[this.table訂單秒數.秒數Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is訂單類別Null() {
+                return this.IsNull(this.table訂單秒數.訂單類別Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set訂單類別Null() {
+                this[this.table訂單秒數.訂單類別Column] = global::System.Convert.DBNull;
             }
         }
         

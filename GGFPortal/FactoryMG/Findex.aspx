@@ -83,6 +83,8 @@
                     <asp:Button ID="TimeSecBT" runat="server"  CssClass="btn btn-outline-secondary" OnClick="TimeSecBT_Click" />
                     <br />
                     <asp:Button ID="TimeSecTeamBT" runat="server"  CssClass="btn btn-primary" OnClick="TimeSecTeamBT_Click" />
+                    <br />
+                    <asp:Button ID="DeptProductivityBT" runat="server"  CssClass="btn btn-outline-secondary" OnClick="DeptProductivityBT_Click" />
                     </td>
 
             </tr>

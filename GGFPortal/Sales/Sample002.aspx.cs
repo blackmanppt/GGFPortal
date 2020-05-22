@@ -116,6 +116,8 @@ namespace GGFPortal.Sales
                     StrReasonSql += " and reason like 'D%'";
                     TDinDateBT.Visible = true;
                     TDinDateTB.Enabled = true;
+                    TDFinBT.Visible = true;
+                    TDFinTB.Enabled = true;
                     AreaDDL.Visible = false;
                     break;
                 //打版
@@ -284,9 +286,9 @@ namespace GGFPortal.Sales
                         switch (TypeDDL.SelectedItem.Text)
                         {
                             case "TD":
-                                //取消TD自動UPdate //20190916 TD決定復原自動UpDate
-                                if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
-                                    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                                //取消TD自動UPdate 
+                                //if (F_UpdataWorkDate("TD", DateTime.Now.ToString("yyyy/MM/dd")))
+                                //    TDFinTB.Text = DateTime.Now.ToString("yyyy/MM/dd");
                                 break;
                             case "樣衣":
                                 if (F_UpdataWorkDate("上線日期", DateTime.Now.ToString("yyyy/MM/dd")))
@@ -996,14 +998,14 @@ namespace GGFPortal.Sales
 
         protected void TDFinBT_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(TDFinTB.Text))
-            //{
-            //    F_UpdataWorkDate("TD完成");
-            //}
-            //else
-            //{
-            //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇TD完成日');</script>");
-            //}
+            if (!string.IsNullOrEmpty(TDFinTB.Text))
+            {
+                F_UpdataWorkDate("TD完成", TDFinTB.Text);
+            }
+            else
+            {
+                F_ErrorShow("請選擇TD完成日");
+            }
         }
 
         protected void PlanDateBT_Click(object sender, EventArgs e)
