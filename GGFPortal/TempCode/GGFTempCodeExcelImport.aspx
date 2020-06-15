@@ -60,17 +60,25 @@
                 <span>日期</span>
 
             </h3>--%>
-
+            <div class="row m-3">
+            
             <label class="btn btn-info">
+
                 <img src="../Pic/Icon/svg/file.svg" />
 <input id="upload_file" style="display:none;" type="file" runat="server" accept="application/vnd.ms-excel , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
 <i class="fa fa-photo"></i> 上傳圖片
 </label>
+                </div>
+            <div class="row m-3">
+            <asp:Button ID="CheckBT" runat="server" Text="Check" CssClass="btn btn-outline-dark" OnClick="CheckBT_Click" />
+            <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" CssClass="btn btn-dark"/>
+                </div>
         </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="table-responsive">
+            <asp:GridView ID="ErrorGV" runat="server" CssClass="table table-striped table-sm table-primary"></asp:GridView>
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
         </div>
     </main>

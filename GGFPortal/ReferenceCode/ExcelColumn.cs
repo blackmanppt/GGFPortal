@@ -657,5 +657,28 @@ namespace GGFPortal.ReferenceCode
 
 
     }
+    /// <summary>
+    /// excel Load 暫存datatable範例
+    /// </summary>
+    public class ExcelImportTemplate
+    {
+        /// <summary>
+        /// 定義table
+        /// </summary>
+        public DataTable Dt1 { get; set; }
+
+
+        #region 定義欄位
+        public int IParam1 { get; set; }
+        public string StrParam1 { get; set; }
+
+        #endregion
+        public void F_ImportTable()
+        {
+            Dt1 = new DataTable();
+            Dt1.Columns.Add("IParam1");
+            Dt1.Columns.Add("StrParam1");
+        }
+    }
 
 }

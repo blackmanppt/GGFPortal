@@ -11,8 +11,8 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {
-                    "format": "YYYY/MM/DD",
-                    "separator": " - ",
+                    "format": "YYYY-MM-DD",
+                    "separator": " ~ ",
                     "applyLabel": "Apply",
                     "cancelLabel": "Cancel",
                     "fromLabel": "From",
@@ -47,10 +47,30 @@
                 "showCustomRangeLabel": false,
                 "alwaysShowCalendars": true,
                 "autoUpdateInput": true
+                
             }, function (start, end, label) {
-                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                    //Updates value of date
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').val(start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD'));  
+                    //Add the value to hidden field
+                    $('input[id="ContentPlaceHolder1_HiddenField1"]').val(start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD'));
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').trigger('change');
+                    //確認資料
+                    var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+                    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + xxxx + ')');
             });
         });
+        //postback後將資料塞回欄位
+        $(document).ready(function () {
+            //Assign the value from hidden field to textbox
+            var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+            console.log(xxxx.length);
+            if (xxxx.length>0) {
+
+                onLoad: $('input[id="ContentPlaceHolder1_DateRangeTB"]').val($('input[id="ContentPlaceHolder1_HiddenField1"]').val());
+            }
+            
+        });
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -85,12 +105,14 @@
                 </div>
 
 
-                <h2>Section title</h2>-->
+                <h2>Section title</h2>
 
         <div class="table-responsive">
             <table class="table table-striped table-sm">
             </table>
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
-        </div>
+        </div>-->
     </main>
+    <!--日期暫存-->
+    <asp:HiddenField ID="HiddenField1" runat="server" />
 </asp:Content>
