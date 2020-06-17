@@ -66,7 +66,7 @@
 
                 <img src="../Pic/Icon/svg/file.svg" />
 <input id="upload_file" style="display:none;" type="file" runat="server" accept="application/vnd.ms-excel , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-<i class="fa fa-photo"></i> 上傳圖片
+<i class="fa fa-photo"></i> 上傳檔案
 </label>
                 </div>
             <div class="row m-3">
