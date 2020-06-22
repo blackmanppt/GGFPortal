@@ -229,6 +229,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink107" runat="server" NavigateUrl="~/Sales/Sales016.aspx">布價歷史資料查詢</asp:HyperLink> 
                                                                                                 <br />
                         <asp:HyperLink ID="HyperLink118" runat="server" NavigateUrl="~/Sales/Sales019.aspx">DDP費用</asp:HyperLink> 
+                         <br />
+                        <asp:HyperLink ID="HyperLink121" runat="server" NavigateUrl="~/Sales/Sales020.aspx">品牌產量表</asp:HyperLink> 
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

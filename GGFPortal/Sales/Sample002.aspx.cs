@@ -410,10 +410,10 @@ namespace GGFPortal.Sales
                         string strdate = DateTB.Text.Substring(0, 4) +"/"+ DateTB.Text.Substring(4, 2) + "/" + DateTB.Text.Substring(6, 2);
                         switch (TypeDDL.SelectedItem.Text)
                         {
-                            case "TD":
-                                if(F_UpdataWorkDate("TD", strdate))
-                                    TDFinTB.Text = strdate;
-                                break;
+                            //case "TD":
+                            //    if(F_UpdataWorkDate("TD", strdate))
+                            //        TDFinTB.Text = strdate;
+                            //    break;
                             case "樣衣":
                                 if (F_UpdataWorkDate("上線日期", strdate))
                                     上線日上傳TB.Text = strdate;

@@ -69,7 +69,7 @@ namespace GGFPortal.ReferenceCode
                 if (B是否為必要欄位 && row.GetCell(j) == null)
                 {
                     BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
+                    StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
                     D_dataRow[j] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
                 }
                 else
@@ -85,7 +85,7 @@ namespace GGFPortal.ReferenceCode
                 if (B是否為必要欄位 == true)
                 {
                     BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "ImportError");
+                    StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "ImportError");
                 }
                 D_dataRow[j] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
             }
@@ -105,7 +105,7 @@ namespace GGFPortal.ReferenceCode
                     if (B是否為必要欄位 == true)
                     {
                         BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error1");
+                        StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "int Error1");
                     }
                     D_dataRow[j] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
@@ -120,7 +120,7 @@ namespace GGFPortal.ReferenceCode
                         if (B是否為必要欄位 == true)
                         {
                             BError = true;
-                            StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
+                            StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
                         }
                         D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -131,7 +131,7 @@ namespace GGFPortal.ReferenceCode
                             if (B是否為必要欄位 == true)
                             {
                                 BError = true;
-                                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
+                                StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
                             }
                             D_dataRow[j] = (row.GetCell(j) == null) ? "0" : iout.ToString();  //--每一個欄位，都加入同一列 DataRow
 
@@ -145,7 +145,7 @@ namespace GGFPortal.ReferenceCode
                     if (B是否為必要欄位 == true)
                     {
                         BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
+                        StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
                     }
                     D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
                 }
@@ -167,7 +167,7 @@ namespace GGFPortal.ReferenceCode
                     if (B是否為必要欄位 == true)
                     {
                         BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "Float Error1");
+                        StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "Float Error1");
                     }
                     D_dataRow[j] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
                 }
@@ -181,7 +181,7 @@ namespace GGFPortal.ReferenceCode
                         if (B是否為必要欄位 == true)
                         {
                             BError = true;
-                            StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
+                            StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
                         }
                         D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
                     }
@@ -193,7 +193,7 @@ namespace GGFPortal.ReferenceCode
                             if (B是否為必要欄位 == true)
                             {
                                 BError = true;
-                                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "Float Error2");
+                                StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "Float Error2");
                             }
                             D_dataRow[j] = dout.ToString();  //--每一個欄位，都加入同一列 DataRow
                         }
@@ -208,7 +208,7 @@ namespace GGFPortal.ReferenceCode
                     if (B是否為必要欄位 == true)
                     {
                         BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NumFormatError");
+                        StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "NumFormatError");
                     }
                     D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
                 }
@@ -222,14 +222,14 @@ namespace GGFPortal.ReferenceCode
                 if (B是否為必要欄位 == true && (string.IsNullOrEmpty(row.GetCell(j).ToString())))
                 {
                     BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
+                    StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
                 }
-                D_dataRow[j] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
+                D_dataRow[j] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyy-MM-dd");
             }
             catch
             {
                 BError = true;
-                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
+                StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
                 //D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
             }
         }

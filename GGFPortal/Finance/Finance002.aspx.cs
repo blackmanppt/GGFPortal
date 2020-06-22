@@ -210,6 +210,7 @@ namespace GGFPortal.Finance
                                 ,i.item_name as '料號名稱'
                                 ,case when c.pur_kind = 'M' then '主料' when c.pur_kind = 'S' then '副料' else c.pur_kind end as '料號別'
                                 ,j.color_cname,j.color_ename ,i.item_spk as '英文料號'
+                                ,e.transatn_term 訂單交易條件
                                 from purc_receive_detail a 
                                 left join purc_receive_master b on a.site=b.site and a.rec_nbr=b.rec_nbr and a.kind=b.kind 
                                 left join purc_purchase_master c on a.site=c.site and a.pur_nbr=c.pur_nbr 

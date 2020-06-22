@@ -140,8 +140,6 @@ namespace GGFPortal.TempCode
 
                 try
                 {
-                    //upload_file.PostedFile.SaveAs(SaveLocation);
-                    //Response.Write("The file has been uploaded.");
                     DataTable D_table = new DataTable("Excel");
                     DataTable D_errortable = new DataTable("Error");
                     string 副檔名 = System.IO.Path.GetExtension(fileName);
@@ -149,7 +147,7 @@ namespace GGFPortal.TempCode
                     //指定Import Sheet Name
                     string StrSheetNameCheck = "";
                     Boolean BCheck = false;
-                    int I資料起始欄 = 0, I資料起始列 = 0;
+                    int I資料起始欄 , I資料起始列;
 
                     #region 基本資料欄位
                     //D_table.Columns.Add("預設資料");
@@ -169,9 +167,19 @@ namespace GGFPortal.TempCode
                     if (DtColumnDefine.Rows.Count>0)
                     {
                         StrSheetNameCheck = (string.IsNullOrEmpty(DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString()))?"": DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString();
-                        Boolean.TryParse( DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString(),out BCheck);
-                        int.TryParse(DtColumnDefine.Rows[0]["資料起始列"].ToString(), out I資料起始列);
-                        int.TryParse(DtColumnDefine.Rows[0]["資料起始欄"].ToString(), out I資料起始欄);
+
+                        if (!Boolean.TryParse(DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString(), out BCheck))
+                        {
+                            BCheck = false;
+                        }
+                        if(!int.TryParse(DtColumnDefine.Rows[0]["資料起始列"].ToString(), out I資料起始列))
+                        {
+                            I資料起始列 = 0;
+                        }
+                        if (!int.TryParse(DtColumnDefine.Rows[0]["資料起始欄"].ToString(), out I資料起始欄))
+                        {
+                            I資料起始欄 = 1;
+                        }
 
                         while (File.Exists(LocationFiled + fileName))
                         {
@@ -193,39 +201,23 @@ namespace GGFPortal.TempCode
                                     continue;
                                 }
                                 //-- Excel 表頭列
-                                XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(I資料起始列+1);
+                                XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(I資料起始列);
                                 IRow DateRow = (IRow)u_sheet.GetRow(I資料起始列);
                                 //-- for迴圈的「啟始值」要加一，表示不包含 Excel表頭列
                                 // for (int i = (u_sheet.FirstRowNum + 1); i <= u_sheet.LastRowNum; i++)   
                                 //-- 每一列做迴圈
                                 //i=1第二列開始
-                                for (int i = 1; i <= u_sheet.LastRowNum; i++)
+                                for (int i = I資料起始列; i <= u_sheet.LastRowNum; i++)
                                 {
                                     //--不包含 Excel表頭列的 "其他資料列"
                                     IRow row = (IRow)u_sheet.GetRow(i);
-                                    F_資料確認(ref D_table,ref D_errortable, str頁簽名稱, row, DtColumnDefine, i);
+                                    F_資料確認(ref D_table,ref D_errortable, str頁簽名稱, row, DtColumnDefine, i, I資料起始欄);
                                 }
                                 //-- 釋放 NPOI的資源
                                 u_sheet = null;
                             }
                             //-- 釋放 NPOI的資源
                             workbook = null;
-
-                            //--錯誤資料顯示
-                            if (D_errortable.Rows.Count > 0)
-                            {
-                                DataView D_View3 = new DataView(D_errortable);
-                                ErrorGV.DataSource = D_View3;
-                                ErrorGV.DataBind();
-                            }
-                            if(D_table.Rows.Count>0)
-                            {
-                                GridView1.DataSource = D_table;
-                                GridView1.DataBind();
-                            }
-                            //--------------------------------------------------
-                            //---- （以下是）上傳 FileUpload的部分！
-                            //--------------------------------------------------
                         }
                         else
                         {
@@ -234,46 +226,40 @@ namespace GGFPortal.TempCode
                             for (int x = 0; x < workbook.NumberOfSheets; x++)
                             {
                                 HSSFSheet u_sheet = (HSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
-                                HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(3);  //-- Excel 表頭列
-                                IRow DateRow = (IRow)u_sheet.GetRow(2);             //-- v.1.2.4版修改
+                                HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(I資料起始列);  //-- Excel 表頭列
+                                IRow DateRow = (IRow)u_sheet.GetRow(I資料起始列);             //-- v.1.2.4版修改
                                                                                     //Session["Date"] = SearchTB.Text;
                                 str頁簽名稱 = u_sheet.SheetName.ToString();
 
-                                for (int i = 1; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
+                                for (int i = I資料起始列; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                                 {
-
                                     //--不包含 Excel表頭列的 "其他資料列"
                                     IRow row = (IRow)u_sheet.GetRow(i);
-                                    F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row, DtColumnDefine, i);
+                                    F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row, DtColumnDefine, i, I資料起始欄);
                                 }
                                 //-- 釋放 NPOI的資源
                                 u_sheet = null;
                             }
                             //-- 釋放 NPOI的資源
                             workbook = null;
-                            ////--Excel資料顯示             
-                            //DataView D_View2 = new DataView(D_table);
-                            //ExcelGV.DataSource = D_View2;
-                            //ExcelGV.DataBind();
-                            //--錯誤資料顯示
-                            if (D_errortable.Rows.Count > 0)
-                            {
-                                DataView D_View3 = new DataView(D_errortable);
-                                //ErrorGV.DataSource = D_View3;
-                                //ErrorGV.DataBind();
-                            }
-
-                            //--------------------------------------------------
-                            //---- （以下是）上傳 FileUpload的部分！
-                            //--------------------------------------------------
-
+                        }
+                        //--錯誤資料顯示
+                        if (D_errortable.Rows.Count > 0)
+                        {
+                            DataView D_View3 = new DataView(D_errortable);
+                            ErrorGV.DataSource = D_View3;
+                            ErrorGV.DataBind();
+                        }
+                        if (D_table.Rows.Count > 0)
+                        {
+                            GridView1.DataSource = D_table;
+                            GridView1.DataBind();
                         }
                     }
                     else
                     {
                         F_ErrorShow("Please contact Mis : Import format is not defined");
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -337,7 +323,7 @@ namespace GGFPortal.TempCode
         /// <param name="str頁簽名稱"></param>
         /// <param name="row"></param>
         /// <param name="DtColumnDefine"></param>
-        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable, string str頁簽名稱, IRow row, DataTable DtColumnDefine, int i)
+        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable, string str頁簽名稱, IRow row, DataTable DtColumnDefine, int i, int 起始欄)
         {
             string StrError = "";
 
@@ -364,13 +350,16 @@ namespace GGFPortal.TempCode
             //D_dataRow[0] = str頁簽名稱;
 
             #endregion
-            for (int j = 0; j < DtColumnDefine.Rows.Count; j++)
+            for (int j = 起始欄-1; j < DtColumnDefine.Rows.Count; j++)
             {
-                Boolean B是否為必要欄位 = false;
+                Boolean B是否為必要欄位;
                 string Str資料格式 = "";
-                Boolean.TryParse(DtColumnDefine.Rows[j]["是否為必要欄位"].ToString(), out B是否為必要欄位);
+                if (!Boolean.TryParse(DtColumnDefine.Rows[j]["是否為必要欄位"].ToString(), out B是否為必要欄位))
+                {
+                    B是否為必要欄位 = false;
+                }
                 Str資料格式 = DtColumnDefine.Rows[j]["資料格式"].ToString();
-                 switch (Str資料格式)
+                switch (Str資料格式)
                 {
                     case "Int":
                         datacheck.IntData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);

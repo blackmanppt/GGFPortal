@@ -41,6 +41,8 @@
               <xs:element name="eta_date" msprop:Generator_ColumnVarNameInTable="columneta_date" msprop:Generator_ColumnPropNameInRow="eta_date" msprop:Generator_ColumnPropNameInTable="eta_dateColumn" msprop:Generator_UserColumnName="eta_date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="中文料號" msprop:Generator_ColumnVarNameInTable="column中文料號" msprop:Generator_ColumnPropNameInRow="中文料號" msprop:Generator_ColumnPropNameInTable="中文料號Column" msprop:Generator_UserColumnName="中文料號" type="xs:string" minOccurs="0" />
               <xs:element name="英文料號" msprop:Generator_ColumnVarNameInTable="column英文料號" msprop:Generator_ColumnPropNameInRow="英文料號" msprop:Generator_ColumnPropNameInTable="英文料號Column" msprop:Generator_UserColumnName="英文料號" type="xs:string" minOccurs="0" />
+              <xs:element name="DDP費用" msprop:Generator_ColumnVarNameInTable="columnDDP費用" msprop:Generator_ColumnPropNameInRow="DDP費用" msprop:Generator_ColumnPropNameInTable="DDP費用Column" msprop:Generator_UserColumnName="DDP費用" type="xs:decimal" minOccurs="0" />
+              <xs:element name="訂單交易條件" msprop:Generator_ColumnVarNameInTable="column訂單交易條件" msprop:Generator_ColumnPropNameInRow="訂單交易條件" msprop:Generator_ColumnPropNameInTable="訂單交易條件Column" msprop:Generator_UserColumnName="訂單交易條件" type="xs:string" minOccurs="0" />
               <xs:element name="etd_date" msprop:Generator_ColumnVarNameInTable="columnetd_date" msprop:Generator_ColumnPropNameInRow="etd_date" msprop:Generator_ColumnPropNameInTable="etd_dateColumn" msprop:Generator_UserColumnName="etd_date" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
