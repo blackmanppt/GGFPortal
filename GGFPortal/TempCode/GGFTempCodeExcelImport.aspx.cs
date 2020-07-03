@@ -279,43 +279,6 @@ namespace GGFPortal.TempCode
             ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
         /// <summary>
-        /// 確認每列匯入的資料
-        /// </summary>
-        /// <param name="D_table"></param>
-        /// <param name="D_errortable"></param>
-        /// <param name="str頁簽名稱"></param>
-        /// <param name="row"></param>
-        private void F_資料確認(DataTable D_table, DataTable D_errortable, string str頁簽名稱, IRow row)
-        {
-            StringBuilder sbError = new StringBuilder();
-
-            #region regex用法
-            //bool b工號Error = false;
-            //if (!string.IsNullOrEmpty(row.GetCell(z).ToString()))
-            //{
-            //    str工號 = row.GetCell(z).ToString().Trim().ToUpper();
-            //    Regex reg = new Regex(strRegex工號);
-            //    b工號Error = (!reg.IsMatch(str工號) && str工號.Length != 5) ? true : false;
-            //}
-            //else
-            //    b工號Error = true;
-
-            //Regex資料驗證規則
-            //string strRegex工號 = "V[0-9]{4}", strRegex工段 = "[0-9]{3}", strRegex數量 = "[0-9]{4}";
-            //string strRegex日期 = "\\b(?<year>\\d{4})(?<month>\\d{2})(?<day>\\d{2})\\b";
-            #endregion
-
-            //List<Columndefined> VNExcel = new List<Columndefined>();
-
-            //z為每行第幾個資料
-            //
-            //使用迴圈坐資料驗證，適合用於固定欄位
-            //for (int z = 3; z < 24; z = z + 7)
-            //{
-            //}
-
-        }
-        /// <summary>
         /// 
         /// </summary>
         /// <param name="D_table"></param>
@@ -572,7 +535,7 @@ namespace GGFPortal.TempCode
         {
             Int32 ProductivityHeadID = 0;
             string sql =
-                @"INSERT INTO [dbo].[GGF資料匯入定義表Head]
+                @"INSERT INTO [dbo].[GGF河內打樣單Head]
                     (建立日期)
                     VALUES(@建立日期); 
                     SELECT CAST(scope_identity() AS int)";
@@ -606,6 +569,148 @@ namespace GGFPortal.TempCode
 
             }
             return sError;
+        }
+        /// <summary>
+        /// 將Session的資料上傳到資料庫
+        /// </summary>
+        public void F_UpLoad()
+        {
+            //有錯誤資料不給匯入
+            //if (SearchTB.Text.Trim() != "" && F_CheckData() && Session["ExcelError"] == null)
+            if (Session["ExcelError"] == null)
+            {
+                if (Session["Excel"] != null)
+                {
+                    DataTable dt = (DataTable)Session["Excel"];
+                    int iIndex = 0;
+                    //取得塞入資料流水號(TableName,程式)
+
+
+                    if (iIndex > 0)
+                        using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                        {
+                            SqlCommand command1 = conn1.CreateCommand();
+                            SqlTransaction transaction1;
+                            conn1.Open();
+                            transaction1 = conn1.BeginTransaction("createExcelImport");
+
+                            command1.Connection = conn1;
+                            command1.Transaction = transaction1;
+                            try
+                            {
+                                #region 匯入單頭
+                                //iIndex = addid.GetExcelIdex("AMZForcastHead", "TempExcelImport.aspx");
+                                //command1.CommandText = string.Format(@"INSERT INTO [dbo].[工段總表明細]
+                                //                      ([uid]
+                                //                      ,[閱卷序號]
+                                //                      ,[款號]
+                                //                      ,[組別]
+                                //                      ,[日期]
+                                //                      ,[工號]
+                                //                      ,[工段]
+                                //                      ,[數量])
+                                //                 VALUES
+                                //                       ({0}
+                                //                       ,@閱卷序號
+                                //                       ,@款號
+                                //                       ,@組別
+                                //                       ,@日期
+                                //                       ,@工號
+                                //                       ,@工段
+                                //                       ,@數量
+                                //                        )
+                                //                       ", iIndex);
+                                //command1.Parameters.Add("@閱卷序號", SqlDbType.NVarChar).Value = dt.Rows[i]["閱卷序號"].ToString();
+                                //command1.Parameters.Add("@款號", SqlDbType.NVarChar).Value = dt.Rows[i]["款號"].ToString();
+                                //command1.Parameters.Add("@組別", SqlDbType.NVarChar).Value = dt.Rows[i]["組別"].ToString();
+                                //command1.Parameters.Add("@日期", SqlDbType.NVarChar).Value = dt.Rows[i]["日期"].ToString();
+                                //command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = dt.Rows[i]["工號"].ToString();
+                                //command1.Parameters.Add("@工段", SqlDbType.NVarChar).Value = dt.Rows[i]["工段"].ToString();
+                                //command1.Parameters.Add("@數量", SqlDbType.NVarChar).Value = dt.Rows[i]["數量"].ToString();
+
+                                //command1.ExecuteNonQuery();
+                                #endregion
+                                #region 匯入明細
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    //command1.CommandText = string.Format(@"INSERT INTO [dbo].[工段總表明細]
+                                    //                  ([uid]
+                                    //                  ,[閱卷序號]
+                                    //                  ,[款號]
+                                    //                  ,[組別]
+                                    //                  ,[日期]
+                                    //                  ,[工號]
+                                    //                  ,[工段]
+                                    //                  ,[數量])
+                                    //             VALUES
+                                    //                   ({0}
+                                    //                   ,@閱卷序號
+                                    //                   ,@款號
+                                    //                   ,@組別
+                                    //                   ,@日期
+                                    //                   ,@工號
+                                    //                   ,@工段
+                                    //                   ,@數量
+                                    //                    )
+                                    //                   ", iIndex);
+                                    //command1.Parameters.Add("@閱卷序號", SqlDbType.NVarChar).Value = dt.Rows[i]["閱卷序號"].ToString();
+                                    //command1.Parameters.Add("@款號", SqlDbType.NVarChar).Value = dt.Rows[i]["款號"].ToString();
+                                    //command1.Parameters.Add("@組別", SqlDbType.NVarChar).Value = dt.Rows[i]["組別"].ToString();
+                                    //command1.Parameters.Add("@日期", SqlDbType.NVarChar).Value = dt.Rows[i]["日期"].ToString();
+                                    //command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = dt.Rows[i]["工號"].ToString();
+                                    //command1.Parameters.Add("@工段", SqlDbType.NVarChar).Value = dt.Rows[i]["工段"].ToString();
+                                    //command1.Parameters.Add("@數量", SqlDbType.NVarChar).Value = dt.Rows[i]["數量"].ToString();
+
+                                    //command1.ExecuteNonQuery();
+                                    command1.Parameters.Clear();
+                                }
+                                ////上傳成功更新Head狀態
+                                //command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
+                                //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
+                                //command1.ExecuteNonQuery();
+                                #endregion
+                                transaction1.Commit();
+                            }
+                            #region 匯入ErrorLog
+                            catch (Exception ex1)
+                            {
+                                try
+                                {
+                                    Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), "VN002.aspx");
+                                }
+                                catch (Exception ex2)
+                                {
+                                    Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), "VN002.aspx");
+                                }
+                                finally
+                                {
+                                    transaction1.Rollback();
+                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
+                                }
+                            }
+                            #endregion
+                            finally
+                            {
+                                conn1.Close();
+                                conn1.Dispose();
+                                command1.Dispose();
+                                Session.RemoveAll();
+                                //Label1.Text = "資料上傳成功";
+                            }
+                        }
+                    else
+                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('單頭匯入失敗請連絡MIS');</script>");
+                }
+            }
+            else
+            {
+                if (Session["ExcelError"] != null)
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請修正錯誤資料');</script>");
+                //else if (SearchTB.Text.Trim() != "")
+                //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
+                else
+                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+            }
         }
     }
 }

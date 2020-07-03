@@ -156,8 +156,6 @@ namespace GGFPortal.ReferenceCode
         {
             if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
             {
-                //D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
-                ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
                 try
                 {
                     D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
@@ -230,7 +228,6 @@ namespace GGFPortal.ReferenceCode
             {
                 BError = true;
                 StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
-                //D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
             }
         }
         public static string FConvertError(string Str欄位名稱, int i, string sError, int j, string strErrorDefine)
