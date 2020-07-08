@@ -337,6 +337,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columnetd_date;
             
+            private global::System.Data.DataColumn columnDDP拆分;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Finance002DataTable() {
@@ -604,6 +606,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DDP拆分Column {
+                get {
+                    return this.columnDDP拆分;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -668,7 +678,8 @@ namespace GGFPortal.DataSetSource {
                         string 英文料號, 
                         decimal DDP費用, 
                         string 訂單交易條件, 
-                        System.DateTime etd_date) {
+                        System.DateTime etd_date, 
+                        decimal DDP拆分) {
                 Finance002Row rowFinance002Row = ((Finance002Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         site,
@@ -699,7 +710,8 @@ namespace GGFPortal.DataSetSource {
                         英文料號,
                         DDP費用,
                         訂單交易條件,
-                        etd_date};
+                        etd_date,
+                        DDP拆分};
                 rowFinance002Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFinance002Row);
                 return rowFinance002Row;
@@ -751,6 +763,7 @@ namespace GGFPortal.DataSetSource {
                 this.columnDDP費用 = base.Columns["DDP費用"];
                 this.column訂單交易條件 = base.Columns["訂單交易條件"];
                 this.columnetd_date = base.Columns["etd_date"];
+                this.columnDDP拆分 = base.Columns["DDP拆分"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,6 +827,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column訂單交易條件);
                 this.columnetd_date = new global::System.Data.DataColumn("etd_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnetd_date);
+                this.columnDDP拆分 = new global::System.Data.DataColumn("DDP拆分", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDDP拆分);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1420,6 +1435,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal DDP拆分 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableFinance002.DDP拆分Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Finance002\' 中資料行 \'DDP拆分\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableFinance002.DDP拆分Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IssiteNull() {
                 return this.IsNull(this.tableFinance002.siteColumn);
             }
@@ -1764,6 +1795,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setetd_dateNull() {
                 this[this.tableFinance002.etd_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDDP拆分Null() {
+                return this.IsNull(this.tableFinance002.DDP拆分Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDDP拆分Null() {
+                this[this.tableFinance002.DDP拆分Column] = global::System.Convert.DBNull;
             }
         }
         

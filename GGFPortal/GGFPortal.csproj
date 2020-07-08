@@ -1964,6 +1964,7 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sales022.aspx" />
     <Content Include="Sales\Sales021.aspx" />
     <Content Include="Sales\Sales020.aspx" />
     <Content Include="Sales\Sales019.aspx" />
@@ -5721,6 +5722,7 @@
     <Content Include="Ship\Ship006.aspx" />
     <Content Include="Ship\Ship006old.aspx" />
     <Content Include="Ship\Ship007.aspx" />
+    <Content Include="TempCode\GGFTempCode2.aspx" />
     <Content Include="TempCode\GGFTempCodeExcelImport.aspx" />
     <Content Include="TempCode\GGFTempCode.aspx" />
     <Content Include="TempCode\SbAdminTempCode.aspx" />
@@ -7417,6 +7419,13 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sales022.aspx.cs">
+      <DependentUpon>Sales022.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales022.aspx.designer.cs">
+      <DependentUpon>Sales022.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales021.aspx.cs">
       <DependentUpon>Sales021.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7773,6 +7782,13 @@
     </Compile>
     <Compile Include="TempCode\GGFSite.Master.designer.cs">
       <DependentUpon>GGFSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCode2.aspx.cs">
+      <DependentUpon>GGFTempCode2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCode2.aspx.designer.cs">
+      <DependentUpon>GGFTempCode2.aspx</DependentUpon>
     </Compile>
     <Compile Include="TempCode\GGFTempCodeExcelImport.aspx.cs">
       <DependentUpon>GGFTempCodeExcelImport.aspx</DependentUpon>

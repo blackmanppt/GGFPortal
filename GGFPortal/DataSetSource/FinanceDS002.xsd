@@ -12,7 +12,7 @@
   <xs:element name="FinanceDS002" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="FinanceDS002" msprop:Generator_UserDSName="FinanceDS002">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Finance002" msprop:Generator_TableClassName="Finance002DataTable" msprop:Generator_TableVarName="tableFinance002" msprop:Generator_RowChangedName="Finance002RowChanged" msprop:Generator_TablePropName="Finance002" msprop:Generator_RowDeletingName="Finance002RowDeleting" msprop:Generator_RowChangingName="Finance002RowChanging" msprop:Generator_RowEvHandlerName="Finance002RowChangeEventHandler" msprop:Generator_RowDeletedName="Finance002RowDeleted" msprop:Generator_RowClassName="Finance002Row" msprop:Generator_UserTableName="Finance002" msprop:Generator_RowEvArgName="Finance002RowChangeEvent">
+        <xs:element name="Finance002" msprop:Generator_TableClassName="Finance002DataTable" msprop:Generator_TableVarName="tableFinance002" msprop:Generator_TablePropName="Finance002" msprop:Generator_RowDeletingName="Finance002RowDeleting" msprop:Generator_RowChangingName="Finance002RowChanging" msprop:Generator_RowEvHandlerName="Finance002RowChangeEventHandler" msprop:Generator_RowDeletedName="Finance002RowDeleted" msprop:Generator_UserTableName="Finance002" msprop:Generator_RowChangedName="Finance002RowChanged" msprop:Generator_RowEvArgName="Finance002RowChangeEvent" msprop:Generator_RowClassName="Finance002Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site" type="xs:string" minOccurs="0" />
@@ -44,6 +44,7 @@
               <xs:element name="DDP費用" msprop:Generator_ColumnVarNameInTable="columnDDP費用" msprop:Generator_ColumnPropNameInRow="DDP費用" msprop:Generator_ColumnPropNameInTable="DDP費用Column" msprop:Generator_UserColumnName="DDP費用" type="xs:decimal" minOccurs="0" />
               <xs:element name="訂單交易條件" msprop:Generator_ColumnVarNameInTable="column訂單交易條件" msprop:Generator_ColumnPropNameInRow="訂單交易條件" msprop:Generator_ColumnPropNameInTable="訂單交易條件Column" msprop:Generator_UserColumnName="訂單交易條件" type="xs:string" minOccurs="0" />
               <xs:element name="etd_date" msprop:Generator_ColumnVarNameInTable="columnetd_date" msprop:Generator_ColumnPropNameInRow="etd_date" msprop:Generator_ColumnPropNameInTable="etd_dateColumn" msprop:Generator_UserColumnName="etd_date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DDP拆分" msprop:Generator_ColumnVarNameInTable="columnDDP拆分" msprop:Generator_ColumnPropNameInRow="DDP拆分" msprop:Generator_ColumnPropNameInTable="DDP拆分Column" msprop:Generator_UserColumnName="DDP拆分" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
