@@ -34,6 +34,8 @@ namespace GGFPortal.DataSetSource {
         
         private 振大主表DataTable table振大主表;
         
+        private 採購入庫狀況DataTable table採購入庫狀況;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["振大主表"] != null)) {
                     base.Tables.Add(new 振大主表DataTable(ds.Tables["振大主表"]));
+                }
+                if ((ds.Tables["採購入庫狀況"] != null)) {
+                    base.Tables.Add(new 採購入庫狀況DataTable(ds.Tables["採購入庫狀況"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace GGFPortal.DataSetSource {
         public 振大主表DataTable 振大主表 {
             get {
                 return this.table振大主表;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 採購入庫狀況DataTable 採購入庫狀況 {
+            get {
+                return this.table採購入庫狀況;
             }
         }
         
@@ -227,6 +242,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["振大主表"] != null)) {
                     base.Tables.Add(new 振大主表DataTable(ds.Tables["振大主表"]));
                 }
+                if ((ds.Tables["採購入庫狀況"] != null)) {
+                    base.Tables.Add(new 採購入庫狀況DataTable(ds.Tables["採購入庫狀況"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace GGFPortal.DataSetSource {
                     this.table振大主表.InitVars();
                 }
             }
+            this.table採購入庫狀況 = ((採購入庫狀況DataTable)(base.Tables["採購入庫狀況"]));
+            if ((initTable == true)) {
+                if ((this.table採購入庫狀況 != null)) {
+                    this.table採購入庫狀況.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.table振大布類);
             this.table振大主表 = new 振大主表DataTable();
             base.Tables.Add(this.table振大主表);
+            this.table採購入庫狀況 = new 採購入庫狀況DataTable();
+            base.Tables.Add(this.table採購入庫狀況);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerialize振大主表() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerialize採購入庫狀況() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void 振大主表RowChangeEventHandler(object sender, 振大主表RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void 採購入庫狀況RowChangeEventHandler(object sender, 採購入庫狀況RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2952,6 +2987,689 @@ namespace GGFPortal.DataSetSource {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "振大主表DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 採購入庫狀況DataTable : global::System.Data.TypedTableBase<採購入庫狀況Row> {
+            
+            private global::System.Data.DataColumn columnsite;
+            
+            private global::System.Data.DataColumn column款號;
+            
+            private global::System.Data.DataColumn column產區;
+            
+            private global::System.Data.DataColumn column入庫單號;
+            
+            private global::System.Data.DataColumn column採購單號;
+            
+            private global::System.Data.DataColumn column廠商代號;
+            
+            private global::System.Data.DataColumn column代工廠;
+            
+            private global::System.Data.DataColumn column料號別;
+            
+            private global::System.Data.DataColumn column料號;
+            
+            private global::System.Data.DataColumn column料號名稱;
+            
+            private global::System.Data.DataColumn column採購量;
+            
+            private global::System.Data.DataColumn column不計價數量;
+            
+            private global::System.Data.DataColumn column不計價總量;
+            
+            private global::System.Data.DataColumn column入庫數量;
+            
+            private global::System.Data.DataColumn column已入庫量;
+            
+            private global::System.Data.DataColumn column單位;
+            
+            private global::System.Data.DataColumn column單價;
+            
+            private global::System.Data.DataColumn column金額;
+            
+            private global::System.Data.DataColumn column允收上限;
+            
+            private global::System.Data.DataColumn column是否轉應付;
+            
+            private global::System.Data.DataColumn column交易條件;
+            
+            private global::System.Data.DataColumn column入庫日;
+            
+            private global::System.Data.DataColumn column業務;
+            
+            private global::System.Data.DataColumn columneta_date;
+            
+            private global::System.Data.DataColumn column中文料號;
+            
+            private global::System.Data.DataColumn column英文料號;
+            
+            private global::System.Data.DataColumn columnDDP費用;
+            
+            private global::System.Data.DataColumn column訂單交易條件;
+            
+            private global::System.Data.DataColumn columnetd_date;
+            
+            private global::System.Data.DataColumn columnDDP拆分;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況DataTable() {
+                this.TableName = "採購入庫狀況";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal 採購入庫狀況DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected 採購入庫狀況DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn siteColumn {
+                get {
+                    return this.columnsite;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 款號Column {
+                get {
+                    return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 產區Column {
+                get {
+                    return this.column產區;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 入庫單號Column {
+                get {
+                    return this.column入庫單號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 採購單號Column {
+                get {
+                    return this.column採購單號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 廠商代號Column {
+                get {
+                    return this.column廠商代號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 代工廠Column {
+                get {
+                    return this.column代工廠;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 料號別Column {
+                get {
+                    return this.column料號別;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 料號Column {
+                get {
+                    return this.column料號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 料號名稱Column {
+                get {
+                    return this.column料號名稱;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 採購量Column {
+                get {
+                    return this.column採購量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 不計價數量Column {
+                get {
+                    return this.column不計價數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 不計價總量Column {
+                get {
+                    return this.column不計價總量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 入庫數量Column {
+                get {
+                    return this.column入庫數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 已入庫量Column {
+                get {
+                    return this.column已入庫量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 單位Column {
+                get {
+                    return this.column單位;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 單價Column {
+                get {
+                    return this.column單價;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 金額Column {
+                get {
+                    return this.column金額;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 允收上限Column {
+                get {
+                    return this.column允收上限;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 是否轉應付Column {
+                get {
+                    return this.column是否轉應付;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 交易條件Column {
+                get {
+                    return this.column交易條件;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 入庫日Column {
+                get {
+                    return this.column入庫日;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 業務Column {
+                get {
+                    return this.column業務;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn eta_dateColumn {
+                get {
+                    return this.columneta_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 中文料號Column {
+                get {
+                    return this.column中文料號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 英文料號Column {
+                get {
+                    return this.column英文料號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DDP費用Column {
+                get {
+                    return this.columnDDP費用;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 訂單交易條件Column {
+                get {
+                    return this.column訂單交易條件;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn etd_dateColumn {
+                get {
+                    return this.columnetd_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DDP拆分Column {
+                get {
+                    return this.columnDDP拆分;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況Row this[int index] {
+                get {
+                    return ((採購入庫狀況Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event 採購入庫狀況RowChangeEventHandler 採購入庫狀況RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event 採購入庫狀況RowChangeEventHandler 採購入庫狀況RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event 採購入庫狀況RowChangeEventHandler 採購入庫狀況RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event 採購入庫狀況RowChangeEventHandler 採購入庫狀況RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Add採購入庫狀況Row(採購入庫狀況Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況Row Add採購入庫狀況Row(
+                        string site, 
+                        string 款號, 
+                        string 產區, 
+                        string 入庫單號, 
+                        string 採購單號, 
+                        string 廠商代號, 
+                        string 代工廠, 
+                        string 料號別, 
+                        string 料號, 
+                        string 料號名稱, 
+                        decimal 採購量, 
+                        decimal 不計價數量, 
+                        decimal 不計價總量, 
+                        decimal 入庫數量, 
+                        decimal 已入庫量, 
+                        string 單位, 
+                        decimal 單價, 
+                        decimal 金額, 
+                        decimal 允收上限, 
+                        string 是否轉應付, 
+                        string 交易條件, 
+                        System.DateTime 入庫日, 
+                        string 業務, 
+                        System.DateTime eta_date, 
+                        string 中文料號, 
+                        string 英文料號, 
+                        decimal DDP費用, 
+                        string 訂單交易條件, 
+                        System.DateTime etd_date, 
+                        decimal DDP拆分) {
+                採購入庫狀況Row row採購入庫狀況Row = ((採購入庫狀況Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        site,
+                        款號,
+                        產區,
+                        入庫單號,
+                        採購單號,
+                        廠商代號,
+                        代工廠,
+                        料號別,
+                        料號,
+                        料號名稱,
+                        採購量,
+                        不計價數量,
+                        不計價總量,
+                        入庫數量,
+                        已入庫量,
+                        單位,
+                        單價,
+                        金額,
+                        允收上限,
+                        是否轉應付,
+                        交易條件,
+                        入庫日,
+                        業務,
+                        eta_date,
+                        中文料號,
+                        英文料號,
+                        DDP費用,
+                        訂單交易條件,
+                        etd_date,
+                        DDP拆分};
+                row採購入庫狀況Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row採購入庫狀況Row);
+                return row採購入庫狀況Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                採購入庫狀況DataTable cln = ((採購入庫狀況DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 採購入庫狀況DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnsite = base.Columns["site"];
+                this.column款號 = base.Columns["款號"];
+                this.column產區 = base.Columns["產區"];
+                this.column入庫單號 = base.Columns["入庫單號"];
+                this.column採購單號 = base.Columns["採購單號"];
+                this.column廠商代號 = base.Columns["廠商代號"];
+                this.column代工廠 = base.Columns["代工廠"];
+                this.column料號別 = base.Columns["料號別"];
+                this.column料號 = base.Columns["料號"];
+                this.column料號名稱 = base.Columns["料號名稱"];
+                this.column採購量 = base.Columns["採購量"];
+                this.column不計價數量 = base.Columns["不計價數量"];
+                this.column不計價總量 = base.Columns["不計價總量"];
+                this.column入庫數量 = base.Columns["入庫數量"];
+                this.column已入庫量 = base.Columns["已入庫量"];
+                this.column單位 = base.Columns["單位"];
+                this.column單價 = base.Columns["單價"];
+                this.column金額 = base.Columns["金額"];
+                this.column允收上限 = base.Columns["允收上限"];
+                this.column是否轉應付 = base.Columns["是否轉應付"];
+                this.column交易條件 = base.Columns["交易條件"];
+                this.column入庫日 = base.Columns["入庫日"];
+                this.column業務 = base.Columns["業務"];
+                this.columneta_date = base.Columns["eta_date"];
+                this.column中文料號 = base.Columns["中文料號"];
+                this.column英文料號 = base.Columns["英文料號"];
+                this.columnDDP費用 = base.Columns["DDP費用"];
+                this.column訂單交易條件 = base.Columns["訂單交易條件"];
+                this.columnetd_date = base.Columns["etd_date"];
+                this.columnDDP拆分 = base.Columns["DDP拆分"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnsite = new global::System.Data.DataColumn("site", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsite);
+                this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款號);
+                this.column產區 = new global::System.Data.DataColumn("產區", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column產區);
+                this.column入庫單號 = new global::System.Data.DataColumn("入庫單號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column入庫單號);
+                this.column採購單號 = new global::System.Data.DataColumn("採購單號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column採購單號);
+                this.column廠商代號 = new global::System.Data.DataColumn("廠商代號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column廠商代號);
+                this.column代工廠 = new global::System.Data.DataColumn("代工廠", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column代工廠);
+                this.column料號別 = new global::System.Data.DataColumn("料號別", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column料號別);
+                this.column料號 = new global::System.Data.DataColumn("料號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column料號);
+                this.column料號名稱 = new global::System.Data.DataColumn("料號名稱", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column料號名稱);
+                this.column採購量 = new global::System.Data.DataColumn("採購量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column採購量);
+                this.column不計價數量 = new global::System.Data.DataColumn("不計價數量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column不計價數量);
+                this.column不計價總量 = new global::System.Data.DataColumn("不計價總量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column不計價總量);
+                this.column入庫數量 = new global::System.Data.DataColumn("入庫數量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column入庫數量);
+                this.column已入庫量 = new global::System.Data.DataColumn("已入庫量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column已入庫量);
+                this.column單位 = new global::System.Data.DataColumn("單位", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column單位);
+                this.column單價 = new global::System.Data.DataColumn("單價", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column單價);
+                this.column金額 = new global::System.Data.DataColumn("金額", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column金額);
+                this.column允收上限 = new global::System.Data.DataColumn("允收上限", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column允收上限);
+                this.column是否轉應付 = new global::System.Data.DataColumn("是否轉應付", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column是否轉應付);
+                this.column交易條件 = new global::System.Data.DataColumn("交易條件", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column交易條件);
+                this.column入庫日 = new global::System.Data.DataColumn("入庫日", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column入庫日);
+                this.column業務 = new global::System.Data.DataColumn("業務", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column業務);
+                this.columneta_date = new global::System.Data.DataColumn("eta_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columneta_date);
+                this.column中文料號 = new global::System.Data.DataColumn("中文料號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column中文料號);
+                this.column英文料號 = new global::System.Data.DataColumn("英文料號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column英文料號);
+                this.columnDDP費用 = new global::System.Data.DataColumn("DDP費用", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDDP費用);
+                this.column訂單交易條件 = new global::System.Data.DataColumn("訂單交易條件", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單交易條件);
+                this.columnetd_date = new global::System.Data.DataColumn("etd_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnetd_date);
+                this.columnDDP拆分 = new global::System.Data.DataColumn("DDP拆分", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDDP拆分);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況Row New採購入庫狀況Row() {
+                return ((採購入庫狀況Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 採購入庫狀況Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(採購入庫狀況Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.採購入庫狀況RowChanged != null)) {
+                    this.採購入庫狀況RowChanged(this, new 採購入庫狀況RowChangeEvent(((採購入庫狀況Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.採購入庫狀況RowChanging != null)) {
+                    this.採購入庫狀況RowChanging(this, new 採購入庫狀況RowChangeEvent(((採購入庫狀況Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.採購入庫狀況RowDeleted != null)) {
+                    this.採購入庫狀況RowDeleted(this, new 採購入庫狀況RowChangeEvent(((採購入庫狀況Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.採購入庫狀況RowDeleting != null)) {
+                    this.採購入庫狀況RowDeleting(this, new 採購入庫狀況RowChangeEvent(((採購入庫狀況Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Remove採購入庫狀況Row(採購入庫狀況Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS3 ds = new SalesTempDS3();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "採購入庫狀況DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5548,6 +6266,861 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 採購入庫狀況Row : global::System.Data.DataRow {
+            
+            private 採購入庫狀況DataTable table採購入庫狀況;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal 採購入庫狀況Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table採購入庫狀況 = ((採購入庫狀況DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string site {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.siteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'site\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.siteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 款號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.款號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'款號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.款號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 產區 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.產區Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'產區\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.產區Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 入庫單號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.入庫單號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'入庫單號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.入庫單號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 採購單號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.採購單號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'採購單號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.採購單號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 廠商代號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.廠商代號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'廠商代號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.廠商代號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 代工廠 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.代工廠Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'代工廠\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.代工廠Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 料號別 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.料號別Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'料號別\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.料號別Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 料號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.料號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'料號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.料號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 料號名稱 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.料號名稱Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'料號名稱\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.料號名稱Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 採購量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.採購量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'採購量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.採購量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 不計價數量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.不計價數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'不計價數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.不計價數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 不計價總量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.不計價總量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'不計價總量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.不計價總量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 入庫數量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.入庫數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'入庫數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.入庫數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 已入庫量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.已入庫量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'已入庫量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.已入庫量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 單位 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.單位Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'單位\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.單位Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 單價 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.單價Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'單價\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.單價Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 金額 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.金額Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'金額\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.金額Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 允收上限 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.允收上限Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'允收上限\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.允收上限Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 是否轉應付 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.是否轉應付Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'是否轉應付\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.是否轉應付Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 交易條件 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.交易條件Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'交易條件\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.交易條件Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime 入庫日 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table採購入庫狀況.入庫日Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'入庫日\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.入庫日Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 業務 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.業務Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'業務\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.業務Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime eta_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table採購入庫狀況.eta_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'eta_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.eta_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 中文料號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.中文料號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'中文料號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.中文料號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 英文料號 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.英文料號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'英文料號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.英文料號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal DDP費用 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.DDP費用Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'DDP費用\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.DDP費用Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 訂單交易條件 {
+                get {
+                    try {
+                        return ((string)(this[this.table採購入庫狀況.訂單交易條件Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'訂單交易條件\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.訂單交易條件Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime etd_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.table採購入庫狀況.etd_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'etd_date\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.etd_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal DDP拆分 {
+                get {
+                    try {
+                        return ((decimal)(this[this.table採購入庫狀況.DDP拆分Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'採購入庫狀況\' 中資料行 \'DDP拆分\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table採購入庫狀況.DDP拆分Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IssiteNull() {
+                return this.IsNull(this.table採購入庫狀況.siteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetsiteNull() {
+                this[this.table採購入庫狀況.siteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is款號Null() {
+                return this.IsNull(this.table採購入庫狀況.款號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set款號Null() {
+                this[this.table採購入庫狀況.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is產區Null() {
+                return this.IsNull(this.table採購入庫狀況.產區Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set產區Null() {
+                this[this.table採購入庫狀況.產區Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is入庫單號Null() {
+                return this.IsNull(this.table採購入庫狀況.入庫單號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set入庫單號Null() {
+                this[this.table採購入庫狀況.入庫單號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is採購單號Null() {
+                return this.IsNull(this.table採購入庫狀況.採購單號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set採購單號Null() {
+                this[this.table採購入庫狀況.採購單號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is廠商代號Null() {
+                return this.IsNull(this.table採購入庫狀況.廠商代號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set廠商代號Null() {
+                this[this.table採購入庫狀況.廠商代號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is代工廠Null() {
+                return this.IsNull(this.table採購入庫狀況.代工廠Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set代工廠Null() {
+                this[this.table採購入庫狀況.代工廠Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is料號別Null() {
+                return this.IsNull(this.table採購入庫狀況.料號別Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set料號別Null() {
+                this[this.table採購入庫狀況.料號別Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is料號Null() {
+                return this.IsNull(this.table採購入庫狀況.料號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set料號Null() {
+                this[this.table採購入庫狀況.料號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is料號名稱Null() {
+                return this.IsNull(this.table採購入庫狀況.料號名稱Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set料號名稱Null() {
+                this[this.table採購入庫狀況.料號名稱Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is採購量Null() {
+                return this.IsNull(this.table採購入庫狀況.採購量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set採購量Null() {
+                this[this.table採購入庫狀況.採購量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is不計價數量Null() {
+                return this.IsNull(this.table採購入庫狀況.不計價數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set不計價數量Null() {
+                this[this.table採購入庫狀況.不計價數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is不計價總量Null() {
+                return this.IsNull(this.table採購入庫狀況.不計價總量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set不計價總量Null() {
+                this[this.table採購入庫狀況.不計價總量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is入庫數量Null() {
+                return this.IsNull(this.table採購入庫狀況.入庫數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set入庫數量Null() {
+                this[this.table採購入庫狀況.入庫數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is已入庫量Null() {
+                return this.IsNull(this.table採購入庫狀況.已入庫量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set已入庫量Null() {
+                this[this.table採購入庫狀況.已入庫量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is單位Null() {
+                return this.IsNull(this.table採購入庫狀況.單位Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set單位Null() {
+                this[this.table採購入庫狀況.單位Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is單價Null() {
+                return this.IsNull(this.table採購入庫狀況.單價Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set單價Null() {
+                this[this.table採購入庫狀況.單價Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is金額Null() {
+                return this.IsNull(this.table採購入庫狀況.金額Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set金額Null() {
+                this[this.table採購入庫狀況.金額Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is允收上限Null() {
+                return this.IsNull(this.table採購入庫狀況.允收上限Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set允收上限Null() {
+                this[this.table採購入庫狀況.允收上限Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is是否轉應付Null() {
+                return this.IsNull(this.table採購入庫狀況.是否轉應付Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set是否轉應付Null() {
+                this[this.table採購入庫狀況.是否轉應付Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is交易條件Null() {
+                return this.IsNull(this.table採購入庫狀況.交易條件Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set交易條件Null() {
+                this[this.table採購入庫狀況.交易條件Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is入庫日Null() {
+                return this.IsNull(this.table採購入庫狀況.入庫日Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set入庫日Null() {
+                this[this.table採購入庫狀況.入庫日Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is業務Null() {
+                return this.IsNull(this.table採購入庫狀況.業務Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set業務Null() {
+                this[this.table採購入庫狀況.業務Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Iseta_dateNull() {
+                return this.IsNull(this.table採購入庫狀況.eta_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Seteta_dateNull() {
+                this[this.table採購入庫狀況.eta_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is中文料號Null() {
+                return this.IsNull(this.table採購入庫狀況.中文料號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set中文料號Null() {
+                this[this.table採購入庫狀況.中文料號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is英文料號Null() {
+                return this.IsNull(this.table採購入庫狀況.英文料號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set英文料號Null() {
+                this[this.table採購入庫狀況.英文料號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDDP費用Null() {
+                return this.IsNull(this.table採購入庫狀況.DDP費用Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDDP費用Null() {
+                this[this.table採購入庫狀況.DDP費用Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is訂單交易條件Null() {
+                return this.IsNull(this.table採購入庫狀況.訂單交易條件Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set訂單交易條件Null() {
+                this[this.table採購入庫狀況.訂單交易條件Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isetd_dateNull() {
+                return this.IsNull(this.table採購入庫狀況.etd_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setetd_dateNull() {
+                this[this.table採購入庫狀況.etd_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDDP拆分Null() {
+                return this.IsNull(this.table採購入庫狀況.DDP拆分Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDDP拆分Null() {
+                this[this.table採購入庫狀況.DDP拆分Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -5703,6 +7276,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public 振大主表Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class 採購入庫狀況RowChangeEvent : global::System.EventArgs {
+            
+            private 採購入庫狀況Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況RowChangeEvent(採購入庫狀況Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public 採購入庫狀況Row Row {
                 get {
                     return this.eventRow;
                 }

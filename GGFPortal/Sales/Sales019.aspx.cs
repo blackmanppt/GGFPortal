@@ -44,48 +44,6 @@ namespace GGFPortal.Sales
                 myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
             }
-            #region query 使用 In
-            //using (SqlConnection conn1 = new SqlConnection(strConnectString))
-            //{
-            //    SqlCommand command1 = conn1.CreateCommand();
-            //    SqlTransaction transaction1;
-            //    conn1.Open();
-            //    transaction1 = conn1.BeginTransaction("createExcelImport");
-            //    try
-            //    {
-            //        command1.Connection = conn1;
-            //        command1.Transaction = transaction1;
-
-            //        #region 查詢
-            //        string Str搜尋參數 = "";
-            //        string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
-            //        string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
-            //        //string[] ParaFromDatatable = 
-            //        command1.CommandText = string.Format(@"SELECT d* from 
-            //                     where {1} in ( {0} ) and a.site='GGF'
-            //                     ", string.Join(",", parameters), Str搜尋參數);
-            //        command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
-            //        for (int i = 0; i < StrArrary.Length; i++)
-            //            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
-            //        command1.ExecuteNonQuery();
-            //        SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
-            //        dt.Load(dr);
-            //        #endregion
-            //        //transaction1.Commit();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Log.ErrorLog(ex, "Error", StrProgram);
-            //        transaction1.Rollback();
-            //        throw;
-            //    }
-            //    finally
-            //    {
-            //        conn1.Close();
-            //        transaction1.Dispose();
-            //    }
-            //}
-            #endregion
 
             if (dt.Rows.Count > 0)
             {
@@ -106,7 +64,9 @@ namespace GGFPortal.Sales
 
             StringBuilder strsql = new StringBuilder(@"SELECT  *,(select top 1 sale_price from ordc_material where ord_nbr=訂單號碼 and item_no like 'OH%') as 印花費
                                         FROM [dbo].[View訂單明細表]  ");
-            strsql.AppendFormat(" where convert(varchar(10),出貨日期,120) between '{0}' and '{1}' and 交易條件 = 'DDP' and nation_no like 'VN%'",DateRangeTB.Text.Substring(0,10),DateRangeTB.Text.Substring(13,10));
+            strsql.AppendFormat(" where convert(varchar(10),出貨日期,120) between '{0}' and '{1}' and 交易條件 = 'DDP' and nation_no like 'VN%' {2}"
+                ,DateRangeTB.Text.Substring(0,10),DateRangeTB.Text.Substring(13,10)
+                ,(!string.IsNullOrEmpty(客戶TB.Text)?string.Format(" and 客戶代號 = '{0}' ",客戶TB.Text.ToUpper()):""));
             return strsql;
         }
         public bool SearchCheck()

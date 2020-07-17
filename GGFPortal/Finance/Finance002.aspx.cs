@@ -53,7 +53,7 @@ namespace GGFPortal.Finance
                 {
                     FactoryDDL.Items.Clear();
                     NationDDL.Items.Clear();
-                    SqlDataAdapter myAdapter = new SqlDataAdapter(" select distinct a.vendor_id,b.vendor_name from ordc_bah1 a left join bas_vendor_master b on a.vendor_id=b.vendor_id ", Conn);
+                    SqlDataAdapter myAdapter = new SqlDataAdapter(" select distinct a.vendor_id,b.vendor_name from ordc_bah1 a left join bas_vendor_master b on a.vendor_id=b.vendor_id order by vendor_name", Conn);
                     myAdapter.Fill(Ds, "Factory");    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
                     myAdapter.SelectCommand.CommandText = "select distinct a.nation_no,b.nation_name from ordc_bah2 a left join bas_nation b on a.nation_no=b.nation_no where b.nation_name is not null";
                     myAdapter.Fill(Ds, "Nation");
@@ -196,7 +196,7 @@ namespace GGFPortal.Finance
                                 ,m.UnCountQty as '不計價總量'
                                 ,CONVERT(varchar(10) ,b.rec_date,111) as '入庫日'
                                 ,a.rec_qty as '入庫數量'
-								,m.RecQty  as '已入庫量'
+								,m.RecQty + m.UnCountQty  as '已入庫量'
 								,a.rec_unit as '單位'
                                 ,a.pur_price   as '單價'
                                 ,a.rec_qty*a.pur_price  as '金額'

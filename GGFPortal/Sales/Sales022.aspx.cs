@@ -34,7 +34,6 @@ namespace GGFPortal.Sales
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
         protected void DbInit()
         {
@@ -63,47 +62,53 @@ namespace GGFPortal.Sales
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
                     command1.CommandText = string.Format(@"select
-								a.site,
-                                dbo.F_NationName(e.site,nation_no) as '產區'
-                                ,dbo.F_VendorName(d.site,c.vendor_id) as '代工廠'
-                                ,a.pur_nbr as '採購單號'
-                                ,g.transatn_term as '交易條件'
-								,cus_item_no as '款號'
-								,pur_qty as '採購量'
-                                ,b.vendor_id as '廠商代號'
-								,i.UnCountQty as '不計價總量'
-                                ,a.rec_qty as '入庫數量'
-								,i.RecQty  as '已入庫量'
-								,a.pur_unit as '單位'
-                                ,a.pur_price   as '單價'
-                                ,a.pur_amt  as '金額'
-                                ,employee_name as '業務'
-                                ,a.overage_allow as '允收上限'
-                                ,h.item_no as '料號'
-								,a.org_item_no as '原始料號'
-                                ,f.item_name as '料號名稱'
-                                ,case when b.pur_kind = 'M' then '主料' when b.pur_kind = 'S' then '副料' else b.pur_kind end as '料號別'
-                                ,h.color_cname,h.color_ename ,f.item_spk as '英文料號'
-                                ,d.transatn_term 訂單交易條件
-                                from purc_purchase_detail a
-                                left join purc_purchase_master b on a.site=b.site and a.pur_nbr=b.pur_nbr 
-                                left join ordc_bah1 c on c.site=b.site and c.ord_nbr=b.ord_nbr
-                                left join ordc_bah2 d on d.site=c.site and d.ord_nbr=c.ord_nbr
-                                left join bas_employee e on e.site=b.site and b.buyer=e.employee_no
-                                left join bas_vendor_mgt g on b.vendor_id=g.vendor_id and b.site=g.site
-                                left join bas_item_master f on a.item_no =f.item_no and a.site=f.site
-                                left join v_color h on h.item_no =a.item_no and h.site=a.site
-                                left join View入庫數量 i on a.site=i.site and a.pur_nbr=i.pur_nbr and a.pur_seq =i.pur_seq
-                                where pur_head_status<>'CA' and bah_status<>'CA'
-								and pur_detail_status <> 'CA' and item_status <>'CA' 
-                                where {1}  ( {0} ) and a.site='GGF' "
-                                , (!string.IsNullOrEmpty(MutiTB.Text))?string.Join(",", parameters):""
-                                , (!string.IsNullOrEmpty(MutiTB.Text))?Str搜尋參數:""
-                                ,(string.IsNullOrEmpty(客戶TB.Text))?string" and cus_id = "
-                                );
-                    command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
-                    for (int i = 0; i < StrArrary.Length; i++)
-                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                        a.site,
+                        dbo.F_NationName(e.site,nation_no) as '產區'
+                        ,dbo.F_VendorName(d.site,c.vendor_id) as '代工廠'
+                        ,a.pur_nbr as '採購單號'
+                        ,a.pur_seq as '採購序號'
+                        ,g.transatn_term as '交易條件'
+                        ,cus_item_no as '款號'
+                        ,pur_qty as '採購量'
+                        ,b.vendor_id as '廠商代號'
+                        ,i.UnCountQty as '不計價總量'
+                        ,i.RecQty  as '已入庫量'
+                        ,a.pur_unit as '單位'
+                        ,a.pur_price   as '單價'
+                        ,a.pur_amt  as '金額'
+                        ,employee_name as '業務'
+                        ,a.overage_allow as '允收上限'
+                        ,h.item_no as '料號'
+                        ,a.org_item_no as '原始料號'
+                        ,f.item_name as '料號名稱'
+                        ,case when b.pur_kind = 'M' then '主料' when b.pur_kind = 'S' then '副料' else b.pur_kind end as '料號別'
+                        ,h.color_cname,h.color_ename ,f.item_spk as '料號規格'
+                        ,d.transatn_term 訂單交易條件
+                        from purc_purchase_detail a 
+                        left join purc_purchase_master b on a.site=b.site and a.pur_nbr=b.pur_nbr 
+                        left join ordc_bah1 c on c.site=b.site and c.ord_nbr=b.ord_nbr
+                        left join ordc_bah2 d on d.site=c.site and d.ord_nbr=c.ord_nbr
+                        left join bas_employee e on e.site=b.site and b.buyer=e.employee_no
+                        left join bas_vendor_mgt g on b.vendor_id=g.vendor_id and b.site=g.site
+                        left join bas_item_master f on a.item_no =f.item_no and a.site=f.site
+                        left join v_color h on h.item_no =a.item_no and h.site=a.site
+                        left join View入庫數量 i on a.site=i.site and a.pur_nbr=i.pur_nbr and a.pur_seq =i.pur_seq
+                        where {0}  a.site='GGF' and pur_head_status<>'CA' and bah_status<>'CA'
+                        and pur_detail_status <> 'CA' and item_status <>'CA'
+                        {1} {2} {3} {4}"
+                        , (!string.IsNullOrEmpty(MutiTB.Text))? Str搜尋參數 +" in ( " + string.Join(",", parameters) + " and " : ""
+                        , (!string.IsNullOrEmpty(客戶TB.Text)) ? string.Format(" and cus_id = '{0}'", 客戶TB.Text) : ""
+                        , (!string.IsNullOrEmpty(款號TB.Text)) ? string.Format(" and cus_item_no = '{0}'", 款號TB.Text) : ""
+                        , string.Format(" and a.ord_nbr in (select ord_nbr from ordc_bat where last_date between '{0}' and '{1}' and bat_status<>'CA' and cancel_yn='N' )", DateRangeTB.Text.Substring(0, 10), DateRangeTB.Text.Substring(13, 10))
+                        , (!string.IsNullOrEmpty(工廠DDL.SelectedValue)) ? string.Format(" and c.vendor_id ='{0}'", 工廠DDL.SelectedValue) : ""
+
+                        );
+                    //command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
+                    if (MutiTB.Text.Length>0)
+                    {
+                        for (int i = 0; i < StrArrary.Length; i++)
+                            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                    }
                     command1.ExecuteNonQuery();
                     SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt.Load(dr);
@@ -113,8 +118,8 @@ namespace GGFPortal.Sales
                 catch (Exception ex)
                 {
                     Log.ErrorLog(ex, "Error", StrProgram);
-                    transaction1.Rollback();
-                    throw;
+                    //transaction1.Rollback();
+                    //throw;
                 }
                 finally
                 {
@@ -126,16 +131,16 @@ namespace GGFPortal.Sales
 
             if (dt.Rows.Count > 0)
             {
-                //ReportViewer1.Visible = true;
-                //ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                //ReportDataSource source = new ReportDataSource("採購單料號訂單資料", dt);
-                //ReportViewer1.LocalReport.DataSources.Clear();
-                //ReportViewer1.LocalReport.DataSources.Add(source);
-                //ReportViewer1.DataBind();
-                //ReportViewer1.LocalReport.Refresh();
+                Session["Sales022Data"] = dt;
+                GV.DataSource = dt;
+                GV.DataBind();
+                ExportBT.Visible = true;
             }
             else
+            {
+                ExportBT.Visible = false;
                 F_ErrorShow("搜尋不到資料");
+            }   
         }
 
         private StringBuilder selectsql()
@@ -144,22 +149,6 @@ namespace GGFPortal.Sales
             StringBuilder strsql = new StringBuilder(" select * from [View採購單料號訂單資料] where 1=1 ");
 
             return strsql;
-        }
-        public bool SearchCheck()
-        {
-            bool bCheck = false;
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    bCheck = true;
-            return bCheck;
-
         }
 
         protected void GV_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -173,11 +162,33 @@ namespace GGFPortal.Sales
                     break;
                 case "SelectData":
                     GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+                    string Str採購單 = "",Str採購序號="",Str規格="";
+                    DataTable dt = new DataTable();
                     //抓key
-                    string strid = GV.DataKeys[row.RowIndex].Values[0].ToString();
+                    //string strid = GV.DataKeys[row.RowIndex].Values[0].ToString();
                     //抓資料
-                    Session["Uid"] = GV.Rows[row.RowIndex].Cells[3].Text;
-                    Response.Redirect("Sample008.aspx");
+                    Str採購單 = GV.Rows[row.RowIndex].Cells[3].Text;
+                    Str採購序號 = GV.Rows[row.RowIndex].Cells[4].Text;
+                    Str規格 = GV.Rows[row.RowIndex].Cells[6].Text;
+                    規格LB.Text = Str規格;
+                    using (SqlConnection Conn = new SqlConnection(strConnectString))
+                    {
+                        SqlDataAdapter myAdapter = new SqlDataAdapter(string.Format(@"select  
+                            a.rec_nbr 入庫單號,a.rec_seq 入庫序號,a.rec_qty as 入庫數量
+                            ,case when a.posted_acp='P' then '已進應付系統' else '' end as 應付狀態 ,convert(varchar(10),eta_date,120) as ETA
+                            from purc_receive_detail a
+                            where pur_nbr = '{0}' and pur_seq ='{1}'"
+                            , Str採購單,Str採購序號), Conn);
+                        myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        PopuGV.DataSource = dt;
+                        PopuGV.DataBind();
+                        入庫單Panel_ModalPopupExtender.Show();
+                    }
+                    else
+                        F_ErrorShow("無入庫資料");
                     break;
                 default:
                     break;
@@ -190,30 +201,12 @@ namespace GGFPortal.Sales
         }
         protected void ExcelDbInit()
         {
-            DataTable dt振大主表 = new DataTable(), dt振大布類 = new DataTable(), dt振大顏色 = new DataTable();
+            DataTable dt採購資料 = (DataTable)Session["Sales022Data"];
             string StrError = "";
-            using (SqlConnection Conn = new SqlConnection(strConnectString))
-            {
-                SqlDataAdapter myAdapter = new SqlDataAdapter(Selectsql("振大主表").ToString(), Conn);
-                myAdapter.Fill(dt振大主表);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
-                myAdapter.SelectCommand.CommandText = Selectsql("振大布類").ToString();
-                myAdapter.Fill(dt振大布類);
-                myAdapter.SelectCommand.CommandText = Selectsql("振大顏色").ToString();
-                myAdapter.Fill(dt振大顏色);
-            }
-
-            if (dt振大主表 == null)
+            if (dt採購資料 == null)
             {
-                StrError += "振大主表無資料<br/>";
-            }
-            if (dt振大布類 == null)
-            {
-                StrError += "振大布料無資料<br/>";
-            }
-            if (dt振大布類 == null)
-            {
-                StrError += "振大布類無資料";
+                StrError += "無採購資料";
             }
             if (StrError.Length > 0)
                 F_ErrorShow(StrError);
@@ -221,14 +214,12 @@ namespace GGFPortal.Sales
             {
                 using (XLWorkbook wb = new XLWorkbook())
                 {
-                    wb.Worksheets.Add(dt振大主表, "振大主表");
-                    wb.Worksheets.Add(dt振大布類, "振大布類");
-                    wb.Worksheets.Add(dt振大顏色, "振大顏色");
+                    wb.Worksheets.Add(dt採購資料, "採購資料");
                     Response.Clear();
                     Response.Buffer = true;
                     Response.Charset = "";
                     Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", "檔案名稱"));
+                    Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", "採購資料"));
                     using (MemoryStream MyMemoryStream = new MemoryStream())
                     {
                         wb.SaveAs(MyMemoryStream);
@@ -240,10 +231,34 @@ namespace GGFPortal.Sales
             }
         }
 
-        protected void SearchBT_Click(object sender, EventArgs e)
+        protected void ExportBT_Click(object sender, EventArgs e)
         {
-
+            ExcelDbInit();
         }
 
+        protected void SearchBT_Click(object sender, EventArgs e)
+        {
+            if (Session["Sales022Data"] != null)
+                Session["Sales022Data"] = null;
+            if (!string.IsNullOrEmpty(MutiTB.Text) || !string.IsNullOrEmpty(款號TB.Text) || !string.IsNullOrEmpty(客戶TB.Text))
+            {
+                DbInit();
+            }
+            else
+                F_ErrorShow("請輸入搜尋條件:款號/客戶");
+        }
+
+        protected void ShowBT_Click(object sender, EventArgs e)
+        {
+            入庫單Panel_ModalPopupExtender.Show();
+        }
+
+        protected void ClearBT_Click(object sender, EventArgs e)
+        {
+            款號TB.Text = "";
+            客戶TB.Text = "";
+            MutiTB.Text = "";
+            Session["Sales022Data"] = null;
+        }
     }
 }

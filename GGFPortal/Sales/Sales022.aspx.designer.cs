@@ -33,6 +33,15 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.DropDownList 工廠DDL;
 
         /// <summary>
+        /// SqlDataSource1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
         /// 客戶TB 控制項。
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.Button SearchBT;
 
         /// <summary>
+        /// ClearBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ClearBT;
+
+        /// <summary>
         /// 標題LB 控制項。
         /// </summary>
         /// <remarks>
@@ -121,6 +139,60 @@ namespace GGFPortal.Sales
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GV;
+
+        /// <summary>
+        /// ShowBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowBT;
+
+        /// <summary>
+        /// 入庫單Panel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel 入庫單Panel;
+
+        /// <summary>
+        /// 規格LB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label 規格LB;
+
+        /// <summary>
+        /// PopuGV 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView PopuGV;
+
+        /// <summary>
+        /// 關閉BT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button 關閉BT;
+
+        /// <summary>
+        /// 入庫單Panel_ModalPopupExtender 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender 入庫單Panel_ModalPopupExtender;
 
         /// <summary>
         /// HiddenField1 控制項。
