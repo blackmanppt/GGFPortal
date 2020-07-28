@@ -36,5 +36,33 @@ namespace GGFPortal.test
         {
             Label1.Text = DateTime.Now.Hour.ToString();
         }
+        void 程式測試_List()
+        {
+            //list運用
+            var names = new List<string> { "<name>", "Ana", "Felipe" };
+            //顯示資料
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+            names.Add("test1");
+            names.Add("test2");
+            names.Remove("Ana");
+            //顯示資料
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+            Console.WriteLine($"Show Name have {names.Count} Data");
+            Console.WriteLine($"Data 1: {names[0]} Data");
+
+            names.Sort();
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Sort: {name.ToUpper()}!");
+            }
+        }
     }
 }

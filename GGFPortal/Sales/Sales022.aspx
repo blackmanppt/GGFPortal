@@ -167,11 +167,7 @@
 
             </asp:GridView>
         </div>
-
-
-    </main>
-
-    <asp:Button ID="ShowBT" runat="server" Text="顯示" OnClick="ShowBT_Click" Style="display: none" />
+            <asp:Button ID="ShowBT" runat="server" Text="顯示" OnClick="ShowBT_Click" Style="display: none" />
     <asp:Panel ID="入庫單Panel" runat="server" ScrollBars="Auto" align="center" CssClass="alert-danger h-75 w-75" Style="display: none">
         <div class="h3 m-3 alert-primary">
             <asp:Label ID="規格LB" runat="server" Text=""></asp:Label></div>
@@ -184,8 +180,7 @@
     </asp:Panel>
     <ajaxToolkit:ModalPopupExtender runat="server" PopupControlID="入庫單Panel" BehaviorID="入庫單Panel_ModalPopupExtender" TargetControlID="ShowBT" CancelControlID="關閉BT" ID="入庫單Panel_ModalPopupExtender"></ajaxToolkit:ModalPopupExtender>
 
-
-
+   </main>
     <!--日期暫存-->
     <asp:HiddenField ID="HiddenField1" runat="server" />
 </asp:Content>

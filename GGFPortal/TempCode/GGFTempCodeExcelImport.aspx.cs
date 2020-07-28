@@ -23,6 +23,8 @@ namespace GGFPortal.TempCode
         SysLog Log = new SysLog();
         static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
         static string strArea = "", strImportType = "";
+        static string Str匯入定義Table = "河內打樣單";
+        static string Str匯入Head = "GGF河內打樣單Head", Str匯入Line = "GGF河內打樣單";
         static DataSet Ds = new DataSet();
         static 多語 lang = new 多語();
         static DataCheck datacheck = new DataCheck();
@@ -33,7 +35,8 @@ namespace GGFPortal.TempCode
 
             ((Label)Master.FindControl("BrandLB")).Text = StrPageName;
             Page.Title = StrPageName;
-            datacheck.讀取多與資料(StrPageName);
+            datacheck.讀取多語資料(StrPageName);
+            lang.讀取多語資料("Program", StrProgram);
             //StrError名稱 = "";
             //StrProgram = "TempCode2.aspx";
 
@@ -43,15 +46,6 @@ namespace GGFPortal.TempCode
         {
 
         }
-
-        //public class Columndefined
-        //{
-        //    public int ColumnID { get; set; }
-        //    public string ColumnName { get; set; }
-        //    public string VNName { get; set; }
-        //    public int ColumnType { get; set; }
-        //    public string ChineseName { get; set; }
-        //}
         protected DataTable GetDBData(string Str處理狀況)
         {
             StringBuilder sb = new StringBuilder();
@@ -60,7 +54,7 @@ namespace GGFPortal.TempCode
             {
                 //匯入資料
                 case "欄位定義":
-                    sb.Append(@"select 
+                    sb.AppendFormat(@"select 
                         a.指定頁籤名稱,
                         a.是否指定頁籤,
                         a.資料起始欄,
@@ -72,8 +66,8 @@ namespace GGFPortal.TempCode
                         b.資料格式,
                         b.是否為必要欄位 
                         from [dbo].[GGF資料匯入定義表Head] a left join [dbo].[GGF資料匯入定義表Line] b on a.id=b.id
-                        where a.匯入資料='河內打樣單' and b.IsDeleted= 0 
-                        order by SeqNo");
+                        where a.匯入資料='{0}' and b.IsDeleted= 0 
+                        order by SeqNo", Str匯入定義Table);
                     break;
                 case "確認上傳資料2":
 
@@ -136,14 +130,15 @@ namespace GGFPortal.TempCode
                 string LocationFiled = Server.MapPath(@"~\ExcelUpLoad\");
                 string str頁簽名稱 = "";
 
-                
-
                 try
                 {
                     DataTable D_table = new DataTable("Excel");
                     DataTable D_errortable = new DataTable("Error");
                     string 副檔名 = System.IO.Path.GetExtension(fileName);
                     DataTable DtColumnDefine = GetDBData("欄位定義");
+                    if(Session["DataDefine"]!=null)
+                        Session.Remove("DataDeffine");
+                    Session["DataDeffine"] = DtColumnDefine;
                     //指定Import Sheet Name
                     string StrSheetNameCheck = "";
                     Boolean BCheck = false;
@@ -159,6 +154,7 @@ namespace GGFPortal.TempCode
                     //D_errortable.Columns.Add("Dept");
                     D_errortable.Columns.Add("Error");
                     #endregion
+                    //
                     foreach (DataRow Dr in DtColumnDefine.Rows)
                     {
                         D_table.Columns.Add(Dr["資料名稱中文"].ToString());
@@ -168,17 +164,19 @@ namespace GGFPortal.TempCode
                     {
                         StrSheetNameCheck = (string.IsNullOrEmpty(DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString()))?"": DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString();
 
-                        if (!Boolean.TryParse(DtColumnDefine.Rows[0]["指定頁籤名稱"].ToString(), out BCheck))
+                        if (!Boolean.TryParse(DtColumnDefine.Rows[0]["是否指定頁籤"].ToString(), out BCheck))
                         {
                             BCheck = false;
                         }
+
                         if(!int.TryParse(DtColumnDefine.Rows[0]["資料起始列"].ToString(), out I資料起始列))
                         {
-                            I資料起始列 = 0;
+                            I資料起始列 = 1;
                         }
+
                         if (!int.TryParse(DtColumnDefine.Rows[0]["資料起始欄"].ToString(), out I資料起始欄))
                         {
-                            I資料起始欄 = 1;
+                            I資料起始欄 = 0;
                         }
 
                         while (File.Exists(LocationFiled + fileName))
@@ -211,6 +209,19 @@ namespace GGFPortal.TempCode
                                 {
                                     //--不包含 Excel表頭列的 "其他資料列"
                                     IRow row = (IRow)u_sheet.GetRow(i);
+
+                                    #region 關鍵資料沒有不執行，避免USER亂填EXCEL
+                                    string Str款號 = "";
+                                    try
+                                    {
+                                        Str款號 = row.GetCell(1).ToString();
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                    if (string.IsNullOrEmpty(Str款號))
+                                        continue;
+                                    #endregion
                                     F_資料確認(ref D_table,ref D_errortable, str頁簽名稱, row, DtColumnDefine, i, I資料起始欄);
                                 }
                                 //-- 釋放 NPOI的資源
@@ -221,20 +232,35 @@ namespace GGFPortal.TempCode
                         }
                         else
                         {
-
                             HSSFWorkbook workbook = new HSSFWorkbook(upload_file.PostedFile.InputStream);  //==只能讀取 System.IO.Stream
                             for (int x = 0; x < workbook.NumberOfSheets; x++)
                             {
                                 HSSFSheet u_sheet = (HSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
                                 HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(I資料起始列);  //-- Excel 表頭列
                                 IRow DateRow = (IRow)u_sheet.GetRow(I資料起始列);             //-- v.1.2.4版修改
-                                                                                    //Session["Date"] = SearchTB.Text;
+                                //檢查是否有要對應資料
+                                if (BCheck && StrSheetNameCheck != str頁簽名稱)
+                                {
+                                    continue;
+                                }
                                 str頁簽名稱 = u_sheet.SheetName.ToString();
-
                                 for (int i = I資料起始列; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                                 {
                                     //--不包含 Excel表頭列的 "其他資料列"
                                     IRow row = (IRow)u_sheet.GetRow(i);
+
+                                    #region 關鍵資料沒有不執行，避免USER亂填EXCEL
+                                    string Str款號 = "";
+                                    try
+                                    {
+                                        Str款號 = row.GetCell(1).ToString();
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                    if (string.IsNullOrEmpty(Str款號))
+                                        continue;
+                                    #endregion
                                     F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row, DtColumnDefine, i, I資料起始欄);
                                 }
                                 //-- 釋放 NPOI的資源
@@ -254,6 +280,10 @@ namespace GGFPortal.TempCode
                         {
                             GridView1.DataSource = D_table;
                             GridView1.DataBind();
+                            if(D_errortable.Rows.Count == 0)
+                            {
+                                Session["ImportExcelData"] = D_table;
+                            }
                         }
                     }
                     else
@@ -263,14 +293,13 @@ namespace GGFPortal.TempCode
                 }
                 catch (Exception ex)
                 {
-                    F_ErrorShow("Error: " + ex.Message); 
+                    F_ErrorShow($"Error: {ex.Message}"); 
                 }
             }
             else
             {
                 F_ErrorShow("Please select a file to upload.");
             }
-
         }
 
         public void F_ErrorShow(string strError)
@@ -328,7 +357,8 @@ namespace GGFPortal.TempCode
                         datacheck.IntData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         //IntCheck(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
-                    case "String":
+                    case "Varchar":
+                    case "Nvarchar":
                         datacheck.StringData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         //stringcheck(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
@@ -348,8 +378,6 @@ namespace GGFPortal.TempCode
             if (BError)
             {
                 D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
-                //D_erroraRow[1] = row.GetCell(0).ToString();
-                //D_erroraRow[2] = "Hàng thứ " + i.ToString() + sError;
                 D_errortable.Rows.Add(D_erroraRow);
             }
 
@@ -527,18 +555,23 @@ namespace GGFPortal.TempCode
             }
         }
 
+        protected void UpLoadBT_Click(object sender, EventArgs e)
+        {
+            F_UpLoad();
+        }
+
         /// <summary>
         /// booking import primary Key
         /// </summary>
         /// <returns>取得新增的 primary Key</returns>
-        private int GetExcelIdex()
+        private int GetExcelIdex(string StrHeadTableName)
         {
-            Int32 ProductivityHeadID = 0;
+            Int32 HeadID = 0;
             string sql =
-                @"INSERT INTO [dbo].[GGF河內打樣單Head]
+                string.Format(@"INSERT INTO {0}
                     (建立日期)
                     VALUES(@建立日期); 
-                    SELECT CAST(scope_identity() AS int)";
+                    SELECT CAST(scope_identity() AS int)",StrHeadTableName);
             using (SqlConnection conn = new SqlConnection(strConnectString))
             {
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -548,14 +581,14 @@ namespace GGFPortal.TempCode
                 try
                 {
                     conn.Open();
-                    ProductivityHeadID = (Int32)cmd.ExecuteScalar();
+                    HeadID = (Int32)cmd.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
-                    Log.ErrorLog(ex, "Get GGF資料匯入定義表Head id Error" + Session["FileName"].ToString() + ":", StrProgram);
+                    Log.ErrorLog(ex, "GetHead id Error" + Str匯入定義Table + ":" + Session["FileName"].ToString() + ":", StrProgram);
                 }
             }
-            return (int)ProductivityHeadID;
+            return (int)HeadID;
         }
         private static string FConvertError(string Str欄位名稱, int i, string sError, int j, string strErrorDefine)
         {
@@ -577,139 +610,127 @@ namespace GGFPortal.TempCode
         {
             //有錯誤資料不給匯入
             //if (SearchTB.Text.Trim() != "" && F_CheckData() && Session["ExcelError"] == null)
-            if (Session["ExcelError"] == null)
+            if (Session["ImportExcelData"] != null)
             {
-                if (Session["Excel"] != null)
-                {
-                    DataTable dt = (DataTable)Session["Excel"];
-                    int iIndex = 0;
-                    //取得塞入資料流水號(TableName,程式)
+                DataTable dt = (DataTable)Session["ImportExcelData"];
+                DataTable dtDataDefine = (DataTable)Session["DataDeffine"];
+                int iIndex = GetExcelIdex(Str匯入Head);
+                string StrInsertColumn = "",StrInsertValue="";
+                string StrErrorIDLog = "";
+                //取得塞入資料流水號(TableName,程式)
 
+                if (iIndex > 0)
+                    using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                    {
+                        SqlCommand command1 = conn1.CreateCommand();
+                        SqlTransaction transaction1;
+                        conn1.Open();
+                        transaction1 = conn1.BeginTransaction("createExcelImport");
 
-                    if (iIndex > 0)
-                        using (SqlConnection conn1 = new SqlConnection(strConnectString))
+                        command1.Connection = conn1;
+                        command1.Transaction = transaction1;
+                        try
                         {
-                            SqlCommand command1 = conn1.CreateCommand();
-                            SqlTransaction transaction1;
-                            conn1.Open();
-                            transaction1 = conn1.BeginTransaction("createExcelImport");
+                            #region 匯入明細
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                StrErrorIDLog = "第" + i.ToString() + "筆資料";
+                                //處理字串
+                                for (int j = 0; j < dt.Columns.Count; j++)
+                                {
+                                    StrErrorIDLog += "設定匯入表格第" + j.ToString() + "筆資料";
+                                    if (j > 0)
+                                    {
+                                        StrInsertColumn += ",";
+                                        StrInsertValue += ",";
+                                    }
+                                    else
+                                    {
+                                        StrInsertColumn = "id,";
+                                        StrInsertValue = "@id,";
+                                    }
+                                    StrInsertColumn += dtDataDefine.Rows[j]["資料名稱中文"].ToString();
+                                    StrInsertValue += "@" + dtDataDefine.Rows[j]["資料名稱中文"].ToString();
+                                }
+                                command1.CommandText = string.Format(@"INSERT INTO {0}
+                                                  ({1})
+                                             VALUES
+                                                   ({2}
+                                                    )
+                                                   ", Str匯入Line, StrInsertColumn, StrInsertValue);
 
-                            command1.Connection = conn1;
-                            command1.Transaction = transaction1;
+                                command1.Parameters.Add("@id", SqlDbType.Int).Value = iIndex;
+                                //處理匯入資料
+                                for (int j = 0; j < dt.Columns.Count; j++)
+                                {
+                                    switch(dtDataDefine.Rows[j]["資料格式"])
+                                    {
+                                        case "Varchar":
+                                            command1.Parameters.Add("@" + dtDataDefine.Rows[j]["資料名稱中文"], SqlDbType.VarChar).Value = dt.Rows[i][j].ToString();
+                                            break;
+                                        case "Nvarchar":
+                                            command1.Parameters.Add("@"+ dtDataDefine.Rows[j]["資料名稱中文"], SqlDbType.NVarChar).Value = dt.Rows[i][j].ToString();
+                                            break;
+                                        case "Int":
+                                            command1.Parameters.Add("@" + dtDataDefine.Rows[j]["資料名稱中文"], SqlDbType.Int).Value = dt.Rows[i][j].ToString();
+                                            break;
+                                        case "Float":
+                                            command1.Parameters.Add("@" + dtDataDefine.Rows[j]["資料名稱中文"], SqlDbType.Float).Value = dt.Rows[i][j].ToString();
+                                            break;
+                                        case "Datetime":
+                                            command1.Parameters.Add("@" + dtDataDefine.Rows[j]["資料名稱中文"], SqlDbType.DateTime).Value = (string.IsNullOrEmpty(dt.Rows[i][j].ToString()))? null : dt.Rows[i][j].ToString();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                command1.ExecuteNonQuery();
+                                command1.Parameters.Clear();
+                            }
+                            //上傳成功更新Head狀態
+                            command1.CommandText = string.Format(@"UPDATE {0} SET IsUpdate = 1 , WHERE id = {1} ", Str匯入Head, iIndex);
+                            //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
+                            command1.ExecuteNonQuery();
+                            command1.Parameters.Clear();
+                            command1.CommandText=string.Format(@"UPDATE {0} SET IsDeleted = 1 , WHERE id <> {1} and IsDeleted <> 1 ", Str匯入Head, iIndex);
+                            command1.ExecuteNonQuery();
+                            #endregion
+                            transaction1.Commit();
+                        }
+                        #region 匯入ErrorLog
+                        catch (Exception ex1)
+                        {
                             try
                             {
-                                #region 匯入單頭
-                                //iIndex = addid.GetExcelIdex("AMZForcastHead", "TempExcelImport.aspx");
-                                //command1.CommandText = string.Format(@"INSERT INTO [dbo].[工段總表明細]
-                                //                      ([uid]
-                                //                      ,[閱卷序號]
-                                //                      ,[款號]
-                                //                      ,[組別]
-                                //                      ,[日期]
-                                //                      ,[工號]
-                                //                      ,[工段]
-                                //                      ,[數量])
-                                //                 VALUES
-                                //                       ({0}
-                                //                       ,@閱卷序號
-                                //                       ,@款號
-                                //                       ,@組別
-                                //                       ,@日期
-                                //                       ,@工號
-                                //                       ,@工段
-                                //                       ,@數量
-                                //                        )
-                                //                       ", iIndex);
-                                //command1.Parameters.Add("@閱卷序號", SqlDbType.NVarChar).Value = dt.Rows[i]["閱卷序號"].ToString();
-                                //command1.Parameters.Add("@款號", SqlDbType.NVarChar).Value = dt.Rows[i]["款號"].ToString();
-                                //command1.Parameters.Add("@組別", SqlDbType.NVarChar).Value = dt.Rows[i]["組別"].ToString();
-                                //command1.Parameters.Add("@日期", SqlDbType.NVarChar).Value = dt.Rows[i]["日期"].ToString();
-                                //command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = dt.Rows[i]["工號"].ToString();
-                                //command1.Parameters.Add("@工段", SqlDbType.NVarChar).Value = dt.Rows[i]["工段"].ToString();
-                                //command1.Parameters.Add("@數量", SqlDbType.NVarChar).Value = dt.Rows[i]["數量"].ToString();
-
-                                //command1.ExecuteNonQuery();
-                                #endregion
-                                #region 匯入明細
-                                for (int i = 0; i < dt.Rows.Count; i++)
-                                {
-                                    //command1.CommandText = string.Format(@"INSERT INTO [dbo].[工段總表明細]
-                                    //                  ([uid]
-                                    //                  ,[閱卷序號]
-                                    //                  ,[款號]
-                                    //                  ,[組別]
-                                    //                  ,[日期]
-                                    //                  ,[工號]
-                                    //                  ,[工段]
-                                    //                  ,[數量])
-                                    //             VALUES
-                                    //                   ({0}
-                                    //                   ,@閱卷序號
-                                    //                   ,@款號
-                                    //                   ,@組別
-                                    //                   ,@日期
-                                    //                   ,@工號
-                                    //                   ,@工段
-                                    //                   ,@數量
-                                    //                    )
-                                    //                   ", iIndex);
-                                    //command1.Parameters.Add("@閱卷序號", SqlDbType.NVarChar).Value = dt.Rows[i]["閱卷序號"].ToString();
-                                    //command1.Parameters.Add("@款號", SqlDbType.NVarChar).Value = dt.Rows[i]["款號"].ToString();
-                                    //command1.Parameters.Add("@組別", SqlDbType.NVarChar).Value = dt.Rows[i]["組別"].ToString();
-                                    //command1.Parameters.Add("@日期", SqlDbType.NVarChar).Value = dt.Rows[i]["日期"].ToString();
-                                    //command1.Parameters.Add("@工號", SqlDbType.NVarChar).Value = dt.Rows[i]["工號"].ToString();
-                                    //command1.Parameters.Add("@工段", SqlDbType.NVarChar).Value = dt.Rows[i]["工段"].ToString();
-                                    //command1.Parameters.Add("@數量", SqlDbType.NVarChar).Value = dt.Rows[i]["數量"].ToString();
-
-                                    //command1.ExecuteNonQuery();
-                                    command1.Parameters.Clear();
-                                }
-                                ////上傳成功更新Head狀態
-                                //command1.CommandText = string.Format(@"UPDATE [dbo].[Productivity_Head] SET [Flag] = 1 ,[Date] = @Date WHERE uid = {0} ", iIndex);
-                                //command1.Parameters.Add("@Date", SqlDbType.NVarChar).Value = Session["Date"].ToString();
-                                //command1.ExecuteNonQuery();
-                                #endregion
-                                transaction1.Commit();
+                                Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), StrProgram);
                             }
-                            #region 匯入ErrorLog
-                            catch (Exception ex1)
+                            catch (Exception ex2)
                             {
-                                try
-                                {
-                                    Log.ErrorLog(ex1, "Import Excel Error :" + Session["FileName"].ToString(), "VN002.aspx");
-                                }
-                                catch (Exception ex2)
-                                {
-                                    Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), "VN002.aspx");
-                                }
-                                finally
-                                {
-                                    transaction1.Rollback();
-                                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
-                                }
+                                Log.ErrorLog(ex2, "Insert Error Error:" + Session["FileName"].ToString(), StrProgram);
                             }
-                            #endregion
                             finally
                             {
-                                conn1.Close();
-                                conn1.Dispose();
-                                command1.Dispose();
-                                Session.RemoveAll();
-                                //Label1.Text = "資料上傳成功";
+                                transaction1.Rollback();
+                                F_ErrorShow("Please Contact MIS : Import Error");
+                                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('匯入失敗請連絡MIS');</script>");
                             }
                         }
-                    else
-                        Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('單頭匯入失敗請連絡MIS');</script>");
-                }
+                        #endregion
+                        finally
+                        {
+                            conn1.Close();
+                            conn1.Dispose();
+                            command1.Dispose();
+                            Session.RemoveAll();
+                            //Label1.Text = "資料上傳成功";
+                        }
+                    }
+                else
+                    F_ErrorShow("Create Head Error");
             }
             else
             {
-                if (Session["ExcelError"] != null)
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請修正錯誤資料');</script>");
-                //else if (SearchTB.Text.Trim() != "")
-                //    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('當日已有匯入資料');</script>");
-                else
-                    Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('請選擇匯入日期');</script>");
+                F_ErrorShow(lang.翻譯("Program", "ImportDataError", "TW"));
             }
         }
     }

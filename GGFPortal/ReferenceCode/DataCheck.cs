@@ -13,7 +13,7 @@ namespace GGFPortal.ReferenceCode
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DBConnectionString"].ToString();
         static 多語 lang = new 多語();
         
-        public void 讀取多與資料(string StrPageName)
+        public void 讀取多語資料(string StrPageName)
         {
             lang.gg.Clear();
             lang.讀取多語資料("Program", StrPageName);
