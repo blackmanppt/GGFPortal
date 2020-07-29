@@ -15,14 +15,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.TempCode
+namespace GGFPortal.Sales
 {
-    public partial class GGFTempCodeExcelImport : System.Web.UI.Page
+    public partial class Sample023 : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
+        static string StrPageName = "每周河內打樣單資料上傳", StrProgram = "Sample023.aspx";
         static string strArea = "", strImportType = "";
         static string Str匯入定義Table = "河內打樣單";
         static string Str匯入Head = "GGF河內打樣單Head", Str匯入Line = "GGF河內打樣單";
