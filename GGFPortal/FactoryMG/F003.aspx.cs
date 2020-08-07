@@ -11,7 +11,7 @@ namespace GGFPortal.FactoryMG
     {
         static DataSet Ds = new DataSet();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
-        static string strArea = "";
+        //static string strArea = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             StartDayTB.Attributes["readonly"] = "readonly";

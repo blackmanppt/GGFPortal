@@ -12,7 +12,7 @@ namespace GGFPortal.TempCode
         /// 
         /// 
         /// </summary>
-        static string Strsql訂單 = "Select {0} from ";
+        //static string Strsql訂單 = "Select {0} from ";
         public string QueryIn(string StrSearch)
         {
             string strsql = "";

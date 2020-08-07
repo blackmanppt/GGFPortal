@@ -117,7 +117,7 @@ namespace GGFPortal.Sales
             strwhere += (UnTDCB.Checked) ? "" : " and td_fin_date is not Null";
             strwhere += (未收單CB.Checked) ? "" : " and samc_fin_date is not Null";
             strwhere += (string.IsNullOrEmpty(StyleNoTB.Text)) ? "" : string.Format(" and (a.cus_style_no LIKE   LTRIM(RTRIM('%{0}%')) ) ", StyleNoTB.Text);
-            strwhere += (結案CB.Checked) ? "" : "and (a.status <>'CL') ";
+            strwhere += (結案CB.Checked) ? " and a.status <> 'CA'" : "and (a.status not in ('CL','CA')) ";
             sqlstr += strwhere + " ORDER BY a.modify_date DESC ";
             return sqlstr;
         }

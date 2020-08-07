@@ -2,9 +2,10 @@
 <xs:schema id="SalesTempDS3" targetNamespace="http://tempuri.org/SalesTempDS3.xsd" xmlns:mstns="http://tempuri.org/SalesTempDS3.xsd" xmlns="http://tempuri.org/SalesTempDS3.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="GGFConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GGFConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.GGFConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DBConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables />
         <Sources />
@@ -492,6 +493,43 @@
               <xs:element name="訂單交易條件" msprop:Generator_ColumnVarNameInTable="column訂單交易條件" msprop:Generator_ColumnPropNameInRow="訂單交易條件" msprop:Generator_ColumnPropNameInTable="訂單交易條件Column" msprop:Generator_UserColumnName="訂單交易條件" type="xs:string" minOccurs="0" />
               <xs:element name="etd_date" msprop:Generator_ColumnVarNameInTable="columnetd_date" msprop:Generator_ColumnPropNameInRow="etd_date" msprop:Generator_ColumnPropNameInTable="etd_dateColumn" msprop:Generator_UserColumnName="etd_date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="DDP拆分" msprop:Generator_ColumnVarNameInTable="columnDDP拆分" msprop:Generator_ColumnPropNameInRow="DDP拆分" msprop:Generator_ColumnPropNameInTable="DDP拆分Column" msprop:Generator_UserColumnName="DDP拆分" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AMZCap" msprop:Generator_TableClassName="AMZCapDataTable" msprop:Generator_TableVarName="tableAMZCap" msprop:Generator_RowChangedName="AMZCapRowChanged" msprop:Generator_TablePropName="AMZCap" msprop:Generator_RowDeletingName="AMZCapRowDeleting" msprop:Generator_RowChangingName="AMZCapRowChanging" msprop:Generator_RowEvHandlerName="AMZCapRowChangeEventHandler" msprop:Generator_RowDeletedName="AMZCapRowDeleted" msprop:Generator_RowClassName="AMZCapRow" msprop:Generator_UserTableName="AMZCap" msprop:Generator_RowEvArgName="AMZCapRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="款號" msprop:Generator_ColumnVarNameInTable="column款號" msprop:Generator_ColumnPropNameInRow="款號" msprop:Generator_ColumnPropNameInTable="款號Column" msprop:Generator_UserColumnName="款號" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="前3月CAP1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前3月CAP1" msprop:Generator_ColumnPropNameInRow="前3月CAP1" msprop:Generator_ColumnPropNameInTable="前3月CAP1Column" msprop:Generator_UserColumnName="前3月CAP1" type="xs:int" minOccurs="0" />
+              <xs:element name="前2月CAP1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前2月CAP1" msprop:Generator_ColumnPropNameInRow="前2月CAP1" msprop:Generator_ColumnPropNameInTable="前2月CAP1Column" msprop:Generator_UserColumnName="前2月CAP1" type="xs:int" minOccurs="0" />
+              <xs:element name="前1月CAP1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前1月CAP1" msprop:Generator_ColumnPropNameInRow="前1月CAP1" msprop:Generator_ColumnPropNameInTable="前1月CAP1Column" msprop:Generator_UserColumnName="前1月CAP1" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP1" msprop:Generator_ColumnPropNameInRow="本月CAP1" msprop:Generator_ColumnPropNameInTable="本月CAP1Column" msprop:Generator_UserColumnName="本月CAP1" type="xs:int" minOccurs="0" />
+              <xs:element name="前3月CAP2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前3月CAP2" msprop:Generator_ColumnPropNameInRow="前3月CAP2" msprop:Generator_ColumnPropNameInTable="前3月CAP2Column" msprop:Generator_UserColumnName="前3月CAP2" type="xs:int" minOccurs="0" />
+              <xs:element name="前2月CAP2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前2月CAP2" msprop:Generator_ColumnPropNameInRow="前2月CAP2" msprop:Generator_ColumnPropNameInTable="前2月CAP2Column" msprop:Generator_UserColumnName="前2月CAP2" type="xs:int" minOccurs="0" />
+              <xs:element name="前1月CAP2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前1月CAP2" msprop:Generator_ColumnPropNameInRow="前1月CAP2" msprop:Generator_ColumnPropNameInTable="前1月CAP2Column" msprop:Generator_UserColumnName="前1月CAP2" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP2" msprop:Generator_ColumnPropNameInRow="本月CAP2" msprop:Generator_ColumnPropNameInTable="本月CAP2Column" msprop:Generator_UserColumnName="本月CAP2" type="xs:int" minOccurs="0" />
+              <xs:element name="前3月CAP3" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前3月CAP3" msprop:Generator_ColumnPropNameInRow="前3月CAP3" msprop:Generator_ColumnPropNameInTable="前3月CAP3Column" msprop:Generator_UserColumnName="前3月CAP3" type="xs:int" minOccurs="0" />
+              <xs:element name="前2月CAP3" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前2月CAP3" msprop:Generator_ColumnPropNameInRow="前2月CAP3" msprop:Generator_ColumnPropNameInTable="前2月CAP3Column" msprop:Generator_UserColumnName="前2月CAP3" type="xs:int" minOccurs="0" />
+              <xs:element name="前1月CAP3" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前1月CAP3" msprop:Generator_ColumnPropNameInRow="前1月CAP3" msprop:Generator_ColumnPropNameInTable="前1月CAP3Column" msprop:Generator_UserColumnName="前1月CAP3" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP3" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP3" msprop:Generator_ColumnPropNameInRow="本月CAP3" msprop:Generator_ColumnPropNameInTable="本月CAP3Column" msprop:Generator_UserColumnName="本月CAP3" type="xs:int" minOccurs="0" />
+              <xs:element name="前2月CAP4" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前2月CAP4" msprop:Generator_ColumnPropNameInRow="前2月CAP4" msprop:Generator_ColumnPropNameInTable="前2月CAP4Column" msprop:Generator_UserColumnName="前2月CAP4" type="xs:int" minOccurs="0" />
+              <xs:element name="前1月CAP4" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前1月CAP4" msprop:Generator_ColumnPropNameInRow="前1月CAP4" msprop:Generator_ColumnPropNameInTable="前1月CAP4Column" msprop:Generator_UserColumnName="前1月CAP4" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP4" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP4" msprop:Generator_ColumnPropNameInRow="本月CAP4" msprop:Generator_ColumnPropNameInTable="本月CAP4Column" msprop:Generator_UserColumnName="本月CAP4" type="xs:int" minOccurs="0" />
+              <xs:element name="前1月CAP5" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column前1月CAP5" msprop:Generator_ColumnPropNameInRow="前1月CAP5" msprop:Generator_ColumnPropNameInTable="前1月CAP5Column" msprop:Generator_UserColumnName="前1月CAP5" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP5" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP5" msprop:Generator_ColumnPropNameInRow="本月CAP5" msprop:Generator_ColumnPropNameInTable="本月CAP5Column" msprop:Generator_UserColumnName="本月CAP5" type="xs:int" minOccurs="0" />
+              <xs:element name="本月CAP6" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column本月CAP6" msprop:Generator_ColumnPropNameInRow="本月CAP6" msprop:Generator_ColumnPropNameInTable="本月CAP6Column" msprop:Generator_UserColumnName="本月CAP6" type="xs:int" minOccurs="0" />
+              <xs:element name="本月sum1" msprop:Generator_ColumnVarNameInTable="column本月sum1" msprop:Generator_ColumnPropNameInRow="本月sum1" msprop:Generator_ColumnPropNameInTable="本月sum1Column" msprop:Generator_UserColumnName="本月sum1" type="xs:int" minOccurs="0" />
+              <xs:element name="本月sum2" msprop:Generator_ColumnVarNameInTable="column本月sum2" msprop:Generator_ColumnPropNameInRow="本月sum2" msprop:Generator_ColumnPropNameInTable="本月sum2Column" msprop:Generator_UserColumnName="本月sum2" type="xs:int" minOccurs="0" />
+              <xs:element name="本月sum3" msprop:Generator_ColumnVarNameInTable="column本月sum3" msprop:Generator_ColumnPropNameInRow="本月sum3" msprop:Generator_ColumnPropNameInTable="本月sum3Column" msprop:Generator_UserColumnName="本月sum3" type="xs:int" minOccurs="0" />
+              <xs:element name="上月sum2" msprop:Generator_ColumnVarNameInTable="column上月sum2" msprop:Generator_ColumnPropNameInRow="上月sum2" msprop:Generator_ColumnPropNameInTable="上月sum2Column" msprop:Generator_UserColumnName="上月sum2" type="xs:int" minOccurs="0" />
+              <xs:element name="上月sum3" msprop:Generator_ColumnVarNameInTable="column上月sum3" msprop:Generator_ColumnPropNameInRow="上月sum3" msprop:Generator_ColumnPropNameInTable="上月sum3Column" msprop:Generator_UserColumnName="上月sum3" type="xs:int" minOccurs="0" />
+              <xs:element name="上2月sum3" msprop:Generator_ColumnVarNameInTable="column上2月sum3" msprop:Generator_ColumnPropNameInRow="上2月sum3" msprop:Generator_ColumnPropNameInTable="上2月sum3Column" msprop:Generator_UserColumnName="上2月sum3" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

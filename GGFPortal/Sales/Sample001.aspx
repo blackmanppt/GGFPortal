@@ -201,7 +201,7 @@
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b ON a.site = b.site AND a.type_id = b.type_id WHERE (a.cus_style_no LIKE '%' + LTRIM(RTRIM(@sam_nbr)) + '%') AND (a.status &lt;&gt; @status) and TD_Fin_Date is not Null ORDER BY a.modify_date DESC">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT a.*, b.type_desc FROM samc_reqm AS a LEFT OUTER JOIN samc_type AS b ON a.site = b.site AND a.type_id = b.type_id WHERE (a.cus_style_no LIKE '%' + LTRIM(RTRIM(@sam_nbr)) + '%') AND (a.status &lt;&gt; @status) and TD_Fin_Date is not Null and a.status &lt;&gt;'CA' ORDER BY a.modify_date DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="StyleNoTB" DefaultValue="%" Name="sam_nbr" PropertyName="Text" Type="String" />
                     <asp:Parameter DefaultValue="CL" Name="status" Type="String" />

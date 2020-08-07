@@ -16,7 +16,7 @@ namespace GGFPortal.TempCode
         //字串處理 切字串 = new 字串處理();
         //static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         //SysLog Log = new SysLog();
-        static string StrPageName = "TempCode", StrProgram = "TempCode.aspx";
+        static string StrPageName = "TempCode";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數

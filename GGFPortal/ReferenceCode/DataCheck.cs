@@ -226,8 +226,12 @@ namespace GGFPortal.ReferenceCode
             }
             catch
             {
-                BError = true;
-                StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
+                if (B是否為必要欄位 == true)
+                {
+                    BError = true;
+                    StrError = FConvertError(DtColumnDefine.Rows[j]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
+                }
+                D_dataRow[j] = "";
             }
         }
         public static string FConvertError(string Str欄位名稱, int i, string sError, int j, string strErrorDefine)
@@ -236,7 +240,7 @@ namespace GGFPortal.ReferenceCode
             {
                 sError += string.Format(" {0}  {1}. ", lang.翻譯("Program", strErrorDefine, "TW"), Str欄位名稱);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                  
 

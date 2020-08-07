@@ -36,6 +36,8 @@ namespace GGFPortal.DataSetSource {
         
         private 採購入庫狀況DataTable table採購入庫狀況;
         
+        private AMZCapDataTable tableAMZCap;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,6 +83,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["採購入庫狀況"] != null)) {
                     base.Tables.Add(new 採購入庫狀況DataTable(ds.Tables["採購入庫狀況"]));
+                }
+                if ((ds.Tables["AMZCap"] != null)) {
+                    base.Tables.Add(new AMZCapDataTable(ds.Tables["AMZCap"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -157,6 +162,16 @@ namespace GGFPortal.DataSetSource {
         public 採購入庫狀況DataTable 採購入庫狀況 {
             get {
                 return this.table採購入庫狀況;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public AMZCapDataTable AMZCap {
+            get {
+                return this.tableAMZCap;
             }
         }
         
@@ -245,6 +260,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["採購入庫狀況"] != null)) {
                     base.Tables.Add(new 採購入庫狀況DataTable(ds.Tables["採購入庫狀況"]));
                 }
+                if ((ds.Tables["AMZCap"] != null)) {
+                    base.Tables.Add(new AMZCapDataTable(ds.Tables["AMZCap"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -314,6 +332,12 @@ namespace GGFPortal.DataSetSource {
                     this.table採購入庫狀況.InitVars();
                 }
             }
+            this.tableAMZCap = ((AMZCapDataTable)(base.Tables["AMZCap"]));
+            if ((initTable == true)) {
+                if ((this.tableAMZCap != null)) {
+                    this.tableAMZCap.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +360,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.table振大主表);
             this.table採購入庫狀況 = new 採購入庫狀況DataTable();
             base.Tables.Add(this.table採購入庫狀況);
+            this.tableAMZCap = new AMZCapDataTable();
+            base.Tables.Add(this.tableAMZCap);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -371,6 +397,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerialize採購入庫狀況() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeAMZCap() {
             return false;
         }
         
@@ -446,6 +478,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void 採購入庫狀況RowChangeEventHandler(object sender, 採購入庫狀況RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void AMZCapRowChangeEventHandler(object sender, AMZCapRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3670,6 +3705,633 @@ namespace GGFPortal.DataSetSource {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "採購入庫狀況DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class AMZCapDataTable : global::System.Data.TypedTableBase<AMZCapRow> {
+            
+            private global::System.Data.DataColumn column款號;
+            
+            private global::System.Data.DataColumn column前3月CAP1;
+            
+            private global::System.Data.DataColumn column前2月CAP1;
+            
+            private global::System.Data.DataColumn column前1月CAP1;
+            
+            private global::System.Data.DataColumn column本月CAP1;
+            
+            private global::System.Data.DataColumn column前3月CAP2;
+            
+            private global::System.Data.DataColumn column前2月CAP2;
+            
+            private global::System.Data.DataColumn column前1月CAP2;
+            
+            private global::System.Data.DataColumn column本月CAP2;
+            
+            private global::System.Data.DataColumn column前3月CAP3;
+            
+            private global::System.Data.DataColumn column前2月CAP3;
+            
+            private global::System.Data.DataColumn column前1月CAP3;
+            
+            private global::System.Data.DataColumn column本月CAP3;
+            
+            private global::System.Data.DataColumn column前2月CAP4;
+            
+            private global::System.Data.DataColumn column前1月CAP4;
+            
+            private global::System.Data.DataColumn column本月CAP4;
+            
+            private global::System.Data.DataColumn column前1月CAP5;
+            
+            private global::System.Data.DataColumn column本月CAP5;
+            
+            private global::System.Data.DataColumn column本月CAP6;
+            
+            private global::System.Data.DataColumn column本月sum1;
+            
+            private global::System.Data.DataColumn column本月sum2;
+            
+            private global::System.Data.DataColumn column本月sum3;
+            
+            private global::System.Data.DataColumn column上月sum2;
+            
+            private global::System.Data.DataColumn column上月sum3;
+            
+            private global::System.Data.DataColumn column上2月sum3;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapDataTable() {
+                this.TableName = "AMZCap";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal AMZCapDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected AMZCapDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 款號Column {
+                get {
+                    return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前3月CAP1Column {
+                get {
+                    return this.column前3月CAP1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前2月CAP1Column {
+                get {
+                    return this.column前2月CAP1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前1月CAP1Column {
+                get {
+                    return this.column前1月CAP1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP1Column {
+                get {
+                    return this.column本月CAP1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前3月CAP2Column {
+                get {
+                    return this.column前3月CAP2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前2月CAP2Column {
+                get {
+                    return this.column前2月CAP2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前1月CAP2Column {
+                get {
+                    return this.column前1月CAP2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP2Column {
+                get {
+                    return this.column本月CAP2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前3月CAP3Column {
+                get {
+                    return this.column前3月CAP3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前2月CAP3Column {
+                get {
+                    return this.column前2月CAP3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前1月CAP3Column {
+                get {
+                    return this.column前1月CAP3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP3Column {
+                get {
+                    return this.column本月CAP3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前2月CAP4Column {
+                get {
+                    return this.column前2月CAP4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前1月CAP4Column {
+                get {
+                    return this.column前1月CAP4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP4Column {
+                get {
+                    return this.column本月CAP4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 前1月CAP5Column {
+                get {
+                    return this.column前1月CAP5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP5Column {
+                get {
+                    return this.column本月CAP5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月CAP6Column {
+                get {
+                    return this.column本月CAP6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月sum1Column {
+                get {
+                    return this.column本月sum1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月sum2Column {
+                get {
+                    return this.column本月sum2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 本月sum3Column {
+                get {
+                    return this.column本月sum3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 上月sum2Column {
+                get {
+                    return this.column上月sum2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 上月sum3Column {
+                get {
+                    return this.column上月sum3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 上2月sum3Column {
+                get {
+                    return this.column上2月sum3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapRow this[int index] {
+                get {
+                    return ((AMZCapRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event AMZCapRowChangeEventHandler AMZCapRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event AMZCapRowChangeEventHandler AMZCapRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event AMZCapRowChangeEventHandler AMZCapRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event AMZCapRowChangeEventHandler AMZCapRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddAMZCapRow(AMZCapRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapRow AddAMZCapRow(
+                        string 款號, 
+                        int 前3月CAP1, 
+                        int 前2月CAP1, 
+                        int 前1月CAP1, 
+                        int 本月CAP1, 
+                        int 前3月CAP2, 
+                        int 前2月CAP2, 
+                        int 前1月CAP2, 
+                        int 本月CAP2, 
+                        int 前3月CAP3, 
+                        int 前2月CAP3, 
+                        int 前1月CAP3, 
+                        int 本月CAP3, 
+                        int 前2月CAP4, 
+                        int 前1月CAP4, 
+                        int 本月CAP4, 
+                        int 前1月CAP5, 
+                        int 本月CAP5, 
+                        int 本月CAP6, 
+                        int 本月sum1, 
+                        int 本月sum2, 
+                        int 本月sum3, 
+                        int 上月sum2, 
+                        int 上月sum3, 
+                        int 上2月sum3) {
+                AMZCapRow rowAMZCapRow = ((AMZCapRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        款號,
+                        前3月CAP1,
+                        前2月CAP1,
+                        前1月CAP1,
+                        本月CAP1,
+                        前3月CAP2,
+                        前2月CAP2,
+                        前1月CAP2,
+                        本月CAP2,
+                        前3月CAP3,
+                        前2月CAP3,
+                        前1月CAP3,
+                        本月CAP3,
+                        前2月CAP4,
+                        前1月CAP4,
+                        本月CAP4,
+                        前1月CAP5,
+                        本月CAP5,
+                        本月CAP6,
+                        本月sum1,
+                        本月sum2,
+                        本月sum3,
+                        上月sum2,
+                        上月sum3,
+                        上2月sum3};
+                rowAMZCapRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAMZCapRow);
+                return rowAMZCapRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                AMZCapDataTable cln = ((AMZCapDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new AMZCapDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.column款號 = base.Columns["款號"];
+                this.column前3月CAP1 = base.Columns["前3月CAP1"];
+                this.column前2月CAP1 = base.Columns["前2月CAP1"];
+                this.column前1月CAP1 = base.Columns["前1月CAP1"];
+                this.column本月CAP1 = base.Columns["本月CAP1"];
+                this.column前3月CAP2 = base.Columns["前3月CAP2"];
+                this.column前2月CAP2 = base.Columns["前2月CAP2"];
+                this.column前1月CAP2 = base.Columns["前1月CAP2"];
+                this.column本月CAP2 = base.Columns["本月CAP2"];
+                this.column前3月CAP3 = base.Columns["前3月CAP3"];
+                this.column前2月CAP3 = base.Columns["前2月CAP3"];
+                this.column前1月CAP3 = base.Columns["前1月CAP3"];
+                this.column本月CAP3 = base.Columns["本月CAP3"];
+                this.column前2月CAP4 = base.Columns["前2月CAP4"];
+                this.column前1月CAP4 = base.Columns["前1月CAP4"];
+                this.column本月CAP4 = base.Columns["本月CAP4"];
+                this.column前1月CAP5 = base.Columns["前1月CAP5"];
+                this.column本月CAP5 = base.Columns["本月CAP5"];
+                this.column本月CAP6 = base.Columns["本月CAP6"];
+                this.column本月sum1 = base.Columns["本月sum1"];
+                this.column本月sum2 = base.Columns["本月sum2"];
+                this.column本月sum3 = base.Columns["本月sum3"];
+                this.column上月sum2 = base.Columns["上月sum2"];
+                this.column上月sum3 = base.Columns["上月sum3"];
+                this.column上2月sum3 = base.Columns["上2月sum3"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column款號);
+                this.column前3月CAP1 = new global::System.Data.DataColumn("前3月CAP1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前3月CAP1);
+                this.column前2月CAP1 = new global::System.Data.DataColumn("前2月CAP1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前2月CAP1);
+                this.column前1月CAP1 = new global::System.Data.DataColumn("前1月CAP1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前1月CAP1);
+                this.column本月CAP1 = new global::System.Data.DataColumn("本月CAP1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP1);
+                this.column前3月CAP2 = new global::System.Data.DataColumn("前3月CAP2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前3月CAP2);
+                this.column前2月CAP2 = new global::System.Data.DataColumn("前2月CAP2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前2月CAP2);
+                this.column前1月CAP2 = new global::System.Data.DataColumn("前1月CAP2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前1月CAP2);
+                this.column本月CAP2 = new global::System.Data.DataColumn("本月CAP2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP2);
+                this.column前3月CAP3 = new global::System.Data.DataColumn("前3月CAP3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前3月CAP3);
+                this.column前2月CAP3 = new global::System.Data.DataColumn("前2月CAP3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前2月CAP3);
+                this.column前1月CAP3 = new global::System.Data.DataColumn("前1月CAP3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前1月CAP3);
+                this.column本月CAP3 = new global::System.Data.DataColumn("本月CAP3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP3);
+                this.column前2月CAP4 = new global::System.Data.DataColumn("前2月CAP4", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前2月CAP4);
+                this.column前1月CAP4 = new global::System.Data.DataColumn("前1月CAP4", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前1月CAP4);
+                this.column本月CAP4 = new global::System.Data.DataColumn("本月CAP4", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP4);
+                this.column前1月CAP5 = new global::System.Data.DataColumn("前1月CAP5", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column前1月CAP5);
+                this.column本月CAP5 = new global::System.Data.DataColumn("本月CAP5", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP5);
+                this.column本月CAP6 = new global::System.Data.DataColumn("本月CAP6", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月CAP6);
+                this.column本月sum1 = new global::System.Data.DataColumn("本月sum1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月sum1);
+                this.column本月sum2 = new global::System.Data.DataColumn("本月sum2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月sum2);
+                this.column本月sum3 = new global::System.Data.DataColumn("本月sum3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column本月sum3);
+                this.column上月sum2 = new global::System.Data.DataColumn("上月sum2", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column上月sum2);
+                this.column上月sum3 = new global::System.Data.DataColumn("上月sum3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column上月sum3);
+                this.column上2月sum3 = new global::System.Data.DataColumn("上2月sum3", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column上2月sum3);
+                this.column款號.MaxLength = 30;
+                this.column前3月CAP1.ReadOnly = true;
+                this.column前2月CAP1.ReadOnly = true;
+                this.column前1月CAP1.ReadOnly = true;
+                this.column本月CAP1.ReadOnly = true;
+                this.column前3月CAP2.ReadOnly = true;
+                this.column前2月CAP2.ReadOnly = true;
+                this.column前1月CAP2.ReadOnly = true;
+                this.column本月CAP2.ReadOnly = true;
+                this.column前3月CAP3.ReadOnly = true;
+                this.column前2月CAP3.ReadOnly = true;
+                this.column前1月CAP3.ReadOnly = true;
+                this.column本月CAP3.ReadOnly = true;
+                this.column前2月CAP4.ReadOnly = true;
+                this.column前1月CAP4.ReadOnly = true;
+                this.column本月CAP4.ReadOnly = true;
+                this.column前1月CAP5.ReadOnly = true;
+                this.column本月CAP5.ReadOnly = true;
+                this.column本月CAP6.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapRow NewAMZCapRow() {
+                return ((AMZCapRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new AMZCapRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(AMZCapRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.AMZCapRowChanged != null)) {
+                    this.AMZCapRowChanged(this, new AMZCapRowChangeEvent(((AMZCapRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.AMZCapRowChanging != null)) {
+                    this.AMZCapRowChanging(this, new AMZCapRowChangeEvent(((AMZCapRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.AMZCapRowDeleted != null)) {
+                    this.AMZCapRowDeleted(this, new AMZCapRowChangeEvent(((AMZCapRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.AMZCapRowDeleting != null)) {
+                    this.AMZCapRowDeleting(this, new AMZCapRowChangeEvent(((AMZCapRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveAMZCapRow(AMZCapRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS3 ds = new SalesTempDS3();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "AMZCapDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7121,6 +7783,721 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class AMZCapRow : global::System.Data.DataRow {
+            
+            private AMZCapDataTable tableAMZCap;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal AMZCapRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAMZCap = ((AMZCapDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 款號 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZCap.款號Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'款號\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.款號Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前3月CAP1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前3月CAP1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前3月CAP1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前3月CAP1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前2月CAP1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前2月CAP1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前2月CAP1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前2月CAP1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前1月CAP1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前1月CAP1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前1月CAP1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前1月CAP1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前3月CAP2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前3月CAP2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前3月CAP2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前3月CAP2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前2月CAP2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前2月CAP2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前2月CAP2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前2月CAP2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前1月CAP2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前1月CAP2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前1月CAP2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前1月CAP2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前3月CAP3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前3月CAP3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前3月CAP3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前3月CAP3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前2月CAP3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前2月CAP3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前2月CAP3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前2月CAP3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前1月CAP3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前1月CAP3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前1月CAP3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前1月CAP3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前2月CAP4 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前2月CAP4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前2月CAP4\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前2月CAP4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前1月CAP4 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前1月CAP4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前1月CAP4\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前1月CAP4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP4 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP4\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 前1月CAP5 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.前1月CAP5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'前1月CAP5\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.前1月CAP5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP5 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP5\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月CAP6 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月CAP6Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月CAP6\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月CAP6Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月sum1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月sum1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月sum1\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月sum1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月sum2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月sum2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月sum2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月sum2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 本月sum3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.本月sum3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'本月sum3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.本月sum3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 上月sum2 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.上月sum2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'上月sum2\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.上月sum2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 上月sum3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.上月sum3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'上月sum3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.上月sum3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int 上2月sum3 {
+                get {
+                    try {
+                        return ((int)(this[this.tableAMZCap.上2月sum3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZCap\' 中資料行 \'上2月sum3\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZCap.上2月sum3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is款號Null() {
+                return this.IsNull(this.tableAMZCap.款號Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set款號Null() {
+                this[this.tableAMZCap.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前3月CAP1Null() {
+                return this.IsNull(this.tableAMZCap.前3月CAP1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前3月CAP1Null() {
+                this[this.tableAMZCap.前3月CAP1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前2月CAP1Null() {
+                return this.IsNull(this.tableAMZCap.前2月CAP1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前2月CAP1Null() {
+                this[this.tableAMZCap.前2月CAP1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前1月CAP1Null() {
+                return this.IsNull(this.tableAMZCap.前1月CAP1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前1月CAP1Null() {
+                this[this.tableAMZCap.前1月CAP1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP1Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP1Null() {
+                this[this.tableAMZCap.本月CAP1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前3月CAP2Null() {
+                return this.IsNull(this.tableAMZCap.前3月CAP2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前3月CAP2Null() {
+                this[this.tableAMZCap.前3月CAP2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前2月CAP2Null() {
+                return this.IsNull(this.tableAMZCap.前2月CAP2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前2月CAP2Null() {
+                this[this.tableAMZCap.前2月CAP2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前1月CAP2Null() {
+                return this.IsNull(this.tableAMZCap.前1月CAP2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前1月CAP2Null() {
+                this[this.tableAMZCap.前1月CAP2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP2Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP2Null() {
+                this[this.tableAMZCap.本月CAP2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前3月CAP3Null() {
+                return this.IsNull(this.tableAMZCap.前3月CAP3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前3月CAP3Null() {
+                this[this.tableAMZCap.前3月CAP3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前2月CAP3Null() {
+                return this.IsNull(this.tableAMZCap.前2月CAP3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前2月CAP3Null() {
+                this[this.tableAMZCap.前2月CAP3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前1月CAP3Null() {
+                return this.IsNull(this.tableAMZCap.前1月CAP3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前1月CAP3Null() {
+                this[this.tableAMZCap.前1月CAP3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP3Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP3Null() {
+                this[this.tableAMZCap.本月CAP3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前2月CAP4Null() {
+                return this.IsNull(this.tableAMZCap.前2月CAP4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前2月CAP4Null() {
+                this[this.tableAMZCap.前2月CAP4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前1月CAP4Null() {
+                return this.IsNull(this.tableAMZCap.前1月CAP4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前1月CAP4Null() {
+                this[this.tableAMZCap.前1月CAP4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP4Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP4Null() {
+                this[this.tableAMZCap.本月CAP4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is前1月CAP5Null() {
+                return this.IsNull(this.tableAMZCap.前1月CAP5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set前1月CAP5Null() {
+                this[this.tableAMZCap.前1月CAP5Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP5Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP5Null() {
+                this[this.tableAMZCap.本月CAP5Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月CAP6Null() {
+                return this.IsNull(this.tableAMZCap.本月CAP6Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月CAP6Null() {
+                this[this.tableAMZCap.本月CAP6Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月sum1Null() {
+                return this.IsNull(this.tableAMZCap.本月sum1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月sum1Null() {
+                this[this.tableAMZCap.本月sum1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月sum2Null() {
+                return this.IsNull(this.tableAMZCap.本月sum2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月sum2Null() {
+                this[this.tableAMZCap.本月sum2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is本月sum3Null() {
+                return this.IsNull(this.tableAMZCap.本月sum3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set本月sum3Null() {
+                this[this.tableAMZCap.本月sum3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is上月sum2Null() {
+                return this.IsNull(this.tableAMZCap.上月sum2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set上月sum2Null() {
+                this[this.tableAMZCap.上月sum2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is上月sum3Null() {
+                return this.IsNull(this.tableAMZCap.上月sum3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set上月sum3Null() {
+                this[this.tableAMZCap.上月sum3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is上2月sum3Null() {
+                return this.IsNull(this.tableAMZCap.上2月sum3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set上2月sum3Null() {
+                this[this.tableAMZCap.上2月sum3Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -7310,6 +8687,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public 採購入庫狀況Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class AMZCapRowChangeEvent : global::System.EventArgs {
+            
+            private AMZCapRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapRowChangeEvent(AMZCapRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AMZCapRow Row {
                 get {
                     return this.eventRow;
                 }

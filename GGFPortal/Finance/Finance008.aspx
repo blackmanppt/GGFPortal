@@ -1,66 +1,110 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Finance008.aspx.cs" Inherits="GGFPortal.Finance.Finance008" uiCulture="Auto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Finance008.aspx.cs" Inherits="GGFPortal.Finance.Finance008" %>
 
-<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $(function () {
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+            $('input[id="ContentPlaceHolder1_DateRangeTB"]').daterangepicker({
+                "startDate": start,
+                "endDate": end,
+                "showDropdowns": true,
+                "autoApply": true,
+                "locale": {
+                    "format": "YYYYMMDD",
+                    "separator": " ~ ",
+                    "applyLabel": "Apply",
+                    "cancelLabel": "Cancel",
+                    "fromLabel": "From",
+                    "toLabel": "To",
+                    "customRangeLabel": "Custom",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "Su",
+                        "Mo",
+                        "Tu",
+                        "We",
+                        "Th",
+                        "Fr",
+                        "Sa"
+                    ],
+                    "monthNames": [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    ],
+                    "firstDay": 1
+                },
+                "showCustomRangeLabel": false,
+                "alwaysShowCalendars": true,
+                "autoUpdateInput": true
+                
+            }, function (start, end, label) {
+                    //Updates value of date
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').val(start.format('YYYYMMDD') + ' ~ ' + end.format('YYYYMMDD'));  
+                    //Add the value to hidden field
+                    $('input[id="ContentPlaceHolder1_HiddenField1"]').val(start.format('YYYYMMDD') + ' ~ ' + end.format('YYYYMMDD'));
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').trigger('change');
+                    //確認資料
+                    var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+                    console.log('New date range selected: ' + start.format('YYYYMMDD') + ' ~ ' + end.format('YYYYMMDD') + ' (predefined range: ' + xxxx + ')');
+            });
+        });
+        //postback後將資料塞回欄位
+        $(document).ready(function () {
+            //Assign the value from hidden field to textbox
+            var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+            console.log(xxxx.length);
+            if (xxxx.length>0) {
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h1>
-        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
-        </asp:ScriptManager>
-            <asp:Label ID="TitleLB" runat="server" Text="出口大表查詢" style="color: #6600FF; background-color: #00CC99"></asp:Label>
-            </h1>
-        </div>
-    <div>
-    
-        <asp:Label ID="Label1" runat="server" Text="起迄日期："></asp:Label>
-        <asp:TextBox ID="StartDayTB" runat="server"></asp:TextBox>
-        <ajaxToolkit:CalendarExtender ID="StartDayTB_CalendarExtender" runat="server" TargetControlID="StartDayTB" Format="yyyyMMdd"  />
-~
-            <asp:TextBox ID="EndDay" runat="server" AutoPostBack="True"></asp:TextBox>
-            <ajaxToolkit:CalendarExtender ID="EndDay_CalendarExtender" runat="server" TargetControlID="EndDay"  Format="yyyyMMdd"  />
-        <asp:Button ID="SearchBT" runat="server" OnClick="Search_Click" Text="Search" />
-    
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="公司別："></asp:Label>
-        <asp:DropDownList ID="SiteDDL" runat="server">
-            <asp:ListItem>全部</asp:ListItem>
-            <asp:ListItem>GGF</asp:ListItem>
-            <asp:ListItem>TCL</asp:ListItem>
-        </asp:DropDownList>
-    
-        <br />
-        <asp:Label ID="Label3" runat="server" Text="客戶："></asp:Label>
-        <asp:TextBox ID="AgentSearchTB" runat="server"></asp:TextBox>
-        <ajaxToolkit:AutoCompleteExtender ID="TextBox1_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="2"  ServiceMethod="AgentSearch" TargetControlID="AgentSearchTB">
+                onLoad: $('input[id="ContentPlaceHolder1_DateRangeTB"]').val($('input[id="ContentPlaceHolder1_HiddenField1"]').val());
+            }
+            
+        });
+        
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>日期</span>
+
+            </h3>
+            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>客戶代號</span>
+
+            </h3>
+            <div class="form-group">
+    <asp:TextBox ID="AgentSearchTB" runat="server" CssClass="form-control"></asp:TextBox>
+        <ajaxToolkit:AutoCompleteExtender ID="TextBox1_AutoCompleteExtender" runat="server" CompletionInterval="100" CompletionSetCount="10" EnableCaching="false" FirstRowSelected="false" MinimumPrefixLength="2"  ServiceMethod="Search訂單客戶品牌" TargetControlID="AgentSearchTB" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc">
         </ajaxToolkit:AutoCompleteExtender>
-    
-    </div>
-    <div>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
-            <LocalReport ReportPath="ReportSource\ReportFinance008.rdlc">
-                <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="FinaceObjectDataSource" Name="Finance008" />
-                </DataSources>
-            </LocalReport>
-        </rsweb:ReportViewer>
-        <asp:ObjectDataSource ID="FinaceObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="GGFPortal.DataSetSource.FinanceD001TableAdapters.ViewShpc1TableAdapter">
-            <SelectParameters>
-                <asp:SessionParameter Name="StartDay" SessionField="F001StartDay" Type="String" />
-                <asp:SessionParameter Name="EndDay" SessionField="F001EndDay" Type="String" />
-                <asp:SessionParameter DefaultValue="" Name="site" SessionField="F001Site" Type="String" />
-                <asp:SessionParameter DefaultValue="%" Name="agents" SessionField="agents" Type="String" />
-            </SelectParameters>
-        </asp:ObjectDataSource>
-    </div>
-    </form>
+            </div>
+            <div class="form-group m-2">
+                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="SearchBT_Click" />
+            </div>
+        </div>
 
-</body>
-</html>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" BackColor="" ClientIDMode="AutoID" HighlightBackgroundColor="" InternalBorderColor="204, 204, 204" InternalBorderStyle="Solid" InternalBorderWidth="1px" LinkActiveColor="" LinkActiveHoverColor="" LinkDisabledColor="" PrimaryButtonBackgroundColor="" PrimaryButtonForegroundColor="" PrimaryButtonHoverBackgroundColor="" PrimaryButtonHoverForegroundColor="" SecondaryButtonBackgroundColor="" SecondaryButtonForegroundColor="" SecondaryButtonHoverBackgroundColor="" SecondaryButtonHoverForegroundColor="" SplitterBackColor="" ToolbarDividerColor="" ToolbarForegroundColor="" ToolbarForegroundDisabledColor="" ToolbarHoverBackgroundColor="" ToolbarHoverForegroundColor="" ToolBarItemBorderColor="" ToolBarItemBorderStyle="Solid" ToolBarItemBorderWidth="1px" ToolBarItemHoverBackColor="" ToolBarItemPressedBorderColor="51, 102, 153" ToolBarItemPressedBorderStyle="Solid" ToolBarItemPressedBorderWidth="1px" ToolBarItemPressedHoverBackColor="153, 187, 226" Height="92%" Width="100%" Visible="False">
+            <LocalReport ReportPath="ReportSource\Finance\ReportFinance008V2.rdlc"></LocalReport>
+        </rsweb:ReportViewer>
+    </main>
+    <!--日期暫存-->
+    <asp:HiddenField ID="HiddenField1" runat="server" />
+</asp:Content>
+

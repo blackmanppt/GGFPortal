@@ -1,8 +1,12 @@
-﻿using System;
+﻿using AjaxControlToolkit;
+using GGFPortal.ReferenceCode;
+using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,70 +15,98 @@ namespace GGFPortal.Finance
 {
     public partial class Finance008 : System.Web.UI.Page
     {
+        字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
+        SysLog Log = new SysLog();
+        static string StrPageName = "出口大表";
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            #region 網頁Layout基本參數
+            //網頁標題
+
+            ((Label)Master.FindControl("BrandLB")).Text = StrPageName;
+            Page.Title = StrPageName;
+            //StrError名稱 = "";
+            //StrProgram = "TempCode2.aspx";
+
+            #endregion
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            StartDayTB.Attributes["readonly"] = "readonly";
-            EndDay.Attributes["readonly"] = "readonly";
-            if (IsPostBack)
-            {
 
+        }
+        protected void DbInit()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection Conn = new SqlConnection(strConnectString))
+            {
+                SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
+                myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+
+            }
+
+
+            if (dt.Rows.Count > 0)
+            {
+                ReportViewer1.Visible = true;
+                ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                ReportDataSource source = new ReportDataSource("出口大表", dt);
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportViewer1.LocalReport.DataSources.Add(source);
+                ReportViewer1.DataBind();
+                ReportViewer1.LocalReport.Refresh();
             }
             else
-            {
-                Session["F001StartDay"] = DateTime.Now.ToString("yyyyMMdd");
-                Session["F001EndDay"] = "29990101";
-                Session["F001Site"] = "%";
-            }
+                F_ErrorShow("搜尋不到資料");
         }
 
-        protected void Search_Click(object sender, EventArgs e)
+        private StringBuilder selectsql()
         {
-            Session["F001StartDay"] = (StartDayTB.Text.Length > 0) ? StartDayTB.Text : "20000101";
-            Session["F001EndDay"] = (EndDay.Text.Length > 0) ? EndDay.Text : "29990101";
-            switch (SiteDDL.SelectedIndex)
-            {
-                case 1:
-                    Session["F001Site"] = "GGF";
-                    break;
-                case 2:
-                    Session["F001Site"] = "TCL";
-                    break;
-                default:
-                    Session["F001Site"] = "%";
-                    break;
-            }
-            Session["agents"] = (AgentSearchTB.Text.Length > 0) ? AgentSearchTB.Text.Trim() : "%";
-            ReportViewer1.LocalReport.Refresh();
+            string StrAgent = string.IsNullOrEmpty(AgentSearchTB.Text) ? "" : $" and 客戶 like '{AgentSearchTB.Text.Trim()}%'";
+            StringBuilder strsql = new StringBuilder($@"SELECT [site]
+                                      ,[shp_nbr]
+                                      ,[開航日]
+                                      ,[客戶]
+                                      ,[S_O]
+                                      ,[style_no]
+                                      ,[PO_NUMBER]
+                                      ,[vendor_name_brief]
+                                      ,sum([出貨數量]) AS '出貨數量'
+                                      ,[出貨單價]
+                                      ,SUM([出貨金額]) AS  '出貨金額'
+                                      ,[幣別]
+                                      ,[匯率]
+                                      ,[加減項]
+                                ,[品牌]
+                                  FROM [dbo].[ViewShpc]
+                                where [開航日] between '{DateRangeTB.Text.Substring(0,8)}' and '{DateRangeTB.Text.Substring(11, 8)}' { StrAgent }
+                                  GROUP BY
+                                [site]
+                                      ,[shp_nbr]
+                                      ,[開航日]
+                                      ,[客戶]
+                                      ,[S_O]
+                                      ,[style_no]
+                                      ,[PO_NUMBER]
+                                      ,[vendor_name_brief]
+                                      ,[品牌]
+                                      ,[出貨單價]
+                                      ,[幣別]
+                                      ,[匯率]
+                                      ,[加減項]
+                                order by [開航日]");
+            return strsql;
         }
-        [System.Web.Script.Services.ScriptMethod()]
-        [System.Web.Services.WebMethod]
-        //AutoComplete
-        public static List<string> AgentSearch(string prefixText, int count)
+
+        protected void SearchBT_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = strConnectString;
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = @"select distinct a.agents,b.cus_name_brief from ordc_bah1 a left join bas_cus_master b on a.agents =b.cus_id
-                                        where bah_status<>'CA' and (a.agents like '%'+  @SearchText + '%' or b.cus_name_brief like '%'+@SearchText+'%')";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
-                    cmd.Connection = conn;
-                    conn.Open();
-                    List<string> VendorID = new List<string>();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            string item = AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem(sdr["agents"].ToString(), sdr["cus_name_brief"].ToString());
-                            VendorID.Add(item);
-                        }
-                    }
-                    conn.Close();
-                    return VendorID;
-                }
-            }
+            DbInit();
+        }
+
+        public void F_ErrorShow(string strError)
+        {
+            ((Label)Master.FindControl("MessageLB")).Text = strError;
+            ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
     }
 }

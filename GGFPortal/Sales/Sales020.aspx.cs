@@ -18,7 +18,7 @@ namespace GGFPortal.Sales
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "品牌產量", StrProgram = "Sales020.aspx";
+        static string StrPageName = "品牌產量";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數

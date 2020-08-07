@@ -23,7 +23,7 @@ namespace GGFPortal.TempCode
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
         static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
-        static string strArea = "", strImportType = "";
+        //static string strArea = "", strImportType = "";
         static string Str匯入定義Table = "河內打樣單";
         static string Str匯入Head = "GGF河內打樣單Head", Str匯入Line = "GGF河內打樣單";
         static DataSet Ds = new DataSet();
@@ -729,9 +729,10 @@ namespace GGFPortal.TempCode
                         #endregion
                         finally
                         {
-                            conn1.Close();
-                            conn1.Dispose();
-                            command1.Dispose();
+                            //使用Using會自動釋放資源
+                            //conn1.Close();
+                            //conn1.Dispose();
+                            //command1.Dispose();
                             Session.RemoveAll();
                             //Label1.Text = "資料上傳成功";
                         }

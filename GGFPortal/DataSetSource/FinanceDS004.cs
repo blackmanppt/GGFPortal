@@ -2,9 +2,11 @@
 {
 }
 
-namespace GGFPortal.DataSetSource {
-    
-    
-    public partial class FinanceDS004 {
+namespace GGFPortal.DataSetSource
+{
+
+
+    public partial class FinanceDS004
+    {
     }
 }

@@ -23,7 +23,7 @@ namespace GGFPortal.Sales
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
         static string StrPageName = "每周河內打樣單資料上傳", StrProgram = "Sample023.aspx";
-        static string strArea = "", strImportType = "";
+        //static string strArea = "", strImportType = "";
         static string Str匯入定義Table = "河內打樣單";
         static string Str匯入Head = "GGF河內打樣單Head", Str匯入Line = "GGF河內打樣單";
         static DataSet Ds = new DataSet();

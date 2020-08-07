@@ -211,13 +211,7 @@ ORDER BY   開航日, 客戶, vendor_name_brief</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PO_NUMBER" msprop:Generator_ColumnVarNameInTable="columnPO_NUMBER" msprop:Generator_ColumnPropNameInRow="PO_NUMBER" msprop:Generator_ColumnPropNameInTable="PO_NUMBERColumn" msprop:Generator_UserColumnName="PO_NUMBER" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="PO_NUMBER" msprop:Generator_ColumnVarNameInTable="columnPO_NUMBER" msprop:Generator_ColumnPropNameInRow="PO_NUMBER" msprop:Generator_ColumnPropNameInTable="PO_NUMBERColumn" msprop:Generator_UserColumnName="PO_NUMBER" type="xs:string" minOccurs="0" />
               <xs:element name="vendor_name_brief" msprop:Generator_ColumnVarNameInTable="columnvendor_name_brief" msprop:Generator_ColumnPropNameInRow="vendor_name_brief" msprop:Generator_ColumnPropNameInTable="vendor_name_briefColumn" msprop:Generator_UserColumnName="vendor_name_brief" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -503,6 +497,87 @@ ORDER BY   開航日, 客戶, vendor_name_brief</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="出口大表" msprop:Generator_TableClassName="出口大表DataTable" msprop:Generator_TableVarName="table出口大表" msprop:Generator_TablePropName="出口大表" msprop:Generator_RowDeletingName="出口大表RowDeleting" msprop:Generator_RowChangingName="出口大表RowChanging" msprop:Generator_RowEvHandlerName="出口大表RowChangeEventHandler" msprop:Generator_RowDeletedName="出口大表RowDeleted" msprop:Generator_UserTableName="出口大表" msprop:Generator_RowChangedName="出口大表RowChanged" msprop:Generator_RowEvArgName="出口大表RowChangeEvent" msprop:Generator_RowClassName="出口大表Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="site" msprop:Generator_ColumnVarNameInTable="columnsite" msprop:Generator_ColumnPropNameInRow="site" msprop:Generator_ColumnPropNameInTable="siteColumn" msprop:Generator_UserColumnName="site">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="shp_nbr" msprop:Generator_ColumnVarNameInTable="columnshp_nbr" msprop:Generator_ColumnPropNameInRow="shp_nbr" msprop:Generator_ColumnPropNameInTable="shp_nbrColumn" msprop:Generator_UserColumnName="shp_nbr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="開航日" msprop:Generator_ColumnVarNameInTable="column開航日" msprop:Generator_ColumnPropNameInRow="開航日" msprop:Generator_ColumnPropNameInTable="開航日Column" msprop:Generator_UserColumnName="開航日" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="客戶" msprop:Generator_ColumnVarNameInTable="column客戶" msprop:Generator_ColumnPropNameInRow="客戶" msprop:Generator_ColumnPropNameInTable="客戶Column" msprop:Generator_UserColumnName="客戶" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="S_O" msprop:Generator_ColumnVarNameInTable="columnS_O" msprop:Generator_ColumnPropNameInRow="S_O" msprop:Generator_ColumnPropNameInTable="S_OColumn" msprop:Generator_UserColumnName="S_O" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="style_no" msprop:Generator_ColumnVarNameInTable="columnstyle_no" msprop:Generator_ColumnPropNameInRow="style_no" msprop:Generator_ColumnPropNameInTable="style_noColumn" msprop:Generator_UserColumnName="style_no" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PO_NUMBER" msprop:Generator_ColumnVarNameInTable="columnPO_NUMBER" msprop:Generator_ColumnPropNameInRow="PO_NUMBER" msprop:Generator_ColumnPropNameInTable="PO_NUMBERColumn" msprop:Generator_UserColumnName="PO_NUMBER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vendor_name_brief" msprop:Generator_ColumnVarNameInTable="columnvendor_name_brief" msprop:Generator_ColumnPropNameInRow="vendor_name_brief" msprop:Generator_ColumnPropNameInTable="vendor_name_briefColumn" msprop:Generator_UserColumnName="vendor_name_brief" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="出貨數量" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column出貨數量" msprop:Generator_ColumnPropNameInRow="出貨數量" msprop:Generator_ColumnPropNameInTable="出貨數量Column" msprop:Generator_UserColumnName="出貨數量" type="xs:decimal" minOccurs="0" />
+              <xs:element name="出貨單價" msprop:Generator_ColumnVarNameInTable="column出貨單價" msprop:Generator_ColumnPropNameInRow="出貨單價" msprop:Generator_ColumnPropNameInTable="出貨單價Column" msprop:Generator_UserColumnName="出貨單價" type="xs:decimal" minOccurs="0" />
+              <xs:element name="出貨金額" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column出貨金額" msprop:Generator_ColumnPropNameInRow="出貨金額" msprop:Generator_ColumnPropNameInTable="出貨金額Column" msprop:Generator_UserColumnName="出貨金額" type="xs:decimal" minOccurs="0" />
+              <xs:element name="幣別" msprop:Generator_ColumnVarNameInTable="column幣別" msprop:Generator_ColumnPropNameInRow="幣別" msprop:Generator_ColumnPropNameInTable="幣別Column" msprop:Generator_UserColumnName="幣別" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="匯率" msprop:Generator_ColumnVarNameInTable="column匯率" msprop:Generator_ColumnPropNameInRow="匯率" msprop:Generator_ColumnPropNameInTable="匯率Column" msprop:Generator_UserColumnName="匯率" type="xs:decimal" minOccurs="0" />
+              <xs:element name="加減項" msprop:Generator_ColumnVarNameInTable="column加減項" msprop:Generator_ColumnPropNameInRow="加減項" msprop:Generator_ColumnPropNameInTable="加減項Column" msprop:Generator_UserColumnName="加減項" type="xs:decimal" minOccurs="0" />
+              <xs:element name="品牌" msprop:Generator_ColumnVarNameInTable="column品牌" msprop:Generator_ColumnPropNameInRow="品牌" msprop:Generator_ColumnPropNameInTable="品牌Column" msprop:Generator_UserColumnName="品牌" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
