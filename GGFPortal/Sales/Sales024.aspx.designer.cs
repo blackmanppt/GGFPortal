@@ -69,21 +69,21 @@ namespace GGFPortal.Sales
         protected global::System.Web.UI.WebControls.Button UpLoadBT;
 
         /// <summary>
-        /// ErrorGV 控制項。
+        /// GuidanceErrorGV 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ErrorGV;
+        protected global::System.Web.UI.WebControls.GridView GuidanceErrorGV;
 
         /// <summary>
-        /// GridView1 控制項。
+        /// CapacityErrorGV 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView CapacityErrorGV;
     }
 }

@@ -36,8 +36,8 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="table-responsive">
-            <asp:GridView ID="ErrorGV" runat="server" CssClass="table table-striped table-sm table-primary"></asp:GridView>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
+            <asp:GridView ID="GuidanceErrorGV" runat="server" CssClass="table table-striped table-sm table-primary"></asp:GridView>
+            <asp:GridView ID="CapacityErrorGV" runat="server" CssClass="table table-striped table-sm table-danger"></asp:GridView>
         </div>
     </main>
 </asp:Content>

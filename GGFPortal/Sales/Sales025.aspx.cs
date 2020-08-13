@@ -104,7 +104,7 @@ namespace GGFPortal.Sales
 
                     AMZCapacityHead a
                     left join AMZCapacityLine b
-                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1  and 匯入年月='{time.ToString("yyyyMM")}'
+                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1  and 匯入年月='{time:yyyyMM}'
                     group by
 
                     b.model_number
@@ -123,7 +123,7 @@ namespace GGFPortal.Sales
 
                     AMZCapacityHead a
                     left join AMZCapacityLine b
-                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1 and 匯入年月='{time.AddMonths(-1).ToString("yyyyMM")}'
+                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1 and 匯入年月='{time.AddMonths(-1):yyyyMM}'
                     group by
 
                     b.model_number
@@ -140,7 +140,7 @@ namespace GGFPortal.Sales
 
                     AMZCapacityHead a
                     left join AMZCapacityLine b
-                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1 and 匯入年月='{time.AddMonths(-2).ToString("yyyyMM")}'
+                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1 and 匯入年月='{time.AddMonths(-2):yyyyMM}'
                     group by
 
                     b.model_number
@@ -157,34 +157,17 @@ namespace GGFPortal.Sales
 
                     AMZCapacityHead a
                     left join AMZCapacityLine b
-                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1  and 匯入年月='{time.AddMonths(-3).ToString("yyyyMM")}'
+                    on a.id=b.id and a.IsDeleted=0 and a.IsUpDate=1  and 匯入年月='{time.AddMonths(-3):yyyyMM}'
                     group by
 
                     b.model_number
                     ) v on s.model_number=v.model_number
-					left join ViewAMZGuidance w on s.model_number=w.model_number and w.匯入年月='{time.ToString("yyyyMM")}'
-					left join ViewAMZGuidance x on t.model_number=x.model_number and x.匯入年月='{time.AddMonths(-1).ToString("yyyyMM")}'
-					left join ViewAMZGuidance y on u.model_number=y.model_number and y.匯入年月='{time.AddMonths(-2).ToString("yyyyMM")}'
+					left join ViewAMZGuidance w on s.model_number=w.model_number and w.匯入年月='{time:yyyyMM}'
+					left join ViewAMZGuidance x on t.model_number=x.model_number and x.匯入年月='{time.AddMonths(-1):yyyyMM}'
+					left join ViewAMZGuidance y on u.model_number=y.model_number and y.匯入年月='{time.AddMonths(-2):yyyyMM}'
                 ");
             return strsql;
         }
-        public bool SearchCheck()
-        {
-            bool bCheck = false;
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    bCheck = true;
-            return bCheck;
-
-        }
-
         protected void SearchBT_Click(object sender, EventArgs e)
         {
             DbInit();
