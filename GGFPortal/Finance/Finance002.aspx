@@ -72,7 +72,7 @@
     
     </div>
     <div>
-        <table style="width:800px; border-spacing: 1px; border-collapse: inherit;" border="1">
+        <table style=" border-spacing: 1px; border-collapse: inherit;" border="1">
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="SiteLB" runat="server" Text="公司別："></asp:Label>
@@ -213,7 +213,7 @@
 
                                 
 
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="False" Width="1000px">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="False" Width="100%">
                 <LocalReport ReportPath="ReportSource\ReportFinance002.rdlc"  >
                 </LocalReport>
             </rsweb:ReportViewer>

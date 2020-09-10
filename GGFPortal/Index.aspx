@@ -241,6 +241,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink125" runat="server" NavigateUrl="~/Sales/Sales024.aspx">AMZ資料上傳</asp:HyperLink> 
                         <br />
                         <asp:HyperLink ID="HyperLink127" runat="server" NavigateUrl="~/Sales/Sales025.aspx">AMZ資料匯出</asp:HyperLink> 
+                         <br />
+                        <asp:HyperLink ID="HyperLink128" runat="server" NavigateUrl="~/Sales/Sales026.aspx">VGG Stock</asp:HyperLink> 
                     </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td>&nbsp;</td>

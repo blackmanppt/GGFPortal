@@ -86,7 +86,7 @@
                 <h2>Section title</h2>-->
 
         <div class="table-responsive">
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" CssClass="w-100 h-100" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" CssClass="" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false" Width="100%" Height="100%">
                 <LocalReport ReportPath="ReportSource\Finance\ReportFinance019.rdlc" DisplayName="成品入庫數量">
                 </LocalReport>
             </rsweb:ReportViewer>

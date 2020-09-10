@@ -29,6 +29,8 @@ namespace GGFPortal.TempCode
         static DataSet Ds = new DataSet();
         static 多語 lang = new 多語();
         static DataCheck datacheck = new DataCheck();
+        //根錄下的資料夾
+        static string Str上傳路徑 = @"~\ExcelUpLoad\";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -105,6 +107,9 @@ namespace GGFPortal.TempCode
             return bCheck;
 
         }
+        /// <summary>
+        /// file upload input需要的宣告
+        /// </summary>
         protected System.Web.UI.HtmlControls.HtmlInputFile File1;
         protected System.Web.UI.HtmlControls.HtmlInputButton Submit1;
         //If this code does not exist in the file, add the code into the file after the following line:
@@ -128,7 +133,7 @@ namespace GGFPortal.TempCode
             if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
             {
                 string fileName = System.IO.Path.GetFileName(upload_file.PostedFile.FileName);
-                string LocationFiled = Server.MapPath(@"~\ExcelUpLoad\");
+                string LocationFiled = Server.MapPath(Str上傳路徑);
                 string str頁簽名稱 = "";
 
                 try
@@ -356,20 +361,16 @@ namespace GGFPortal.TempCode
                 {
                     case "Int":
                         datacheck.IntData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
-                        //IntCheck(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
                     case "Varchar":
                     case "Nvarchar":
                         datacheck.StringData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
-                        //stringcheck(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
                     case "Datetime":
                         datacheck.DatetimeData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
-                        //datetimecheck(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
                     case "Float":
                         datacheck.FloatData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
-                        //FloatData(row, DtColumnDefine, i, ref StrError, D_dataRow, j, B是否為必要欄位, ref BError);
                         break;
                     default:
                         break;
@@ -382,178 +383,6 @@ namespace GGFPortal.TempCode
                 D_errortable.Rows.Add(D_erroraRow);
             }
 
-        }
-
-        private static void FloatData(IRow row, DataTable DtColumnDefine, int i, ref string StrError, DataRow D_dataRow, int j, bool B是否為必要欄位, ref bool BError)
-        {
-            if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
-            {
-                //D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
-                ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
-                try
-                {
-                    D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
-                }
-                catch
-                {
-                    if (B是否為必要欄位 == true)
-                    {
-                        BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "Float Error1");
-                    }
-                    D_dataRow[j] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
-                }
-            }
-            else
-            {
-                try
-                {
-                    if (string.IsNullOrEmpty(row.GetCell(j).ToString()))
-                    {
-                        if (B是否為必要欄位 == true)
-                        {
-                            BError = true;
-                            StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
-                        }
-                        D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
-                    }
-                    else
-                    {
-                        double dout = 0;
-                        if (double.TryParse(row.GetCell(j).ToString(), out dout) == false)
-                        {
-                            if (B是否為必要欄位 == true)
-                            {
-                                BError = true;
-                                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "Float Error2");
-                            }
-                            D_dataRow[j] = dout.ToString();  //--每一個欄位，都加入同一列 DataRow
-                        }
-                        else
-                        {
-                            D_dataRow[j] = (row.GetCell(j) == null) ? "0" : dout.ToString();  //--每一個欄位，都加入同一列 DataRow 
-                        }
-                    }
-                }
-                catch
-                {
-                    if (B是否為必要欄位 == true)
-                    {
-                        BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NumFormatError");
-                    }
-                    D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
-                }
-            }
-        }
-
-        private static void datetimecheck(IRow row, DataTable DtColumnDefine, int i, ref string StrError, DataRow D_dataRow, int j, bool B是否為必要欄位, ref bool BError)
-        {
-            try
-            {
-                if (B是否為必要欄位 == true && (string.IsNullOrEmpty(row.GetCell(j).ToString())))
-                {
-                    BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
-                }
-                D_dataRow[j] = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).DateCellValue.ToString("yyyyMMdd");
-            }
-            catch
-            {
-                BError = true;
-                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "DateformatError");
-                //D_dataRow[j + 2] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
-            }
-        }
-
-        private static void stringcheck(IRow row, DataTable DtColumnDefine, int i, ref string StrError, DataRow D_dataRow, int j, bool B是否為必要欄位, ref bool BError)
-        {
-            try
-            {
-                if (B是否為必要欄位 && row.GetCell(j) == null)
-                {
-                    BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
-                    D_dataRow[j] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
-                }
-                else
-                {
-                    string strString = "";
-                    strString = (string.IsNullOrEmpty(row.GetCell(j).ToString())) ? "" : row.GetCell(j).ToString().Trim();   //--每一個欄位，都加入同一列 DataRow
-                    D_dataRow[j] = strString;
-                }
-
-            }
-            catch
-            {
-                if (B是否為必要欄位 == true)
-                {
-                    BError = true;
-                    StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "ImportError");
-                }
-                D_dataRow[j] = (row.GetCell(j) == null) ? "" : row.GetCell(j).ToString();  //--每一個欄位，都加入同一列 DataRow
-            }
-        }
-
-        private static void IntCheck(IRow row, DataTable DtColumnDefine, int i, ref string StrError, DataRow D_dataRow, int j, bool B是否為必要欄位, ref bool BError)
-        {
-            if ((row.GetCell(j) != null) && (row.GetCell(j).CellType == CellType.Formula))  //== v.1.2.4版修改。2.x版只是修正英文大小寫。
-            {
-                ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
-                try
-                {
-                    D_dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
-                }
-                catch
-                {
-                    if (B是否為必要欄位 == true)
-                    {
-                        BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error1");
-                    }
-                    D_dataRow[j] = (row.GetCell(j) == null) ? "" : "0";  //--每一個欄位，都加入同一列 DataRow
-                }
-            }
-            else
-            {
-                try
-                {
-                    int iout = 0;
-                    if (string.IsNullOrEmpty(row.GetCell(j).ToString()))
-                    {
-                        if (B是否為必要欄位 == true)
-                        {
-                            BError = true;
-                            StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "NoData");
-                        }
-                        D_dataRow[j + 2] = "0";  //--每一個欄位，都加入同一列 DataRow
-                    }
-                    else
-                    {
-                        if (int.TryParse(row.GetCell(j).ToString(), out iout) == false)
-                        {
-                            if (B是否為必要欄位 == true)
-                            {
-                                BError = true;
-                                StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
-                            }
-                            D_dataRow[j] = (row.GetCell(j) == null) ? "0" : iout.ToString();  //--每一個欄位，都加入同一列 DataRow
-
-                        }
-                        else
-                            D_dataRow[j] = (row.GetCell(j) == null) ? "0" : iout.ToString();  //--每一個欄位，都加入同一列 DataRow 
-                    }
-                }
-                catch
-                {
-                    if (B是否為必要欄位 == true)
-                    {
-                        BError = true;
-                        StrError = FConvertError(DtColumnDefine.Rows[i]["資料名稱中文"].ToString(), i, StrError, j, "int Error2");
-                    }
-                    D_dataRow[j] = "0";  //--每一個欄位，都加入同一列 DataRow
-                }
-            }
         }
 
         protected void UpLoadBT_Click(object sender, EventArgs e)

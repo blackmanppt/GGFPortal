@@ -227,7 +227,7 @@
 
 
 
-                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="False"  CssClass="bg-dark h-75 w-100" >
+                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="False"  CssClass="bg-dark" Width="100%" >
                     <LocalReport ReportPath="ReportSource\ReportFinance002.rdlc">
                     </LocalReport>
                 </rsweb:ReportViewer>

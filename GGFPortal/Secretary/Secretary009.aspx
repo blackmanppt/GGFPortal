@@ -95,7 +95,7 @@
                 <h2>Section title</h2>-->
 
             <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
-                <LocalReport  DisplayName="內廠產區表">
+                <LocalReport  DisplayName="產區產量總表">
                 </LocalReport>
             </rsweb:ReportViewer>
 

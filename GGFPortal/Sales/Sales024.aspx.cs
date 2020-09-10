@@ -25,7 +25,7 @@ namespace GGFPortal.Sales
         //static string strImportType = "";
         static string Str匯入定義Table = "AMZCapacity";
         static string StrAMZCapacity = "AMZCapacity", StrAMZGuidance = "AMZGuidance";
-        private static string Str匯入Head = "AMZCapacityHead", Str匯入Line = "AMZCapacityLine";
+        private static string Str匯入Head = "AMZCapacityHead";
         static DataSet Ds = new DataSet();
         static 多語 lang = new 多語();
         static DataCheck datacheck = new DataCheck();
@@ -48,7 +48,7 @@ namespace GGFPortal.Sales
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            DateTB.Attributes["readonly"] = "readonly";
         }
         protected DataTable GetDBData(string Str處理狀況)
         {
@@ -147,8 +147,6 @@ namespace GGFPortal.Sales
         }
         public void F_CheckDate(string StrExcelSheet ,string 副檔名)
         {
-
-
             string str頁簽名稱 = "";
             int ISheetCheck = 0;//確認Sheet 資料是否正確，每份Sheet只會有一個對應
             try

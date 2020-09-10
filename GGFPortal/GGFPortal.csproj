@@ -176,6 +176,15 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=18.2460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.18.2.0.48\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.2460.0.48, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.2.0.48\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=18.2460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.AspNet.18.2.0.48\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
@@ -1944,6 +1953,8 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sales027.aspx" />
+    <Content Include="Sales\Sales026.aspx" />
     <Content Include="Sales\Sales025.aspx" />
     <Content Include="Sales\Sales024.aspx" />
     <Content Include="Sales\Sample023.aspx" />
@@ -5745,6 +5756,7 @@
     <Content Include="test\DevExtreme.aspx" />
     <Content Include="test\easyui2.aspx" />
     <Content Include="test\easyui.aspx" />
+    <Content Include="test\ExcelExport_XLSIO.aspx" />
     <Content Include="test\HighChart-column-basic.aspx" />
     <Content Include="test\HighChart.aspx" />
     <Content Include="test\HighChart.html" />
@@ -7421,6 +7433,20 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sales027.aspx.cs">
+      <DependentUpon>Sales027.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales027.aspx.designer.cs">
+      <DependentUpon>Sales027.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Sales026.aspx.cs">
+      <DependentUpon>Sales026.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales026.aspx.designer.cs">
+      <DependentUpon>Sales026.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales025.aspx.cs">
       <DependentUpon>Sales025.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7920,6 +7946,13 @@
     <Compile Include="test\easyui.aspx.designer.cs">
       <DependentUpon>easyui.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\ExcelExport_XLSIO.aspx.cs">
+      <DependentUpon>ExcelExport_XLSIO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\ExcelExport_XLSIO.aspx.designer.cs">
+      <DependentUpon>ExcelExport_XLSIO.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\Handler2.ashx.cs">
       <DependentUpon>Handler2.ashx</DependentUpon>
     </Compile>
@@ -8056,7 +8089,7 @@
     </Compile>
     <Compile Include="ReferenceCode\DataCheck.cs" />
     <Compile Include="ReferenceCode\ExcelColumn.cs" />
-    <Compile Include="ReferenceCode\VNExcel.cs" />
+    <Compile Include="ReferenceCode\ExcelImport.cs" />
     <Compile Include="ReferenceCode\字串處理.cs" />
     <Compile Include="ReferenceCode\資料庫搜尋條件.cs" />
     <Compile Include="Sales\Sales005.aspx.cs">

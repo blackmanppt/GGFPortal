@@ -67,7 +67,7 @@
         </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main role="main" class="col-md-9 col-lg-10 px-4">
         <!--<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
@@ -85,11 +85,11 @@
 
                 <h2>Section title</h2>-->
 
-        <div class="table-responsive">
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" CssClass="h-100 w-100" Visible="false">
+       
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" Visible="false">
                 <LocalReport ReportPath="ReportSource\Ship\ReportShip008.rdlc">
                 </LocalReport>
             </rsweb:ReportViewer>
-            </div>
+  
     </main>
 </asp:Content>

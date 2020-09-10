@@ -8,13 +8,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>入庫應付、入庫暫估比較表</title>
-    <script src="../scripts/jquery-3.1.1.min.js"></script>
-    <script src="../scripts/scripts.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
-    <script src="../scripts/jQuery.print.min.js"></script>
-    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="../Content/style.css" rel="stylesheet" />
+    <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="../scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,7 +29,7 @@
                     <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc"  BehaviorID="StyleTB_AutoCompleteExtender" TargetControlID="StyleTB" ID="StyleTB_AutoCompleteExtender"  ServiceMethod="SearchOrdStyle" MinimumPrefixLength="1" UseContextKey="True"></ajaxToolkit:AutoCompleteExtender>
                 </div>
                 <div class="col-lg-8">
-                    <asp:Button ID="SearchBT" CssClass="btn btn-default" runat="server" Text="搜尋" OnClick="SearchBT_Click" />
+                    <asp:Button ID="SearchBT" CssClass="btn btn-outline-primary" runat="server" Text="搜尋" OnClick="SearchBT_Click" />
                 </div>
 
             </div>
@@ -52,18 +50,16 @@
                     </h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
 
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Visible="False" Height="363px" Width="890px">
+            </div>
+                        <div class="">
+
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Visible="False" Height="100%" Width="100%" CssClass="table">
                         <LocalReport DisplayName="入庫資料表" ReportPath="ReportSource\Ship\ReportShip006.rdlc">
                         </LocalReport>
                     </rsweb:ReportViewer>
 
                 </div>
-                
-        </div>
-            </div>
     </form>
 </body>
 </html>

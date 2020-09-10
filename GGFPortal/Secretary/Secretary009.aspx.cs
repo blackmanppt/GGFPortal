@@ -18,7 +18,7 @@ namespace GGFPortal.Secretary
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "內廠產量總表";
+        static string StrPageName = "產區產量總表";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
