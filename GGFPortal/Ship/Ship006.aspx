@@ -16,7 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container-fluid">
+        <div class="container-fluid h-100">
             <div class="row text-center">
                 <h2>入庫應付、入庫暫估比較表</h2>
             </div>
@@ -54,7 +54,7 @@
             </div>
                         <div class="">
 
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Visible="False" Height="100%" Width="100%" CssClass="table">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Visible="False"  Width="100%" >
                         <LocalReport DisplayName="入庫資料表" ReportPath="ReportSource\Ship\ReportShip006.rdlc">
                         </LocalReport>
                     </rsweb:ReportViewer>

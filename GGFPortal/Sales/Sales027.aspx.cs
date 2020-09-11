@@ -1,4 +1,5 @@
 ﻿using AjaxControlToolkit;
+using ClosedXML.Excel;
 using GGFPortal.ReferenceCode;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -11,6 +12,7 @@ using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -112,8 +114,12 @@ namespace GGFPortal.Sales
 
                     #region 基本資料欄位
                     D_table.Columns.Add("款號");
+                    D_table.Columns.Add("地區");
                     D_table.Columns.Add("顏色");
-                    D_table.Columns.Add("數量");
+                    D_table.Columns.Add("Size");
+                    DataColumn Col數量 = new DataColumn("數量");
+                    Col數量.DataType = System.Type.GetType("System.Int32");
+                    D_table.Columns.Add(Col數量);
                     #endregion
 
                     #region ErrorTable
@@ -208,6 +214,7 @@ namespace GGFPortal.Sales
                     //--錯誤資料顯示
                     if (D_errortable.Rows.Count > 0)
                     {
+                        ExportBT.Visible = false;
                         DataView D_View3 = new DataView(D_errortable);
                         ErrorGV.DataSource = D_View3;
                         ErrorGV.DataBind();
@@ -218,6 +225,7 @@ namespace GGFPortal.Sales
                         GridView1.DataBind();
                         if (D_errortable.Rows.Count == 0)
                         {
+                            ExportBT.Visible = true;
                             Session["ImportExcelData"] = D_table;
                         }
                     }
@@ -272,7 +280,7 @@ namespace GGFPortal.Sales
                 //款號
                 #region 款號
                 string Str款號 = "";
-                if (row.GetCell(3).CellType == CellType.String)
+                if (row.GetCell(3).CellType == CellType.String || row.GetCell(13).CellType == CellType.Numeric)
                 {
                     Str款號 = row.GetCell(3).ToString();
                 }
@@ -284,19 +292,38 @@ namespace GGFPortal.Sales
                 //數量
                 #region 數量
 
-                int I數量 = 0;
-                if (row.GetCell(13).CellType == CellType.Numeric)
+                int I數量US = 0, I數量EU=0, I數量JP=0;
+                if (row.GetCell(14).CellType == CellType.Numeric)
                 {
-                    I數量 = (int)row.GetCell(13).NumericCellValue;
+                    I數量US = (int)row.GetCell(14).NumericCellValue;
                 }
-                else
+                if (row.GetCell(15).CellType == CellType.Numeric)
+                {
+                    I數量EU = (int)row.GetCell(14).NumericCellValue;
+                }
+                if (row.GetCell(16).CellType == CellType.Numeric)
+                {
+                    I數量JP = (int)row.GetCell(16).NumericCellValue;
+                }
+                if(I數量US==0&& I數量EU==0&& I數量JP==0)
                 {
                     StrError += $"{(StrError.Length > 0 ? "," : "")}沒有數量";
                 }
                 #endregion
+                #region Size
+                string StrSize = "";
+                if (row.GetCell(6).CellType == CellType.String)
+                {
+                    StrSize = row.GetCell(6).ToString();
+                }
+                else
+                {
+                    StrError += $"{(StrError.Length > 0 ? "," : "")}沒有Size";
+                }
+                #endregion
                 #region 顏色
                 string StrColor = "";
-                if (row.GetCell(5).CellType == CellType.String)
+                if (row.GetCell(5).CellType == CellType.String )
                 {
                     StrColor = row.GetCell(5).ToString();
                 }
@@ -308,34 +335,56 @@ namespace GGFPortal.Sales
                     
                 
                 StringBuilder 多筆資料 = new StringBuilder("");
-                string[] stringSeparators = new string[] { "/" };
-                string[] StrArr顏色 = StrColor.Split(stringSeparators, StringSplitOptions.None);
+                string[] StrArr顏色 = Regex.Split(StrColor, "[/]");
 
                 //string[] strtextarry = SplitEnter(strtext);
                 if (StrArr顏色.Length > 0)
                 {
                     foreach (var item in StrArr顏色)
                     {
-                        D_dataRow[0] = Str款號;
-                        D_dataRow[1] = item;
-                        D_dataRow[2] = I數量;
-                        D_table.Rows.Add(D_dataRow);
+                        if(I數量US>0&&string.IsNullOrEmpty(StrError))
+                        {
+                            D_dataRow = D_table.NewRow();
+                            D_dataRow[0] = Str款號;
+                            D_dataRow[1] = "US";
+                            D_dataRow[2] = item;
+                            D_dataRow[3] = StrSize;
+                            D_dataRow[4] = I數量US;
+                            D_table.Rows.Add(D_dataRow);
+                        }
+                        if (I數量EU > 0 && string.IsNullOrEmpty(StrError))
+                        {
+                            D_dataRow = D_table.NewRow();
+                            D_dataRow[0] = Str款號;
+                            D_dataRow[1] = "EU";
+                            D_dataRow[2] = item;
+                            D_dataRow[3] = StrSize;
+                            D_dataRow[4] = I數量EU;
+                            D_table.Rows.Add(D_dataRow);
+                        }
+                        if (I數量JP > 0 && string.IsNullOrEmpty(StrError))
+                        {
+                            D_dataRow = D_table.NewRow();
+                            D_dataRow[0] = Str款號;
+                            D_dataRow[1] = "JP";
+                            D_dataRow[2] = item;
+                            D_dataRow[3] = StrSize;
+                            D_dataRow[4] = I數量JP;
+                            D_table.Rows.Add(D_dataRow);
+                        }
                     }
-                  
                 }
                 #endregion
-
-
-                if (StrError.Length>0)
+                if (StrError.Length>0 && (I數量EU>0||I數量JP>0||I數量US>0))
                 {
                     D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
                     D_errortable.Rows.Add(D_erroraRow);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                F_ErrorShow(ex.Message.ToString());
             }
             
 
@@ -346,6 +395,26 @@ namespace GGFPortal.Sales
             F_UpLoad();
         }
 
+        protected void ExportBT_Click(object sender, EventArgs e)
+        {
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add((DataTable)Session["ImportExcelData"], "AMZ");
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", "AMZ_Po"));
+                using (MemoryStream MyMemoryStream = new MemoryStream())
+                {
+                    wb.SaveAs(MyMemoryStream);
+                    MyMemoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+        }
+
         private static string FConvertError(string Str欄位名稱, int i, string sError, int j, string strErrorDefine)
         {
             try
@@ -354,8 +423,6 @@ namespace GGFPortal.Sales
             }
             catch (Exception)
             {
-
-
             }
             return sError;
         }

@@ -92,7 +92,7 @@
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Visible="False">
                         <LocalReport ReportPath="ReportSource\Sales\ReportSales013.rdlc" DisplayName="CRP排程表" EnableExternalImages="True">
                         </LocalReport>
                     </rsweb:ReportViewer>

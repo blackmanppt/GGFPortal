@@ -93,7 +93,7 @@
 
                     </div>
                     <div class="row">
-                        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+                        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" >
                             <LocalReport ReportPath="ReportSource\Ship\ReportShip004.rdlc" DisplayName="入庫櫃號">
                             </LocalReport>
                         </rsweb:ReportViewer>
