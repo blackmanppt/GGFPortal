@@ -22,10 +22,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
-                    <nav class="navbar navbar-default" role="navigation">
+<%--                    <nav class="navbar navbar-default" role="navigation">                    </nav>--%>
                         <h3 class="text-info text-left">打樣收單查詢</h3>
 
-                        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                        <div >
                             <h4>
                                 <asp:Label ID="Label1" runat="server" Text="收單日期"></asp:Label></h4>
                             <asp:TextBox ID="收單起TB" runat="server" AutoPostBack="true" CssClass=" form-control"></asp:TextBox>
@@ -70,51 +70,16 @@
                             </div>
                             
                             
-                            <%--                            <h4>年度</h4>
-                                <div class="form-group">
-                                <asp:DropDownList ID="年度DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource2" DataTextField="season_y" DataValueField="season_y"  CssClass="form-control">
-                                    <asp:ListItem></asp:ListItem>
-                                </asp:DropDownList>
-
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season_y] FROM [ordc_bah1] ORDER BY [season_y] DESC"></asp:SqlDataSource>
-                                    </div>
-                            <h4>季節</h4>
-                            <div class="form-group">
-                                <asp:DropDownList ID="季節DDL" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSource1" DataTextField="season" DataValueField="season"  CssClass="form-control">
-                                    <asp:ListItem></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT DISTINCT [season] FROM [ordc_bah1] ORDER BY [season]"></asp:SqlDataSource>
-                            </div>--%>
+                           
                             
                             <div class="form-group">
                                 <h4>是否收單</h4>
                                 <asp:CheckBox ID="ReceiptCB" runat="server" Text="未收單資料" AutoPostBack="True" OnCheckedChanged="ReceiptCB_CheckedChanged"  />
                                 <h4>地區</h4>
                                 <asp:CheckBox ID="HanoiCB" runat="server" Text="河內打樣" />
-<%-- 多欄位autocomp                               <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" TargetControlID="供應商TB" ID="供應商TB_AutoCompleteExtender" ServiceMethod="Search供應商代號"  MinimumPrefixLength="1"
-        CompletionInterval="100" EnableCaching="false" CompletionSetCount="10" OnClientPopulated="Employees_Populated" FirstRowSelected="false"></ajaxToolkit:AutoCompleteExtender>
-                            <div>
-                                    <script type="text/javascript">
-                                        function Employees_Populated(sender, e) {
-                                            var employees = sender.get_completionList().childNodes;
-                                            var div = "<table>";
-                                            div += "<tr><th>Search</th><th>SearchName</th></tr>";
-                                            for (var i = 0; i < employees.length; i++) {
- 
-                                                div += "<tr><td>" + employees[i].innerHTML.split('-')[0] + "</td><td>" + employees[i].innerHTML.split('-')[1]  + "</td></tr>";
-                                            }
-                                            div += "</table>";
-                                            sender._completionListElement.innerHTML = div;
-                                        }
-                                    </script>
-                                </div>--%>
+
                             </div>
-<%--                            
-                            <h4>狀態</h4>
-                            <div class="form-group">
-                                <asp:CheckBox ID="主料CB" runat="server" Checked="true" CssClass="form-control" Text="顯示主料資料" />
-                                <asp:CheckBox ID="入庫CB" runat="server" Checked="true" CssClass="form-control" Text="顯示入庫資料" />
-                            </div>--%>
+
                             <h4>結案日期</h4>
                             <div class=" form-group">
                                 
@@ -131,10 +96,10 @@
 
                         </div>
 
-                    </nav>
+
                 </div>
-                <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False">
+                <div class=" col-lg-10 container-fluid">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" Height="800px">
                         <LocalReport ReportPath="ReportSource\Sales\ReportSALEV6.rdlc" DisplayName="樣品單資料" EnableExternalImages="True">
                         </LocalReport>
                     </rsweb:ReportViewer>

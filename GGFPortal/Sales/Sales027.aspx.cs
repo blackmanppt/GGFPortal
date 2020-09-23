@@ -1,6 +1,7 @@
 ﻿using AjaxControlToolkit;
 using ClosedXML.Excel;
 using GGFPortal.ReferenceCode;
+using Microsoft.Reporting.WebForms;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
@@ -110,7 +111,7 @@ namespace GGFPortal.Sales
                     //指定Import Sheet Name
                     //string StrSheetNameCheck = "";
                     //Boolean BCheck = false;
-                    int  I資料起始列=3;
+                    int  I資料起始列=1;
 
                     #region 基本資料欄位
                     D_table.Columns.Add("款號");
@@ -156,7 +157,7 @@ namespace GGFPortal.Sales
                                 string Str款號 = "";
                                 try
                                 {
-                                    Str款號 = row.GetCell(3).ToString();
+                                    Str款號 = row.GetCell(0).ToString();
                                 }
                                 catch (Exception)
                                 {
@@ -195,7 +196,7 @@ namespace GGFPortal.Sales
                                 string Str款號 = "";
                                 try
                                 {
-                                    Str款號 = row.GetCell(3).ToString();
+                                    Str款號 = row.GetCell(0).ToString();
                                 }
                                 catch (Exception)
                                 {
@@ -214,19 +215,27 @@ namespace GGFPortal.Sales
                     //--錯誤資料顯示
                     if (D_errortable.Rows.Count > 0)
                     {
-                        ExportBT.Visible = false;
+                        //ExportBT.Visible = false;
                         DataView D_View3 = new DataView(D_errortable);
-                        ErrorGV.DataSource = D_View3;
-                        ErrorGV.DataBind();
+                        //ErrorGV.DataSource = D_View3;
+                        //ErrorGV.DataBind();
                     }
                     if (D_table.Rows.Count > 0)
                     {
-                        GridView1.DataSource = D_table;
-                        GridView1.DataBind();
+                        //GridView1.DataSource = D_table;
+                        //GridView1.DataBind();
+
                         if (D_errortable.Rows.Count == 0)
                         {
-                            ExportBT.Visible = true;
-                            Session["ImportExcelData"] = D_table;
+                            //ExportBT.Visible = true;
+                            //Session["ImportExcelData"] = D_table;
+                            ReportViewer1.Visible = true;
+                            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                            ReportDataSource source = new ReportDataSource("AMZ_Po", D_table);
+                            ReportViewer1.LocalReport.DataSources.Clear();
+                            ReportViewer1.LocalReport.DataSources.Add(source);
+                            ReportViewer1.DataBind();
+                            ReportViewer1.LocalReport.Refresh();
                         }
                     }
                 }
@@ -280,9 +289,9 @@ namespace GGFPortal.Sales
                 //款號
                 #region 款號
                 string Str款號 = "";
-                if (row.GetCell(3).CellType == CellType.String || row.GetCell(13).CellType == CellType.Numeric)
+                if (row.GetCell(0).CellType == CellType.String || row.GetCell(0).CellType == CellType.Numeric)
                 {
-                    Str款號 = row.GetCell(3).ToString();
+                    Str款號 = row.GetCell(0).ToString();
                 }
                 else
                 {
@@ -293,18 +302,20 @@ namespace GGFPortal.Sales
                 #region 數量
 
                 int I數量US = 0, I數量EU=0, I數量JP=0;
-                if (row.GetCell(14).CellType == CellType.Numeric)
+                if (row.GetCell(3).CellType == CellType.Numeric)
                 {
-                    I數量US = (int)row.GetCell(14).NumericCellValue;
+                    I數量US = (int)row.GetCell(3).NumericCellValue;
                 }
-                if (row.GetCell(15).CellType == CellType.Numeric)
-                {
-                    I數量EU = (int)row.GetCell(14).NumericCellValue;
-                }
-                if (row.GetCell(16).CellType == CellType.Numeric)
-                {
-                    I數量JP = (int)row.GetCell(16).NumericCellValue;
-                }
+                if(row.Cells.Count > 4)
+                    if (row.GetCell(4).CellType == CellType.Numeric)
+                    {
+                        I數量EU = (int)row.GetCell(4).NumericCellValue;
+                    }
+                if(row.Cells.Count>5)
+                    if (row.GetCell(5).CellType == CellType.Numeric)
+                    {
+                        I數量JP = (int)row.GetCell(5).NumericCellValue;
+                    }
                 if(I數量US==0&& I數量EU==0&& I數量JP==0)
                 {
                     StrError += $"{(StrError.Length > 0 ? "," : "")}沒有數量";
@@ -312,9 +323,9 @@ namespace GGFPortal.Sales
                 #endregion
                 #region Size
                 string StrSize = "";
-                if (row.GetCell(6).CellType == CellType.String)
+                if (row.GetCell(2).CellType == CellType.String)
                 {
-                    StrSize = row.GetCell(6).ToString();
+                    StrSize = row.GetCell(2).ToString();
                 }
                 else
                 {
@@ -323,9 +334,9 @@ namespace GGFPortal.Sales
                 #endregion
                 #region 顏色
                 string StrColor = "";
-                if (row.GetCell(5).CellType == CellType.String )
+                if (row.GetCell(1).CellType == CellType.String )
                 {
-                    StrColor = row.GetCell(5).ToString();
+                    StrColor = row.GetCell(1).ToString();
                 }
                 else
                 {

@@ -8810,6 +8810,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales019.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales020.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales025.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sales\ReportSales027.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSALEV6.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />

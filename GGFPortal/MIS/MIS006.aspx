@@ -47,7 +47,7 @@
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="800px" Width="100%" Visible="False" >
                         <LocalReport ReportPath="ReportSource\MIS\ReportMIS006.rdlc" DisplayName="訂單資料">
                         </LocalReport>
                     </rsweb:ReportViewer>
