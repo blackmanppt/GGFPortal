@@ -5,14 +5,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace GGApi.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        //public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            var RequestJson = new { key1 = "V1", key2 = "V2" };
+            return Request.CreateResponse(HttpStatusCode.OK, RequestJson);
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5

@@ -86,7 +86,7 @@
                 <h2>Section title</h2>-->
 
        
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" Visible="false">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" Visible="false"  AsyncRendering="False" SizeToReportContent="True">
                 <LocalReport ReportPath="ReportSource\Ship\ReportShip008.rdlc">
                 </LocalReport>
             </rsweb:ReportViewer>

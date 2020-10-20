@@ -9,6 +9,9 @@ using System.IO;
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
+using System.Data.OleDb;
+using System.Windows.Forms;
+using System.Web.UI.WebControls;
 
 namespace GGFPortal.ReferenceCode
 {
@@ -242,6 +245,7 @@ namespace GGFPortal.ReferenceCode
             }
             
         }
+
 
         protected DataTable GetDBData(string Str處理狀況,string Str處理Table)
         {
@@ -550,5 +554,72 @@ namespace GGFPortal.ReferenceCode
         //        F_ErrorShow(lang.翻譯("Program", "ImportDataError", "TW"));
         //    }
         //}
+
+        public DataTable OledLoadExcel(System.Web.UI.HtmlControls.HtmlInputFile upload_file, string Str儲存路徑)
+        {
+            DataTable dt = new DataTable();
+
+            string fileName = Path.GetFileName(upload_file.PostedFile.FileName);
+
+            string LocationFiled = HttpContext.Current.Server.MapPath(Str儲存路徑);
+
+            string Str副檔名 = Path.GetExtension(fileName).ToUpper();
+            while (File.Exists(LocationFiled + fileName))
+            {
+                fileName = fileName.Substring(0, fileName.Length - Str副檔名.Length) + DateTime.Now.ToString("yyyyMMddhhmmssfff") + Str副檔名;
+            }
+            upload_file.PostedFile.SaveAs(LocationFiled + fileName);
+
+            //定義OleDb======================================================
+            //1.檔案位置
+
+            string FilePath = LocationFiled + fileName;
+
+            //2.提供者名稱  Microsoft.Jet.OLEDB.4.0適用於2003以前版本，Microsoft.ACE.OLEDB.12.0 適用於2007以後的版本處理 xlsx 檔案
+            string ProviderName = "Microsoft.ACE.OLEDB.12.0;";
+
+            //3.Excel版本，Excel 8.0 針對Excel2000及以上版本，Excel5.0 針對Excel97。
+            string ExtendedString = "'Excel 8.0;";
+
+            //4.第一行是否為標題(;結尾區隔)
+            //HDR=Yes，指示第一行是標題，不做為資料使用；HDR=NO，指示第一行不是標題，做為資料來使用。
+            string HDR = "Yes;";
+
+            //5.IMEX=1 通知驅動程序始終將「互混」數據列作為文本讀取(;結尾區隔,'文字結尾)
+            //  0 表示Export mode，「匯出模式」，只能用來做「寫入」用途
+            //  1 表示Import mode，「匯入模式」，只能用來做「讀取」用途。
+            //  2 表示Linked mode(full update capabilities)，「連結模式」，可同時支援「讀取」與「寫入」用途
+            string IMEX = "0';";
+
+            //=============================================================
+            //連線字串
+            string connectString =
+                    "Data Source=" + FilePath + ";" +
+                    "Provider=" + ProviderName +
+                    "Extended Properties=" + ExtendedString +
+                    "HDR=" + HDR +
+                    "IMEX=" + IMEX;
+            //=============================================================
+
+            using (OleDbConnection Connect = new OleDbConnection(connectString))
+            {
+                Connect.Open();
+                //string queryString = "SELECT * FROM [" + SheetName + "$]";
+                string queryString = "SELECT * FROM [Details$]";
+                try
+                {
+                    using (OleDbDataAdapter dr = new OleDbDataAdapter(queryString, Connect))
+                    {
+                        dr.Fill(dt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    dt = null;
+                }
+            }
+
+            return dt;
+        }
     }
 }

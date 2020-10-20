@@ -117,7 +117,7 @@
                 <h2>Section title</h2>-->
 
         <div class=" w-100 h-100">
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" AsyncRendering="False" SizeToReportContent="True">
                 <LocalReport ReportPath="ReportSource\Sales\ReportSales019.rdlc" DisplayName="DDP費用表">
                 </LocalReport>
             </rsweb:ReportViewer>

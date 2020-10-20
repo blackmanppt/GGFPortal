@@ -77,7 +77,7 @@
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False"  AsyncRendering="False" SizeToReportContent="True">
                         <LocalReport ReportPath="ReportSource\Sample\ReportSample007.rdlc" DisplayName="樣品室產量月總表-處理人員">
                         </LocalReport>
                     </rsweb:ReportViewer>

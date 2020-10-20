@@ -55,8 +55,8 @@
                 $('input[id="ContentPlaceHolder1_HiddenField1"]').val(start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD'));
                 $('input[id="ContentPlaceHolder1_DateRangeTB"]').trigger('change');
                 //確認資料
-                var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
-                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + xxxx + ')');
+                var KeepDate = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+                    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + KeepDate + ')');
             });
         });
         //postback後將資料塞回欄位

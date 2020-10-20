@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using GGFPortal.ReferenceCode;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace GGFPortal.test
 {
     public partial class test : System.Web.UI.Page
     {
+        string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +20,7 @@ namespace GGFPortal.test
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            
             Page.ClientScript.RegisterStartupScript(Page.GetType(), "", "<script>alert('"+ strConnectString + "');</script>");
         }
 
@@ -63,6 +67,47 @@ namespace GGFPortal.test
             {
                 Console.WriteLine($"Sort: {name.ToUpper()}!");
             }
+        }
+        public void Excel匯出測試()
+        {
+            ConvertToExcel ex = new ConvertToExcel();
+            DataTable dt = new DataTable();
+            
+            try
+            {
+                using (SqlConnection Conn = new SqlConnection(strConnectString))
+                {
+                    SqlDataAdapter myAdapter = new SqlDataAdapter("select top 100 * from ordc_bah1", Conn);
+                    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    ex.ExportExcelByCloseExcel(dt, "test");
+                }
+            }
+            catch (Exception ErrorMessage)
+            {
+
+                
+            }
+
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Excel匯出測試();
+        }
+
+        [Obsolete]
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            ExcelImport excelImport = new ExcelImport();
+            DataTable dt = new DataTable();
+            dt = excelImport.OledLoadExcel(upload_file, @"~\ExcelUpLoad\test\");
+            
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
         }
     }
 }

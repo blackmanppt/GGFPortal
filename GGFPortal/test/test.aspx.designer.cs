@@ -7,11 +7,13 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace GGFPortal.test {
-    
-    
-    public partial class test {
-        
+namespace GGFPortal.test
+{
+
+
+    public partial class test
+    {
+
         /// <summary>
         /// form1 控制項。
         /// </summary>
@@ -20,7 +22,7 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// Button1 控制項。
         /// </summary>
@@ -29,7 +31,7 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Button2 控制項。
         /// </summary>
@@ -38,7 +40,7 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
+
         /// <summary>
         /// Label1 控制項。
         /// </summary>
@@ -47,7 +49,7 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// Button3 控制項。
         /// </summary>
@@ -56,7 +58,16 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
-        
+
+        /// <summary>
+        /// Button4 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
+
         /// <summary>
         /// TextBox1 控制項。
         /// </summary>
@@ -65,7 +76,7 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
+
         /// <summary>
         /// GridView1 控制項。
         /// </summary>
@@ -74,7 +85,34 @@ namespace GGFPortal.test {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
+
+        /// <summary>
+        /// upload_file 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile upload_file;
+
+        /// <summary>
+        /// Button5 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button5;
+
+        /// <summary>
+        /// GridView2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+
         /// <summary>
         /// SqlDataSource1 控制項。
         /// </summary>

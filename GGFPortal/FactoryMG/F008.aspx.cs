@@ -119,8 +119,11 @@ namespace GGFPortal.FactoryMG
                     case "TW":
                         ReportViewer1.LocalReport.ReportPath = @"ReportSource\Factory\ReportF004V2.rdlc";
                         break;
-                    default:
+                    case "GAMA":
                         ReportViewer1.LocalReport.ReportPath = @"ReportSource\Factory\ReportF004V2EN.rdlc";
+                        break;
+                    default:
+                        ReportViewer1.LocalReport.ReportPath = @"ReportSource\Factory\ReportF004V2VNN.rdlc";
                         break;
                 }
                 ReportViewer1.LocalReport.DisplayName = "出口大表";

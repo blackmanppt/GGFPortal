@@ -96,7 +96,7 @@
 
 
                 <h2>Section title</h2>-->
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false" AsyncRendering="False" SizeToReportContent="True">
                 <LocalReport ReportPath="ReportSource\Finance\ReportFinance017.rdlc"  DisplayName="出口大表New"></LocalReport>
             </rsweb:ReportViewer>
     </main>

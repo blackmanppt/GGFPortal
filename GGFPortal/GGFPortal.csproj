@@ -5778,6 +5778,7 @@
     <Content Include="test\WEBapitest.aspx" />
     <Content Include="test\WebFormHR.aspx" />
     <Content Include="test\xmlconvertexcel.aspx" />
+    <Content Include="VN\VN015.aspx" />
     <Content Include="VN\VN014.aspx" />
     <Content Include="VN\VN013.aspx" />
     <Content Include="VN\VN012.aspx" />
@@ -8030,6 +8031,13 @@
     <Compile Include="test\xmlconvertexcel.aspx.designer.cs">
       <DependentUpon>xmlconvertexcel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VN\VN015.aspx.cs">
+      <DependentUpon>VN015.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VN\VN015.aspx.designer.cs">
+      <DependentUpon>VN015.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VN\VN014.aspx.cs">
       <DependentUpon>VN014.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8710,6 +8718,7 @@
     <Folder Include="ExcelUpLoad\Salse\AMZForcast\" />
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
     <Folder Include="ExcelUpLoad\Template\" />
+    <Folder Include="ExcelUpLoad\test\" />
     <Folder Include="ExcelUpLoad\VGG\" />
     <Folder Include="ExcelUpLoad\VN\" />
     <Folder Include="GAMA\" />
@@ -8732,6 +8741,7 @@
       <LastGenOutput>CrystalReporttest1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ReportSource\Factory\ReportF004V2VNN.rdlc" />
     <EmbeddedResource Include="ReportSource\Factory\ReportF007.rdlc" />
     <EmbeddedResource Include="ReportSource\Factory\ReportF001.rdlc" />
     <EmbeddedResource Include="ReportSource\Factory\ReportF002.rdlc" />

@@ -112,7 +112,7 @@
                                    
                     </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False" >
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="100%" Width="100%" Visible="False"  AsyncRendering="False" SizeToReportContent="True">
                         <LocalReport ReportPath="ReportSource\VN\ReportVN012.rdlc" DisplayName="越南工時資料">
                         </LocalReport>
                     </rsweb:ReportViewer>

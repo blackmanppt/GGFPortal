@@ -98,7 +98,7 @@
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="100%" Width="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false"  AsyncRendering="False" SizeToReportContent="True">
             <LocalReport ReportPath="ReportSource\Sales\ReportSales020.rdlc">
             </LocalReport>
         </rsweb:ReportViewer>

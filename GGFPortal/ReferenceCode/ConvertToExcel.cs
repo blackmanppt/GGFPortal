@@ -1,4 +1,5 @@
-﻿using NPOI.HSSF.UserModel;
+﻿using ClosedXML.Excel;
+using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
@@ -12,6 +13,16 @@ namespace GGFPortal.ReferenceCode
 {
     public class ConvertToExcel
     {
+        public class Excute
+        {
+            public bool BError { get; set; }
+            public string Str { get; set; }
+        }
+        /// <summary>
+        /// NPOI轉excel
+        /// </summary>
+        /// <param name="dt">轉出資料</param>
+        /// <param name="extension">轉出文件格式,xlsx or xls</param>
         public void ExcelWithNPOI(DataTable dt, string extension)
         {
 
@@ -82,6 +93,41 @@ namespace GGFPortal.ReferenceCode
                 }
                 HttpContext.Current.Response.End();
             }
+        }
+        /// <summary>
+        /// CloseExcel資料匯出
+        /// </summary>
+        /// <param name="DT匯出資料"></param>
+        /// <param name="Str檔案名稱"></param>
+        /// <returns>Error 結果</returns>
+        public string ExportExcelByCloseExcel(DataTable DT匯出資料, string Str檔案名稱)
+        {
+            string StrError = "";
+            try
+            {
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    wb.Worksheets.Add(DT匯出資料, Str檔案名稱);
+                    HttpContext.Current.Response.Clear();
+                    HttpContext.Current.Response.Buffer = true;
+                    HttpContext.Current.Response.Charset = "";
+                    HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    HttpContext.Current.Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", Str檔案名稱));
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
+                    {
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(HttpContext.Current.Response.OutputStream);
+                        HttpContext.Current.Response.Flush();
+                        HttpContext.Current.Response.End();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                StrError = ex.ToString();
+            }
+            return StrError;
         }
     }
 }

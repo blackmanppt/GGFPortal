@@ -17,6 +17,7 @@
     
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="Button3" runat="server" Text="Button" OnClick="Button3_Click" />
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="TestCloseExcelExport" />
     </div>
         <div>
             test gridview select
@@ -36,6 +37,16 @@
                     <asp:BoundField DataField="立帳幣別" HeaderText="立帳幣別" SortExpression="立帳幣別" />
                     <asp:BoundField DataField="remark40" HeaderText="remark40" SortExpression="remark40" />
                 </Columns>
+            </asp:GridView>
+            <label class="btn btn-info">
+
+                <img src="../Pic/Icon/svg/file.svg" />
+<input id="upload_file" style="display:none;" type="file" runat="server" accept="application/vnd.ms-excel , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+<i class="fa fa-photo"></i> 上傳檔案
+</label>
+                </div>
+        <asp:Button ID="Button5" runat="server" Text="JOLEDB Load" OnClick="Button5_Click" />
+            <asp:GridView ID="GridView2" runat="server">
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT * FROM [ViewACP]"></asp:SqlDataSource>
         </div>
