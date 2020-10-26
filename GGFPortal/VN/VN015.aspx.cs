@@ -19,6 +19,7 @@ namespace GGFPortal.VN
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
+
         static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
@@ -154,12 +155,46 @@ namespace GGFPortal.VN
                             //ModalPopupExtender modalPopupExtender = (ModalPopupExtender)FindControl("ContentPlaceHolder1_AlertPanel_ModalPopupExtender");
                             //modalPopupExtender.Show();
                             //EditLB.Text = "sfse";
+                            int iId= (int)GV.DataKeys[row.RowIndex].Values[0];
+                            Session["UpdateId"] = iId;
+                            using (SqlConnection conn= new SqlConnection(strConnectString))
+                            {
+                                conn.Open();
+
+                                using (SqlCommand command=new SqlCommand())
+                                {
+                                    command.CommandText = $"select DataModifyDate,款號,料號,Qty,ReasonCode from GGF收料報告 where id= {iId} ";
+                                    command.Connection = conn;//資料庫連接
+                                    SqlDataReader dr = command.ExecuteReader();//執行並回傳DataReader
+                                    if (dr.HasRows)//檢查是否有資料列
+                                    {
+                                        
+                                        string strDDL = dr["ReasonCode"].ToString();
+                                        if (!string.IsNullOrEmpty(strDDL))
+                                            if (錯誤原因DDL.Items.Contains(錯誤原因DDL.Items.FindByValue(strDDL)) == true)
+                                            {
+                                                錯誤原因DDL.SelectedValue = 錯誤原因DDL.Items.FindByValue(strDDL).Value;
+                                            }
+                                            else
+                                            {
+                                                
+                                            }
+                                        else
+                                        {
+                                            錯誤原因DDL.SelectedValue = "";
+                                        }
+                                        備註TB.Visible = (strDDL == "其他");
+                                        備註TB.Text = (strDDL == "其他") ? dr["備註"].ToString() : "";
+                                        收料人員TB.Text = dr["收料人員"].ToString();
+
+
+                                    }
+                                }
+
+                            }
                             EditPanel_ModalPopupExtender.Show();
                             break;
-                        case "DeleteData":
-
-                            break;
-                        //case "SelectData":
+                        //case "DeleteData":
                         //    break;
                         default:
                             break;
@@ -172,134 +207,144 @@ namespace GGFPortal.VN
             ((Label)Master.FindControl("MessageLB")).Text = strError;
             ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
-        protected void ExcelDbInit()
-        {
-            DataTable dt振大主表 = new DataTable(), dt振大布類 = new DataTable(), dt振大顏色 = new DataTable();
-            string StrError = "";
-            using (SqlConnection Conn = new SqlConnection(strConnectString))
-            {
-                SqlDataAdapter myAdapter = new SqlDataAdapter(Selectsql("振大主表").ToString(), Conn);
-                myAdapter.Fill(dt振大主表);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
-                myAdapter.SelectCommand.CommandText = Selectsql("振大布類").ToString();
-                myAdapter.Fill(dt振大布類);
-                myAdapter.SelectCommand.CommandText = Selectsql("振大顏色").ToString();
-                myAdapter.Fill(dt振大顏色);
-            }
-
-            if (dt振大主表 == null)
-            {
-                StrError += "振大主表無資料<br/>";
-            }
-            if (dt振大布類 == null)
-            {
-                StrError += "振大布料無資料<br/>";
-            }
-            if (dt振大布類 == null)
-            {
-                StrError += "振大布類無資料";
-            }
-            if (StrError.Length > 0)
-                F_ErrorShow(StrError);
-            else
-            {
-                using (XLWorkbook wb = new XLWorkbook())
-                {
-                    wb.Worksheets.Add(dt振大主表, "振大主表");
-                    wb.Worksheets.Add(dt振大布類, "振大布類");
-                    wb.Worksheets.Add(dt振大顏色, "振大顏色");
-                    Response.Clear();
-                    Response.Buffer = true;
-                    Response.Charset = "";
-                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", "檔案名稱"));
-                    using (MemoryStream MyMemoryStream = new MemoryStream())
-                    {
-                        wb.SaveAs(MyMemoryStream);
-                        MyMemoryStream.WriteTo(Response.OutputStream);
-                        Response.Flush();
-                        Response.End();
-                    }
-                }
-            }
-        }
 
         protected void SaveBT_Click(object sender, EventArgs e)
         {
-            if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
-            {
-                string fileName = Path.GetFileName(upload_file.PostedFile.FileName);
-                string LocationFiled = Server.MapPath(Str上傳路徑);
-
-
-                string fileName = Path.GetFileName(upload_file.PostedFile.FileName);
-
-                string LocationFiled = HttpContext.Current.Server.MapPath(Str儲存路徑);
-
-                string Str副檔名 = Path.GetExtension(fileName).ToUpper();
-                while (File.Exists(LocationFiled + fileName))
-                {
-                    fileName = fileName.Substring(0, fileName.Length - Str副檔名.Length) + DateTime.Now.ToString("yyyyMMddhhmmssfff") + Str副檔名;
-                }
-                upload_file.PostedFile.SaveAs(LocationFiled + fileName);
-            }
+            File_Upload();
         }
-        private StringBuilder Selectsql(string Str搜尋條件)
+
+        private void File_Upload()
         {
-            StringBuilder strsql = new StringBuilder();
-            switch (Str搜尋條件)
+            int IUpdateId = 0;
+            int.TryParse(Session["UpdateId"].ToString(), out IUpdateId);
+            if(IUpdateId>0)
             {
-                case "振大主表":
-                    strsql.AppendFormat(@"select b.cus_name_brief 客戶名稱,a.season 季節,a.season_y 季節年度,item_statistic_name 款式
-                        ,(select pur_nbr+',' from purc_purchase_master where ord_nbr =a.ord_nbr and vendor_id='F0173'  FOR XML PATH('')) as 採購單  ,cus_item_no as 款號
-                        from ordc_bah1 a 
-                        left join bas_cus_master b on a.site=b.site and a.agents=b.cus_id
-                        left join bas_item_statistic c on a.site=c.site and a.item_statistic=c.item_statistic
-                        where cus_item_no ='{0}'", "");
-                    break;
-                case "振大布類":
-                    strsql.AppendFormat(@"select  
-                        a.pur_nbr 採購單,
-                        c.cus_item_no 款號,
-                        d.item_spk 料號規格,
-                        sum(a.pur_qty) as 採購數量,
-                        b.currency_id 幣別,a.pur_unit 單位,
-                        b.pur_total_amt 採購金額,
-                        a.pur_price 採購單價,
-                        a.cloth_g_weight 克重
-                        ,'GM/M2' 重量單位
-                        ,e.cloth_width 幅寬
-                        from purc_purchase_detail a left join purc_purchase_master b on a.site=b.site and a.pur_nbr=b.pur_nbr
-                        left join ordc_bah1 c on a.site=c.site and a.ord_nbr=c.ord_nbr
-                        left join bas_item_master d on a.org_item_no=d.item_no and a.site=d.site
-                        left join ordc_material e on a.ord_nbr=e.ord_nbr and a.site=e.site and a.org_item_no =e.item_no AND b.vendor_id=e.vendor_id
-                        where b.vendor_id='F0173' and cus_item_no ='{0}' and a.pur_detail_status <>'CA'
-                        group by
-                        a.pur_nbr,
-                        c.cus_item_no,
-                        b.pur_total_amt,
-                        a.pur_price,
-                        a.cloth_g_weight,
-                        d.item_spk,b.currency_id
-                        ,a.pur_unit,e.cloth_width", "");
-                    break;
-                case "振大顏色":
-                    strsql.AppendFormat(@"select 
-                        a.pur_nbr 採購單,a.pur_seq 採購單流水號,c.cus_item_no 款號,e.color_ename 顏色,a.pur_qty 採購數量,a.pur_unit 採購單位
-                        ,a.overage_allow 允收上限,a.shortage_allow 允收下限,'%' as 上下限單位
-                        ,a.pur_price 採購單價,b.currency_id 採購幣別,a.pur_amt 採購金額
-                        from purc_purchase_detail a left join purc_purchase_master b on a.site=b.site and a.pur_nbr=b.pur_nbr
-                        left join ordc_bah1 c on a.site=c.site and a.ord_nbr=c.ord_nbr
-                        left join bas_item_master d on a.item_no=d.item_no and a.site=c.site
-                        left join ordc_orders_color e on a.site=e.site and a.ord_nbr=e.ord_nbr and d.color_id=e.color_id
-                        where b.vendor_id='F0173' and cus_item_no ='{0}' and a.pur_detail_status <>'CA'
-                        order by a.pur_nbr,a.pur_seq
-                        ", "");
-                    break;
-                default:
-                    break;
+                string StrFileName = "";
+                string StrUploadFileError = "";
+                //沒有強制更新資料
+                if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
+                {
+                    string Str上傳路徑 = @"~\ExcelUpLoad\VN\工廠驗收報告\";
+                    string LocationFiled = Server.MapPath(Str上傳路徑);
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        HttpPostedFile uploadedFile = Request.Files[i];
+                        string fn = Path.GetFileName(uploadedFile.FileName);
+                        if (!string.IsNullOrEmpty(fn))
+                        {
+                            string Str副檔名 = Path.GetExtension(fn);
+                            try
+                            {
+                                while (File.Exists(LocationFiled + fn))
+                                {
+                                    fn = fn.Substring(0, fn.Length - Str副檔名.Length) + DateTime.Now.ToString("yyyyMMddhhmmssfff") + Str副檔名;
+                                }
+                                uploadedFile.SaveAs(LocationFiled + fn);
+                                StrFileName += StrFileName.Length > 0 ? "," + fn : fn;
+                            }
+                            catch (Exception ex)
+                            {
+                                StrUploadFileError += "FileUpload Error：" + fn + ex.ToString() + "\\n";
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                if(StrUploadFileError.Length>0)
+                {
+                    F_ErrorShow(StrUploadFileError);
+                }
+                else
+                {
+                    using (SqlConnection conn = new SqlConnection(strConnectString))
+                    {
+                        string strSql = "";
+                        SqlCommand command1 = conn.CreateCommand();
+                        SqlTransaction transaction;
+                        conn.Open();
+                        transaction = conn.BeginTransaction("Update越南收料");
+                        try
+                        {
+                            strSql = string.IsNullOrEmpty(StrFileName) ? "" : " , file_name = @file_name ";
+
+                            command1.Connection = conn;
+                            command1.Transaction = transaction;
+                            command1.CommandText = string.Format(@"UPDATE [dbo].[GGF收料報告] SET
+                                        Reason=@Reason
+                                        ,ReasonCode=@ReasonCode
+                                        ,備註=@備註
+                                        ,收料人員=@收料人員
+                                    {0} WHERE id = @id ", strSql);
+
+                            command1.Parameters.Add("@收料人員", SqlDbType.NVarChar).Value = 收料人員TB.Text.Trim();
+                            command1.Parameters.Add("@Reason", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedValue;
+                            command1.Parameters.Add("@ReasonCode", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedValue;
+                            command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Visible ? 備註TB.Text.Trim() : "";
+                            command1.Parameters.Add("@id", SqlDbType.Int).Value = IUpdateId;
+                            if(strSql.Length>0)
+                            {
+                                command1.Parameters.Add("@file_name", SqlDbType.NVarChar).Value = StrFileName;
+                            }
+                            command1.ExecuteNonQuery();
+                            command1.Parameters.Clear();
+                            transaction.Commit();
+                            Session.Remove("UpdateId");
+                            GV.DataBind();
+                        }
+                        catch (Exception ex1)
+                        {
+                            try
+                            {
+                                Log.ErrorLog(ex1, "Update Error :" + Session["SampleNbr"].ToString(), StrProgram);
+                            }
+                            catch (Exception ex2)
+                            {
+                                Log.ErrorLog(ex2, "Update Error Error:" + Session["SampleNbr"].ToString(), StrProgram);
+                            }
+                            finally
+                            {
+                                transaction.Rollback();
+                                F_ErrorShow("Update Fail");
+                            }
+                        }
+                    }
+                }
+                
             }
-            return strsql;
+            
         }
+
+        protected void GV_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string StrLink = e.Row.Cells[4].ToString();
+                if(!string.IsNullOrEmpty(StrLink))
+                {
+                    Label label = (Label)e.Row.FindControl("LinkLB");
+                    StringBuilder SbLinkScr = new StringBuilder();
+                    string[] stringSeparators = new string[] { "," };
+                    string[] vs = StrLink.Split(stringSeparators, StringSplitOptions.None);
+                    for (int i = 0; i < vs.Length; i++)
+                    {
+                        SbLinkScr.AppendFormat(@"{0} <a href=""{1}"">{2}</a>", i > 0 ? "," : "",vs[i],i.ToString());
+                    }
+                    label.Text = SbLinkScr.ToString();
+                }
+            }
+        }
+
+        protected void 錯誤原因DDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            備註TB.Visible = 錯誤原因DDL.SelectedValue == "OTHER";
+            EditPanel_ModalPopupExtender.Show();
+        }
+
+
     }
 }

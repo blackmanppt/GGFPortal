@@ -136,6 +136,10 @@ namespace GGFPortal.Ship
             {
                 strsql.AppendFormat(" and   品牌  = '{0}'", 品牌TB.Text.Trim());
             }
+            if(!訂單取消CB.Checked)
+            {
+                strsql.Append(" and   是否暫停  = 'N'");
+            }
             //strsql.AppendFormat(" and   款號  = '{0}'",StyleTB.Text.Trim());
             if (!string.IsNullOrEmpty(代工廠DDL.SelectedValue))
                 strsql.AppendFormat(" and   代工廠  = '{0}'", 代工廠DDL.SelectedValue);

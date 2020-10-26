@@ -8720,7 +8720,7 @@
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\test\" />
     <Folder Include="ExcelUpLoad\VGG\" />
-    <Folder Include="ExcelUpLoad\VN\" />
+    <Folder Include="ExcelUpLoad\VN\工廠驗收報告\" />
     <Folder Include="GAMA\" />
     <Folder Include="MGT\MGTFile\" />
     <Folder Include="MIS\site\070914021691_files\" />

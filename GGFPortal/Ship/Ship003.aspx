@@ -77,6 +77,8 @@
                             --%>
                             <asp:CheckBox ID="衣架資料CB" runat="server"  CssClass="form-control" Text="查詢衣架資料"/>
                             <br />
+                            <asp:CheckBox ID="訂單取消CB" runat="server"  CssClass="form-control" Text="訂單取消"/>
+                            <br />
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
                             <asp:Button ID="ClearBT" runat="server" Text="Clear" class="btn btn-default" OnClick="ClearBT_Click" />

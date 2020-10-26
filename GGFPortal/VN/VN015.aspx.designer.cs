@@ -33,24 +33,6 @@ namespace GGFPortal.VN
         protected global::System.Web.UI.WebControls.TextBox MutiTB;
 
         /// <summary>
-        /// 標題LB 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label 標題LB;
-
-        /// <summary>
-        /// ExportBT 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportBT;
-
-        /// <summary>
         /// 副標LB 控制項。
         /// </summary>
         /// <remarks>
@@ -76,15 +58,6 @@ namespace GGFPortal.VN
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
-        /// <summary>
-        /// UpdatePanel3 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
 
         /// <summary>
         /// show3 控制項。
@@ -132,6 +105,33 @@ namespace GGFPortal.VN
         protected global::System.Web.UI.WebControls.Label StyleLB;
 
         /// <summary>
+        /// 收料人員TB 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox 收料人員TB;
+
+        /// <summary>
+        /// 錯誤原因DDL 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList 錯誤原因DDL;
+
+        /// <summary>
+        /// SqlDataSource2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+
+        /// <summary>
         /// Literal1 控制項。
         /// </summary>
         /// <remarks>
@@ -150,13 +150,13 @@ namespace GGFPortal.VN
         protected global::System.Web.UI.HtmlControls.HtmlInputFile upload_file;
 
         /// <summary>
-        /// 錯誤原因DDL 控制項。
+        /// 備註TB 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList 錯誤原因DDL;
+        protected global::System.Web.UI.WebControls.TextBox 備註TB;
 
         /// <summary>
         /// SaveBT 控制項。
@@ -166,6 +166,15 @@ namespace GGFPortal.VN
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SaveBT;
+
+        /// <summary>
+        /// CancelBT 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelBT;
 
         /// <summary>
         /// EditPanel_ModalPopupExtender 控制項。
