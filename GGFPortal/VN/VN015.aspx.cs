@@ -20,7 +20,7 @@ namespace GGFPortal.VN
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
 
-        static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
+        static string StrPageName = "越南收料報告上傳", StrProgram = "VN015.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -35,7 +35,15 @@ namespace GGFPortal.VN
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+                DbInit();
 
+            //if (Convert.ToInt32(GridView1.PageIndex) != 0)
+            //{
+            //    //==如果不加上這行IF判別式，假設當我們看第四頁時， 
+            //    //==又輸入新的條件，重新作搜尋。「新的」搜尋結果將會直接看見 "第四頁"！這個問題發生在這裡，請看！=== 
+            //    GridView1.PageIndex = 0;
+            //}
         }
         protected void DbInit()
         {
@@ -49,55 +57,37 @@ namespace GGFPortal.VN
             #region query 使用 In
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
             {
-                SqlCommand command1 = conn1.CreateCommand();
-                SqlTransaction transaction1;
+                SqlCommand command1 = new SqlCommand();
                 conn1.Open();
-                transaction1 = conn1.BeginTransaction("createExcelImport");
                 try
                 {
                     command1.Connection = conn1;
-                    command1.Transaction = transaction1;
-
                     #region 查詢
-                    string Str搜尋參數 = "";
+                    string Str搜尋參數 = "款號";
                     string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
-                    command1.CommandText = string.Format(@"SELECT d* from 
-                                 where {1} in ( {0} ) and a.site='GGF'
-                                 ", string.Join(",", parameters), Str搜尋參數);
-                    command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
-                    for (int i = 0; i < StrArrary.Length; i++)
-                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                    command1.CommandText = string.Format($@"SELECT [id], [DataModifyDate], [款號], [料號], [Qty], [file_name], [Reason], [ReasonCode] FROM [GGF收料報告]
+                                 where DataModifyDate > getdate()-9 {(!string.IsNullOrEmpty(MutiTB.Text)?" and "+Str搜尋參數 +string.Format( " in ({0}) ", string.Join(",", parameters)):"")}");
+                    if(!string.IsNullOrEmpty(MutiTB.Text))
+                        for (int i = 0; i < StrArrary.Length; i++)
+                            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
                     command1.ExecuteNonQuery();
                     SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
                     dt.Load(dr);
                     #endregion
-                    //transaction1.Commit();
                 }
                 catch (Exception ex)
                 {
                     Log.ErrorLog(ex, "Error", StrProgram);
-                    transaction1.Rollback();
-                    throw;
-                }
-                finally
-                {
-                    conn1.Close();
-                    transaction1.Dispose();
                 }
             }
             #endregion
 
             if (dt.Rows.Count > 0)
             {
-                //ReportViewer1.Visible = true;
-                //ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                //ReportDataSource source = new ReportDataSource("採購單料號訂單資料", dt);
-                //ReportViewer1.LocalReport.DataSources.Clear();
-                //ReportViewer1.LocalReport.DataSources.Add(source);
-                //ReportViewer1.DataBind();
-                //ReportViewer1.LocalReport.Refresh();
+                GV.DataSource = dt;
+                GV.DataBind();
             }
             else
                 F_ErrorShow("搜尋不到資料");
@@ -106,21 +96,8 @@ namespace GGFPortal.VN
         private StringBuilder selectsql()
         {
 
-            StringBuilder strsql = new StringBuilder(" select * from [View採購單料號訂單資料] where 1=1 ");
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節])  = '{0}' ", 季節DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    strsql.AppendFormat(" and upper([Style])  like '%{0}%' ", 款號TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    strsql.AppendFormat(" and upper([品牌])  = '{0}' ", 品牌TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    strsql.AppendFormat(" and upper([代理商])  = '{0}' ", 代理商TB.Text.ToUpper());
-            //if (主料CB.Checked)
-            //    strsql.Append(" and upper([主副料])  = 'M' ");
-            //if (入庫CB.Checked)
-            //    strsql.Append(" and upper([採購單狀態])  = 'IN' ");
+            StringBuilder strsql = new StringBuilder(" SELECT [id], [DataModifyDate], [款號], [料號], [Qty], [file_name], [Reason], [ReasonCode] FROM [GGF收料報告] where  ");
+
             return strsql;
         }
         public bool SearchCheck()
@@ -159,43 +136,42 @@ namespace GGFPortal.VN
                             Session["UpdateId"] = iId;
                             using (SqlConnection conn= new SqlConnection(strConnectString))
                             {
-                                conn.Open();
+
 
                                 using (SqlCommand command=new SqlCommand())
                                 {
-                                    command.CommandText = $"select DataModifyDate,款號,料號,Qty,ReasonCode from GGF收料報告 where id= {iId} ";
+                                    command.CommandText = $"select DataModifyDate,款號,料號,Qty,ReasonCode,收料人員,備註 from GGF收料報告 where id= {iId} ";
                                     command.Connection = conn;//資料庫連接
-                                    SqlDataReader dr = command.ExecuteReader();//執行並回傳DataReader
-                                    if (dr.HasRows)//檢查是否有資料列
+                                    conn.Open();
+                                    using (SqlDataReader dr = command.ExecuteReader())
                                     {
-                                        
-                                        string strDDL = dr["ReasonCode"].ToString();
-                                        if (!string.IsNullOrEmpty(strDDL))
-                                            if (錯誤原因DDL.Items.Contains(錯誤原因DDL.Items.FindByValue(strDDL)) == true)
-                                            {
-                                                錯誤原因DDL.SelectedValue = 錯誤原因DDL.Items.FindByValue(strDDL).Value;
-                                            }
+                                        while (dr.Read())
+                                        {
+                                            string strDDL = dr.IsDBNull(dr.GetOrdinal("ReasonCode")) ? "" : dr["ReasonCode"].ToString();
+                                            備註TB.Text = (strDDL == "OTHER") ? dr.IsDBNull(dr.GetOrdinal("備註")) ? "" : dr["備註"].ToString() : "";
+                                            收料人員TB.Text = dr.IsDBNull(dr.GetOrdinal("收料人員")) ? "" : dr["收料人員"].ToString();
+                                            StyleLB.Text = dr["款號"].ToString();
+                                            收料日期LB.Text = dr["DataModifyDate"].ToString();
+                                            備註TB.Visible = (strDDL == "OTHER") ? true : false;
+                                            if (!string.IsNullOrEmpty(strDDL))
+                                                if (錯誤原因DDL.Items.Contains(錯誤原因DDL.Items.FindByValue(strDDL)) == true)
+                                                {
+                                                    錯誤原因DDL.SelectedValue = 錯誤原因DDL.Items.FindByValue(strDDL).Value;
+                                                }
+                                                else
+                                                {
+
+                                                }
                                             else
                                             {
-                                                
+                                                錯誤原因DDL.SelectedValue = "";
                                             }
-                                        else
-                                        {
-                                            錯誤原因DDL.SelectedValue = "";
                                         }
-                                        備註TB.Visible = (strDDL == "其他");
-                                        備註TB.Text = (strDDL == "其他") ? dr["備註"].ToString() : "";
-                                        收料人員TB.Text = dr["收料人員"].ToString();
-
-
                                     }
                                 }
-
                             }
                             EditPanel_ModalPopupExtender.Show();
                             break;
-                        //case "DeleteData":
-                        //    break;
                         default:
                             break;
                     }
@@ -282,8 +258,8 @@ namespace GGFPortal.VN
                                     {0} WHERE id = @id ", strSql);
 
                             command1.Parameters.Add("@收料人員", SqlDbType.NVarChar).Value = 收料人員TB.Text.Trim();
-                            command1.Parameters.Add("@Reason", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedValue;
-                            command1.Parameters.Add("@ReasonCode", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedValue;
+                            command1.Parameters.Add("@Reason", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedItem.Text;
+                            command1.Parameters.Add("@ReasonCode", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedItem.Value;
                             command1.Parameters.Add("@備註", SqlDbType.NVarChar).Value = 備註TB.Visible ? 備註TB.Text.Trim() : "";
                             command1.Parameters.Add("@id", SqlDbType.Int).Value = IUpdateId;
                             if(strSql.Length>0)
@@ -294,17 +270,17 @@ namespace GGFPortal.VN
                             command1.Parameters.Clear();
                             transaction.Commit();
                             Session.Remove("UpdateId");
-                            GV.DataBind();
+                            DbInit();
                         }
                         catch (Exception ex1)
                         {
                             try
                             {
-                                Log.ErrorLog(ex1, "Update Error :" + Session["SampleNbr"].ToString(), StrProgram);
+                                Log.ErrorLog(ex1, "Update Error :" , StrProgram);
                             }
                             catch (Exception ex2)
                             {
-                                Log.ErrorLog(ex2, "Update Error Error:" + Session["SampleNbr"].ToString(), StrProgram);
+                                Log.ErrorLog(ex2, "Update Error Error:", StrProgram);
                             }
                             finally
                             {
@@ -323,8 +299,8 @@ namespace GGFPortal.VN
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string StrLink = e.Row.Cells[4].ToString();
-                if(!string.IsNullOrEmpty(StrLink))
+                string StrLink = e.Row.Cells[6].Text;
+                if(!string.IsNullOrEmpty(StrLink) && StrLink != "&nbsp;")
                 {
                     Label label = (Label)e.Row.FindControl("LinkLB");
                     StringBuilder SbLinkScr = new StringBuilder();
@@ -332,12 +308,44 @@ namespace GGFPortal.VN
                     string[] vs = StrLink.Split(stringSeparators, StringSplitOptions.None);
                     for (int i = 0; i < vs.Length; i++)
                     {
-                        SbLinkScr.AppendFormat(@"{0} <a href=""{1}"">{2}</a>", i > 0 ? "," : "",vs[i],i.ToString());
+                        SbLinkScr.AppendFormat(@"{0} <a href=""/ExcelUpLoad/VN/工廠驗收報告/{1}"">檔案 {2}</a>", i > 0 ? "," : "",vs[i],(i+1).ToString());
                     }
                     label.Text = SbLinkScr.ToString();
                 }
             }
         }
+
+        protected void ClearBT_Click(object sender, EventArgs e)
+        {
+            MutiTB.Text = "";
+            GV.PageIndex = 1;
+            DbInit();
+        }
+
+        protected void SearchBT_Click(object sender, EventArgs e)
+        {
+            GV.PageIndex = 1;
+            DbInit();
+        }
+
+        protected void GV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            //GV.PageIndex = e.NewSelectedIndex;
+            //DbInit();
+        }
+
+        protected void GV_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GV.PageIndex = e.NewPageIndex;
+            DbInit();
+        }
+
+
+
+        //protected void GV_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+
+        //}
 
         protected void 錯誤原因DDL_SelectedIndexChanged(object sender, EventArgs e)
         {

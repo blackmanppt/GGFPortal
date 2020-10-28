@@ -339,6 +339,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink54" runat="server" NavigateUrl="~/VN/VN013.aspx">越南明細表(各組秒數)</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink84" runat="server" NavigateUrl="~/VN/VN014.aspx">訂單主料到廠日(有小圖)</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLink130" runat="server" NavigateUrl="~/VN/VN015.aspx">越南收料</asp:HyperLink>
                     </td>
                     <td class="auto-style2">
                         &nbsp;</td>

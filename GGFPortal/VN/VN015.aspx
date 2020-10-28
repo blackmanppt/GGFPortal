@@ -2,6 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="//github.com/fyneworks/multifile/blob/master/jQuery.MultiFile.min.js" type="text/javascript"></script>
+        <style type="text/css">
+    .hiddencol
+    {
+        display:none;
+    }
+    .viscol
+    {
+        display:block;
+    }
+</style>
     <script type="text/javascript">
         $(function () {
             var start = moment().subtract(29, 'days');
@@ -77,17 +87,20 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+<%--            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>日期</span>
 
             </h3>
-            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>--%>
             <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>說明2</span>
+                <span>款號</span>
 
             </h3>
             <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
-
+            <div class="form-group btn-group align-content-end">
+                <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="SearchBT_Click" />
+                <asp:Button ID="ClearBT" runat="server" Text="Clear" CssClass="btn btn-info" OnClick="ClearBT_Click" />
+            </div>
 
         </div>
     </nav>
@@ -97,7 +110,7 @@
             <asp:Label ID="副標LB" runat="server" Text=""></asp:Label></h3>
 
         <div class="table-responsive">
-            <asp:GridView ID="GV" runat="server" CssClass="table table-striped table-sm table-dark" OnRowCommand="GV_RowCommand" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" OnRowDataBound="GV_RowDataBound" PageSize="15" DataKeyNames="id">
+            <asp:GridView ID="GV" runat="server" CssClass="table table-striped table-sm table-dark" OnRowCommand="GV_RowCommand" AutoGenerateColumns="False" AllowPaging="True" OnRowDataBound="GV_RowDataBound" PageSize="15" DataKeyNames="id" OnPageIndexChanging="GV_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
@@ -110,12 +123,18 @@
                         <ItemStyle Width="10px" />
                     </asp:TemplateField>
 
-                    <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
+                                    <HeaderStyle CssClass="hiddencol" />
+                                    <ItemStyle CssClass="hiddencol" />
+                                </asp:BoundField>
                     <asp:BoundField DataField="DataModifyDate" HeaderText="收料日期" SortExpression="DataModifyDate" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="款號" HeaderText="款號" SortExpression="款號" />
                     <asp:BoundField DataField="料號" HeaderText="料號" SortExpression="料號" />
                     <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
-                    <asp:BoundField DataField="file_name" HeaderText="file_name" SortExpression="file_name" />
+                    <asp:BoundField DataField="file_name" HeaderText="file_name" SortExpression="file_name" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
+                                    <HeaderStyle CssClass="hiddencol" />
+                                    <ItemStyle CssClass="hiddencol" />
+                                </asp:BoundField>
 <%--                    <asp:BoundField DataField="Reason" HeaderText="Reason" SortExpression="Reason" />
                     <asp:BoundField DataField="ReasonCode" HeaderText="ReasonCode" SortExpression="ReasonCode" />--%>
                     <asp:TemplateField HeaderText="File">
@@ -126,7 +145,7 @@
                 </Columns>
 
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT [id], [DataModifyDate], [款號], [料號], [Qty], [file_name], [Reason], [ReasonCode] FROM [GGF收料報告]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" SelectCommand="SELECT [id], [DataModifyDate], [款號], [料號], [Qty], [file_name], [Reason], [ReasonCode] FROM [GGF收料報告]"></asp:SqlDataSource>
             <asp:Button ID="show3" runat="server" Text="show3" Style="display: none" />
             <asp:Panel ID="EditPanel" runat="server" align="center" CssClass="alert-danger w-50" Style="display: none" Height="600px">
                 <div class=" container-fluid">
@@ -195,7 +214,7 @@
                                         <input id="upload_file" style="display: none;" type="file" runat="server" multiple name="FileUpload">
                                         <i class="fa fa-photo"></i>上傳檔案
                                     </label>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td>
                                     <asp:TextBox ID="備註TB" runat="server" TextMode="MultiLine" CssClass="form-control" Height="200px" Visible="false"></asp:TextBox>
                                 </td>

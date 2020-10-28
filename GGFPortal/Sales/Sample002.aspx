@@ -376,7 +376,10 @@
                             <asp:Button ID="修改馬克" runat="server" CausesValidation="False" CommandName="EditeDetail" Text="修改馬克" CssClass="btn btn-default" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="uid" HeaderText="uid" InsertVisible="False" ReadOnly="True" SortExpression="uid" />
+                    <asp:BoundField DataField="uid" HeaderText="uid" InsertVisible="False" ReadOnly="True" SortExpression="uid" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol">
+                                    <HeaderStyle CssClass="hiddencol" />
+                                    <ItemStyle CssClass="hiddencol" />
+                                </asp:BoundField>
                     <asp:BoundField DataField="sam_nbr" HeaderText="打樣單號" ReadOnly="True" SortExpression="sam_nbr" />
                     <asp:BoundField DataField="MappingData" HeaderText="處理類別" SortExpression="MappingData" />
                     <asp:BoundField DataField="SampleUser" HeaderText="處理人員" SortExpression="SampleUser" />
