@@ -38,7 +38,7 @@
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true">
         </asp:ScriptManager>
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%">
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="90%" Height="720px">
             <LocalReport ReportPath="ReportSource\ReportFinance006.rdlc">
                 <DataSources>
                     <rsweb:ReportDataSource DataSourceId="FinaceObjectDataSource" Name="Finance006" />

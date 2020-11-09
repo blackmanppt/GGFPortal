@@ -11,7 +11,7 @@ namespace GGFPortal.TempCode
 {
 
 
-    public partial class GGFTempCode
+    public partial class GGFTempCodeEmpty
     {
 
         /// <summary>

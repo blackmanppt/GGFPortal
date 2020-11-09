@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace GGFPortal.TempCode
 {
-    public partial class GGFTempCode : System.Web.UI.Page
+    public partial class GGFTempCodeReportView : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();

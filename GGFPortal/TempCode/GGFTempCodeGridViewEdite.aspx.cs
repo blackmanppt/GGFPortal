@@ -12,15 +12,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.VN
+namespace GGFPortal.TempCode
 {
-    public partial class VN015 : System.Web.UI.Page
+    public partial class GGFTempCodeGridViewEdite : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-
-        static string StrPageName = "越南收料報告上傳", StrProgram = "VN015.aspx";
+        static string Str上傳路徑 = @"~\ExcelUpLoad\VN\工廠驗收報告\";
+        static string StrPageName = "UpLoad ", StrProgram = "TempCode3.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -37,10 +37,23 @@ namespace GGFPortal.VN
         {
             if (!Page.IsPostBack)
                 DbInit();
+
+            //if (Convert.ToInt32(GridView1.PageIndex) != 0)
+            //{
+            //    //==如果不加上這行IF判別式，假設當我們看第四頁時， 
+            //    //==又輸入新的條件，重新作搜尋。「新的」搜尋結果將會直接看見 "第四頁"！這個問題發生在這裡，請看！=== 
+            //    GridView1.PageIndex = 0;
+            //}
         }
         protected void DbInit()
         {
             DataTable dt = new DataTable();
+            //using (SqlConnection Conn = new SqlConnection(strConnectString))
+            //{
+            //    SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
+            //    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
+
+            //}
             #region query 使用 In
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
             {
@@ -79,11 +92,32 @@ namespace GGFPortal.VN
             else
                 F_ErrorShow("搜尋不到資料");
         }
+
+        private StringBuilder selectsql()
+        {
+
+            StringBuilder strsql = new StringBuilder(" SELECT [id], [DataModifyDate], [款號], [料號], [Qty], [file_name], [Reason], [ReasonCode] FROM [GGF收料報告] where  ");
+
+            return strsql;
+        }
+        public bool SearchCheck()
+        {
+            bool bCheck = false;
+            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
+            //    bCheck = true;
+            return bCheck;
+
+        }
+
         protected void GV_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if(e.CommandName=="EditData"||e.CommandName=="DeleteData")
                 using (GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer)
                 {
+                    ////抓key
+                    //string strid = GV.DataKeys[row.RowIndex].Values[0].ToString();
+                    ////抓資料
+                    //Session["Uid"] = GV.Rows[row.RowIndex].Cells[3].Text;
                     switch (e.CommandName)
                     {
                         case "EditData":
@@ -113,7 +147,6 @@ namespace GGFPortal.VN
                                                 }
                                                 else
                                                 {
-                                                    錯誤原因DDL.SelectedValue = "";
                                                 }
                                             else
                                             {
@@ -136,10 +169,13 @@ namespace GGFPortal.VN
             ((Label)Master.FindControl("MessageLB")).Text = strError;
             ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
+
+
         protected void SaveBT_Click(object sender, EventArgs e)
         {
             File_Upload();
         }
+
         private void File_Upload()
         {
             int IUpdateId = 0;
@@ -151,7 +187,7 @@ namespace GGFPortal.VN
                 //沒有強制更新資料
                 if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
                 {
-                    string Str上傳路徑 = @"~\ExcelUpLoad\VN\工廠驗收報告\";
+                    
                     string LocationFiled = Server.MapPath(Str上傳路徑);
                     for (int i = 0; i < Request.Files.Count; i++)
                     {
@@ -187,7 +223,8 @@ namespace GGFPortal.VN
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(strConnectString))
+                    //sing (SqlConnection conn = new SqlConnection(strConnectString))
+                    using (SqlConnection conn = new SqlConnection("TestConnectionString"))
                     {
                         string strSql = "";
                         SqlCommand command1 = conn.CreateCommand();
@@ -206,7 +243,6 @@ namespace GGFPortal.VN
                                         ,備註=@備註
                                         ,收料人員=@收料人員
                                     {0} WHERE id = @id ", strSql);
-
                             command1.Parameters.Add("@收料人員", SqlDbType.NVarChar).Value = 收料人員TB.Text.Trim();
                             command1.Parameters.Add("@Reason", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedItem.Text;
                             command1.Parameters.Add("@ReasonCode", SqlDbType.NVarChar).Value = 錯誤原因DDL.SelectedItem.Value;
@@ -278,6 +314,8 @@ namespace GGFPortal.VN
 
         protected void GV_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            //GV.PageIndex = e.NewSelectedIndex;
+            //DbInit();
         }
 
         protected void GV_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -287,6 +325,7 @@ namespace GGFPortal.VN
         }
         protected void 錯誤原因DDL_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //DDL因為AutoPostback會重刷畫面，因為file_load無法使用UpPanel所以要再將ModalPopupExtender.Show()
             備註TB.Visible = 錯誤原因DDL.SelectedValue == "OTHER";
             EditPanel_ModalPopupExtender.Show();
         }

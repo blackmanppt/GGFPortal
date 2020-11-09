@@ -10,14 +10,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGFPortal.Finance
+namespace GGFPortal.TempCode
 {
-    public partial class Finance018 : System.Web.UI.Page
+    public partial class GGFTempCodeEmpty : System.Web.UI.Page
     {
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "越南工時資料查詢";
+        static string StrPageName = "Search For Grid", StrProgram = "TempCode.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -44,46 +44,46 @@ namespace GGFPortal.Finance
 
             //}
             #region query 使用 In
-            //using (SqlConnection conn1 = new SqlConnection(strConnectString))
-            //{
-            //    SqlCommand command1 = conn1.CreateCommand();
-            //    SqlTransaction transaction1;
-            //    conn1.Open();
-            //    transaction1 = conn1.BeginTransaction("createExcelImport");
-            //    try
-            //    {
-            //        command1.Connection = conn1;
-            //        command1.Transaction = transaction1;
+            using (SqlConnection conn1 = new SqlConnection(strConnectString))
+            {
+                SqlCommand command1 = conn1.CreateCommand();
+                SqlTransaction transaction1;
+                conn1.Open();
+                transaction1 = conn1.BeginTransaction("createExcelImport");
+                try
+                {
+                    command1.Connection = conn1;
+                    command1.Transaction = transaction1;
 
-            //        #region 查詢
-            //        string Str搜尋參數 = "";
-            //        string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
-            //        string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
-            //        //string[] ParaFromDatatable = 
-            //        command1.CommandText = string.Format(@"SELECT d* from 
-            //                     where {1} in ( {0} ) and a.site='GGF'
-            //                     ", string.Join(",", parameters), Str搜尋參數);
-            //        command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
-            //        for (int i = 0; i < StrArrary.Length; i++)
-            //            command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
-            //        command1.ExecuteNonQuery();
-            //        SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
-            //        dt.Load(dr);
-            //        #endregion
-            //        //transaction1.Commit();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Log.ErrorLog(ex, "Error", StrProgram);
-            //        transaction1.Rollback();
-            //        throw;
-            //    }
-            //    finally
-            //    {
-            //        conn1.Close();
-            //        transaction1.Dispose();
-            //    }
-            //}
+                    #region 查詢
+                    string Str搜尋參數 = "";
+                    string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
+                    string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
+                    //string[] ParaFromDatatable = 
+                    command1.CommandText = string.Format(@"SELECT d* from 
+                                 where {1} in ( {0} ) and a.site='GGF'
+                                 ", string.Join(",", parameters), Str搜尋參數);
+                    command1.Parameters.Add("@samc_fin_date", SqlDbType.DateTime).Value = DateRangeTB.Text;
+                    for (int i = 0; i < StrArrary.Length; i++)
+                        command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
+                    command1.ExecuteNonQuery();
+                    SqlDataReader dr = command1.ExecuteReader(CommandBehavior.CloseConnection);
+                    dt.Load(dr);
+                    #endregion
+                    //transaction1.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Log.ErrorLog(ex, "Error", StrProgram);
+                    transaction1.Rollback();
+                    throw;
+                }
+                finally
+                {
+                    conn1.Close();
+                    transaction1.Dispose();
+                }
+            }
             #endregion
 
             if (dt.Rows.Count > 0)
@@ -103,16 +103,7 @@ namespace GGFPortal.Finance
         private StringBuilder selectsql()
         {
 
-            StringBuilder strsql = new StringBuilder(@"
-                    select x.*,y.工作時間,y.上線日期,y.部門,y.今日產量 from (
-                    select a.ord_nbr,cus_item_no,sum(a.stock_qty) MpscQty ,b.ord_qty from mpsc_stock_d a left join ordc_bah1 b on a.site=b.site and a.ord_nbr=b.ord_nbr
-                    where a.ord_nbr in (
-                    select  ord_nbr from mpsc_stock_m
-                    where CONVERT(varchar(8),create_date,112) between CONVERT(varchar(8),getdate()-8,112) and CONVERT(varchar(8),getdate(),112) and ord_nbr like 'OD%'
-                    )
-                    group by  a.ord_nbr,cus_item_no,b.ord_qty
-                    ) x left join [dbo].[View工時資料] y on x.cus_item_no=y.款號 where x.MpscQty>=x.ord_qty
-                    order by x.ord_nbr,y.工作時間,y.部門 ");
+            StringBuilder strsql = new StringBuilder(" select * from [View採購單料號訂單資料] where 1=1 ");
             //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
             //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
             //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))

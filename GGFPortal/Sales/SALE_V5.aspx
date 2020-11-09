@@ -99,7 +99,7 @@
 
                 </div>
                 <div class=" col-lg-10 container-fluid">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" Height="800px">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" AsyncRendering="False" SizeToReportContent="True">
                         <LocalReport ReportPath="ReportSource\Sales\ReportSALEV6.rdlc" DisplayName="樣品單資料" EnableExternalImages="True">
                         </LocalReport>
                     </rsweb:ReportViewer>

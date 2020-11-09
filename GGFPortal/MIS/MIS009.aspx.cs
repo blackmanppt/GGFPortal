@@ -64,7 +64,7 @@ namespace GGFPortal.MIS
         {
             
             StringBuilder strsql = new StringBuilder(" select * from [View廠商付款條件] ");
-            strsql.AppendFormat("where 廠商名稱 like '%{0}%' or 廠商簡稱 like '%{0}%' ", 廠商名稱TB.Text);
+            strsql.AppendFormat("where 廠商名稱 like '%{0}%' or 廠商簡稱 like '%{0}%' or 廠商代號  like '%{0}%' ", 廠商名稱TB.Text);
             return strsql;
         }
         

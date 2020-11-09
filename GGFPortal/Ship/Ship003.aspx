@@ -77,7 +77,7 @@
                             --%>
                             <asp:CheckBox ID="衣架資料CB" runat="server"  CssClass="form-control" Text="查詢衣架資料"/>
                             <br />
-                            <asp:CheckBox ID="訂單取消CB" runat="server"  CssClass="form-control" Text="訂單取消"/>
+                            <asp:CheckBox ID="訂單取消CB" runat="server"  CssClass="form-control" Text="訂單取消" />
                             <br />
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />
@@ -91,7 +91,7 @@
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Visible="False"  Height="800px">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Visible="False"  AsyncRendering="False" SizeToReportContent="True">
                     </rsweb:ReportViewer>
                 </div>
             </div>

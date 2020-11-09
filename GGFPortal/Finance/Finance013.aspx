@@ -85,7 +85,7 @@ order by vendor_id"></asp:SqlDataSource>
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" >
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt"  Width="100%" Visible="False" Height="720px" >
                         <LocalReport ReportPath="ReportSource\Finance\ReportFinance013.rdlc" DisplayName="出口大表">
                         </LocalReport>
                     </rsweb:ReportViewer>

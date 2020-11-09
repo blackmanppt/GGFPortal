@@ -32,7 +32,20 @@
                                 <h4>廠商名稱</h4>
                                 <asp:TextBox ID="廠商名稱TB" runat="server" CssClass="form-control"></asp:TextBox>
 
-                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" ServiceMethod="Search廠商名稱" MinimumPrefixLength="1" UseContextKey="True" TargetControlID="廠商名稱TB" ID="廠商名稱TB_AutoCompleteExtender"></ajaxToolkit:AutoCompleteExtender>
+                                <ajaxToolkit:AutoCompleteExtender runat="server" ServicePath="~/ReferenceCode/AutoCompleteWCF.svc" ServiceMethod="Search廠商名稱" MinimumPrefixLength="1" UseContextKey="True" TargetControlID="廠商名稱TB" ID="廠商名稱TB_AutoCompleteExtender" OnClientPopulated="Vendor_Populated"></ajaxToolkit:AutoCompleteExtender>
+                                  <script type="text/javascript">
+                                        function Vendor_Populated(sender, e) {
+                                            var employees = sender.get_completionList().childNodes;
+                                            var div = "<table>";
+                                            div += "<tr><th>廠商簡稱</th><th>廠商名稱</th><th>廠商代號</th></tr>";
+                                            for (var i = 0; i < employees.length; i++) {
+ 
+                                                div += "<tr><td>" + employees[i].innerHTML.split(',')[0] + "</td><td>" + employees[i].innerHTML.split(',')[1] + "</td><td>" + employees[i].innerHTML.split(',')[2] + "</td></tr>";
+                                            }
+                                            div += "</table>";
+                                            sender._completionListElement.innerHTML = div;
+                                        }
+                                  </script>
                             </div>
                             <div class="form-group">
                             <asp:Button ID="SearchBT" runat="server" Text="Search" class="btn btn-default" OnClick="SearchBT_Click" />

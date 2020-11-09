@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="Show快遞" runat="server" Text="快遞查件連結" class="btn btn-primary" Visible="false"/>
-                                <a href="https://www.sf-express.com/tw/tc/dynamic_function/waybill/" target="_blank" class="btn btn-block btn-primary">順豐查件-0800088830</a>
+                                <a href="https://www.sf-express.com/tw/tc/dynamic_function/waybill/" target="_blank" class="btn btn-block btn-primary">順豐查件-4128830</a>
                                 <a href="http://www.airaac.com/search/" target="_blank" class="btn  btn-block btn-primary">譽得查件-22971188</a>
                                 <a href="http://www.acsnets.com/cha.asp" target="_blank" class="btn  btn-block btn-primary">ACS查件-85311006</a>
                                 <a href="https://www.fedex.com/zh-tw/home.html" target="_blank" class="btn  btn-block btn-primary">FEDEX查件-0800075075#101</a>

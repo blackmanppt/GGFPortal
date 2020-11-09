@@ -54,7 +54,7 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink76" runat="server" NavigateUrl="~/MIS/MIS007.aspx">採購單核准</asp:HyperLink>
                                                                         <br />
                         <asp:HyperLink ID="HyperLink81" runat="server" NavigateUrl="~/MIS/MIS009.aspx">廠商交易資料查詢</asp:HyperLink>
-                        <br />
+<%--                        <br />
                         <asp:HyperLink ID="HyperLink85" runat="server" NavigateUrl="~/MIS/site/site4F.aspx">4F座位表</asp:HyperLink>
                         <br />
                         <asp:HyperLink ID="HyperLink86" runat="server" NavigateUrl="~/MIS/site/site5F.aspx">5F座位表</asp:HyperLink>
@@ -65,7 +65,7 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink89" runat="server" NavigateUrl="~/MIS/site/site10.aspx">10F座位表</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink90" runat="server" NavigateUrl="~/MIS/site/site12F.aspx">12F座位表</asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink90" runat="server" NavigateUrl="~/MIS/site/site12F.aspx">12F座位表</asp:HyperLink>--%>
                     </td>
                     <td class="auto-style2">
                         測試區：</td>
@@ -88,8 +88,8 @@ table, td, th {
                         <br />
                         <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Finance/Finance002.aspx">應付檢查表</asp:HyperLink>
                         <br />
-                        <asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Finance/Finance005.aspx">AP1查詢程式</asp:HyperLink>
-                                                <br />
+<%--                        <asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Finance/Finance005.aspx">AP1查詢程式</asp:HyperLink>
+                                                <br />--%>
                         <asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Finance/Finance007.aspx">出口大表(BY CATHY)</asp:HyperLink>
                                                 <br />
                         <asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Finance/Finance009.aspx">出口大表(BY Ariel)</asp:HyperLink>

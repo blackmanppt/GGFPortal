@@ -18,7 +18,7 @@ namespace GGFPortal.Finance
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "成品入庫查詢", StrProgram = "TempCode.aspx";
+        static string StrPageName = "成品入庫查詢", StrProgram = "Finance019.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -38,12 +38,7 @@ namespace GGFPortal.Finance
         protected void DbInit()
         {
             DataTable dt = new DataTable();
-            //using (SqlConnection Conn = new SqlConnection(strConnectString))
-            //{
-            //    SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
-            //    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
-            //}
             #region query 使用 In
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
             {
@@ -110,37 +105,7 @@ namespace GGFPortal.Finance
 select * from [192.168.0.152].VGG_GGF.dbo.View成衣入庫
 where cus_item_no in (
 select distinct 款號 from View工時資料) and SumQty >0");
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節])  = '{0}' ", 季節DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    strsql.AppendFormat(" and upper([Style])  like '%{0}%' ", 款號TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    strsql.AppendFormat(" and upper([品牌])  = '{0}' ", 品牌TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    strsql.AppendFormat(" and upper([代理商])  = '{0}' ", 代理商TB.Text.ToUpper());
-            //if (主料CB.Checked)
-            //    strsql.Append(" and upper([主副料])  = 'M' ");
-            //if (入庫CB.Checked)
-            //    strsql.Append(" and upper([採購單狀態])  = 'IN' ");
             return strsql;
-        }
-        public bool SearchCheck()
-        {
-            bool bCheck = false;
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    bCheck = true;
-            return bCheck;
-
         }
 
         protected void SearchBT_Click(object sender, EventArgs e)

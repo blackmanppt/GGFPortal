@@ -5743,14 +5743,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TempCode\GGFTempCode2.aspx" />
+    <Content Include="TempCode\GGFTempCodeReportView.aspx" />
     <Content Include="TempCode\GGFTempCodeExcelImport.aspx" />
-    <Content Include="TempCode\GGFTempCode.aspx" />
+    <Content Include="TempCode\GGFTempCodeEmpty.aspx" />
     <Content Include="TempCode\SbAdminTempCode.aspx" />
     <Content Include="TempCode\siteTest.aspx" />
     <Content Include="TempCode\TempCode2.aspx" />
     <Content Include="TempCode\TempReport.aspx" />
     <Content Include="TempCode\TempExcelImport.aspx" />
     <Content Include="TempCode\TempCode.aspx" />
+    <Content Include="TempCode\GGFTempCodeGridViewEdite.aspx" />
     <Content Include="test\angulartest.aspx" />
     <Content Include="test\datatable.aspx" />
     <Content Include="test\DevExtreme.aspx" />
@@ -7848,6 +7850,13 @@
     <Compile Include="TempCode\GGFTempCode2.aspx.designer.cs">
       <DependentUpon>GGFTempCode2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TempCode\GGFTempCodeReportView.aspx.cs">
+      <DependentUpon>GGFTempCodeReportView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCodeReportView.aspx.designer.cs">
+      <DependentUpon>GGFTempCodeReportView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TempCode\GGFTempCodeExcelImport.aspx.cs">
       <DependentUpon>GGFTempCodeExcelImport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7855,12 +7864,12 @@
     <Compile Include="TempCode\GGFTempCodeExcelImport.aspx.designer.cs">
       <DependentUpon>GGFTempCodeExcelImport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TempCode\GGFTempCode.aspx.cs">
-      <DependentUpon>GGFTempCode.aspx</DependentUpon>
+    <Compile Include="TempCode\GGFTempCodeEmpty.aspx.cs">
+      <DependentUpon>GGFTempCodeEmpty.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TempCode\GGFTempCode.aspx.designer.cs">
-      <DependentUpon>GGFTempCode.aspx</DependentUpon>
+    <Compile Include="TempCode\GGFTempCodeEmpty.aspx.designer.cs">
+      <DependentUpon>GGFTempCodeEmpty.aspx</DependentUpon>
     </Compile>
     <Compile Include="TempCode\SbAdminTempCode.aspx.cs">
       <DependentUpon>SbAdminTempCode.aspx</DependentUpon>
@@ -7912,6 +7921,13 @@
       <DependentUpon>TempCode.aspx</DependentUpon>
     </Compile>
     <Compile Include="TempCode\TempScriptCode.cs" />
+    <Compile Include="TempCode\GGFTempCodeGridViewEdite.aspx.cs">
+      <DependentUpon>GGFTempCodeGridViewEdite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempCode\GGFTempCodeGridViewEdite.aspx.designer.cs">
+      <DependentUpon>GGFTempCodeGridViewEdite.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\angulartest.aspx.cs">
       <DependentUpon>angulartest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

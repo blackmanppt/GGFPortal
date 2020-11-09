@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="GGFTempCode.aspx.cs" Inherits="GGFPortal.TempCode.GGFTempCode" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="GGFTempCodeReportView.aspx.cs" Inherits="GGFPortal.TempCode.GGFTempCodeReportView" %>
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -80,38 +82,28 @@
                 <span>日期</span>
 
             </h3>
-            <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+            <div class="form-group">
+                <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            
                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>說明2</span>
 
             </h3>
-            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
+            <div class="form-group">
+                <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
+            </div>
+            <div class="form-group ">
+                <div class=" text-right">
+                    <asp:Button ID="SearchBT" runat="server" Text="Search" CssClass="btn btn-primary" />
+                </div>
+                
+            </div>
         </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <!--<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This week
-                        </button>
-                    </div>
-                </div>
-
-
-                <h2>Section title</h2>
-
-        <div class="table-responsive">
-            <table class="table table-striped table-sm">
-            </table>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
-        </div>-->
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server" AsyncRendering="true" SizeToReportContent="true" Visible="false"></rsweb:ReportViewer>
     </main>
     <!--日期暫存-->
     <asp:HiddenField ID="HiddenField1" runat="server" />

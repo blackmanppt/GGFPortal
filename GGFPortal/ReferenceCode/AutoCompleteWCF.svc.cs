@@ -286,20 +286,22 @@ namespace GGFPortal.ReferenceCode
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = @"select  distinct top 10  [廠商簡稱] as Search from [View廠商付款條件] where upper([廠商簡稱]) like '%' +  @SearchText + '%' or  upper([廠商名稱]) like '%' +  @SearchText + '%'   ";
+                    cmd.CommandText = @"select  distinct top 10  [廠商簡稱] as Search , [廠商名稱] as Search2 ,廠商代號 as Search3 from [View廠商付款條件] where upper([廠商簡稱]) like '%' +  @SearchText + '%' or  upper([廠商名稱]) like '%' +  @SearchText + '%'  or  upper([廠商代號]) like '%' +  @SearchText + '%'  ";
                     cmd.Parameters.AddWithValue("@SearchText", prefixText.ToUpper());
                     cmd.Connection = conn;
                     conn.Open();
-                    List<string> SearchCusId = new List<string>();
+                    List<string> SearchList = new List<string>();
                     using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
                         while (sdr.Read())
                         {
-                            SearchCusId.Add(sdr["Search"].ToString());
+                            SearchList.Add(AjaxControlToolkit.AutoCompleteExtender
+                                .CreateAutoCompleteItem(string.Format("{0},{1},{2}", sdr["Search"].ToString(), sdr["Search2"],sdr["Search3"]),
+                            sdr["Search"].ToString()));
                         }
                     }
                     conn.Close();
-                    return SearchCusId;
+                    return SearchList;
                 }
             }
         }

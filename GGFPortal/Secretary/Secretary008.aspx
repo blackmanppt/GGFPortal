@@ -76,7 +76,7 @@ order by vendor_id"></asp:SqlDataSource>
                     </nav>
                 </div>
                 <div class="col-md-10">
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="768px" Width="1024px" Visible="False">
+                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" AsyncRendering="False" SizeToReportContent="True" Visible="False">
                         <LocalReport ReportPath="ReportSource\Secretary\ReportSecretary008.rdlc" DisplayName="訂單明細" EnableExternalImages="True">
                         </LocalReport>
                     </rsweb:ReportViewer>

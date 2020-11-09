@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Finance017.aspx.cs" Inherits="GGFPortal.Finance.Finance017" %>
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="GGFTempCodeEmpty.aspx.cs" Inherits="GGFPortal.TempCode.GGFTempCodeEmpty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -13,7 +11,7 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "locale": {
-                    "format": "YYYYMMDD",
+                    "format": "YYYY-MM-DD",
                     "separator": " ~ ",
                     "applyLabel": "Apply",
                     "cancelLabel": "Cancel",
@@ -49,10 +47,30 @@
                 "showCustomRangeLabel": false,
                 "alwaysShowCalendars": true,
                 "autoUpdateInput": true
+                
             }, function (start, end, label) {
-                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                    //Updates value of date
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').val(start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD'));  
+                    //Add the value to hidden field
+                    $('input[id="ContentPlaceHolder1_HiddenField1"]').val(start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD'));
+                    $('input[id="ContentPlaceHolder1_DateRangeTB"]').trigger('change');
+                    //確認資料
+                    var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+                    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' ~ ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + xxxx + ')');
             });
         });
+        //postback後將資料塞回欄位
+        $(document).ready(function () {
+            //Assign the value from hidden field to textbox
+            var xxxx = $('input[id="ContentPlaceHolder1_HiddenField1"]').val();
+            console.log(xxxx.length);
+            if (xxxx.length>0) {
+
+                onLoad: $('input[id="ContentPlaceHolder1_DateRangeTB"]').val($('input[id="ContentPlaceHolder1_HiddenField1"]').val());
+            }
+            
+        });
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -64,18 +82,10 @@
             </h3>
             <asp:TextBox ID="DateRangeTB" runat="server" CssClass="form-control"></asp:TextBox>
                         <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>公司別</span>
+                <span>說明2</span>
 
             </h3>
-            <%--<asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>--%>
-            <asp:DropDownList ID="SiteDDL" runat="server" CssClass="form-control">
-            <asp:ListItem>全部</asp:ListItem>
-            <asp:ListItem>GGF</asp:ListItem>
-            <asp:ListItem>TCL</asp:ListItem>
-        </asp:DropDownList>
-            <div class=" form-group m-2">
-                <asp:Button ID="SearchBT" runat="server" Text="Search" OnClick="SearchBT_Click" CssClass="btn btn-dark"/>
-            </div>
+            <asp:TextBox ID="MutiTB" runat="server" CssClass="form-control h-50" TextMode="MultiLine"></asp:TextBox>
         </div>
     </nav>
 
@@ -95,9 +105,14 @@
                 </div>
 
 
-                <h2>Section title</h2>-->
-                    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" Height="100%" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Visible="false" AsyncRendering="False" SizeToReportContent="True">
-                <LocalReport ReportPath="ReportSource\Finance\ReportFinance017.rdlc"  DisplayName="出口大表New"></LocalReport>
-            </rsweb:ReportViewer>
+                <h2>Section title</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+            </table>
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-sm table-dark"></asp:GridView>
+        </div>-->
     </main>
+    <!--日期暫存-->
+    <asp:HiddenField ID="HiddenField1" runat="server" />
 </asp:Content>
