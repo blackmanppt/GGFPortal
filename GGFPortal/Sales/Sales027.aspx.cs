@@ -25,10 +25,7 @@ namespace GGFPortal.Sales
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "AMZ 拆單", StrProgram = "TempCode.aspx";
-        //static string strArea = "", strImportType = "";
-        static string Str匯入定義Table = "河內打樣單";
-        static string Str匯入Head = "GGF河內打樣單Head", Str匯入Line = "GGF河內打樣單";
+        static string StrPageName = "AMZ 拆單", StrProgram = "Sales027.aspx";
         static DataSet Ds = new DataSet();
         static 多語 lang = new 多語();
         static DataCheck datacheck = new DataCheck();
@@ -52,24 +49,6 @@ namespace GGFPortal.Sales
         {
 
         }
-
-
-        public bool SearchCheck()
-        {
-            bool bCheck = false;
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    bCheck = true;
-            return bCheck;
-
-        }
         /// <summary>
         /// file upload input需要的宣告
         /// </summary>
@@ -79,20 +58,6 @@ namespace GGFPortal.Sales
 
         protected void CheckBT_Click(object sender, EventArgs e)
         {
-            ////引用//ReferenceCode/ExcelColumn.cs的類別
-            //ExcelImportTemplate GetExcelDefine = new ExcelImportTemplate();
-            ////建立匯入table
-            //GetExcelDefine.F_ImportTable();
-            ////上傳路徑
-            //// 根目錄/路徑(~/路徑)
-            //String savePath = Server.MapPath(@"~\ExcelUpLoad\Sales\AMZForcast");
-
-            //DataTable D_table = new DataTable("Excel");
-            ////建立Excel欄位
-            //D_table = GetExcelDefine.Dt1.Copy();
-            //DataTable D_errortable = new DataTable("Error");
-            ////實際顯示欄位
-            //int Excel欄位數 = D_table.Columns.Count - 2;
             if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
             {
                 string fileName = System.IO.Path.GetFileName(upload_file.PostedFile.FileName);
@@ -104,13 +69,7 @@ namespace GGFPortal.Sales
                     DataTable D_table = new DataTable("Excel");
                     DataTable D_errortable = new DataTable("Error");
                     string 副檔名 = System.IO.Path.GetExtension(fileName);
-                    //DataTable DtColumnDefine = GetDBData("欄位定義");
-                    //if(Session["DataDefine"]!=null)
-                    //    Session.Remove("DataDeffine");
-                    //Session["DataDeffine"] = DtColumnDefine;
-                    //指定Import Sheet Name
-                    //string StrSheetNameCheck = "";
-                    //Boolean BCheck = false;
+
                     int  I資料起始列=1;
 
                     #region 基本資料欄位
@@ -222,9 +181,6 @@ namespace GGFPortal.Sales
                     }
                     if (D_table.Rows.Count > 0)
                     {
-                        //GridView1.DataSource = D_table;
-                        //GridView1.DataBind();
-
                         if (D_errortable.Rows.Count == 0)
                         {
                             //ExportBT.Visible = true;
@@ -236,6 +192,10 @@ namespace GGFPortal.Sales
                             ReportViewer1.LocalReport.DataSources.Add(source);
                             ReportViewer1.DataBind();
                             ReportViewer1.LocalReport.Refresh();
+                        }
+                        else
+                        {
+
                         }
                     }
                 }
@@ -277,7 +237,6 @@ namespace GGFPortal.Sales
             #endregion
             DataRow D_dataRow = D_table.NewRow();
             DataRow D_erroraRow = D_errortable.NewRow();
-            Boolean BError = false;
             #region 基礎資料
             //D_dataRow[0] = str頁簽名稱;
 

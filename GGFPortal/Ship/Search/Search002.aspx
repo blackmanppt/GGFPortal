@@ -5,69 +5,76 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>Search ACP</title>
     <style type="text/css">
         .auto-style2 {
             text-align: left;
         }
+
         .auto-style3 {
             text-align: left;
             height: 23px;
         }
     </style>
-        <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css"/>
-    <link rel="stylesheet" type="text/css" href="../../themes/icon.css"/>
-    <link rel="stylesheet" type="text/css" href="../demo.css"/>
-    <script type="text/javascript" src="../Scripts/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="~/scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="~/scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div  >
-            
+        <div>
+
             <asp:Label ID="Label1" runat="server" Text="應付資料搜尋(含已應付)" Font-Bold="True" Font-Size="X-Large"></asp:Label>
-            
+
         </div>
-        <div  >
-            <table style="width:400px;" >
+        <div>
+            <table style="width: 800px;" class="table table-dark">
                 <tr>
-                    <td class="auto-style3">
-                        <asp:Label ID="Label2" runat="server" Text="採購單號："></asp:Label>
+                    <td>
+                        <div class="row align-items-center">
+                            <div class="col-3 text-right h5">
+                                <asp:Label ID="Label2" runat="server" Text="採購單號："></asp:Label>
+                            </div>
+                            <div class="col-3">
+                                <asp:TextBox ID="PurSearchTB" runat="server"  TextMode="MultiLine" class="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-3 text-right h5">
+                                <asp:Label ID="Label3" runat="server" Text="應付單號："></asp:Label>
+                            </div>
+                            <div class="col-3">
+                                <asp:TextBox ID="ACPTB" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
+                            </div>
+                        </div>
                     </td>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="PurSearchTB" runat="server" Height="86px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style3"></td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="應付單號："></asp:Label>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="ACPTB" runat="server" Height="69px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label4" runat="server" Text="Style no："></asp:Label>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="StyleNoSeachTB" runat="server" Height="60px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:Button ID="Search" runat="server" Text="Search" />
+                    <td>
+                        <div class="row align-items-center">
+                            <div class="col-3 text-right h5">
+                                <asp:Label ID="Label4" runat="server" Text="Style no："></asp:Label>
+                            </div>
+                            <div class="col-3">
+                                <asp:TextBox ID="StyleNoSeachTB" runat="server" TextMode="MultiLine" class="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-6 text-right">
+                                <div class="btn-group">
+                                    <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" CssClass="btn btn-outline-secondary" />
+                                    <asp:Button ID="Search" runat="server" Text="Search" CssClass="btn btn-primary" />
+                                </div>
+
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
-        <div >
+        <div>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" AllowPaging="True" PageSize="50" BorderStyle="None">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" AllowPaging="True" PageSize="50" BorderStyle="None" CssClass="table">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="style_no" HeaderText="style_no" SortExpression="style_no" />
@@ -93,10 +100,8 @@
                 <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>" 
-                SelectCommand="select style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit,remark40 FROM dbo.acp_trn WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01))) ORDER BY [acp_nbr]">
-
-            </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GGFConnectionString %>"
+                SelectCommand="select top 1000 style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別 ,unit,remark40 FROM dbo.acp_trn WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR ((kind = 'AP01') AND (transaction_class = 01))) ORDER BY [acp_nbr]"></asp:SqlDataSource>
 
 
 

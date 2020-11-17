@@ -86,7 +86,7 @@ namespace GGFPortal.test
                     ex.ExportExcelByCloseExcel(dt, "test");
                 }
             }
-            catch (Exception ErrorMessage)
+            catch (Exception)
             {
 
                 

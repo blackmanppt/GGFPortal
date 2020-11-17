@@ -17,57 +17,67 @@
             height: 23px;
         }
     </style>
-        <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css"/>
-    <link rel="stylesheet" type="text/css" href="../../themes/icon.css"/>
-    <link rel="stylesheet" type="text/css" href="../demo.css"/>
-    <script type="text/javascript" src="../Scripts/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="../Scripts/jquery.easyui-1.4.5.min.js"></script>
+      <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.js"></script>
+    <link href="~/scripts/bootstrap-4.3.1/site/docs/4.3/examples/dashboard/dashboard.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="~/scripts/bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div  >
+        <div class="h2" >
             
-            <asp:Label ID="Label1" runat="server" Text="應付資料搜尋" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="應付資料搜尋" Font-Bold="True" Font-Size="X-Large" CssClass=""></asp:Label>
             
         </div>
         <div  >
-            <table style="width:400px;" >
+            <table style="width:800px;" class="table table-active" >
                 <tr>
-                    <td class="auto-style3">
-                        <asp:Label ID="Label2" runat="server" Text="採購單號："></asp:Label>
+                    <td>
+                        <div class="row align-items-center">
+                            <div class="col-3 text-right h4">
+                                <asp:Label ID="Label2" runat="server" Text="採購單號："></asp:Label>
+                            </div>
+                            <div class="col-3">
+                                 <asp:TextBox ID="PurSearchTB" runat="server" TextMode="MultiLine"  CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div class="col-3 text-right h4">
+                                <asp:Label ID="Label3" runat="server" Text="應付單號："></asp:Label>
+                            </div>
+                            <div class="col-3">
+                                 <asp:TextBox ID="ACPTB" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
                     </td>
-                    <td class="auto-style3">
-                        <asp:TextBox ID="PurSearchTB" runat="server" Height="86px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style3"></td>
+                    
+
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:Label ID="Label3" runat="server" Text="應付單號："></asp:Label>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="ACPTB" runat="server" Height="69px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style2">
+<td>
+    <div class="row align-items-center">
+        <div class="col-3  text-right h4">
                         <asp:Label ID="Label4" runat="server" Text="Style no："></asp:Label>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="StyleNoSeachTB" runat="server" Height="60px" TextMode="MultiLine" Width="209px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style2">
-                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click" />
-                    </td>
+        </div>
+        <div class="col-3">
+            <asp:TextBox ID="StyleNoSeachTB" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
+        </div>
+        <div class="col-6 text-right align-items-end">
+             <div class="form-group btn-group">
+                        <asp:Button ID="Search" runat="server" Text="Search" OnClick="Search_Click"  CssClass="btn btn-primary"/>
+                        <asp:Button ID="Export" runat="server" OnClick="Export_Click" Text="Export" CssClass="btn btn-outline-danger" />
+                            </div>
+        </div>
+    </div>
+</td>
+
+                       
                 </tr>
+                
             </table>
         </div>
         <div >
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="None" AllowPaging="True" PageSize="20">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="None" AllowPaging="True" PageSize="20" CssClass="table table-active">
                 <AlternatingRowStyle BackColor="PaleGoldenrod" />
                 <Columns>
                     <asp:BoundField DataField="style_no" HeaderText="style_no" SortExpression="style_no" />

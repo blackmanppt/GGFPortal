@@ -67,15 +67,15 @@ namespace GGFPortal.Ship.Search
             strStyleno = (StyleNoSeachTB.Text.Trim().Length > 0) ? StyleNoSeachTB.Text.Trim() : "";
 
             //string sqlstr = @"SELECT * FROM [ViewACP] ";
-            string sqlstr = @"
-                            select style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL 
+            string sqlstr = string.Format(@" 
+                            select {0} style_no, acp_qty AS 數量, unit_price AS 單價, detail_amt AS 明細金額, CASE WHEN pur_nbr IS NULL 
                             THEN '' ELSE pur_nbr END AS pur_nbr, acp_nbr, acp_seq, item_no AS 料品代號, offset_currency AS 立帳幣別  from 
                             (
                                 SELECT          acp_nbr+acp_seq as reference_no2,* FROM dbo.acp_trnd WHERE      ( ( (kind = 'AP18') AND (transaction_class = 15)) OR
                                 ((kind = 'AP01') AND (transaction_class = 01)))
                             ) a
                             where ( reference_no2 not in (select reference_no from dbo.acp_trnd WHERE (kind = 'AP18') AND (transaction_class = 9) ) )  
-                            ";
+                            ",string.IsNullOrEmpty(strPur)&&string.IsNullOrEmpty(strAcp)&&string.IsNullOrEmpty(strStyleno)?"1000":"");
 
             if (strPur.Length > 0 || strAcp.Length > 0 || strStyleno.Length > 0)
             {

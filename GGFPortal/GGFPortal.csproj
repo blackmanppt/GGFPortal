@@ -1953,6 +1953,7 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sales028.aspx" />
     <Content Include="Sales\Sales027.aspx" />
     <Content Include="Sales\Sales026.aspx" />
     <Content Include="Sales\Sales025.aspx" />
@@ -7436,6 +7437,13 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sales028.aspx.cs">
+      <DependentUpon>Sales028.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales028.aspx.designer.cs">
+      <DependentUpon>Sales028.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales027.aspx.cs">
       <DependentUpon>Sales027.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8732,7 +8740,9 @@
     <Folder Include="ExcelUpLoad\Finance\CustomerRate\" />
     <Folder Include="ExcelUpLoad\GAMA\" />
     <Folder Include="ExcelUpLoad\Salse\AMZForcast\" />
+    <Folder Include="ExcelUpLoad\Salse\AMZ\" />
     <Folder Include="ExcelUpLoad\Salse\SIZE\" />
+    <Folder Include="ExcelUpLoad\Salse\Template\" />
     <Folder Include="ExcelUpLoad\Template\" />
     <Folder Include="ExcelUpLoad\test\" />
     <Folder Include="ExcelUpLoad\VGG\" />

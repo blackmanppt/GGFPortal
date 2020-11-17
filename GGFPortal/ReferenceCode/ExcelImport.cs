@@ -613,7 +613,7 @@ namespace GGFPortal.ReferenceCode
                         dr.Fill(dt);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = null;
                 }
