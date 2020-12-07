@@ -4422,6 +4422,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn columnSize;
             
+            private global::System.Data.DataColumn column地區;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public AMZ_PoDataTable() {
@@ -4489,6 +4491,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 地區Column {
+                get {
+                    return this.column地區;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4524,13 +4534,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AMZ_PoRow AddAMZ_PoRow(string 款號, string 顏色, int 數量, string Size) {
+            public AMZ_PoRow AddAMZ_PoRow(string 款號, string 顏色, int 數量, string Size, string 地區) {
                 AMZ_PoRow rowAMZ_PoRow = ((AMZ_PoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         款號,
                         顏色,
                         數量,
-                        Size};
+                        Size,
+                        地區};
                 rowAMZ_PoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAMZ_PoRow);
                 return rowAMZ_PoRow;
@@ -4557,6 +4568,7 @@ namespace GGFPortal.DataSetSource {
                 this.column顏色 = base.Columns["顏色"];
                 this.column數量 = base.Columns["數量"];
                 this.columnSize = base.Columns["Size"];
+                this.column地區 = base.Columns["地區"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4570,6 +4582,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.column數量);
                 this.columnSize = new global::System.Data.DataColumn("Size", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSize);
+                this.column地區 = new global::System.Data.DataColumn("地區", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column地區);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8901,6 +8915,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 地區 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAMZ_Po.地區Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'AMZ_Po\' 中資料行 \'地區\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableAMZ_Po.地區Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Is款號Null() {
                 return this.IsNull(this.tableAMZ_Po.款號Column);
             }
@@ -8945,6 +8975,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSizeNull() {
                 this[this.tableAMZ_Po.SizeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is地區Null() {
+                return this.IsNull(this.tableAMZ_Po.地區Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set地區Null() {
+                this[this.tableAMZ_Po.地區Column] = global::System.Convert.DBNull;
             }
         }
         

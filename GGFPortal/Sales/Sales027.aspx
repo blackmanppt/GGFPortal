@@ -22,7 +22,7 @@
                 </div>
             <div class="row m-3">
             <asp:Button ID="CheckBT" runat="server" Text="Check" CssClass="btn btn-outline-dark" OnClick="CheckBT_Click" />
-            <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" CssClass="btn btn-dark" OnClick="UpLoadBT_Click"/>
+           <%-- <asp:Button ID="UpLoadBT" runat="server" Text="UpLoad" CssClass="btn btn-dark" OnClick="UpLoadBT_Click"/>--%>
                 </div>
         </div>
     </nav>

@@ -129,5 +129,38 @@ namespace GGFPortal.ReferenceCode
             }
             return StrError;
         }
+        public string ExportExcelByCloseExcel(DataSet Ds匯出資料, string Str檔案名稱)
+        {
+            string StrError = "";
+            try
+            {
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    foreach (DataTable item in Ds匯出資料.Tables)
+                    {
+                        wb.Worksheets.Add(item, item.TableName);
+                    }
+                    HttpContext.Current.Response.Clear();
+                    HttpContext.Current.Response.Buffer = true;
+                    HttpContext.Current.Response.Charset = "";
+                    HttpContext.Current.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                    HttpContext.Current.Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xlsx", Str檔案名稱));
+                    using (MemoryStream MyMemoryStream = new MemoryStream())
+                    {
+                        wb.SaveAs(MyMemoryStream);
+                        MyMemoryStream.WriteTo(HttpContext.Current.Response.OutputStream);
+                        HttpContext.Current.Response.Flush();
+                        HttpContext.Current.Response.End();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                StrError = ex.ToString();
+            }
+            return StrError;
+        }
+
     }
 }
