@@ -1953,9 +1953,10 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sales028.aspx" />
     <Content Include="Sales\Sales029.aspx" />
     <Content Include="Sales\Sample024.aspx" />
-    <Content Include="Sales\Sales028.aspx" />
+    <Content Include="Sales\Sales028_OLD.aspx" />
     <Content Include="Sales\Sales027.aspx" />
     <Content Include="Sales\Sales026.aspx" />
     <Content Include="Sales\Sales025.aspx" />
@@ -7439,6 +7440,13 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sales028.aspx.cs">
+      <DependentUpon>Sales028.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sales028.aspx.designer.cs">
+      <DependentUpon>Sales028.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales029.aspx.cs">
       <DependentUpon>Sales029.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7453,12 +7461,12 @@
     <Compile Include="Sales\Sample024.aspx.designer.cs">
       <DependentUpon>Sample024.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sales\Sales028.aspx.cs">
-      <DependentUpon>Sales028.aspx</DependentUpon>
+    <Compile Include="Sales\Sales028_OLD.aspx.cs">
+      <DependentUpon>Sales028_OLD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sales\Sales028.aspx.designer.cs">
-      <DependentUpon>Sales028.aspx</DependentUpon>
+    <Compile Include="Sales\Sales028_OLD.aspx.designer.cs">
+      <DependentUpon>Sales028_OLD.aspx</DependentUpon>
     </Compile>
     <Compile Include="Sales\Sales027.aspx.cs">
       <DependentUpon>Sales027.aspx</DependentUpon>

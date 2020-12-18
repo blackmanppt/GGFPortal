@@ -38,12 +38,7 @@ namespace GGFPortal.Sales
         protected void DbInit()
         {
             DataTable dt = new DataTable();
-            //using (SqlConnection Conn = new SqlConnection(strConnectString))
-            //{
-            //    SqlDataAdapter myAdapter = new SqlDataAdapter(selectsql().ToString(), Conn);
-            //    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
 
-            //}
             #region query 使用 In
             using (SqlConnection conn1 = new SqlConnection(strConnectString))
             {

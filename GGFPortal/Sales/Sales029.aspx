@@ -10,10 +10,16 @@
 
             </h3>
             <div class="form-group">
-                <div class="btn-group">
-                    <asp:Button ID="AMZ成衣資料匯出BT" runat="server" Text="成衣資料匯出" CssClass="btn btn-outline-info" OnClick="AMZ成衣資料匯出BT_Click" />
-                    <asp:Button ID="AMZ主料庫存匯出BT" runat="server" Text="主料庫存匯出" CssClass="btn btn-primary" OnClick="AMZ主料庫存匯出BT_Click" />
-                </div>
+                <asp:Button ID="AMZ成衣資料匯出BT" runat="server" Text="成衣資料匯出" CssClass="btn btn-block btn-info" OnClick="AMZ成衣資料匯出BT_Click" />
+            </div>
+            
+                <div class="form-group">
+                    
+                    <asp:Button ID="AMZ主料庫存匯出BT" runat="server" Text="主料庫存匯出" CssClass="btn btn-block btn-primary" OnClick="AMZ主料庫存匯出BT_Click" />
+                    </div>
+                    <div class="form-group">
+                    <asp:Button ID="AMZ越南主料庫存匯出含儲位BT" runat="server" Text="越南主料庫存匯出含儲位" CssClass="btn btn-block btn-dark" OnClick="AMZ越南主料庫存匯出含儲位BT_Click"  />
+                
             </div>
         </div>
     </nav>

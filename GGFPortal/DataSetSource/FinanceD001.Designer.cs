@@ -780,7 +780,7 @@ namespace GGFPortal.DataSetSource {
                 this.columnshp_nbr.MaxLength = 20;
                 this.column開航日.MaxLength = 8;
                 this.column客戶.MaxLength = 8;
-                this.columnS_O.MaxLength = 20;
+                this.columnS_O.MaxLength = 50;
                 this.columnstyle_no.MaxLength = 100;
                 this.columnvendor_name_brief.MaxLength = 12;
                 this.column出貨數量.ReadOnly = true;
@@ -5368,7 +5368,7 @@ namespace GGFPortal.DataSetSource.FinanceD001TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["GGFConnectionString"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

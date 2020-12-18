@@ -1,65 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempCode/GGFSite.Master" AutoEventWireup="true" CodeBehind="Sales028.aspx.cs" Inherits="GGFPortal.Sales.Sales028" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
-        $(function () {
-            var start = moment().subtract(29, 'days');
-            var end = moment();
-            $('input[id="ContentPlaceHolder1_DateRangeTB"]').daterangepicker({
-                "startDate": start,
-                "endDate": end,
-                "showDropdowns": true,
-                "autoApply": true,
-                "locale": {
-                    "format": "YYYY/MM/DD",
-                    "separator": " - ",
-                    "applyLabel": "Apply",
-                    "cancelLabel": "Cancel",
-                    "fromLabel": "From",
-                    "toLabel": "To",
-                    "customRangeLabel": "Custom",
-                    "weekLabel": "W",
-                    "daysOfWeek": [
-                        "Su",
-                        "Mo",
-                        "Tu",
-                        "We",
-                        "Th",
-                        "Fr",
-                        "Sa"
-                    ],
-                    "monthNames": [
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December"
-                    ],
-                    "firstDay": 1
-                },
-                "showCustomRangeLabel": false,
-                "alwaysShowCalendars": true,
-                "autoUpdateInput": true
-            }, function (start, end, label) {
-                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-            });
-        });
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-           <%-- <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>日期</span>
+            <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>顏色數量</span>
 
-            </h3>--%>
+            </h3>
+            <div class="form-group">
+                <asp:DropDownList ID="匯入筆數DDL" runat="server" CssClass="form-control-dark form-control dropdown">
+                    <asp:ListItem>1</asp:ListItem>
+                    <asp:ListItem>2</asp:ListItem>
+                    <asp:ListItem>4</asp:ListItem>
+                </asp:DropDownList>
+            </div>
             <div class="row m-3">
             
             <label class="btn btn-info">

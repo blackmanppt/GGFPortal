@@ -50,46 +50,11 @@ namespace GGFPortal.Sales
         {
 
         }
-        protected DataTable GetDBData(string Str處理狀況)
+        class ColorClass
         {
-            StringBuilder sb = new StringBuilder();
-
-            switch (Str處理狀況)
-            {
-                //匯入資料
-                case "欄位定義":
-                    sb.AppendFormat(@"select 
-                        a.指定頁籤名稱,
-                        a.是否指定頁籤,
-                        a.資料起始欄,
-                        a.資料起始列,
-                        b.SeqNo,
-                        b.資料名稱中文,
-                        b.資料名稱英文,
-                        b.資料名稱越文,
-                        b.資料格式,
-                        b.是否為必要欄位 
-                        from [dbo].[GGF資料匯入定義表Head] a left join [dbo].[GGF資料匯入定義表Line] b on a.id=b.id
-                        where a.匯入資料='{0}' and b.IsDeleted= 0 
-                        order by SeqNo", Str匯入定義Table);
-                    break;
-                case "確認上傳資料2":
-
-                    break;
-                default:
-                    break;
-            }
-            DataTable dt = new DataTable();
-            if(sb.Length>0)
-                using (SqlConnection Conn = new SqlConnection(strConnectString))
-                {
-                    SqlDataAdapter myAdapter = new SqlDataAdapter(sb.ToString(), Conn);
-                    //myAdapter.Fill(Ds, "Str處理狀況");
-                    myAdapter.Fill(dt);    //---- 這時候執行SQL指令。取出資料，放進 DataSet。
-
-                }
-
-            return dt;
+            public int ColorX { get; set; }
+            public int ColorY { get; set; }
+            public string ColorName { get; set; }
         }
 
         /// <summary>
@@ -97,24 +62,9 @@ namespace GGFPortal.Sales
         /// </summary>
         protected System.Web.UI.HtmlControls.HtmlInputFile File1;
         protected System.Web.UI.HtmlControls.HtmlInputButton Submit1;
-        //If this code does not exist in the file, add the code into the file after the following line:
 
         protected void CheckBT_Click(object sender, EventArgs e)
         {
-            ////引用//ReferenceCode/ExcelColumn.cs的類別
-            //ExcelImportTemplate GetExcelDefine = new ExcelImportTemplate();
-            ////建立匯入table
-            //GetExcelDefine.F_ImportTable();
-            ////上傳路徑
-            //// 根目錄/路徑(~/路徑)
-            //String savePath = Server.MapPath(@"~\ExcelUpLoad\Sales\AMZForcast");
-
-            //DataTable D_table = new DataTable("Excel");
-            ////建立Excel欄位
-            //D_table = GetExcelDefine.Dt1.Copy();
-            //DataTable D_errortable = new DataTable("Error");
-            ////實際顯示欄位
-            //int Excel欄位數 = D_table.Columns.Count - 2;
             if ((upload_file.PostedFile != null) && (upload_file.PostedFile.ContentLength > 0))
             {
                 string fileName = System.IO.Path.GetFileName(upload_file.PostedFile.FileName);
@@ -126,10 +76,12 @@ namespace GGFPortal.Sales
                     DataTable D_table = new DataTable("Excel");
                     DataTable D_errortable = new DataTable("Error");
                     DataTable DtCula = new DataTable("CulTable");
+                    List<ColorClass> colorClasses = new List<ColorClass>();
+
                     string 副檔名 = System.IO.Path.GetExtension(fileName);
                     if (Session["DataDefine"] != null)
                         Session.Remove("DataDeffine");
-                    int I資料起始欄, I資料起始列;
+                    int I資料起始列;
 
                     #region 基本資料欄位
 
@@ -147,7 +99,6 @@ namespace GGFPortal.Sales
                     //}
 
                     I資料起始列 = 0;
-                    I資料起始欄 = 0;
 
                     while (File.Exists(LocationFiled + fileName))
                     {
@@ -171,7 +122,7 @@ namespace GGFPortal.Sales
                             {
                                 //--不包含 Excel表頭列的 "其他資料列"
                                 IRow row = (IRow)u_sheet.GetRow(i);
-                                F_資料確認(ref D_table, ref D_errortable, ref DtCula, row, i);
+                                F_資料確認(ref D_table, ref D_errortable, ref DtCula, row, i, ref colorClasses);
 
                             }
                             //-- 釋放 NPOI的資源
@@ -194,7 +145,7 @@ namespace GGFPortal.Sales
                                 //--不包含 Excel表頭列的 "其他資料列"
                                 IRow row = (IRow)u_sheet.GetRow(i);
 
-                                F_資料確認(ref D_table, ref D_errortable,ref DtCula, row, i);
+                                F_資料確認(ref D_table, ref D_errortable,ref DtCula, row, i, ref colorClasses);
                             }
                             //-- 釋放 NPOI的資源
                             u_sheet = null;
@@ -211,24 +162,21 @@ namespace GGFPortal.Sales
                     }
                     if (D_table.Rows.Count > 0)
                     {
-                        //DataTable Dt計算 = new DataTable();
-                        //GridView1.DataSource = D_table;
-                        //GridView1.DataBind();
-                        //if (D_errortable.Rows.Count == 0)
-                        //{
-                        //    Session["ImportExcelData"] = D_table;
-                        //}
-                        //if(DtCula.Rows.Count>0)
-                        //{
-                        //    GridView2.DataSource = DtCula;
-                        //    GridView2.DataBind();
-                        //}
+                        int i顏色數量 = 0;
+                        int.TryParse(匯入筆數DDL.SelectedValue, out i顏色數量);
                         var DistinctColor = ListColor.Distinct().ToList();
-                        if (DistinctColor.Count() > 0)
+                        if (DistinctColor.Count() > 0 && i顏色數量 >0)
                         {
                             using (DataTable dt= DtCula.Clone())
                             {
-                                dt.Columns.RemoveAt(1);
+                                if (i顏色數量 == 4)
+                                {
+                                    dt.Columns.RemoveAt(3);
+                                    dt.Columns.RemoveAt(2);
+                                }
+                                    
+                                if (i顏色數量 >= 2)
+                                    dt.Columns.RemoveAt(1);
                                 dt.Columns[0].ColumnName = "單一顏色";
                                 foreach (var item in DistinctColor)
                                 {
@@ -236,30 +184,41 @@ namespace GGFPortal.Sales
                                     {
                                         DataRow dr = dt.NewRow();
                                         dr[0] = item;
-                                        DataView dv1 = new DataView(DtCula);
-                                        DataView dv2 = new DataView(DtCula);
-                                        dv1.RowFilter = " 計算color1 = '" + item + "'";
-                                        dv2.RowFilter = " 計算color2 = '" + item + "'";
-                                        for (int i = 2; i < dt.Columns.Count + 1; i++)
+                                        DataView dv1 = new DataView(DtCula),dv2 = new DataView(DtCula), dv3 = new DataView(DtCula), dv4 = new DataView(DtCula);
+                                        dv1.RowFilter = $" {DtCula.Columns[0].ColumnName} = '{item}'";
+                                        if (i顏色數量 >= 2)
+                                            dv2.RowFilter = $" {DtCula.Columns[1].ColumnName} = '{item}'";
+                                        else
+                                            dv2.Dispose();
+                                        if (i顏色數量 == 4)
+                                        {
+                                            dv3.RowFilter = $" {DtCula.Columns[2].ColumnName} = '{item}'";
+                                            dv4.RowFilter = $" {DtCula.Columns[3].ColumnName} = '{item}'";
+                                        }
+                                        else
+                                        {
+                                            dv3.Dispose();
+                                            dv4.Dispose();
+                                        }
+                                            
+                                        for (int i = i顏色數量; i < dt.Columns.Count + i顏色數量-1; i++)
                                         {
                                             try
                                             {
                                                 int x = 0;
                                                 if (dv1.Count > 0)
-                                                    foreach (DataRowView dv1Row in dv1)
-                                                    {
-                                                        x += int.Parse(dv1Row[i].ToString());
-                                                    }
+                                                    x = F_filter單一顏色數量(dv1, i, x);
                                                 if (dv2.Count > 0)
-                                                    foreach (DataRowView dv2Row in dv2)
-                                                    {
-                                                        x += int.Parse(dv2Row[i].ToString());
-                                                    }
-                                                dr[i - 1] = x;
+                                                    x = F_filter單一顏色數量(dv2, i, x);
+                                                if (dv3.Count > 0)
+                                                    x = F_filter單一顏色數量(dv3, i, x);
+                                                if (dv4.Count > 0)
+                                                    x = F_filter單一顏色數量(dv4, i, x);
+                                                dr[i - i顏色數量 +1] = x;
                                             }
                                             catch (Exception ex2)
                                             {
-
+                                                F_ErrorShow($"Error: {ex2.Message}");
                                             }
                                             
                                         }
@@ -268,7 +227,7 @@ namespace GGFPortal.Sales
                                     catch (Exception ex1)
                                     {
 
-                                        
+                                        F_ErrorShow($"Error: {ex1.Message}");
                                     }
                                     
                                 }
@@ -308,129 +267,259 @@ namespace GGFPortal.Sales
             }
         }
 
+        private static int F_filter單一顏色數量(DataView dv1, int i, int x)
+        {
+            foreach (DataRowView dv1Row in dv1)
+            {
+                x += int.Parse(dv1Row[i].ToString());
+            }
+
+            return x;
+        }
+
         public void F_ErrorShow(string strError)
         {
             ((Label)Master.FindControl("MessageLB")).Text = strError;
             ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
 
-        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable,ref DataTable DtCula, IRow row, int i)
+        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable,ref DataTable DtCula, IRow row, int i, ref List<ColorClass> colorClass)
         {
-            string StrError = "";
+            int iDDL顏色數量 = 0;
+            int.TryParse(匯入筆數DDL.SelectedValue, out iDDL顏色數量);
             int IRowCount = row.Count();
-            
-            if (i==0)
+            string StrError = "";
+            //顏色數量
+            if (iDDL顏色數量 > 0)
             {
-                for (int x = 0; x < IRowCount*2; x++)
-                {
-                    if(x< IRowCount)
+                if(i>0)
+                    for (int i顏色數量 = 0; i顏色數量 < iDDL顏色數量; i顏色數量++)
                     {
-                        if(x<2)
-                            D_table.Columns.Add(row.GetCell(x).ToString());
+                        ColorClass CC = new ColorClass
+                        {
+                            ColorX = i,
+                            ColorY = i顏色數量,
+                            ColorName = row.GetCell(i顏色數量).ToString()
+                        };
+                        colorClass.Add(CC);
+                    }
+                //增加欄位
+                if (i==0)
+                    for (int i欄位數量 = 0; i欄位數量 < IRowCount - 1; i欄位數量++)
+                    {
+                        if (i欄位數量 < iDDL顏色數量)
+                        {
+                            D_table.Columns.Add(row.GetCell(i欄位數量).ToString());
+                            DtCula.Columns.Add("計算" + row.GetCell(i欄位數量).ToString());
+                        }
                         else
                         {
                             DataColumn column;
                             column = new DataColumn();
                             column.DataType = System.Type.GetType("System.Int32");
-                            column.ColumnName =  row.GetCell(x).ToString();
+                            column.ColumnName = row.GetCell(i欄位數量).ToString();
                             D_table.Columns.Add(column);
+                            DataColumn column2;
+                            column2 = new DataColumn();
+                            column2.DataType = System.Type.GetType("System.Int32");
+                            column2.ColumnName = "計算" + row.GetCell(i欄位數量).ToString();
+                            DtCula.Columns.Add(column2);
                         }
                     }
-                    else
+                else
+                {
+                    DataRow D_dataRow = D_table.NewRow();
+                    DataRow D_erroraRow = D_errortable.NewRow();
+                    DataRow D_DtCulDataRow = DtCula.NewRow();
+                    Boolean BError = false;
+                    #region 基礎資料
+                    try
                     {
-                        if ( x<IRowCount * 2-1)
-                            if(x<IRowCount+2)
+                        int I公式件數總計 = (int)row.GetCell(IRowCount - 2).NumericCellValue;
+                        int I數量增減 = (int)row.GetCell(IRowCount - 1).NumericCellValue;
+                        int I件數總計確認 = 0;
+                        int I件異動後總件數 = 0;
+                        for (int j = 0; j < IRowCount; j++)
+                        {
+                            if (j < iDDL顏色數量)
                             {
-                                DtCula.Columns.Add("計算" + row.GetCell(x - IRowCount).ToString());
+                                D_dataRow[j] = row.GetCell(j).ToString().Trim();
+                                D_DtCulDataRow[j] = row.GetCell(j).ToString().Trim();
+                                ListColor.Add(row.GetCell(j).ToString().Trim());
                             }
                             else
                             {
-                                DataColumn column;
-                                column = new DataColumn();
-                                column.DataType = System.Type.GetType("System.Int32");
-                                column.ColumnName = "計算" + row.GetCell(x - IRowCount).ToString();
-                                DtCula.Columns.Add(column);
-                            }
-                             
-
-                    }
-                }
-            }
-            else
-            {
-                DataRow D_dataRow = D_table.NewRow();
-                DataRow D_erroraRow = D_errortable.NewRow();
-                DataRow D_DtCulDataRow = DtCula.NewRow();
-                Boolean BError = false;
-                #region 基礎資料
-                try
-                {
-                    int I公式件數總計 = (int)row.GetCell(IRowCount-2).NumericCellValue;
-                    int I數量增減 = (int)row.GetCell(IRowCount - 1).NumericCellValue;
-                    int I件數總計確認 = 0;
-                    int I件異動後總件數 = 0;
-                    for (int j = 0; j < IRowCount; j++)
-                    {
-                        if(j<2)
-                        {
-                            D_dataRow[j] = row.GetCell(j).ToString().Trim();
-                            D_DtCulDataRow[j] = row.GetCell(j).ToString().Trim();
-                            ListColor.Add(row.GetCell(j).ToString().Trim());
-                        }
-                        else
-                        {
-                            int icount = 0;
-                            try
-                            {
-                                switch (row.GetCell(j).CellType)
+                                int icount = 0;
+                                try
                                 {
-                                    case CellType.Numeric:
-                                    case CellType.Formula:
-                                        if (j < IRowCount - 2)
-                                        {
-                                            I件數總計確認 += (int)row.GetCell(j).NumericCellValue;
-                                            if (j == IRowCount - 2 && I件數總計確認 != I公式件數總計)
+                                    switch (row.GetCell(j).CellType)
+                                    {
+                                        case CellType.Numeric:
+                                        case CellType.Formula:
+                                            if (j < IRowCount - 2)
                                             {
-                                                BError = true;
-                                                StrError = "件數不同：件數加總" + I件數總計確認.ToString() + "，公式加總" + I公式件數總計.ToString();
+                                                I件數總計確認 += (int)row.GetCell(j).NumericCellValue;
+                                                if (j == IRowCount - 2 && I件數總計確認 != I公式件數總計)
+                                                {
+                                                    BError = true;
+                                                    StrError = "件數不同：件數加總" + I件數總計確認.ToString() + "，公式加總" + I公式件數總計.ToString();
+                                                }
+                                                icount = (I數量增減 != 0) ? (int)((float)row.GetCell(j).NumericCellValue + ((float)row.GetCell(j).NumericCellValue / I公式件數總計) * I數量增減) : (int)row.GetCell(j).NumericCellValue;
+                                                //D_dataRow[j + IRowCount - 2] = icount;
+                                                D_DtCulDataRow[j] = icount;
+                                                I件異動後總件數 += icount;
                                             }
-                                            icount = (I數量增減 != 0) ? (int)((float)row.GetCell(j).NumericCellValue + ((float)row.GetCell(j).NumericCellValue / I公式件數總計) * I數量增減) : (int)row.GetCell(j).NumericCellValue;
-                                            //D_dataRow[j + IRowCount - 2] = icount;
-                                            D_DtCulDataRow[j] = icount;
-                                            I件異動後總件數 += icount;
-                                        }
-                                        if (j == IRowCount - 2)
-                                            D_DtCulDataRow[IRowCount - 2] = I件異動後總件數;
-                                        D_dataRow[j] = (int)row.GetCell(j).NumericCellValue;
-                                        break;
-                                    case CellType.Error:
-                                    default:
-                                        D_dataRow[j] = 0;
-                                        break;
+                                            if (j == IRowCount - 2)
+                                                D_DtCulDataRow[IRowCount - 2] = I件異動後總件數;
+                                            D_dataRow[j] = (int)row.GetCell(j).NumericCellValue;
+                                            break;
+                                        case CellType.Error:
+                                        default:
+                                            D_dataRow[j] = 0;
+                                            break;
+                                    }
                                 }
-                            }
-                            catch (Exception ex2)
-                            {
-                                F_ErrorShow(ex2.ToString());
-                            }
-                            
+                                catch (Exception ex2)
+                                {
+                                    F_ErrorShow(ex2.ToString());
+                                }
 
+
+                            }
+                        }
+                        D_table.Rows.Add(D_dataRow);
+                        DtCula.Rows.Add(D_DtCulDataRow);
+                        if (BError)
+                        {
+                            D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
+                            D_errortable.Rows.Add(D_erroraRow);
                         }
                     }
-                    D_table.Rows.Add(D_dataRow);
-                    DtCula.Rows.Add(D_DtCulDataRow);
-                    if (BError)
+                    catch (Exception ex)
                     {
-                        D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
-                        D_errortable.Rows.Add(D_erroraRow);
+                        F_ErrorShow(ex.ToString());
                     }
+                    #endregion
                 }
-                catch (Exception ex)
-                {
-                    F_ErrorShow(ex.ToString());
-                }
-                #endregion
+
             }
+            #region old code
+            //string StrError = "";
+            //int IRowCount = row.Count();
+
+            //if (i==0)
+            //{
+            //    for (int x = 0; x < IRowCount*2; x++)
+            //    {
+            //        if(x< IRowCount)
+            //        {
+            //            if(x<2)
+            //                D_table.Columns.Add(row.GetCell(x).ToString());
+            //            else
+            //            {
+            //                DataColumn column;
+            //                column = new DataColumn();
+            //                column.DataType = System.Type.GetType("System.Int32");
+            //                column.ColumnName =  row.GetCell(x).ToString();
+            //                D_table.Columns.Add(column);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if ( x<IRowCount * 2-1)
+            //                if(x<IRowCount+2)
+            //                {
+            //                    DtCula.Columns.Add("計算" + row.GetCell(x - IRowCount).ToString());
+            //                }
+            //                else
+            //                {
+            //                    DataColumn column;
+            //                    column = new DataColumn();
+            //                    column.DataType = System.Type.GetType("System.Int32");
+            //                    column.ColumnName = "計算" + row.GetCell(x - IRowCount).ToString();
+            //                    DtCula.Columns.Add(column);
+            //                }
+
+
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    DataRow D_dataRow = D_table.NewRow();
+            //    DataRow D_erroraRow = D_errortable.NewRow();
+            //    DataRow D_DtCulDataRow = DtCula.NewRow();
+            //    Boolean BError = false;
+            //    #region 基礎資料
+            //    try
+            //    {
+            //        int I公式件數總計 = (int)row.GetCell(IRowCount-2).NumericCellValue;
+            //        int I數量增減 = (int)row.GetCell(IRowCount - 1).NumericCellValue;
+            //        int I件數總計確認 = 0;
+            //        int I件異動後總件數 = 0;
+            //        for (int j = 0; j < IRowCount; j++)
+            //        {
+            //            if(j<2)
+            //            {
+            //                D_dataRow[j] = row.GetCell(j).ToString().Trim();
+            //                D_DtCulDataRow[j] = row.GetCell(j).ToString().Trim();
+            //                ListColor.Add(row.GetCell(j).ToString().Trim());
+            //            }
+            //            else
+            //            {
+            //                int icount = 0;
+            //                try
+            //                {
+            //                    switch (row.GetCell(j).CellType)
+            //                    {
+            //                        case CellType.Numeric:
+            //                        case CellType.Formula:
+            //                            if (j < IRowCount - 2)
+            //                            {
+            //                                I件數總計確認 += (int)row.GetCell(j).NumericCellValue;
+            //                                if (j == IRowCount - 2 && I件數總計確認 != I公式件數總計)
+            //                                {
+            //                                    BError = true;
+            //                                    StrError = "件數不同：件數加總" + I件數總計確認.ToString() + "，公式加總" + I公式件數總計.ToString();
+            //                                }
+            //                                icount = (I數量增減 != 0) ? (int)((float)row.GetCell(j).NumericCellValue + ((float)row.GetCell(j).NumericCellValue / I公式件數總計) * I數量增減) : (int)row.GetCell(j).NumericCellValue;
+            //                                //D_dataRow[j + IRowCount - 2] = icount;
+            //                                D_DtCulDataRow[j] = icount;
+            //                                I件異動後總件數 += icount;
+            //                            }
+            //                            if (j == IRowCount - 2)
+            //                                D_DtCulDataRow[IRowCount - 2] = I件異動後總件數;
+            //                            D_dataRow[j] = (int)row.GetCell(j).NumericCellValue;
+            //                            break;
+            //                        case CellType.Error:
+            //                        default:
+            //                            D_dataRow[j] = 0;
+            //                            break;
+            //                    }
+            //                }
+            //                catch (Exception ex2)
+            //                {
+            //                    F_ErrorShow(ex2.ToString());
+            //                }
+
+
+            //            }
+            //        }
+            //        D_table.Rows.Add(D_dataRow);
+            //        DtCula.Rows.Add(D_DtCulDataRow);
+            //        if (BError)
+            //        {
+            //            D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
+            //            D_errortable.Rows.Add(D_erroraRow);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        F_ErrorShow(ex.ToString());
+            //    }
+            //    #endregion
+            //}
+            #endregion
         }
 
         protected void UpLoadBT_Click(object sender, EventArgs e)

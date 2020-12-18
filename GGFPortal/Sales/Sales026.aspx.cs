@@ -57,7 +57,6 @@ namespace GGFPortal.Sales
                     string Strsql = "";
                     string[] StrArrary = 字串處理.SplitEnter(MutiTB.Text);
                     string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
-                    //string[] ParaFromDatatable = 
                     Strsql = ((MutiTB.Text.Length > 0) ?  Str搜尋參數 + " in (" + string.Join(",", parameters) + ") ":"");
                     if (SearchTB.Text.Length>0)
                     {
@@ -66,8 +65,6 @@ namespace GGFPortal.Sales
                     Strsql = Strsql.Length > 0 ? " where " + Strsql : "";
                     command1.CommandText = string.Format($@"select * from View_AMZStock {Strsql} "
                     );
-                    //if(string.IsNullOrEmpty(SearchTB.Text))
-                    //    command1.Parameters.Add("@")
                     for (int i = 0; i < StrArrary.Length; i++)
                         command1.Parameters.AddWithValue(parameters[i], StrArrary[i]);
                     command1.ExecuteNonQuery();
@@ -92,13 +89,6 @@ namespace GGFPortal.Sales
 
             if (dt.Rows.Count > 0)
             {
-                //ReportViewer1.Visible = true;
-                //ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                //ReportDataSource source = new ReportDataSource("採購單料號訂單資料", dt);
-                //ReportViewer1.LocalReport.DataSources.Clear();
-                //ReportViewer1.LocalReport.DataSources.Add(source);
-                //ReportViewer1.DataBind();
-                //ReportViewer1.LocalReport.Refresh();
                 GV.DataSource = dt;
                 GV.DataBind();
                 ExportBT.Visible = true;
@@ -129,44 +119,6 @@ namespace GGFPortal.Sales
                 }
             }
         }
-
-        private StringBuilder selectsql()
-        {
-
-            StringBuilder strsql = new StringBuilder(" select * from [View採購單料號訂單資料] where 1=1 ");
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節年度])  = '{0}' ", 年度DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    strsql.AppendFormat(" and upper([季節])  = '{0}' ", 季節DDL.SelectedValue.ToUpper());
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    strsql.AppendFormat(" and upper([Style])  like '%{0}%' ", 款號TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    strsql.AppendFormat(" and upper([品牌])  = '{0}' ", 品牌TB.Text.ToUpper());
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    strsql.AppendFormat(" and upper([代理商])  = '{0}' ", 代理商TB.Text.ToUpper());
-            //if (主料CB.Checked)
-            //    strsql.Append(" and upper([主副料])  = 'M' ");
-            //if (入庫CB.Checked)
-            //    strsql.Append(" and upper([採購單狀態])  = 'IN' ");
-            return strsql;
-        }
-        public bool SearchCheck()
-        {
-            bool bCheck = false;
-            //if (!string.IsNullOrEmpty(年度DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(季節DDL.SelectedValue))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(款號TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(品牌TB.Text))
-            //    bCheck = true;
-            //if (!string.IsNullOrEmpty(代理商TB.Text))
-            //    bCheck = true;
-            return bCheck;
-
-        }
-
         protected void SearchBT_Click(object sender, EventArgs e)
         {
             DbInit();

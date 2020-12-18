@@ -95,14 +95,9 @@ namespace GGFPortal.Sales
                             //-- 0表示：第一個 worksheet工作表
                             XSSFSheet u_sheet = (XSSFSheet)workbook.GetSheetAt(x);
                             str頁簽名稱 = u_sheet.SheetName.ToString();
-                            //檢查是否有要對應資料
-                            //if (BCheck && StrSheetNameCheck != str頁簽名稱)
-                            //{
-                            //    continue;
-                            //}
                             //-- Excel 表頭列
                             XSSFRow headerRow = (XSSFRow)u_sheet.GetRow(I資料起始列);
-                            IRow DateRow = (IRow)u_sheet.GetRow(I資料起始列);
+                            IRow DateRow = (IRow)u_sheet.GetRow(0);
                             //-- for迴圈的「啟始值」要加一，表示不包含 Excel表頭列
                             // for (int i = (u_sheet.FirstRowNum + 1); i <= u_sheet.LastRowNum; i++)   
                             //-- 每一列做迴圈
@@ -124,7 +119,7 @@ namespace GGFPortal.Sales
                                 if (string.IsNullOrEmpty(Str款號))
                                     continue;
                                 #endregion
-                                F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row,i);
+                                F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row,i, DateRow);
                             }
                             //-- 釋放 NPOI的資源
                             u_sheet = null;
@@ -139,12 +134,8 @@ namespace GGFPortal.Sales
                         {
                             HSSFSheet u_sheet = (HSSFSheet)workbook.GetSheetAt(x);  //-- 0表示：第一個 worksheet工作表
                             HSSFRow headerRow = (HSSFRow)u_sheet.GetRow(I資料起始列);  //-- Excel 表頭列
-                            IRow DateRow = (IRow)u_sheet.GetRow(I資料起始列);             //-- v.1.2.4版修改
+                            IRow DateRow = (IRow)u_sheet.GetRow(0);             //-- v.1.2.4版修改
                                                                                      //檢查是否有要對應資料
-                            //if (BCheck && StrSheetNameCheck != str頁簽名稱)
-                            //{
-                            //    continue;
-                            //}
                             str頁簽名稱 = u_sheet.SheetName.ToString();
                             for (int i = I資料起始列; i <= u_sheet.LastRowNum; i++)   //-- 每一列做迴圈
                             {
@@ -163,7 +154,7 @@ namespace GGFPortal.Sales
                                 if (string.IsNullOrEmpty(Str款號))
                                     continue;
                                 #endregion
-                                F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row,i);
+                                F_資料確認(ref D_table, ref D_errortable, str頁簽名稱, row,i, DateRow);
                             }
                             //-- 釋放 NPOI的資源
                             u_sheet = null;
@@ -174,17 +165,12 @@ namespace GGFPortal.Sales
                     //--錯誤資料顯示
                     if (D_errortable.Rows.Count > 0)
                     {
-                        //ExportBT.Visible = false;
                         DataView D_View3 = new DataView(D_errortable);
-                        //ErrorGV.DataSource = D_View3;
-                        //ErrorGV.DataBind();
                     }
                     if (D_table.Rows.Count > 0)
                     {
                         if (D_errortable.Rows.Count == 0)
                         {
-                            //ExportBT.Visible = true;
-                            //Session["ImportExcelData"] = D_table;
                             ReportViewer1.Visible = true;
                             ReportViewer1.ProcessingMode = ProcessingMode.Local;
                             ReportDataSource source = new ReportDataSource("AMZ_Po", D_table);
@@ -216,7 +202,7 @@ namespace GGFPortal.Sales
             ((ModalPopupExtender)Master.FindControl("AlertPanel_ModalPopupExtender")).Show();
         }
        
-        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable, string str頁簽名稱, IRow row, int i)
+        private void F_資料確認(ref DataTable D_table,ref DataTable D_errortable, string str頁簽名稱, IRow row, int i, IRow DateRow)
         {
             string StrError = "";
             #region regex用法
@@ -256,30 +242,20 @@ namespace GGFPortal.Sales
                 {
                     StrError += "沒有款號";
                 }
-                #endregion
-                //數量
-                #region 數量
 
-                int I數量US = 0, I數量EU=0, I數量JP=0;
-                if (row.GetCell(3).CellType == CellType.Numeric)
+                #region 顏色
+                string StrColor = "";
+                if (row.GetCell(1).CellType == CellType.String)
                 {
-                    I數量US = (int)row.GetCell(3).NumericCellValue;
+                    StrColor = row.GetCell(1).ToString();
                 }
-                if(row.Cells.Count > 4)
-                    if (row.GetCell(4).CellType == CellType.Numeric)
-                    {
-                        I數量EU = (int)row.GetCell(4).NumericCellValue;
-                    }
-                if(row.Cells.Count>5)
-                    if (row.GetCell(5).CellType == CellType.Numeric)
-                    {
-                        I數量JP = (int)row.GetCell(5).NumericCellValue;
-                    }
-                if(I數量US==0&& I數量EU==0&& I數量JP==0)
+                else
                 {
-                    StrError += $"{(StrError.Length > 0 ? "," : "")}沒有數量";
+                    StrError += $"{(StrError.Length > 0 ? "," : "")}沒有顏色";
+
                 }
                 #endregion
+
                 #region Size
                 string StrSize = "";
                 if (row.GetCell(2).CellType == CellType.String)
@@ -291,61 +267,58 @@ namespace GGFPortal.Sales
                     StrError += $"{(StrError.Length > 0 ? "," : "")}沒有Size";
                 }
                 #endregion
-                #region 顏色
-                string StrColor = "";
-                if (row.GetCell(1).CellType == CellType.String )
-                {
-                    StrColor = row.GetCell(1).ToString();
-                }
-                else
-                {
-                    StrError += $"{(StrError.Length>0?",":"")}沒有顏色";
-                    
-                }
-                    
-                
-                StringBuilder 多筆資料 = new StringBuilder("");
-                string[] StrArr顏色 = Regex.Split(StrColor, "[/]");
 
-                //string[] strtextarry = SplitEnter(strtext);
-                if (StrArr顏色.Length > 0)
+                for (int x = 3; x < row.Count(); x++)
                 {
-                    foreach (var item in StrArr顏色)
+                    int i數量 = 0;
+                    if (row.GetCell(x).CellType == CellType.Numeric)
                     {
-                        if(I數量US>0&&string.IsNullOrEmpty(StrError))
+
+                        i數量 = (int)row.GetCell(x).NumericCellValue;
+                    }
+
+                    string[] StrArr顏色 = Regex.Split(StrColor, "[/]");
+
+                    if (StrArr顏色.Length > 0)
+                    {
+                        foreach (var item in StrArr顏色)
                         {
-                            D_dataRow = D_table.NewRow();
-                            D_dataRow[0] = Str款號;
-                            D_dataRow[1] = "US";
-                            D_dataRow[2] = item;
-                            D_dataRow[3] = StrSize;
-                            D_dataRow[4] = I數量US;
-                            D_table.Rows.Add(D_dataRow);
-                        }
-                        if (I數量EU > 0 && string.IsNullOrEmpty(StrError))
-                        {
-                            D_dataRow = D_table.NewRow();
-                            D_dataRow[0] = Str款號;
-                            D_dataRow[1] = "EU";
-                            D_dataRow[2] = item;
-                            D_dataRow[3] = StrSize;
-                            D_dataRow[4] = I數量EU;
-                            D_table.Rows.Add(D_dataRow);
-                        }
-                        if (I數量JP > 0 && string.IsNullOrEmpty(StrError))
-                        {
-                            D_dataRow = D_table.NewRow();
-                            D_dataRow[0] = Str款號;
-                            D_dataRow[1] = "JP";
-                            D_dataRow[2] = item;
-                            D_dataRow[3] = StrSize;
-                            D_dataRow[4] = I數量JP;
-                            D_table.Rows.Add(D_dataRow);
+                            if (i數量 > 0 && string.IsNullOrEmpty(StrError))
+                            {
+                                D_dataRow = D_table.NewRow();
+                                D_dataRow[0] = Str款號;
+                                D_dataRow[1] = DateRow.GetCell(x);
+                                D_dataRow[2] = item;
+                                D_dataRow[3] = StrSize;
+                                D_dataRow[4] = i數量;
+                                D_table.Rows.Add(D_dataRow);
+                            }
+                            
                         }
                     }
                 }
+                //int I數量US = 0, I數量EU=0, I數量JP=0;
+                //if (row.GetCell(3).CellType == CellType.Numeric)
+                //{
+                //    I數量US = (int)row.GetCell(3).NumericCellValue;
+                //}
+                //if(row.Cells.Count > 4)
+                //    if (row.GetCell(4).CellType == CellType.Numeric)
+                //    {
+                //        I數量EU = (int)row.GetCell(4).NumericCellValue;
+                //    }
+                //if(row.Cells.Count>5)
+                //    if (row.GetCell(5).CellType == CellType.Numeric)
+                //    {
+                //        I數量JP = (int)row.GetCell(5).NumericCellValue;
+                //    }
+                //if(I數量US==0&& I數量EU==0&& I數量JP==0)
+                //{
+                //    StrError += $"{(StrError.Length > 0 ? "," : "")}沒有數量";
+                //}
                 #endregion
-                if (StrError.Length>0 && (I數量EU>0||I數量JP>0||I數量US>0))
+                
+                if (StrError.Length>0)
                 {
                     D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
                     D_errortable.Rows.Add(D_erroraRow);

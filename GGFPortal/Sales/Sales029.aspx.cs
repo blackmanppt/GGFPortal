@@ -10,7 +10,6 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using GGFPortal.ReferenceCode;
 
 namespace GGFPortal.Sales
 {
@@ -55,28 +54,80 @@ namespace GGFPortal.Sales
                                         A.oh_qty>0 
                                         ";
             string Str原料庫存sql = @"
-                                        select distinct 
+                                        select  
                                         C.cus_item_no 款號
                                         ,C.ord_nbr 訂單號碼
                                         ,A.item_no 料號
                                         ,B.item_spk 料號規格
-                                        ,A.stockroom 儲位
+                                        ,F.color_ename
+										--,A.stockroom 儲位
+                                        --,E.stockroom_name 儲位名稱
+                                        ,A.oh_qty as 在手量碼
+                                        ,D.cloth_y_weight as 碼重
+                                        ,cast(round((sum(A.oh_qty)*D.cloth_y_weight/1000*2.2046),2) as decimal(9,2)) as 在手量磅
+                                        ,cast(round((sum(A.oh_qty)*D.cloth_y_weight/1000),2) as decimal(9,2)) as 在手量公斤
+                                        from inv_ord_balance as A
+                                        left join  bas_item_master as B on A.site=B.site and A.item_no=B.item_no 
+                                        left join ordc_bah1 as C on A.site=C.site and A.ord_nbr=C.ord_nbr
+                                        --left join bas_stockroom as E on A.site=E.site and A.stockroom=E.stockroom
+                                        left join purc_purchase_detail as D on A.ord_nbr = D.ord_nbr and A.item_no = D.item_no
+                                        left join bas_color as F on right(A.item_no,CHARINDEX('-', REVERSE(A.item_no))-1) =F.color_no and F.cus_id='AMZ'
+                                        where A.ord_nbr = C.ord_nbr and
+                                        --A.stockroom = E.stockroom and
+                                        A.item_no = B.item_no and
+                                        C.agents ='AMZ' and
+                                        A.item_no like 'F%' and
+                                        A.oh_qty >0 
+										group by 
+										C.cus_item_no 
+                                        ,C.ord_nbr 
+                                        ,A.item_no 
+                                        ,B.item_spk 
+                                        --,A.stockroom 
+                                        --,E.stockroom_name 
+                                        ,A.oh_qty  
+                                        ,D.cloth_y_weight  
+										,F.color_ename
+                                        ";
+            string StrVNN原料庫存sql = @"
+                                        select  
+                                        C.cus_item_no 款號
+                                        ,C.ord_nbr 訂單號碼
+                                        ,A.item_no 料號
+                                        ,B.item_spk 料號規格
+                                        ,F.color_ename
+										,A.stockroom 儲位
                                         ,E.stockroom_name 儲位名稱
                                         ,A.oh_qty as 在手量碼
                                         ,D.cloth_y_weight as 碼重
-                                        ,cast(round((A.oh_qty*D.cloth_y_weight/1000*2.2046),2) as decimal(9,2)) as 在手量磅
-                                        ,cast(round((A.oh_qty*D.cloth_y_weight/1000),2) as decimal(9,2)) as 在手量公斤
-                                        from bas_item_master as B,ordc_bah1 as C,bas_stockroom as E,inv_ord_balance as A 
+                                        ,cast(round((sum(A.oh_qty)*D.cloth_y_weight/1000*2.2046),2) as decimal(9,2)) as 在手量磅
+                                        ,cast(round((sum(A.oh_qty)*D.cloth_y_weight/1000),2) as decimal(9,2)) as 在手量公斤
+                                        from inv_ord_balance as A
+                                        left join  bas_item_master as B on A.site=B.site and A.item_no=B.item_no 
+                                        left join ordc_bah1 as C on A.site=C.site and A.ord_nbr=C.ord_nbr
+                                        left join bas_stockroom as E on A.site=E.site and A.stockroom=E.stockroom
                                         left join purc_purchase_detail as D on A.ord_nbr = D.ord_nbr and A.item_no = D.item_no
+                                        left join bas_color as F on right(A.item_no,CHARINDEX('-', REVERSE(A.item_no))-1) =F.color_no and F.cus_id='AMZ'
                                         where A.ord_nbr = C.ord_nbr and
                                         A.stockroom = E.stockroom and
                                         A.item_no = B.item_no and
                                         C.agents ='AMZ' and
                                         A.item_no like 'F%' and
-                                        A.oh_qty >0
+                                        A.oh_qty >0 
+										group by 
+										C.cus_item_no 
+                                        ,C.ord_nbr 
+                                        ,A.item_no 
+                                        ,B.item_spk 
+                                        ,A.stockroom 
+                                        ,E.stockroom_name 
+                                        ,A.oh_qty  
+                                        ,D.cloth_y_weight  
+										,F.color_ename
                                         ";
+
             //下載成衣庫存
-            if (StrSearchType=="AMZ成衣庫存")
+            if (StrSearchType == "越南主料庫存")
             {
                 DataTable dtVNN = new DataTable(), dtTW = new DataTable(), dtCompare = new DataTable();
 
@@ -106,11 +157,6 @@ namespace GGFPortal.Sales
 
                 dtCompare = dtVNN.Clone();
 
-                DataColumn dataColumn台灣儲位 = new DataColumn();
-                dataColumn台灣儲位.ColumnName = "台灣儲位";
-                dataColumn台灣儲位.DataType = System.Type.GetType("System.String");
-                dtCompare.Columns.Add(dataColumn台灣儲位);
-
                 DataColumn dataColumn台灣在手碼 = new DataColumn();
                 dataColumn台灣在手碼.ColumnName = "台灣在手碼";
                 dataColumn台灣在手碼.DataType = System.Type.GetType("System.Decimal");
@@ -134,7 +180,7 @@ namespace GGFPortal.Sales
                 foreach (DataRow item in dtVNN.Rows)
                 {
                     DataRow dr = dtCompare.NewRow();
-                    for (int i = 0; i < item.ItemArray.Length - 1; i++)
+                    for (int i = 0; i < item.ItemArray.Length; i++)
                     {
                         dr[i] = item[i];
                     }
@@ -144,11 +190,11 @@ namespace GGFPortal.Sales
                     {
                         try
                         {
-                            dr["台灣儲位"] = !string.IsNullOrEmpty(dataView[0][5].ToString()) ? dataView[0][5].ToString() : "";
-                            dr["台灣在手碼"] = !string.IsNullOrEmpty(dataView[0][6].ToString()) ? dataView[0][6].ToString() : "0";
-                            dr["台灣碼"] = !string.IsNullOrEmpty(dataView[0][7].ToString()) ? dataView[0][7].ToString() : "0";
-                            dr["台灣在手磅"] = !string.IsNullOrEmpty(dataView[0][8].ToString()) ? dataView[0][8].ToString() : "0";
-                            dr["台灣在手公斤"] = !string.IsNullOrEmpty(dataView[0][9].ToString()) ? dataView[0][9].ToString() : "0";
+                            //dr["台灣儲位"] = !string.IsNullOrEmpty(dataView[0][5].ToString()) ? dataView[0][5].ToString() : "";
+                            dr["台灣在手碼"] = !string.IsNullOrEmpty(dataView[0][5].ToString()) ? dataView[0][5].ToString() : "0";
+                            dr["台灣碼"] = !string.IsNullOrEmpty(dataView[0][6].ToString()) ? dataView[0][6].ToString() : "0";
+                            dr["台灣在手磅"] = !string.IsNullOrEmpty(dataView[0][7].ToString()) ? dataView[0][7].ToString() : "0";
+                            dr["台灣在手公斤"] = !string.IsNullOrEmpty(dataView[0][8].ToString()) ? dataView[0][8].ToString() : "0";
                         }
                         catch (Exception)
                         {
@@ -157,7 +203,7 @@ namespace GGFPortal.Sales
                     }
                     else
                     {
-                        dr["台灣儲位"] = "";
+                        //dr["台灣儲位"] = "";
                         dr["台灣在手碼"] = "0";
                         dr["台灣碼"] = "0";
                         dr["台灣在手磅"] = "0";
@@ -168,12 +214,24 @@ namespace GGFPortal.Sales
                 if (dtCompare.Rows.Count > 0)
                 {
                     ConvertToExcel convertToExcel = new ConvertToExcel();
-                    convertToExcel.ExportExcelByCloseExcel(dtCompare, "AMZ成衣庫存比較");
+                    convertToExcel.ExportExcelByCloseExcel(dtCompare, "越南主料庫存");
                 }
                 else
                     F_ErrorShow("越南連線異常，請稍後在試");
             }
-            //下載
+            //越南主料庫存
+            else if (StrSearchType == "越南原料庫存")
+            {
+                DataTable dt = new DataTable();
+                dt = F_庫存資料(StrVNN原料庫存sql, strVNNConnectString);
+                if (dt.Rows.Count > 0)
+                {
+                    ConvertToExcel convertToExcel = new ConvertToExcel();
+                    convertToExcel.ExportExcelByCloseExcel(dt, "越南原料庫存");
+                }
+                else
+                    F_ErrorShow("越南連線異常，請稍後在試");
+            }
             else
             {
                 DataTable dt = new DataTable();
@@ -181,7 +239,7 @@ namespace GGFPortal.Sales
                 if (dt.Rows.Count>0)
                 {
                     ConvertToExcel convertToExcel = new ConvertToExcel();
-                    convertToExcel.ExportExcelByCloseExcel(dt, "越南原料庫存");
+                    convertToExcel.ExportExcelByCloseExcel(dt, "AMZ成衣庫存比較");
                 }
                 else
                     F_ErrorShow("越南連線異常，請稍後在試");
@@ -208,7 +266,12 @@ namespace GGFPortal.Sales
 
         protected void AMZ主料庫存匯出BT_Click(object sender, EventArgs e)
         {
-            DbInit("主料庫存");
+            DbInit("越南主料庫存");
+        }
+
+        protected void AMZ越南主料庫存匯出含儲位BT_Click(object sender, EventArgs e)
+        {
+            DbInit("越南原料庫存");
         }
 
         public void F_ErrorShow(string strError)

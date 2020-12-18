@@ -565,7 +565,9 @@ namespace GGFPortal.FactoryMG
                 ////-- 表示格子裡面，公式運算後的「值」，是數字（Numeric）。
                 try
                 {
-                    D_dataRow[j + 2] = row.GetCell(j).NumericCellValue.ToString();
+                    float f = (float)row.GetCell(j).NumericCellValue;
+                    int zz = (int)Math.Round(f);
+                    D_dataRow[j + 2] = zz;
                 }
                 catch 
                 {
