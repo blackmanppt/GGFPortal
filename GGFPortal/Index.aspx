@@ -314,7 +314,8 @@ table, td, th {
                         <asp:HyperLink ID="HyperLink126" runat="server" NavigateUrl="~/Sales/Sample023.aspx">樣品作業進度上傳</asp:HyperLink>
                           <br />
                         <asp:HyperLink ID="HyperLink85" runat="server" NavigateUrl="~/Sales/Sample024.aspx">打樣單附件資料查詢</asp:HyperLink>
-
+                                                  <br />
+                        <asp:HyperLink ID="HyperLink87" runat="server" NavigateUrl="~/Sales/Sample025.aspx">打樣收單查詢(打版室)</asp:HyperLink>
                                                 </td>
                     <th  class="auto-style2">
 

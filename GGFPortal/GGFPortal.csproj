@@ -1953,6 +1953,7 @@
     <Content Include="ReferenceCode\easyui\jquery.min.js" />
     <Content Include="ReferenceCode\easyui\license_freeware.txt" />
     <Content Include="ReferenceCode\easyui\readme.txt" />
+    <Content Include="Sales\Sample025.aspx" />
     <Content Include="Sales\Sales028.aspx" />
     <Content Include="Sales\Sales029.aspx" />
     <Content Include="Sales\Sample024.aspx" />
@@ -7440,6 +7441,13 @@
     <Compile Include="ReferenceCode\Language.cs" />
     <Compile Include="ReferenceCode\SystemFunction.cs" />
     <Compile Include="ReferenceCode\計算函式.cs" />
+    <Compile Include="Sales\Sample025.aspx.cs">
+      <DependentUpon>Sample025.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\Sample025.aspx.designer.cs">
+      <DependentUpon>Sample025.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sales\Sales028.aspx.cs">
       <DependentUpon>Sales028.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -8872,6 +8880,7 @@
     <EmbeddedResource Include="ReportSource\Sales\ReportSales025.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSales027.rdlc" />
     <EmbeddedResource Include="ReportSource\Sales\ReportSALEV6.rdlc" />
+    <EmbeddedResource Include="ReportSource\Sample\ReportSALEV7.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample007.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009.rdlc" />
     <EmbeddedResource Include="ReportSource\Sample\ReportSample009V2.rdlc" />
