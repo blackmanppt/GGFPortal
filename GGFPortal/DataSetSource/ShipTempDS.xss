@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:Ship001" ZOrder="7" X="17" Y="72" Height="410" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="406" />
     <Shape ID="DesignTable:客戶訂單轉Excel" ZOrder="6" X="177" Y="73" Height="543" Width="157" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="539" />
-    <Shape ID="DesignTable:入庫櫃號" ZOrder="5" X="359" Y="77" Height="181" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
+    <Shape ID="DesignTable:入庫櫃號" ZOrder="5" X="359" Y="77" Height="200" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:採購入庫狀況" ZOrder="4" X="543" Y="97" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:入庫比較表1" ZOrder="3" X="732" Y="136" Height="200" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="196" />
     <Shape ID="DesignTable:入庫比較表2" ZOrder="2" X="903" Y="129" Height="238" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="234" />

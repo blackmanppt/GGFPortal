@@ -166,7 +166,8 @@ namespace GGFPortal.Ship
                                           [ETA]
                                           ,[ETD]
                                           ,[櫃號]
-                                      FROM [GGF].[dbo].[View入庫櫃號查詢] where 1 = 1");
+                                          
+                                      FROM [dbo].[View入庫櫃號查詢] where 1 = 1");
                     //eta
                     if (!string.IsNullOrEmpty(StartDay.Text)|| !string.IsNullOrEmpty(EndDay.Text))
                         strsql.AppendFormat(" and [ETA]  between '{0}' and '{1}' ",
@@ -189,14 +190,14 @@ namespace GGFPortal.Ship
                     break;
                 case "搜尋採購單資料":
                     strsql.Append(@" SELECT *
-                                      FROM [GGF].[dbo].[View入庫櫃號查詢] where 1 = 1");
+                                      FROM [dbo].[View入庫櫃號查詢] where 1 = 1");
 
                     if (!顯示直送CB.Checked)
                         strsql.Append(" and [櫃號] not in  ('越南直送','宜蘭直送','廠商直送','染缸費')");
                     break;
                 case "搜尋全部資料":
                     strsql.Append(@" SELECT *
-                                      FROM [GGF].[dbo].[View入庫櫃號查詢] where 1 = 1");
+                                      FROM [dbo].[View入庫櫃號查詢] where 1 = 1");
                     //eta
                     if (!string.IsNullOrEmpty(StartDay.Text) || !string.IsNullOrEmpty(EndDay.Text))
                         strsql.AppendFormat(" and [ETA]  between '{0}' and '{1}' ",

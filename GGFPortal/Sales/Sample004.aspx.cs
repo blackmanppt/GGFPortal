@@ -22,9 +22,9 @@ namespace GGFPortal.Sales
                 int iCountMonth = (DateTime.Now.Year - 2015);
 
 
-                for (int i = 1; i < iCountMonth; i++)
+                for (int i = 0; i < iCountMonth; i++)
                 {
-                    if (i == 1)
+                    if (i == 0)
                     {
                         YearDDL.Items.Add("");
                     }

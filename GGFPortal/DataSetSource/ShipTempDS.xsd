@@ -228,6 +228,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="入庫單" msprop:Generator_ColumnVarNameInTable="column入庫單" msprop:Generator_ColumnPropNameInRow="入庫單" msprop:Generator_ColumnPropNameInTable="入庫單Column" msprop:Generator_UserColumnName="入庫單" type="xs:string" minOccurs="0" />
               <xs:element name="ETA" msprop:Generator_ColumnVarNameInTable="columnETA" msprop:Generator_ColumnPropNameInRow="ETA" msprop:Generator_ColumnPropNameInTable="ETAColumn" msprop:Generator_UserColumnName="ETA" type="xs:dateTime" minOccurs="0" />
               <xs:element name="ETD" msprop:Generator_ColumnVarNameInTable="columnETD" msprop:Generator_ColumnPropNameInRow="ETD" msprop:Generator_ColumnPropNameInTable="ETDColumn" msprop:Generator_UserColumnName="ETD" type="xs:dateTime" minOccurs="0" />
               <xs:element name="櫃號" msprop:Generator_ColumnVarNameInTable="column櫃號" msprop:Generator_ColumnPropNameInRow="櫃號" msprop:Generator_ColumnPropNameInTable="櫃號Column" msprop:Generator_UserColumnName="櫃號" minOccurs="0">

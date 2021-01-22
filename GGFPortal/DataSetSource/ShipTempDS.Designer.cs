@@ -1795,6 +1795,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column款號;
             
+            private global::System.Data.DataColumn column入庫單;
+            
             private global::System.Data.DataColumn columnETA;
             
             private global::System.Data.DataColumn columnETD;
@@ -1847,6 +1849,14 @@ namespace GGFPortal.DataSetSource {
             public global::System.Data.DataColumn 款號Column {
                 get {
                     return this.column款號;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 入庫單Column {
+                get {
+                    return this.column入庫單;
                 }
             }
             
@@ -1943,10 +1953,11 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public 入庫櫃號Row Add入庫櫃號Row(string 款號, System.DateTime ETA, System.DateTime ETD, string 櫃號, string 工廠名稱, string 客戶代號, string 品牌, string 採購人員) {
+            public 入庫櫃號Row Add入庫櫃號Row(string 款號, string 入庫單, System.DateTime ETA, System.DateTime ETD, string 櫃號, string 工廠名稱, string 客戶代號, string 品牌, string 採購人員) {
                 入庫櫃號Row row入庫櫃號Row = ((入庫櫃號Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         款號,
+                        入庫單,
                         ETA,
                         ETD,
                         櫃號,
@@ -1977,6 +1988,7 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.column款號 = base.Columns["款號"];
+                this.column入庫單 = base.Columns["入庫單"];
                 this.columnETA = base.Columns["ETA"];
                 this.columnETD = base.Columns["ETD"];
                 this.column櫃號 = base.Columns["櫃號"];
@@ -1991,6 +2003,8 @@ namespace GGFPortal.DataSetSource {
             private void InitClass() {
                 this.column款號 = new global::System.Data.DataColumn("款號", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column款號);
+                this.column入庫單 = new global::System.Data.DataColumn("入庫單", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column入庫單);
                 this.columnETA = new global::System.Data.DataColumn("ETA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnETA);
                 this.columnETD = new global::System.Data.DataColumn("ETD", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -5636,6 +5650,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 入庫單 {
+                get {
+                    try {
+                        return ((string)(this[this.table入庫櫃號.入庫單Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'入庫櫃號\' 中資料行 \'入庫單\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table入庫櫃號.入庫單Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime ETA {
                 get {
                     try {
@@ -5756,6 +5786,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Set款號Null() {
                 this[this.table入庫櫃號.款號Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is入庫單Null() {
+                return this.IsNull(this.table入庫櫃號.入庫單Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set入庫單Null() {
+                this[this.table入庫櫃號.入庫單Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

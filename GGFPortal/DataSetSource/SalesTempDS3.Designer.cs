@@ -40,6 +40,8 @@ namespace GGFPortal.DataSetSource {
         
         private AMZ_PoDataTable tableAMZ_Po;
         
+        private DDP實際出貨數量資料DataTable tableDDP實際出貨數量資料;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -91,6 +93,9 @@ namespace GGFPortal.DataSetSource {
                 }
                 if ((ds.Tables["AMZ_Po"] != null)) {
                     base.Tables.Add(new AMZ_PoDataTable(ds.Tables["AMZ_Po"]));
+                }
+                if ((ds.Tables["DDP實際出貨數量資料"] != null)) {
+                    base.Tables.Add(new DDP實際出貨數量資料DataTable(ds.Tables["DDP實際出貨數量資料"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -192,6 +197,16 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DDP實際出貨數量資料DataTable DDP實際出貨數量資料 {
+            get {
+                return this.tableDDP實際出貨數量資料;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -281,6 +296,9 @@ namespace GGFPortal.DataSetSource {
                 if ((ds.Tables["AMZ_Po"] != null)) {
                     base.Tables.Add(new AMZ_PoDataTable(ds.Tables["AMZ_Po"]));
                 }
+                if ((ds.Tables["DDP實際出貨數量資料"] != null)) {
+                    base.Tables.Add(new DDP實際出貨數量資料DataTable(ds.Tables["DDP實際出貨數量資料"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -362,6 +380,12 @@ namespace GGFPortal.DataSetSource {
                     this.tableAMZ_Po.InitVars();
                 }
             }
+            this.tableDDP實際出貨數量資料 = ((DDP實際出貨數量資料DataTable)(base.Tables["DDP實際出貨數量資料"]));
+            if ((initTable == true)) {
+                if ((this.tableDDP實際出貨數量資料 != null)) {
+                    this.tableDDP實際出貨數量資料.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -388,6 +412,8 @@ namespace GGFPortal.DataSetSource {
             base.Tables.Add(this.tableAMZCap);
             this.tableAMZ_Po = new AMZ_PoDataTable();
             base.Tables.Add(this.tableAMZ_Po);
+            this.tableDDP實際出貨數量資料 = new DDP實際出貨數量資料DataTable();
+            base.Tables.Add(this.tableDDP實際出貨數量資料);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +461,12 @@ namespace GGFPortal.DataSetSource {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeAMZ_Po() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeDDP實際出貨數量資料() {
             return false;
         }
         
@@ -516,6 +548,9 @@ namespace GGFPortal.DataSetSource {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void AMZ_PoRowChangeEventHandler(object sender, AMZ_PoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void DDP實際出貨數量資料RowChangeEventHandler(object sender, DDP實際出貨數量資料RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4670,6 +4705,374 @@ namespace GGFPortal.DataSetSource {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "AMZ_PoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DDP實際出貨數量資料DataTable : global::System.Data.TypedTableBase<DDP實際出貨數量資料Row> {
+            
+            private global::System.Data.DataColumn columnshp_nbr;
+            
+            private global::System.Data.DataColumn column客戶;
+            
+            private global::System.Data.DataColumn columnstyle_no;
+            
+            private global::System.Data.DataColumn column開航日;
+            
+            private global::System.Data.DataColumn column實際數量;
+            
+            private global::System.Data.DataColumn column出貨數量;
+            
+            private global::System.Data.DataColumn column出貨金額;
+            
+            private global::System.Data.DataColumn columnpak_unit;
+            
+            private global::System.Data.DataColumn column工廠名稱;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料DataTable() {
+                this.TableName = "DDP實際出貨數量資料";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DDP實際出貨數量資料DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected DDP實際出貨數量資料DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn shp_nbrColumn {
+                get {
+                    return this.columnshp_nbr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 客戶Column {
+                get {
+                    return this.column客戶;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn style_noColumn {
+                get {
+                    return this.columnstyle_no;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 開航日Column {
+                get {
+                    return this.column開航日;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 實際數量Column {
+                get {
+                    return this.column實際數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 出貨數量Column {
+                get {
+                    return this.column出貨數量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 出貨金額Column {
+                get {
+                    return this.column出貨金額;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn pak_unitColumn {
+                get {
+                    return this.columnpak_unit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 工廠名稱Column {
+                get {
+                    return this.column工廠名稱;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料Row this[int index] {
+                get {
+                    return ((DDP實際出貨數量資料Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DDP實際出貨數量資料RowChangeEventHandler DDP實際出貨數量資料RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DDP實際出貨數量資料RowChangeEventHandler DDP實際出貨數量資料RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DDP實際出貨數量資料RowChangeEventHandler DDP實際出貨數量資料RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DDP實際出貨數量資料RowChangeEventHandler DDP實際出貨數量資料RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddDDP實際出貨數量資料Row(DDP實際出貨數量資料Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料Row AddDDP實際出貨數量資料Row(string shp_nbr, string 客戶, string style_no, System.DateTime 開航日, decimal 實際數量, decimal 出貨數量, decimal 出貨金額, string pak_unit, string 工廠名稱) {
+                DDP實際出貨數量資料Row rowDDP實際出貨數量資料Row = ((DDP實際出貨數量資料Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        shp_nbr,
+                        客戶,
+                        style_no,
+                        開航日,
+                        實際數量,
+                        出貨數量,
+                        出貨金額,
+                        pak_unit,
+                        工廠名稱};
+                rowDDP實際出貨數量資料Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDDP實際出貨數量資料Row);
+                return rowDDP實際出貨數量資料Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DDP實際出貨數量資料DataTable cln = ((DDP實際出貨數量資料DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DDP實際出貨數量資料DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnshp_nbr = base.Columns["shp_nbr"];
+                this.column客戶 = base.Columns["客戶"];
+                this.columnstyle_no = base.Columns["style_no"];
+                this.column開航日 = base.Columns["開航日"];
+                this.column實際數量 = base.Columns["實際數量"];
+                this.column出貨數量 = base.Columns["出貨數量"];
+                this.column出貨金額 = base.Columns["出貨金額"];
+                this.columnpak_unit = base.Columns["pak_unit"];
+                this.column工廠名稱 = base.Columns["工廠名稱"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnshp_nbr = new global::System.Data.DataColumn("shp_nbr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshp_nbr);
+                this.column客戶 = new global::System.Data.DataColumn("客戶", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column客戶);
+                this.columnstyle_no = new global::System.Data.DataColumn("style_no", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstyle_no);
+                this.column開航日 = new global::System.Data.DataColumn("開航日", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column開航日);
+                this.column實際數量 = new global::System.Data.DataColumn("實際數量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column實際數量);
+                this.column出貨數量 = new global::System.Data.DataColumn("出貨數量", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column出貨數量);
+                this.column出貨金額 = new global::System.Data.DataColumn("出貨金額", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column出貨金額);
+                this.columnpak_unit = new global::System.Data.DataColumn("pak_unit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpak_unit);
+                this.column工廠名稱 = new global::System.Data.DataColumn("工廠名稱", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column工廠名稱);
+                this.columnshp_nbr.AllowDBNull = false;
+                this.columnshp_nbr.MaxLength = 20;
+                this.column客戶.MaxLength = 8;
+                this.columnstyle_no.MaxLength = 100;
+                this.column實際數量.ReadOnly = true;
+                this.column出貨數量.ReadOnly = true;
+                this.column出貨金額.ReadOnly = true;
+                this.columnpak_unit.MaxLength = 4;
+                this.column工廠名稱.MaxLength = 12;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料Row NewDDP實際出貨數量資料Row() {
+                return ((DDP實際出貨數量資料Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DDP實際出貨數量資料Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DDP實際出貨數量資料Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DDP實際出貨數量資料RowChanged != null)) {
+                    this.DDP實際出貨數量資料RowChanged(this, new DDP實際出貨數量資料RowChangeEvent(((DDP實際出貨數量資料Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DDP實際出貨數量資料RowChanging != null)) {
+                    this.DDP實際出貨數量資料RowChanging(this, new DDP實際出貨數量資料RowChangeEvent(((DDP實際出貨數量資料Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DDP實際出貨數量資料RowDeleted != null)) {
+                    this.DDP實際出貨數量資料RowDeleted(this, new DDP實際出貨數量資料RowChangeEvent(((DDP實際出貨數量資料Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DDP實際出貨數量資料RowDeleting != null)) {
+                    this.DDP實際出貨數量資料RowDeleting(this, new DDP實際出貨數量資料RowChangeEvent(((DDP實際出貨數量資料Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveDDP實際出貨數量資料Row(DDP實際出貨數量資料Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                SalesTempDS3 ds = new SalesTempDS3();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DDP實際出貨數量資料DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -8991,6 +9394,256 @@ namespace GGFPortal.DataSetSource {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DDP實際出貨數量資料Row : global::System.Data.DataRow {
+            
+            private DDP實際出貨數量資料DataTable tableDDP實際出貨數量資料;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DDP實際出貨數量資料Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDDP實際出貨數量資料 = ((DDP實際出貨數量資料DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string shp_nbr {
+                get {
+                    return ((string)(this[this.tableDDP實際出貨數量資料.shp_nbrColumn]));
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.shp_nbrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 客戶 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDDP實際出貨數量資料.客戶Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'客戶\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.客戶Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string style_no {
+                get {
+                    try {
+                        return ((string)(this[this.tableDDP實際出貨數量資料.style_noColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'style_no\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.style_noColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime 開航日 {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDDP實際出貨數量資料.開航日Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'開航日\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.開航日Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 實際數量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDDP實際出貨數量資料.實際數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'實際數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.實際數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 出貨數量 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDDP實際出貨數量資料.出貨數量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'出貨數量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.出貨數量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal 出貨金額 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDDP實際出貨數量資料.出貨金額Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'出貨金額\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.出貨金額Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string pak_unit {
+                get {
+                    try {
+                        return ((string)(this[this.tableDDP實際出貨數量資料.pak_unitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'pak_unit\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.pak_unitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 工廠名稱 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDDP實際出貨數量資料.工廠名稱Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'工廠名稱\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.工廠名稱Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is客戶Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.客戶Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set客戶Null() {
+                this[this.tableDDP實際出貨數量資料.客戶Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstyle_noNull() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.style_noColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstyle_noNull() {
+                this[this.tableDDP實際出貨數量資料.style_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is開航日Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.開航日Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set開航日Null() {
+                this[this.tableDDP實際出貨數量資料.開航日Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is實際數量Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.實際數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set實際數量Null() {
+                this[this.tableDDP實際出貨數量資料.實際數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is出貨數量Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.出貨數量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set出貨數量Null() {
+                this[this.tableDDP實際出貨數量資料.出貨數量Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is出貨金額Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.出貨金額Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set出貨金額Null() {
+                this[this.tableDDP實際出貨數量資料.出貨金額Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Ispak_unitNull() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.pak_unitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setpak_unitNull() {
+                this[this.tableDDP實際出貨數量資料.pak_unitColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is工廠名稱Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.工廠名稱Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set工廠名稱Null() {
+                this[this.tableDDP實際出貨數量資料.工廠名稱Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -9248,6 +9901,40 @@ namespace GGFPortal.DataSetSource {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public AMZ_PoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class DDP實際出貨數量資料RowChangeEvent : global::System.EventArgs {
+            
+            private DDP實際出貨數量資料Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料RowChangeEvent(DDP實際出貨數量資料Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DDP實際出貨數量資料Row Row {
                 get {
                     return this.eventRow;
                 }
