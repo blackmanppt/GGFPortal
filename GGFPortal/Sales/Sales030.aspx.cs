@@ -18,7 +18,7 @@ namespace GGFPortal.Sales
         字串處理 字串處理 = new 字串處理();
         static string strConnectString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GGFConnectionString"].ToString();
         SysLog Log = new SysLog();
-        static string StrPageName = "DDP出口業績表", StrProgram = "Sales030.aspx";
+        static string StrPageName = "實際出貨資料(依包裝單位)", StrProgram = "Sales030.aspx";
         protected void Page_PreInit(object sender, EventArgs e)
         {
             #region 網頁Layout基本參數
@@ -62,13 +62,13 @@ namespace GGFPortal.Sales
                     //string[] parameters = 字串處理.QueryParameter(MutiTB.Text, Str搜尋參數);
                     //string[] ParaFromDatatable = 
                     command1.CommandText = string.Format(@"
-                        select a.shp_nbr,a.客戶 ,a.style_no,a.開航日,a.出貨數量/a.unit as 實際數量,a.出貨數量,a.出貨金額,a.pak_unit ,a.工廠名稱 from (
+                        select a.shp_nbr,a.客戶 ,a.style_no,a.開航日,a.出貨數量/a.unit as 實際數量,a.出貨數量,a.出貨金額,a.pak_unit ,a.工廠名稱,預交量 as 訂單預交量 from (
                         select A.客戶,A.style_no,A.open_date as 開航日,sum(A.出貨數量) as 出貨數量,sum(A.出貨金額) as 出貨金額,B.pak_unit,A.工廠名稱
-                        ,case when pak_unit like 'PAK%' then RIGHT(pak_unit,1) else 1 end as unit,A.shp_nbr
+                        ,case when pak_unit like 'PAK%' then RIGHT(pak_unit,1) else 1 end as unit,A.shp_nbr,預交量
                         from View出口DDP as A left join ordc_bah2 as B on A.site=B.site and A.ord_nbr=B.ord_nbr 
                         where A.ord_nbr = B.ord_nbr and
                         A.shp_nbr between 'SB{0}0000' and  'SB{1}9999' {2} 
-                        group by A.客戶,A.style_no,A.open_date,B.pak_unit,A.shp_nbr,A.工廠名稱
+                        group by A.客戶,A.style_no,A.open_date,B.pak_unit,A.shp_nbr,A.工廠名稱,預交量
                         ) a
                         ", DateRangeTB.Text.Substring(2,4), DateRangeTB.Text.Substring(11,4),string.IsNullOrEmpty(客戶搜尋TB.Text)?"":$" and upper(客戶) = @客戶");
                     if(!string.IsNullOrEmpty(客戶搜尋TB.Text))

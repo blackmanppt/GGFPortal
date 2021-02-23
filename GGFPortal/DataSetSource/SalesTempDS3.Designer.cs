@@ -4770,6 +4770,8 @@ namespace GGFPortal.DataSetSource {
             
             private global::System.Data.DataColumn column工廠名稱;
             
+            private global::System.Data.DataColumn column訂單預交量;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DDP實際出貨數量資料DataTable() {
@@ -4877,6 +4879,14 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn 訂單預交量Column {
+                get {
+                    return this.column訂單預交量;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4912,7 +4922,7 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DDP實際出貨數量資料Row AddDDP實際出貨數量資料Row(string shp_nbr, string 客戶, string style_no, System.DateTime 開航日, decimal 實際數量, decimal 出貨數量, decimal 出貨金額, string pak_unit, string 工廠名稱) {
+            public DDP實際出貨數量資料Row AddDDP實際出貨數量資料Row(string shp_nbr, string 客戶, string style_no, System.DateTime 開航日, decimal 實際數量, decimal 出貨數量, decimal 出貨金額, string pak_unit, string 工廠名稱, string 訂單預交量) {
                 DDP實際出貨數量資料Row rowDDP實際出貨數量資料Row = ((DDP實際出貨數量資料Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         shp_nbr,
@@ -4923,7 +4933,8 @@ namespace GGFPortal.DataSetSource {
                         出貨數量,
                         出貨金額,
                         pak_unit,
-                        工廠名稱};
+                        工廠名稱,
+                        訂單預交量};
                 rowDDP實際出貨數量資料Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDDP實際出貨數量資料Row);
                 return rowDDP實際出貨數量資料Row;
@@ -4955,6 +4966,7 @@ namespace GGFPortal.DataSetSource {
                 this.column出貨金額 = base.Columns["出貨金額"];
                 this.columnpak_unit = base.Columns["pak_unit"];
                 this.column工廠名稱 = base.Columns["工廠名稱"];
+                this.column訂單預交量 = base.Columns["訂單預交量"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4978,6 +4990,8 @@ namespace GGFPortal.DataSetSource {
                 base.Columns.Add(this.columnpak_unit);
                 this.column工廠名稱 = new global::System.Data.DataColumn("工廠名稱", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column工廠名稱);
+                this.column訂單預交量 = new global::System.Data.DataColumn("訂單預交量", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column訂單預交量);
                 this.columnshp_nbr.AllowDBNull = false;
                 this.columnshp_nbr.MaxLength = 20;
                 this.column客戶.MaxLength = 8;
@@ -9548,6 +9562,22 @@ namespace GGFPortal.DataSetSource {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string 訂單預交量 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDDP實際出貨數量資料.訂單預交量Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'DDP實際出貨數量資料\' 中資料行 \'訂單預交量\' 的值是 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableDDP實際出貨數量資料.訂單預交量Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Is客戶Null() {
                 return this.IsNull(this.tableDDP實際出貨數量資料.客戶Column);
             }
@@ -9640,6 +9670,18 @@ namespace GGFPortal.DataSetSource {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Set工廠名稱Null() {
                 this[this.tableDDP實際出貨數量資料.工廠名稱Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Is訂單預交量Null() {
+                return this.IsNull(this.tableDDP實際出貨數量資料.訂單預交量Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Set訂單預交量Null() {
+                this[this.tableDDP實際出貨數量資料.訂單預交量Column] = global::System.Convert.DBNull;
             }
         }
         

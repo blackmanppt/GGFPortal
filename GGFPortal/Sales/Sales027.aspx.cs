@@ -173,15 +173,29 @@ namespace GGFPortal.Sales
                         {
                             ReportViewer1.Visible = true;
                             ReportViewer1.ProcessingMode = ProcessingMode.Local;
+
                             ReportDataSource source = new ReportDataSource("AMZ_Po", D_table);
                             ReportViewer1.LocalReport.DataSources.Clear();
+                            if (SumCB.Checked)
+                            {
+                                ReportViewer1.LocalReport.ReportPath = @"ReportSource\Sales\ReportSales027.rdlc";
+                            }
+                            else
+                            {
+                                ReportViewer1.LocalReport.ReportPath = @"ReportSource\Sales\ReportSales027_V2.rdlc";
+                            }
+                            ReportViewer1.LocalReport.DisplayName = "AMZ_Po拆分";
                             ReportViewer1.LocalReport.DataSources.Add(source);
+
                             ReportViewer1.DataBind();
                             ReportViewer1.LocalReport.Refresh();
+                            ErrorGV.Visible = false;
                         }
                         else
                         {
-
+                            ErrorGV.DataSource = D_errortable;
+                            ErrorGV.DataBind();
+                            ErrorGV.Visible = true;
                         }
                     }
                 }
@@ -234,6 +248,7 @@ namespace GGFPortal.Sales
                 //款號
                 #region 款號
                 string Str款號 = "";
+                bool bCheck = true;
                 if (row.GetCell(0).CellType == CellType.String || row.GetCell(0).CellType == CellType.Numeric)
                 {
                     Str款號 = row.GetCell(0).ToString();
@@ -264,39 +279,41 @@ namespace GGFPortal.Sales
                 }
                 else
                 {
+                    if ("#N/A" == row.GetCell(2).ToString())
+                        bCheck = false;
                     StrError += $"{(StrError.Length > 0 ? "," : "")}沒有Size";
                 }
                 #endregion
-
-                for (int x = 3; x < row.Count(); x++)
-                {
-                    int i數量 = 0;
-                    if (row.GetCell(x).CellType == CellType.Numeric)
+                if(bCheck)
+                    for (int x = 3; x < row.Count(); x++)
                     {
-
-                        i數量 = (int)row.GetCell(x).NumericCellValue;
-                    }
-
-                    string[] StrArr顏色 = Regex.Split(StrColor, "[/]");
-
-                    if (StrArr顏色.Length > 0)
-                    {
-                        foreach (var item in StrArr顏色)
+                        int i數量 = 0;
+                        if (row.GetCell(x).CellType == CellType.Numeric)
                         {
-                            if (i數量 > 0 && string.IsNullOrEmpty(StrError))
+
+                            i數量 = (int)row.GetCell(x).NumericCellValue;
+                        }
+
+                        string[] StrArr顏色 = Regex.Split(StrColor, "[/]");
+
+                        if (StrArr顏色.Length > 0)
+                        {
+                            foreach (var item in StrArr顏色)
                             {
-                                D_dataRow = D_table.NewRow();
-                                D_dataRow[0] = Str款號;
-                                D_dataRow[1] = DateRow.GetCell(x);
-                                D_dataRow[2] = item;
-                                D_dataRow[3] = StrSize;
-                                D_dataRow[4] = i數量;
-                                D_table.Rows.Add(D_dataRow);
-                            }
+                                if (i數量 > 0 && string.IsNullOrEmpty(StrError))
+                                {
+                                    D_dataRow = D_table.NewRow();
+                                    D_dataRow[0] = Str款號;
+                                    D_dataRow[1] = DateRow.GetCell(x);
+                                    D_dataRow[2] = item;
+                                    D_dataRow[3] = StrSize;
+                                    D_dataRow[4] = i數量;
+                                    D_table.Rows.Add(D_dataRow);
+                                }
                             
+                            }
                         }
                     }
-                }
                 //int I數量US = 0, I數量EU=0, I數量JP=0;
                 //if (row.GetCell(3).CellType == CellType.Numeric)
                 //{
@@ -317,8 +334,8 @@ namespace GGFPortal.Sales
                 //    StrError += $"{(StrError.Length > 0 ? "," : "")}沒有數量";
                 //}
                 #endregion
-                
-                if (StrError.Length>0)
+                //NA資料不檢查
+                if (StrError.Length>0&&bCheck)
                 {
                     D_erroraRow[0] = "Row " + i.ToString() + " " + StrError;
                     D_errortable.Rows.Add(D_erroraRow);
